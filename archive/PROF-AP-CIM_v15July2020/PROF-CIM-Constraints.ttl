@@ -1,0 +1,72 @@
+@prefix :      <http://iec.ch/TC57/ns/CIM/prof-cim-co#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<http://iec.ch/TC57/ns/CIM/prof-cim-co>
+        a                 owl:Ontology ;
+        rdfs:comment      "This constraints the vocabulary for for the profile describing relationships between standards/specifications, profiles of theme and supporting artifacts such as validating resources."@en ;
+        rdfs:label        "CIM Application Profile Constraints"@en ;
+        dct:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "https://www.w3.org/TR/shacl#" ;
+        dct:creator       "IEC TC57 WG13"@en ;
+        dct:identifier    "urn:uuid:69913d78-f0a3-4024-a97b-b06970e85cbc" ;
+        dct:issued        "2020-07-03T14:55:10Z"^^xsd:dateTime ;
+        dct:language      "en-GB";
+        dct:license       "https://creativecommons.org/licenses/by/4.0/" ;
+        dct:modified      "2020-07-03"^^xsd:date ;
+        dct:publisher     "IEC"@en ;
+        dct:rights        "Copyright"@en ;
+        dct:rightsHolder  "IEC"@en ;
+        owl:versionIRI    :1.0 ;
+        owl:vesionInfo    "1.0.0" ;
+        dcat:keyword      "PROF";
+        dcat:landingPage  "https://webstore.iec.ch/publication/6215" ;
+        dcat:theme        "constraints" .
+		
+ <!-- We need to have a rule that state that we either need hasResource or one reference to profile isTransitiveProfileOf or isProfileOf -->
+ <!-- Only inluded Profile - need to have ResourceDescriptor -->
+ 
+ <#Profile_Shape>
+  a sh:NodeShape ;
+  sh:targetClass prof:Profile ;
+  sh:name "Profile"@en;
+  sh:description "This vocabulary is for describing relationships between standards/specifications, profiles of theme and supporting artifacts such as validating resources. "@en ;
+  rdfs:comment "This vocabulary is for describing relationships between standards/specifications, profiles of theme and supporting artifacts such as validating resources."@en;
+  sh:property [
+    sh:name "isTransitiveProfileOf"@en ;
+    sh:description "This is a convenience property that may be used to access all specifications (including other profiles) that could provide useful information and related resources for the Profile (for example, for better identifying conformance requirements). This avoids forcing clients to traverse a profile hierarchy to find all relevant resources. If this property is used, then all such relationships should be present so a client can safely avoid hierarchy traversal"@en;
+    sh:class prof:Profile ;
+    sh:path prof:Profile ;
+    sh:severity sh:Violation ;
+  ], [
+    sh:name "isProfileOf"@en ;
+    sh:description "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage"@en;
+    sh:class prof:Profile ;
+    sh:path prof:Profile ;
+    sh:severity sh:Violation ;
+  ], [
+    sh:name "ResourceDescriptor"@en ;
+    sh:description "A description of a resource that defines an aspect - a particular part, feature or role - of a Profile"@en ;
+    rdfs:comment "Can be use to indicate the formalism (via dct:format) and any adherence to a dct:Standard (via dct:conformsTo) to allow for machine mediation as well as its purpose via relation to a ResourceRole (via hasRole)"@en ;
+    sh:class prof:Profile ;
+    sh:path <http://iec.ch/TC57/ns/CIM/prof-cim/ResourceDescriptor> ;
+    sh:severity sh:Violation ;
+  ], [
+    sh:name "hasToken";
+    sh:description "The preferred identifier for the Profile, for use in circumstances where its URI cannot be used"@en;
+    rdfs:comment "A simple lexical form of identifier that may be accepted in some circumstances, such as API arguments to reference this profile. This is the “preferred term”, since alternative identifiers may be declared and used by any implementation"@en;
+	sh:maxCount 1 ;
+	sh:minCount 1 ;
+    sh:nodeKind sh:Literal ;
+    sh:path http://www.w3.org/2001/XMLSchema#token ;
+    sh:severity sh:Violation ;
+  ].
+
+ 
+ 

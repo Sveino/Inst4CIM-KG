@@ -1,0 +1,841 @@
+id: http://iec.ch/TC57/ns/CIM/StateVariables/5.0#
+name: Profile
+title: Profile Vocabulary
+annotations:
+  copyright: "Copyright 2024 UCAIug SPDX-License-Identifier: Apache-2.0"
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  linkml: https://w3id.org/linkml/
+  sh: http://www.w3.org/ns/shacl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  dc: http://purl.org/dc/elements/1.1/
+  profcim: http://iec.ch/TC57/ns/CIM/prof-cim#
+  owl: http://www.w3.org/2002/07/owl#
+  cim: http://iec.ch/TC57/CIM100#
+  cims: http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#
+  this: http://iec.ch/TC57/ns/CIM/StateVariables/5.0#
+  dct: http://purl.org/dc/terms/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  dcat: http://www.w3.org/ns/dcat#
+  eu: http://iec.ch/TC57/CIM100-European#
+imports:
+- linkml:types
+default_curi_maps:
+- semweb_context
+default_range: string
+default_prefix: this
+classes:
+  ACDCConverter:
+    description: "A unit with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion."
+    is_a: ConductingEquipment
+    abstract: true
+    class_uri: cim:ACDCConverter
+    attributes: 
+      idc:
+        description: "Converter DC current, also called Id. It is converter’s state variable, result from power flow."
+        slot_uri: cim:ACDCConverter.idc
+        range: CurrentFlow
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      poleLossP:
+        description: "The active power loss at a DC Pole= idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2.For lossless operation Pdc=Pac.For rectifier operation with losses Pdc=Pac-lossP.For inverter operation with losses Pdc=Pac+lossP.It is converter’s state variable used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.poleLossP
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      uc:
+        description: "Line-to-line converter voltage, the voltage at the AC side of the valve. It is converter’s state variable, result from power flow. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.uc
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      udc:
+        description: "Converter voltage at the DC side, also called Ud. It is converter’s state variable, result from power flow. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.udc
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ACDCTerminal:
+    description: "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:ACDCTerminal
+    attributes: 
+  ConductingEquipment:
+    description: "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals."
+    abstract: true
+    class_uri: cim:ConductingEquipment
+    attributes: 
+  CsConverter:
+    description: "DC side of the current source converter (CSC).The firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.The reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees."
+    is_a: ACDCConverter
+    class_uri: cim:CsConverter
+    attributes: 
+      alpha:
+        description: "Firing angle that determines the dc voltage at the converter dc terminal. Typical value between 10 degrees and 18 degrees for a rectifier. It is converter’s state variable, result from power flow. The attribute shall be a positive value."
+        slot_uri: cim:CsConverter.alpha
+        range: AngleDegrees
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      gamma:
+        description: "Extinction angle. It is used to limit the dc voltage at the inverter if needed. Typical value between 17 degrees and 20 degrees for an inverter. It is converter’s state variable, result from power flow. The attribute shall be a positive value."
+        slot_uri: cim:CsConverter.gamma
+        range: AngleDegrees
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCTopologicalIsland:
+    description: "An electrically connected subset of the network. DC topological islands can change as the current network state changes, e.g. due to:- disconnect switches or breakers changing state in a SCADA/EMS.- manual creation, change or deletion of topological nodes in a planning tool.Only energised TopologicalNode-s shall be part of the topological island."
+    is_a: IdentifiedObject
+    class_uri: cim:DCTopologicalIsland
+    attributes: 
+      DCTopologicalNodes:
+        description: "The DC topological nodes in a DC topological island."
+        slot_uri: cim:DCTopologicalIsland.DCTopologicalNodes
+        range: DCTopologicalNode
+        minimum_cardinality: 1
+        multivalued: true
+  DCTopologicalNode:
+    description: "DC bus."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:DCTopologicalNode
+    attributes: 
+  IdentifiedObject:
+    description: "This is a root class to provide common identification for all classes needing identification and naming attributes."
+    abstract: true
+    class_uri: cim:IdentifiedObject
+    attributes: 
+      mRID:
+        description: "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."
+        slot_uri: cim:IdentifiedObject.mRID
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      name:
+        description: "The name is any free human readable and possibly non unique text naming the object."
+        slot_uri: cim:IdentifiedObject.name
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ShuntCompensator:
+    description: "A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor. A negative value for bPerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied."
+    abstract: true
+    class_uri: cim:ShuntCompensator
+    attributes: 
+  SvInjection:
+    description: "The SvInjection reports the calculated bus injection minus the sum of the terminal flows. The terminal flow is positive out from the bus (load sign convention) and bus injection has positive flow into the bus. SvInjection may have the remainder after state estimation or slack after power flow calculation."
+    class_uri: cim:SvInjection
+    attributes: 
+      pInjection:
+        description: "The active power mismatch between calculated injection and initial injection.  Positive sign means injection into the TopologicalNode (bus)."
+        slot_uri: cim:SvInjection.pInjection
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      qInjection:
+        description: "The reactive power mismatch between calculated injection and initial injection.  Positive sign means injection into the TopologicalNode (bus)."
+        slot_uri: cim:SvInjection.qInjection
+        range: ReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      TopologicalNode:
+        description: "The topological node associated with the flow injection state variable."
+        slot_uri: cim:SvInjection.TopologicalNode
+        range: TopologicalNode
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SvPowerFlow:
+    description: "State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive."
+    class_uri: cim:SvPowerFlow
+    attributes: 
+      p:
+        description: "The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."
+        slot_uri: cim:SvPowerFlow.p
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      q:
+        description: "The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."
+        slot_uri: cim:SvPowerFlow.q
+        range: ReactivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Terminal:
+        description: "The terminal associated with the power flow state variable."
+        slot_uri: cim:SvPowerFlow.Terminal
+        range: Terminal
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SvShuntCompensatorSections:
+    description: "State variable for the number of sections in service for a shunt compensator."
+    class_uri: cim:SvShuntCompensatorSections
+    attributes: 
+      sections:
+        description: "The number of sections in service as a continuous variable. The attribute shall be a positive value or zero. To get integer value scale with ShuntCompensator.bPerSection."
+        slot_uri: cim:SvShuntCompensatorSections.sections
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ShuntCompensator:
+        description: "The shunt compensator for which the state applies."
+        slot_uri: cim:SvShuntCompensatorSections.ShuntCompensator
+        range: ShuntCompensator
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SvStatus:
+    description: "State variable for status."
+    class_uri: cim:SvStatus
+    attributes: 
+      inService:
+        description: "The in service status as a result of topology processing.  It indicates if the equipment is considered as energized by the power flow. It reflects if the equipment is connected within a solvable island.  It does not necessarily reflect whether or not the island was solved by the power flow."
+        slot_uri: cim:SvStatus.inService
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ConductingEquipment:
+        description: "The conducting equipment associated with the status state variable."
+        slot_uri: cim:SvStatus.ConductingEquipment
+        range: ConductingEquipment
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SvSwitch:
+    description: "State variable for switch."
+    class_uri: cim:SvSwitch
+    attributes: 
+      open:
+        description: "The attribute tells if the computed state of the switch is considered open."
+        slot_uri: cim:SvSwitch.open
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Switch:
+        description: "The switch associated with the switch state."
+        slot_uri: cim:SvSwitch.Switch
+        range: Switch
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SvTapStep:
+    description: "State variable for transformer tap step."
+    class_uri: cim:SvTapStep
+    attributes: 
+      position:
+        description: "The floating point tap position.   This is not the tap ratio, but rather the tap step position as defined by the related tap changer model and normally is constrained to be within the range of minimum and maximum tap positions."
+        slot_uri: cim:SvTapStep.position
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      TapChanger:
+        description: "The tap changer associated with the tap step state."
+        slot_uri: cim:SvTapStep.TapChanger
+        range: TapChanger
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SvVoltage:
+    description: "State variable for voltage."
+    class_uri: cim:SvVoltage
+    attributes: 
+      angle:
+        description: "The voltage angle of the topological node complex voltage with respect to system reference."
+        slot_uri: cim:SvVoltage.angle
+        range: AngleDegrees
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      v:
+        description: "The voltage magnitude at the topological node. The attribute shall be a positive value."
+        slot_uri: cim:SvVoltage.v
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      TopologicalNode:
+        description: "The topological node associated with the voltage state."
+        slot_uri: cim:SvVoltage.TopologicalNode
+        range: TopologicalNode
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Switch:
+    description: "A generic device designed to close, or open, or both, one or more electric circuits.  All switches are two terminal devices including grounding switches. The ACDCTerminal.connected at the two sides of the switch shall not be considered for assessing switch connectivity, i.e. only Switch.open, .normalOpen and .locked are relevant."
+    is_a: ConductingEquipment
+    abstract: true
+    class_uri: cim:Switch
+    attributes: 
+  TapChanger:
+    description: "Mechanism for changing transformer winding tap positions."
+    abstract: true
+    class_uri: cim:TapChanger
+    attributes: 
+  Terminal:
+    description: "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."
+    is_a: ACDCTerminal
+    abstract: true
+    class_uri: cim:Terminal
+    attributes: 
+  TopologicalIsland:
+    description: "An electrically connected subset of the network. Topological islands can change as the current network state changes, e.g. due to:- disconnect switches or breakers changing state in a SCADA/EMS.- manual creation, change or deletion of topological nodes in a planning tool.Only energised TopologicalNode-s shall be part of the topological island."
+    is_a: IdentifiedObject
+    class_uri: cim:TopologicalIsland
+    attributes: 
+      AngleRefTopologicalNode:
+        description: "The angle reference for the island.   Normally there is one TopologicalNode that is selected as the angle reference for each island.   Other reference schemes exist, so the association is typically optional."
+        slot_uri: cim:TopologicalIsland.AngleRefTopologicalNode
+        range: TopologicalNode
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      TopologicalNodes:
+        description: "A topological node belongs to a topological island."
+        slot_uri: cim:TopologicalIsland.TopologicalNodes
+        range: TopologicalNode
+        minimum_cardinality: 1
+        multivalued: true
+  TopologicalNode:
+    description: "For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).For a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called busses."
+    abstract: true
+    class_uri: cim:TopologicalNode
+    attributes: 
+  VsConverter:
+    description: "DC side of the voltage source converter (VSC)."
+    is_a: ACDCConverter
+    class_uri: cim:VsConverter
+    attributes: 
+      delta:
+        description: "Angle between VsConverter.uv and ACDCConverter.uc. It is converter’s state variable used in power flow. The attribute shall be a positive value or zero."
+        slot_uri: cim:VsConverter.delta
+        range: AngleDegrees
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      uv:
+        description: "Line-to-line voltage on the valve side of the converter transformer. It is converter’s state variable, result from power flow. The attribute shall be a positive value."
+        slot_uri: cim:VsConverter.uv
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+types:
+  ReactivePower:
+    uri: xsd:float
+    base: float
+    description: "Product of RMS value of the voltage and the RMS value of the quadrature component of the current."
+    annotations:
+      cim_data_type: true
+      uri: cim:ReactivePower
+  AngleDegrees:
+    uri: xsd:float
+    base: float
+    description: "Measurement of angle in degrees."
+    annotations:
+      cim_data_type: true
+      uri: cim:AngleDegrees
+  Voltage:
+    uri: xsd:float
+    base: float
+    description: "Electrical voltage, can be both AC and DC."
+    annotations:
+      cim_data_type: true
+      uri: cim:Voltage
+  CurrentFlow:
+    uri: xsd:float
+    base: float
+    description: "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC."
+    annotations:
+      cim_data_type: true
+      uri: cim:CurrentFlow
+  ActivePower:
+    uri: xsd:float
+    base: float
+    description: "Product of RMS value of the voltage and the RMS value of the in-phase component of the current."
+    annotations:
+      cim_data_type: true
+      uri: cim:ActivePower
+enums:
+  UnitMultiplier:
+    description: "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type.For example, if a unit symbol is m2Pers and the multiplier is k, then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol Þ represents the derived unit m2Pers, then applying the multiplier k can be conceptualized simply as kÞ.For example, the SI unit for mass is kg and not g.  If the unit symbol is defined as kg, then the multiplier is applied to kg as a whole and does not replace the k in front of the g. In this case, the multiplier of m would be used with the unit symbol of kg to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the kg as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the kg were replaced by a symbol Þ, then it is easier to conceptualize the multiplier m as creating the proper unit mÞ, and not the forbidden unit mkg."
+    enum_uri:  http://iec.ch/TC57/CIM100#UnitMultiplier
+    permissible_values:
+      E:
+        meaning:  cim:UnitMultiplier.E
+        description: "Exa 10**18."
+      G:
+        meaning:  cim:UnitMultiplier.G
+        description: "Giga 10**9."
+      M:
+        meaning:  cim:UnitMultiplier.M
+        description: "Mega 10**6."
+      P:
+        meaning:  cim:UnitMultiplier.P
+        description: "Peta 10**15."
+      T:
+        meaning:  cim:UnitMultiplier.T
+        description: "Tera 10**12."
+      Y:
+        meaning:  cim:UnitMultiplier.Y
+        description: "Yotta 10**24."
+      Z:
+        meaning:  cim:UnitMultiplier.Z
+        description: "Zetta 10**21."
+      a:
+        meaning:  cim:UnitMultiplier.a
+        description: "Atto 10**-18."
+      c:
+        meaning:  cim:UnitMultiplier.c
+        description: "Centi 10**-2."
+      d:
+        meaning:  cim:UnitMultiplier.d
+        description: "Deci 10**-1."
+      da:
+        meaning:  cim:UnitMultiplier.da
+        description: "Deca 10**1."
+      f:
+        meaning:  cim:UnitMultiplier.f
+        description: "Femto 10**-15."
+      h:
+        meaning:  cim:UnitMultiplier.h
+        description: "Hecto 10**2."
+      k:
+        meaning:  cim:UnitMultiplier.k
+        description: "Kilo 10**3."
+      m:
+        meaning:  cim:UnitMultiplier.m
+        description: "Milli 10**-3."
+      micro:
+        meaning:  cim:UnitMultiplier.micro
+        description: "Micro 10**-6."
+      n:
+        meaning:  cim:UnitMultiplier.n
+        description: "Nano 10**-9."
+      none:
+        meaning:  cim:UnitMultiplier.none
+        description: "No multiplier or equivalently multiply by 1."
+      p:
+        meaning:  cim:UnitMultiplier.p
+        description: "Pico 10**-12."
+      y:
+        meaning:  cim:UnitMultiplier.y
+        description: "Yocto 10**-24."
+      z:
+        meaning:  cim:UnitMultiplier.z
+        description: "Zepto 10**-21."
+  UnitSymbol:
+    description: "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as F instead of CPerV. In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as kgPerm3. With the exception of the kg, which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole.Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol / is replaced by the letters Per. Exponents are written in plain text after the unit as m3 instead of being formatted as m with a superscript of 3  or introducing a symbol as in m^3. The degree symbol ° is replaced with the letters deg. Any clarification of the meaning for a substitution is included in the description for the unit symbol.Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units.The integer values are used for harmonization with IEC 61850."
+    enum_uri:  http://iec.ch/TC57/CIM100#UnitSymbol
+    permissible_values:
+      A:
+        meaning:  cim:UnitSymbol.A
+        description: "Current in amperes."
+      A2:
+        meaning:  cim:UnitSymbol.A2
+        description: "Amperes squared (A²)."
+      A2h:
+        meaning:  cim:UnitSymbol.A2h
+        description: "Ampere-squared hour, ampere-squared hour."
+      A2s:
+        meaning:  cim:UnitSymbol.A2s
+        description: "Ampere squared time in square amperes (A²s)."
+      APerA:
+        meaning:  cim:UnitSymbol.APerA
+        description: "Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’."
+      APerm:
+        meaning:  cim:UnitSymbol.APerm
+        description: "A/m, magnetic field strength, amperes per metre."
+      Ah:
+        meaning:  cim:UnitSymbol.Ah
+        description: "Ampere-hours, ampere-hours."
+      As:
+        meaning:  cim:UnitSymbol.As
+        description: "Ampere seconds (A·s)."
+      Bq:
+        meaning:  cim:UnitSymbol.Bq
+        description: "Radioactivity in becquerels (1/s)."
+      Btu:
+        meaning:  cim:UnitSymbol.Btu
+        description: "Energy, British Thermal Units."
+      C:
+        meaning:  cim:UnitSymbol.C
+        description: "Electric charge in coulombs (A·s)."
+      CPerkg:
+        meaning:  cim:UnitSymbol.CPerkg
+        description: "Exposure (x rays), coulombs per kilogram."
+      CPerm2:
+        meaning:  cim:UnitSymbol.CPerm2
+        description: "Surface charge density, coulombs per square metre."
+      CPerm3:
+        meaning:  cim:UnitSymbol.CPerm3
+        description: "Electric charge density, coulombs per cubic metre."
+      F:
+        meaning:  cim:UnitSymbol.F
+        description: "Electric capacitance in farads (C/V)."
+      FPerm:
+        meaning:  cim:UnitSymbol.FPerm
+        description: "Permittivity, farads per metre."
+      G:
+        meaning:  cim:UnitSymbol.G
+        description: "Magnetic flux density, gausses (1 G = 10-4 T)."
+      Gy:
+        meaning:  cim:UnitSymbol.Gy
+        description: "Absorbed dose in grays (J/kg)."
+      GyPers:
+        meaning:  cim:UnitSymbol.GyPers
+        description: "Absorbed dose rate, grays per second."
+      H:
+        meaning:  cim:UnitSymbol.H
+        description: "Electric inductance in henrys (Wb/A)."
+      HPerm:
+        meaning:  cim:UnitSymbol.HPerm
+        description: "Permeability, henrys per metre."
+      Hz:
+        meaning:  cim:UnitSymbol.Hz
+        description: "Frequency in hertz (1/s)."
+      HzPerHz:
+        meaning:  cim:UnitSymbol.HzPerHz
+        description: "Frequency, rate of frequency change.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mHz/Hz’."
+      HzPers:
+        meaning:  cim:UnitSymbol.HzPers
+        description: "Rate of change of frequency in hertz per second."
+      J:
+        meaning:  cim:UnitSymbol.J
+        description: "Energy in joules (N·m = C·V = W·s)."
+      JPerK:
+        meaning:  cim:UnitSymbol.JPerK
+        description: "Heat capacity in joules/kelvin."
+      JPerkg:
+        meaning:  cim:UnitSymbol.JPerkg
+        description: "Specific energy, Joules / kg."
+      JPerkgK:
+        meaning:  cim:UnitSymbol.JPerkgK
+        description: "Specific heat capacity, specific entropy, joules per kilogram Kelvin."
+      JPerm2:
+        meaning:  cim:UnitSymbol.JPerm2
+        description: "Insulation energy density, joules per square metre or watt second per square metre."
+      JPerm3:
+        meaning:  cim:UnitSymbol.JPerm3
+        description: "Energy density, joules per cubic metre."
+      JPermol:
+        meaning:  cim:UnitSymbol.JPermol
+        description: "Molar energy, joules per mole."
+      JPermolK:
+        meaning:  cim:UnitSymbol.JPermolK
+        description: "Molar entropy, molar heat capacity, joules per mole kelvin."
+      JPers:
+        meaning:  cim:UnitSymbol.JPers
+        description: "Energy rate in joules per second (J/s)."
+      K:
+        meaning:  cim:UnitSymbol.K
+        description: "Temperature in kelvins."
+      KPers:
+        meaning:  cim:UnitSymbol.KPers
+        description: "Temperature change rate in kelvins per second."
+      M:
+        meaning:  cim:UnitSymbol.M
+        description: "Length, nautical miles (1 M = 1852 m)."
+      Mx:
+        meaning:  cim:UnitSymbol.Mx
+        description: "Magnetic flux, maxwells (1 Mx = 10-8 Wb)."
+      N:
+        meaning:  cim:UnitSymbol.N
+        description: "Force in newtons (kg·m/s²)."
+      NPerm:
+        meaning:  cim:UnitSymbol.NPerm
+        description: "Surface tension, newton per metre."
+      Nm:
+        meaning:  cim:UnitSymbol.Nm
+        description: "Moment of force, newton metres."
+      Oe:
+        meaning:  cim:UnitSymbol.Oe
+        description: "Magnetic field in oersteds, (1 Oe = (103/4p) A/m)."
+      Pa:
+        meaning:  cim:UnitSymbol.Pa
+        description: "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms."
+      PaPers:
+        meaning:  cim:UnitSymbol.PaPers
+        description: "Pressure change rate in pascals per second."
+      Pas:
+        meaning:  cim:UnitSymbol.Pas
+        description: "Dynamic viscosity, pascal seconds."
+      Q:
+        meaning:  cim:UnitSymbol.Q
+        description: "Quantity power, Q."
+      Qh:
+        meaning:  cim:UnitSymbol.Qh
+        description: "Quantity energy, Qh."
+      S:
+        meaning:  cim:UnitSymbol.S
+        description: "Conductance in siemens."
+      SPerm:
+        meaning:  cim:UnitSymbol.SPerm
+        description: "Conductance per length (F/m)."
+      Sv:
+        meaning:  cim:UnitSymbol.Sv
+        description: "Dose equivalent in sieverts (J/kg)."
+      T:
+        meaning:  cim:UnitSymbol.T
+        description: "Magnetic flux density in teslas (Wb/m2)."
+      V:
+        meaning:  cim:UnitSymbol.V
+        description: "Electric potential in volts (W/A)."
+      V2:
+        meaning:  cim:UnitSymbol.V2
+        description: "Volt squared (W²/A²)."
+      V2h:
+        meaning:  cim:UnitSymbol.V2h
+        description: "Volt-squared hour, volt-squared-hours."
+      VA:
+        meaning:  cim:UnitSymbol.VA
+        description: "Apparent power in volt amperes. See also real power and reactive power."
+      VAh:
+        meaning:  cim:UnitSymbol.VAh
+        description: "Apparent energy in volt ampere hours."
+      VAr:
+        meaning:  cim:UnitSymbol.VAr
+        description: "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."
+      VArh:
+        meaning:  cim:UnitSymbol.VArh
+        description: "Reactive energy in volt ampere reactive hours."
+      VPerHz:
+        meaning:  cim:UnitSymbol.VPerHz
+        description: "Magnetic flux in volt per hertz."
+      VPerV:
+        meaning:  cim:UnitSymbol.VPerV
+        description: "Voltage, ratio of voltages.  Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’."
+      VPerVA:
+        meaning:  cim:UnitSymbol.VPerVA
+        description: "Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility."
+      VPerVAr:
+        meaning:  cim:UnitSymbol.VPerVAr
+        description: "Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility."
+      VPerm:
+        meaning:  cim:UnitSymbol.VPerm
+        description: "Electric field strength, volts per metre."
+      Vh:
+        meaning:  cim:UnitSymbol.Vh
+        description: "Volt-hour, Volt hours."
+      Vs:
+        meaning:  cim:UnitSymbol.Vs
+        description: "Volt seconds (Ws/A)."
+      W:
+        meaning:  cim:UnitSymbol.W
+        description: "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power."
+      WPerA:
+        meaning:  cim:UnitSymbol.WPerA
+        description: "Active power per current flow, watts per Ampere."
+      WPerW:
+        meaning:  cim:UnitSymbol.WPerW
+        description: "Signal Strength, ratio of power.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mW/W’."
+      WPerm2:
+        meaning:  cim:UnitSymbol.WPerm2
+        description: "Heat flux density, irradiance, watts per square metre."
+      WPerm2sr:
+        meaning:  cim:UnitSymbol.WPerm2sr
+        description: "Radiance, watts per square metre steradian."
+      WPermK:
+        meaning:  cim:UnitSymbol.WPermK
+        description: "Thermal conductivity in watt/metres kelvin."
+      WPers:
+        meaning:  cim:UnitSymbol.WPers
+        description: "Ramp rate in watts per second."
+      WPersr:
+        meaning:  cim:UnitSymbol.WPersr
+        description: "Radiant intensity, watts per steradian."
+      Wb:
+        meaning:  cim:UnitSymbol.Wb
+        description: "Magnetic flux in webers (V·s)."
+      Wh:
+        meaning:  cim:UnitSymbol.Wh
+        description: "Real energy in watt hours."
+      anglemin:
+        meaning:  cim:UnitSymbol.anglemin
+        description: "Plane angle, minutes."
+      anglesec:
+        meaning:  cim:UnitSymbol.anglesec
+        description: "Plane angle, seconds."
+      bar:
+        meaning:  cim:UnitSymbol.bar
+        description: "Pressure in bars, (1 bar = 100 kPa)."
+      cd:
+        meaning:  cim:UnitSymbol.cd
+        description: "Luminous intensity in candelas."
+      charPers:
+        meaning:  cim:UnitSymbol.charPers
+        description: "Data rate (baud) in characters per second."
+      character:
+        meaning:  cim:UnitSymbol.character
+        description: "Number of characters."
+      cosPhi:
+        meaning:  cim:UnitSymbol.cosPhi
+        description: "Power factor, dimensionless.Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility."
+      count:
+        meaning:  cim:UnitSymbol.count
+        description: "Amount of substance, Counter value."
+      d:
+        meaning:  cim:UnitSymbol.d
+        description: "Time in days, day = 24 h = 86400 s."
+      dB:
+        meaning:  cim:UnitSymbol.dB
+        description: "Sound pressure level in decibels. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3."
+      dBm:
+        meaning:  cim:UnitSymbol.dBm
+        description: "Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1mW. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3."
+      deg:
+        meaning:  cim:UnitSymbol.deg
+        description: "Plane angle in degrees."
+      degC:
+        meaning:  cim:UnitSymbol.degC
+        description: "Relative temperature in degrees Celsius.In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software."
+      ft3:
+        meaning:  cim:UnitSymbol.ft3
+        description: "Volume, cubic feet."
+      gPerg:
+        meaning:  cim:UnitSymbol.gPerg
+        description: "Concentration, The ratio of the mass of a solute divided by the mass of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µg/g’."
+      gal:
+        meaning:  cim:UnitSymbol.gal
+        description: "Volume in gallons, US gallon (1 gal = 231 in3 = 128 fl ounce)."
+      h:
+        meaning:  cim:UnitSymbol.h
+        description: "Time in hours, hour = 60 min = 3600 s."
+      ha:
+        meaning:  cim:UnitSymbol.ha
+        description: "Area, hectares."
+      kat:
+        meaning:  cim:UnitSymbol.kat
+        description: "Catalytic activity, katal = mol / s."
+      katPerm3:
+        meaning:  cim:UnitSymbol.katPerm3
+        description: "Catalytic activity concentration, katals per cubic metre."
+      kg:
+        meaning:  cim:UnitSymbol.kg
+        description: "Mass in kilograms.  Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."
+      kgPerJ:
+        meaning:  cim:UnitSymbol.kgPerJ
+        description: "Weight per energy in kilograms per joule (kg/J). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."
+      kgPerm3:
+        meaning:  cim:UnitSymbol.kgPerm3
+        description: "Density in kilogram/cubic metres (kg/m³). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."
+      kgm:
+        meaning:  cim:UnitSymbol.kgm
+        description: "Moment of mass in kilogram metres (kg·m) (first moment of mass). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."
+      kgm2:
+        meaning:  cim:UnitSymbol.kgm2
+        description: "Moment of mass in kilogram square metres (kg·m²) (Second moment of mass, commonly called the moment of inertia). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."
+      kn:
+        meaning:  cim:UnitSymbol.kn
+        description: "Speed, knots (1 kn = 1852/3600) m/s."
+      l:
+        meaning:  cim:UnitSymbol.l
+        description: "Volume in litres, litre = dm3 = m3/1000."
+      lPerh:
+        meaning:  cim:UnitSymbol.lPerh
+        description: "Volumetric flow rate, litres per hour."
+      lPerl:
+        meaning:  cim:UnitSymbol.lPerl
+        description: "Concentration, The ratio of the volume of a solute divided by the volume of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µL/L’."
+      lPers:
+        meaning:  cim:UnitSymbol.lPers
+        description: "Volumetric flow rate in litres per second."
+      lm:
+        meaning:  cim:UnitSymbol.lm
+        description: "Luminous flux in lumens (cd·sr)."
+      lx:
+        meaning:  cim:UnitSymbol.lx
+        description: "Illuminance in lux (lm/m²)."
+      m:
+        meaning:  cim:UnitSymbol.m
+        description: "Length in metres."
+      m2:
+        meaning:  cim:UnitSymbol.m2
+        description: "Area in square metres (m²)."
+      m2Pers:
+        meaning:  cim:UnitSymbol.m2Pers
+        description: "Viscosity in square metres / second (m²/s)."
+      m3:
+        meaning:  cim:UnitSymbol.m3
+        description: "Volume in cubic metres (m³)."
+      m3Compensated:
+        meaning:  cim:UnitSymbol.m3Compensated
+        description: "Volume, cubic metres, with the value compensated for weather effects."
+      m3Perh:
+        meaning:  cim:UnitSymbol.m3Perh
+        description: "Volumetric flow rate, cubic metres per hour."
+      m3Perkg:
+        meaning:  cim:UnitSymbol.m3Perkg
+        description: "Specific volume, cubic metres per kilogram, v."
+      m3Pers:
+        meaning:  cim:UnitSymbol.m3Pers
+        description: "Volumetric flow rate in cubic metres per second (m³/s)."
+      m3Uncompensated:
+        meaning:  cim:UnitSymbol.m3Uncompensated
+        description: "Volume, cubic metres, with the value uncompensated for weather effects."
+      mPerm3:
+        meaning:  cim:UnitSymbol.mPerm3
+        description: "Fuel efficiency in metres per cubic metres (m/m³)."
+      mPers:
+        meaning:  cim:UnitSymbol.mPers
+        description: "Velocity in metres per second (m/s)."
+      mPers2:
+        meaning:  cim:UnitSymbol.mPers2
+        description: "Acceleration in metres per second squared (m/s²)."
+      min:
+        meaning:  cim:UnitSymbol.min
+        description: "Time in minutes, minute  = 60 s."
+      mmHg:
+        meaning:  cim:UnitSymbol.mmHg
+        description: "Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa)."
+      mol:
+        meaning:  cim:UnitSymbol.mol
+        description: "Amount of substance in moles."
+      molPerkg:
+        meaning:  cim:UnitSymbol.molPerkg
+        description: "Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms."
+      molPerm3:
+        meaning:  cim:UnitSymbol.molPerm3
+        description: "Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in m³."
+      molPermol:
+        meaning:  cim:UnitSymbol.molPermol
+        description: "Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution."
+      none:
+        meaning:  cim:UnitSymbol.none
+        description: "Dimension less quantity, e.g. count, per unit, etc."
+      ohm:
+        meaning:  cim:UnitSymbol.ohm
+        description: "Electric resistance in ohms (V/A)."
+      ohmPerm:
+        meaning:  cim:UnitSymbol.ohmPerm
+        description: "Electric resistance per length in ohms per metre ((V/A)/m)."
+      ohmm:
+        meaning:  cim:UnitSymbol.ohmm
+        description: "Resistivity, ohm metres, (rho)."
+      onePerHz:
+        meaning:  cim:UnitSymbol.onePerHz
+        description: "Reciprocal of frequency (1/Hz)."
+      onePerm:
+        meaning:  cim:UnitSymbol.onePerm
+        description: "Wavenumber, reciprocal metres,  (1/m)."
+      ppm:
+        meaning:  cim:UnitSymbol.ppm
+        description: "Concentration in parts per million."
+      rad:
+        meaning:  cim:UnitSymbol.rad
+        description: "Plane angle in radians (m/m)."
+      radPers:
+        meaning:  cim:UnitSymbol.radPers
+        description: "Angular velocity in radians per second (rad/s)."
+      radPers2:
+        meaning:  cim:UnitSymbol.radPers2
+        description: "Angular acceleration, radians per second squared."
+      rev:
+        meaning:  cim:UnitSymbol.rev
+        description: "Amount of rotation, revolutions."
+      rotPers:
+        meaning:  cim:UnitSymbol.rotPers
+        description: "Rotations per second (1/s). See also Hz (1/s)."
+      s:
+        meaning:  cim:UnitSymbol.s
+        description: "Time in seconds."
+      sPers:
+        meaning:  cim:UnitSymbol.sPers
+        description: "Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&#181;’ to show rates such as ‘&#181;s/s’."
+      sr:
+        meaning:  cim:UnitSymbol.sr
+        description: "Solid angle in steradians (m2/m2)."
+      therm:
+        meaning:  cim:UnitSymbol.therm
+        description: "Energy, therms."
+      tonne:
+        meaning:  cim:UnitSymbol.tonne
+        description: "Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg)."

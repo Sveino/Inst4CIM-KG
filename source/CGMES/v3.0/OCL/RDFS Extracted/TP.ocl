@@ -1,0 +1,34 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61970::Base::Core::ConnectivityNode
+-- TopologicalNode must be set.
+inv ConnectivityNode_TopologicalNode: (self.TopologicalNode <> null)
+
+context IEC61970::Base::DC::DCTopologicalNode
+-- DCEquipmentContainer must be set.
+inv DCTopologicalNode_DCEquipmentContainer: (self.DCEquipmentContainer <> null)
+
+context IEC61970::Base::DC::DCBaseTerminal
+-- DCTopologicalNode must be set.
+inv DCBaseTerminal_DCTopologicalNode: (self.DCTopologicalNode <> null)
+
+context IEC61970::Base::Topology::TopologicalNode
+-- BaseVoltage must be set.
+inv TopologicalNode_BaseVoltage: (self.BaseVoltage <> null)
+-- ConnectivityNodeContainer must be set.
+inv TopologicalNode_ConnectivityNodeContainer: (self.ConnectivityNodeContainer <> null)
+-- Terminal must be set.
+inv TopologicalNode_Terminal: (self.Terminal->size() > 0)
+
+context IEC61970::Base::DC::DCNode
+-- DCTopologicalNode must be set.
+inv DCNode_DCTopologicalNode: (self.DCTopologicalNode <> null)
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+
+
+endpackage

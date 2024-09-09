@@ -1,0 +1,28 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61968::Common::PositionPoint
+-- Location must be set.
+inv PositionPoint_Location: (self.Location <> null)
+-- xPosition must be set.
+inv PositionPoint_xPosition: (self.xPosition <> null)
+-- yPosition must be set.
+inv PositionPoint_yPosition: (self.yPosition <> null)
+
+context IEC61968::Common::Location
+-- CoordinateSystem must be set.
+inv Location_CoordinateSystem: (self.CoordinateSystem <> null)
+-- PowerSystemResources must be set.
+inv Location_PowerSystemResources: (self.PowerSystemResources->size() > 0)
+
+context IEC61968::Common::CoordinateSystem
+-- crsUrn must be set.
+inv CoordinateSystem_crsUrn: (self.crsUrn <> null)
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+
+
+endpackage

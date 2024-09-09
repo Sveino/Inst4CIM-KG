@@ -1,0 +1,108 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61970::Base::Meas::MeasurementValueQuality
+-- MeasurementValue must be set.
+inv MeasurementValueQuality_MeasurementValue: (self.MeasurementValue <> null)
+
+context IEC61970::Base::Meas::AccumulatorValue
+-- Accumulator must be set.
+inv AccumulatorValue_Accumulator: (self.Accumulator <> null)
+
+context IEC61970::Base::Meas::StringMeasurementValue
+-- StringMeasurement must be set.
+inv StringMeasurementValue_StringMeasurement: (self.StringMeasurement <> null)
+
+context IEC61970::Base::Meas::AccumulatorLimitSet
+-- Measurements must be set.
+inv AccumulatorLimitSet_Measurements: (self.Measurements->size() > 0)
+-- Limits must be set.
+inv AccumulatorLimitSet_Limits: (self.Limits->size() > 0)
+
+context IEC61970::Base::Meas::ValueAliasSet
+-- Values must be set.
+inv ValueAliasSet_Values: (self.Values->size() > 0)
+
+context IEC61970::Base::Meas::AnalogControl
+-- maxValue must be set.
+inv AnalogControl_maxValue: (self.maxValue->notEmpty())
+-- minValue must be set.
+inv AnalogControl_minValue: (self.minValue->notEmpty())
+-- AnalogValue must be set.
+inv AnalogControl_AnalogValue: (self.AnalogValue <> null)
+
+context IEC61970::Base::Meas::AnalogLimitSet
+-- Measurements must be set.
+inv AnalogLimitSet_Measurements: (self.Measurements->size() > 0)
+
+context IEC61970::Base::Meas::AccumulatorReset
+-- AccumulatorValue must be set.
+inv AccumulatorReset_AccumulatorValue: (self.AccumulatorValue <> null)
+
+context IEC61970::Base::Meas::Command
+-- normalValue must be set.
+inv Command_normalValue: (self.normalValue <> null)
+-- value must be set.
+inv Command_value: (self.value <> null)
+-- DiscreteValue must be set.
+inv Command_DiscreteValue: (self.DiscreteValue <> null)
+
+context IEC61970::Base::Meas::MeasurementValue
+-- MeasurementValueSource must be set.
+inv MeasurementValue_MeasurementValueSource: (self.MeasurementValueSource <> null)
+
+context IEC61970::Base::Meas::DiscreteValue
+-- Discrete must be set.
+inv DiscreteValue_Discrete: (self.Discrete <> null)
+
+context IEC61970::Base::Meas::AccumulatorLimit
+-- value must be set.
+inv AccumulatorLimit_value: (self.value <> null)
+-- LimitSet must be set.
+inv AccumulatorLimit_LimitSet: (self.LimitSet <> null)
+
+context IEC61970::Base::Meas::ValueToAlias
+-- ValueAliasSet must be set.
+inv ValueToAlias_ValueAliasSet: (self.ValueAliasSet <> null)
+-- value must be set.
+inv ValueToAlias_value: (self.value <> null)
+
+context IEC61970::Base::Meas::AnalogValue
+-- Analog must be set.
+inv AnalogValue_Analog: (self.Analog <> null)
+
+context IEC61970::Base::Meas::Control
+-- controlType must be set.
+inv Control_controlType: (self.controlType <> null)
+
+context IEC61970::Base::Meas::Measurement
+-- measurementType must be set.
+inv Measurement_measurementType: (self.measurementType <> null)
+-- unitMultiplier must be set.
+inv Measurement_unitMultiplier: (self.unitMultiplier->notEmpty())
+-- unitSymbol must be set.
+inv Measurement_unitSymbol: (self.unitSymbol->notEmpty())
+-- PowerSystemResource must be set.
+inv Measurement_PowerSystemResource: (self.PowerSystemResource <> null)
+
+context IEC61970::Base::Meas::AnalogLimit
+-- value must be set.
+inv AnalogLimit_value: (self.value->notEmpty())
+-- LimitSet must be set.
+inv AnalogLimit_LimitSet: (self.LimitSet <> null)
+
+context IEC61970::Base::Meas::SetPoint
+-- normalValue must be set.
+inv SetPoint_normalValue: (self.normalValue->notEmpty())
+-- value must be set.
+inv SetPoint_value: (self.value->notEmpty())
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+-- name must be set.
+inv IdentifiedObject_name: (self.name <> null)
+
+
+endpackage

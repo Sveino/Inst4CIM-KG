@@ -1,0 +1,755 @@
+@prefix :      <http://www.iec.ch/TC57/ns/CIM/DiagramLayout-Constraints> .
+@prefix cims:  <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix cim:   <http://iec.ch/TC57/CIM100#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dl:    <http://www.iec.ch/TC57/ns/CIM/DiagramLayout-Constraints#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prof:  <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix eu:    <http://iec.ch/TC57/CIM100-European#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+:       a                 owl:Ontology ;
+        rdfs:comment      "This constraints is definting the expected exchange of the diagram layout profile from IEC 61970-453"@en ;
+        rdfs:label        "Diagram Layout Constraints"@en ;
+        dct:conformsTo    "urn:iso:std:iec:61970-501:draft:ed-2" , "file://FDIS15-iec61970-600-CGMES-v3_0_0.eap" , "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-453:draft:ed-3" ;
+        dct:creator       "IEC TC57 WG13"@en ;
+        dct:identifier    "urn:uuid:dbd911a2-80c0-4b9d-9c41-519b9febfbb8" ;
+        dct:issued        "2020-07-07T09:30:10Z"^^xsd:dateTime ;
+        dct:language      "en-GB" ;
+        dct:license       "https://creativecommons.org/licenses/by/4.0/" ;
+        dct:modified      "2020-07-07"^^xsd:date ;
+        dct:publisher     "IEC"@en ;
+        dct:rights        "Copyright"@en ;
+        dct:rightsHolder  "IEC"@en ;
+        owl:versionIRI    <http://iec.ch/TC57/ns/CIM/DiagramLayout-Constraints/3.0> ;
+        owl:vesionInfo    "3.0.0" ;
+        dcat:keyword      "DL" ;
+        dcat:landingPage  "https://webstore.iec.ch/publication/6213" ;
+  
+ 
+ =================Before is something to be cleaned up ============= after are the Shapes
+ 
+ 
+ 
+
+dl:Diagram.y2InitialViewDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Diagram.y2InitialViewDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        5 ;
+        sh:path         cim:Diagram.y2InitialView ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.DiagramObjectValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:TextDiagramObject ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:TextDiagramObject" ;
+        sh:name         "DiagramObjectPoint.DiagramObjectValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        3 ;
+        sh:path         cim:DiagramObjectPoint.DiagramObject ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.IdentifiedObjectDiagramStyleValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:DiagramStyle ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:DiagramStyle" ;
+        sh:name         "DiagramObject.IdentifiedObjectDiagramStyleValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        7 ;
+        sh:path         cim:DiagramObject.IdentifiedObject ;
+        sh:severity     sh:Violation .
+
+dl:VisibilityLayer.drawingOrderDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VisibilityLayer.drawingOrderDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        0 ;
+        sh:path         cim:VisibilityLayer.drawingOrder ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.zPositionDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObjectPoint.zPositionDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        4 ;
+        sh:path         cim:DiagramObjectPoint.zPosition ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.drawingOrderDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObject.drawingOrderDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        8 ;
+        sh:path         cim:DiagramObject.drawingOrder ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.IdentifiedObjectDiagramObjectStyleValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:DiagramObjectStyle ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:DiagramObjectStyle" ;
+        sh:name         "DiagramObject.IdentifiedObjectDiagramObjectStyleValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        7 ;
+        sh:path         cim:DiagramObject.IdentifiedObject ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.DiagramObjectStyleCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObject.DiagramObjectStyleCardinality" ;
+        sh:order        1 ;
+        sh:path         cim:DiagramObject.DiagramObjectStyle ;
+        sh:severity     sh:Violation .
+
+dl:CardinalityGroup  a  sh:PropertyGroup ;
+        rdfs:label  "Cardinality" ;
+        sh:order    0 .
+
+dl:TextDiagramObject.textDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "TextDiagramObject.textDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        0 ;
+        sh:path         cim:TextDiagramObject.text ;
+        sh:severity     sh:Violation .
+
+dl:IdentifiedObject.mRIDDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.mRIDDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        7 ;
+        sh:path         cim:IdentifiedObject.mRID ;
+        sh:severity     sh:Violation .
+
+dl:IdentifiedObject.mRIDCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required attribute." ;
+        sh:minCount     1 ;
+        sh:name         "IdentifiedObject.mRIDCardinality" ;
+        sh:order        7 ;
+        sh:path         cim:IdentifiedObject.mRID ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject  a     sh:NodeShape ;
+        sh:property     dl:DiagramObject.offsetYCardinality , dl:DiagramObject.drawingOrderDatatype , dl:DiagramObject.drawingOrderCardinality , dl:DiagramObject.DiagramCardinality , dl:IdentifiedObject.mRIDDatatype , dl:DiagramObject.offsetXCardinality , dl:IdentifiedObject.descriptionDatatype , dl:IdentifiedObject.mRIDCardinality , dl:IdentifiedObject.nameDatatype , dl:DiagramObject.DiagramObjectStyleValueType , dl:DiagramObject.offsetYDatatype , dl:DiagramObject.isPolygonCardinality , dl:DiagramObject.DiagramValueType , dl:DiagramObject.rotationDatatype , dl:IdentifiedObject.descriptionCardinality , dl:DiagramObject.offsetXDatatype , dl:DiagramObject.IdentifiedObjectCardinality , dl:IdentifiedObject.nameCardinality , dl:DiagramObject.isPolygonDatatype , dl:DiagramObject.rotationCardinality , dl:DiagramObject.DiagramObjectStyleCardinality ;
+        sh:targetClass  cim:DiagramObject .
+
+dl:DiagramObject.offsetYCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObject.offsetYCardinality" ;
+        sh:order        9 ;
+        sh:path         cim:DiagramObject.offsetY ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.IdentifiedObjectTextDiagramObjectValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:TextDiagramObject ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:TextDiagramObject" ;
+        sh:name         "DiagramObject.IdentifiedObjectTextDiagramObjectValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        7 ;
+        sh:path         cim:DiagramObject.IdentifiedObject ;
+        sh:severity     sh:Violation .
+
+dl:VisibilityLayer  a   sh:NodeShape ;
+        sh:property     dl:IdentifiedObject.nameDatatype , dl:IdentifiedObject.descriptionCardinality , dl:VisibilityLayer.VisibleObjectsCardinality , dl:VisibilityLayer.drawingOrderDatatype , dl:IdentifiedObject.nameCardinality , dl:VisibilityLayer.VisibleObjectsValueType , dl:IdentifiedObject.mRIDCardinality , dl:IdentifiedObject.mRIDDatatype , dl:IdentifiedObject.descriptionDatatype , dl:VisibilityLayer.drawingOrderCardinality ;
+        sh:targetClass  cim:VisibilityLayer .
+
+dl:DiagramObject.DiagramObjectStyleValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:DiagramObjectStyle ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:DiagramObjectStyle" ;
+        sh:name         "DiagramObject.DiagramObjectStyleValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        1 ;
+        sh:path         cim:DiagramObject.DiagramObjectStyle ;
+        sh:severity     sh:Violation .
+
+dl:IdentifiedObject.nameCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required attribute." ;
+        sh:minCount     1 ;
+        sh:name         "IdentifiedObject.nameCardinality" ;
+        sh:order        10 ;
+        sh:path         cim:IdentifiedObject.name ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.IdentifiedObjectCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObject.IdentifiedObjectCardinality" ;
+        sh:order        7 ;
+        sh:path         cim:DiagramObject.IdentifiedObject ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.IdentifiedObjectVisibilityLayerValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:VisibilityLayer ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:VisibilityLayer" ;
+        sh:name         "DiagramObject.IdentifiedObjectVisibilityLayerValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        7 ;
+        sh:path         cim:DiagramObject.IdentifiedObject ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.orientationDatatype
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:in           ( cim:OrientationKind.positive cim:OrientationKind.negative ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is enumerated value not part of the profile." ;
+        sh:name         "Diagram.orientationDatatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        2 ;
+        sh:path         cim:Diagram.orientation ;
+        sh:severity     sh:Violation .
+
+dl:VisibilityLayer.VisibleObjectsCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Lower bound shall be 1" ;
+        sh:minCount     1 ;
+        sh:name         "VisibilityLayer.VisibleObjectsCardinality" ;
+        sh:order        1 ;
+        sh:path         cim:VisibilityLayer.VisibleObjects ;
+        sh:severity     sh:Violation .
+
+dl:Diagram  a           sh:NodeShape ;
+        sh:property     dl:Diagram.orientationDatatype , dl:Diagram.orientationCardinality , dl:Diagram.x1InitialViewCardinality , dl:Diagram.y1InitialViewDatatype , dl:Diagram.DiagramStyleCardinality , dl:IdentifiedObject.descriptionCardinality , dl:Diagram.y1InitialViewCardinality , dl:Diagram.DiagramStyleValueType , dl:Diagram.x2InitialViewDatatype , dl:Diagram.x2InitialViewCardinality , dl:Diagram.y2InitialViewDatatype , dl:IdentifiedObject.descriptionDatatype , dl:Diagram.y2InitialViewCardinality , dl:Diagram.x1InitialViewDatatype , dl:IdentifiedObject.nameDatatype , dl:IdentifiedObject.nameCardinality , dl:IdentifiedObject.mRIDDatatype , dl:IdentifiedObject.mRIDCardinality ;
+        sh:targetClass  cim:Diagram .
+
+dl:DiagramObjectPoint.yPositionCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required attribute." ;
+        sh:minCount     1 ;
+        sh:name         "DiagramObjectPoint.yPositionCardinality" ;
+        sh:order        0 ;
+        sh:path         cim:DiagramObjectPoint.yPosition ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.zPositionCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObjectPoint.zPositionCardinality" ;
+        sh:order        4 ;
+        sh:path         cim:DiagramObjectPoint.zPosition ;
+        sh:severity     sh:Violation .
+
+dl:VisibilityLayer.drawingOrderCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "VisibilityLayer.drawingOrderCardinality" ;
+        sh:order        0 ;
+        sh:path         cim:VisibilityLayer.drawingOrder ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.offsetYDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObject.offsetYDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        9 ;
+        sh:path         cim:DiagramObject.offsetY ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.rotationCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObject.rotationCardinality" ;
+        sh:order        3 ;
+        sh:path         cim:DiagramObject.rotation ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.DiagramCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "DiagramObject.DiagramCardinality" ;
+        sh:order        5 ;
+        sh:path         cim:DiagramObject.Diagram ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectStyle
+        a               sh:NodeShape ;
+        sh:property     dl:IdentifiedObject.nameDatatype , dl:IdentifiedObject.nameCardinality , dl:IdentifiedObject.descriptionDatatype , dl:IdentifiedObject.descriptionCardinality , dl:IdentifiedObject.mRIDDatatype , dl:IdentifiedObject.mRIDCardinality ;
+        sh:targetClass  cim:DiagramObjectStyle .
+
+dl:Diagram.x1InitialViewCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Diagram.x1InitialViewCardinality" ;
+        sh:order        4 ;
+        sh:path         cim:Diagram.x1InitialView ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.x2InitialViewCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Diagram.x2InitialViewCardinality" ;
+        sh:order        3 ;
+        sh:path         cim:Diagram.x2InitialView ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.xPositionDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObjectPoint.xPositionDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        2 ;
+        sh:path         cim:DiagramObjectPoint.xPosition ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.DiagramObjectGluePointCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObjectPoint.DiagramObjectGluePointCardinality" ;
+        sh:order        5 ;
+        sh:path         cim:DiagramObjectPoint.DiagramObjectGluePoint ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.orientationCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required attribute." ;
+        sh:minCount     1 ;
+        sh:name         "Diagram.orientationCardinality" ;
+        sh:order        2 ;
+        sh:path         cim:Diagram.orientation ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.rotationDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObject.rotationDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        3 ;
+        sh:path         cim:DiagramObject.rotation ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.sequenceNumberCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObjectPoint.sequenceNumberCardinality" ;
+        sh:order        1 ;
+        sh:path         cim:DiagramObjectPoint.sequenceNumber ;
+        sh:severity     sh:Violation .
+
+dl:DiagramStyle  a      sh:NodeShape ;
+        sh:property     dl:IdentifiedObject.nameDatatype , dl:IdentifiedObject.nameCardinality , dl:IdentifiedObject.descriptionDatatype , dl:IdentifiedObject.descriptionCardinality , dl:IdentifiedObject.mRIDDatatype , dl:IdentifiedObject.mRIDCardinality ;
+        sh:targetClass  cim:DiagramStyle .
+
+dl:IdentifiedObject.descriptionCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "IdentifiedObject.descriptionCardinality" ;
+        sh:order        9 ;
+        sh:path         cim:IdentifiedObject.description ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.offsetXDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObject.offsetXDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        2 ;
+        sh:path         cim:DiagramObject.offsetX ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.drawingOrderCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObject.drawingOrderCardinality" ;
+        sh:order        8 ;
+        sh:path         cim:DiagramObject.drawingOrder ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.IdentifiedObjectDiagramObjectValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:DiagramObject ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:DiagramObject" ;
+        sh:name         "DiagramObject.IdentifiedObjectDiagramObjectValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        7 ;
+        sh:path         cim:DiagramObject.IdentifiedObject ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.IdentifiedObjectDiagramValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:Diagram ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:Diagram" ;
+        sh:name         "DiagramObject.IdentifiedObjectDiagramValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        7 ;
+        sh:path         cim:DiagramObject.IdentifiedObject ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.DiagramObjectCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "DiagramObjectPoint.DiagramObjectCardinality" ;
+        sh:order        3 ;
+        sh:path         cim:DiagramObjectPoint.DiagramObject ;
+        sh:severity     sh:Violation .
+
+dl:IdentifiedObject.descriptionDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.descriptionDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        9 ;
+        sh:path         cim:IdentifiedObject.description ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.DiagramValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:Diagram ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:Diagram" ;
+        sh:name         "DiagramObject.DiagramValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        5 ;
+        sh:path         cim:DiagramObject.Diagram ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.DiagramObjectGluePointValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:DiagramObjectGluePoint ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:DiagramObjectGluePoint" ;
+        sh:name         "DiagramObjectPoint.DiagramObjectGluePointValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        5 ;
+        sh:path         cim:DiagramObjectPoint.DiagramObjectGluePoint ;
+        sh:severity     sh:Violation .
+
+dl:TextDiagramObject.textCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required attribute." ;
+        sh:minCount     1 ;
+        sh:name         "TextDiagramObject.textCardinality" ;
+        sh:order        0 ;
+        sh:path         cim:TextDiagramObject.text ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.yPositionDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObjectPoint.yPositionDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        0 ;
+        sh:path         cim:DiagramObjectPoint.yPosition ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectGluePoint
+        a               sh:NodeShape ;
+        sh:targetClass  cim:DiagramObjectGluePoint .
+
+dl:Diagram.y1InitialViewDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Diagram.y1InitialViewDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        6 ;
+        sh:path         cim:Diagram.y1InitialView ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.y1InitialViewCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Diagram.y1InitialViewCardinality" ;
+        sh:order        6 ;
+        sh:path         cim:Diagram.y1InitialView ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.x1InitialViewDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Diagram.x1InitialViewDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        4 ;
+        sh:path         cim:Diagram.x1InitialView ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.x2InitialViewDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Diagram.x2InitialViewDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        3 ;
+        sh:path         cim:Diagram.x2InitialView ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.y2InitialViewCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Diagram.y2InitialViewCardinality" ;
+        sh:order        5 ;
+        sh:path         cim:Diagram.y2InitialView ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.isPolygonCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObject.isPolygonCardinality" ;
+        sh:order        6 ;
+        sh:path         cim:DiagramObject.isPolygon ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.DiagramStyleValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:DiagramStyle ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:DiagramStyle" ;
+        sh:name         "Diagram.DiagramStyleValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        1 ;
+        sh:path         cim:Diagram.DiagramStyle ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint.sequenceNumberDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObjectPoint.sequenceNumberDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        1 ;
+        sh:path         cim:DiagramObjectPoint.sequenceNumber ;
+        sh:severity     sh:Violation .
+
+dl:Diagram.DiagramStyleCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "Diagram.DiagramStyleCardinality" ;
+        sh:order        1 ;
+        sh:path         cim:Diagram.DiagramStyle ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObject.IdentifiedObjectValueType
+        a               sh:NodeShape ;
+        sh:or           ( dl:DiagramObject.IdentifiedObjectDiagramValueType dl:DiagramObject.IdentifiedObjectDiagramObjectValueType dl:DiagramObject.IdentifiedObjectVisibilityLayerValueType dl:DiagramObject.IdentifiedObjectDiagramStyleValueType dl:DiagramObject.IdentifiedObjectDiagramObjectStyleValueType dl:DiagramObject.IdentifiedObjectTextDiagramObjectValueType ) ;
+        sh:targetClass  cim:TextDiagramObject , cim:DiagramObject .
+
+dl:DiagramObject.offsetXCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1" ;
+        sh:name         "DiagramObject.offsetXCardinality" ;
+        sh:order        2 ;
+        sh:path         cim:DiagramObject.offsetX ;
+        sh:severity     sh:Violation .
+
+dl:VisibilityLayer.VisibleObjectsValueType
+        a               sh:PropertyShape ;
+        sh:class        cim:TextDiagramObject ;
+        sh:description  "This constraint validates the value type of the association at the used direction." ;
+        sh:group        dl:AssociationsGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:TextDiagramObject" ;
+        sh:name         "VisibilityLayer.VisibleObjectsValueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        1 ;
+        sh:path         cim:VisibilityLayer.VisibleObjects ;
+        sh:severity     sh:Violation .
+
+dl:IdentifiedObject.nameDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.nameDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        10 ;
+        sh:path         cim:IdentifiedObject.name ;
+        sh:severity     sh:Violation .
+
+dl:DiagramObjectPoint
+        a               sh:NodeShape ;
+        sh:property     dl:DiagramObjectPoint.xPositionCardinality , dl:DiagramObjectPoint.DiagramObjectGluePointCardinality , dl:DiagramObjectPoint.DiagramObjectValueType , dl:DiagramObjectPoint.DiagramObjectGluePointValueType , dl:DiagramObjectPoint.yPositionDatatype , dl:DiagramObjectPoint.zPositionCardinality , dl:DiagramObjectPoint.zPositionDatatype , dl:DiagramObjectPoint.DiagramObjectCardinality , dl:DiagramObjectPoint.sequenceNumberCardinality , dl:DiagramObjectPoint.yPositionCardinality , dl:DiagramObjectPoint.sequenceNumberDatatype , dl:DiagramObjectPoint.xPositionDatatype ;
+        sh:targetClass  cim:DiagramObjectPoint .
+
+dl:DatatypesGroup  a  sh:PropertyGroup ;
+        rdfs:label  "Datatypes" ;
+        sh:order    1 .
+
+dl:DiagramObject.isPolygonDatatype
+        a               sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the attribute." ;
+        sh:group        dl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "DiagramObject.isPolygonDatatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        6 ;
+        sh:path         cim:DiagramObject.isPolygon ;
+        sh:severity     sh:Violation .
+
+dl:TextDiagramObject  a  sh:NodeShape ;
+        sh:property     dl:IdentifiedObject.mRIDDatatype , dl:DiagramObject.offsetXCardinality , dl:DiagramObject.DiagramCardinality , dl:DiagramObject.IdentifiedObjectCardinality , dl:DiagramObject.offsetYCardinality , dl:TextDiagramObject.textDatatype , dl:DiagramObject.drawingOrderDatatype , dl:DiagramObject.rotationCardinality , dl:DiagramObject.drawingOrderCardinality , dl:IdentifiedObject.nameDatatype , dl:TextDiagramObject.textCardinality , dl:DiagramObject.offsetYDatatype , dl:IdentifiedObject.descriptionDatatype , dl:DiagramObject.DiagramValueType , dl:DiagramObject.isPolygonDatatype , dl:IdentifiedObject.nameCardinality , dl:DiagramObject.DiagramObjectStyleValueType , dl:IdentifiedObject.descriptionCardinality , dl:DiagramObject.DiagramObjectStyleCardinality , dl:DiagramObject.isPolygonCardinality , dl:IdentifiedObject.mRIDCardinality , dl:DiagramObject.offsetXDatatype , dl:DiagramObject.rotationDatatype ;
+        sh:targetClass  cim:TextDiagramObject .
+
+dl:DiagramObjectPoint.xPositionCardinality
+        a               sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the attribute." ;
+        sh:group        dl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Missing required attribute." ;
+        sh:minCount     1 ;
+        sh:name         "DiagramObjectPoint.xPositionCardinality" ;
+        sh:order        2 ;
+        sh:path         cim:DiagramObjectPoint.xPosition ;
+        sh:severity     sh:Violation .
+
+dl:AssociationsGroup  a  sh:PropertyGroup ;
+        rdfs:label  "Associations" ;
+        sh:order    2 .

@@ -1,0 +1,43 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61970::Base::Core::IdentifiedObject
+def : EIC_LENGTH : Integer = 16
+def : SHORT_NAME_LENGTH : Integer = 12
+def : IO_NAME_LENGTH : Integer = 32
+def : IO_DESCRIPTION_LENGTH : Integer = 256
+--docReference non-QoCDC Key=a93a41f3-2e51-43a4-bc93-59ede02d1d08 Profile=TP
+--message The length of the string is 16 characters as defined by the EIC code.
+inv IdentifiedObject_energyIdentCodeEic_stringLength : ((self.energyIdentCodeEic.size() >= 16.0) and
+(self.energyIdentCodeEic.size() <= 16.0))
+
+--docReference non-QoCDC Key=f55aa09a-ffe1-46cf-814f-c44871c9028b Profile=TP
+--message Length of the string 12 characters maximum.
+inv IdentifiedObject_shortName_stringLength : (self.shortName.size() <= 12.0)
+
+--docReference non-QoCDC Key=bb4ec10f-e730-40b2-b10d-a62faa13af40 Profile=TP
+--message The string IdentifiedObject.description is maximum 256 characters.
+inv IdentifiedObject_description_stringLength : (self.description.size() <= 256.0)
+
+--docReference non-QoCDC Key=9f941c2c-711a-4265-81ce-612e0f35b757 Profile=TP
+--message Name is required for all classes in the profile except ACDCTerminal.
+inv IdentifiedObject_name_instance : (self.name <> 'null')
+
+--docReference non-QoCDC Key=9115e418-c16a-4b8a-891f-108b6da21e3b Profile=TP
+--message The string IdentifiedObject.name has a maximum of 128 characters.
+inv IdentifiedObject_name_stringLength : (self.name.size() <= 128.0)
+
+context IEC61970::Base::Core::Terminal
+def: EQ_BRANCH_X_LIMIT : Real = 0.01
+--docReference non-QoCDC Key=8c33c59d-0965-48cf-bbdb-0598a377d115 Profile=TP
+--message The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent.
+inv Terminal_consistencyTopologicalNode: (	if self.phases->notEmpty() and self.TopologicalNode <> null then
+		self.TopologicalNode.Terminal->select(phases = self.phases)->size() = self.TopologicalNode.Terminal->size()
+	else true endif)
+
+endpackage

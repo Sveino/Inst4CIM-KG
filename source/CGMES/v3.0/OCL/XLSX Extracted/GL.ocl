@@ -1,0 +1,19 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61968::Common::CoordinateSystem
+--docReference non-QoCDC Key=533ac50d-c381-4555-a933-8b07e88de294 Profile=GL
+--message CoordinateSystem.crsUrn: If not specified elsewhere, the CoordinateSystem.crsUrn uses WGS84 (latitude, longitude), i.e. urn:ogc:def:crs:EPSG::4326.
+inv CoordinateSystem_crsUrn_epsg : (self.crsUrn = 'urn:ogc:def:crs:EPSG::4326')
+
+context IEC61968::Common::Location
+--docReference non-QoCDC Key=57b9bf1c-9c7d-485f-b420-e35bd246331d Profile=GL
+--message IEC 61968-13 allows both PositionPoint and mainAddress to be exchanged. CGMES requires that PositionPoint is exchanged and mainAddress is not exchanged.
+inv Location_allowedProperties: (self.PositionPoints->notEmpty() and self.mainAddress = null)
+
+endpackage

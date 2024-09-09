@@ -1,0 +1,249 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61970::Base::DC::ACDCConverter
+--docReference non-QoCDC Key=0f6bb0cb-939c-4a36-9d53-97509e1913fe Profile=SSH
+--message The attribute shall be a positive value.
+inv ACDCConverter_targetUdc_valueRange : (self.targetUdc >  0.0)
+
+context IEC61970::Base::OperationalLimits::ActivePowerLimit
+--docReference non-QoCDC Key=3f666d94-a7de-4604-bdbd-d047f431e130 Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv ActivePowerLimit_value_valueRange : (self.value >= 0.0)
+
+context IEC61970::Base::OperationalLimits::ApparentPowerLimit
+--docReference non-QoCDC Key=46ae65c2-b2c0-4a0a-923e-ac40ba856e74 Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv ApparentPowerLimit_value_valueRange : (self.value >= 0.0)
+
+context IEC61970::Base::Generation::Production::BatteryUnit
+--docReference non-QoCDC Key=7ef56f90-6158-4225-a0c9-474c8b86a326 Profile=SSH
+--message The attribute shall be a positive value or zero and lower than BatteryUnit.ratedE.
+inv BatteryUnit_storedE_valueRange : (self.storedE >= 0.0)
+
+--docReference non-QoCDC Key=562c4a2b-d23f-4820-bd69-fb831f12161c Profile=SSH
+--message The attribute shall be a positive value or zero and lower than BatteryUnit.ratedE.
+inv BatteryUnit_storedE_valueRangePair : (self.storedE < self.ratedE)
+
+context IEC61970::Base::ControlArea::ControlArea
+def : INTERCH_IMBALANCE_ERROR : Real = 200
+def : INTERCH_IMBALANCE_EMF : Real = 2
+def : INTERCH_IMBALANCE_WARNING : Real = 50
+--docReference non-QoCDC Key=f7b3ebf8-9084-4d17-ba18-2fe1dcf3a79e Profile=SSH
+--message Control area constraints in power flow are represented as a set of area control equality constraints of the form: Control Area Net Interchange = SUM (control area flow into the area on each tie)
+inv ControlArea_netInterchangeCalculation: (if (self.type = IEC61970::Base::ControlArea::ControlAreaTypeKind::Interchange) then
+ 	let ties : Set(IEC61970::Base::ControlArea::TieFlow) = self.TieFlow in
+	let tie_trmnls : Set(IEC61970::Base::Core::Terminal) = ties->select(Terminal->notEmpty()).Terminal in
+	let tie_cns : Set(IEC61970::Base::Core::ConnectivityNode) = tie_trmnls->select(ConnectivityNode <> null).ConnectivityNode in
+	let tie_ei_trmnls : Set(IEC61970::Base::Core::Terminal) = tie_cns.Terminals->select(ConductingEquipment.oclIsKindOf(IEC61970::Base::Equivalents::EquivalentInjection)) in
+	let ei : Set(IEC61970::Base::Equivalents::EquivalentInjection) = tie_ei_trmnls.ConductingEquipment.oclAsType(IEC61970::Base::Equivalents::EquivalentInjection) in
+	let eip : Set(Real) = ei.p in
+	let eip_diff : Real = eip->sum() + self.netInterchange in
+	eip_diff = 0
+ else true endif)
+
+--docReference non-QoCDC Key=ec141c2f-4d66-462d-b2f3-c30220bc449d Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv ControlArea_pTolerance_valueRange : (self.pTolerance >= 0.0)
+
+context IEC61970::Base::DC::CsConverter
+--docReference non-QoCDC Key=6aeb4ab0-583a-47a8-bb7a-28d7b650c676 Profile=SSH
+--message It is only applicable for rectifier if continuous tap changer control is used. 
+inv CsConverter_applicability: (	if self.PccTerminal <> null and self.PccTerminal.TransformerEnd->notEmpty() and
+		self.PccTerminal.RegulatingControl->select(oclIsKindOf(IEC61970::Base::Wires::TapChangerControl) and not discrete)->notEmpty() then
+		self.targetAlpha->notEmpty()
+	else true endif)
+
+--docReference non-QoCDC Key=d1b0b9c6-2967-40d2-902d-ba0e1bd031b6 Profile=SSH
+--message The attribute shall be a positive value.
+inv CsConverter_targetAlpha_valueRange : (self.targetAlpha >  0.0)
+
+--docReference non-QoCDC Key=6431d4e2-b7c7-4b49-a126-44acdfba2313 Profile=SSH
+--message Allowed values are within the range minAlpha<=targetAlpha<=maxAlpha.
+inv CsConverter_targetAlpha_valueRangePairFrom : (self.targetAlpha <= self.targetAlpha)
+
+--docReference non-QoCDC Key=9e282796-3d68-4b2d-98c6-ac5810de5698 Profile=SSH
+--message Allowed values are within the range minAlpha<=targetAlpha<=maxAlpha.
+inv CsConverter_targetAlpha_valueRangePairTo : (self.targetAlpha <= self.maxAlpha)
+
+--docReference non-QoCDC Key=797fb550-9e23-42a1-a517-661d195438a3 Profile=SSH
+--message It is only applicable for inverter if continuous tap changer control is used.
+inv CsConverter_applicability: (	if self.PccTerminal <> null and self.PccTerminal.TransformerEnd->notEmpty() and
+		self.PccTerminal.RegulatingControl->select(oclIsKindOf(IEC61970::Base::Wires::TapChangerControl) and not discrete)->notEmpty() then
+		self.targetGamma->notEmpty()
+	else true endif)
+
+--docReference non-QoCDC Key=72eb459b-5eda-4f72-a5cd-2a31612c6aab Profile=SSH
+--message The attribute shall be a positive value.
+inv CsConverter_targetGamma_valueRange : (self.targetGamma >  0.0)
+
+--docReference non-QoCDC Key=a4ed53bc-0bc7-4751-a78d-91428655ac10 Profile=SSH
+--message Allowed values are within the range minGamma<=targetGamma<=maxGamma. 
+inv CsConverter_targetGamma_valueRangePairFrom : (self.targetGamma <= self.targetGamma)
+
+--docReference non-QoCDC Key=8b77ecdf-d06c-4f31-a787-7f0a2b4c92a6 Profile=SSH
+--message Allowed values are within the range minGamma<=targetGamma<=maxGamma. 
+inv CsConverter_targetGamma_valueRangePairTo : (self.targetGamma <= self.maxGamma)
+
+--docReference non-QoCDC Key=de882bb7-94eb-465c-922d-0b1937ef153b Profile=SSH
+--message The attribute shall be a positive value.
+inv CsConverter_targetIdc_valueRange : (self.targetIdc >  0.0)
+
+context IEC61970::Base::OperationalLimits::CurrentLimit
+--docReference non-QoCDC Key=131264b3-f6a3-4f9a-b10e-55068a700f77 Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv CurrentLimit_value_valueRange : (self.value >= 0.0)
+
+context IEC61970::Base::Wires::EnergyConsumer
+def : SSH_SV_MAX_Q_DIFF : Real = 50
+def : SSH_SV_TOT_P_DIFF : Real = 200
+def : SSH_SV_MAX_P_DIFF : Real = 10
+--docReference non-QoCDC Key=91050fbb-115f-4eb2-a0e9-b1f83b68e214 Profile=SSH
+--message Negative reactive power loads shall not be exchanged. In cases where this is needed EquivalentInjection is used instead.
+inv EnergyConsumer_q_valueRange : (self.q >= 0.0)
+
+context IEC61970::Base::Wires::EnergySource
+def : SSH_SV_MAX_Q_DIFF : Real = 50
+def : SSH_SV_TOT_P_DIFF : Real = 200
+def : SSH_SV_MAX_P_DIFF : Real = 10
+--docReference non-QoCDC Key=e156efb7-3bfc-49dc-9075-aaa4997119d5 Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv EnergySource_voltageAngle_valueRange : (self.voltageAngle >= 0.0)
+
+--docReference non-QoCDC Key=c25183aa-76e9-4342-b924-987e29d2a1ca Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv EnergySource_voltageMagnitude_valueRange : (self.voltageMagnitude >= 0.0)
+
+context IEC61970::Base::Equivalents::EquivalentInjection
+def : SSH_SV_MAX_Q_DIFF : Real = 50
+def : SSH_SV_TOT_P_DIFF : Real = 200
+def : SSH_SV_MAX_P_DIFF : Real = 10
+--docReference non-QoCDC Key=bc492c0a-d014-409f-b7d6-f4c80b09ed1f Profile=SSH
+--message The attribute shall be a positive value.
+inv EquivalentInjection_regulationTarget_valueRange : (self.regulationTarget >  0.0)
+
+context IEC61970::Base::Generation::Production::GeneratingUnit
+--docReference non-QoCDC Key=15073e2d-5f77-47b2-b8e8-08416b2acde9 Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv GeneratingUnit_normalPF_valueRange : (self.normalPF >= 0.0)
+
+context IEC61970::Base::Wires::RegulatingControl
+def : EQ_DB_REASONABILITY_FACTOR : Real = 2
+--docReference non-QoCDC Key=8e69ca8e-67ff-4d9a-927e-4533e414514f Profile=SSH
+--message The attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases: - For a power generating module operated in power factor control mode to specify maximum and minimum power factor values; - ....
+inv RegulatingControl_requiredAttributes: (	if self.mode = IEC61970::Base::Wires::RegulatingControlModeKind::powerFactor then
+		self.minAllowedTargetValue->notEmpty() and self.maxAllowedTargetValue->notEmpty()
+	else true endif)
+
+--docReference non-QoCDC Key=2f5b5104-48c0-4d26-8ac0-77c4ac19769b Profile=SSH
+--message This is a deadband used with discrete control to avoid excessive update of controls like tap changers and shunt compensator banks while regulating. … If RegulatingControl.discrete is set to false, the RegulatingControl.targetDeadband is to be ignored.
+inv RegulatingControl_applicability: (self.discrete or self.targetDeadband->notEmpty())
+
+--docReference non-QoCDC Key=92f9ee27-c330-4c87-9369-0bf578432fac Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv RegulatingControl_targetDeadband_valueRange : (self.targetDeadband >= 0.0)
+
+--docReference non-QoCDC Key=51d8f12c-eea9-4979-8a59-adc5fc06d6fa Profile=SSH
+--message RegulatingControl.targetValue shall be positive value in cases where the RegulatingControl.mode is set to voltage in EQ profile.
+inv RegulatingControl_value: (	if self.mode = IEC61970::Base::Wires::RegulatingControlModeKind::voltage then
+		self.targetValue > 0
+	else true endif)
+
+context IEC61970::Base::Wires::ShuntCompensator
+--docReference non-QoCDC Key=1c023f83-1b50-4643-b366-201fe34f4ec2 Profile=SSH
+--message Non integer values are allowed to support continuous variables.  For LinearShuntConpensator the value shall be between zero and ShuntCompensator.maximumSections. At value zero the shunt compensator conductance and admittance is zero. 
+inv ShuntCompensator_valueLinear: (	self.sections >=0 and self.sections <= self.maximumSections and
+	if self.RegulatingControl <> null and self.RegulatingControl.discrete = true and self.RegulatingControl.enabled = true then
+		self.sections = self.sections.round()
+	else true endif)
+
+--docReference non-QoCDC Key=473b21ed-6daa-4de4-8062-aa3e7164919b Profile=SSH
+--message The attribute shall be a positive value or zero. 
+inv ShuntCompensator_sections_valueRange : (self.sections >= 0.0)
+
+context IEC61970::Base::Wires::SynchronousMachine
+def : SSH_SV_TOT_P_DIFF : Real = 200
+--docReference non-QoCDC Key=6bc29b34-145f-40a2-8477-aa9b739fd5b4 Profile=SSH
+--message The SynchronousMachine.operatingMode shall be consistent with the SynchronousMachine.type. - SynchronousMachine.operatingMode = “motor” shall be provided for SynchronousMachine.type in ["motor", "generatorOrMotor", "motorOrCondenser", "generatorOrCondenserOrMotor"], -SynchronousMachine.operatingMode = “condenser" shall be provided for SynchronousMachine.type in ["condenser", "generatorOrCondenser", "motorOrCondenser", "generatorOrCondenserOrMotor"], and  -SynchronousMachine.operatingMode = “generator” shall be provided for SynchronousMachine.type in ["generator", "generatorOrMotor", "generatorOrCondenser", "generatorOrCondenserOrMotor"].
+inv SynchronousMachine_matchType: (	if self.operatingMode = IEC61970::Base::Wires::SynchronousMachineOperatingMode::motor then
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::motor or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::generatorOrMotor or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::motorOrCondenser or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::generatorOrCondenserOrMotor
+	else true endif
+	and
+	if self.operatingMode = IEC61970::Base::Wires::SynchronousMachineOperatingMode::condenser then
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::condenser or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::generatorOrCondenser or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::motorOrCondenser or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::generatorOrCondenserOrMotor
+	else true endif
+	and
+	if self.operatingMode = IEC61970::Base::Wires::SynchronousMachineOperatingMode::generator then
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::generator or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::generatorOrMotor or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::generatorOrCondenser or
+		self.type = IEC61970::Base::Wires::SynchronousMachineKind::generatorOrCondenserOrMotor
+	else true endif)
+
+context IEC61970::Base::Wires::TapChanger
+--docReference non-QoCDC Key=4522bc7a-900d-470a-af50-477ddc6ef948 Profile=SSH
+--message The attribute shall be equal to or greater than lowStep and equal to or less than highStep.
+inv TapChanger_step_valueRangePairFrom : (self.step <= self.step)
+
+--docReference non-QoCDC Key=8d17a38d-b999-447d-a2a0-c7b86c3e8e3a Profile=SSH
+--message The attribute shall be equal to or greater than lowStep and equal to or less than highStep.
+inv TapChanger_step_valueRangePairTo : (self.step <= self.highStep)
+
+--docReference non-QoCDC Key=9f5f69ed-7318-4e94-862c-4654d52bc2ac Profile=SSH
+--message Non integer values are allowed to support continuous tap variables.
+inv TapChanger_valueType: (	if self.TapChangerControl <> null and self.TapChangerControl.discrete = true and self.TapChangerControl.enabled = true then
+		self.step = self.step.round()
+	else true endif)
+
+--docReference non-QoCDC Key=b5128c83-02f2-4a1f-b98a-45dfc4b51e00 Profile=SSH
+--message In cases where RegulatingControl.discrete is true and RegulatingControl.enabled is true, TapChanger.step shall be integer. 
+inv TapChanger_value: (	if self.TapChangerControl <> null and self.TapChangerControl.discrete = true and self.TapChangerControl.enabled = true then
+		self.step = self.step.round()
+	else true endif)
+
+context IEC61970::Base::OperationalLimits::VoltageLimit
+--docReference non-QoCDC Key=9128c56d-f181-4bb7-b97d-3d72a7648798 Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv VoltageLimit_value_valueRange : (self.value >= 0.0)
+
+context IEC61970::Base::DC::VsConverter
+--docReference non-QoCDC Key=f29b82d3-1089-4895-b738-ad25cb4361aa Profile=SSH
+--message The attribute shall be a positive value.
+inv VsConverter_droopCompensation_valueRange : (self.droopCompensation >  0.0)
+
+--docReference non-QoCDC Key=c038f465-886b-451f-bca9-485a83727863 Profile=SSH
+--message The attribute shall be a positive value.
+inv VsConverter_droop_valueRange : (self.droop >  0.0)
+
+--docReference non-QoCDC Key=f6384339-5302-4829-b864-c60c908c53dc Profile=SSH
+--message The attribute shall be a positive value or zero.
+inv VsConverter_qShare_valueRange : (self.qShare >= 0.0)
+
+--docReference non-QoCDC Key=9e7d8ba0-e580-4a0b-9bde-1e76f7b773f8 Profile=SSH
+--message The attribute shall be a positive value.
+inv VsConverter_targetPWMfactor_valueRange : (self.targetPWMfactor >  0.0)
+
+--docReference non-QoCDC Key=c0b526c8-32da-4045-8345-ad486310fc15 Profile=SSH
+--message The attribute shall be a positive value.
+inv VsConverter_targetPhasePcc_valueRange : (self.targetPhasePcc >  0.0)
+
+--docReference non-QoCDC Key=087ee81c-e8b3-4e87-adc0-1e62774f7725 Profile=SSH
+--message The attribute shall be a positive value.
+inv VsConverter_targetPowerFactorPcc_valueRange : (self.targetPowerFactorPcc >  0.0)
+
+--docReference non-QoCDC Key=8a83f92c-cf57-4eea-9a0a-8df4835fe5fc Profile=SSH
+--message The attribute shall be a positive value.
+inv VsConverter_targetUpcc_valueRange : (self.targetUpcc >  0.0)
+
+endpackage

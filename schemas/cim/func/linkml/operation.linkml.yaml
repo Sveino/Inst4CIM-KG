@@ -1,0 +1,744 @@
+id: http://iec.ch/TC57/2020/CPSM-Operation#
+name: Operation
+title: Operation Vocabulary
+comments: "This profile represents the equipment of the power system and their hierarchical relationships."
+annotations:
+  copyright: "Copyright 2024 UCAIug SPDX-License-Identifier: Apache-2.0"
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  linkml: https://w3id.org/linkml/
+  sh: http://www.w3.org/ns/shacl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  dc: http://purl.org/dc/elements/1.1/
+  profcim: http://iec.ch/TC57/ns/CIM/prof-cim#
+  owl: http://www.w3.org/2002/07/owl#
+  cim: http://iec.ch/TC57/CIM100#
+  cims: http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#
+  dct: http://purl.org/dc/terms/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  dcat: http://www.w3.org/ns/dcat#
+  this: http://iec.ch/TC57/2020/CPSM-Operation#
+  eu: http://iec.ch/TC57/CIM100-European#
+imports:
+- linkml:types
+default_curi_maps:
+- semweb_context
+default_range: string
+default_prefix: this
+classes:
+  ACDCTerminal:
+    description: "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:ACDCTerminal
+    attributes: 
+  Accumulator:
+    description: "Accumulator represents an accumulated (counted) Measurement, e.g. an energy value."
+    comments: "–  The association to Terminal may not be required depending on how the Measurement is being used. See section Use of Measurement Class for details.–  The measurementType attribute is used to define the quantity being measured (Voltage, ThreePhaseActivePower, etc.) by a Measurement. The valid values for measurementType are defined in Normative String Tables."
+    is_a: Measurement
+    class_uri: cim:Accumulator
+    attributes: 
+  AccumulatorLimit:
+    description: "Limit values for Accumulator measurements."
+    is_a: Limit
+    class_uri: cim:AccumulatorLimit
+    attributes: 
+      value:
+        description: "The value to supervise against. The value is positive."
+        slot_uri: cim:AccumulatorLimit.value
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      LimitSet:
+        description: "The set of limits."
+        slot_uri: cim:AccumulatorLimit.LimitSet
+        range: AccumulatorLimitSet
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  AccumulatorLimitSet:
+    description: "An AccumulatorLimitSet specifies a set of Limits that are associated with an Accumulator measurement."
+    is_a: LimitSet
+    class_uri: cim:AccumulatorLimitSet
+    attributes: 
+      Measurements:
+        description: "The Measurements using the LimitSet."
+        slot_uri: cim:AccumulatorLimitSet.Measurements
+        range: Accumulator
+        minimum_cardinality: 1
+        multivalued: true
+  AccumulatorReset:
+    description: "This command resets the counter value to zero."
+    is_a: Control
+    class_uri: cim:AccumulatorReset
+    attributes: 
+      AccumulatorValue:
+        description: "The accumulator value that is reset by the command."
+        slot_uri: cim:AccumulatorReset.AccumulatorValue
+        range: AccumulatorValue
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  AccumulatorValue:
+    description: "AccumulatorValue represents an accumulated (counted) MeasurementValue."
+    comments: "- In the context of this profile this class is only used to define measurements that are available via ICCP. It is not used to supply values for those measurements. Consequently the value attribute is not included in this profile."
+    is_a: MeasurementValue
+    class_uri: cim:AccumulatorValue
+    attributes: 
+      Accumulator:
+        description: "Measurement to which this value is connected."
+        slot_uri: cim:AccumulatorValue.Accumulator
+        range: Accumulator
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Analog:
+    description: "Analog represents an analog Measurement."
+    comments: "–  The positiveFlowIn attribute is only required if the Measurement measures a directional flow of power.– The association to Terminal may not be required depending on how the Measurement is being used. See section Use of Measurement Class for details.–  The measurementType attribute is used to define the quantity being measured (Voltage, ThreePhaseActivePower, etc.) by a Measurement. The valid values for measurementType are defined in Normative String Tables."
+    is_a: Measurement
+    class_uri: cim:Analog
+    attributes: 
+      positiveFlowIn:
+        description: "If true then this measurement is an active power, reactive power or current with the convention that a positive value measured at the Terminal means power is flowing into the related PowerSystemResource."
+        slot_uri: cim:Analog.positiveFlowIn
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  AnalogControl:
+    description: "An analog control used for supervisory control."
+    is_a: Control
+    abstract: true
+    class_uri: cim:AnalogControl
+    attributes: 
+      maxValue:
+        description: "Normal value range maximum for any of the Control.value. Used for scaling, e.g. in bar graphs."
+        slot_uri: cim:AnalogControl.maxValue
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      minValue:
+        description: "Normal value range minimum for any of the Control.value. Used for scaling, e.g. in bar graphs."
+        slot_uri: cim:AnalogControl.minValue
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      AnalogValue:
+        description: "The MeasurementValue that is controlled."
+        slot_uri: cim:AnalogControl.AnalogValue
+        range: AnalogValue
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  AnalogLimit:
+    description: "Limit values for Analog measurements."
+    is_a: Limit
+    class_uri: cim:AnalogLimit
+    attributes: 
+      value:
+        description: "The value to supervise against."
+        slot_uri: cim:AnalogLimit.value
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      LimitSet:
+        description: "The set of limits."
+        slot_uri: cim:AnalogLimit.LimitSet
+        range: AnalogLimitSet
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  AnalogLimitSet:
+    description: "An AnalogLimitSet specifies a set of Limits that are associated with an Analog measurement."
+    is_a: LimitSet
+    class_uri: cim:AnalogLimitSet
+    attributes: 
+      Measurements:
+        description: "The Measurements using the LimitSet."
+        slot_uri: cim:AnalogLimitSet.Measurements
+        range: Analog
+        minimum_cardinality: 1
+        multivalued: true
+  AnalogValue:
+    description: "AnalogValue represents an analog MeasurementValue."
+    comments: "- In the context of this profile this class is only used to define measurements that are available via ICCP. It is not used to supply values for those measurements. Consequently the value attribute is not included in this profile."
+    is_a: MeasurementValue
+    class_uri: cim:AnalogValue
+    attributes: 
+      Analog:
+        description: "Measurement to which this value is connected."
+        slot_uri: cim:AnalogValue.Analog
+        range: Analog
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Command:
+    description: "A Command is a discrete control used for supervisory control."
+    is_a: Control
+    class_uri: cim:Command
+    attributes: 
+      normalValue:
+        description: "Normal value for Control.value e.g. used for percentage scaling."
+        slot_uri: cim:Command.normalValue
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      value:
+        description: "The value representing the actuator output."
+        slot_uri: cim:Command.value
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      DiscreteValue:
+        description: "The MeasurementValue that is controlled."
+        slot_uri: cim:Command.DiscreteValue
+        range: DiscreteValue
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ValueAliasSet:
+        description: "The ValueAliasSet used for translation of a Control value to a name."
+        slot_uri: cim:Command.ValueAliasSet
+        range: ValueAliasSet
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  Control:
+    description: "Control is used for supervisory/device control. It represents control outputs that are used to change the state in a process, e.g. close or open breaker, a set point value or a raise lower command."
+    is_a: IOPoint
+    abstract: true
+    class_uri: cim:Control
+    attributes: 
+      controlType:
+        description: "Specifies the type of Control. For example, this specifies if the Control represents BreakerOpen, BreakerClose, GeneratorVoltageSetPoint, GeneratorRaise, GeneratorLower, etc."
+        slot_uri: cim:Control.controlType
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      operationInProgress:
+        description: "Indicates that a client is currently sending control commands that has not completed."
+        slot_uri: cim:Control.operationInProgress
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      timeStamp:
+        description: "The last time a control output was sent."
+        slot_uri: cim:Control.timeStamp
+        range: datetime
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      PowerSystemResource:
+        description: "Regulating device governed by this control output."
+        slot_uri: cim:Control.PowerSystemResource
+        range: PowerSystemResource
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  Discrete:
+    description: "Discrete represents a discrete Measurement, i.e. a Measurement representing discrete values, e.g. a Breaker position."
+    comments: "–  The association to Terminal may not be required depending on how the Measurement is being used. See section Use of Measurement Class for details.–  The measurementType attribute is used to define the quantity being measured (Voltage, ThreePhaseActivePower, etc.) by a Measurement. The valid values for the measurementType are defined in Normative String Tables."
+    is_a: Measurement
+    class_uri: cim:Discrete
+    attributes: 
+      ValueAliasSet:
+        description: "The ValueAliasSet used for translation of a MeasurementValue.value to a name."
+        slot_uri: cim:Discrete.ValueAliasSet
+        range: ValueAliasSet
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  DiscreteValue:
+    description: "DiscreteValue represents a discrete MeasurementValue."
+    comments: "- In the context of this profile this class is only used to define measurements that are available via ICCP. It is not used to supply values for those measurements. Consequently the value attribute is not included in this profile."
+    is_a: MeasurementValue
+    class_uri: cim:DiscreteValue
+    attributes: 
+      Discrete:
+        description: "Measurement to which this value is connected."
+        slot_uri: cim:DiscreteValue.Discrete
+        range: Discrete
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  IOPoint:
+    description: "The class describe a measurement or control value. The purpose is to enable having attributes and associations common for measurement and control."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:IOPoint
+    attributes: 
+  IdentifiedObject:
+    description: "This is a root class to provide common identification for all classes needing identification and naming attributes."
+    abstract: true
+    class_uri: cim:IdentifiedObject
+    attributes: 
+      mRID:
+        description: "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."
+        slot_uri: cim:IdentifiedObject.mRID
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      description:
+        description: "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."
+        slot_uri: cim:IdentifiedObject.description
+        range: string
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      name:
+        description: "The name is any free human readable and possibly non unique text naming the object."
+        slot_uri: cim:IdentifiedObject.name
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Limit:
+    description: "Specifies one limit value for a Measurement. A Measurement typically has several limits that are kept together by the LimitSet class. The actual meaning and use of a Limit instance (i.e., if it is an alarm or warning limit or if it is a high or low limit) is not captured in the Limit class. However the name of a Limit instance may indicate both meaning and use."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:Limit
+    attributes: 
+  LimitSet:
+    description: "Specifies a set of Limits that are associated with a Measurement. A Measurement may have several LimitSets corresponding to seasonal or other changing conditions. The condition is captured in the name and description attributes. The same LimitSet may be used for several Measurements. In particular percentage limits are used this way."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:LimitSet
+    attributes: 
+      isPercentageLimits:
+        description: "Tells if the limit values are in percentage of normalValue or the specified Unit for Measurements and Controls."
+        slot_uri: cim:LimitSet.isPercentageLimits
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  Measurement:
+    description: "A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement.The PSR - Measurement association is intended to capture this use of Measurement and is included in the naming hierarchy based on EquipmentContainer. The naming hierarchy typically has Measurements as leaves, e.g. Substation-VoltageLevel-Bay-Switch-Measurement.Some Measurements represent quantities related to a particular sensor location in the network, e.g. a voltage transformer (VT) or potential transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator. The sensing position is not captured in the PSR - Measurement association. Instead it is captured by the Measurement - Terminal association that is used to define the sensing location in the network topology. The location is defined by the connection of the Terminal to ConductingEquipment.If both a Terminal and PSR are associated, and the PSR is of type ConductingEquipment, the associated Terminal should belong to that ConductingEquipment instance.When the sensor location is needed both Measurement-PSR and Measurement-Terminal are used. The Measurement-Terminal association is never used alone."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:Measurement
+    attributes: 
+      measurementType:
+        description: "Specifies the type of measurement.  For example, this specifies if the measurement represents an indoor temperature, outdoor temperature, bus voltage, line flow, etc.When the measurementType is set to Specialization, the type of Measurement is defined in more detail by the specialized class which inherits from Measurement."
+        slot_uri: cim:Measurement.measurementType
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      PowerSystemResource:
+        description: "The power system resource that contains the measurement."
+        slot_uri: cim:Measurement.PowerSystemResource
+        range: PowerSystemResource
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Terminal:
+        description: "One or more measurements may be associated with a terminal in the network."
+        slot_uri: cim:Measurement.Terminal
+        range: ACDCTerminal
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  MeasurementValue:
+    description: "The current state for a measurement. A state value is an instance of a measurement from a specific source. Measurements can be associated with many state values, each representing a different source for the measurement."
+    is_a: IOPoint
+    abstract: true
+    class_uri: cim:MeasurementValue
+    attributes: 
+      sensorAccuracy:
+        description: "The limit, expressed as a percentage of the sensor maximum, that errors will not exceed when the sensor is used under  reference conditions."
+        slot_uri: cim:MeasurementValue.sensorAccuracy
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      timeStamp:
+        description: "The time when the value was last updated."
+        slot_uri: cim:MeasurementValue.timeStamp
+        range: datetime
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      MeasurementValueSource:
+        description: "A reference to the type of source that updates the MeasurementValue, e.g. SCADA, CCLink, manual, etc. User conventions for the names of sources are contained in the introduction to IEC 61970-301."
+        slot_uri: cim:MeasurementValue.MeasurementValueSource
+        range: MeasurementValueSource
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  MeasurementValueQuality:
+    description: "Measurement quality flags. Bits 0-10 are defined for substation automation in IEC 61850-7-3. Bits 11-15 are reserved for future expansion by that document. Bits 16-31 are reserved for EMS applications."
+    is_a: Quality61850
+    class_uri: cim:MeasurementValueQuality
+    attributes: 
+      MeasurementValue:
+        description: "A MeasurementValue has a MeasurementValueQuality associated with it."
+        slot_uri: cim:MeasurementValueQuality.MeasurementValue
+        range: MeasurementValue
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  MeasurementValueSource:
+    description: "MeasurementValueSource describes the alternative sources updating a MeasurementValue. User conventions for how to use the MeasurementValueSource attributes are defined in IEC 61970-301."
+    is_a: IdentifiedObject
+    class_uri: cim:MeasurementValueSource
+    attributes: 
+  PowerSystemResource:
+    description: "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:PowerSystemResource
+    attributes: 
+  Quality61850:
+    description: "Quality flags in this class are as defined in IEC 61850, except for estimatorReplaced, which has been included in this class for convenience."
+    abstract: true
+    class_uri: cim:Quality61850
+    attributes: 
+      badReference:
+        description: "Measurement value may be incorrect due to a reference being out of calibration."
+        slot_uri: cim:Quality61850.badReference
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      estimatorReplaced:
+        description: "Value has been replaced by State Estimator. estimatorReplaced is not an IEC61850 quality bit but has been put in this class for convenience."
+        slot_uri: cim:Quality61850.estimatorReplaced
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      failure:
+        description: "This identifier indicates that a supervision function has detected an internal or external failure, e.g. communication failure."
+        slot_uri: cim:Quality61850.failure
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      oldData:
+        description: "Measurement value is old and possibly invalid, as it has not been successfully updated during a specified time interval."
+        slot_uri: cim:Quality61850.oldData
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      operatorBlocked:
+        description: "Measurement value is blocked and hence unavailable for transmission."
+        slot_uri: cim:Quality61850.operatorBlocked
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      oscillatory:
+        description: "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier oscillatory is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status questionable is set. If after this defined numbers of changes the signal is still in the oscillating state the value shall be set either to the opposite state of the previous stable value or to a defined default value. In this case the validity status questionable is reset and invalid is set as long as the signal is oscillating. If it is configured such that no transient changes should be passed by then the validity status invalid is set immediately in addition to the detail quality identifier oscillatory (used for status information only)."
+        slot_uri: cim:Quality61850.oscillatory
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      outOfRange:
+        description: "Measurement value is beyond a predefined range of value."
+        slot_uri: cim:Quality61850.outOfRange
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      overFlow:
+        description: "Measurement value is beyond the capability of being  represented properly. For example, a counter value overflows from maximum count back to a value of zero."
+        slot_uri: cim:Quality61850.overFlow
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      suspect:
+        description: "A correlation function has detected that the value is not consistent with other values. Typically set by a network State Estimator."
+        slot_uri: cim:Quality61850.suspect
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      test:
+        description: "Measurement value is transmitted for test purposes."
+        slot_uri: cim:Quality61850.test
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  RaiseLowerCommand:
+    description: "An analog control that increases or decreases a set point value with pulses. Unless otherwise specified, one pulse moves the set point by one."
+    is_a: AnalogControl
+    class_uri: cim:RaiseLowerCommand
+    attributes: 
+      ValueAliasSet:
+        description: "The ValueAliasSet used for translation of a Control value to a name."
+        slot_uri: cim:RaiseLowerCommand.ValueAliasSet
+        range: ValueAliasSet
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  SetPoint:
+    description: "An analog control that issues a set point value."
+    is_a: AnalogControl
+    class_uri: cim:SetPoint
+    attributes: 
+      normalValue:
+        description: "Normal value for Control.value e.g. used for percentage scaling."
+        slot_uri: cim:SetPoint.normalValue
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      value:
+        description: "The value representing the actuator output."
+        slot_uri: cim:SetPoint.value
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  StringMeasurement:
+    description: "StringMeasurement represents a measurement with values of type string."
+    comments: "–  The association to Terminal may not be required depending on how the Measurement is being used. See section Use of Measurement Class for details."
+    is_a: Measurement
+    class_uri: cim:StringMeasurement
+    attributes: 
+  StringMeasurementValue:
+    description: "StringMeasurementValue represents a measurement value of type string."
+    comments: "In the context of this profile this class is only used to define measurements that are available via ICCP. It is not used to supply values for those measurements. Consequently the value attribute is not included in this profile."
+    is_a: MeasurementValue
+    class_uri: cim:StringMeasurementValue
+    attributes: 
+      StringMeasurement:
+        description: "Measurement to which this value is connected."
+        slot_uri: cim:StringMeasurementValue.StringMeasurement
+        range: StringMeasurement
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Terminal:
+    description: "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."
+    is_a: ACDCTerminal
+    abstract: true
+    class_uri: cim:Terminal
+    attributes: 
+  ValueAliasSet:
+    description: "Describes the translation of a set of values into a name and is intendend to facilitate custom translations. Each ValueAliasSet has a name, description etc. A specific Measurement may represent a discrete state like Open, Closed, Intermediate etc. This requires a translation from the MeasurementValue.value number to a string, e.g. 0-&gt;Invalid, 1-&gt;Open, 2-&gt;Closed, 3-&gt;Intermediate. Each ValueToAlias member in ValueAliasSet.Value describe a mapping for one particular value to a name."
+    is_a: IdentifiedObject
+    class_uri: cim:ValueAliasSet
+    attributes: 
+  ValueToAlias:
+    description: "Describes the translation of one particular value into a name, e.g. 1 as Open."
+    is_a: IdentifiedObject
+    class_uri: cim:ValueToAlias
+    attributes: 
+      value:
+        description: "The value that is mapped."
+        slot_uri: cim:ValueToAlias.value
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ValueAliasSet:
+        description: "The ValueAliasSet having the ValueToAlias mappings."
+        slot_uri: cim:ValueToAlias.ValueAliasSet
+        range: ValueAliasSet
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+types:
+  PerCent:
+    uri: xsd:float
+    base: float
+    description: "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base."
+    annotations:
+      cim_data_type: true
+      uri: cim:PerCent
+enums:
+  PhaseCode:
+    description: "An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.The integer values are from IEC 61968-9 to support revenue metering applications."
+    enum_uri:  http://iec.ch/TC57/CIM100#PhaseCode
+    permissible_values:
+      A:
+        meaning:  cim:PhaseCode.A
+        description: "Phase A."
+      AB:
+        meaning:  cim:PhaseCode.AB
+        description: "Phases A and B."
+      ABC:
+        meaning:  cim:PhaseCode.ABC
+        description: "Phases A, B, and C."
+      ABCN:
+        meaning:  cim:PhaseCode.ABCN
+        description: "Phases A, B, C, and N."
+      ABN:
+        meaning:  cim:PhaseCode.ABN
+        description: "Phases A, B, and neutral."
+      AC:
+        meaning:  cim:PhaseCode.AC
+        description: "Phases A and C."
+      ACN:
+        meaning:  cim:PhaseCode.ACN
+        description: "Phases A, C and neutral."
+      AN:
+        meaning:  cim:PhaseCode.AN
+        description: "Phases A and neutral."
+      B:
+        meaning:  cim:PhaseCode.B
+        description: "Phase B."
+      BC:
+        meaning:  cim:PhaseCode.BC
+        description: "Phases B and C."
+      BCN:
+        meaning:  cim:PhaseCode.BCN
+        description: "Phases B, C, and neutral."
+      BN:
+        meaning:  cim:PhaseCode.BN
+        description: "Phases B and neutral."
+      C:
+        meaning:  cim:PhaseCode.C
+        description: "Phase C."
+      CN:
+        meaning:  cim:PhaseCode.CN
+        description: "Phases C and neutral."
+      N:
+        meaning:  cim:PhaseCode.N
+        description: "Neutral phase."
+      X:
+        meaning:  cim:PhaseCode.X
+        description: "Unknown non-neutral phase."
+      XN:
+        meaning:  cim:PhaseCode.XN
+        description: "Unknown non-neutral phase plus neutral."
+      XY:
+        meaning:  cim:PhaseCode.XY
+        description: "Two unknown non-neutral phases."
+      XYN:
+        meaning:  cim:PhaseCode.XYN
+        description: "Two unknown non-neutral phases plus neutral."
+      none:
+        meaning:  cim:PhaseCode.none
+        description: "No phases specified."
+      s1:
+        meaning:  cim:PhaseCode.s1
+        description: "Secondary phase 1."
+      s12:
+        meaning:  cim:PhaseCode.s12
+        description: "Secondary phase 1 and 2."
+      s12N:
+        meaning:  cim:PhaseCode.s12N
+        description: "Secondary phases 1, 2, and neutral."
+      s1N:
+        meaning:  cim:PhaseCode.s1N
+        description: "Secondary phase 1 and neutral."
+      s2:
+        meaning:  cim:PhaseCode.s2
+        description: "Secondary phase 2."
+      s2N:
+        meaning:  cim:PhaseCode.s2N
+        description: "Secondary phase 2 and neutral."
+  Source:
+    description: "Source gives information related to the origin of a value."
+    enum_uri:  http://iec.ch/TC57/CIM100#Source
+    permissible_values:
+      DEFAULTED:
+        meaning:  cim:Source.DEFAULTED
+        description: "The value contains a default value."
+      PROCESS:
+        meaning:  cim:Source.PROCESS
+        description: "The value is provided by input from the process I/O or being calculated from some function."
+      SUBSTITUTED:
+        meaning:  cim:Source.SUBSTITUTED
+        description: "The value is provided by input of an operator or by an automatic source."
+  UnitMultiplier:
+    description: "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type.For example, if a unit symbol is m2Pers and the multiplier is k, then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol Þ represents the derived unit m2Pers, then applying the multiplier k can be conceptualized simply as kÞ.For example, the SI unit for mass is kg and not g.  If the unit symbol is defined as kg, then the multiplier is applied to kg as a whole and does not replace the k in front of the g. In this case, the multiplier of m would be used with the unit symbol of kg to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the kg as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the kg were replaced by a symbol Þ, then it is easier to conceptualize the multiplier m as creating the proper unit mÞ, and not the forbidden unit mkg."
+    enum_uri:  http://iec.ch/TC57/CIM100#UnitMultiplier
+    permissible_values:
+      G:
+        meaning:  cim:UnitMultiplier.G
+        description: "Giga 10**9."
+      M:
+        meaning:  cim:UnitMultiplier.M
+        description: "Mega 10**6."
+      T:
+        meaning:  cim:UnitMultiplier.T
+        description: "Tera 10**12."
+      c:
+        meaning:  cim:UnitMultiplier.c
+        description: "Centi 10**-2."
+      d:
+        meaning:  cim:UnitMultiplier.d
+        description: "Deci 10**-1."
+      k:
+        meaning:  cim:UnitMultiplier.k
+        description: "Kilo 10**3."
+      m:
+        meaning:  cim:UnitMultiplier.m
+        description: "Milli 10**-3."
+      micro:
+        meaning:  cim:UnitMultiplier.micro
+        description: "Micro 10**-6."
+      n:
+        meaning:  cim:UnitMultiplier.n
+        description: "Nano 10**-9."
+      none:
+        meaning:  cim:UnitMultiplier.none
+        description: "No multiplier or equivalently multiply by 1."
+      p:
+        meaning:  cim:UnitMultiplier.p
+        description: "Pico 10**-12."
+  UnitSymbol:
+    description: "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as F instead of CPerV. In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as kgPerm3. With the exception of the kg, which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole.Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol / is replaced by the letters Per. Exponents are written in plain text after the unit as m3 instead of being formatted as m with a superscript of 3  or introducing a symbol as in m^3. The degree symbol ° is replaced with the letters deg. Any clarification of the meaning for a substitution is included in the description for the unit symbol.Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units.The integer values are used for harmonization with IEC 61850."
+    enum_uri:  http://iec.ch/TC57/CIM100#UnitSymbol
+    permissible_values:
+      A:
+        meaning:  cim:UnitSymbol.A
+        description: "Current in amperes."
+      F:
+        meaning:  cim:UnitSymbol.F
+        description: "Electric capacitance in farads (C/V)."
+      H:
+        meaning:  cim:UnitSymbol.H
+        description: "Electric inductance in henrys (Wb/A)."
+      Hz:
+        meaning:  cim:UnitSymbol.Hz
+        description: "Frequency in hertz (1/s)."
+      J:
+        meaning:  cim:UnitSymbol.J
+        description: "Energy in joules (N·m = C·V = W·s)."
+      N:
+        meaning:  cim:UnitSymbol.N
+        description: "Force in newtons (kg·m/s²)."
+      Pa:
+        meaning:  cim:UnitSymbol.Pa
+        description: "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms."
+      S:
+        meaning:  cim:UnitSymbol.S
+        description: "Conductance in siemens."
+      V:
+        meaning:  cim:UnitSymbol.V
+        description: "Electric potential in volts (W/A)."
+      VA:
+        meaning:  cim:UnitSymbol.VA
+        description: "Apparent power in volt amperes. See also real power and reactive power."
+      VAh:
+        meaning:  cim:UnitSymbol.VAh
+        description: "Apparent energy in volt ampere hours."
+      VAr:
+        meaning:  cim:UnitSymbol.VAr
+        description: "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."
+      VArh:
+        meaning:  cim:UnitSymbol.VArh
+        description: "Reactive energy in volt ampere reactive hours."
+      W:
+        meaning:  cim:UnitSymbol.W
+        description: "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power."
+      Wh:
+        meaning:  cim:UnitSymbol.Wh
+        description: "Real energy in watt hours."
+      deg:
+        meaning:  cim:UnitSymbol.deg
+        description: "Plane angle in degrees."
+      degC:
+        meaning:  cim:UnitSymbol.degC
+        description: "Relative temperature in degrees Celsius.In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software."
+      g:
+        meaning:  cim:UnitSymbol.g
+      h:
+        meaning:  cim:UnitSymbol.h
+        description: "Time in hours, hour = 60 min = 3600 s."
+      m:
+        meaning:  cim:UnitSymbol.m
+        description: "Length in metres."
+      m2:
+        meaning:  cim:UnitSymbol.m2
+        description: "Area in square metres (m²)."
+      m3:
+        meaning:  cim:UnitSymbol.m3
+        description: "Volume in cubic metres (m³)."
+      min:
+        meaning:  cim:UnitSymbol.min
+        description: "Time in minutes, minute  = 60 s."
+      none:
+        meaning:  cim:UnitSymbol.none
+        description: "Dimension less quantity, e.g. count, per unit, etc."
+      ohm:
+        meaning:  cim:UnitSymbol.ohm
+        description: "Electric resistance in ohms (V/A)."
+      rad:
+        meaning:  cim:UnitSymbol.rad
+        description: "Plane angle in radians (m/m)."
+      s:
+        meaning:  cim:UnitSymbol.s
+        description: "Time in seconds."
+  Validity:
+    description: "Validity for MeasurementValue."
+    enum_uri:  http://iec.ch/TC57/CIM100#Validity
+    permissible_values:
+      GOOD:
+        meaning:  cim:Validity.GOOD
+        description: "The value is marked good if no abnormal condition of the acquisition function or the information source is detected."
+      INVALID:
+        meaning:  cim:Validity.INVALID
+        description: "The value is marked invalid when a supervision function recognises abnormal conditions of the acquisition function or the information source (missing or non-operating updating devices). The value is not defined under this condition. The mark invalid is used to indicate to the client that the value may be incorrect and shall not be used."
+      QUESTIONABLE:
+        meaning:  cim:Validity.QUESTIONABLE
+        description: "The value is marked questionable if a supervision function detects an abnormal behaviour, however the value could still be valid. The client is responsible for determining whether or not values marked questionable should be used."

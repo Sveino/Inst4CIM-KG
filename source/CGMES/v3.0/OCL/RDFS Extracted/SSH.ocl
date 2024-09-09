@@ -1,0 +1,148 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61970::Base::DC::ACDCConverter
+-- p must be set.
+inv ACDCConverter_p: (self.p->notEmpty())
+-- q must be set.
+inv ACDCConverter_q: (self.q->notEmpty())
+
+context IEC61970::Base::DC::VsConverter
+-- pPccControl must be set.
+inv VsConverter_pPccControl: (self.pPccControl->notEmpty())
+-- qPccControl must be set.
+inv VsConverter_qPccControl: (self.qPccControl->notEmpty())
+
+context IEC61970::Base::Wires::ExternalNetworkInjection
+-- referencePriority must be set.
+inv ExternalNetworkInjection_referencePriority: (self.referencePriority <> null)
+-- p must be set.
+inv ExternalNetworkInjection_p: (self.p->notEmpty())
+-- q must be set.
+inv ExternalNetworkInjection_q: (self.q->notEmpty())
+
+context IEC61970::Base::Wires::Switch
+-- open must be set.
+inv Switch_open: (self.open->notEmpty())
+-- locked must be set.
+inv Switch_locked: (self.locked->notEmpty())
+
+context IEC61970::Base::OperationalLimits::VoltageLimit
+-- value must be set.
+inv VoltageLimit_value: (self.value->notEmpty())
+
+context IEC61970::Base::Wires::PowerElectronicsConnection
+-- p must be set.
+inv PowerElectronicsConnection_p: (self.p->notEmpty())
+-- q must be set.
+inv PowerElectronicsConnection_q: (self.q->notEmpty())
+
+context IEC61970::Base::Generation::Production::BatteryUnit
+-- batteryState must be set.
+inv BatteryUnit_batteryState: (self.batteryState->notEmpty())
+-- storedE must be set.
+inv BatteryUnit_storedE: (self.storedE->notEmpty())
+
+context IEC61970::Base::Generation::Production::GeneratingUnit
+-- normalPF must be set.
+inv GeneratingUnit_normalPF: (self.normalPF->notEmpty())
+
+context IEC61970::Base::Wires::RegulatingCondEq
+-- controlEnabled must be set.
+inv RegulatingCondEq_controlEnabled: (self.controlEnabled->notEmpty())
+
+context IEC61970::Base::Core::ACDCTerminal
+-- connected must be set.
+inv ACDCTerminal_connected: (self.connected->notEmpty())
+
+context IEC61970::Base::OperationalLimits::CurrentLimit
+-- value must be set.
+inv CurrentLimit_value: (self.value->notEmpty())
+
+context IEC61970::Base::OperationalLimits::ActivePowerLimit
+-- value must be set.
+inv ActivePowerLimit_value: (self.value->notEmpty())
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+
+context IEC61970::Base::Core::Equipment
+-- inService must be set.
+inv Equipment_inService: (self.inService->notEmpty())
+
+context IEC61970::Base::ControlArea::ControlArea
+-- netInterchange must be set.
+inv ControlArea_netInterchange: (self.netInterchange->notEmpty())
+
+context IEC61970::Base::Wires::EnergySource
+-- activePower must be set.
+inv EnergySource_activePower: (self.activePower->notEmpty())
+-- reactivePower must be set.
+inv EnergySource_reactivePower: (self.reactivePower->notEmpty())
+
+context IEC61970::Base::Wires::AsynchronousMachine
+-- asynchronousMachineType must be set.
+inv AsynchronousMachine_asynchronousMachineType: (self.asynchronousMachineType->notEmpty())
+
+context IEC61970::Base::DC::CsConverter
+-- operatingMode must be set.
+inv CsConverter_operatingMode: (self.operatingMode->notEmpty())
+-- pPccControl must be set.
+inv CsConverter_pPccControl: (self.pPccControl->notEmpty())
+
+context IEC61970::Base::Wires::StaticVarCompensator
+-- q must be set.
+inv StaticVarCompensator_q: (self.q->notEmpty())
+
+context IEC61970::Base::Wires::SynchronousMachine
+-- operatingMode must be set.
+inv SynchronousMachine_operatingMode: (self.operatingMode->notEmpty())
+-- referencePriority must be set.
+inv SynchronousMachine_referencePriority: (self.referencePriority <> null)
+
+context IEC61970::Base::Wires::TapChanger
+-- controlEnabled must be set.
+inv TapChanger_controlEnabled: (self.controlEnabled->notEmpty())
+-- step must be set.
+inv TapChanger_step: (self.step->notEmpty())
+
+context IEC61970::Base::Wires::ShuntCompensator
+-- sections must be set.
+inv ShuntCompensator_sections: (self.sections->notEmpty())
+
+context IEC61970::Base::OperationalLimits::ApparentPowerLimit
+-- value must be set.
+inv ApparentPowerLimit_value: (self.value->notEmpty())
+
+context IEC61970::Base::Wires::RegulatingControl
+-- discrete must be set.
+inv RegulatingControl_discrete: (self.discrete->notEmpty())
+-- enabled must be set.
+inv RegulatingControl_enabled: (self.enabled->notEmpty())
+-- targetValue must be set.
+inv RegulatingControl_targetValue: (self.targetValue->notEmpty())
+-- targetValueUnitMultiplier must be set.
+inv RegulatingControl_targetValueUnitMultiplier: (self.targetValueUnitMultiplier->notEmpty())
+
+context IEC61970::Base::Wires::RotatingMachine
+-- p must be set.
+inv RotatingMachine_p: (self.p->notEmpty())
+-- q must be set.
+inv RotatingMachine_q: (self.q->notEmpty())
+
+context IEC61970::Base::Equivalents::EquivalentInjection
+-- p must be set.
+inv EquivalentInjection_p: (self.p->notEmpty())
+-- q must be set.
+inv EquivalentInjection_q: (self.q->notEmpty())
+
+context IEC61970::Base::Wires::EnergyConsumer
+-- p must be set.
+inv EnergyConsumer_p: (self.p->notEmpty())
+-- q must be set.
+inv EnergyConsumer_q: (self.q->notEmpty())
+
+
+endpackage

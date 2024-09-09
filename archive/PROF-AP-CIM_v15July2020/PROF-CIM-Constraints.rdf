@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF   
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:sh="http://www.w3.org/ns/shacl#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns="http://iec.ch/TC57/ns/CIM/prof-cim-co#"  
+  >
+   <!--
+   	Version 3
+	Known Issue:
+		None
+  Change log:
+2020-07-08: Version 2
+			Updated after review meeting the namespace by added ns for namespace and #
+2020-07-10: Version 3 - Updated after project meeting
+			Replace the ttl note notation with xml
+
+-->	
+
+  <!--RDFS header -->
+  <owl:Ontology rdf:about="http://iec.ch/TC57/ns/CIM/prof-cim-co"> <!--The rdf:about is the owl:versionIRI without the version information -->  
+    <owl:vesionInfo>1.0.0</owl:vesionInfo>
+    <owl:versionIRI rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim-co/1.0"/>
+    <dct:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dct:conformsTo>
+	<dct:conformsTo>https://www.w3.org/TR/shacl#</dct:conformsTo>
+    <dct:creator xml:lang="en">IEC TC57 WG13</dct:creator>
+    <rdfs:comment xml:lang="en">This constraints the vocabulary for for the profile describing relationships between standards/specifications, profiles of theme and supporting artifacts such as validating resources.</rdfs:comment> <!--This comes from dct:description-->
+    <dct:identifier>urn:uuid:69913d78-f0a3-4024-a97b-b06970e85cbc</dct:identifier>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-07-03T14:55:10Z</dct:issued>
+    <dct:language>en-GB</dct:language>
+    <dct:license>https://creativecommons.org/licenses/by/4.0/</dct:license>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-07-03</dct:modified>
+    <dct:publisher xml:lang="en">IEC</dct:publisher>
+    <dct:rights xml:lang="en">Copyright</dct:rights>
+    <dct:rightsHolder xml:lang="en">IEC</dct:rightsHolder>
+    <rdfs:label xml:lang="en">CIM Application Profile Constraints</rdfs:label><!--This comes from dct:title-->
+    <dcat:keyword>PROF</dcat:keyword>
+    <dcat:landingPage>https://webstore.iec.ch/publication/6215</dcat:landingPage>
+    <dcat:theme>constraints</dcat:theme>    
+  </owl:Ontology>
+
+ 
+<!-- 
+    Annotation properties
+-->
+ 
+ <!-- Taken from the Danish DCAT SHACL example - THis should all be be cover in the owl header. 
+ 
+   <rdf:Description rdf:about="https://data.gov.dk/model/profile/dcat-ap-dk_2.0.0">
+    <dc:conformsTo rdf:resource="https://www.w3.org/TR/shacl"/>
+    <dc:description>This document specifies the constraints on properties and classes expressed by DCAT-AP-DK in SHACL</dc:description>
+    <dcat:downloadURL rdf:resource="https://data.gov.dk/model/profile/draft/dcat-ap-dk_2.0.0_shacl_shapes.xml"/>
+    <dcatap:availability rdf:resource="http://data.europa.eu/r5r/experimental"/>
+    <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE"/>
+    <dc:publisher rdf:resource="http://digst.dk"/>
+    <dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-06-03</dc:modified>
+    <dcat:accessURL rdf:resource="https://data.gov.dk/model/profile/draft/dcat-ap-dk_2.0.0_shacl_shapes"/>
+    <dc:relation rdf:resource="https://arkitektur.digst.dk/rammearkitektur/datastandarder"/>
+    <dc:license rdf:resource="https://creativecommons.org/licenses/by/4.0"/>
+    <dc:title>The constraints of a Danish DCAT Application Profile </dc:title>
+  </rdf:Description>
+-->
+
+
+</rdf:RDF>

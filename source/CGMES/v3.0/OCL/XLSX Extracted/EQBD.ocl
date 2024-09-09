@@ -1,0 +1,36 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61970::Base::Core::BaseVoltage
+--docReference non-QoCDC Key=3fff0645-55bb-45a3-9c6b-a1930f8879f8 Profile=EQBD
+--message Shall be a positive value and not zero.
+inv BaseVoltage_nominalVoltage_valueRange : (self.nominalVoltage >  0.0)
+
+context IEC61970::Base::Core::IdentifiedObject
+def : EIC_LENGTH : Integer = 16
+def : SHORT_NAME_LENGTH : Integer = 12
+def : IO_NAME_LENGTH : Integer = 32
+def : IO_DESCRIPTION_LENGTH : Integer = 256
+--docReference non-QoCDC Key=719d0499-65f6-4084-bf87-b06a4f114a10 Profile=EQBD
+--message The length of the string is 16 characters as defined by the EIC code. 
+inv IdentifiedObject_energyIdentCodeEic_stringLength : ((self.energyIdentCodeEic.size() >= 16.0) and
+(self.energyIdentCodeEic.size() <= 16.0))
+
+--docReference non-QoCDC Key=dd734161-4071-41cf-b7af-8a5d62019254 Profile=EQBD
+--message Length of the string 12 characters maximum.
+inv IdentifiedObject_shortName_stringLength : (self.shortName.size() <= 12.0)
+
+--docReference non-QoCDC Key=983b5269-337d-4e8a-b263-456af04a0090 Profile=EQBD
+--message The string is maximum 256 characters.
+inv IdentifiedObject_description_stringLength : (self.description.size() <= 256.0)
+
+--docReference non-QoCDC Key=d0ac75ff-dc7b-4b1f-bc75-0d6be2e80c24 Profile=EQBD
+--message The string IdentifiedObject.name is maximum 128 characters.
+inv IdentifiedObject_name_stringLength : (self.name.size() <= 128.0)
+
+endpackage
