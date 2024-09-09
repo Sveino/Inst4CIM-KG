@@ -1,0 +1,55 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61970::Base::Meas::AccumulatorLimit
+--docReference non-QoCDC Key=c19ab462-4486-4169-90de-32cd4ad43294 Profile=OP
+--message The value is positive.
+inv AccumulatorLimit_value_valueRange : (self.value >  0.0)
+
+context IEC61970::Base::Meas::AccumulatorValue
+--docReference non-QoCDC Key=6dc4a06f-796c-4388-9fb7-e9ba93009176 Profile=OP
+--message The value is positive.
+inv AccumulatorValue_value_valueRange : (self.value >  0.0)
+
+context IEC61970::Base::Meas::Control
+--docReference non-QoCDC Key=ba78ae07-9967-4757-a01e-fdb363c2d94e Profile=OP
+--message It shall be unique among all specified types.
+inv Control_controlType_valueRange : (IEC61970::Base::Meas::Control.allInstances()->isUnique(controlType))
+
+context IEC61970::Base::Meas::Measurement
+--docReference non-QoCDC Key=f5ac22f6-d987-44cc-8224-2f7d1cc3a48a Profile=OP
+--message If both a Terminal and PSR are associated, and the PSR is of type ConductingEquipment, the associated Terminal should belong to that ConductingEquipment instance.
+inv Measurement_valueType: (if (self.PowerSystemResource <> null and self.Terminal <> null and self.oclIsKindOf(IEC61970::Base::Core::Terminal) and self.PowerSystemResource.oclIsKindOf(IEC61970::Base::Core::ConductingEquipment)) then self.PowerSystemResource = self.Terminal.oclAsType(IEC61970::Base::Core::Terminal).ConductingEquipment else true endif)
+
+--docReference non-QoCDC Key=aa1a8d1f-008a-4da6-ae28-9580d87a5915 Profile=OP
+--message For Accumulator, Measurement.measurementType is restricted to the following valid values: ApparentEnergy, ReactiveEnergy, ActiveEnergy.
+inv Measurement_measurementType_accumulatorValues : (self.measurementType = 'ApparentEnergy' or
+self.measurementType = 'ReactiveEnergy' or
+self.measurementType = 'ActiveEnergy')
+
+--docReference non-QoCDC Key=901dd8b0-b301-4d54-80e7-e18c37d09e87 Profile=OP
+--message For Discrete, Measurement.measurementType is restricted to the following valid values: SwitchPosition.
+inv Measurement_measurementType_discreteValues : (self.measurementType = 'SwitchPosition')
+
+--docReference non-QoCDC Key=f69ee509-e927-4e25-b4d3-9a8ee6a703fd Profile=OP
+--message For Accumulator, Measurement.unitSymbol is restricted to the following valid values: VAh, VArh, Wh.
+inv Measurement_unitSymbol_accumulatorUnitValues : (self.unitSymbol = IEC61970::Base::Domain::UnitSymbol::VAh or
+self.unitSymbol = IEC61970::Base::Domain::UnitSymbol::VArh or
+self.unitSymbol = IEC61970::Base::Domain::UnitSymbol::Wh)
+
+--docReference non-QoCDC Key=8e5e83f5-9508-4e27-beb3-c6049ab18af5 Profile=OP
+--message For Discrete, Measurement.unitSymbol is restricted to the following valid values: none.
+inv Measurement_unitSymbol_discreteUnitValues : (self.unitSymbol = IEC61970::Base::Domain::UnitSymbol::none)
+
+context IEC61970::Base::Meas::MeasurementValueSource
+--docReference non-QoCDC Key=c283e64e-2c51-4749-9834-249cde464231 Profile=OP
+--message For MeasurementValueSource, attribute IdentifiedObject.name is restricted to the following strings for MeasurementValueSource: ICCP, SCADA.
+inv MeasurementValueSource_name_name : (self.name = 'ICCP' or
+self.name = 'SCADA')
+
+endpackage

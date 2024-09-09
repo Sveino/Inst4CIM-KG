@@ -1,0 +1,188 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61970::Base::Wires::PetersenCoil
+-- mode must be set.
+inv PetersenCoil_mode: (self.mode->notEmpty())
+-- nominalU must be set.
+inv PetersenCoil_nominalU: (self.nominalU->notEmpty())
+-- xGroundMax must be set.
+inv PetersenCoil_xGroundMax: (self.xGroundMax->notEmpty())
+-- xGroundMin must be set.
+inv PetersenCoil_xGroundMin: (self.xGroundMin->notEmpty())
+-- xGroundNominal must be set.
+inv PetersenCoil_xGroundNominal: (self.xGroundNominal->notEmpty())
+
+context IEC61970::Base::Wires::MutualCoupling
+-- b0ch must be set.
+inv MutualCoupling_b0ch: (self.b0ch->notEmpty())
+-- distance11 must be set.
+inv MutualCoupling_distance11: (self.distance11->notEmpty())
+-- distance12 must be set.
+inv MutualCoupling_distance12: (self.distance12->notEmpty())
+-- distance21 must be set.
+inv MutualCoupling_distance21: (self.distance21->notEmpty())
+-- distance22 must be set.
+inv MutualCoupling_distance22: (self.distance22->notEmpty())
+-- g0ch must be set.
+inv MutualCoupling_g0ch: (self.g0ch->notEmpty())
+-- r0 must be set.
+inv MutualCoupling_r0: (self.r0->notEmpty())
+-- x0 must be set.
+inv MutualCoupling_x0: (self.x0->notEmpty())
+-- Second_Terminal must be set.
+inv MutualCoupling_Second_Terminal: (self.Second_Terminal <> null)
+-- First_Terminal must be set.
+inv MutualCoupling_First_Terminal: (self.First_Terminal <> null)
+
+context IEC61970::Base::Wires::NonlinearShuntCompensatorPoint
+-- b0 must be set.
+inv NonlinearShuntCompensatorPoint_b0: (self.b0->notEmpty())
+-- g0 must be set.
+inv NonlinearShuntCompensatorPoint_g0: (self.g0->notEmpty())
+
+context IEC61970::Base::Wires::ExternalNetworkInjection
+-- maxInitialSymShCCurrent must be set.
+inv ExternalNetworkInjection_maxInitialSymShCCurrent: (self.maxInitialSymShCCurrent->notEmpty())
+-- maxR0ToX0Ratio must be set.
+inv ExternalNetworkInjection_maxR0ToX0Ratio: (self.maxR0ToX0Ratio->notEmpty())
+-- maxR1ToX1Ratio must be set.
+inv ExternalNetworkInjection_maxR1ToX1Ratio: (self.maxR1ToX1Ratio->notEmpty())
+-- maxZ0ToZ1Ratio must be set.
+inv ExternalNetworkInjection_maxZ0ToZ1Ratio: (self.maxZ0ToZ1Ratio->notEmpty())
+-- minInitialSymShCCurrent must be set.
+inv ExternalNetworkInjection_minInitialSymShCCurrent: (self.minInitialSymShCCurrent->notEmpty())
+-- minR0ToX0Ratio must be set.
+inv ExternalNetworkInjection_minR0ToX0Ratio: (self.minR0ToX0Ratio->notEmpty())
+-- minR1ToX1Ratio must be set.
+inv ExternalNetworkInjection_minR1ToX1Ratio: (self.minR1ToX1Ratio->notEmpty())
+-- minZ0ToZ1Ratio must be set.
+inv ExternalNetworkInjection_minZ0ToZ1Ratio: (self.minZ0ToZ1Ratio->notEmpty())
+
+context IEC61970::Base::Wires::LinearShuntCompensator
+-- b0PerSection must be set.
+inv LinearShuntCompensator_b0PerSection: (self.b0PerSection->notEmpty())
+-- g0PerSection must be set.
+inv LinearShuntCompensator_g0PerSection: (self.g0PerSection->notEmpty())
+
+context IEC61970::Base::Wires::GroundingImpedance
+-- x must be set.
+inv GroundingImpedance_x: (self.x->notEmpty())
+
+context IEC61970::Base::Wires::PowerTransformer
+-- isPartOfGeneratorUnit must be set.
+inv PowerTransformer_isPartOfGeneratorUnit: (self.isPartOfGeneratorUnit->notEmpty())
+
+context IEC61970::Base::Wires::ACLineSegment
+-- b0ch must be set.
+inv ACLineSegment_b0ch: (self.b0ch->notEmpty())
+-- g0ch must be set.
+inv ACLineSegment_g0ch: (self.g0ch->notEmpty())
+-- r0 must be set.
+inv ACLineSegment_r0: (self.r0->notEmpty())
+-- shortCircuitEndTemperature must be set.
+inv ACLineSegment_shortCircuitEndTemperature: (self.shortCircuitEndTemperature->notEmpty())
+-- x0 must be set.
+inv ACLineSegment_x0: (self.x0->notEmpty())
+
+context IEC61970::Base::Wires::AsynchronousMachine
+-- converterFedDrive must be set.
+inv AsynchronousMachine_converterFedDrive: (self.converterFedDrive->notEmpty())
+-- efficiency must be set.
+inv AsynchronousMachine_efficiency: (self.efficiency->notEmpty())
+-- iaIrRatio must be set.
+inv AsynchronousMachine_iaIrRatio: (self.iaIrRatio->notEmpty())
+-- polePairNumber must be set.
+inv AsynchronousMachine_polePairNumber: (self.polePairNumber <> null)
+-- ratedMechanicalPower must be set.
+inv AsynchronousMachine_ratedMechanicalPower: (self.ratedMechanicalPower->notEmpty())
+-- reversible must be set.
+inv AsynchronousMachine_reversible: (self.reversible->notEmpty())
+
+context IEC61970::Base::Wires::SeriesCompensator
+-- r0 must be set.
+inv SeriesCompensator_r0: (self.r0->notEmpty())
+-- x0 must be set.
+inv SeriesCompensator_x0: (self.x0->notEmpty())
+-- varistorPresent must be set.
+inv SeriesCompensator_varistorPresent: (self.varistorPresent->notEmpty())
+
+context IEC61970::Base::Wires::SynchronousMachine
+-- earthing must be set.
+inv SynchronousMachine_earthing: (self.earthing->notEmpty())
+-- x0 must be set.
+inv SynchronousMachine_x0: (self.x0->notEmpty())
+-- r0 must be set.
+inv SynchronousMachine_r0: (self.r0->notEmpty())
+-- x2 must be set.
+inv SynchronousMachine_x2: (self.x2->notEmpty())
+-- r2 must be set.
+inv SynchronousMachine_r2: (self.r2->notEmpty())
+-- r must be set.
+inv SynchronousMachine_r: (self.r->notEmpty())
+-- satDirectSubtransX must be set.
+inv SynchronousMachine_satDirectSubtransX: (self.satDirectSubtransX->notEmpty())
+
+context IEC61970::Base::Equivalents::EquivalentBranch
+-- negativeR12 must be set.
+inv EquivalentBranch_negativeR12: (self.negativeR12->notEmpty())
+-- negativeR21 must be set.
+inv EquivalentBranch_negativeR21: (self.negativeR21->notEmpty())
+-- negativeX12 must be set.
+inv EquivalentBranch_negativeX12: (self.negativeX12->notEmpty())
+-- negativeX21 must be set.
+inv EquivalentBranch_negativeX21: (self.negativeX21->notEmpty())
+-- positiveR12 must be set.
+inv EquivalentBranch_positiveR12: (self.positiveR12->notEmpty())
+-- positiveR21 must be set.
+inv EquivalentBranch_positiveR21: (self.positiveR21->notEmpty())
+-- positiveX12 must be set.
+inv EquivalentBranch_positiveX12: (self.positiveX12->notEmpty())
+-- positiveX21 must be set.
+inv EquivalentBranch_positiveX21: (self.positiveX21->notEmpty())
+-- zeroR12 must be set.
+inv EquivalentBranch_zeroR12: (self.zeroR12->notEmpty())
+-- zeroR21 must be set.
+inv EquivalentBranch_zeroR21: (self.zeroR21->notEmpty())
+-- zeroX12 must be set.
+inv EquivalentBranch_zeroX12: (self.zeroX12->notEmpty())
+-- zeroX21 must be set.
+inv EquivalentBranch_zeroX21: (self.zeroX21->notEmpty())
+
+context IEC61970::Base::Wires::PowerTransformerEnd
+-- b0 must be set.
+inv PowerTransformerEnd_b0: (self.b0->notEmpty())
+-- phaseAngleClock must be set.
+inv PowerTransformerEnd_phaseAngleClock: (self.phaseAngleClock <> null)
+-- g0 must be set.
+inv PowerTransformerEnd_g0: (self.g0->notEmpty())
+-- r0 must be set.
+inv PowerTransformerEnd_r0: (self.r0->notEmpty())
+-- x0 must be set.
+inv PowerTransformerEnd_x0: (self.x0->notEmpty())
+
+context IEC61970::Base::Equivalents::EquivalentInjection
+-- r must be set.
+inv EquivalentInjection_r: (self.r->notEmpty())
+-- r0 must be set.
+inv EquivalentInjection_r0: (self.r0->notEmpty())
+-- r2 must be set.
+inv EquivalentInjection_r2: (self.r2->notEmpty())
+-- x must be set.
+inv EquivalentInjection_x: (self.x->notEmpty())
+-- x0 must be set.
+inv EquivalentInjection_x0: (self.x0->notEmpty())
+-- x2 must be set.
+inv EquivalentInjection_x2: (self.x2->notEmpty())
+
+context IEC61970::Base::Wires::TransformerEnd
+-- grounded must be set.
+inv TransformerEnd_grounded: (self.grounded->notEmpty())
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+
+
+endpackage

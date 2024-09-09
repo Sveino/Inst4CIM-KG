@@ -1,0 +1,36 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61970::Base::DiagramLayout::DiagramObject
+-- Diagram must be set.
+inv DiagramObject_Diagram: (self.Diagram <> null)
+
+context IEC61970::Base::DiagramLayout::TextDiagramObject
+-- text must be set.
+inv TextDiagramObject_text: (self.text <> null)
+
+context IEC61970::Base::DiagramLayout::VisibilityLayer
+-- VisibleObjects must be set.
+inv VisibilityLayer_VisibleObjects: (self.VisibleObjects->size() > 0)
+
+context IEC61970::Base::DiagramLayout::Diagram
+-- orientation must be set.
+inv Diagram_orientation: (self.orientation->notEmpty())
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+-- name must be set.
+inv IdentifiedObject_name: (self.name <> null)
+
+context IEC61970::Base::DiagramLayout::DiagramObjectPoint
+-- DiagramObject must be set.
+inv DiagramObjectPoint_DiagramObject: (self.DiagramObject <> null)
+-- xPosition must be set.
+inv DiagramObjectPoint_xPosition: (self.xPosition->notEmpty())
+-- yPosition must be set.
+inv DiagramObjectPoint_yPosition: (self.yPosition->notEmpty())
+
+
+endpackage

@@ -1,0 +1,42 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61970::Base::Core::Substation
+-- Region must be set.
+inv Substation_Region: (self.Region <> null)
+
+context IEC61970::Base::Core::ConnectivityNode
+-- ConnectivityNodeContainer must be set.
+inv ConnectivityNode_ConnectivityNodeContainer: (self.ConnectivityNodeContainer <> null)
+
+context IEC61970::Base::Core::SubGeographicalRegion
+-- Region must be set.
+inv SubGeographicalRegion_Region: (self.Region <> null)
+
+context IEC61970::Base::Core::VoltageLevel
+-- BaseVoltage must be set.
+inv VoltageLevel_BaseVoltage: (self.BaseVoltage <> null)
+-- Substation must be set.
+inv VoltageLevel_Substation: (self.Substation <> null)
+
+context IEC61970::Base::Core::BaseVoltage
+-- nominalVoltage must be set.
+inv BaseVoltage_nominalVoltage: (self.nominalVoltage->notEmpty())
+
+context IEC61970::Base::Core::Terminal
+-- ConductingEquipment must be set.
+inv Terminal_ConductingEquipment: (self.ConductingEquipment <> null)
+
+context IEC61970::Base::Core::Bay
+-- VoltageLevel must be set.
+inv Bay_VoltageLevel: (self.VoltageLevel <> null)
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+-- name must be set.
+inv IdentifiedObject_name: (self.name <> null)
+
+
+endpackage

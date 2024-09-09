@@ -1,0 +1,167 @@
+id: http://iec.ch/TC57/ns/CIM/Topology/5.0#
+name: Profile
+title: Profile Vocabulary
+annotations:
+  copyright: "Copyright 2024 UCAIug SPDX-License-Identifier: Apache-2.0"
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  linkml: https://w3id.org/linkml/
+  sh: http://www.w3.org/ns/shacl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  this: http://iec.ch/TC57/ns/CIM/Topology/5.0#
+  dc: http://purl.org/dc/elements/1.1/
+  profcim: http://iec.ch/TC57/ns/CIM/prof-cim#
+  owl: http://www.w3.org/2002/07/owl#
+  cim: http://iec.ch/TC57/CIM100#
+  cims: http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#
+  dct: http://purl.org/dc/terms/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  dcat: http://www.w3.org/ns/dcat#
+  eu: http://iec.ch/TC57/CIM100-European#
+imports:
+- linkml:types
+default_curi_maps:
+- semweb_context
+default_range: string
+default_prefix: this
+classes:
+  ACDCConverterDCTerminal:
+    description: "A DC electrical connection point at the AC/DC converter. The AC/DC converter is electrically connected also to the AC side. The AC connection is inherited from the AC conducting equipment in the same way as any other AC equipment. The AC/DC converter DC terminal is separate from generic DC terminal to restrict the connection with the AC side to AC/DC converter and so that no other DC conducting equipment can be connected to the AC side."
+    is_a: DCBaseTerminal
+    class_uri: cim:ACDCConverterDCTerminal
+    attributes: 
+  ACDCTerminal:
+    description: "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:ACDCTerminal
+    attributes: 
+  BaseVoltage:
+    description: "Defines a system base voltage which is referenced."
+    abstract: true
+    class_uri: cim:BaseVoltage
+    attributes: 
+  ConnectivityNode:
+    description: "Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance."
+    class_uri: cim:ConnectivityNode
+    attributes: 
+      TopologicalNode:
+        description: "The topological node to which this connectivity node is assigned.  May depend on the current state of switches in the network."
+        slot_uri: cim:ConnectivityNode.TopologicalNode
+        range: TopologicalNode
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ConnectivityNodeContainer:
+    description: "A base class for all objects that may contain connectivity nodes or topological nodes."
+    abstract: true
+    class_uri: cim:ConnectivityNodeContainer
+    attributes: 
+  DCBaseTerminal:
+    description: "An electrical connection point at a piece of DC conducting equipment. DC terminals are connected at one physical DC node that may have multiple DC terminals connected. A DC node is similar to an AC connectivity node. The model requires that DC connections are distinct from AC connections."
+    is_a: ACDCTerminal
+    abstract: true
+    class_uri: cim:DCBaseTerminal
+    attributes: 
+      DCTopologicalNode:
+        description: "See association end Terminal.TopologicalNode."
+        slot_uri: cim:DCBaseTerminal.DCTopologicalNode
+        range: DCTopologicalNode
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCEquipmentContainer:
+    description: "A modelling construct to provide a root class for containment of DC as well as AC equipment. The class differ from the EquipmentContaner for AC in that it may also contain DCNode-s. Hence it can contain both AC and DC equipment."
+    abstract: true
+    class_uri: cim:DCEquipmentContainer
+    attributes: 
+  DCNode:
+    description: "DC nodes are points where terminals of DC conducting equipment are connected together with zero impedance."
+    is_a: IdentifiedObject
+    class_uri: cim:DCNode
+    attributes: 
+      DCTopologicalNode:
+        description: "The DC topological node to which this DC connectivity node is assigned.  May depend on the current state of switches in the network."
+        slot_uri: cim:DCNode.DCTopologicalNode
+        range: DCTopologicalNode
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCTerminal:
+    description: "An electrical connection point to generic DC conducting equipment."
+    is_a: DCBaseTerminal
+    class_uri: cim:DCTerminal
+    attributes: 
+  DCTopologicalNode:
+    description: "DC bus."
+    is_a: IdentifiedObject
+    class_uri: cim:DCTopologicalNode
+    attributes: 
+      DCEquipmentContainer:
+        description: "The connectivity node container to which the topological node belongs."
+        slot_uri: cim:DCTopologicalNode.DCEquipmentContainer
+        range: DCEquipmentContainer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  IdentifiedObject:
+    description: "This is a root class to provide common identification for all classes needing identification and naming attributes."
+    abstract: true
+    class_uri: cim:IdentifiedObject
+    attributes: 
+      mRID:
+        description: "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."
+        slot_uri: cim:IdentifiedObject.mRID
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      description:
+        description: "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."
+        slot_uri: cim:IdentifiedObject.description
+        range: string
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      name:
+        description: "The name is any free human readable and possibly non unique text naming the object."
+        slot_uri: cim:IdentifiedObject.name
+        range: string
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  ReportingGroup:
+    description: "A reporting group is used for various ad-hoc groupings used for reporting."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:ReportingGroup
+    attributes: 
+  Terminal:
+    description: "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."
+    is_a: ACDCTerminal
+    class_uri: cim:Terminal
+    attributes: 
+      TopologicalNode:
+        description: "The topological node associated with the terminal.   This can be used as an alternative to the connectivity node path to topological node, thus making it unnecessary to model connectivity nodes in some cases.   Note that the if connectivity nodes are in the model, this association would probably not be used as an input specification."
+        slot_uri: cim:Terminal.TopologicalNode
+        range: TopologicalNode
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  TopologicalNode:
+    description: "For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).For a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called busses."
+    is_a: IdentifiedObject
+    class_uri: cim:TopologicalNode
+    attributes: 
+      BaseVoltage:
+        description: "The base voltage of the topological node."
+        slot_uri: cim:TopologicalNode.BaseVoltage
+        range: BaseVoltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ConnectivityNodeContainer:
+        description: "The connectivity node container to which the topological node belongs."
+        slot_uri: cim:TopologicalNode.ConnectivityNodeContainer
+        range: ConnectivityNodeContainer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ReportingGroup:
+        description: "The reporting group to which the topological node belongs."
+        slot_uri: cim:TopologicalNode.ReportingGroup
+        range: ReportingGroup
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+types:
+enums:

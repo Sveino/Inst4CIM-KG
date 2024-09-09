@@ -1,0 +1,3542 @@
+id: http://iec.ch/TC57/2020/CPSM-CoreEquipment#
+name: CoreEquipment
+title: CoreEquipment Vocabulary
+comments: "This profile represents the equipment of the power system and their hierarchical relationships."
+annotations:
+  copyright: "Copyright 2024 UCAIug SPDX-License-Identifier: Apache-2.0"
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  linkml: https://w3id.org/linkml/
+  sh: http://www.w3.org/ns/shacl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  dc: http://purl.org/dc/elements/1.1/
+  profcim: http://iec.ch/TC57/ns/CIM/prof-cim#
+  owl: http://www.w3.org/2002/07/owl#
+  cim: http://iec.ch/TC57/CIM100#
+  cims: http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#
+  dct: http://purl.org/dc/terms/
+  this: http://iec.ch/TC57/2020/CPSM-CoreEquipment#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  dcat: http://www.w3.org/ns/dcat#
+  eu: http://iec.ch/TC57/CIM100-European#
+imports:
+- linkml:types
+default_curi_maps:
+- semweb_context
+default_range: string
+default_prefix: this
+classes:
+  ACDCConverter:
+    description: "A unit with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion."
+    is_a: ConductingEquipment
+    abstract: true
+    class_uri: cim:ACDCConverter
+    attributes: 
+      baseS:
+        description: "Base apparent power of the converter pole. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.baseS
+        range: ApparentPower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      idleLoss:
+        description: "Active power loss in pole at no power transfer. It is converter’s configuration data used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.idleLoss
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      maxP:
+        description: "Maximum active power limit. The value is overwritten by values of VsCapabilityCurve, if present."
+        slot_uri: cim:ACDCConverter.maxP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      maxUdc:
+        description: "The maximum voltage on the DC side at which the converter should operate. It is converter’s configuration data used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.maxUdc
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minP:
+        description: "Minimum active power limit. The value is overwritten by values of VsCapabilityCurve, if present."
+        slot_uri: cim:ACDCConverter.minP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minUdc:
+        description: "The minimum voltage on the DC side at which the converter should operate. It is converter’s configuration data used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.minUdc
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      numberOfValves:
+        description: "Number of valves in the converter. Used in loss calculations."
+        slot_uri: cim:ACDCConverter.numberOfValves
+        range: integer
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedUdc:
+        description: "Rated converter DC voltage, also called UdN. The attribute shall be a positive value. It is converter’s configuration data used in power flow. For instance a bipolar HVDC link with value  200 kV has a 400kV difference between the dc lines."
+        slot_uri: cim:ACDCConverter.ratedUdc
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      resistiveLoss:
+        description: "It is converter’s configuration data used in power flow. Refer to poleLossP. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.resistiveLoss
+        range: Resistance
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      switchingLoss:
+        description: "Switching losses, relative to the base apparent power 'baseS'. Refer to poleLossP. The attribute shall be a positive value."
+        slot_uri: cim:ACDCConverter.switchingLoss
+        range: ActivePowerPerCurrentFlow
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      valveU0:
+        description: "Valve threshold voltage, also called Uvalve. Forward voltage drop when the valve is conducting. Used in loss calculations, i.e. the switchLoss depend on numberOfValves * valveU0."
+        slot_uri: cim:ACDCConverter.valveU0
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      PccTerminal:
+        description: "Point of common coupling terminal for this converter DC side. It is typically the terminal on the power transformer (or switch) closest to the AC network."
+        slot_uri: cim:ACDCConverter.PccTerminal
+        range: Terminal
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  ACDCConverterDCTerminal:
+    description: "A DC electrical connection point at the AC/DC converter. The AC/DC converter is electrically connected also to the AC side. The AC connection is inherited from the AC conducting equipment in the same way as any other AC equipment. The AC/DC converter DC terminal is separate from generic DC terminal to restrict the connection with the AC side to AC/DC converter and so that no other DC conducting equipment can be connected to the AC side."
+    is_a: DCBaseTerminal
+    class_uri: cim:ACDCConverterDCTerminal
+    attributes: 
+      DCConductingEquipment:
+        description: "A DC converter terminal belong to an DC converter."
+        slot_uri: cim:ACDCConverterDCTerminal.DCConductingEquipment
+        range: ACDCConverter
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ACDCTerminal:
+    description: "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:ACDCTerminal
+    attributes: 
+      sequenceNumber:
+        description: "The orientation of the terminal connections for a multiple terminal conducting equipment.  The sequence numbering starts with 1 and additional terminals should follow in increasing order.   The first terminal is the starting point for a two terminal branch."
+        slot_uri: cim:ACDCTerminal.sequenceNumber
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      BusNameMarker:
+        description: "The bus name marker used to name the bus (topological node)."
+        slot_uri: cim:ACDCTerminal.BusNameMarker
+        range: BusNameMarker
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  ACLineSegment:
+    description: "A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.For symmetrical, transposed three phase lines, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.The BaseVoltage at the two ends of ACLineSegments in a Line shall have the same BaseVoltage.nominalVoltage. However, boundary lines may have slightly different BaseVoltage.nominalVoltages and variation is allowed. Larger voltage difference in general requires use of an equivalent branch."
+    comments: "- Each ACLineSegment is required to have an association to a BaseVoltage. The association to Line is not required.- Using the EquipmentContainer association, an ACLineSegment can only be contained by a Line, but the association to Line is not required."
+    is_a: Conductor
+    class_uri: cim:ACLineSegment
+    attributes: 
+      bch:
+        description: "Positive sequence shunt (charging) susceptance, uniformly distributed, of the entire line section.  This value represents the full charging over the full length of the line."
+        slot_uri: cim:ACLineSegment.bch
+        range: Susceptance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      gch:
+        description: "Positive sequence shunt (charging) conductance, uniformly distributed, of the entire line section."
+        slot_uri: cim:ACLineSegment.gch
+        range: Conductance
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      r:
+        description: "Positive sequence series resistance of the entire line section."
+        slot_uri: cim:ACLineSegment.r
+        range: Resistance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      x:
+        description: "Positive sequence series reactance of the entire line section."
+        slot_uri: cim:ACLineSegment.x
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ActivePowerLimit:
+    description: "Limit on active power flow."
+    is_a: OperationalLimit
+    class_uri: cim:ActivePowerLimit
+    attributes: 
+      normalValue:
+        description: "The normal value of active power limit. The attribute shall be a positive value or zero."
+        slot_uri: cim:ActivePowerLimit.normalValue
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      OperationalLimitSet:
+        description: "The limit set to which the limit values belong."
+        slot_uri: cim:OperationalLimit.OperationalLimitSet
+        range: OperationalLimitSet
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      OperationalLimitType:
+        description: "The limit type associated with this limit."
+        slot_uri: cim:OperationalLimit.OperationalLimitType
+        range: OperationalLimitType
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ApparentPowerLimit:
+    description: "Apparent power limit."
+    is_a: OperationalLimit
+    class_uri: cim:ApparentPowerLimit
+    attributes: 
+      normalValue:
+        description: "The normal apparent power limit. The attribute shall be a positive value or zero."
+        slot_uri: cim:ApparentPowerLimit.normalValue
+        range: ApparentPower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      OperationalLimitSet:
+        description: "The limit set to which the limit values belong."
+        slot_uri: cim:OperationalLimit.OperationalLimitSet
+        range: OperationalLimitSet
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      OperationalLimitType:
+        description: "The limit type associated with this limit."
+        slot_uri: cim:OperationalLimit.OperationalLimitType
+        range: OperationalLimitType
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  AsynchronousMachine:
+    description: "A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g. squirrel-cage induction machine."
+    is_a: RotatingMachine
+    class_uri: cim:AsynchronousMachine
+    attributes: 
+      nominalFrequency:
+        description: "Nameplate data indicates if the machine is 50 Hz or 60 Hz."
+        slot_uri: cim:AsynchronousMachine.nominalFrequency
+        range: Frequency
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      nominalSpeed:
+        description: "Nameplate data.  Depends on the slip and number of pole pairs."
+        slot_uri: cim:AsynchronousMachine.nominalSpeed
+        range: RotationSpeed
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  AuxiliaryEquipment:
+    description: "AuxiliaryEquipment describe equipment that is not performing any primary functions but support for the equipment performing the primary function.AuxiliaryEquipment is attached to primary equipment via an association with Terminal."
+    is_a: Equipment
+    abstract: true
+    class_uri: cim:AuxiliaryEquipment
+    attributes: 
+      Terminal:
+        description: "The Terminal at the equipment where the AuxiliaryEquipment is attached."
+        slot_uri: cim:AuxiliaryEquipment.Terminal
+        range: Terminal
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  BaseVoltage:
+    description: "Defines a system base voltage which is referenced."
+    is_a: IdentifiedObject
+    class_uri: cim:BaseVoltage
+    attributes: 
+      nominalVoltage:
+        description: "The power system resource's base voltage.  Shall be a positive value and not zero."
+        slot_uri: cim:BaseVoltage.nominalVoltage
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  BasicIntervalSchedule:
+    description: "Schedule of values at points in time."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:BasicIntervalSchedule
+    attributes: 
+      startTime:
+        description: "The time for the first time point.  The value can be a time of day, not a specific date."
+        slot_uri: cim:BasicIntervalSchedule.startTime
+        range: datetime
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  BatteryUnit:
+    description: "An electrochemical energy storage device."
+    is_a: PowerElectronicsUnit
+    class_uri: cim:BatteryUnit
+    attributes: 
+      ratedE:
+        description: "Full energy storage capacity of the battery. The attribute shall be a positive value."
+        slot_uri: cim:BatteryUnit.ratedE
+        range: RealEnergy
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Bay:
+    description: "A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.  A bay typically represents a physical grouping related to modularization of equipment."
+    comments: "-  The Bay class is used as a container for Switches.  Switches can either be contained by Bays or by VoltageLevels.  If Switches are contained by VoltageLevels rather than by Bays in the sending system, then Bays are not required."
+    is_a: EquipmentContainer
+    class_uri: cim:Bay
+    attributes: 
+      VoltageLevel:
+        description: "The voltage level containing this bay."
+        slot_uri: cim:Bay.VoltageLevel
+        range: VoltageLevel
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Breaker:
+    description: "A mechanical switching device capable of making, carrying, and breaking currents under normal circuit conditions and also making, carrying for a specified time, and breaking currents under specified abnormal circuit conditions e.g.  those of short circuit."
+    is_a: ProtectedSwitch
+    class_uri: cim:Breaker
+    attributes: 
+  BusNameMarker:
+    description: "Used to apply user standard names to TopologicalNodes. Associated with one or more terminals that are normally connected with the bus name.    The associated terminals are normally connected by non-retained switches. For a ring bus station configuration, all BusbarSection terminals in the ring are typically associated.   For a breaker and a half scheme, both BusbarSections would normally be associated.  For a ring bus, all BusbarSections would normally be associated.  For a straight busbar configuration, normally only the main terminal at the BusbarSection would be associated."
+    is_a: IdentifiedObject
+    class_uri: cim:BusNameMarker
+    attributes: 
+      priority:
+        description: "Priority of bus name marker for use as topology bus name.  Use 0 for do not care.  Use 1 for highest priority.  Use 2 as priority is less than 1 and so on."
+        slot_uri: cim:BusNameMarker.priority
+        range: integer
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ReportingGroup:
+        description: "The reporting group to which this bus name marker belongs."
+        slot_uri: cim:BusNameMarker.ReportingGroup
+        range: ReportingGroup
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  BusbarSection:
+    description: "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation.Voltage measurements are typically obtained from voltage transformers that are connected to busbar sections. A bus bar section may have many physical terminals but for analysis is modelled with exactly one logical terminal."
+    is_a: Connector
+    class_uri: cim:BusbarSection
+    attributes: 
+  CAESPlant:
+    description: "Compressed air energy storage plant."
+    is_a: PowerSystemResource
+    class_uri: cim:CAESPlant
+    attributes: 
+  Clamp:
+    description: "A Clamp is a galvanic connection at a line segment where other equipment is connected. A Clamp does not cut the line segment.A Clamp is ConductingEquipment and has one Terminal with an associated ConnectivityNode. Any other ConductingEquipment can be connected to the Clamp ConnectivityNode."
+    is_a: ConductingEquipment
+    class_uri: cim:Clamp
+    attributes: 
+      lengthFromTerminal1:
+        description: "The length to the place where the clamp is located starting from side one of the line segment, i.e. the line segment terminal with sequence number equal to 1."
+        slot_uri: cim:Clamp.lengthFromTerminal1
+        range: Length
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ACLineSegment:
+        description: "The line segment to which the clamp is connected."
+        slot_uri: cim:Clamp.ACLineSegment
+        range: ACLineSegment
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  CogenerationPlant:
+    description: "A set of thermal generating units for the production of electrical energy and process steam (usually from the output of the steam turbines). The steam sendout is typically used for industrial purposes or for municipal heating and cooling."
+    is_a: PowerSystemResource
+    class_uri: cim:CogenerationPlant
+    attributes: 
+  CombinedCyclePlant:
+    description: "A set of combustion turbines and steam turbines where the exhaust heat from the combustion turbines is recovered to make steam for the steam turbines, resulting in greater overall plant efficiency."
+    is_a: PowerSystemResource
+    class_uri: cim:CombinedCyclePlant
+    attributes: 
+  ConductingEquipment:
+    description: "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals."
+    is_a: Equipment
+    abstract: true
+    class_uri: cim:ConductingEquipment
+    attributes: 
+      BaseVoltage:
+        description: "Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers."
+        slot_uri: cim:ConductingEquipment.BaseVoltage
+        range: BaseVoltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  Conductor:
+    description: "Combination of conducting material with consistent electrical characteristics, building a single electrical system, used to carry current between points in the power system."
+    is_a: ConductingEquipment
+    abstract: true
+    class_uri: cim:Conductor
+    attributes: 
+      length:
+        description: "Segment length for calculating line section capabilities."
+        slot_uri: cim:Conductor.length
+        range: Length
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  ConformLoad:
+    description: "ConformLoad represent loads that follow a daily load change pattern where the pattern can be used to scale the load with a system load."
+    comments: "-  The definition of the real and reactive power injections for an EnergyConsumer can be done using different sets of attributes.  In the simplest case, the injections can be defined directly using only the attributes pfixed and qfixed.-  The injections for a ConformLoad can be defined as a percentage of the ConformLoadGroup with the attributes pfixedPct and qfixedPct.  In this case, the associated ConformLoadGroup would have to have an associated ConformLoadSchedule.-  See EnergyConsumer for specific notes about inherited attributes."
+    is_a: EnergyConsumer
+    class_uri: cim:ConformLoad
+    attributes: 
+      LoadGroup:
+        description: "Group of this ConformLoad."
+        slot_uri: cim:ConformLoad.LoadGroup
+        range: ConformLoadGroup
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ConformLoadGroup:
+    description: "A group of loads conforming to an allocation pattern."
+    is_a: LoadGroup
+    class_uri: cim:ConformLoadGroup
+    attributes: 
+      SubLoadArea:
+        description: "The SubLoadArea where the Loadgroup belongs."
+        slot_uri: cim:LoadGroup.SubLoadArea
+        range: SubLoadArea
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ConformLoadSchedule:
+    description: "A curve of load  versus time (X-axis) showing the active power values (Y1-axis) and reactive power (Y2-axis) for each unit of the period covered. This curve represents a typical pattern of load over the time period for a given day type and season."
+    is_a: SeasonDayTypeSchedule
+    class_uri: cim:ConformLoadSchedule
+    attributes: 
+      ConformLoadGroup:
+        description: "The ConformLoadGroup where the ConformLoadSchedule belongs."
+        slot_uri: cim:ConformLoadSchedule.ConformLoadGroup
+        range: ConformLoadGroup
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ConnectivityNode:
+    description: "Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance."
+    comments: "- By convention, ConnectivityNodes may only be placed within VoltageLevels or Lines."
+    is_a: IdentifiedObject
+    class_uri: cim:ConnectivityNode
+    attributes: 
+      ConnectivityNodeContainer:
+        description: "Container of this connectivity node."
+        slot_uri: cim:ConnectivityNode.ConnectivityNodeContainer
+        range: ConnectivityNodeContainer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ConnectivityNodeContainer:
+    description: "A base class for all objects that may contain connectivity nodes or topological nodes."
+    is_a: PowerSystemResource
+    abstract: true
+    class_uri: cim:ConnectivityNodeContainer
+    attributes: 
+  Connector:
+    description: "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation and are modelled with a single logical terminal."
+    is_a: ConductingEquipment
+    abstract: true
+    class_uri: cim:Connector
+    attributes: 
+  ControlArea:
+    description: "A control area is a grouping of generating units and/or loads and a cutset of tie lines (as terminals) which may be used for a variety of purposes including automatic generation control, power flow solution area interchange control specification, and input to load forecasting. All generation and load within the area defined by the terminals on the border are considered in the area interchange control. Note that any number of overlapping control area specifications can be superimposed on the physical model. The following general principles apply to ControlArea:1.  The control area orientation for net interchange is positive for an import, negative for an export.2.  The control area net interchange is determined by summing flows in Terminals. The Terminals are identified by creating a set of TieFlow objects associated with a ControlArea object. Each TieFlow object identifies one Terminal.3.  In a single network model, a tie between two control areas must be modelled in both control area specifications, such that the two representations of the tie flow sum to zero.4.  The normal orientation of Terminal flow is positive for flow into the conducting equipment that owns the Terminal. (i.e. flow from a bus into a device is positive.) However, the orientation of each flow in the control area specification must align with the control area convention, i.e. import is positive. If the orientation of the Terminal flow referenced by a TieFlow is positive into the control area, then this is confirmed by setting TieFlow.positiveFlowIn flag TRUE. If not, the orientation must be reversed by setting the TieFlow.positiveFlowIn flag FALSE."
+    is_a: PowerSystemResource
+    class_uri: cim:ControlArea
+    attributes: 
+      EnergyArea:
+        description: "The energy area that is forecast from this control area specification."
+        slot_uri: cim:ControlArea.EnergyArea
+        range: EnergyArea
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ControlAreaGeneratingUnit:
+    description: "A control area generating unit. This class is needed so that alternate control area definitions may include the same generating unit.   It should be noted that only one instance within a control area should reference a specific generating unit."
+    is_a: IdentifiedObject
+    class_uri: cim:ControlAreaGeneratingUnit
+    attributes: 
+      ControlArea:
+        description: "The parent control area for the generating unit specifications."
+        slot_uri: cim:ControlAreaGeneratingUnit.ControlArea
+        range: ControlArea
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      GeneratingUnit:
+        description: "The generating unit specified for this control area.  Note that a control area should include a GeneratingUnit only once."
+        slot_uri: cim:ControlAreaGeneratingUnit.GeneratingUnit
+        range: GeneratingUnit
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  CsConverter:
+    description: "DC side of the current source converter (CSC).The firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.The reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees."
+    is_a: ACDCConverter
+    class_uri: cim:CsConverter
+    attributes: 
+      maxAlpha:
+        description: "Maximum firing angle. It is converter’s configuration data used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:CsConverter.maxAlpha
+        range: AngleDegrees
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      maxGamma:
+        description: "Maximum extinction angle. It is converter’s configuration data used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:CsConverter.maxGamma
+        range: AngleDegrees
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      maxIdc:
+        description: "The maximum direct current (Id) on the DC side at which the converter should operate. It is converter’s configuration data use in power flow. The attribute shall be a positive value."
+        slot_uri: cim:CsConverter.maxIdc
+        range: CurrentFlow
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minAlpha:
+        description: "Minimum firing angle. It is converter’s configuration data used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:CsConverter.minAlpha
+        range: AngleDegrees
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minGamma:
+        description: "Minimum extinction angle. It is converter’s configuration data used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:CsConverter.minGamma
+        range: AngleDegrees
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minIdc:
+        description: "The minimum direct current (Id) on the DC side at which the converter should operate. It is converter’s configuration data used in power flow. The attribute shall be a positive value."
+        slot_uri: cim:CsConverter.minIdc
+        range: CurrentFlow
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedIdc:
+        description: "Rated converter DC current, also called IdN. The attribute shall be a positive value. It is converter’s configuration data used in power flow."
+        slot_uri: cim:CsConverter.ratedIdc
+        range: CurrentFlow
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  CurrentLimit:
+    description: "Operational limit on current."
+    is_a: OperationalLimit
+    class_uri: cim:CurrentLimit
+    attributes: 
+      normalValue:
+        description: "The normal value for limit on current flow. The attribute shall be a positive value or zero."
+        slot_uri: cim:CurrentLimit.normalValue
+        range: CurrentFlow
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  CurrentTransformer:
+    description: "Instrument transformer used to measure electrical qualities of the circuit that is being protected and/or monitored. Typically used as current transducer for the purpose of metering or protection. A typical secondary current rating would be 5A."
+    is_a: Sensor
+    class_uri: cim:CurrentTransformer
+    attributes: 
+  Curve:
+    description: "A multi-purpose curve or functional relationship between an independent variable (X-axis) and dependent (Y-axis) variables."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:Curve
+    attributes: 
+  CurveData:
+    description: "Multi-purpose data points for defining a curve.  The use of this generic class is discouraged if a more specific class can be used to specify the X and Y axis values along with their specific data types."
+    class_uri: cim:CurveData
+    attributes: 
+      xvalue:
+        description: "The data value of the X-axis variable,  depending on the X-axis units."
+        slot_uri: cim:CurveData.xvalue
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      y1value:
+        description: "The data value of the  first Y-axis variable, depending on the Y-axis units."
+        slot_uri: cim:CurveData.y1value
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      y2value:
+        description: "The data value of the second Y-axis variable (if present), depending on the Y-axis units."
+        slot_uri: cim:CurveData.y2value
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      Curve:
+        description: "The curve of  this curve data point."
+        slot_uri: cim:CurveData.Curve
+        range: Curve
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Cut:
+    description: "A cut separates a line segment into two parts. The cut appears as a switch inserted between these two parts and connects them together. As the cut is normally open there is no galvanic connection between the two line segment parts. But it is possible to close the cut to get galvanic connection.The cut terminals are oriented towards the line segment terminals with the same sequence number. Hence the cut terminal with sequence number equal to 1 is oriented to the line segment's terminal with sequence number equal to 1.The cut terminals also act as connection points for jumpers and other equipment, e.g. a mobile generator. To enable this, connectivity nodes are placed at the cut terminals. Once the connectivity nodes are in place any conducting equipment can be connected at them."
+    is_a: Switch
+    class_uri: cim:Cut
+    attributes: 
+      lengthFromTerminal1:
+        description: "The length to the place where the cut is located starting from side one of the cut line segment, i.e. the line segment Terminal with sequenceNumber equal to 1."
+        slot_uri: cim:Cut.lengthFromTerminal1
+        range: Length
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ACLineSegment:
+        description: "The line segment to which the cut is applied."
+        slot_uri: cim:Cut.ACLineSegment
+        range: ACLineSegment
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCBaseTerminal:
+    description: "An electrical connection point at a piece of DC conducting equipment. DC terminals are connected at one physical DC node that may have multiple DC terminals connected. A DC node is similar to an AC connectivity node. The model requires that DC connections are distinct from AC connections."
+    is_a: ACDCTerminal
+    abstract: true
+    class_uri: cim:DCBaseTerminal
+    attributes: 
+      DCNode:
+        description: "The DC connectivity node to which this DC base terminal connects with zero impedance."
+        slot_uri: cim:DCBaseTerminal.DCNode
+        range: DCNode
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  DCBreaker:
+    description: "A breaker within a DC system."
+    is_a: DCSwitch
+    class_uri: cim:DCBreaker
+    attributes: 
+  DCBusbar:
+    description: "A busbar within a DC system."
+    is_a: DCConductingEquipment
+    class_uri: cim:DCBusbar
+    attributes: 
+  DCChopper:
+    description: "Low resistance equipment used in the internal DC circuit to balance voltages. It has typically positive and negative pole terminals and a ground."
+    is_a: DCConductingEquipment
+    class_uri: cim:DCChopper
+    attributes: 
+  DCConductingEquipment:
+    description: "The parts of the DC power system that are designed to carry current or that are conductively connected through DC terminals."
+    is_a: Equipment
+    abstract: true
+    class_uri: cim:DCConductingEquipment
+    attributes: 
+      ratedUdc:
+        description: "Rated DC device voltage. The attribute shall be a positive value. It is configuration data used in power flow."
+        slot_uri: cim:DCConductingEquipment.ratedUdc
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCConverterUnit:
+    description: "Indivisible operative unit comprising all equipment between the point of common coupling on the AC side and the point of common coupling – DC side, essentially one or more converters, together with one or more converter transformers, converter control equipment, essential protective and switching devices and auxiliaries, if any, used for conversion."
+    is_a: DCEquipmentContainer
+    class_uri: cim:DCConverterUnit
+    attributes: 
+      operationMode:
+        description: "The operating mode of an HVDC bipole (bipolar, monopolar metallic return, etc)."
+        slot_uri: cim:DCConverterUnit.operationMode
+        range: DCConverterOperatingModeKind
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Substation:
+        description: "The containing substation of the DC converter unit."
+        slot_uri: cim:DCConverterUnit.Substation
+        range: Substation
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  DCDisconnector:
+    description: "A disconnector within a DC system."
+    is_a: DCSwitch
+    class_uri: cim:DCDisconnector
+    attributes: 
+  DCEquipmentContainer:
+    description: "A modelling construct to provide a root class for containment of DC as well as AC equipment. The class differ from the EquipmentContaner for AC in that it may also contain DCNode-s. Hence it can contain both AC and DC equipment."
+    is_a: EquipmentContainer
+    abstract: true
+    class_uri: cim:DCEquipmentContainer
+    attributes: 
+  DCGround:
+    description: "A ground within a DC system."
+    is_a: DCConductingEquipment
+    class_uri: cim:DCGround
+    attributes: 
+      inductance:
+        description: "Inductance to ground."
+        slot_uri: cim:DCGround.inductance
+        range: Inductance
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      r:
+        description: "Resistance to ground."
+        slot_uri: cim:DCGround.r
+        range: Resistance
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  DCLine:
+    description: "Overhead lines and/or cables connecting two or more HVDC substations."
+    is_a: DCEquipmentContainer
+    class_uri: cim:DCLine
+    attributes: 
+      Region:
+        description: "The SubGeographicalRegion containing the DC line."
+        slot_uri: cim:DCLine.Region
+        range: SubGeographicalRegion
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  DCLineSegment:
+    description: "A wire or combination of wires not insulated from one another, with consistent electrical characteristics, used to carry direct current between points in the DC region of the power system."
+    is_a: DCConductingEquipment
+    class_uri: cim:DCLineSegment
+    attributes: 
+      capacitance:
+        description: "Capacitance of the DC line segment. Significant for cables only."
+        slot_uri: cim:DCLineSegment.capacitance
+        range: Capacitance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      inductance:
+        description: "Inductance of the DC line segment. Negligible compared with DCSeriesDevice used for smoothing."
+        slot_uri: cim:DCLineSegment.inductance
+        range: Inductance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      length:
+        description: "Segment length for calculating line section capabilities."
+        slot_uri: cim:DCLineSegment.length
+        range: Length
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      resistance:
+        description: "Resistance of the DC line segment."
+        slot_uri: cim:DCLineSegment.resistance
+        range: Resistance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCNode:
+    description: "DC nodes are points where terminals of DC conducting equipment are connected together with zero impedance."
+    is_a: IdentifiedObject
+    class_uri: cim:DCNode
+    attributes: 
+      DCEquipmentContainer:
+        description: "The DC container for the DC nodes."
+        slot_uri: cim:DCNode.DCEquipmentContainer
+        range: DCEquipmentContainer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCSeriesDevice:
+    description: "A series device within the DC system, typically a reactor used for filtering or smoothing.  Needed for transient and short circuit studies."
+    is_a: DCConductingEquipment
+    class_uri: cim:DCSeriesDevice
+    attributes: 
+      inductance:
+        description: "Inductance of the device."
+        slot_uri: cim:DCSeriesDevice.inductance
+        range: Inductance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      resistance:
+        description: "Resistance of the DC device."
+        slot_uri: cim:DCSeriesDevice.resistance
+        range: Resistance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCShunt:
+    description: "A shunt device within the DC system, typically used for filtering.  Needed for transient and short circuit studies."
+    is_a: DCConductingEquipment
+    class_uri: cim:DCShunt
+    attributes: 
+      capacitance:
+        description: "Capacitance of the DC shunt."
+        slot_uri: cim:DCShunt.capacitance
+        range: Capacitance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      resistance:
+        description: "Resistance of the DC device."
+        slot_uri: cim:DCShunt.resistance
+        range: Resistance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DCSwitch:
+    description: "A switch within the DC system."
+    is_a: DCConductingEquipment
+    class_uri: cim:DCSwitch
+    attributes: 
+  DCTerminal:
+    description: "An electrical connection point to generic DC conducting equipment."
+    is_a: DCBaseTerminal
+    class_uri: cim:DCTerminal
+    attributes: 
+      DCConductingEquipment:
+        description: "An DC  terminal belong to a DC conducting equipment."
+        slot_uri: cim:DCTerminal.DCConductingEquipment
+        range: DCConductingEquipment
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  DayType:
+    description: "Group of similar days.   For example it could be used to represent weekdays, weekend, or holidays."
+    is_a: IdentifiedObject
+    class_uri: cim:DayType
+    attributes: 
+  DisconnectingCircuitBreaker:
+    description: "A circuit breaking device including disconnecting function, eliminating the need for separate disconnectors."
+    is_a: Breaker
+    class_uri: cim:DisconnectingCircuitBreaker
+    attributes: 
+  Disconnector:
+    description: "A manually operated or motor operated mechanical switching device used for changing the connections in a circuit, or for isolating a circuit or equipment from a source of power. It is required to open or close circuits when negligible current is broken or made."
+    is_a: Switch
+    class_uri: cim:Disconnector
+    attributes: 
+  EarthFaultCompensator:
+    description: "A conducting equipment used to represent a connection to ground which is typically used to compensate earth faults.   An earth fault compensator device modelled with a single terminal implies a second terminal solidly connected to ground.  If two terminals are modelled, the ground is not assumed and normal connection rules apply."
+    is_a: ConductingEquipment
+    abstract: true
+    class_uri: cim:EarthFaultCompensator
+    attributes: 
+  EnergyArea:
+    description: "Describes an area having energy production or consumption.  Specializations are intended to support the load allocation function as typically required in energy management systems or planning studies to allocate hypothesized load levels to individual load points for power flow analysis.  Often the energy area can be linked to both measured and forecast load levels."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:EnergyArea
+    attributes: 
+  EnergyConnection:
+    description: "A connection of energy generation or consumption on the power system model."
+    is_a: ConductingEquipment
+    abstract: true
+    class_uri: cim:EnergyConnection
+    attributes: 
+  EnergyConsumer:
+    description: "Generic user of energy - a  point of consumption on the power system model.EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False."
+    comments: "-  The definition of the real and reactive power injections for an EnergyConsumer can be done using different sets of attributes.  In the simplest case, the injections can be defined directly using only the attributes pfixed and qfixed.-  To specify conforming and nonconforming loads, the classes ConformLoad, NonConformLoad, or their subtypes should be used.-  The attributes defining the affect of voltage and frequency on the injection defined by an associated LoadResponseCharacteristic should be supplied, if they are available, but are not required."
+    is_a: EnergyConnection
+    class_uri: cim:EnergyConsumer
+    attributes: 
+      pfixed:
+        description: "Active power of the load that is a fixed quantity and does not vary as load group value varies. Load sign convention is used, i.e. positive sign means flow out from a node."
+        slot_uri: cim:EnergyConsumer.pfixed
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      pfixedPct:
+        description: "Fixed active power as a percentage of load group fixed active power. Used to represent the time-varying components.  Load sign convention is used, i.e. positive sign means flow out from a node."
+        slot_uri: cim:EnergyConsumer.pfixedPct
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      qfixed:
+        description: "Reactive power of the load that is a fixed quantity and does not vary as load group value varies. Load sign convention is used, i.e. positive sign means flow out from a node."
+        slot_uri: cim:EnergyConsumer.qfixed
+        range: ReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      qfixedPct:
+        description: "Fixed reactive power as a percentage of load group fixed reactive power. Used to represent the time-varying components.  Load sign convention is used, i.e. positive sign means flow out from a node."
+        slot_uri: cim:EnergyConsumer.qfixedPct
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      LoadResponse:
+        description: "The load response characteristic of this load.  If missing, this load is assumed to be constant power."
+        slot_uri: cim:EnergyConsumer.LoadResponse
+        range: LoadResponseCharacteristic
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  EnergySchedulingType:
+    description: "Used to define the type of generation for scheduling purposes."
+    is_a: IdentifiedObject
+    class_uri: cim:EnergySchedulingType
+    attributes: 
+  EnergySource:
+    description: "A generic equivalent for an energy supplier on a transmission or distribution voltage level."
+    is_a: EnergyConnection
+    class_uri: cim:EnergySource
+    attributes: 
+      nominalVoltage:
+        description: "Phase-to-phase nominal voltage."
+        slot_uri: cim:EnergySource.nominalVoltage
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      pMax:
+        description: "This is the maximum active power that can be produced by the source. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."
+        slot_uri: cim:EnergySource.pMax
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      pMin:
+        description: "This is the minimum active power that can be produced by the source. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."
+        slot_uri: cim:EnergySource.pMin
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      EnergySchedulingType:
+        description: "Energy Scheduling Type of an Energy Source."
+        slot_uri: cim:EnergySource.EnergySchedulingType
+        range: EnergySchedulingType
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  Equipment:
+    description: "The parts of a power system that are physical devices, electronic or mechanical."
+    is_a: PowerSystemResource
+    abstract: true
+    class_uri: cim:Equipment
+    attributes: 
+      aggregate:
+        description: "The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to “true” the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.The attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection."
+        slot_uri: cim:Equipment.aggregate
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      normallyInService:
+        description: "Specifies the availability of the equipment under normal operating conditions. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model."
+        slot_uri: cim:Equipment.normallyInService
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      EquipmentContainer:
+        description: "Container of this equipment."
+        slot_uri: cim:Equipment.EquipmentContainer
+        range: EquipmentContainer
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  EquipmentContainer:
+    description: "A modelling construct to provide a root class for containing equipment."
+    is_a: ConnectivityNodeContainer
+    abstract: true
+    class_uri: cim:EquipmentContainer
+    attributes: 
+  EquivalentBranch:
+    description: "The class represents equivalent branches. In cases where a transformer phase shift is modelled and the EquivalentBranch is spanning the same nodes, the impedance quantities for the EquivalentBranch shall consider the needed phase shift."
+    is_a: EquivalentEquipment
+    class_uri: cim:EquivalentBranch
+    attributes: 
+      r:
+        description: "Positive sequence series resistance of the reduced branch."
+        slot_uri: cim:EquivalentBranch.r
+        range: Resistance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      r21:
+        description: "Resistance from terminal sequence 2 to terminal sequence 1 .Used for steady state power flow. This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.r is given, then EquivalentBranch.r21 is assumed equal to EquivalentBranch.r.Usage rule : EquivalentBranch is a result of network reduction prior to the data exchange."
+        slot_uri: cim:EquivalentBranch.r21
+        range: Resistance
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      x:
+        description: "Positive sequence series reactance of the reduced branch."
+        slot_uri: cim:EquivalentBranch.x
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      x21:
+        description: "Reactance from terminal sequence 2 to terminal sequence 1. Used for steady state power flow. This attribute is optional and represents an unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.x is given, then EquivalentBranch.x21 is assumed equal to EquivalentBranch.x.Usage rule: EquivalentBranch is a result of network reduction prior to the data exchange."
+        slot_uri: cim:EquivalentBranch.x21
+        range: Reactance
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  EquivalentEquipment:
+    description: "The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types."
+    is_a: ConductingEquipment
+    abstract: true
+    class_uri: cim:EquivalentEquipment
+    attributes: 
+      EquivalentNetwork:
+        description: "The equivalent where the reduced model belongs."
+        slot_uri: cim:EquivalentEquipment.EquivalentNetwork
+        range: EquivalentNetwork
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  EquivalentInjection:
+    description: "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection."
+    is_a: EquivalentEquipment
+    class_uri: cim:EquivalentInjection
+    attributes: 
+      maxP:
+        description: "Maximum active power of the injection."
+        slot_uri: cim:EquivalentInjection.maxP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      maxQ:
+        description: "Maximum reactive power of the injection.  Used for modelling of infeed for load flow exchange. Not used for short circuit modelling.  If maxQ and minQ are not used ReactiveCapabilityCurve can be used."
+        slot_uri: cim:EquivalentInjection.maxQ
+        range: ReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minP:
+        description: "Minimum active power of the injection."
+        slot_uri: cim:EquivalentInjection.minP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minQ:
+        description: "Minimum reactive power of the injection.  Used for modelling of infeed for load flow exchange. Not used for short circuit modelling.  If maxQ and minQ are not used ReactiveCapabilityCurve can be used."
+        slot_uri: cim:EquivalentInjection.minQ
+        range: ReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      regulationCapability:
+        description: "Specifies whether or not the EquivalentInjection has the capability to regulate the local voltage. If true the EquivalentInjection can regulate. If false the EquivalentInjection cannot regulate. ReactiveCapabilityCurve can only be associated with EquivalentInjection  if the flag is true."
+        slot_uri: cim:EquivalentInjection.regulationCapability
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ReactiveCapabilityCurve:
+        description: "The reactive capability curve used by this equivalent injection."
+        slot_uri: cim:EquivalentInjection.ReactiveCapabilityCurve
+        range: ReactiveCapabilityCurve
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  EquivalentNetwork:
+    description: "A class that groups electrical equivalents, including internal nodes, of a network that has been reduced. The ConnectivityNodes contained in the equivalent are intended to reflect internal nodes of the equivalent. The boundary Connectivity nodes where the equivalent connects outside itself are not contained by the equivalent."
+    is_a: ConnectivityNodeContainer
+    class_uri: cim:EquivalentNetwork
+    attributes: 
+  EquivalentShunt:
+    description: "The class represents equivalent shunts."
+    is_a: EquivalentEquipment
+    class_uri: cim:EquivalentShunt
+    attributes: 
+      b:
+        description: "Positive sequence shunt susceptance."
+        slot_uri: cim:EquivalentShunt.b
+        range: Susceptance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      g:
+        description: "Positive sequence shunt conductance."
+        slot_uri: cim:EquivalentShunt.g
+        range: Conductance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ExternalNetworkInjection:
+    description: "This class represents the external network and it is used for IEC 60909 calculations."
+    is_a: RegulatingCondEq
+    class_uri: cim:ExternalNetworkInjection
+    attributes: 
+      governorSCD:
+        description: "Power Frequency Bias. This is the change in power injection divided by the change in frequency and negated.  A positive value of the power frequency bias provides additional power injection upon a drop in frequency."
+        slot_uri: cim:ExternalNetworkInjection.governorSCD
+        range: ActivePowerPerFrequency
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      maxP:
+        description: "Maximum active power of the injection."
+        slot_uri: cim:ExternalNetworkInjection.maxP
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      maxQ:
+        description: "Maximum reactive power limit. It is used for modelling of infeed for load flow exchange and not for short circuit modelling."
+        slot_uri: cim:ExternalNetworkInjection.maxQ
+        range: ReactivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      minP:
+        description: "Minimum active power of the injection."
+        slot_uri: cim:ExternalNetworkInjection.minP
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      minQ:
+        description: "Minimum reactive power limit. It is used for modelling of infeed for load flow exchange and not for short circuit modelling."
+        slot_uri: cim:ExternalNetworkInjection.minQ
+        range: ReactivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  FaultIndicator:
+    description: "A FaultIndicator is typically only an indicator (which may or may not be remotely monitored), and not a piece of equipment that actually initiates a protection event. It is used for FLISR (Fault Location, Isolation and Restoration) purposes, assisting with the dispatch of crews to most likely part of the network (i.e. assists with determining circuit section where the fault most likely happened)."
+    is_a: AuxiliaryEquipment
+    class_uri: cim:FaultIndicator
+    attributes: 
+  FossilFuel:
+    description: "The fossil fuel consumed by the non-nuclear thermal generating unit.   For example, coal, oil, gas, etc.   These are the specific fuels that the generating unit can consume."
+    is_a: IdentifiedObject
+    class_uri: cim:FossilFuel
+    attributes: 
+      ThermalGeneratingUnit:
+        description: "A thermal generating unit may have one or more fossil fuels."
+        slot_uri: cim:FossilFuel.ThermalGeneratingUnit
+        range: ThermalGeneratingUnit
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Fuse:
+    description: "An overcurrent protective device with a circuit opening fusible part that is heated and severed by the passage of overcurrent through it. A fuse is considered a switching device because it breaks current."
+    is_a: Switch
+    class_uri: cim:Fuse
+    attributes: 
+  GeneratingUnit:
+    description: "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set."
+    comments: "-  To define a GeneratingUnit requires defining the initial real power injection, net real power limits, and the status of the unit.  The initial injection is defined using  the attribute initialP.-  The net real power limits can be defined in three ways; 1) with the attributes maxOperatingP and minOperatingP, or 2) with the attribute  ratedNetMaxP or 3) with the attributes ratedGrossMinP and ratedGrossMaxP used in conjunction with an associated GrossToNetActivePowerCurve.-  The control status of the unit is defined with the attribute genControlSource, but it is not required.  The participation factor attributes longPF, normalPF, and shortPF are not required.-  The GeneratingUnit class should only be used in cases where the more specific classes, HydroGeneratingUnit and ThermalGeneratingUnit, do not apply.-  The attributes governorSCD, maximumAllowableSpinningReserve, nominalP, startupCost, and variableCost are not required."
+    is_a: Equipment
+    class_uri: cim:GeneratingUnit
+    attributes: 
+      governorSCD:
+        description: "Governor Speed Changer Droop.   This is the change in generator power output divided by the change in frequency normalized by the nominal power of the generator and the nominal frequency and expressed in percent and negated. A positive value of speed change droop provides additional generator output upon a drop in frequency."
+        slot_uri: cim:GeneratingUnit.governorSCD
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      initialP:
+        description: "Default initial active power  which is used to store a powerflow result for the initial active power for this unit in this network configuration."
+        slot_uri: cim:GeneratingUnit.initialP
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      longPF:
+        description: "Generating unit long term economic participation factor."
+        slot_uri: cim:GeneratingUnit.longPF
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      maximumAllowableSpinningReserve:
+        description: "Maximum allowable spinning reserve. Spinning reserve will never be considered greater than this value regardless of the current operating point."
+        slot_uri: cim:GeneratingUnit.maximumAllowableSpinningReserve
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      maxOperatingP:
+        description: "This is the maximum operating active power limit the dispatcher can enter for this unit."
+        slot_uri: cim:GeneratingUnit.maxOperatingP
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      minOperatingP:
+        description: "This is the minimum operating active power limit the dispatcher can enter for this unit."
+        slot_uri: cim:GeneratingUnit.minOperatingP
+        range: ActivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      nominalP:
+        description: "The nominal power of the generating unit.  Used to give precise meaning to percentage based attributes such as the governor speed change droop (governorSCD attribute).The attribute shall be a positive value equal to or less than RotatingMachine.ratedS."
+        slot_uri: cim:GeneratingUnit.nominalP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedGrossMaxP:
+        description: "The unit's gross rated maximum capacity (book value).The attribute shall be a positive value."
+        slot_uri: cim:GeneratingUnit.ratedGrossMaxP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedGrossMinP:
+        description: "The gross rated minimum generation level which the unit can safely operate at while delivering power to the transmission grid.The attribute shall be a positive value."
+        slot_uri: cim:GeneratingUnit.ratedGrossMinP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedNetMaxP:
+        description: "The net rated maximum capacity determined by subtracting the auxiliary power used to operate the internal plant machinery from the rated gross maximum capacity.The attribute shall be a positive value."
+        slot_uri: cim:GeneratingUnit.ratedNetMaxP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      shortPF:
+        description: "Generating unit short term economic participation factor."
+        slot_uri: cim:GeneratingUnit.shortPF
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      startupCost:
+        description: "The initial startup cost incurred for each start of the GeneratingUnit."
+        slot_uri: cim:GeneratingUnit.startupCost
+        range: Money
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      startupTime:
+        description: "Time it takes to get the unit on-line, from the time that the prime mover mechanical power is applied."
+        slot_uri: cim:GeneratingUnit.startupTime
+        range: Seconds
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      totalEfficiency:
+        description: "The efficiency of the unit in converting the fuel into electrical energy."
+        slot_uri: cim:GeneratingUnit.totalEfficiency
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      variableCost:
+        description: "The variable cost component of production per unit of ActivePower."
+        slot_uri: cim:GeneratingUnit.variableCost
+        range: Money
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  GeographicalRegion:
+    description: "A geographical region of a power system network model."
+    is_a: IdentifiedObject
+    class_uri: cim:GeographicalRegion
+    attributes: 
+  GrossToNetActivePowerCurve:
+    description: "Relationship between the generating unit's gross active power output on the X-axis (measured at the terminals of the machine(s)) and the generating unit's net active power output on the Y-axis (based on utility-defined measurements at the power station). Station service loads, when modelled, should be treated as non-conforming bus loads. There may be more than one curve, depending on the auxiliary equipment that is in service."
+    is_a: Curve
+    class_uri: cim:GrossToNetActivePowerCurve
+    attributes: 
+      GeneratingUnit:
+        description: "A generating unit may have a gross active power to net active power curve, describing the losses and auxiliary power requirements of the unit."
+        slot_uri: cim:GrossToNetActivePowerCurve.GeneratingUnit
+        range: GeneratingUnit
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Ground:
+    description: "A point where the system is grounded used for connecting conducting equipment to ground. The power system model can have any number of grounds."
+    is_a: ConductingEquipment
+    class_uri: cim:Ground
+    attributes: 
+  GroundDisconnector:
+    description: "A manually operated or motor operated mechanical switching device used for isolating a circuit or equipment from ground."
+    is_a: Switch
+    class_uri: cim:GroundDisconnector
+    attributes: 
+  GroundingImpedance:
+    description: "A fixed impedance device used for grounding."
+    is_a: EarthFaultCompensator
+    class_uri: cim:GroundingImpedance
+    attributes: 
+  HydroGeneratingUnit:
+    description: "A generating unit whose prime mover is a hydraulic turbine (e.g., Francis, Pelton, Kaplan)."
+    comments: "-  The attributes governorSCD, maximumAllowableSpinningReserve, nominalP, startupCost, and variableCost are not required."
+    is_a: GeneratingUnit
+    class_uri: cim:HydroGeneratingUnit
+    attributes: 
+      dropHeight:
+        description: "The height water drops from the reservoir mid-point to the turbine."
+        slot_uri: cim:HydroGeneratingUnit.dropHeight
+        range: Length
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      HydroPowerPlant:
+        description: "The hydro generating unit belongs to a hydro power plant."
+        slot_uri: cim:HydroGeneratingUnit.HydroPowerPlant
+        range: HydroPowerPlant
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  HydroPowerPlant:
+    description: "A hydro power station which can generate or pump. When generating, the generator turbines receive water from an upper reservoir. When pumping, the pumps receive their water from a lower reservoir."
+    is_a: PowerSystemResource
+    class_uri: cim:HydroPowerPlant
+    attributes: 
+  HydroPump:
+    description: "A synchronous motor-driven pump, typically associated with a pumped storage plant."
+    is_a: PowerSystemResource
+    class_uri: cim:HydroPump
+    attributes: 
+      HydroPowerPlant:
+        description: "The hydro pump may be a member of a pumped storage plant or a pump for distributing water."
+        slot_uri: cim:HydroPump.HydroPowerPlant
+        range: HydroPowerPlant
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      RotatingMachine:
+        description: "The synchronous machine drives the turbine which moves the water from a low elevation to a higher elevation. The direction of machine rotation for pumping may or may not be the same as for generating."
+        slot_uri: cim:HydroPump.RotatingMachine
+        range: RotatingMachine
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  IdentifiedObject:
+    description: "This is a root class to provide common identification for all classes needing identification and naming attributes."
+    comments: "The attribute IdentifiedObject.mRID is exchanged as rdf:ID."
+    abstract: true
+    class_uri: cim:IdentifiedObject
+    attributes: 
+      mRID:
+        description: "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."
+        slot_uri: cim:IdentifiedObject.mRID
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      description:
+        description: "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."
+        slot_uri: cim:IdentifiedObject.description
+        range: string
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      name:
+        description: "The name is any free human readable and possibly non unique text naming the object."
+        slot_uri: cim:IdentifiedObject.name
+        range: string
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Jumper:
+    description: "A short section of conductor with negligible impedance which can be manually removed and replaced if the circuit is de-energized. Note that zero-impedance branches can potentially be modelled by other equipment types."
+    is_a: Switch
+    class_uri: cim:Jumper
+    attributes: 
+  Junction:
+    description: "A point where one or more conducting equipments are connected with zero resistance."
+    is_a: Connector
+    class_uri: cim:Junction
+    attributes: 
+  Line:
+    description: "Contains equipment beyond a substation belonging to a power transmission line."
+    comments: "-  Use of the Line class is not required.  If used, it can only be used as a container for ACLineSegments and SeriesCompensators.-  A Line is not required to be associated with a SubGeographicalRegion."
+    is_a: EquipmentContainer
+    class_uri: cim:Line
+    attributes: 
+      Region:
+        description: "The sub-geographical region of the line."
+        slot_uri: cim:Line.Region
+        range: SubGeographicalRegion
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  LinearShuntCompensator:
+    description: "A linear shunt compensator has banks or sections with equal admittance values."
+    is_a: ShuntCompensator
+    class_uri: cim:LinearShuntCompensator
+    attributes: 
+      bPerSection:
+        description: "Positive sequence shunt (charging) susceptance per section."
+        slot_uri: cim:LinearShuntCompensator.bPerSection
+        range: Susceptance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      gPerSection:
+        description: "Positive sequence shunt (charging) conductance per section."
+        slot_uri: cim:LinearShuntCompensator.gPerSection
+        range: Conductance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  LoadArea:
+    description: "The class is the root or first level in a hierarchical structure for grouping of loads for the purpose of load flow load scaling."
+    is_a: EnergyArea
+    class_uri: cim:LoadArea
+    attributes: 
+  LoadBreakSwitch:
+    description: "A mechanical switching device capable of making, carrying, and breaking currents under normal operating conditions."
+    is_a: ProtectedSwitch
+    class_uri: cim:LoadBreakSwitch
+    attributes: 
+  LoadGroup:
+    description: "The class is the third level in a hierarchical structure for grouping of loads for the purpose of load flow load scaling."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:LoadGroup
+    attributes: 
+      SubLoadArea:
+        description: "The SubLoadArea where the Loadgroup belongs."
+        slot_uri: cim:LoadGroup.SubLoadArea
+        range: SubLoadArea
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  LoadResponseCharacteristic:
+    description: "Models the characteristic response of the load demand due to changes in system conditions such as voltage and frequency. It is not related to demand response.If LoadResponseCharacteristic.exponentModel is True, the exponential voltage or frequency dependent models are specified and used as to calculate active and reactive power components of the load model.The equations to calculate active and reactive power components of the load model are internal to the power flow calculation, hence they use different quantities depending on the use case of the data exchange.The equations for exponential voltage dependent load model injected power are:pInjection= Pnominal* (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.pVoltageExponentqInjection= Qnominal* (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.qVoltageExponentWhere:1) * means multiply and ** is raised to power of;2) Pnominal and Qnominal represent the active power and reactive power at nominal voltage as any load described by the voltage exponential model shall be given at nominal voltage.  This means that EnergyConsumer.p and EnergyConsumer.q  are at nominal voltage.3) After power flow is solved:-pInjection and qInjection correspond to SvPowerflow.p and SvPowerflow.q respectively.- Voltage corresponds to SvVoltage.v at the TopologicalNode where the load is connected."
+    is_a: IdentifiedObject
+    class_uri: cim:LoadResponseCharacteristic
+    attributes: 
+      exponentModel:
+        description: "Indicates the exponential voltage dependency model is to be used. If false, the coefficient model is to be used.The exponential voltage dependency model consist of the attributes:- pVoltageExponent- qVoltageExponent- pFrequencyExponent- qFrequencyExponent.The coefficient model consist of the attributes:- pConstantImpedance- pConstantCurrent- pConstantPower- qConstantImpedance- qConstantCurrent- qConstantPower.The sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.The sum of qConstantImpedance, qConstantCurrent and qConstantPower shall equal 1."
+        slot_uri: cim:LoadResponseCharacteristic.exponentModel
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      pConstantCurrent:
+        description: "Portion of active power load modelled as constant current."
+        slot_uri: cim:LoadResponseCharacteristic.pConstantCurrent
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      pConstantImpedance:
+        description: "Portion of active power load modelled as constant impedance."
+        slot_uri: cim:LoadResponseCharacteristic.pConstantImpedance
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      pConstantPower:
+        description: "Portion of active power load modelled as constant power."
+        slot_uri: cim:LoadResponseCharacteristic.pConstantPower
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      pFrequencyExponent:
+        description: "Exponent of per unit frequency effecting active power."
+        slot_uri: cim:LoadResponseCharacteristic.pFrequencyExponent
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      pVoltageExponent:
+        description: "Exponent of per unit voltage effecting real power."
+        slot_uri: cim:LoadResponseCharacteristic.pVoltageExponent
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      qConstantCurrent:
+        description: "Portion of reactive power load modelled as constant current."
+        slot_uri: cim:LoadResponseCharacteristic.qConstantCurrent
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      qConstantImpedance:
+        description: "Portion of reactive power load modelled as constant impedance."
+        slot_uri: cim:LoadResponseCharacteristic.qConstantImpedance
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      qConstantPower:
+        description: "Portion of reactive power load modelled as constant power."
+        slot_uri: cim:LoadResponseCharacteristic.qConstantPower
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      qFrequencyExponent:
+        description: "Exponent of per unit frequency effecting reactive power."
+        slot_uri: cim:LoadResponseCharacteristic.qFrequencyExponent
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      qVoltageExponent:
+        description: "Exponent of per unit voltage effecting reactive power."
+        slot_uri: cim:LoadResponseCharacteristic.qVoltageExponent
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  NonConformLoad:
+    description: "NonConformLoad represents loads that do not follow a daily load change pattern and whose changes are not correlated with the daily load change pattern."
+    comments: "-  The definition of the real and reactive power injections for an EnergyConsumer can be done using different sets of attributes.  In the simplest case, the injections can be defined directly using only the attributes pfixed and qfixed.-  The injections for a NonConformLoad can be defined as a percentage of the NonConformLoadGroup with the attributes pfixedPct and qfixedPct.  In this case, the associated NonConformLoadGroup would have to have an associated NonConformLoadSchedule.-  The attributes defining the affect of voltage and frequency on the injection defined by an associated LoadResponseCharacteristic should be supplied, if they are available, but are not required."
+    is_a: EnergyConsumer
+    class_uri: cim:NonConformLoad
+    attributes: 
+      LoadGroup:
+        description: "Group of this ConformLoad."
+        slot_uri: cim:NonConformLoad.LoadGroup
+        range: NonConformLoadGroup
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  NonConformLoadGroup:
+    description: "Loads that do not follow a daily and seasonal load variation pattern."
+    is_a: LoadGroup
+    class_uri: cim:NonConformLoadGroup
+    attributes: 
+  NonConformLoadSchedule:
+    description: "An active power (Y1-axis) and reactive power (Y2-axis) schedule (curves) versus time (X-axis) for non-conforming loads, e.g., large industrial load or power station service (where modelled)."
+    is_a: SeasonDayTypeSchedule
+    class_uri: cim:NonConformLoadSchedule
+    attributes: 
+      NonConformLoadGroup:
+        description: "The NonConformLoadGroup where the NonConformLoadSchedule belongs."
+        slot_uri: cim:NonConformLoadSchedule.NonConformLoadGroup
+        range: NonConformLoadGroup
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  NonlinearShuntCompensator:
+    description: "A non linear shunt compensator has bank or section admittance values that differ. The attributes g, b, g0 and b0 of the associated NonlinearShuntCompensatorPoint describe the total conductance and admittance of a NonlinearShuntCompensatorPoint at a section number specified by NonlinearShuntCompensatorPoint.sectionNumber."
+    is_a: ShuntCompensator
+    class_uri: cim:NonlinearShuntCompensator
+    attributes: 
+  NonlinearShuntCompensatorPoint:
+    description: "A non linear shunt compensator bank or section admittance value. The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. ShuntCompensator.sections shall only be set to one of the NonlinearShuntCompenstorPoint.sectionNumber. There is no interpolation between NonlinearShuntCompenstorPoint-s."
+    class_uri: cim:NonlinearShuntCompensatorPoint
+    attributes: 
+      b:
+        description: "Positive sequence shunt (charging) susceptance per section."
+        slot_uri: cim:NonlinearShuntCompensatorPoint.b
+        range: Susceptance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      g:
+        description: "Positive sequence shunt (charging) conductance per section."
+        slot_uri: cim:NonlinearShuntCompensatorPoint.g
+        range: Conductance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      sectionNumber:
+        description: "The number of the section."
+        slot_uri: cim:NonlinearShuntCompensatorPoint.sectionNumber
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      NonlinearShuntCompensator:
+        description: "Non-linear shunt compensator owning this point."
+        slot_uri: cim:NonlinearShuntCompensatorPoint.NonlinearShuntCompensator
+        range: NonlinearShuntCompensator
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  NuclearGeneratingUnit:
+    description: "A nuclear generating unit."
+    is_a: GeneratingUnit
+    class_uri: cim:NuclearGeneratingUnit
+    attributes: 
+  OperationalLimit:
+    description: "A value and normal value associated with a specific kind of limit.The sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).If a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:OperationalLimit
+    attributes: 
+      OperationalLimitSet:
+        description: "The limit set to which the limit values belong."
+        slot_uri: cim:OperationalLimit.OperationalLimitSet
+        range: OperationalLimitSet
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      OperationalLimitType:
+        description: "The limit type associated with this limit."
+        slot_uri: cim:OperationalLimit.OperationalLimitType
+        range: OperationalLimitType
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  OperationalLimitSet:
+    description: "A set of limits associated with equipment.  Sets of limits might apply to a specific temperature, or season for example. A set of limits may contain different severities of limit levels that would apply to the same equipment. The set may contain limits of different types such as apparent power and current limits or high and low voltage limits  that are logically applied together as a set."
+    is_a: IdentifiedObject
+    class_uri: cim:OperationalLimitSet
+    attributes: 
+      Equipment:
+        description: "The equipment to which the limit set applies."
+        slot_uri: cim:OperationalLimitSet.Equipment
+        range: Equipment
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Terminal:
+        description: "The terminal where the operational limit set apply."
+        slot_uri: cim:OperationalLimitSet.Terminal
+        range: ACDCTerminal
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  OperationalLimitType:
+    description: "The operational meaning of a category of limits."
+    is_a: IdentifiedObject
+    class_uri: cim:OperationalLimitType
+    attributes: 
+      acceptableDuration:
+        description: "The nominal acceptable duration of the limit. Limits are commonly expressed in terms of the time limit for which the limit is normally acceptable. The actual acceptable duration of a specific limit may depend on other local factors such as temperature or wind speed. The attribute has meaning only if the flag isInfiniteDuration is set to false, hence it shall not be exchanged when isInfiniteDuration is set to true."
+        slot_uri: cim:OperationalLimitType.acceptableDuration
+        range: Seconds
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      isInfiniteDuration:
+        description: "Defines if the operational limit type has infinite duration. If true, the limit has infinite duration. If false, the limit has definite duration which is defined by the attribute acceptableDuration."
+        slot_uri: cim:OperationalLimitType.isInfiniteDuration
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  PetersenCoil:
+    description: "A variable impedance device normally used to offset line charging during single line faults in an ungrounded section of network."
+    is_a: EarthFaultCompensator
+    class_uri: cim:PetersenCoil
+    attributes: 
+  PhaseTapChanger:
+    description: "A transformer phase shifting tap model that controls the phase angle difference across the power transformer and potentially the active power flow through the power transformer.  This phase tap model may also impact the voltage magnitude."
+    is_a: TapChanger
+    abstract: true
+    class_uri: cim:PhaseTapChanger
+    attributes: 
+      TransformerEnd:
+        description: "Transformer end to which this phase tap changer belongs."
+        slot_uri: cim:PhaseTapChanger.TransformerEnd
+        range: TransformerEnd
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  PhaseTapChangerAsymmetrical:
+    description: "Describes the tap model for an asymmetrical phase shifting transformer in which the difference voltage vector adds to the in-phase winding. The out-of-phase winding is the transformer end where the tap changer is located.  The angle between the in-phase and out-of-phase windings is named the winding connection angle. The phase shift depends on both the difference voltage magnitude and the winding connection angle."
+    is_a: PhaseTapChangerNonLinear
+    class_uri: cim:PhaseTapChangerAsymmetrical
+    attributes: 
+      windingConnectionAngle:
+        description: "The phase angle between the in-phase winding and the out-of -phase winding used for creating phase shift. The out-of-phase winding produces what is known as the difference voltage.  Setting this angle to 90 degrees is not the same as a symmetrical transformer. The attribute can only be multiples of 30 degrees.  The allowed range is -150 degrees to 150 degrees excluding 0."
+        slot_uri: cim:PhaseTapChangerAsymmetrical.windingConnectionAngle
+        range: AngleDegrees
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  PhaseTapChangerLinear:
+    description: "Describes a tap changer with a linear relation between the tap step and the phase angle difference across the transformer. This is a mathematical model that is an approximation of a real phase tap changer.The phase angle is computed as stepPhaseShiftIncrement times the tap position.The voltage magnitude of both sides is the same."
+    is_a: PhaseTapChanger
+    class_uri: cim:PhaseTapChangerLinear
+    attributes: 
+      stepPhaseShiftIncrement:
+        description: "Phase shift per step position. A positive value indicates a positive angle variation from the Terminal at the  PowerTransformerEnd,  where the TapChanger is located, into the transformer.The actual phase shift increment might be more accurately computed from the symmetrical or asymmetrical models or a tap step table lookup if those are available."
+        slot_uri: cim:PhaseTapChangerLinear.stepPhaseShiftIncrement
+        range: AngleDegrees
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      xMax:
+        description: "The reactance depends on the tap position according to a u shaped curve. The maximum reactance (xMax) appears at the low and high tap positions. Depending on the “u” curve the attribute can be either higher or lower than PowerTransformerEnd.x."
+        slot_uri: cim:PhaseTapChangerLinear.xMax
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      xMin:
+        description: "The reactance depends on the tap position according to a u shaped curve. The minimum reactance (xMin) appears at the mid tap position.  PowerTransformerEnd.x shall be consistent with PhaseTapChangerLinear.xMin and PhaseTapChangerNonLinear.xMin. In case of inconsistency, PowerTransformerEnd.x shall be used."
+        slot_uri: cim:PhaseTapChangerLinear.xMin
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  PhaseTapChangerNonLinear:
+    description: "The non-linear phase tap changer describes the non-linear behaviour of a phase tap changer. This is a base class for the symmetrical and asymmetrical phase tap changer models. The details of these models can be found in IEC 61970-301."
+    is_a: PhaseTapChanger
+    abstract: true
+    class_uri: cim:PhaseTapChangerNonLinear
+    attributes: 
+      voltageStepIncrement:
+        description: "The voltage step increment on the out of phase winding (the PowerTransformerEnd where the TapChanger is located) specified in percent of rated voltage of the PowerTransformerEnd. A positive value means a positive voltage variation from the Terminal at the PowerTransformerEnd, where the TapChanger is located, into the transformer.When the increment is negative, the voltage decreases when the tap step increases."
+        slot_uri: cim:PhaseTapChangerNonLinear.voltageStepIncrement
+        range: PerCent
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      xMax:
+        description: "The reactance depends on the tap position according to a u shaped curve. The maximum reactance (xMax) appears at the low and high tap positions. Depending on the “u” curve the attribute can be either higher or lower than PowerTransformerEnd.x."
+        slot_uri: cim:PhaseTapChangerNonLinear.xMax
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      xMin:
+        description: "The reactance depend on the tap position according to a u shaped curve. The minimum reactance (xMin) appear at the mid tap position.   PowerTransformerEnd.x shall be consistent with PhaseTapChangerLinear.xMin and PhaseTapChangerNonLinear.xMin. In case of inconsistency, PowerTransformerEnd.x shall be used."
+        slot_uri: cim:PhaseTapChangerNonLinear.xMin
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  PhaseTapChangerSymmetrical:
+    description: "Describes a symmetrical phase shifting transformer tap model in which the voltage magnitude of both sides is the same. The difference voltage magnitude is the base in an equal-sided triangle where the sides corresponds to the primary and secondary voltages. The phase angle difference corresponds to the top angle and can be expressed as twice the arctangent of half the total difference voltage."
+    is_a: PhaseTapChangerNonLinear
+    class_uri: cim:PhaseTapChangerSymmetrical
+    attributes: 
+  PhaseTapChangerTable:
+    description: "Describes a tabular curve for how the phase angle difference and impedance varies with the tap step."
+    is_a: IdentifiedObject
+    class_uri: cim:PhaseTapChangerTable
+    attributes: 
+  PhaseTapChangerTablePoint:
+    description: "Describes each tap step in the phase tap changer tabular curve."
+    is_a: TapChangerTablePoint
+    class_uri: cim:PhaseTapChangerTablePoint
+    attributes: 
+      angle:
+        description: "The angle difference in degrees. A positive value indicates a positive angle variation from the Terminal at the  PowerTransformerEnd,  where the TapChanger is located, into the transformer."
+        slot_uri: cim:PhaseTapChangerTablePoint.angle
+        range: AngleDegrees
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      PhaseTapChangerTable:
+        description: "The table of this point."
+        slot_uri: cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+        range: PhaseTapChangerTable
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  PhaseTapChangerTabular:
+    description: "Describes a tap changer with a table defining the relation between the tap step and the phase angle difference across the transformer."
+    is_a: PhaseTapChanger
+    class_uri: cim:PhaseTapChangerTabular
+    attributes: 
+      PhaseTapChangerTable:
+        description: "The phase tap changer table for this phase tap changer."
+        slot_uri: cim:PhaseTapChangerTabular.PhaseTapChangerTable
+        range: PhaseTapChangerTable
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  PhotoVoltaicUnit:
+    description: "A photovoltaic device or an aggregation of such devices."
+    is_a: PowerElectronicsUnit
+    class_uri: cim:PhotoVoltaicUnit
+    attributes: 
+  PostLineSensor:
+    description: "A sensor used mainly in overhead distribution networks as the source of both current and voltage measurements."
+    is_a: Sensor
+    class_uri: cim:PostLineSensor
+    attributes: 
+  PotentialTransformer:
+    description: "Instrument transformer (also known as Voltage Transformer) used to measure electrical qualities of the circuit that is being protected and/or monitored. Typically used as voltage transducer for the purpose of metering, protection, or sometimes auxiliary substation supply. A typical secondary voltage rating would be 120V."
+    is_a: Sensor
+    class_uri: cim:PotentialTransformer
+    attributes: 
+  PowerElectronicsConnection:
+    description: "A connection to the AC network for energy production or consumption that uses power electronics rather than rotating machines."
+    is_a: RegulatingCondEq
+    class_uri: cim:PowerElectronicsConnection
+    attributes: 
+      maxQ:
+        description: "Maximum reactive power limit. This is the maximum (nameplate) limit for the unit."
+        slot_uri: cim:PowerElectronicsConnection.maxQ
+        range: ReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minQ:
+        description: "Minimum reactive power limit for the unit. This is the minimum (nameplate) limit for the unit."
+        slot_uri: cim:PowerElectronicsConnection.minQ
+        range: ReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedS:
+        description: "Nameplate apparent power rating for the unit.The attribute shall have a positive value."
+        slot_uri: cim:PowerElectronicsConnection.ratedS
+        range: ApparentPower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedU:
+        description: "Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.The attribute shall be a positive value."
+        slot_uri: cim:PowerElectronicsConnection.ratedU
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      PowerElectronicsUnit:
+        description: "An AC network connection may have several power electronics units connecting through it."
+        slot_uri: cim:PowerElectronicsConnection.PowerElectronicsUnit
+        range: PowerElectronicsUnit
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  PowerElectronicsUnit:
+    description: "A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines."
+    is_a: Equipment
+    abstract: true
+    class_uri: cim:PowerElectronicsUnit
+    attributes: 
+      maxP:
+        description: "Maximum active power limit. This is the maximum (nameplate) limit for the unit."
+        slot_uri: cim:PowerElectronicsUnit.maxP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minP:
+        description: "Minimum active power limit. This is the minimum (nameplate) limit for the unit."
+        slot_uri: cim:PowerElectronicsUnit.minP
+        range: ActivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  PowerElectronicsWindUnit:
+    description: "A wind generating unit that connects to the AC network with power electronics rather than rotating machines or an aggregation of such units."
+    is_a: PowerElectronicsUnit
+    class_uri: cim:PowerElectronicsWindUnit
+    attributes: 
+  PowerSystemResource:
+    description: "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:PowerSystemResource
+    attributes: 
+  PowerTransformer:
+    description: "An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).A power transformer may be composed of separate transformer tanks that need not be identical.A power transformer can be modelled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead."
+    comments: "A PowerTransformer can be either two winding or three winding.-  A two winding transformer has two PowerTransformerEnds and two associated Terminals.-  A three winding transformer has three PowerTransformerEnds and three associated Terminals."
+    is_a: Equipment
+    class_uri: cim:PowerTransformer
+    attributes: 
+  PowerTransformerEnd:
+    description: "A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.The impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows.1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.2) for a three Terminal PowerTransformer the three PowerTransformerEnds represent a star equivalent with each leg in the star represented by r, r0, x, and x0 values.3) For a three Terminal transformer each PowerTransformerEnd shall have g, g0, b and b0 values corresponding to the no load losses distributed on the three PowerTransformerEnds. The total no load loss shunt impedances may also be placed at one of the PowerTransformerEnds, preferably the end numbered 1, having the shunt values on end 1.  This is the preferred way.4) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.Each PowerTransformerEnd must be contained by a PowerTransformer. Because a PowerTransformerEnd (or any other object) can not be contained by more than one parent, a PowerTransformerEnd can not have an association to an EquipmentContainer (Substation, VoltageLevel, etc)."
+    comments: "- Each PowerTransformerEnd must be contained by a PowerTransformer. Because a PowerTransformerEnd (or any other object) can not be contained by more than one parent, a PowerTransformerEnd can not have an association to an EquipmentContainer (Substation, VoltageLevel, etc)."
+    is_a: TransformerEnd
+    class_uri: cim:PowerTransformerEnd
+    attributes: 
+      b:
+        description: "Magnetizing branch susceptance (B mag).  The value can be positive or negative."
+        slot_uri: cim:PowerTransformerEnd.b
+        range: Susceptance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      g:
+        description: "Magnetizing branch conductance."
+        slot_uri: cim:PowerTransformerEnd.g
+        range: Conductance
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      r:
+        description: "Resistance (star-model) of the transformer end.The attribute shall be equal to or greater than zero for non-equivalent transformers."
+        slot_uri: cim:PowerTransformerEnd.r
+        range: Resistance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ratedS:
+        description: "Normal apparent power rating.The attribute shall be a positive value. For a two-winding transformer the values for the high and low voltage sides shall be identical."
+        slot_uri: cim:PowerTransformerEnd.ratedS
+        range: ApparentPower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedU:
+        description: "Rated voltage: phase-phase for three-phase windings, and either phase-phase or phase-neutral for single-phase windings.A high voltage side, as given by TransformerEnd.endNumber, shall have a ratedU that is greater than or equal to ratedU for the lower voltage sides.The attribute shall be a positive value."
+        slot_uri: cim:PowerTransformerEnd.ratedU
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      x:
+        description: "Positive sequence series reactance (star-model) of the transformer end."
+        slot_uri: cim:PowerTransformerEnd.x
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      PowerTransformer:
+        description: "The power transformer of this power transformer end."
+        slot_uri: cim:PowerTransformerEnd.PowerTransformer
+        range: PowerTransformer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ProtectedSwitch:
+    description: "A ProtectedSwitch is a switching device that can be operated by ProtectionEquipment."
+    is_a: Switch
+    abstract: true
+    class_uri: cim:ProtectedSwitch
+    attributes: 
+  RatioTapChanger:
+    description: "A tap changer that changes the voltage ratio impacting the voltage magnitude but not the phase angle across the transformer.Angle sign convention (general): Positive value indicates a positive phase shift from the winding where the tap is located to the other winding (for a two-winding transformer)."
+    comments: "-  The attribute TapChanger.ltcflag specifies whether or not a TapChanger has load tap changing capabilities.  If the ltcFlag is true,  the attribute stepVoltageIncrement is required."
+    is_a: TapChanger
+    class_uri: cim:RatioTapChanger
+    attributes: 
+      stepVoltageIncrement:
+        description: "Tap step increment, in per cent of rated voltage of the power transformer end, per step position.When the increment is negative, the voltage decreases when the tap step increases."
+        slot_uri: cim:RatioTapChanger.stepVoltageIncrement
+        range: PerCent
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      RatioTapChangerTable:
+        description: "The tap ratio table for this ratio  tap changer."
+        slot_uri: cim:RatioTapChanger.RatioTapChangerTable
+        range: RatioTapChangerTable
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      TransformerEnd:
+        description: "Transformer end to which this ratio tap changer belongs."
+        slot_uri: cim:RatioTapChanger.TransformerEnd
+        range: TransformerEnd
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  RatioTapChangerTable:
+    description: "Describes a curve for how the voltage magnitude and impedance varies with the tap step."
+    is_a: IdentifiedObject
+    class_uri: cim:RatioTapChangerTable
+    attributes: 
+  RatioTapChangerTablePoint:
+    description: "Describes each tap step in the ratio tap changer tabular curve."
+    is_a: TapChangerTablePoint
+    class_uri: cim:RatioTapChangerTablePoint
+    attributes: 
+      RatioTapChangerTable:
+        description: "Table of this point."
+        slot_uri: cim:RatioTapChangerTablePoint.RatioTapChangerTable
+        range: RatioTapChangerTable
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ReactiveCapabilityCurve:
+    description: "Reactive power rating envelope versus the synchronous machine's active power, in both the generating and motoring modes. For each active power value there is a corresponding high and low reactive power limit  value. Typically there will be a separate curve for each coolant condition, such as hydrogen pressure.  The Y1 axis values represent reactive minimum and the Y2 axis values represent reactive maximum."
+    comments: "-  ReactiveCapabilityCurves are not required if the reactive power limits of the SynchronousMachine do not vary with real power output.-  By convention, the Y1 axis values represent reactive minimum and the Y2 axis values represent reactive maximum.-  Because the x value will always be specified in MW and the y values will always be specified in MVAr, the xMultiplier, y1Multiplier, and y2Multiplier attributes do not need to be supplied."
+    is_a: Curve
+    class_uri: cim:ReactiveCapabilityCurve
+    attributes: 
+  RegularIntervalSchedule:
+    description: "The schedule has time points where the time between them is constant."
+    is_a: BasicIntervalSchedule
+    abstract: true
+    class_uri: cim:RegularIntervalSchedule
+    attributes: 
+      endTime:
+        description: "The time for the last time point.  The value can be a time of day, not a specific date."
+        slot_uri: cim:RegularIntervalSchedule.endTime
+        range: datetime
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      timeStep:
+        description: "The time between each pair of subsequent regular time points in sequence order."
+        slot_uri: cim:RegularIntervalSchedule.timeStep
+        range: Seconds
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  RegularTimePoint:
+    description: "Time point for a schedule where the time between the consecutive points is constant."
+    class_uri: cim:RegularTimePoint
+    attributes: 
+      sequenceNumber:
+        description: "The position of the regular time point in the sequence. Note that time points don't have to be sequential, i.e. time points may be omitted. The actual time for a RegularTimePoint is computed by multiplying the associated regular interval schedule's time step with the regular time point sequence number and adding the associated schedules start time. To specify values for the start time, use sequence number 0.  The sequence number cannot be negative."
+        slot_uri: cim:RegularTimePoint.sequenceNumber
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      value1:
+        description: "The first value at the time. The meaning of the value is defined by the derived type of the associated schedule."
+        slot_uri: cim:RegularTimePoint.value1
+        range: float
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      value2:
+        description: "The second value at the time. The meaning of the value is defined by the derived type of the associated schedule."
+        slot_uri: cim:RegularTimePoint.value2
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      IntervalSchedule:
+        description: "Regular interval schedule containing this time point."
+        slot_uri: cim:RegularTimePoint.IntervalSchedule
+        range: RegularIntervalSchedule
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  RegulatingCondEq:
+    description: "A type of conducting equipment that can regulate a quantity (i.e. voltage or flow) at a specific point in the network."
+    is_a: EnergyConnection
+    abstract: true
+    class_uri: cim:RegulatingCondEq
+    attributes: 
+      RegulatingControl:
+        description: "The regulating control scheme in which this equipment participates."
+        slot_uri: cim:RegulatingCondEq.RegulatingControl
+        range: RegulatingControl
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  RegulatingControl:
+    description: "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow.Remote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.The specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.For flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.The attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.The attributes minAllowedTargetValue and maxAllowedTargetValue are not related to the attribute targetDeadband and thus they are not treated as an alternative of the targetDeadband. They are needed due to limitations in the local substation controller. The attribute targetDeadband is used to prevent the power flow from move the tap position in circles (hunting) that is to be used regardless of the attributes minAllowedTargetValue and maxAllowedTargetValue."
+    is_a: PowerSystemResource
+    class_uri: cim:RegulatingControl
+    attributes: 
+      Terminal:
+        description: "The terminal associated with this regulating control.  The terminal is associated instead of a node, since the terminal could connect into either a topological node or a connectivity node.  Sometimes it is useful to model regulation at a terminal of a bus bar object."
+        slot_uri: cim:RegulatingControl.Terminal
+        range: Terminal
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  RegulationSchedule:
+    description: "A pre-established pattern over time for a controlled variable, e.g., busbar voltage."
+    is_a: SeasonDayTypeSchedule
+    class_uri: cim:RegulationSchedule
+    attributes: 
+      RegulatingControl:
+        description: "Regulating controls that have this schedule."
+        slot_uri: cim:RegulationSchedule.RegulatingControl
+        range: RegulatingControl
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ReportingGroup:
+    description: "A reporting group is used for various ad-hoc groupings used for reporting."
+    is_a: IdentifiedObject
+    class_uri: cim:ReportingGroup
+    attributes: 
+  RotatingMachine:
+    description: "A rotating machine which may be used as a generator or motor."
+    is_a: RegulatingCondEq
+    abstract: true
+    class_uri: cim:RotatingMachine
+    attributes: 
+      ratedPowerFactor:
+        description: "Power factor (nameplate data). It is primarily used for short circuit data exchange according to IEC 60909. The attribute cannot be a negative value."
+        slot_uri: cim:RotatingMachine.ratedPowerFactor
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedS:
+        description: "Nameplate apparent power rating for the unit.The attribute shall have a positive value."
+        slot_uri: cim:RotatingMachine.ratedS
+        range: ApparentPower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratedU:
+        description: "Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.The attribute shall be a positive value."
+        slot_uri: cim:RotatingMachine.ratedU
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      GeneratingUnit:
+        description: "A synchronous machine may operate as a generator and as such becomes a member of a generating unit."
+        slot_uri: cim:RotatingMachine.GeneratingUnit
+        range: GeneratingUnit
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  Season:
+    description: "A specified time period of the year."
+    is_a: IdentifiedObject
+    class_uri: cim:Season
+    attributes: 
+      endDate:
+        description: "Date season ends."
+        slot_uri: cim:Season.endDate
+        range: MonthDay
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      startDate:
+        description: "Date season starts."
+        slot_uri: cim:Season.startDate
+        range: MonthDay
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SeasonDayTypeSchedule:
+    description: "A time schedule covering a 24 hour period, with curve data for a specific type of season and day."
+    is_a: RegularIntervalSchedule
+    abstract: true
+    class_uri: cim:SeasonDayTypeSchedule
+    attributes: 
+      DayType:
+        description: "DayType for the Schedule."
+        slot_uri: cim:SeasonDayTypeSchedule.DayType
+        range: DayType
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Season:
+        description: "Season for the Schedule."
+        slot_uri: cim:SeasonDayTypeSchedule.Season
+        range: Season
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Sensor:
+    description: "This class describe devices that transform a measured quantity into signals that can be presented at displays, used in control or be recorded."
+    is_a: AuxiliaryEquipment
+    abstract: true
+    class_uri: cim:Sensor
+    attributes: 
+  SeriesCompensator:
+    description: "A Series Compensator is a series capacitor or reactor or an AC transmission line without charging susceptance.  It is a two terminal device."
+    is_a: ConductingEquipment
+    class_uri: cim:SeriesCompensator
+    attributes: 
+      r:
+        description: "Positive sequence resistance."
+        slot_uri: cim:SeriesCompensator.r
+        range: Resistance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      x:
+        description: "Positive sequence reactance."
+        slot_uri: cim:SeriesCompensator.x
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  ShuntCompensator:
+    description: "A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor. A negative value for bPerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied."
+    comments: "-  If the reactivePerSection attribute is positive, the Compensator is a capacitor.  If the value is negative, the Compensator is a reactor.-  Attributes b0PerSection and g0PerSection are not required."
+    is_a: RegulatingCondEq
+    abstract: true
+    class_uri: cim:ShuntCompensator
+    attributes: 
+      aVRDelay:
+        description: "An automatic voltage regulation delay (AVRDelay) which is the time delay from a change in voltage to when the capacitor is allowed to change state. This filters out temporary changes in voltage."
+        slot_uri: cim:ShuntCompensator.aVRDelay
+        range: Seconds
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      grounded:
+        description: "Used for Yn and Zn connections. True if the neutral is solidly grounded."
+        slot_uri: cim:ShuntCompensator.grounded
+        range: boolean
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      maximumSections:
+        description: "The maximum number of sections that may be switched in."
+        slot_uri: cim:ShuntCompensator.maximumSections
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      nomU:
+        description: "The voltage at which the nominal reactive power may be calculated. This should normally be within 10% of the voltage at which the capacitor is connected to the network."
+        slot_uri: cim:ShuntCompensator.nomU
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      normalSections:
+        description: "The normal number of sections switched in. The value shall be between zero and ShuntCompensator.maximumSections."
+        slot_uri: cim:ShuntCompensator.normalSections
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      voltageSensitivity:
+        description: "Voltage sensitivity required for the device to regulate the bus voltage, in voltage/reactive power."
+        slot_uri: cim:ShuntCompensator.voltageSensitivity
+        range: VoltagePerReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  SolarGeneratingUnit:
+    description: "A solar thermal generating unit, connected to the grid by means of a rotating machine.  This class does not represent photovoltaic (PV) generation."
+    is_a: GeneratingUnit
+    class_uri: cim:SolarGeneratingUnit
+    attributes: 
+  StaticVarCompensator:
+    description: "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.The SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero."
+    comments: "-  The value of the inductiveRating attribute must always be negative.-  The value of the capactiveRating attribute must always be positive."
+    is_a: RegulatingCondEq
+    class_uri: cim:StaticVarCompensator
+    attributes: 
+      capacitiveRating:
+        description: "Capacitive reactance at maximum capacitive reactive power.  Shall always be positive."
+        slot_uri: cim:StaticVarCompensator.capacitiveRating
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      inductiveRating:
+        description: "Inductive reactance at maximum inductive reactive power.  Shall always be negative."
+        slot_uri: cim:StaticVarCompensator.inductiveRating
+        range: Reactance
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      slope:
+        description: "The characteristics slope of an SVC defines how the reactive power output changes in proportion to the difference between the regulated bus voltage and the voltage setpoint.The attribute shall be a positive value or zero."
+        slot_uri: cim:StaticVarCompensator.slope
+        range: VoltagePerReactivePower
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      voltageSetPoint:
+        description: "The reactive power output of the SVC is proportional to the difference between the voltage at the regulated bus and the voltage setpoint.  When the regulated bus voltage is equal to the voltage setpoint, the reactive power output is zero."
+        slot_uri: cim:StaticVarCompensator.voltageSetPoint
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  StationSupply:
+    description: "Station supply with load derived from the station output."
+    comments: "-  See EnergyConsumer for specific notes about inherited attributes."
+    is_a: EnergyConsumer
+    class_uri: cim:StationSupply
+    attributes: 
+  SubGeographicalRegion:
+    description: "A subset of a geographical region of a power system network model."
+    is_a: IdentifiedObject
+    class_uri: cim:SubGeographicalRegion
+    attributes: 
+      Region:
+        description: "The geographical region which this sub-geographical region is within."
+        slot_uri: cim:SubGeographicalRegion.Region
+        range: GeographicalRegion
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SubLoadArea:
+    description: "The class is the second level in a hierarchical structure for grouping of loads for the purpose of load flow load scaling."
+    is_a: EnergyArea
+    class_uri: cim:SubLoadArea
+    attributes: 
+      LoadArea:
+        description: "The LoadArea where the SubLoadArea belongs."
+        slot_uri: cim:SubLoadArea.LoadArea
+        range: LoadArea
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Substation:
+    description: "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics."
+    is_a: EquipmentContainer
+    class_uri: cim:Substation
+    attributes: 
+      Region:
+        description: "The SubGeographicalRegion containing the substation."
+        slot_uri: cim:Substation.Region
+        range: SubGeographicalRegion
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SurgeArrester:
+    description: "Shunt device, installed on the network, usually in the proximity of electrical equipment in order to protect the said equipment against transient voltage transients caused by lightning or switching activity."
+    is_a: AuxiliaryEquipment
+    class_uri: cim:SurgeArrester
+    attributes: 
+  Switch:
+    description: "A generic device designed to close, or open, or both, one or more electric circuits.  All switches are two terminal devices including grounding switches. The ACDCTerminal.connected at the two sides of the switch shall not be considered for assessing switch connectivity, i.e. only Switch.open, .normalOpen and .locked are relevant."
+    is_a: ConductingEquipment
+    class_uri: cim:Switch
+    attributes: 
+      normalOpen:
+        description: "The attribute is used in cases when no Measurement for the status value is present. If the Switch has a status measurement the Discrete.normalValue is expected to match with the Switch.normalOpen."
+        slot_uri: cim:Switch.normalOpen
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ratedCurrent:
+        description: "The maximum continuous current carrying capacity in amps governed by the device material and construction.The attribute shall be a positive value."
+        slot_uri: cim:Switch.ratedCurrent
+        range: CurrentFlow
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      retained:
+        description: "Branch is retained in the topological solution.  The flow through retained switches will normally be calculated in power flow."
+        slot_uri: cim:Switch.retained
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SwitchSchedule:
+    description: "A schedule of switch positions.  If RegularTimePoint.value1 is 0, the switch is open.  If 1, the switch is closed."
+    is_a: SeasonDayTypeSchedule
+    class_uri: cim:SwitchSchedule
+    attributes: 
+      Switch:
+        description: "A SwitchSchedule is associated with a Switch."
+        slot_uri: cim:SwitchSchedule.Switch
+        range: Switch
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  SynchronousMachine:
+    description: "An electromechanical device that operates with shaft rotating synchronously with the network. It is a single machine operating either as a generator or synchronous condenser or pump."
+    comments: "-  If a SynchronousMachine is not associated with a ReactiveCapabilityCurve, then the minQ and maxQ attributes will be used.-  If a ReactiveCapabilityCurve is supplied, then the minQ and maxQ attributes are not required.-  If a synchronous condenser is being modeled so that there is no capability for real power output, the SynchronousMachine is not required to be associated with a GeneratingUnit.  In this case, the type and operatingMode attributes must both be set to condenser."
+    is_a: RotatingMachine
+    class_uri: cim:SynchronousMachine
+    attributes: 
+      maxQ:
+        description: "Maximum reactive power limit. This is the maximum (nameplate) limit for the unit."
+        slot_uri: cim:SynchronousMachine.maxQ
+        range: ReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      minQ:
+        description: "Minimum reactive power limit for the unit."
+        slot_uri: cim:SynchronousMachine.minQ
+        range: ReactivePower
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      qPercent:
+        description: "Part of the coordinated reactive control that comes from this machine. The attribute is used as a participation factor not necessarily summing up to 100% for the participating devices in the control."
+        slot_uri: cim:SynchronousMachine.qPercent
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      referencePriority:
+        description: "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on."
+        slot_uri: cim:SynchronousMachine.referencePriority
+        range: integer
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      InitialReactiveCapabilityCurve:
+        description: "The default reactive capability curve for use by a synchronous machine."
+        slot_uri: cim:SynchronousMachine.InitialReactiveCapabilityCurve
+        range: ReactiveCapabilityCurve
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  TapChanger:
+    description: "Mechanism for changing transformer winding tap positions."
+    comments: "-  The attribute ltcflag specifies whether or not a TapChanger has load tap changing capabilities.  If the ltcFlag is true, the attributes highStep, lowStep, neutralStep, and normalStep are all required."
+    is_a: PowerSystemResource
+    abstract: true
+    class_uri: cim:TapChanger
+    attributes: 
+      highStep:
+        description: "Highest possible tap step position, advance from neutral.The attribute shall be greater than lowStep."
+        slot_uri: cim:TapChanger.highStep
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      lowStep:
+        description: "Lowest possible tap step position, retard from neutral."
+        slot_uri: cim:TapChanger.lowStep
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ltcFlag:
+        description: "Specifies whether or not a TapChanger has load tap changing capabilities."
+        slot_uri: cim:TapChanger.ltcFlag
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      neutralStep:
+        description: "The neutral tap step position for this winding.The attribute shall be equal to or greater than lowStep and equal or less than highStep.It is the step position where the voltage is neutralU when the other terminals of the transformer are at the ratedU.  If there are other tap changers on the transformer those taps are kept constant at their neutralStep."
+        slot_uri: cim:TapChanger.neutralStep
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      neutralU:
+        description: "Voltage at which the winding operates at the neutral tap setting. It is the voltage at the terminal of the PowerTransformerEnd associated with the tap changer when all tap changers on the transformer are at their neutralStep position.  Normally neutralU of the tap changer is the same as ratedU of the PowerTransformerEnd, but it can differ in special cases such as when the tapping mechanism is separate from the winding more common on lower voltage transformers.This attribute is not relevant for PhaseTapChangerAsymmetrical, PhaseTapChangerSymmetrical and PhaseTapChangerLinear."
+        slot_uri: cim:TapChanger.neutralU
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      normalStep:
+        description: "The tap step position used in normal network operation for this winding. For a Fixed tap changer indicates the current physical tap setting.The attribute shall be equal to or greater than lowStep and equal to or less than highStep."
+        slot_uri: cim:TapChanger.normalStep
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      TapChangerControl:
+        description: "The regulating control scheme in which this tap changer participates."
+        slot_uri: cim:TapChanger.TapChangerControl
+        range: TapChangerControl
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  TapChangerControl:
+    description: "Describes behaviour specific to tap changers, e.g. how the voltage at the end of a line varies with the load level and compensation of the voltage drop by tap adjustment."
+    is_a: RegulatingControl
+    class_uri: cim:TapChangerControl
+    attributes: 
+  TapChangerTablePoint:
+    description: "Describes each tap step in the tabular curve."
+    abstract: true
+    class_uri: cim:TapChangerTablePoint
+    attributes: 
+      b:
+        description: "The magnetizing branch susceptance deviation as a percentage of nominal value. The actual susceptance is calculated as follows:calculated magnetizing susceptance = b(nominal) * (1 + b(from this class)/100).   The b(nominal) is defined as the static magnetizing susceptance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form."
+        slot_uri: cim:TapChangerTablePoint.b
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      g:
+        description: "The magnetizing branch conductance deviation as a percentage of nominal value. The actual conductance is calculated as follows:calculated magnetizing conductance = g(nominal) * (1 + g(from this class)/100).   The g(nominal) is defined as the static magnetizing conductance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form."
+        slot_uri: cim:TapChangerTablePoint.g
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      r:
+        description: "The resistance deviation as a percentage of nominal value. The actual reactance is calculated as follows:calculated resistance = r(nominal) * (1 + r(from this class)/100).   The r(nominal) is defined as the static resistance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form."
+        slot_uri: cim:TapChangerTablePoint.r
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ratio:
+        description: "The voltage at the tap step divided by rated voltage of the transformer end having the tap changer. Hence this is a value close to one.For example, if the ratio at step 1 is 1.01, and the rated voltage of the transformer end is 110kV, then the voltage obtained by setting the tap changer to step 1 to is 111.1kV."
+        slot_uri: cim:TapChangerTablePoint.ratio
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      step:
+        description: "The tap step."
+        slot_uri: cim:TapChangerTablePoint.step
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      x:
+        description: "The series reactance deviation as a percentage of nominal value. The actual reactance is calculated as follows:calculated reactance = x(nominal) * (1 + x(from this class)/100).   The x(nominal) is defined as the static series reactance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form."
+        slot_uri: cim:TapChangerTablePoint.x
+        range: PerCent
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  TapSchedule:
+    description: "A pre-established pattern over time for a tap step."
+    is_a: SeasonDayTypeSchedule
+    class_uri: cim:TapSchedule
+    attributes: 
+      TapChanger:
+        description: "A TapSchedule is associated with a TapChanger."
+        slot_uri: cim:TapSchedule.TapChanger
+        range: TapChanger
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  Terminal:
+    description: "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."
+    comments: "The attribute Terminal.phases is not specified the Terminal will be understood to be three phase (ABC or ABCN).  Except for terminals of grounding classes (specilizations of EarthFaultCompensator, GroundDisconnector, GroundSwitch, and Ground) which will be assumed to be N."
+    is_a: ACDCTerminal
+    class_uri: cim:Terminal
+    attributes: 
+      phases:
+        description: "Represents the normal network phasing condition. If the attribute is missing, three phases (ABC) shall be assumed, except for terminals of grounding classes (specializations of EarthFaultCompensator, GroundDisconnector, and Ground) which will be assumed to be N. Therefore, phase code ABCN is explicitly declared when needed, e.g. for star point grounding equipment.The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent."
+        slot_uri: cim:Terminal.phases
+        range: PhaseCode
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      ConductingEquipment:
+        description: "The conducting equipment of the terminal.  Conducting equipment have  terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes."
+        slot_uri: cim:Terminal.ConductingEquipment
+        range: ConductingEquipment
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ConnectivityNode:
+        description: "The connectivity node to which this terminal connects with zero impedance."
+        slot_uri: cim:Terminal.ConnectivityNode
+        range: ConnectivityNode
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  ThermalGeneratingUnit:
+    description: "A generating unit whose prime mover could be a steam turbine, combustion turbine, or diesel engine."
+    is_a: GeneratingUnit
+    class_uri: cim:ThermalGeneratingUnit
+    attributes: 
+      CAESPlant:
+        description: "A thermal generating unit may be a member of a compressed air energy storage plant."
+        slot_uri: cim:ThermalGeneratingUnit.CAESPlant
+        range: CAESPlant
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      CogenerationPlant:
+        description: "A thermal generating unit may be a member of a cogeneration plant."
+        slot_uri: cim:ThermalGeneratingUnit.CogenerationPlant
+        range: CogenerationPlant
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      CombinedCyclePlant:
+        description: "A thermal generating unit may be a member of a combined cycle plant."
+        slot_uri: cim:ThermalGeneratingUnit.CombinedCyclePlant
+        range: CombinedCyclePlant
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  TieFlow:
+    description: "Defines the structure (in terms of location and direction) of the net interchange constraint for a control area. This constraint may be used by either AGC or power flow."
+    is_a: IdentifiedObject
+    class_uri: cim:TieFlow
+    attributes: 
+      positiveFlowIn:
+        description: "Specifies the sign of the tie flow associated with a control area. True if positive flow into the terminal (load convention) is also positive flow into the control area.  See the description of ControlArea for further explanation of how TieFlow.positiveFlowIn is used."
+        slot_uri: cim:TieFlow.positiveFlowIn
+        range: boolean
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      ControlArea:
+        description: "The control area of the tie flows."
+        slot_uri: cim:TieFlow.ControlArea
+        range: ControlArea
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Terminal:
+        description: "The terminal to which this tie flow belongs."
+        slot_uri: cim:TieFlow.Terminal
+        range: Terminal
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  TransformerEnd:
+    description: "A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment."
+    comments: "- The attributes rground and xground are not required."
+    is_a: IdentifiedObject
+    abstract: true
+    class_uri: cim:TransformerEnd
+    attributes: 
+      endNumber:
+        description: "Number for this transformer end, corresponding to the end's order in the power transformer vector group or phase angle clock number.  Highest voltage winding should be 1.  Each end within a power transformer should have a unique subsequent end number.   Note the transformer end number need not match the terminal sequence number."
+        slot_uri: cim:TransformerEnd.endNumber
+        range: integer
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      BaseVoltage:
+        description: "Base voltage of the transformer end.  This is essential for PU calculation."
+        slot_uri: cim:TransformerEnd.BaseVoltage
+        range: BaseVoltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Terminal:
+        description: "Terminal of the power transformer to which this transformer end belongs."
+        slot_uri: cim:TransformerEnd.Terminal
+        range: Terminal
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  VoltageLevel:
+    description: "A collection of equipment at one common system voltage forming a switchgear. The equipment typically consists of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these."
+    comments: "-  The attributes highVoltageLimit and lowVoltageLimit are not required."
+    is_a: EquipmentContainer
+    class_uri: cim:VoltageLevel
+    attributes: 
+      highVoltageLimit:
+        description: "The bus bar's high voltage limit.The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with lowVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present."
+        slot_uri: cim:VoltageLevel.highVoltageLimit
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      lowVoltageLimit:
+        description: "The bus bar's low voltage limit.The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with highVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present."
+        slot_uri: cim:VoltageLevel.lowVoltageLimit
+        range: Voltage
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      BaseVoltage:
+        description: "The base voltage used for all equipment within the voltage level."
+        slot_uri: cim:VoltageLevel.BaseVoltage
+        range: BaseVoltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+      Substation:
+        description: "The substation of the voltage level."
+        slot_uri: cim:VoltageLevel.Substation
+        range: Substation
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  VoltageLimit:
+    description: "Operational limit applied to voltage.The use of operational VoltageLimit is preferred instead of limits defined at VoltageLevel. The operational VoltageLimits are used, if present."
+    is_a: OperationalLimit
+    class_uri: cim:VoltageLimit
+    attributes: 
+      normalValue:
+        description: "The normal limit on voltage. High or low limit nature of the limit depends upon the properties of the operational limit type. The attribute shall be a positive value or zero."
+        slot_uri: cim:VoltageLimit.normalValue
+        range: Voltage
+        minimum_cardinality: 1
+        maximum_cardinality: 1
+  VsCapabilityCurve:
+    description: "The P-Q capability curve for a voltage source converter, with P on X-axis and Qmin and Qmax on Y1-axis and Y2-axis."
+    is_a: Curve
+    class_uri: cim:VsCapabilityCurve
+    attributes: 
+  VsConverter:
+    description: "DC side of the voltage source converter (VSC)."
+    is_a: ACDCConverter
+    class_uri: cim:VsConverter
+    attributes: 
+      maxModulationIndex:
+        description: "The maximum quotient between the AC converter voltage (Uc) and DC voltage (Ud). A factor typically less than 1. It is converter’s configuration data used in power flow."
+        slot_uri: cim:VsConverter.maxModulationIndex
+        range: float
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+      CapabilityCurve:
+        description: "Capability curve of this converter."
+        slot_uri: cim:VsConverter.CapabilityCurve
+        range: VsCapabilityCurve
+        minimum_cardinality: 0
+        maximum_cardinality: 1
+  WaveTrap:
+    description: "Line traps are devices that impede high frequency power line carrier signals yet present a negligible impedance at the main power frequency."
+    is_a: AuxiliaryEquipment
+    class_uri: cim:WaveTrap
+    attributes: 
+  WindGeneratingUnit:
+    description: "A wind driven generating unit, connected to the grid by means of a rotating machine.  May be used to represent a single turbine or an aggregation."
+    is_a: GeneratingUnit
+    class_uri: cim:WindGeneratingUnit
+    attributes: 
+types:
+  MonthDay:
+    uri: xsd:string
+    base: str
+    description: "MonthDay format as --mm-dd, which conforms with XSD data type gMonthDay."
+    annotations:
+      cim_data_type: true
+      uri: cim:MonthDay
+  Susceptance:
+    uri: xsd:float
+    base: float
+    description: "Imaginary part of admittance."
+    annotations:
+      cim_data_type: true
+      uri: cim:Susceptance
+  ReactivePower:
+    uri: xsd:float
+    base: float
+    description: "Product of RMS value of the voltage and the RMS value of the quadrature component of the current."
+    annotations:
+      cim_data_type: true
+      uri: cim:ReactivePower
+  Capacitance:
+    uri: xsd:float
+    base: float
+    description: "Capacitive part of reactance (imaginary part of impedance), at rated frequency."
+    annotations:
+      cim_data_type: true
+      uri: cim:Capacitance
+  Seconds:
+    uri: xsd:float
+    base: float
+    description: "Time, in seconds."
+    annotations:
+      cim_data_type: true
+      uri: cim:Seconds
+  Voltage:
+    uri: xsd:float
+    base: float
+    description: "Electrical voltage, can be both AC and DC."
+    annotations:
+      cim_data_type: true
+      uri: cim:Voltage
+  ActivePowerPerFrequency:
+    uri: xsd:float
+    base: float
+    description: "Active power variation with frequency."
+    annotations:
+      cim_data_type: true
+      uri: cim:ActivePowerPerFrequency
+  Money:
+    uri: xsd:decimal
+    base: Decimal
+    description: "Amount of money."
+    annotations:
+      cim_data_type: true
+      uri: cim:Money
+  Inductance:
+    uri: xsd:float
+    base: float
+    description: "Inductive part of reactance (imaginary part of impedance), at rated frequency."
+    annotations:
+      cim_data_type: true
+      uri: cim:Inductance
+  Frequency:
+    uri: xsd:float
+    base: float
+    description: "Cycles per second."
+    annotations:
+      cim_data_type: true
+      uri: cim:Frequency
+  ActivePowerPerCurrentFlow:
+    uri: xsd:float
+    base: float
+    description: "Active power variation with current flow."
+    annotations:
+      cim_data_type: true
+      uri: cim:ActivePowerPerCurrentFlow
+  VoltagePerReactivePower:
+    uri: xsd:float
+    base: float
+    description: "Voltage variation with reactive power."
+    annotations:
+      cim_data_type: true
+      uri: cim:VoltagePerReactivePower
+  ActivePower:
+    uri: xsd:float
+    base: float
+    description: "Product of RMS value of the voltage and the RMS value of the in-phase component of the current."
+    annotations:
+      cim_data_type: true
+      uri: cim:ActivePower
+  Length:
+    uri: xsd:float
+    base: float
+    description: "Unit of length. It shall be a positive value or zero."
+    annotations:
+      cim_data_type: true
+      uri: cim:Length
+  Reactance:
+    uri: xsd:float
+    base: float
+    description: "Reactance (imaginary part of impedance), at rated frequency."
+    annotations:
+      cim_data_type: true
+      uri: cim:Reactance
+  AngleDegrees:
+    uri: xsd:float
+    base: float
+    description: "Measurement of angle in degrees."
+    annotations:
+      cim_data_type: true
+      uri: cim:AngleDegrees
+  ApparentPower:
+    uri: xsd:float
+    base: float
+    description: "Product of the RMS value of the voltage and the RMS value of the current."
+    annotations:
+      cim_data_type: true
+      uri: cim:ApparentPower
+  PerCent:
+    uri: xsd:float
+    base: float
+    description: "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base."
+    annotations:
+      cim_data_type: true
+      uri: cim:PerCent
+  RotationSpeed:
+    uri: xsd:float
+    base: float
+    description: "Number of revolutions per second."
+    annotations:
+      cim_data_type: true
+      uri: cim:RotationSpeed
+  RealEnergy:
+    uri: xsd:float
+    base: float
+    description: "Real electrical energy."
+    annotations:
+      cim_data_type: true
+      uri: cim:RealEnergy
+  CurrentFlow:
+    uri: xsd:float
+    base: float
+    description: "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC."
+    annotations:
+      cim_data_type: true
+      uri: cim:CurrentFlow
+  Conductance:
+    uri: xsd:float
+    base: float
+    description: "Factor by which voltage must be multiplied to give corresponding power lost from a circuit. Real part of admittance."
+    annotations:
+      cim_data_type: true
+      uri: cim:Conductance
+  Resistance:
+    uri: xsd:float
+    base: float
+    description: "Resistance (real part of impedance)."
+    annotations:
+      cim_data_type: true
+      uri: cim:Resistance
+enums:
+  ControlAreaTypeKind:
+    description: "The type of control area."
+    enum_uri:  http://iec.ch/TC57/CIM100#ControlAreaTypeKind
+    permissible_values:
+      AGC:
+        meaning:  cim:ControlAreaTypeKind.AGC
+        description: "Used for automatic generation control."
+      Forecast:
+        meaning:  cim:ControlAreaTypeKind.Forecast
+        description: "Used for load forecast."
+      Interchange:
+        meaning:  cim:ControlAreaTypeKind.Interchange
+        description: "Used for interchange specification or control."
+  Currency:
+    description: "Monetary currencies.  ISO 4217 standard including 3-character currency code."
+    enum_uri:  http://iec.ch/TC57/CIM100#Currency
+    permissible_values:
+      AED:
+        meaning:  cim:Currency.AED
+        description: "United Arab Emirates dirham."
+      AFN:
+        meaning:  cim:Currency.AFN
+        description: "Afghan afghani."
+      ALL:
+        meaning:  cim:Currency.ALL
+        description: "Albanian lek."
+      AMD:
+        meaning:  cim:Currency.AMD
+        description: "Armenian dram."
+      ANG:
+        meaning:  cim:Currency.ANG
+        description: "Netherlands Antillean guilder."
+      AOA:
+        meaning:  cim:Currency.AOA
+        description: "Angolan kwanza."
+      ARS:
+        meaning:  cim:Currency.ARS
+        description: "Argentine peso."
+      AUD:
+        meaning:  cim:Currency.AUD
+        description: "Australian dollar."
+      AWG:
+        meaning:  cim:Currency.AWG
+        description: "Aruban florin."
+      AZN:
+        meaning:  cim:Currency.AZN
+        description: "Azerbaijani manat."
+      BAM:
+        meaning:  cim:Currency.BAM
+        description: "Bosnia and Herzegovina convertible mark."
+      BBD:
+        meaning:  cim:Currency.BBD
+        description: "Barbados dollar."
+      BDT:
+        meaning:  cim:Currency.BDT
+        description: "Bangladeshi taka."
+      BGN:
+        meaning:  cim:Currency.BGN
+        description: "Bulgarian lev."
+      BHD:
+        meaning:  cim:Currency.BHD
+        description: "Bahraini dinar."
+      BIF:
+        meaning:  cim:Currency.BIF
+        description: "Burundian franc."
+      BMD:
+        meaning:  cim:Currency.BMD
+        description: "Bermudian dollar (customarily known as Bermuda dollar)."
+      BND:
+        meaning:  cim:Currency.BND
+        description: "Brunei dollar."
+      BOB:
+        meaning:  cim:Currency.BOB
+        description: "Boliviano."
+      BOV:
+        meaning:  cim:Currency.BOV
+        description: "Bolivian Mvdol (funds code)."
+      BRL:
+        meaning:  cim:Currency.BRL
+        description: "Brazilian real."
+      BSD:
+        meaning:  cim:Currency.BSD
+        description: "Bahamian dollar."
+      BTN:
+        meaning:  cim:Currency.BTN
+        description: "Bhutanese ngultrum."
+      BWP:
+        meaning:  cim:Currency.BWP
+        description: "Botswana pula."
+      BYR:
+        meaning:  cim:Currency.BYR
+        description: "Belarusian ruble."
+      BZD:
+        meaning:  cim:Currency.BZD
+        description: "Belize dollar."
+      CAD:
+        meaning:  cim:Currency.CAD
+        description: "Canadian dollar."
+      CDF:
+        meaning:  cim:Currency.CDF
+        description: "Congolese franc."
+      CHF:
+        meaning:  cim:Currency.CHF
+        description: "Swiss franc."
+      CLF:
+        meaning:  cim:Currency.CLF
+        description: "Unidad de Fomento (funds code), Chile."
+      CLP:
+        meaning:  cim:Currency.CLP
+        description: "Chilean peso."
+      CNY:
+        meaning:  cim:Currency.CNY
+        description: "Chinese yuan."
+      COP:
+        meaning:  cim:Currency.COP
+        description: "Colombian peso."
+      COU:
+        meaning:  cim:Currency.COU
+        description: "Unidad de Valor Real."
+      CRC:
+        meaning:  cim:Currency.CRC
+        description: "Costa Rican colon."
+      CUC:
+        meaning:  cim:Currency.CUC
+        description: "Cuban convertible peso."
+      CUP:
+        meaning:  cim:Currency.CUP
+        description: "Cuban peso."
+      CVE:
+        meaning:  cim:Currency.CVE
+        description: "Cape Verde escudo."
+      CZK:
+        meaning:  cim:Currency.CZK
+        description: "Czech koruna."
+      DJF:
+        meaning:  cim:Currency.DJF
+        description: "Djiboutian franc."
+      DKK:
+        meaning:  cim:Currency.DKK
+        description: "Danish krone."
+      DOP:
+        meaning:  cim:Currency.DOP
+        description: "Dominican peso."
+      DZD:
+        meaning:  cim:Currency.DZD
+        description: "Algerian dinar."
+      EEK:
+        meaning:  cim:Currency.EEK
+        description: "Estonian kroon."
+      EGP:
+        meaning:  cim:Currency.EGP
+        description: "Egyptian pound."
+      ERN:
+        meaning:  cim:Currency.ERN
+        description: "Eritrean nakfa."
+      ETB:
+        meaning:  cim:Currency.ETB
+        description: "Ethiopian birr."
+      EUR:
+        meaning:  cim:Currency.EUR
+        description: "Euro."
+      FJD:
+        meaning:  cim:Currency.FJD
+        description: "Fiji dollar."
+      FKP:
+        meaning:  cim:Currency.FKP
+        description: "Falkland Islands pound."
+      GBP:
+        meaning:  cim:Currency.GBP
+        description: "Pound sterling."
+      GEL:
+        meaning:  cim:Currency.GEL
+        description: "Georgian lari."
+      GHS:
+        meaning:  cim:Currency.GHS
+        description: "Ghanaian cedi."
+      GIP:
+        meaning:  cim:Currency.GIP
+        description: "Gibraltar pound."
+      GMD:
+        meaning:  cim:Currency.GMD
+        description: "Gambian dalasi."
+      GNF:
+        meaning:  cim:Currency.GNF
+        description: "Guinean franc."
+      GTQ:
+        meaning:  cim:Currency.GTQ
+        description: "Guatemalan quetzal."
+      GYD:
+        meaning:  cim:Currency.GYD
+        description: "Guyanese dollar."
+      HKD:
+        meaning:  cim:Currency.HKD
+        description: "Hong Kong dollar."
+      HNL:
+        meaning:  cim:Currency.HNL
+        description: "Honduran lempira."
+      HRK:
+        meaning:  cim:Currency.HRK
+        description: "Croatian kuna."
+      HTG:
+        meaning:  cim:Currency.HTG
+        description: "Haitian gourde."
+      HUF:
+        meaning:  cim:Currency.HUF
+        description: "Hungarian forint."
+      IDR:
+        meaning:  cim:Currency.IDR
+        description: "Indonesian rupiah."
+      ILS:
+        meaning:  cim:Currency.ILS
+        description: "Israeli new sheqel."
+      INR:
+        meaning:  cim:Currency.INR
+        description: "Indian rupee."
+      IQD:
+        meaning:  cim:Currency.IQD
+        description: "Iraqi dinar."
+      IRR:
+        meaning:  cim:Currency.IRR
+        description: "Iranian rial."
+      ISK:
+        meaning:  cim:Currency.ISK
+        description: "Icelandic króna."
+      JMD:
+        meaning:  cim:Currency.JMD
+        description: "Jamaican dollar."
+      JOD:
+        meaning:  cim:Currency.JOD
+        description: "Jordanian dinar."
+      JPY:
+        meaning:  cim:Currency.JPY
+        description: "Japanese yen."
+      KES:
+        meaning:  cim:Currency.KES
+        description: "Kenyan shilling."
+      KGS:
+        meaning:  cim:Currency.KGS
+        description: "Kyrgyzstani som."
+      KHR:
+        meaning:  cim:Currency.KHR
+        description: "Cambodian riel."
+      KMF:
+        meaning:  cim:Currency.KMF
+        description: "Comoro franc."
+      KPW:
+        meaning:  cim:Currency.KPW
+        description: "North Korean won."
+      KRW:
+        meaning:  cim:Currency.KRW
+        description: "South Korean won."
+      KWD:
+        meaning:  cim:Currency.KWD
+        description: "Kuwaiti dinar."
+      KYD:
+        meaning:  cim:Currency.KYD
+        description: "Cayman Islands dollar."
+      KZT:
+        meaning:  cim:Currency.KZT
+        description: "Kazakhstani tenge."
+      LAK:
+        meaning:  cim:Currency.LAK
+        description: "Lao kip."
+      LBP:
+        meaning:  cim:Currency.LBP
+        description: "Lebanese pound."
+      LKR:
+        meaning:  cim:Currency.LKR
+        description: "Sri Lanka rupee."
+      LRD:
+        meaning:  cim:Currency.LRD
+        description: "Liberian dollar."
+      LSL:
+        meaning:  cim:Currency.LSL
+        description: "Lesotho loti."
+      LTL:
+        meaning:  cim:Currency.LTL
+        description: "Lithuanian litas."
+      LVL:
+        meaning:  cim:Currency.LVL
+        description: "Latvian lats."
+      LYD:
+        meaning:  cim:Currency.LYD
+        description: "Libyan dinar."
+      MAD:
+        meaning:  cim:Currency.MAD
+        description: "Moroccan dirham."
+      MDL:
+        meaning:  cim:Currency.MDL
+        description: "Moldovan leu."
+      MGA:
+        meaning:  cim:Currency.MGA
+        description: "Malagasy ariary."
+      MKD:
+        meaning:  cim:Currency.MKD
+        description: "Macedonian denar."
+      MMK:
+        meaning:  cim:Currency.MMK
+        description: "Myanma kyat."
+      MNT:
+        meaning:  cim:Currency.MNT
+        description: "Mongolian tugrik."
+      MOP:
+        meaning:  cim:Currency.MOP
+        description: "Macanese pataca."
+      MRO:
+        meaning:  cim:Currency.MRO
+        description: "Mauritanian ouguiya."
+      MUR:
+        meaning:  cim:Currency.MUR
+        description: "Mauritian rupee."
+      MVR:
+        meaning:  cim:Currency.MVR
+        description: "Maldivian rufiyaa."
+      MWK:
+        meaning:  cim:Currency.MWK
+        description: "Malawian kwacha."
+      MXN:
+        meaning:  cim:Currency.MXN
+        description: "Mexican peso."
+      MYR:
+        meaning:  cim:Currency.MYR
+        description: "Malaysian ringgit."
+      MZN:
+        meaning:  cim:Currency.MZN
+        description: "Mozambican metical."
+      NAD:
+        meaning:  cim:Currency.NAD
+        description: "Namibian dollar."
+      NGN:
+        meaning:  cim:Currency.NGN
+        description: "Nigerian naira."
+      NIO:
+        meaning:  cim:Currency.NIO
+        description: "Cordoba oro."
+      NOK:
+        meaning:  cim:Currency.NOK
+        description: "Norwegian krone."
+      NPR:
+        meaning:  cim:Currency.NPR
+        description: "Nepalese rupee."
+      NZD:
+        meaning:  cim:Currency.NZD
+        description: "New Zealand dollar."
+      OMR:
+        meaning:  cim:Currency.OMR
+        description: "Omani rial."
+      PAB:
+        meaning:  cim:Currency.PAB
+        description: "Panamanian balboa."
+      PEN:
+        meaning:  cim:Currency.PEN
+        description: "Peruvian nuevo sol."
+      PGK:
+        meaning:  cim:Currency.PGK
+        description: "Papua New Guinean kina."
+      PHP:
+        meaning:  cim:Currency.PHP
+        description: "Philippine peso."
+      PKR:
+        meaning:  cim:Currency.PKR
+        description: "Pakistani rupee."
+      PLN:
+        meaning:  cim:Currency.PLN
+        description: "Polish zloty."
+      PYG:
+        meaning:  cim:Currency.PYG
+        description: "Paraguayan guaraní."
+      QAR:
+        meaning:  cim:Currency.QAR
+        description: "Qatari rial."
+      RON:
+        meaning:  cim:Currency.RON
+        description: "Romanian new leu."
+      RSD:
+        meaning:  cim:Currency.RSD
+        description: "Serbian dinar."
+      RUB:
+        meaning:  cim:Currency.RUB
+        description: "Russian rouble."
+      RWF:
+        meaning:  cim:Currency.RWF
+        description: "Rwandan franc."
+      SAR:
+        meaning:  cim:Currency.SAR
+        description: "Saudi riyal."
+      SBD:
+        meaning:  cim:Currency.SBD
+        description: "Solomon Islands dollar."
+      SCR:
+        meaning:  cim:Currency.SCR
+        description: "Seychelles rupee."
+      SDG:
+        meaning:  cim:Currency.SDG
+        description: "Sudanese pound."
+      SEK:
+        meaning:  cim:Currency.SEK
+        description: "Swedish krona/kronor."
+      SGD:
+        meaning:  cim:Currency.SGD
+        description: "Singapore dollar."
+      SHP:
+        meaning:  cim:Currency.SHP
+        description: "Saint Helena pound."
+      SLL:
+        meaning:  cim:Currency.SLL
+        description: "Sierra Leonean leone."
+      SOS:
+        meaning:  cim:Currency.SOS
+        description: "Somali shilling."
+      SRD:
+        meaning:  cim:Currency.SRD
+        description: "Surinamese dollar."
+      STD:
+        meaning:  cim:Currency.STD
+        description: "São Tomé and Príncipe dobra."
+      SYP:
+        meaning:  cim:Currency.SYP
+        description: "Syrian pound."
+      SZL:
+        meaning:  cim:Currency.SZL
+        description: "Lilangeni."
+      THB:
+        meaning:  cim:Currency.THB
+        description: "Thai baht."
+      TJS:
+        meaning:  cim:Currency.TJS
+        description: "Tajikistani somoni."
+      TMT:
+        meaning:  cim:Currency.TMT
+        description: "Turkmenistani manat."
+      TND:
+        meaning:  cim:Currency.TND
+        description: "Tunisian dinar."
+      TOP:
+        meaning:  cim:Currency.TOP
+        description: "Tongan pa'anga."
+      TRY:
+        meaning:  cim:Currency.TRY
+        description: "Turkish lira."
+      TTD:
+        meaning:  cim:Currency.TTD
+        description: "Trinidad and Tobago dollar."
+      TWD:
+        meaning:  cim:Currency.TWD
+        description: "New Taiwan dollar."
+      TZS:
+        meaning:  cim:Currency.TZS
+        description: "Tanzanian shilling."
+      UAH:
+        meaning:  cim:Currency.UAH
+        description: "Ukrainian hryvnia."
+      UGX:
+        meaning:  cim:Currency.UGX
+        description: "Ugandan shilling."
+      USD:
+        meaning:  cim:Currency.USD
+        description: "United States dollar."
+      UYU:
+        meaning:  cim:Currency.UYU
+        description: "Uruguayan peso."
+      UZS:
+        meaning:  cim:Currency.UZS
+        description: "Uzbekistan som."
+      VEF:
+        meaning:  cim:Currency.VEF
+        description: "Venezuelan bolívar fuerte."
+      VND:
+        meaning:  cim:Currency.VND
+        description: "Vietnamese Dong."
+      VUV:
+        meaning:  cim:Currency.VUV
+        description: "Vanuatu vatu."
+      WST:
+        meaning:  cim:Currency.WST
+        description: "Samoan tala."
+      XAF:
+        meaning:  cim:Currency.XAF
+        description: "CFA franc BEAC."
+      XCD:
+        meaning:  cim:Currency.XCD
+        description: "East Caribbean dollar."
+      XOF:
+        meaning:  cim:Currency.XOF
+        description: "CFA Franc BCEAO."
+      XPF:
+        meaning:  cim:Currency.XPF
+        description: "CFP franc."
+      YER:
+        meaning:  cim:Currency.YER
+        description: "Yemeni rial."
+      ZAR:
+        meaning:  cim:Currency.ZAR
+        description: "South African rand."
+      ZMK:
+        meaning:  cim:Currency.ZMK
+        description: "Zambian kwacha."
+      ZWL:
+        meaning:  cim:Currency.ZWL
+        description: "Zimbabwe dollar."
+  CurveStyle:
+    description: "Style or shape of curve."
+    enum_uri:  http://iec.ch/TC57/CIM100#CurveStyle
+    permissible_values:
+      constantYValue:
+        meaning:  cim:CurveStyle.constantYValue
+        description: "The Y-axis values are assumed constant until the next curve point and prior to the first curve point."
+      straightLineYValues:
+        meaning:  cim:CurveStyle.straightLineYValues
+        description: "The Y-axis values are assumed to be a straight line between values.  Also known as linear interpolation."
+  DCConverterOperatingModeKind:
+    description: "The operating mode of an HVDC bipole."
+    enum_uri:  http://iec.ch/TC57/CIM100#DCConverterOperatingModeKind
+    permissible_values:
+      bipolar:
+        meaning:  cim:DCConverterOperatingModeKind.bipolar
+        description: "Bipolar operation."
+      monopolarGroundReturn:
+        meaning:  cim:DCConverterOperatingModeKind.monopolarGroundReturn
+        description: "Monopolar operation with ground return."
+      monopolarMetallicReturn:
+        meaning:  cim:DCConverterOperatingModeKind.monopolarMetallicReturn
+        description: "Monopolar operation with metallic return."
+  DCPolarityKind:
+    description: "Polarity for DC circuits."
+    enum_uri:  http://iec.ch/TC57/CIM100#DCPolarityKind
+    permissible_values:
+      middle:
+        meaning:  cim:DCPolarityKind.middle
+        description: "Middle pole. The converter terminal is the midpoint in a bipolar or symmetric monopole configuration. The midpoint can be grounded and/or have a metallic return."
+      negative:
+        meaning:  cim:DCPolarityKind.negative
+        description: "Negative pole. The converter terminal is intended to operate at a negative voltage relative the midpoint or positive terminal."
+      positive:
+        meaning:  cim:DCPolarityKind.positive
+        description: "Positive pole. The converter terminal is intended to operate at a positive voltage relative the midpoint or negative terminal."
+  FuelType:
+    description: "Type of fuel."
+    enum_uri:  http://iec.ch/TC57/CIM100#FuelType
+    permissible_values:
+      coal:
+        meaning:  cim:FuelType.coal
+        description: "Generic coal, not including lignite type."
+      gas:
+        meaning:  cim:FuelType.gas
+        description: "Natural gas."
+      hardCoal:
+        meaning:  cim:FuelType.hardCoal
+        description: "Hard coal."
+      lignite:
+        meaning:  cim:FuelType.lignite
+        description: "The fuel is lignite coal.  Note that this is a special type of coal, so the other enum of coal is reserved for hard coal types or if the exact type of coal is not known."
+      oil:
+        meaning:  cim:FuelType.oil
+        description: "Oil."
+      oilShale:
+        meaning:  cim:FuelType.oilShale
+        description: "Oil Shale."
+  GeneratorControlSource:
+    description: "The source of controls for a generating unit."
+    enum_uri:  http://iec.ch/TC57/CIM100#GeneratorControlSource
+    permissible_values:
+      offAGC:
+        meaning:  cim:GeneratorControlSource.offAGC
+        description: "Off of automatic generation control (AGC)."
+      onAGC:
+        meaning:  cim:GeneratorControlSource.onAGC
+        description: "On automatic generation control (AGC)."
+      plantControl:
+        meaning:  cim:GeneratorControlSource.plantControl
+        description: "Plant is controlling."
+      unavailable:
+        meaning:  cim:GeneratorControlSource.unavailable
+        description: "Not available."
+  HydroEnergyConversionKind:
+    description: "Specifies the capability of the hydro generating unit to convert energy as a generator or pump."
+    enum_uri:  http://iec.ch/TC57/CIM100#HydroEnergyConversionKind
+    permissible_values:
+      generator:
+        meaning:  cim:HydroEnergyConversionKind.generator
+        description: "Able to generate power, but not able to pump water for energy storage."
+      pumpAndGenerator:
+        meaning:  cim:HydroEnergyConversionKind.pumpAndGenerator
+        description: "Able to both generate power and pump water for energy storage."
+  HydroPlantStorageKind:
+    description: "The type of hydro power plant."
+    enum_uri:  http://iec.ch/TC57/CIM100#HydroPlantStorageKind
+    permissible_values:
+      pumpedStorage:
+        meaning:  cim:HydroPlantStorageKind.pumpedStorage
+        description: "Pumped storage."
+      runOfRiver:
+        meaning:  cim:HydroPlantStorageKind.runOfRiver
+        description: "Run of river."
+      storage:
+        meaning:  cim:HydroPlantStorageKind.storage
+        description: "Storage."
+  HydroTurbineKind:
+    description: "Type of turbine."
+    enum_uri:  http://iec.ch/TC57/CIM100#HydroTurbineKind
+    permissible_values:
+      francis:
+        meaning:  cim:HydroTurbineKind.francis
+        description: "Francis."
+      kaplan:
+        meaning:  cim:HydroTurbineKind.kaplan
+        description: "Kaplan."
+      pelton:
+        meaning:  cim:HydroTurbineKind.pelton
+        description: "Pelton."
+  OperationalLimitDirectionKind:
+    description: "The direction attribute describes the side of  a limit that is a violation."
+    enum_uri:  http://iec.ch/TC57/CIM100#OperationalLimitDirectionKind
+    permissible_values:
+      absoluteValue:
+        meaning:  cim:OperationalLimitDirectionKind.absoluteValue
+        description: "An absoluteValue limit means that a monitored absolute value above the limit value is a violation."
+      high:
+        meaning:  cim:OperationalLimitDirectionKind.high
+        description: "High means that a monitored value above the limit value is a violation.   If applied to a terminal flow, the positive direction is into the terminal."
+      low:
+        meaning:  cim:OperationalLimitDirectionKind.low
+        description: "Low means a monitored value below the limit is a violation.  If applied to a terminal flow, the positive direction is into the terminal."
+  PhaseCode:
+    description: "An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.The integer values are from IEC 61968-9 to support revenue metering applications."
+    enum_uri:  http://iec.ch/TC57/CIM100#PhaseCode
+    permissible_values:
+      A:
+        meaning:  cim:PhaseCode.A
+        description: "Phase A."
+      AB:
+        meaning:  cim:PhaseCode.AB
+        description: "Phases A and B."
+      ABC:
+        meaning:  cim:PhaseCode.ABC
+        description: "Phases A, B, and C."
+      ABCN:
+        meaning:  cim:PhaseCode.ABCN
+        description: "Phases A, B, C, and N."
+      ABN:
+        meaning:  cim:PhaseCode.ABN
+        description: "Phases A, B, and neutral."
+      AC:
+        meaning:  cim:PhaseCode.AC
+        description: "Phases A and C."
+      ACN:
+        meaning:  cim:PhaseCode.ACN
+        description: "Phases A, C and neutral."
+      AN:
+        meaning:  cim:PhaseCode.AN
+        description: "Phases A and neutral."
+      B:
+        meaning:  cim:PhaseCode.B
+        description: "Phase B."
+      BC:
+        meaning:  cim:PhaseCode.BC
+        description: "Phases B and C."
+      BCN:
+        meaning:  cim:PhaseCode.BCN
+        description: "Phases B, C, and neutral."
+      BN:
+        meaning:  cim:PhaseCode.BN
+        description: "Phases B and neutral."
+      C:
+        meaning:  cim:PhaseCode.C
+        description: "Phase C."
+      CN:
+        meaning:  cim:PhaseCode.CN
+        description: "Phases C and neutral."
+      N:
+        meaning:  cim:PhaseCode.N
+        description: "Neutral phase."
+      X:
+        meaning:  cim:PhaseCode.X
+        description: "Unknown non-neutral phase."
+      XN:
+        meaning:  cim:PhaseCode.XN
+        description: "Unknown non-neutral phase plus neutral."
+      XY:
+        meaning:  cim:PhaseCode.XY
+        description: "Two unknown non-neutral phases."
+      XYN:
+        meaning:  cim:PhaseCode.XYN
+        description: "Two unknown non-neutral phases plus neutral."
+      none:
+        meaning:  cim:PhaseCode.none
+        description: "No phases specified."
+      s1:
+        meaning:  cim:PhaseCode.s1
+        description: "Secondary phase 1."
+      s12:
+        meaning:  cim:PhaseCode.s12
+        description: "Secondary phase 1 and 2."
+      s12N:
+        meaning:  cim:PhaseCode.s12N
+        description: "Secondary phases 1, 2, and neutral."
+      s1N:
+        meaning:  cim:PhaseCode.s1N
+        description: "Secondary phase 1 and neutral."
+      s2:
+        meaning:  cim:PhaseCode.s2
+        description: "Secondary phase 2."
+      s2N:
+        meaning:  cim:PhaseCode.s2N
+        description: "Secondary phase 2 and neutral."
+  RegulatingControlModeKind:
+    description: "The kind of regulation model.   For example regulating voltage, reactive power, active power, etc."
+    enum_uri:  http://iec.ch/TC57/CIM100#RegulatingControlModeKind
+    permissible_values:
+      activePower:
+        meaning:  cim:RegulatingControlModeKind.activePower
+        description: "Active power is specified."
+      admittance:
+        meaning:  cim:RegulatingControlModeKind.admittance
+        description: "Admittance is specified."
+      currentFlow:
+        meaning:  cim:RegulatingControlModeKind.currentFlow
+        description: "Current flow is specified."
+      powerFactor:
+        meaning:  cim:RegulatingControlModeKind.powerFactor
+        description: "Power factor is specified."
+      reactivePower:
+        meaning:  cim:RegulatingControlModeKind.reactivePower
+        description: "Reactive power is specified."
+      temperature:
+        meaning:  cim:RegulatingControlModeKind.temperature
+        description: "Control switches on/off based on the local temperature (i.e., a thermostat)."
+      timeScheduled:
+        meaning:  cim:RegulatingControlModeKind.timeScheduled
+        description: "Control switches on/off by time of day. The times may change on the weekend, or in different seasons."
+      voltage:
+        meaning:  cim:RegulatingControlModeKind.voltage
+        description: "Voltage is specified."
+  SVCControlMode:
+    description: "Static VAr Compensator control mode."
+    enum_uri:  http://iec.ch/TC57/CIM100#SVCControlMode
+    permissible_values:
+      reactivePower:
+        meaning:  cim:SVCControlMode.reactivePower
+        description: "Reactive power control."
+      voltage:
+        meaning:  cim:SVCControlMode.voltage
+        description: "Voltage control."
+  SynchronousMachineKind:
+    description: "Synchronous machine type."
+    enum_uri:  http://iec.ch/TC57/CIM100#SynchronousMachineKind
+    permissible_values:
+      condenser:
+        meaning:  cim:SynchronousMachineKind.condenser
+        description: "Indicates the synchronous machine can operate as a condenser."
+      generator:
+        meaning:  cim:SynchronousMachineKind.generator
+        description: "Indicates the synchronous machine can operate as a generator."
+      generatorOrCondenser:
+        meaning:  cim:SynchronousMachineKind.generatorOrCondenser
+        description: "Indicates the synchronous machine can operate as a generator or as a condenser."
+      generatorOrCondenserOrMotor:
+        meaning:  cim:SynchronousMachineKind.generatorOrCondenserOrMotor
+        description: "Indicates the synchronous machine can operate as a generator or as a condenser or as a motor."
+      generatorOrMotor:
+        meaning:  cim:SynchronousMachineKind.generatorOrMotor
+        description: "Indicates the synchronous machine can operate as a generator or as a motor."
+      motor:
+        meaning:  cim:SynchronousMachineKind.motor
+        description: "Indicates the synchronous machine can operate as a motor."
+      motorOrCondenser:
+        meaning:  cim:SynchronousMachineKind.motorOrCondenser
+        description: "Indicates the synchronous machine can operate as a motor or as a condenser."
+  UnitMultiplier:
+    description: "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type.For example, if a unit symbol is m2Pers and the multiplier is k, then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol Þ represents the derived unit m2Pers, then applying the multiplier k can be conceptualized simply as kÞ.For example, the SI unit for mass is kg and not g.  If the unit symbol is defined as kg, then the multiplier is applied to kg as a whole and does not replace the k in front of the g. In this case, the multiplier of m would be used with the unit symbol of kg to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the kg as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the kg were replaced by a symbol Þ, then it is easier to conceptualize the multiplier m as creating the proper unit mÞ, and not the forbidden unit mkg."
+    enum_uri:  http://iec.ch/TC57/CIM100#UnitMultiplier
+    permissible_values:
+      E:
+        meaning:  cim:UnitMultiplier.E
+        description: "Exa 10**18."
+      G:
+        meaning:  cim:UnitMultiplier.G
+        description: "Giga 10**9."
+      M:
+        meaning:  cim:UnitMultiplier.M
+        description: "Mega 10**6."
+      P:
+        meaning:  cim:UnitMultiplier.P
+        description: "Peta 10**15."
+      T:
+        meaning:  cim:UnitMultiplier.T
+        description: "Tera 10**12."
+      Y:
+        meaning:  cim:UnitMultiplier.Y
+        description: "Yotta 10**24."
+      Z:
+        meaning:  cim:UnitMultiplier.Z
+        description: "Zetta 10**21."
+      a:
+        meaning:  cim:UnitMultiplier.a
+        description: "Atto 10**-18."
+      c:
+        meaning:  cim:UnitMultiplier.c
+        description: "Centi 10**-2."
+      d:
+        meaning:  cim:UnitMultiplier.d
+        description: "Deci 10**-1."
+      da:
+        meaning:  cim:UnitMultiplier.da
+        description: "Deca 10**1."
+      f:
+        meaning:  cim:UnitMultiplier.f
+        description: "Femto 10**-15."
+      h:
+        meaning:  cim:UnitMultiplier.h
+        description: "Hecto 10**2."
+      k:
+        meaning:  cim:UnitMultiplier.k
+        description: "Kilo 10**3."
+      m:
+        meaning:  cim:UnitMultiplier.m
+        description: "Milli 10**-3."
+      micro:
+        meaning:  cim:UnitMultiplier.micro
+        description: "Micro 10**-6."
+      n:
+        meaning:  cim:UnitMultiplier.n
+        description: "Nano 10**-9."
+      none:
+        meaning:  cim:UnitMultiplier.none
+        description: "No multiplier or equivalently multiply by 1."
+      p:
+        meaning:  cim:UnitMultiplier.p
+        description: "Pico 10**-12."
+      y:
+        meaning:  cim:UnitMultiplier.y
+        description: "Yocto 10**-24."
+      z:
+        meaning:  cim:UnitMultiplier.z
+        description: "Zepto 10**-21."
+  UnitSymbol:
+    description: "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as F instead of CPerV. In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as kgPerm3. With the exception of the kg, which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole.Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol / is replaced by the letters Per. Exponents are written in plain text after the unit as m3 instead of being formatted as m with a superscript of 3  or introducing a symbol as in m^3. The degree symbol ° is replaced with the letters deg. Any clarification of the meaning for a substitution is included in the description for the unit symbol.Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units.The integer values are used for harmonization with IEC 61850."
+    enum_uri:  http://iec.ch/TC57/CIM100#UnitSymbol
+    permissible_values:
+      A:
+        meaning:  cim:UnitSymbol.A
+        description: "Current in amperes."
+      F:
+        meaning:  cim:UnitSymbol.F
+        description: "Electric capacitance in farads (C/V)."
+      H:
+        meaning:  cim:UnitSymbol.H
+        description: "Electric inductance in henrys (Wb/A)."
+      Hz:
+        meaning:  cim:UnitSymbol.Hz
+        description: "Frequency in hertz (1/s)."
+      J:
+        meaning:  cim:UnitSymbol.J
+        description: "Energy in joules (N·m = C·V = W·s)."
+      N:
+        meaning:  cim:UnitSymbol.N
+        description: "Force in newtons (kg·m/s²)."
+      Pa:
+        meaning:  cim:UnitSymbol.Pa
+        description: "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms."
+      S:
+        meaning:  cim:UnitSymbol.S
+        description: "Conductance in siemens."
+      V:
+        meaning:  cim:UnitSymbol.V
+        description: "Electric potential in volts (W/A)."
+      VA:
+        meaning:  cim:UnitSymbol.VA
+        description: "Apparent power in volt amperes. See also real power and reactive power."
+      VAh:
+        meaning:  cim:UnitSymbol.VAh
+        description: "Apparent energy in volt ampere hours."
+      VAr:
+        meaning:  cim:UnitSymbol.VAr
+        description: "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."
+      VArh:
+        meaning:  cim:UnitSymbol.VArh
+        description: "Reactive energy in volt ampere reactive hours."
+      W:
+        meaning:  cim:UnitSymbol.W
+        description: "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power."
+      Wh:
+        meaning:  cim:UnitSymbol.Wh
+        description: "Real energy in watt hours."
+      deg:
+        meaning:  cim:UnitSymbol.deg
+        description: "Plane angle in degrees."
+      degC:
+        meaning:  cim:UnitSymbol.degC
+        description: "Relative temperature in degrees Celsius.In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software."
+      g:
+        meaning:  cim:UnitSymbol.g
+      h:
+        meaning:  cim:UnitSymbol.h
+        description: "Time in hours, hour = 60 min = 3600 s."
+      m:
+        meaning:  cim:UnitSymbol.m
+        description: "Length in metres."
+      m2:
+        meaning:  cim:UnitSymbol.m2
+        description: "Area in square metres (m²)."
+      m3:
+        meaning:  cim:UnitSymbol.m3
+        description: "Volume in cubic metres (m³)."
+      min:
+        meaning:  cim:UnitSymbol.min
+        description: "Time in minutes, minute  = 60 s."
+      none:
+        meaning:  cim:UnitSymbol.none
+        description: "Dimension less quantity, e.g. count, per unit, etc."
+      ohm:
+        meaning:  cim:UnitSymbol.ohm
+        description: "Electric resistance in ohms (V/A)."
+      rad:
+        meaning:  cim:UnitSymbol.rad
+        description: "Plane angle in radians (m/m)."
+      s:
+        meaning:  cim:UnitSymbol.s
+        description: "Time in seconds."
+  WindGenUnitKind:
+    description: "Kind of wind generating unit."
+    enum_uri:  http://iec.ch/TC57/CIM100#WindGenUnitKind
+    permissible_values:
+      offshore:
+        meaning:  cim:WindGenUnitKind.offshore
+        description: "The wind generating unit is located offshore."
+      onshore:
+        meaning:  cim:WindGenUnitKind.onshore
+        description: "The wind generating unit is located onshore."
+  WindingConnection:
+    description: "Winding connection type."
+    enum_uri:  http://iec.ch/TC57/CIM100#WindingConnection
+    permissible_values:
+      A:
+        meaning:  cim:WindingConnection.A
+        description: "Autotransformer common winding."
+      D:
+        meaning:  cim:WindingConnection.D
+        description: "Delta."
+      I:
+        meaning:  cim:WindingConnection.I
+        description: "Independent winding, for single-phase connections."
+      Y:
+        meaning:  cim:WindingConnection.Y
+        description: "Wye."
+      Yn:
+        meaning:  cim:WindingConnection.Yn
+        description: "Wye, with neutral brought out for grounding."
+      Z:
+        meaning:  cim:WindingConnection.Z
+        description: "ZigZag."
+      Zn:
+        meaning:  cim:WindingConnection.Zn
+        description: "ZigZag, with neutral brought out for grounding."

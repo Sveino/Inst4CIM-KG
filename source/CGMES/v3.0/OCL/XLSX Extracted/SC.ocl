@@ -1,0 +1,71 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61970::Base::Wires::MutualCoupling
+--docReference non-QoCDC Key=0668b544-ecc6-45e5-9fe9-cd93396d4d40 Profile=SC
+--message Length datatype defines that: It shall be a positive value or zero.
+inv MutualCoupling_lengthValueRange: (	self.distance11 >= 0 and
+	self.distance12 >= 0 and
+	self.distance21 >= 0 and
+	self.distance22 >= 0)
+
+context IEC61970::Base::Wires::PetersenCoil
+--docReference non-QoCDC Key=f893ad5a-24e1-4332-a6f9-a1c101d2b385 Profile=SC
+--message This is normally a fixed amount for which the controller is configured and could be positive or negative.  Typically 0 to 60 A depending on voltage and resonance conditions.
+inv PetersenCoil_offsetCurrent_valueRangeTypical : ((self.offsetCurrent >= 0.0) and
+(self.offsetCurrent <  60.0))
+
+--docReference non-QoCDC Key=7088c045-4c5f-46bc-a1b0-f8ebe014acae Profile=SC
+--message Typically in the range of 20 mA to 200 mA.
+inv PetersenCoil_positionCurrent_valueRangeTypical : ((self.positionCurrent >= 0.02) and
+(self.positionCurrent <=  0.2))
+
+context IEC61970::Base::Wires::PowerTransformerEnd
+def : EQ_BRANCH_X_LIMIT : Real = 0.01
+--docReference non-QoCDC Key=9f5aa0de-9646-466d-a0de-21e9e2060352 Profile=SC
+--message The valid values are 0 to 11.
+inv PowerTransformerEnd_phaseAngleClock_valueRange : ((self.phaseAngleClock >= 0.0) and
+(self.phaseAngleClock <=  11.0))
+
+context IEC61970::Base::Wires::SeriesCompensator
+--docReference non-QoCDC Key=4ec6101a-c969-4098-9981-25e2c5539535 Profile=SC
+--message It is used for short circuit calculations and exchanged only if SeriesCompensator.varistorPresent is true.
+inv SeriesCompensator_usage: (if self.varistorRatedCurrent->notEmpty() then self.varistorPresent = true else true endif)
+
+--docReference non-QoCDC Key=1699c71e-71c4-4a3e-b5fa-fa49950eda4c Profile=SC
+--message The attribute shall be a positive value.
+inv SeriesCompensator_varistorRatedCurrent_valueRange : (self.varistorRatedCurrent >  0.0)
+
+--docReference non-QoCDC Key=a0090429-ab65-4d8d-8a14-f92dddefd87b Profile=SC
+--message It is used for short circuit calculations and exchanged only if SeriesCompensator.varistorPresent is true.
+inv SeriesCompensator_usage: (if self.varistorVoltageThreshold->notEmpty() then self.varistorPresent = true else true endif)
+
+--docReference non-QoCDC Key=02721364-9813-4faa-b8d3-131b24968a33 Profile=SC
+--message The SeriesCompensator.varistorRatedCurrent is requited if SeriesCompensator.varistorPresent is true.
+inv SeriesCompensator_required: (if self.varistorPresent then self.varistorRatedCurrent->notEmpty() else true endif)
+
+--docReference non-QoCDC Key=5d8b7f19-ada4-4024-9db2-7d6b24a174b7 Profile=SC
+--message The SeriesCompensator.varistorVoltageThreshold is requited if SeriesCompensator.varistorPresent is true.
+inv SeriesCompensator_required: (if self.varistorPresent then self.varistorVoltageThreshold->notEmpty() else true endif)
+
+context IEC61970::Base::Wires::SynchronousMachine
+def : SSH_SV_TOT_P_DIFF : Real = 200
+--docReference non-QoCDC Key=dd0f996e-3611-445b-b710-d61428f0d737 Profile=SC
+--message If SynchronousMachine.earthing is true, then SynchronousMachine.earthingStarPointR and SynchronousMachine.earthingStarPointX are required.
+inv SynchronousMachine_attributes: (if self.earthing = true then
+		self.earthingStarPointR->notEmpty() and self.earthingStarPointX->notEmpty()
+	else true endif )
+
+context IEC61970::Base::Wires::TransformerEnd
+--docReference non-QoCDC Key=f781567b-82d1-4106-88e5-70e933263b79 Profile=SC
+--message If TransformerEnd.grounded is true, then TransformerEnd.rground and TransformerEnd.xground are required.
+inv TransformerEnd_grounding: (	if self.grounded = true then
+		self.rground->notEmpty() and self.xground->notEmpty()
+	else true endif )
+
+endpackage

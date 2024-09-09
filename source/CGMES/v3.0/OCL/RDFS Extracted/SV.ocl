@@ -1,0 +1,90 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61970::Base::DC::ACDCConverter
+-- idc must be set.
+inv ACDCConverter_idc: (self.idc->notEmpty())
+-- poleLossP must be set.
+inv ACDCConverter_poleLossP: (self.poleLossP->notEmpty())
+-- uc must be set.
+inv ACDCConverter_uc: (self.uc->notEmpty())
+-- udc must be set.
+inv ACDCConverter_udc: (self.udc->notEmpty())
+
+context IEC61970::Base::DC::VsConverter
+-- delta must be set.
+inv VsConverter_delta: (self.delta->notEmpty())
+-- uv must be set.
+inv VsConverter_uv: (self.uv->notEmpty())
+
+context IEC61970::Base::StateVariables::SvPowerFlow
+-- p must be set.
+inv SvPowerFlow_p: (self.p->notEmpty())
+-- q must be set.
+inv SvPowerFlow_q: (self.q->notEmpty())
+-- Terminal must be set.
+inv SvPowerFlow_Terminal: (self.Terminal <> null)
+
+context IEC61970::Base::StateVariables::SvSwitch
+-- open must be set.
+inv SvSwitch_open: (self.open->notEmpty())
+-- Switch must be set.
+inv SvSwitch_Switch: (self.Switch <> null)
+
+context IEC61970::Base::DC::CsConverter
+-- alpha must be set.
+inv CsConverter_alpha: (self.alpha->notEmpty())
+-- gamma must be set.
+inv CsConverter_gamma: (self.gamma->notEmpty())
+
+context IEC61970::Base::StateVariables::SvTapStep
+-- position must be set.
+inv SvTapStep_position: (self.position->notEmpty())
+-- TapChanger must be set.
+inv SvTapStep_TapChanger: (self.TapChanger <> null)
+
+context IEC61970::Base::StateVariables::SvStatus
+-- ConductingEquipment must be set.
+inv SvStatus_ConductingEquipment: (self.ConductingEquipment <> null)
+-- inService must be set.
+inv SvStatus_inService: (self.inService->notEmpty())
+
+context IEC61970::Base::StateVariables::SvShuntCompensatorSections
+-- ShuntCompensator must be set.
+inv SvShuntCompensatorSections_ShuntCompensator: (self.ShuntCompensator <> null)
+-- sections must be set.
+inv SvShuntCompensatorSections_sections: (self.sections->notEmpty())
+
+context IEC61970::Base::StateVariables::SvVoltage
+-- angle must be set.
+inv SvVoltage_angle: (self.angle->notEmpty())
+-- v must be set.
+inv SvVoltage_v: (self.v->notEmpty())
+-- TopologicalNode must be set.
+inv SvVoltage_TopologicalNode: (self.TopologicalNode <> null)
+
+context IEC61970::Base::Topology::TopologicalIsland
+-- AngleRefTopologicalNode must be set.
+inv TopologicalIsland_AngleRefTopologicalNode: (self.AngleRefTopologicalNode <> null)
+-- TopologicalNodes must be set.
+inv TopologicalIsland_TopologicalNodes: (self.TopologicalNodes->size() > 0)
+
+context IEC61970::Base::DC::DCTopologicalIsland
+-- DCTopologicalNodes must be set.
+inv DCTopologicalIsland_DCTopologicalNodes: (self.DCTopologicalNodes->size() > 0)
+
+context IEC61970::Base::StateVariables::SvInjection
+-- pInjection must be set.
+inv SvInjection_pInjection: (self.pInjection->notEmpty())
+-- TopologicalNode must be set.
+inv SvInjection_TopologicalNode: (self.TopologicalNode <> null)
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+-- name must be set.
+inv IdentifiedObject_name: (self.name <> null)
+
+
+endpackage

@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:cim="http://iec.ch/TC57/CIM100#" 
+  xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+  xmlns:eu="http://iec.ch/TC57/CIM100-European#" 
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:prof="http://iec.ch/TC57/ns/CIM/prof-cim#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sh="http://www.w3.org/ns/shacl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns="http://www.iec.ch/TC57/ns/CIM/DiagramLayout-AP-EU#"
+> 
+
+<!-- Version 3
+Known issues:
+- Need to decided which of these two reference we will be using:
+    <dct:format>https://www.iana.org/assignments/media-types/application/rdf+xml</dct:format>
+	<dct:format rdf:resource="https://w3id.org/mediatype/application/rdf+xml"/> 
+Change log:
+2020-07-07: Initial version 1
+2020-07-08: Version 2
+			Updated in dialog between Svein and Chavdar.
+2020-07-08: Version 3
+			Updated after review meeting the namespace by added ns for namespace and #
+2020-07-10: Version 3 - Updated after project meeting
+			Updated owl:import to owl:imports - with 's'		
+-->
+       
+	<owl:Ontology rdf:about="http://www.iec.ch/TC57/ns/CIM/DiagramLayout-AP-EU">
+		<owl:vesionInfo>1.0.0</owl:vesionInfo>
+		<owl:versionIRI rdf:resource="http://iec.ch/TC57/ns/CIM/DiagramLayout-AP-EU/1.0"/>
+		<dct:conformsTo>urn:iso:std:iec:61970-600-x:draft:ed-1</dct:conformsTo>
+		<dct:conformsTo>urn:iso:std:iec:61970-301:ed-7:amd1</dct:conformsTo>
+		<dct:conformsTo>urn:iso:std:iec:61970-401:draft:ed-1</dct:conformsTo>
+		<dct:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dct:conformsTo>
+		<dct:conformsTo>http://iec.ch/TC57/ns/CIM/prof-ap-cim</dct:conformsTo>
+		<dct:creator xml:lang="en">IEC TC57 WG13</dct:creator>
+		<rdfs:comment xml:lang="en">This is definting the diagram layout profile from IEC 61970-600-x</rdfs:comment> <!--This comes from dct:description-->
+		<dct:identifier>urn:uuid:1c0034ac-c1c0-468d-9c0e-4a80d42ea003</dct:identifier>
+		<dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-07-07T09:30:10Z</dct:issued>
+		<dct:language>en-GB</dct:language>
+		<dct:license>https://creativecommons.org/licenses/by/4.0/</dct:license>
+		<dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-07-07</dct:modified>
+		<dct:publisher xml:lang="en">IEC</dct:publisher>
+		<dct:rights xml:lang="en">Copyright</dct:rights>
+		<dct:rightsHolder xml:lang="en">IEC</dct:rightsHolder>
+		<rdfs:label xml:lang="en">Diagram Layout European Profile</rdfs:label><!--This comes from dct:title-->
+		<dcat:keyword>DL</dcat:keyword>
+		<dcat:landingPage>https://webstore.iec.ch/publication/6213</dcat:landingPage>
+		<dcat:theme>profile</dcat:theme>    
+	</owl:Ontology>
+
+<!-- Imports. When going over to the http://www.w3.org/ns/dx/prof/ the import should be explisit 
+		If we have isTransitiveProfileOf we should only need to import:
+		<owl:import>DiagramLayout-AP.rdf</owl:import>
+		which will then import the other.
+		However, when is is isProfileOf then we do not confirm to the constraints and we cannot import the <owl:import>DiagramLayout-AP.rdf</owl:import>
+		we therefor need to explisit state the items that needs to be imported. In the case of isProfileOf we do not import the Constraints in the profile, but the constaints file can import and modify the constraints.
+-->
+<owl:imports>file://DiagramLayout-Vocabulary.rdf</owl:imports>
+<owl:imports>file://DiagramLayout-Constraints.rdf</owl:imports>
+<owl:imports>file://DiagramLayout-EU-Vocabulary.rdf</owl:imports>
+<owl:imports>file://DiagramLayout-EU-Constraints.rdf</owl:imports>
+
+ <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/DiagramLayout-AP-EU/1.0">
+    <rdfs:comment>IEC CIM Application Profile for IEC 61970-600-x.</rdfs:comment>
+    <prof:hasToken>DL-AP-EU</prof:hasToken>
+    <prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/DiagramLayout-AP-EU/urn:uuid:cba9acc3-1bc3-403e-9428-41419524c678"/>
+    <prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/DiagramLayout-AP-EU/urn:uuid:10d978b7-d49e-493a-a80f-90a37cc00141"/>
+    <rdf:type rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/Profile"/>
+	<prof:isTransitiveProfileOf rdf:resource="http://iec.ch/TC57/ns/CIM/DiagramLayout-AP"/>
+  </rdf:Description>
+
+ <!--refereansen er profile URI + identifcator to Destribution -->
+  <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/DiagramLayout-AP-EU/urn:uuid:cba9acc3-1bc3-403e-9428-41419524c678">
+    <prof:hasRole rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceRole.constraints"/>
+	<!--Since we do not have a download site, we use a local reference to the file name -->
+	<prof:hasArtifact rdf:resource="DiagramLayout-EU-Constraints.rdf"/>
+    <dct:format>https://www.iana.org/assignments/media-types/application/rdf+xml</dct:format>
+    <dct:conformsTo>http://www.w3.org/ns/shacl</dct:conformsTo>
+    <rdfs:label xml:lang="en">DL-AP-EU Constraints</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceDescriptor"/>
+  </rdf:Description>
+  
+  
+   <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/DiagramLayout-AP-EU/urn:uuid:10d978b7-d49e-493a-a80f-90a37cc00141">
+    <prof:hasRole rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceRole.vocabulary"/>
+	<prof:hasArtifact rdf:resource="DiagramLayout-EU-Vocabulary.rdf"/>
+    <dct:format>https://www.iana.org/assignments/media-types/application/rdf+xml</dct:format>
+	<!-- Alternative format reference:
+	<dct:format rdf:resource="https://w3id.org/mediatype/application/rdf+xml"/> -->
+    <rdfs:label xml:lang="en">DL-AP-EU Vocabulary</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceDescriptor"/>
+  </rdf:Description>
+
+
+</rdf:RDF>

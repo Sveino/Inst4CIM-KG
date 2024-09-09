@@ -1,0 +1,22 @@
+import EuropeanCIMExtensions : 'http://iec.ch/TC57/CIM100-European#/'
+
+package EuropeanCIMExtensions
+
+context ExtIEC61970::ExtEuBase::ExtEuCore::BoundaryPoint
+-- fromEndIsoCode must be set.
+inv BoundaryPoint_fromEndIsoCode: (self.fromEndIsoCode <> null)
+-- fromEndName must be set.
+inv BoundaryPoint_fromEndName: (self.fromEndName <> null)
+-- fromEndNameTso must be set.
+inv BoundaryPoint_fromEndNameTso: (self.fromEndNameTso <> null)
+-- toEndIsoCode must be set.
+inv BoundaryPoint_toEndIsoCode: (self.toEndIsoCode <> null)
+-- toEndName must be set.
+inv BoundaryPoint_toEndName: (self.toEndName <> null)
+-- toEndNameTso must be set.
+inv BoundaryPoint_toEndNameTso: (self.toEndNameTso <> null)
+-- ConnectivityNode must be set.
+inv BoundaryPoint_ConnectivityNode: (self.ConnectivityNode <> null)
+
+
+endpackage

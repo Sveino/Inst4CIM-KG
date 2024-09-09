@@ -1,0 +1,31 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61970::Base::Core::IdentifiedObject
+def : EIC_LENGTH : Integer = 16
+def : SHORT_NAME_LENGTH : Integer = 12
+def : IO_NAME_LENGTH : Integer = 32
+def : IO_DESCRIPTION_LENGTH : Integer = 256
+--docReference non-QoCDC Key=53e78cf7-89a5-485c-9b54-7bc35a1eb86a Profile=TPBD
+--message The length of the string is 16 characters as defined by the EIC code.
+inv IdentifiedObject_energyIdentCodeEic_stringLength : ((self.energyIdentCodeEic.size() >= 16.0) and
+(self.energyIdentCodeEic.size() <= 16.0))
+
+--docReference non-QoCDC Key=3bf038a6-3fc8-4041-ad6f-f26135e54945 Profile=TPBD
+--message Length of the string 12 characters maximum.
+inv IdentifiedObject_shortName_stringLength : (self.shortName.size() <= 12.0)
+
+--docReference non-QoCDC Key=75d0320d-4cb6-4328-bb2b-d43a74e692fe Profile=TPBD
+--message The string is maximum 256 characters.
+inv IdentifiedObject_description_stringLength : (self.description.size() <= 256.0)
+
+--docReference non-QoCDC Key=3e7289b1-d2b8-4692-be94-f3a6887e0f5e Profile=TPBD
+--message The string IdentifiedObject.name is maximum 128 characters.
+inv IdentifiedObject_name_stringLength : (self.name.size() <= 128.0)
+
+endpackage

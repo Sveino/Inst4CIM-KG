@@ -1,0 +1,47 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61970::Base::DiagramLayout::DiagramObject
+--docReference non-QoCDC Key=a2c794c4-4634-4fdb-9417-faa8c6da4553 Profile=DL
+--message The association end role description stated that: The domain object to which this diagram object is associated. Therefore, the association cannot point to cim:Diagram, cim:DiagramObject, cim:VisibilityLayer, cim:DiagramStyle, cim:DiagramObjectStyle or cim:TextDiagramObject.
+inv DiagramObject_internalValueType: (if self.IdentifiedObject.oclIsKindOf(IEC61970::Base::DiagramLayout::Diagram) or
+			self.IdentifiedObject.oclIsKindOf(IEC61970::Base::DiagramLayout::DiagramObject) or
+			self.IdentifiedObject.oclIsKindOf(IEC61970::Base::DiagramLayout::VisibilityLayer) or
+			self.IdentifiedObject.oclIsKindOf(IEC61970::Base::DiagramLayout::DiagramStyle) or
+			self.IdentifiedObject.oclIsKindOf(IEC61970::Base::DiagramLayout::DiagramObjectStyle) or
+			self.IdentifiedObject.oclIsKindOf(IEC61970::Base::DiagramLayout::TextDiagramObject) then
+				false
+			else true endif)
+
+--docReference non-QoCDC Key=c5665967-6f0f-47c3-bf49-83aedfee8a49 Profile=DL
+--message The DiagramObject should link to SynchronousMachine and not GeneratingUnit.
+inv DiagramObject_valueType: (not self.IdentifiedObject.oclIsKindOf(IEC61970::Base::Generation::Production::GeneratingUnit))
+
+context IEC61970::Base::DiagramLayout::DiagramObjectPoint
+--docReference non-QoCDC Key=9c73e8f8-1362-4448-9988-67537ebaa36a Profile=DL
+--message The property (attribute) shall be a positive value.
+inv DiagramObjectPoint_sequenceNumber_valueRange : (self.sequenceNumber >  0.0)
+
+context IEC61970::Base::DiagramLayout::DiagramStyle
+--docReference non-QoCDC Key=b2a8634e-5dc5-45b6-ac80-4ba877f956ba Profile=DL
+--message The inherited IdentifiedObject.name shall have one of the following names: "node-breaker", "bus-branch", "hybrid (node-breaker and bus-branch)" or "geoschematic".
+inv DiagramStyle_name_allowedNameValues : (self.name = 'node-breaker' or
+self.name = 'bus-branch' or
+self.name = 'hybrid' or
+self.name = 'geoschematic')
+
+context IEC61970::Base::Core::IdentifiedObject
+def : EIC_LENGTH : Integer = 16
+def : SHORT_NAME_LENGTH : Integer = 12
+def : IO_NAME_LENGTH : Integer = 32
+def : IO_DESCRIPTION_LENGTH : Integer = 256
+--docReference non-QoCDC Key=7e3ed7f1-1596-4a71-a0a9-32dcfbf84951 Profile=DL
+--message The string IdentifiedObject.name has a maximum of 128 characters.
+inv IdentifiedObject_name_stringLength : (self.name.size() <= 128.0)
+
+endpackage

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF   
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:sh="http://www.w3.org/ns/shacl#"
+  xmlns:skos= "http://www.w3.org/2004/02/skos/core#"
+  xmlns:prof="http://iec.ch/TC57/ns/CIM/prof-cim#"  
+  >
+   <!--
+   	Version 3
+	Known Issue:
+		None
+  Change log:
+2020-07-08: Version 2
+			Updated after review meeting the namespace by added ns for namespace and #
+2020-07-10: Version 3 - Updated after project meeting
+			Replace the ttl note notation with xml
+			Added the imports statements
+-->
+  <!--RDFS header -->
+  <owl:Ontology rdf:about="http://iec.ch/TC57/ns/CIM/prof-ap-cim"> <!--The rdf:about is the owl:versionIRI without the version information -->  
+    <owl:vesionInfo>1.0.0</owl:vesionInfo>
+    <owl:versionIRI rdf:resource="http://iec.ch/TC57/ns/CIM/prof-ap-cim/1.0"/>
+    <dct:conformsTo>urn:iso:std:iec:61970-501:draft:ed-2</dct:conformsTo>
+    <dct:creator xml:lang="en">IEC TC57 WG13</dct:creator>
+    <rdfs:comment xml:lang="en">This profile describs relationships between standards/specifications, profiles of theme and supporting artifacts such as validating resources.That is used for IEC CIM Application Profile.</rdfs:comment> <!--This comes from dct:description-->
+    <dct:identifier>urn:uuid:bd9bbde5-5266-4110-a3c1-6612e9a2f2b5</dct:identifier>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-07-03T15:09:10Z</dct:issued>
+    <dct:language>en-GB</dct:language>
+    <dct:license>https://creativecommons.org/licenses/by/4.0/</dct:license>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-07-03</dct:modified>
+    <dct:publisher xml:lang="en">IEC</dct:publisher>
+    <dct:rights xml:lang="en">Copyright</dct:rights>
+    <dct:rightsHolder xml:lang="en">IEC</dct:rightsHolder>
+    <rdfs:label xml:lang="en">IEC CIM Application Profile</rdfs:label><!--This comes from dct:title-->
+    <dcat:keyword>PROF</dcat:keyword>
+    <dcat:landingPage>https://webstore.iec.ch/publication/6215</dcat:landingPage>
+    <dcat:theme>profile</dcat:theme>    
+  </owl:Ontology>
+  <!--owl:imports statements -->
+<owl:imports>file://PROF-Vocabulary.rdf</owl:imports>
+<owl:imports>file://PROF-Constraints.rdf</owl:imports>
+
+
+  <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/prof-ap-cim/1.0">
+    <rdfs:comment>IEC CIM Application Profile for IEC 61970-501 profiles.</rdfs:comment>
+    <prof:hasToken>PROF-AP-CIM</prof:hasToken>
+    <prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/prof-ap-cim/urn:uuid:69913d78-f0a3-4024-a97b-b06970e85cbc"/>
+    <prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/prof-ap-cim/urn:uuid:5d5921bd-12b3-4c46-bc4a-598efb16f161"/>
+    <prof:hasResource rdf:resource="http://iec.ch/TC57/ns/CIM/prof-ap-cim/urn:uuid:1743b928-1896-45f0-89e5-84139d6d867d"/> 
+    <rdf:type rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/Profile"/>
+  </rdf:Description>
+
+ <!--refereansen er profile URI + identifcator to Destribution -->
+  <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/prof-ap-cim/urn:uuid:69913d78-f0a3-4024-a97b-b06970e85cbc">
+    <prof:hasRole rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceRole.constraints"/>
+	<!--Since we do not have a download site, we use a local reference to the file name -->
+	<prof:hasArtifact rdf:resource="PROF-CIM-Constraints.rdf"/>
+    <dct:format>https://www.iana.org/assignments/media-types/application/rdf+xml</dct:format>
+    <dct:conformsTo>http://www.w3.org/ns/shacl</dct:conformsTo>
+    <rdfs:label xml:lang="en">PROF-AP-CIM Constraints</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceDescriptor"/>
+  </rdf:Description>
+  
+  
+   <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/prof-ap-cim/urn:uuid:5d5921bd-12b3-4c46-bc4a-598efb16f161">
+    <prof:hasRole rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceRole.vocabulary"/>
+	<prof:hasArtifact rdf:resource="PROF-CIM-Vocabulary.rdf"/>
+    <dct:format>https://www.iana.org/assignments/media-types/application/rdf+xml</dct:format>
+	<!-- Alternative format reference:
+	<dct:format rdf:resource="https://w3id.org/mediatype/application/rdf+xml"/> -->
+    <rdfs:label xml:lang="en">PROF-AP-CIM Vocabulary</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceDescriptor"/>
+  </rdf:Description>
+  
+  <!--We could make addtional references, like download 501. The example is just showing a local guide. -->
+   <rdf:Description rdf:about="http://iec.ch/TC57/ns/CIM/prof-ap-cim/urn:uuid:1743b928-1896-45f0-89e5-84139d6d867d">
+    <prof:hasRole rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceRole.guidance"/>
+	<!-- Alternative hasRole - they W3C web site proposal: 
+	<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/Guidance"/> -->
+	<prof:hasArtifact rdf:resource="PROF CIM Guidance Document.pdf"/>
+    <dct:format>https://www.iana.org/assignments/media-types/application/pdf</dct:format>
+	<!-- Alternative format reference:
+	<dct:format rdf:resource="https://w3id.org/mediatype/application/pdf"/> -->
+    <rdfs:label xml:lang="en">PROF-AP-CIM Guidance Document</rdfs:label>
+    <rdf:type rdf:resource="http://iec.ch/TC57/ns/CIM/prof-cim/ResourceDescriptor"/>
+  </rdf:Description>
+  
+
+</rdf:RDF>

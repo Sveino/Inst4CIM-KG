@@ -1,0 +1,616 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+--Dummy Entry as OCL doesn't like def before inv
+context CIM100::TC57CIMVersion
+inv __ : true
+
+context IEC61970::Base::DC::ACDCConverter
+--docReference non-QoCDC Key=e9faeb16-bde5-45cd-8895-049189d60b9e Profile=EQ
+--message A converter has two DC converter terminals.
+inv ACDCConverter_DCTerminals_numberOfTerminals : (self.DCTerminals->size() = 2.0)
+
+--docReference non-QoCDC Key=6f60615a-2fd1-445e-9234-4c8a2666b6be Profile=EQ
+--message It is typically the terminal on the power transformer (or switch) closest to the AC network.
+inv ACDCConverter_valueType: (self.PccTerminal <> null and (self.PccTerminal.ConductingEquipment.oclIsKindOf(IEC61970::Base::Wires::Switch) or self.PccTerminal.ConductingEquipment.oclIsKindOf(IEC61970::Base::Wires::PowerTransformer)))
+
+--docReference non-QoCDC Key=09a42a54-cc17-48e3-bc96-296c740fa066 Profile=EQ
+--message The attribute shall be a positive value.
+inv ACDCConverter_baseS_valueRange : (self.baseS >  0.0)
+
+--docReference non-QoCDC Key=ac403681-1e5c-48de-844d-8ffcef5ea599 Profile=EQ
+--message The attribute shall be a positive value.
+inv ACDCConverter_maxUdc_valueRange : (self.maxUdc >  0.0)
+
+--docReference non-QoCDC Key=19a18714-aec7-42d1-a7c6-04a16fd79f7c Profile=EQ
+--message The attribute shall be a positive value.
+inv ACDCConverter_minUdc_valueRange : (self.minUdc >  0.0)
+
+--docReference non-QoCDC Key=8657c5a1-96cd-46de-baff-fd1208309f2f Profile=EQ
+--message The attribute shall be a positive value.
+inv ACDCConverter_ratedUdc_valueRange : (self.ratedUdc >  0.0)
+
+--docReference non-QoCDC Key=d387d542-ceb9-4ec5-999f-76af517468df Profile=EQ
+--message The attribute shall be a positive value.
+inv ACDCConverter_resistiveLoss_valueRange : (self.resistiveLoss >  0.0)
+
+--docReference non-QoCDC Key=f6b1892e-f0ca-45dd-a947-b7662cce0f14 Profile=EQ
+--message The attribute shall be a positive value.
+inv ACDCConverter_switchingLoss_valueRange : (self.switchingLoss >  0.0)
+
+context IEC61970::Base::OperationalLimits::ApparentPowerLimit
+--docReference non-QoCDC Key=49e3b80d-d5b8-4143-a932-48bafe92523c Profile=EQ
+--message The attribute shall be a positive value or zero.
+inv ApparentPowerLimit_normalValue_valueRange : (self.normalValue >= 0.0)
+
+context IEC61970::Base::Wires::AsynchronousMachine
+--docReference non-QoCDC Key=fa0eb6bd-fd55-404d-9ca4-7ff4abd4cf3d Profile=EQ
+--message If one AsynchronousMachine is associated with one GeneratingUnit the flag Equipment.aggregate shall be consistent in case it is provided at both AsynchronousMachine and GeneratingUnit.
+inv AsynchronousMachine_aggregate: (if self.GeneratingUnit <> null and self.GeneratingUnit.RotatingMachine->size() = 1 then
+		self.GeneratingUnit.aggregate = self.aggregate
+	else true endif)
+
+context IEC61970::Base::AuxiliaryEquipment::AuxiliaryEquipment
+--docReference non-QoCDC Key=cff91990-4309-471e-b3f0-564525569bff Profile=EQ
+--message For AuxilaryEquipment (CurrentTransformer, PotentialTransformer, PostLineSensor, SurgeArrester, WaveTrap, FaultIndicator) the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type Bay or Line.
+inv AuxiliaryEquipment_containment: (self.EquipmentContainer <> null and (
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Bay) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Wires::Line)
+	))
+
+context IEC61970::Base::Generation::Production::BatteryUnit
+--docReference non-QoCDC Key=77443509-89c5-4236-ae67-0f6ee4ec061b Profile=EQ
+--message The attribute shall be a positive value.
+inv BatteryUnit_ratedE_valueRange : (self.ratedE >  0.0)
+
+context IEC61970::Base::Wires::BusbarSection
+--docReference non-QoCDC Key=da94e370-d62e-4221-a7bd-22cc2d1f07ef Profile=EQ
+--message A bus bar section may have many physical terminals but for analysis is modelled with exactly one logical terminal.
+inv BusbarSection_Terminals_numberOfTerminals : (self.Terminals->size() = 1.0)
+
+context IEC61970::Base::Wires::Clamp
+--docReference non-QoCDC Key=520a05a8-84e1-4380-9b06-475087f8ff46 Profile=EQ
+--message For Clamp the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type Bay or Line when outside substation.
+inv Clamp_containment: (self.EquipmentContainer <> null and (
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Bay) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Wires::Line)
+	))
+
+--docReference non-QoCDC Key=b7416738-1110-4220-8382-da41ee62043d Profile=EQ
+--message A Clamp is ConductingEquipment and has one Terminal with an associated ConnectivityNode.
+inv Clamp_numberOfTerminals: (self.Terminals->size() = 1 and self.Terminals->first().ConnectivityNode <> null)
+
+context IEC61970::Base::Core::ConductingEquipment
+def : PATL_LIMIT_VALUE_DIFF : Real = 0.1
+--docReference non-QoCDC Key=db6ccd5a-ac88-4a96-ad15-94c71413064a Profile=EQ
+--message Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers.
+inv ConductingEquipment_usage: (if self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel) then self.BaseVoltage = null else true endif)
+
+context IEC61970::Base::ControlArea::ControlAreaGeneratingUnit
+--docReference non-QoCDC Key=0046e1aa-9f4c-4327-a048-fb82a17efd38 Profile=EQ
+--message Note that a control area should include a GeneratingUnit only once.
+inv ControlAreaGeneratingUnit_instance: (self.ControlArea.ControlAreaGeneratingUnit->select(GeneratingUnit = self.GeneratingUnit)->size() = 1)
+
+context IEC61970::Base::DC::CsConverter
+--docReference non-QoCDC Key=1b1fd172-4383-4987-8135-2ebb26f4618a Profile=EQ
+--message The attribute shall be a positive value.
+inv CsConverter_maxAlpha_valueRange : (self.maxAlpha >  0.0)
+
+--docReference non-QoCDC Key=c495bc83-5291-4641-9720-f7cc63b79d17 Profile=EQ
+--message The attribute shall be a positive value.
+inv CsConverter_maxGamma_valueRange : (self.maxGamma >  0.0)
+
+--docReference non-QoCDC Key=fb754cfb-b7c0-46c1-8831-74265a8f1d53 Profile=EQ
+--message The attribute shall be a positive value.
+inv CsConverter_maxIdc_valueRange : (self.maxIdc >  0.0)
+
+--docReference non-QoCDC Key=4507511b-0767-4816-9508-e943c9758f3b Profile=EQ
+--message The attribute shall be a positive value.
+inv CsConverter_minAlpha_valueRange : (self.minAlpha >  0.0)
+
+--docReference non-QoCDC Key=0357b5c4-7582-4674-b89b-e40593f6bde6 Profile=EQ
+--message The attribute shall be a positive value.
+inv CsConverter_minGamma_valueRange : (self.minGamma >  0.0)
+
+--docReference non-QoCDC Key=a333257c-00a6-46ca-bb71-c1acb0240ee0 Profile=EQ
+--message The attribute shall be a positive value.
+inv CsConverter_minIdc_valueRange : (self.minIdc >  0.0)
+
+--docReference non-QoCDC Key=b57745f0-c602-4fb1-b995-3c4e6a5f2e1f Profile=EQ
+--message The attribute shall be a positive value.
+inv CsConverter_ratedIdc_valueRange : (self.ratedIdc >  0.0)
+
+--docReference non-QoCDC Key=ae4d7d03-b161-4f5b-bf79-296c348f7844 Profile=EQ
+--message The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees.
+inv CsConverter_maxGamma_valueRangeTypical : (self.maxGamma <=  20.0)
+
+--docReference non-QoCDC Key=b707bb0c-e313-436e-a895-502c063d748e Profile=EQ
+--message The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.
+inv CsConverter_maxAlpha_valueRangeTypical : (self.maxAlpha <=  18.0)
+
+--docReference non-QoCDC Key=6a276591-b369-48d4-912f-9ef0718f2fe2 Profile=EQ
+--message The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees.
+inv CsConverter_minGamma_valueRangeTypical : ((self.minGamma >= 17.0) and
+(self.minGamma <= self.maxGamma))
+
+--docReference non-QoCDC Key=0db73ac8-e406-4680-94a3-7869e48941f2 Profile=EQ
+--message The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.
+inv CsConverter_minAlpha_valueRangeTypical : ((self.minAlpha >= 10.0) and
+(self.minAlpha <= self.maxAlpha))
+
+context IEC61970::Base::OperationalLimits::CurrentLimit
+--docReference non-QoCDC Key=17b7340e-6e05-4f62-bd42-b0f932ca40b6 Profile=EQ
+--message The attribute shall be a positive value or zero.
+inv CurrentLimit_normalValue_valueRange : (self.normalValue >= 0.0)
+
+context IEC61970::Base::Core::CurveData
+--docReference non-QoCDC Key=93eca843-40f4-4db5-8293-8defa3722a1a Profile=EQ
+--message For each active power value there is a corresponding high and low reactive power limit  value. Typically there will be a separate curve for each coolant condition, such as hydrogen pressure.  
+inv CurveData_curveYvalues: (	if self.Curve.oclIsKindOf(IEC61970::Base::Wires::ReactiveCapabilityCurve) then
+		self.xvalue->notEmpty() and self.y1value->notEmpty() and self.y2value->notEmpty()
+	else true endif)
+
+--docReference non-QoCDC Key=843aad71-5f84-41ee-8cea-5cca119d7da6 Profile=EQ
+--message If CurveData.Curve is a ReactiveCapabilityCurve, each CurveData shall satisfy the following relation: • CurveData.xvalue^2+CurveData.y1value^2 shall be less than or equal to RotatingMachine.ratedS^2.  
+inv CurveData_equationY1: (if self.Curve.oclIsKindOf(IEC61970::Base::Wires::ReactiveCapabilityCurve) then
+		let rcc : IEC61970::Base::Wires::ReactiveCapabilityCurve = self.Curve.oclAsType(IEC61970::Base::Wires::ReactiveCapabilityCurve) in
+		if rcc.SynchronousMachines->notEmpty() then
+			let sm : IEC61970::Base::Wires::SynchronousMachine = rcc.SynchronousMachines->first() in
+			((self.xvalue * self.xvalue) + (self.y1value*self.y1value)) <= sm.ratedS * sm.ratedS
+		else true endif
+	else true endif	)
+
+context IEC61970::Base::Wires::Cut
+--docReference non-QoCDC Key=3e3e807d-68cd-4d56-aed2-a1ddaf76099e Profile=EQ
+--message For Cut the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type Bay, VoltageLevel or DCConverterUnit or Line when outside substation.
+inv Cut_containment: (	self.EquipmentContainer <> null and (
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Bay) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit) or 
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Wires::Line)
+	))
+
+context IEC61970::Base::DC::DCBusbar
+--docReference non-QoCDC Key=8256a9a9-3318-4b84-8699-9a16e698f86b Profile=EQ
+--message For DCBusbar the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type DCConverterUnit.
+inv DCBusbar_containment: (self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit))
+
+context IEC61970::Base::DC::DCChopper
+--docReference non-QoCDC Key=7d30c05d-0ed8-4e9d-96b9-364c80957c6a Profile=EQ
+--message For DCChopper the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type DCConverterUnit.
+inv DCChopper_containment: (self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit))
+
+context IEC61970::Base::DC::DCConductingEquipment
+--docReference non-QoCDC Key=29a2b828-ae7c-4eef-b5e8-e0f4ddd8a95d Profile=EQ
+--message The attribute shall be a positive value.
+inv DCConductingEquipment_ratedUdc_valueRange : (self.ratedUdc >  0.0)
+
+context IEC61970::Base::DC::DCConverterUnit
+--docReference non-QoCDC Key=c9db2e5f-567c-4e58-bd2c-e2153df8ea0e Profile=EQ
+--message For a CSC HVDC, the transformer shall be modelled explicitly.
+inv DCConverterUnit_cscPowerTransformer: (	if (self.Equipments->select(oclIsKindOf(IEC61970::Base::DC::CsConverter))->notEmpty()) then		
+		self.Equipments->select(oclIsKindOf(IEC61970::Base::Wires::PowerTransformer))->notEmpty()
+	else true endif)
+
+--docReference non-QoCDC Key=3c4e9f9d-ba6d-4476-baa7-27758c543da3 Profile=EQ
+--message For each cim:DCConverterUnit and cim:DCLine instance an  IdentifiedObject.energyIdentCodeEic attribute has been defined,  for which the third character is 'T'.
+inv DCConverterUnit_DCEquipmentContainerMapping: (self.energyIdentCodeEic <> null and self.energyIdentCodeEic.substring(3,3) = 'T')
+
+context IEC61970::Base::DC::DCGround
+--docReference non-QoCDC Key=c60f86cb-9baa-4a42-9f29-a9fd2767b300 Profile=EQ
+--message For DCGround the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type DCConverterUnit.
+inv DCGround_containment: (self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit))
+
+context IEC61970::Base::DC::DCSeriesDevice
+--docReference non-QoCDC Key=8c78a915-1abd-4950-b11f-1d2a4305fe04 Profile=EQ
+--message For DCSeriesDevice the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type DCConverterUnit.
+inv DCSeriesDevice_containment: (self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit))
+
+context IEC61970::Base::DC::DCShunt
+--docReference non-QoCDC Key=a5f75474-b7f2-4785-8590-7f2a44c4d823 Profile=EQ
+--message For DCShunt the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type DCConverterUnit.
+inv DCShunt_containment: (self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit))
+
+context IEC61970::Base::LoadModel::DayType
+--docReference non-QoCDC Key=126cdfed-6218-483e-81a8-ed69152f2327 Profile=EQ
+--message For DayType the name attribute indicates the days of the week that a given DayType represents. The name attribute is restricted to the following names: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Weekday, Weekend, All. If the name attribute is All, it represents all seven days of the week. If the name attribute is Weekday, it represents Monday through Friday. If the name attribute is Weekend, it represents Saturday and Sunday.
+inv DayType_name_validValues : (self.name = 'Monday' or
+self.name = 'Tuesday' or
+self.name = 'Wednesday' or
+self.name = 'Thursday' or
+self.name = 'Friday' or
+self.name = 'Saturday' or
+self.name = 'Sunday' or
+self.name = 'Weekday' or
+self.name = 'Weekend' or
+self.name = 'All')
+
+context IEC61970::Base::Wires::Disconnector
+--docReference non-QoCDC Key=f94533b9-43c3-407a-88e2-0d9300d9d7a5 Profile=EQ
+--message For Disconnector the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type Bay, VoltageLevel, DCConverterUnit or Line when outside substation.
+inv Disconnector_containment: (self.EquipmentContainer <> null and (
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Bay) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit) or 
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Wires::Line)
+	))
+
+context IEC61970::Base::Wires::EarthFaultCompensator
+--docReference non-QoCDC Key=84bb8e97-bee5-4a07-9d04-e3c550b70dfc Profile=EQ
+--message The EarthFaultCompensator can have either one or two terminals modelled. If the second terminal of an EarthFaultCompensator is omitted, it is assumed the terminal solidly connects to ground. If there is some kind of topology or local earth resistivity that is important to model on the ground side of the device, then a second terminal is added.
+inv EarthFaultCompensator_Terminals_numberOfTerminals : ((self.Terminals->size() >= 1.0) and
+(self.Terminals->size() <= 2.0))
+
+--docReference non-QoCDC Key=8bf7e896-902d-475e-b5bb-d921412f4698 Profile=EQ
+--message For EarthFaultCompensator (GroundingImpedance, PetersenCoil) the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type VoltageLevel.
+inv EarthFaultCompensator_containment: (self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel))
+
+context IEC61970::Base::Core::Equipment
+--docReference non-QoCDC Key=c4c4a411-1370-4123-85ff-ebebcb2faf9a Profile=EQ
+--message The attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection.
+inv Equipment_notUsed: (	if self.aggregate->notEmpty() and
+		(self.oclIsKindOf(IEC61970::Base::Equivalents::EquivalentInjection) or
+		 self.oclIsKindOf(IEC61970::Base::Equivalents::EquivalentBranch) or
+		 self.oclIsKindOf(IEC61970::Base::Equivalents::EquivalentShunt)
+		) then false	
+	else true endif	)
+
+context IEC61970::Base::Equivalents::EquivalentBranch
+--docReference non-QoCDC Key=5d65ace8-f205-40c1-8a29-18d72afd5e72 Profile=EQ
+--message This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.r is given, then EquivalentBranch.r21 is assumed equal to EquivalentBranch.r.
+inv EquivalentBranch_usage: (if self.r21->notEmpty() then self.r = self.r21 else true endif)
+
+--docReference non-QoCDC Key=4512dca5-2249-4eb7-af73-64b85ec9d35a Profile=EQ
+--message This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.x is given, then EquivalentBranch.x21 is assumed equal to EquivalentBranch.x.
+inv EquivalentBranch_usage: (if self.x21->notEmpty() then self.x = self.x21 else true endif)
+
+--docReference non-QoCDC Key=c7f60d74-af19-4b39-8a6b-dcc989406271 Profile=EQ
+--message For EquivalentBranch the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type VoltageLevel, Line or Substation.
+inv EquivalentBranch_containment: (self.EquipmentContainer <> null and (
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Substation) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Wires::Line)
+	))
+
+--docReference non-QoCDC Key=e5bbe59c-15a8-4e78-8970-9c743a8e7a17 Profile=EQ
+--message cim:EquivalentBranch with EquivalentBranch.r not equal to EquivalentBranch.r21 or  EquivalentBranch.x not equal to EquivalentBranch.x21 shouldn't be used.
+inv EquivalentBranch_AsymmetricalEquivalent: (self.r = self.r21 and self.x = self.x21)
+
+context IEC61970::Base::Equivalents::EquivalentInjection
+def : SSH_SV_MAX_Q_DIFF : Real = 50
+def : SSH_SV_TOT_P_DIFF : Real = 200
+def : SSH_SV_MAX_P_DIFF : Real = 10
+--docReference non-QoCDC Key=fba3aea7-8d53-4de5-b505-6ec666ad8b31 Profile=EQ
+--message ReactiveCapabilityCurve can only be associated with EquivalentInjection  if the flag is true.
+inv EquivalentInjection_associatedCurve: (	if self.ReactiveCapabilityCurve <> null then
+		self.regulationCapability = true
+	else true endif)
+
+--docReference non-QoCDC Key=7eebb5f2-d43c-4324-a76b-dd8490210966 Profile=EQ
+--message If EquivalentInjection connects to a BoundaryPoint with flag isDirectCurrent=false (meaning this is not HVDC), the EquivalentInjection.regulationCapability in EQ shall be set to false and there shall not be a ReactiveCapabilityCurve associated.
+inv EquivalentInjection_notHVDC: (	let term : IEC61970::Base::Core::Terminal = self.Terminals->first() in
+	if (term.ConnectivityNode <> null and term.ConnectivityNode.BoundaryPoint <> null and term.ConnectivityNode.BoundaryPoint.isDirectCurrent = false) then
+		self.regulationCapability = false and self.ReactiveCapabilityCurve = null
+	else true endif)
+
+context IEC61970::Base::Equivalents::EquivalentShunt
+--docReference non-QoCDC Key=a51684eb-fff3-4001-93b2-29a1ef441952 Profile=EQ
+--message For EquivalentShunt the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type VoltageLevel.
+inv EquivalentShunt_containment: (self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel))
+
+context IEC61970::Base::Wires::Fuse
+--docReference non-QoCDC Key=273bee78-74c7-43bf-9821-cbf820ff0d9f Profile=EQ
+--message For Fuse the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type Bay, VoltageLevel, DCConverterUnit or Line when outside substation.
+inv Fuse_containment: (	self.EquipmentContainer <> null and (
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Bay) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit) or 
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Wires::Line)
+	))
+
+context IEC61970::Base::Generation::Production::GeneratingUnit
+--docReference non-QoCDC Key=f46e7aa5-9df6-47ce-bcf2-56361cc3d2ff Profile=EQ
+--message The attribute shall be a positive value.
+inv GeneratingUnit_ratedGrossMaxP_valueRange : (self.ratedGrossMaxP >  0.0)
+
+--docReference non-QoCDC Key=0fb1cc91-be35-48a4-b982-c9b93d701f34 Profile=EQ
+--message The attribute shall be a positive value.
+inv GeneratingUnit_ratedGrossMinP_valueRange : (self.ratedGrossMinP >  0.0)
+
+--docReference non-QoCDC Key=56941c35-5575-4cee-a1f2-ab8478dca871 Profile=EQ
+--message The attribute shall be a positive value.
+inv GeneratingUnit_ratedNetMaxP_valueRange : (self.ratedNetMaxP >  0.0)
+
+--docReference non-QoCDC Key=81eadebe-ceeb-49f0-b696-d88aea26b762 Profile=EQ
+--message For GeneratingUnit (SolarGeneratingInit, NuclearGeneratingUnit, ThermalGeneratingUnit, HydroGeneratingUnit, WindGeneratingUnit) the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type Substation.
+inv GeneratingUnit_containment: (self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Substation))
+
+--docReference non-QoCDC Key=c4d22beb-79ee-46c5-872b-f4e0dcd7680f Profile=EQ
+--message GeneratingUnit.maxOperatingP shall be less than or equal to the sum of RotatingMachine.ratedS for RotatingMachine-s associated to the GeneratingUnit.
+inv GeneratingUnit_ratedS: (	let sumS : Real = self.RotatingMachine.ratedS->sum() in
+	self.maxOperatingP <= sumS)
+
+context IEC61970::Base::Wires::GroundDisconnector
+--docReference non-QoCDC Key=bf52557d-bc57-4c2c-9c24-605ac81c3f45 Profile=EQ
+--message For GroundDisconnector the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type Bay, VoltageLevel, DCConverterUnit or Line when outside substation.
+inv GroundDisconnector_containment: (self.EquipmentContainer <> null and (
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Bay) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit) or 
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Wires::Line)
+	))
+
+context IEC61970::Base::Wires::Jumper
+--docReference non-QoCDC Key=d028d99b-c191-44a3-95a9-5214f6ffe81b Profile=EQ
+--message For Jumper the association Equipment.EquipmentContainer is required and shall point to EquipmentContainer of type Bay, VoltageLevel, DCConverterUnit or Line when outside substation.
+inv Jumper_containment: (self.EquipmentContainer <> null and (
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::Bay) or
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit) or 
+		self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Wires::Line)
+	))
+
+context IEC61970::Base::Wires::NonlinearShuntCompensator
+--docReference non-QoCDC Key=7c1031de-0407-4819-8802-0dc3bcd047ca Profile=EQ
+--message The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. 
+inv NonlinearShuntCompensator_NonlinearShuntCompensatorPoints_numberOfInstances : (self.NonlinearShuntCompensatorPoints->size() = self.maximumSections)
+
+context IEC61970::Base::Wires::NonlinearShuntCompensatorPoint
+--docReference non-QoCDC Key=6522fb13-e515-44b2-b883-d1b0f9429fb7 Profile=EQ
+--message NonlinearShuntCompensatorPoint.g shall be a positive value or zero.
+inv NonlinearShuntCompensatorPoint_g_valueRange : (self.g >= 0.0)
+
+context IEC61970::Base::OperationalLimits::OperationalLimitSet
+--docReference non-QoCDC Key=799b7f42-32d9-4c0b-b136-b1d39c4b5093 Profile=EQ
+--message OperationalLimitSet has associations with ACDCTerminal and Equipment. The association OperationalLimitSet.Terminal is preferred for Terminal-s associated with ConductingEquipment. At least one of the two references must be populated. If both are included, the Terminal must be related to the ConductingEquipment.
+inv OperationalLimitSet_limits: (self.Terminal <> null or self.Equipment <> null and
+	if self.Terminal <> null and self.Equipment <> null and self.Terminal.oclIsKindOf(IEC61970::Base::Core::Terminal) then
+		self.Terminal.oclAsType(IEC61970::Base::Core::Terminal).ConductingEquipment = self.Equipment
+	else true endif )
+
+context IEC61970::Base::Wires::PhaseTapChangerLinear
+--docReference non-QoCDC Key=cae6a64a-0110-48de-a315-1803bb8dff33 Profile=EQ
+--message PowerTransformerEnd.x shall be consistent with PhaseTapChangerLinear.xMin and PhaseTapChangerNonLinear.xMin. In case of inconsistency, PowerTransformerEnd.x shall be used.
+inv PhaseTapChangerLinear_valueRangePair: (self.xMin = self.TransformerEnd.oclAsType(IEC61970::Base::Wires::PowerTransformerEnd).x)
+
+context IEC61970::Base::Wires::PhaseTapChangerNonLinear
+--docReference non-QoCDC Key=5f827841-91fa-425e-a8f8-940987dd4e23 Profile=EQ
+--message PowerTransformerEnd.x shall be consistent with PhaseTapChangerLinear.xMin and PhaseTapChangerNonLinear.xMin. In case of inconsistency, PowerTransformerEnd.x shall be used.
+inv PhaseTapChangerNonLinear_valueRangePair: (self.xMin = self.TransformerEnd.oclAsType(IEC61970::Base::Wires::PowerTransformerEnd).x)
+
+context IEC61970::Base::Wires::PowerElectronicsConnection
+--docReference non-QoCDC Key=92edf369-ff9b-4516-a1bf-6fd7f8809ead Profile=EQ
+--message The attribute shall have a positive value.
+inv PowerElectronicsConnection_ratedS_valueRange : (self.ratedS >  0.0)
+
+--docReference non-QoCDC Key=f134f227-d873-468f-88a8-abbbac9c6eda Profile=EQ
+--message The attribute shall be a positive value.
+inv PowerElectronicsConnection_ratedU_valueRange : (self.ratedU >  0.0)
+
+context IEC61970::Base::Wires::PowerTransformer
+--docReference non-QoCDC Key=cc8c27ba-935b-4e23-b824-0fa2d51b387a Profile=EQ
+--message The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.
+inv PowerTransformer_BaseVoltage_associationNotUsed : (self.BaseVoltage = null)
+
+context IEC61970::Base::Wires::PowerTransformerEnd
+def : EQ_BRANCH_X_LIMIT : Real = 0.01
+--docReference non-QoCDC Key=c204ebd8-ec67-44a3-92bf-b1c199a3b781 Profile=EQ
+--message Highest voltage winding should be 1.  Each end within a power transformer should have a unique subsequent end number.  
+inv PowerTransformerEnd_unique: (self.PowerTransformer.PowerTransformerEnd->select(endNumber = self.endNumber)->size() = 1)
+
+--docReference non-QoCDC Key=1d0df50e-0ea7-447b-b732-bfece6626fcb Profile=EQ
+--message The attribute shall be a positive value. 
+inv PowerTransformerEnd_ratedS_valueRange : (self.ratedS >  0.0)
+
+--docReference non-QoCDC Key=4aabd1e8-b2e7-4816-9607-8a2a9bd2fe66 Profile=EQ
+--message For a two-winding transformer the values for the high and low voltage sides shall be identical. 
+inv PowerTransformerEnd_valueRange2winding: (if self.PowerTransformer.PowerTransformerEnd->size() = 2 then
+		self.PowerTransformer.PowerTransformerEnd->select(ratedS <> self.ratedS)->isEmpty()
+	else true endif)
+
+--docReference non-QoCDC Key=b978b27b-6d23-4a83-90c0-b8f56c912a3e Profile=EQ
+--message 1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.
+inv PowerTransformerEnd_secondWindingValues: (	if self.PowerTransformer.PowerTransformerEnd->size() = 2 then
+		if self.endNumber = 1 then self.r <> 0 and self.x <> 0 and self.r0 <>0 and self.x0 <> 0 
+		else 
+			if self.endNumber = 2 then self.r = 0 and self.x = 0 and self.r0 = 0 and self.x0 = 0
+			else false endif
+		endif
+	else true endif)
+
+--docReference non-QoCDC Key=b35019af-7e54-4049-8240-4b5d01415f0f Profile=EQ
+--message PowerTransformerEnd.g shall be positive value or zero. Positive magnetising branch conductance (PowerTransformerEnd.g) means positive active power losses in no load.
+inv PowerTransformerEnd_g_valueRange : (self.g >= 0.0)
+
+--docReference non-QoCDC Key=cb42891d-c412-4200-939d-d3a513ccd057 Profile=EQ
+--message Transformers with zero series reactance do not exist. PowerTransformerEnd.x of high voltage end in case of a two winding transformer shall be a positive value. In case of a three winding transformer the PowerTransformerEnd.x shall not be zero.
+inv PowerTransformerEnd_value: (	if self.PowerTransformer.PowerTransformerEnd->size() = 2 then
+		if self.endNumber = 1 then self.x > 0  
+		else 
+			if self.endNumber = 2 then self.x = 0
+			else false endif
+		endif
+	else
+		if self.PowerTransformer.PowerTransformerEnd->size() = 3 then
+			self.x <> 0
+		else false endif
+	endif)
+
+context IEC61970::Base::Wires::RatioTapChanger
+--docReference non-QoCDC Key=4b39f9cc-c2d1-4bdf-a997-9b8a142e8fcd Profile=EQ
+--message The association TapChanger.TapChangerControl for RatioTapChanger-s shall only point to a TapChangerControl the has the following control modes for RegulatingControl.mode: voltage, reactivePower and powerFactor.
+inv RatioTapChanger_controlMode: (if self.TapChangerControl <> null then
+		self.TapChangerControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::voltage or
+		self.TapChangerControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::reactivePower or
+		self.TapChangerControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::powerFactor
+	else true endif)
+
+context IEC61970::Base::Wires::ReactiveCapabilityCurve
+--docReference non-QoCDC Key=fcb32b67-29c0-4840-91e3-4bec464f639d Profile=EQ
+--message For a ReactiveCapabilityCurve associated with SynchronousMachine, the Curve.xUnit shall be set to UnitSymbol.W and both Curve.y1Unit and Curve.y2Unit shall be set to UnitSymbol.VAr. As the multiplier is not included in the profile it is defined the same as the multiplier used for datatype ActivePower and ReactivePower, i.e. UnitMultiplier.M.
+inv ReactiveCapabilityCurve_units: (	self.xUnit = IEC61970::Base::Domain::UnitSymbol::W and
+	self.y1Unit = IEC61970::Base::Domain::UnitSymbol::VAr and
+	self.y2Unit = IEC61970::Base::Domain::UnitSymbol::VAr)
+
+context IEC61970::Base::Core::RegularTimePoint
+--docReference non-QoCDC Key=e77210c8-afa4-49a7-bb36-c6aa549efbcd Profile=EQ
+--message The sequence number cannot be negative.
+inv RegularTimePoint_sequenceNumber_valueRange : (self.sequenceNumber >= 0.0)
+
+context IEC61970::Base::Wires::RegulatingControl
+def : EQ_DB_REASONABILITY_FACTOR : Real = 2
+--docReference non-QoCDC Key=b5eeb61f-ff85-44da-8ab4-79d24e8a550d Profile=EQ
+--message The following cim:RegulatingControl.modes are not at all allowed    - currentFlow    - admittance    - timeScheduled    - temperature   Flow type of controls (activePower, reactivePower, currentFlow) are not possible at cim:BusbarSection cim:Terminal.
+inv RegulatingControl_allowedValues: (	self.mode <> IEC61970::Base::Wires::RegulatingControlModeKind::currentFlow and
+	self.mode <> IEC61970::Base::Wires::RegulatingControlModeKind::admittance and
+	self.mode <> IEC61970::Base::Wires::RegulatingControlModeKind::timeScheduled and
+	self.mode <> IEC61970::Base::Wires::RegulatingControlModeKind::temperature
+	and
+	if self.Terminal.ConductingEquipment.oclIsKindOf(IEC61970::Base::Wires::BusbarSection) then
+		self.mode <> IEC61970::Base::Wires::RegulatingControlModeKind::activePower and
+		self.mode <> IEC61970::Base::Wires::RegulatingControlModeKind::reactivePower
+	else true endif)
+
+context IEC61970::Base::Wires::RotatingMachine
+--docReference non-QoCDC Key=466a4d62-dc15-4f4f-aae7-f0819dad269d Profile=EQ
+--message The attribute cannot be a negative value.
+inv RotatingMachine_ratedPowerFactor_valueRange : (self.ratedPowerFactor >= 0.0)
+
+--docReference non-QoCDC Key=c55eb7f2-b438-430f-a473-77a1e879d0ee Profile=EQ
+--message The attribute shall have a positive value.
+inv RotatingMachine_ratedS_valueRange : (self.ratedS >  0.0)
+
+--docReference non-QoCDC Key=d4940b10-af05-4591-8fac-c9f7486e3948 Profile=EQ
+--message The attribute shall be a positive value.
+inv RotatingMachine_ratedU_valueRange : (self.ratedU >  0.0)
+
+context IEC61970::Base::Wires::SeriesCompensator
+--docReference non-QoCDC Key=48ef745f-9e76-4a8b-9ee9-2fcf10377060 Profile=EQ
+--message It is a two terminal device.
+inv SeriesCompensator_Terminals_numberOfTerminals : (self.Terminals->size() = 2.0)
+
+context IEC61970::Base::Wires::ShuntCompensator
+--docReference non-QoCDC Key=9010a1ec-af99-4692-8926-cec01e9b3d75 Profile=EQ
+--message This should normally be within 10% of the voltage at which the capacitor is connected to the network.
+inv ShuntCompensator_nominalVoltageDifference: (	if self.EquipmentContainer.oclIsKindOf(IEC61970::Base::Core::VoltageLevel) then
+		let connU : Real = self.EquipmentContainer.oclAsType(IEC61970::Base::Core::VoltageLevel).BaseVoltage.nominalVoltage in
+		let diff : Real = (self.nomU - connU).abs() in
+		diff/connU <= 0.1
+	else true endif)
+
+--docReference non-QoCDC Key=1aaaa75b-7cfc-493b-ae61-e6daeaaeeb74 Profile=EQ
+--message ShuntCompensator is a single terminal device. 
+inv ShuntCompensator_Terminals_numberOfTerminals : (self.Terminals->size() = 1.0)
+
+--docReference non-QoCDC Key=e5d812ab-93be-45bc-a5a9-4561c3392bb9 Profile=EQ
+--message For ShuntCompensator, the association RegulatingCondEq.RequlatingControl shall only point to a RequlatingControl that has the following control modes for RegulatingControl.mode: voltage, reactivePower and powerFactor.
+inv ShuntCompensator_controlMode: (if self.RegulatingControl <> null then
+		self.RegulatingControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::voltage or
+		self.RegulatingControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::reactivePower or
+		self.RegulatingControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::powerFactor
+	else true endif)
+
+context IEC61970::Base::Wires::StaticVarCompensator
+--docReference non-QoCDC Key=08a06587-8f13-4dfb-903e-b73a492f6984 Profile=EQ
+--message Shall always be negative.  
+inv StaticVarCompensator_inductiveRating_valueRange : (self.inductiveRating <  0.0)
+
+context IEC61970::Base::Wires::Switch
+def : SSH_SV_MAX_Q_DIFF : Real = 50
+def : SSH_SV_TOT_P_DIFF : Real = 200
+def : SSH_SV_MAX_P_DIFF : Real = 10
+--docReference non-QoCDC Key=09fd0764-e997-4087-8006-13818eb61bd3 Profile=EQ
+--message If the Switch has a status measurement the Discrete.normalValue is expected to match with the Switch.normalOpen.
+inv Switch_09fd0764e9974087800613818eb61bd3: (		let discreteMeas : Set(IEC61970::Base::Meas::Measurement) = self.Measurements->select(oclIsKindOf(IEC61970::Base::Meas::Discrete) and measurementType = 'SwitchPosition') in
+		if discreteMeas->notEmpty() then
+			discreteMeas->size() = 1 and
+			let discrete : IEC61970::Base::Meas::Discrete = self.Measurements->select(oclIsKindOf(IEC61970::Base::Meas::Discrete) and measurementType = 'SwitchPosition')->first().oclAsType(IEC61970::Base::Meas::Discrete) in
+			if self.normalOpen then discrete.normalValue = 1
+			else discrete.normalValue = 0 endif
+		else true endif)
+
+--docReference non-QoCDC Key=c185c3b8-db0f-460c-8fe5-ad3dde2617dc Profile=EQ
+--message All switches are two terminal devices including grounding switches. 
+inv Switch_Terminals_numberOfTerminals : (self.Terminals->size() = 2.0)
+
+--docReference non-QoCDC Key=2c2c8385-a285-4eb3-aa80-0b1d3098be46 Profile=EQ
+--message The attribute shall be a positive value.
+inv Switch_ratedCurrent_valueRange : (self.ratedCurrent >  0.0)
+
+context IEC61970::Base::Wires::SynchronousMachine
+def : SSH_SV_TOT_P_DIFF : Real = 200
+--docReference non-QoCDC Key=83989ab2-a470-4492-ad61-0b1f8b82c6f3 Profile=EQ
+--message If only one SynchronousMachine is associated with the GeneratingUnit then the Equipment.aggregate flag shall be consistent between the SynchronousMachine and GeneratingUnit if it exists in both.
+inv SynchronousMachine_aggregate: (	if self.GeneratingUnit <> null and self.GeneratingUnit.RotatingMachine->size() = 1 then
+		self.GeneratingUnit.aggregate = self.aggregate
+	else true endif)
+
+--docReference non-QoCDC Key=ed53a7d1-2c93-426e-9cd0-6ee7c1ea31d4 Profile=EQ
+--message For SynchronousMachine, the association RegulatingCondEq.RequlatingControl shall only point to a RequlatingControl that has the following control modes for RegulatingControl.mode: voltage, reactivePower and powerFactor.
+inv SynchronousMachine_controlMode: (	if self.RegulatingControl <> null then
+		self.RegulatingControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::voltage or
+		self.RegulatingControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::reactivePower or
+		self.RegulatingControl.mode = IEC61970::Base::Wires::RegulatingControlModeKind::powerFactor
+	else true endif)
+
+context IEC61970::Base::Wires::TapChanger
+--docReference non-QoCDC Key=89501af9-447d-4c56-aaeb-0c8f51b9d302 Profile=EQ
+--message The attribute shall be greater than lowStep.
+inv TapChanger_highStep_valueRangePair : (self.highStep < self.highStep)
+
+--docReference non-QoCDC Key=8f6b11ea-7800-4314-8139-1f7c64c30eeb Profile=EQ
+--message The attribute shall be equal to or greater than lowStep and equal or less than highStep.
+inv TapChanger_neutralStep_valueRangePairFrom : (self.neutralStep <= self.neutralStep)
+
+--docReference non-QoCDC Key=2e88259f-0374-4d96-afcb-c806c61309f3 Profile=EQ
+--message The attribute shall be equal to or greater than lowStep and equal or less than highStep.
+inv TapChanger_neutralStep_valueRangePairTo : (self.neutralStep <= self.highStep)
+
+--docReference non-QoCDC Key=52945d61-a88f-43fc-b7c7-4c4693625c9e Profile=EQ
+--message The attribute shall be equal to or greater than lowStep and equal to or less than highStep.
+inv TapChanger_normalStep_valueRangePairFrom : (self.normalStep <= self.normalStep)
+
+--docReference non-QoCDC Key=39b85149-3dce-486a-abdc-5f1210640c2c Profile=EQ
+--message The attribute shall be equal to or greater than lowStep and equal to or less than highStep.
+inv TapChanger_normalStep_valueRangePairTo : (self.normalStep <= self.highStep)
+
+context IEC61970::Base::Wires::TapChangerControl
+--docReference non-QoCDC Key=c3ae03f7-f777-407d-a560-7e73f5ea99b1 Profile=EQ
+--message No TapChangerControl is used for the converter transformer, the control function is described in the ACDCConverter-s.
+inv TapChangerControl_tapChangerControl: (	self.TapChanger->select(oclAsType(IEC61970::Base::Wires::RatioTapChanger).TransformerEnd.oclAsType(IEC61970::Base::Wires::PowerTransformerEnd).PowerTransformer.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit))->isEmpty() and
+	self.TapChanger->select(oclAsType(IEC61970::Base::Wires::PhaseTapChanger).TransformerEnd.oclAsType(IEC61970::Base::Wires::PowerTransformerEnd).PowerTransformer.EquipmentContainer.oclIsKindOf(IEC61970::Base::DC::DCConverterUnit))->isEmpty()	)
+
+context IEC61970::Base::Core::Terminal
+def: EQ_BRANCH_X_LIMIT : Real = 0.01
+--docReference non-QoCDC Key=77ffb721-4438-4245-a093-504d31784d85 Profile=EQ
+--message Multiple tap changers can be combined within one power transformer, but to avoid interpretation issues only one phase shifting and one ratio changing tap changer shall be modelled on any given terminal.
+inv Terminal_multipleTypes: (	if self.TransformerEnd->notEmpty() then
+		self.TransformerEnd->select(RatioTapChanger <> null)->size() <= 1 and
+		self.TransformerEnd->select(PhaseTapChanger <> null)->size() <= 1
+	else true endif	)
+
+--docReference non-QoCDC Key=cf43df36-f68c-4e44-9d98-41c8ab092daf Profile=EQ
+--message The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent.
+inv Terminal_consistencyConnectivityNode: (	if self.phases->notEmpty() and self.ConnectivityNode <> null then
+		self.ConnectivityNode.Terminals->select(phases = self.phases)->size() = self.ConnectivityNode.Terminals->size()
+	else true endif)
+
+--docReference non-QoCDC Key=cbf91e96-82cc-44a2-91e0-00888c9991fb Profile=EQ
+--message The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent.
+inv Terminal_consistencyEquipment: (	if self.phases->notEmpty() and self.ConductingEquipment.Terminals->size() >= 1 then
+		self.ConductingEquipment.Terminals->select(phases = self.phases)->size() = self.ConductingEquipment.Terminals->size() and
+		self.ConnectivityNode.Terminals->select(phases = self.phases)->size() = self.ConnectivityNode.Terminals->size()
+	else true endif)
+
+context IEC61970::Base::OperationalLimits::VoltageLimit
+--docReference non-QoCDC Key=f5e2996c-3b40-4595-88e8-86eb0b2b4f13 Profile=EQ
+--message The attribute shall be a positive value or zero.
+inv VoltageLimit_normalValue_valueRange : (self.normalValue >= 0.0)
+
+context IEC61970::Base::DC::VsConverter
+--docReference non-QoCDC Key=62367e0a-8eb0-415b-8624-8ab1c6c6b5b8 Profile=EQ
+--message A factor typically less than 1.
+inv VsConverter_maxModulationIndex_valueRangeTypical : (self.maxModulationIndex <=  1.0)
+
+endpackage

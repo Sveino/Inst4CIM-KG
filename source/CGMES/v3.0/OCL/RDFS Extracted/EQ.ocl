@@ -1,0 +1,492 @@
+import CIM100 : 'http://iec.ch/TC57/CIM100#/'
+
+package CIM100
+
+context IEC61970::Base::Wires::SwitchSchedule
+-- Switch must be set.
+inv SwitchSchedule_Switch: (self.Switch <> null)
+
+context IEC61970::Base::Wires::PhaseTapChangerTabular
+-- PhaseTapChangerTable must be set.
+inv PhaseTapChangerTabular_PhaseTapChangerTable: (self.PhaseTapChangerTable <> null)
+
+context IEC61970::Base::Wires::TapSchedule
+-- TapChanger must be set.
+inv TapSchedule_TapChanger: (self.TapChanger <> null)
+
+context IEC61970::Base::Wires::NonlinearShuntCompensatorPoint
+-- NonlinearShuntCompensator must be set.
+inv NonlinearShuntCompensatorPoint_NonlinearShuntCompensator: (self.NonlinearShuntCompensator <> null)
+-- b must be set.
+inv NonlinearShuntCompensatorPoint_b: (self.b->notEmpty())
+-- g must be set.
+inv NonlinearShuntCompensatorPoint_g: (self.g->notEmpty())
+-- sectionNumber must be set.
+inv NonlinearShuntCompensatorPoint_sectionNumber: (self.sectionNumber <> null)
+
+context IEC61970::Base::Wires::ExternalNetworkInjection
+-- governorSCD must be set.
+inv ExternalNetworkInjection_governorSCD: (self.governorSCD->notEmpty())
+-- maxP must be set.
+inv ExternalNetworkInjection_maxP: (self.maxP->notEmpty())
+-- maxQ must be set.
+inv ExternalNetworkInjection_maxQ: (self.maxQ->notEmpty())
+-- minP must be set.
+inv ExternalNetworkInjection_minP: (self.minP->notEmpty())
+-- minQ must be set.
+inv ExternalNetworkInjection_minQ: (self.minQ->notEmpty())
+
+context IEC61970::Base::Wires::LinearShuntCompensator
+-- bPerSection must be set.
+inv LinearShuntCompensator_bPerSection: (self.bPerSection->notEmpty())
+-- gPerSection must be set.
+inv LinearShuntCompensator_gPerSection: (self.gPerSection->notEmpty())
+
+context IEC61970::Base::DC::DCSeriesDevice
+-- inductance must be set.
+inv DCSeriesDevice_inductance: (self.inductance->notEmpty())
+-- resistance must be set.
+inv DCSeriesDevice_resistance: (self.resistance->notEmpty())
+
+context IEC61970::Base::OperationalLimits::OperationalLimitType
+-- direction must be set.
+inv OperationalLimitType_direction: (self.direction->notEmpty())
+-- isInfiniteDuration must be set.
+inv OperationalLimitType_isInfiniteDuration: (self.isInfiniteDuration->notEmpty())
+
+context IEC61970::Base::ControlArea::ControlAreaGeneratingUnit
+-- ControlArea must be set.
+inv ControlAreaGeneratingUnit_ControlArea: (self.ControlArea <> null)
+-- GeneratingUnit must be set.
+inv ControlAreaGeneratingUnit_GeneratingUnit: (self.GeneratingUnit <> null)
+
+context IEC61970::Base::LoadModel::NonConformLoadSchedule
+-- NonConformLoadGroup must be set.
+inv NonConformLoadSchedule_NonConformLoadGroup: (self.NonConformLoadGroup <> null)
+
+context IEC61970::Base::OperationalLimits::VoltageLimit
+-- normalValue must be set.
+inv VoltageLimit_normalValue: (self.normalValue->notEmpty())
+
+context IEC61970::Base::LoadModel::LoadArea
+-- SubLoadAreas must be set.
+inv LoadArea_SubLoadAreas: (self.SubLoadAreas->size() > 0)
+
+context IEC61970::Base::Core::Bay
+-- VoltageLevel must be set.
+inv Bay_VoltageLevel: (self.VoltageLevel <> null)
+
+context IEC61970::Base::Generation::Production::BatteryUnit
+-- ratedE must be set.
+inv BatteryUnit_ratedE: (self.ratedE->notEmpty())
+
+context IEC61970::Base::Wires::PhaseTapChangerNonLinear
+-- voltageStepIncrement must be set.
+inv PhaseTapChangerNonLinear_voltageStepIncrement: (self.voltageStepIncrement->notEmpty())
+-- xMax must be set.
+inv PhaseTapChangerNonLinear_xMax: (self.xMax->notEmpty())
+-- xMin must be set.
+inv PhaseTapChangerNonLinear_xMin: (self.xMin->notEmpty())
+
+context IEC61970::Base::Wires::SeriesCompensator
+-- r must be set.
+inv SeriesCompensator_r: (self.r->notEmpty())
+-- x must be set.
+inv SeriesCompensator_x: (self.x->notEmpty())
+
+context IEC61970::Base::Equivalents::EquivalentBranch
+-- r must be set.
+inv EquivalentBranch_r: (self.r->notEmpty())
+-- x must be set.
+inv EquivalentBranch_x: (self.x->notEmpty())
+
+context IEC61970::Base::Generation::Production::GrossToNetActivePowerCurve
+-- GeneratingUnit must be set.
+inv GrossToNetActivePowerCurve_GeneratingUnit: (self.GeneratingUnit <> null)
+
+context IEC61970::Base::Core::BaseVoltage
+-- nominalVoltage must be set.
+inv BaseVoltage_nominalVoltage: (self.nominalVoltage->notEmpty())
+
+context IEC61970::Base::Wires::TapChangerTablePoint
+-- step must be set.
+inv TapChangerTablePoint_step: (self.step <> null)
+
+context IEC61970::Base::Core::Terminal
+-- ConductingEquipment must be set.
+inv Terminal_ConductingEquipment: (self.ConductingEquipment <> null)
+
+context IEC61970::Base::Core::ACDCTerminal
+-- sequenceNumber must be set.
+inv ACDCTerminal_sequenceNumber: (self.sequenceNumber <> null)
+
+context IEC61970::Base::Wires::PhaseTapChangerTablePoint
+-- PhaseTapChangerTable must be set.
+inv PhaseTapChangerTablePoint_PhaseTapChangerTable: (self.PhaseTapChangerTable <> null)
+-- angle must be set.
+inv PhaseTapChangerTablePoint_angle: (self.angle->notEmpty())
+
+context IEC61970::Base::OperationalLimits::ActivePowerLimit
+-- normalValue must be set.
+inv ActivePowerLimit_normalValue: (self.normalValue->notEmpty())
+
+context IEC61970::Base::Generation::Production::HydroPowerPlant
+-- hydroPlantStorageType must be set.
+inv HydroPowerPlant_hydroPlantStorageType: (self.hydroPlantStorageType->notEmpty())
+
+context IEC61970::Base::DC::DCLineSegment
+-- capacitance must be set.
+inv DCLineSegment_capacitance: (self.capacitance->notEmpty())
+-- inductance must be set.
+inv DCLineSegment_inductance: (self.inductance->notEmpty())
+-- resistance must be set.
+inv DCLineSegment_resistance: (self.resistance->notEmpty())
+
+context IEC61970::Base::Core::Substation
+-- Region must be set.
+inv Substation_Region: (self.Region <> null)
+
+context IEC61970::Base::Generation::Production::PowerElectronicsUnit
+-- PowerElectronicsConnection must be set.
+inv PowerElectronicsUnit_PowerElectronicsConnection: (self.PowerElectronicsConnection <> null)
+
+context IEC61970::Base::Wires::Clamp
+-- ACLineSegment must be set.
+inv Clamp_ACLineSegment: (self.ACLineSegment <> null)
+
+context IEC61970::Base::Wires::RatioTapChanger
+-- stepVoltageIncrement must be set.
+inv RatioTapChanger_stepVoltageIncrement: (self.stepVoltageIncrement->notEmpty())
+-- TransformerEnd must be set.
+inv RatioTapChanger_TransformerEnd: (self.TransformerEnd <> null)
+
+context IEC61970::Base::Wires::NonlinearShuntCompensator
+-- NonlinearShuntCompensatorPoints must be set.
+inv NonlinearShuntCompensator_NonlinearShuntCompensatorPoints: (self.NonlinearShuntCompensatorPoints->size() > 0)
+
+context IEC61970::Base::LoadModel::SeasonDayTypeSchedule
+-- DayType must be set.
+inv SeasonDayTypeSchedule_DayType: (self.DayType <> null)
+-- Season must be set.
+inv SeasonDayTypeSchedule_Season: (self.Season <> null)
+
+context IEC61970::Base::DC::DCTerminal
+-- DCConductingEquipment must be set.
+inv DCTerminal_DCConductingEquipment: (self.DCConductingEquipment <> null)
+
+context IEC61970::Base::Equivalents::EquivalentShunt
+-- b must be set.
+inv EquivalentShunt_b: (self.b->notEmpty())
+-- g must be set.
+inv EquivalentShunt_g: (self.g->notEmpty())
+
+context IEC61970::Base::Core::CurveData
+-- Curve must be set.
+inv CurveData_Curve: (self.Curve <> null)
+-- xvalue must be set.
+inv CurveData_xvalue: (self.xvalue->notEmpty())
+-- y1value must be set.
+inv CurveData_y1value: (self.y1value->notEmpty())
+
+context IEC61970::Base::DC::DCConductingEquipment
+-- ratedUdc must be set.
+inv DCConductingEquipment_ratedUdc: (self.ratedUdc->notEmpty())
+
+context IEC61970::Base::Wires::RegulationSchedule
+-- RegulatingControl must be set.
+inv RegulationSchedule_RegulatingControl: (self.RegulatingControl <> null)
+
+context IEC61970::Base::Wires::SynchronousMachine
+-- type must be set.
+inv SynchronousMachine_type: (self.type->notEmpty())
+
+context IEC61970::Base::LoadModel::LoadResponseCharacteristic
+-- exponentModel must be set.
+inv LoadResponseCharacteristic_exponentModel: (self.exponentModel->notEmpty())
+
+context IEC61970::Base::AuxiliaryEquipment::AuxiliaryEquipment
+-- Terminal must be set.
+inv AuxiliaryEquipment_Terminal: (self.Terminal <> null)
+
+context IEC61970::Base::Wires::TapChanger
+-- highStep must be set.
+inv TapChanger_highStep: (self.highStep <> null)
+-- lowStep must be set.
+inv TapChanger_lowStep: (self.lowStep <> null)
+-- ltcFlag must be set.
+inv TapChanger_ltcFlag: (self.ltcFlag->notEmpty())
+-- neutralStep must be set.
+inv TapChanger_neutralStep: (self.neutralStep <> null)
+-- neutralU must be set.
+inv TapChanger_neutralU: (self.neutralU->notEmpty())
+-- normalStep must be set.
+inv TapChanger_normalStep: (self.normalStep <> null)
+
+context IEC61970::Base::Core::RegularIntervalSchedule
+-- TimePoints must be set.
+inv RegularIntervalSchedule_TimePoints: (self.TimePoints->size() > 0)
+-- timeStep must be set.
+inv RegularIntervalSchedule_timeStep: (self.timeStep->notEmpty())
+-- endTime must be set.
+inv RegularIntervalSchedule_endTime: (self.endTime <> null)
+
+context IEC61970::Base::Generation::Production::WindGeneratingUnit
+-- windGenUnitType must be set.
+inv WindGeneratingUnit_windGenUnitType: (self.windGenUnitType->notEmpty())
+
+context IEC61970::Base::Core::Curve
+-- curveStyle must be set.
+inv Curve_curveStyle: (self.curveStyle->notEmpty())
+-- xUnit must be set.
+inv Curve_xUnit: (self.xUnit->notEmpty())
+-- y1Unit must be set.
+inv Curve_y1Unit: (self.y1Unit->notEmpty())
+-- CurveDatas must be set.
+inv Curve_CurveDatas: (self.CurveDatas->size() > 0)
+
+context IEC61970::Base::Wires::RegulatingControl
+-- mode must be set.
+inv RegulatingControl_mode: (self.mode->notEmpty())
+-- Terminal must be set.
+inv RegulatingControl_Terminal: (self.Terminal <> null)
+
+context IEC61970::Base::Wires::TapChangerControl
+-- TapChanger must be set.
+inv TapChangerControl_TapChanger: (self.TapChanger->size() > 0)
+
+context IEC61970::Base::LoadModel::ConformLoadGroup
+-- EnergyConsumers must be set.
+inv ConformLoadGroup_EnergyConsumers: (self.EnergyConsumers->size() > 0)
+
+context IEC61970::Base::Core::RegularTimePoint
+-- sequenceNumber must be set.
+inv RegularTimePoint_sequenceNumber: (self.sequenceNumber <> null)
+-- value1 must be set.
+inv RegularTimePoint_value1: (self.value1->notEmpty())
+-- IntervalSchedule must be set.
+inv RegularTimePoint_IntervalSchedule: (self.IntervalSchedule <> null)
+
+context IEC61970::Base::Wires::RatioTapChangerTable
+-- RatioTapChangerTablePoint must be set.
+inv RatioTapChangerTable_RatioTapChangerTablePoint: (self.RatioTapChangerTablePoint->size() > 0)
+
+context IEC61970::Base::LoadModel::ConformLoadSchedule
+-- ConformLoadGroup must be set.
+inv ConformLoadSchedule_ConformLoadGroup: (self.ConformLoadGroup <> null)
+
+context IEC61970::Base::LoadModel::NonConformLoad
+-- LoadGroup must be set.
+inv NonConformLoad_LoadGroup: (self.LoadGroup <> null)
+
+context IEC61970::Base::Core::SubGeographicalRegion
+-- Region must be set.
+inv SubGeographicalRegion_Region: (self.Region <> null)
+
+context IEC61970::Base::DC::DCShunt
+-- capacitance must be set.
+inv DCShunt_capacitance: (self.capacitance->notEmpty())
+-- resistance must be set.
+inv DCShunt_resistance: (self.resistance->notEmpty())
+
+context IEC61970::Base::OperationalLimits::OperationalLimit
+-- OperationalLimitSet must be set.
+inv OperationalLimit_OperationalLimitSet: (self.OperationalLimitSet <> null)
+-- OperationalLimitType must be set.
+inv OperationalLimit_OperationalLimitType: (self.OperationalLimitType <> null)
+
+context IEC61970::Base::DC::ACDCConverterDCTerminal
+-- DCConductingEquipment must be set.
+inv ACDCConverterDCTerminal_DCConductingEquipment: (self.DCConductingEquipment <> null)
+-- polarity must be set.
+inv ACDCConverterDCTerminal_polarity: (self.polarity->notEmpty())
+
+context IEC61970::Base::Wires::Switch
+-- normalOpen must be set.
+inv Switch_normalOpen: (self.normalOpen->notEmpty())
+-- retained must be set.
+inv Switch_retained: (self.retained->notEmpty())
+
+context IEC61970::Base::Wires::ACLineSegment
+-- bch must be set.
+inv ACLineSegment_bch: (self.bch->notEmpty())
+-- r must be set.
+inv ACLineSegment_r: (self.r->notEmpty())
+-- x must be set.
+inv ACLineSegment_x: (self.x->notEmpty())
+
+context IEC61970::Base::LoadModel::SubLoadArea
+-- LoadArea must be set.
+inv SubLoadArea_LoadArea: (self.LoadArea <> null)
+-- LoadGroups must be set.
+inv SubLoadArea_LoadGroups: (self.LoadGroups->size() > 0)
+
+context IEC61970::Base::Core::BasicIntervalSchedule
+-- startTime must be set.
+inv BasicIntervalSchedule_startTime: (self.startTime <> null)
+-- value1Unit must be set.
+inv BasicIntervalSchedule_value1Unit: (self.value1Unit->notEmpty())
+
+context IEC61970::Base::LoadModel::Season
+-- endDate must be set.
+inv Season_endDate: (self.endDate <> null)
+-- startDate must be set.
+inv Season_startDate: (self.startDate <> null)
+
+context IEC61970::Base::Generation::Production::GeneratingUnit
+-- maxOperatingP must be set.
+inv GeneratingUnit_maxOperatingP: (self.maxOperatingP->notEmpty())
+-- minOperatingP must be set.
+inv GeneratingUnit_minOperatingP: (self.minOperatingP->notEmpty())
+-- RotatingMachine must be set.
+inv GeneratingUnit_RotatingMachine: (self.RotatingMachine->size() > 0)
+
+context IEC61970::Base::OperationalLimits::CurrentLimit
+-- normalValue must be set.
+inv CurrentLimit_normalValue: (self.normalValue->notEmpty())
+
+context IEC61970::Base::Wires::TransformerEnd
+-- BaseVoltage must be set.
+inv TransformerEnd_BaseVoltage: (self.BaseVoltage <> null)
+-- Terminal must be set.
+inv TransformerEnd_Terminal: (self.Terminal <> null)
+-- endNumber must be set.
+inv TransformerEnd_endNumber: (self.endNumber <> null)
+
+context IEC61970::Base::Wires::Cut
+-- ACLineSegment must be set.
+inv Cut_ACLineSegment: (self.ACLineSegment <> null)
+
+context IEC61970::Base::Wires::PhaseTapChangerAsymmetrical
+-- windingConnectionAngle must be set.
+inv PhaseTapChangerAsymmetrical_windingConnectionAngle: (self.windingConnectionAngle->notEmpty())
+
+context IEC61970::Base::Core::IdentifiedObject
+-- mRID must be set.
+inv IdentifiedObject_mRID: (self.mRID <> null)
+-- name must be set.
+inv IdentifiedObject_name: (self.name <> null)
+
+context IEC61970::Base::ControlArea::TieFlow
+-- ControlArea must be set.
+inv TieFlow_ControlArea: (self.ControlArea <> null)
+-- Terminal must be set.
+inv TieFlow_Terminal: (self.Terminal <> null)
+-- positiveFlowIn must be set.
+inv TieFlow_positiveFlowIn: (self.positiveFlowIn->notEmpty())
+
+context IEC61970::Base::DC::DCConverterUnit
+-- operationMode must be set.
+inv DCConverterUnit_operationMode: (self.operationMode->notEmpty())
+
+context IEC61970::Base::ControlArea::ControlArea
+-- type must be set.
+inv ControlArea_type: (self.type->notEmpty())
+-- EnergyArea must be set.
+inv ControlArea_EnergyArea: (self.EnergyArea <> null)
+
+context IEC61970::Base::OperationalLimits::OperationalLimitSet
+-- Terminal must be set.
+inv OperationalLimitSet_Terminal: (self.Terminal <> null)
+
+context IEC61970::Base::Wires::PhaseTapChangerTable
+-- PhaseTapChangerTablePoint must be set.
+inv PhaseTapChangerTable_PhaseTapChangerTablePoint: (self.PhaseTapChangerTablePoint->size() > 0)
+
+context IEC61970::Base::LoadModel::ConformLoad
+-- LoadGroup must be set.
+inv ConformLoad_LoadGroup: (self.LoadGroup <> null)
+
+context IEC61970::Base::Generation::Production::HydroPump
+-- RotatingMachine must be set.
+inv HydroPump_RotatingMachine: (self.RotatingMachine <> null)
+
+context IEC61970::Base::LoadModel::LoadGroup
+-- SubLoadArea must be set.
+inv LoadGroup_SubLoadArea: (self.SubLoadArea <> null)
+
+context IEC61970::Base::DC::DCNode
+-- DCEquipmentContainer must be set.
+inv DCNode_DCEquipmentContainer: (self.DCEquipmentContainer <> null)
+
+context IEC61970::Base::Wires::StaticVarCompensator
+-- capacitiveRating must be set.
+inv StaticVarCompensator_capacitiveRating: (self.capacitiveRating->notEmpty())
+-- inductiveRating must be set.
+inv StaticVarCompensator_inductiveRating: (self.inductiveRating->notEmpty())
+-- slope must be set.
+inv StaticVarCompensator_slope: (self.slope->notEmpty())
+
+context IEC61970::Base::Core::ConnectivityNode
+-- ConnectivityNodeContainer must be set.
+inv ConnectivityNode_ConnectivityNodeContainer: (self.ConnectivityNodeContainer <> null)
+
+context IEC61970::Base::Generation::Production::FossilFuel
+-- fossilFuelType must be set.
+inv FossilFuel_fossilFuelType: (self.fossilFuelType->notEmpty())
+-- ThermalGeneratingUnit must be set.
+inv FossilFuel_ThermalGeneratingUnit: (self.ThermalGeneratingUnit <> null)
+
+context IEC61970::Base::Core::VoltageLevel
+-- BaseVoltage must be set.
+inv VoltageLevel_BaseVoltage: (self.BaseVoltage <> null)
+-- Substation must be set.
+inv VoltageLevel_Substation: (self.Substation <> null)
+
+context IEC61970::Base::Wires::ReactiveCapabilityCurve
+-- InitiallyUsedBySynchronousMachines must be set.
+inv ReactiveCapabilityCurve_InitiallyUsedBySynchronousMachines: (self.InitiallyUsedBySynchronousMachines->size() > 0)
+
+context IEC61970::Base::Wires::ShuntCompensator
+-- maximumSections must be set.
+inv ShuntCompensator_maximumSections: (self.maximumSections <> null)
+-- nomU must be set.
+inv ShuntCompensator_nomU: (self.nomU->notEmpty())
+-- normalSections must be set.
+inv ShuntCompensator_normalSections: (self.normalSections <> null)
+
+context IEC61970::Base::OperationalLimits::ApparentPowerLimit
+-- normalValue must be set.
+inv ApparentPowerLimit_normalValue: (self.normalValue->notEmpty())
+
+context IEC61970::Base::Wires::PhaseTapChanger
+-- TransformerEnd must be set.
+inv PhaseTapChanger_TransformerEnd: (self.TransformerEnd <> null)
+
+context IEC61970::Base::Wires::PowerTransformerEnd
+-- PowerTransformer must be set.
+inv PowerTransformerEnd_PowerTransformer: (self.PowerTransformer <> null)
+-- b must be set.
+inv PowerTransformerEnd_b: (self.b->notEmpty())
+-- ratedU must be set.
+inv PowerTransformerEnd_ratedU: (self.ratedU->notEmpty())
+-- r must be set.
+inv PowerTransformerEnd_r: (self.r->notEmpty())
+-- x must be set.
+inv PowerTransformerEnd_x: (self.x->notEmpty())
+
+context IEC61970::Base::LoadModel::NonConformLoadGroup
+-- EnergyConsumers must be set.
+inv NonConformLoadGroup_EnergyConsumers: (self.EnergyConsumers->size() > 0)
+
+context IEC61970::Base::Topology::BusNameMarker
+-- Terminal must be set.
+inv BusNameMarker_Terminal: (self.Terminal->size() > 0)
+
+context IEC61970::Base::Equivalents::EquivalentInjection
+-- regulationCapability must be set.
+inv EquivalentInjection_regulationCapability: (self.regulationCapability->notEmpty())
+
+context IEC61970::Base::Wires::PhaseTapChangerLinear
+-- stepPhaseShiftIncrement must be set.
+inv PhaseTapChangerLinear_stepPhaseShiftIncrement: (self.stepPhaseShiftIncrement->notEmpty())
+-- xMax must be set.
+inv PhaseTapChangerLinear_xMax: (self.xMax->notEmpty())
+-- xMin must be set.
+inv PhaseTapChangerLinear_xMin: (self.xMin->notEmpty())
+
+context IEC61970::Base::Wires::RatioTapChangerTablePoint
+-- RatioTapChangerTable must be set.
+inv RatioTapChangerTablePoint_RatioTapChangerTable: (self.RatioTapChangerTable <> null)
+
+
+endpackage
