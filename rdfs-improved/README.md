@@ -21,13 +21,16 @@
     - [Meta-Props Duplicated Per Profile](#meta-props-duplicated-per-profile)
     - [Remove Unused Enumeration Classes](#remove-unused-enumeration-classes)
     - [Wrong Declaration of Enumerations](#wrong-declaration-of-enumerations)
+    - [Fix Representation of NamedIndividuals](#fix-representation-of-namedindividuals)
     - [Mis-declared Packages](#mis-declared-packages)
     - [Whitespace in Definitions](#whitespace-in-definitions)
+    - [Whitespace and Lang Tags in Key Values](#whitespace-and-lang-tags-in-key-values)
     - [Datatypes and Units of Measure](#datatypes-and-units-of-measure)
         - [Fixed Units Representation](#fixed-units-representation)
         - [CompleteDatatypeMap](#completedatatypemap)
         - [Actual QuantityKinds](#actual-quantitykinds)
         - [Actual Multipliers and Units](#actual-multipliers-and-units)
+        - [All QuantityKinds and Units](#all-quantitykinds-and-units)
 
 <!-- markdown-toc end -->
 
@@ -480,6 +483,35 @@ cim:ControlAreaTypeKind a owl:Class, cim:Enumeration  ;
 This way you mark the nature of the class without adding every instance under `cim:Enumeration`.
 Instances already have `cims:isenum "True"`.
 
+## Fix Representation of NamedIndividuals
+https://github.com/Sveino/Inst4CIM-KG/issues/45
+
+This query finds 554 individuals (all CIM individuals have these 3 characteristics)
+```ttl
+select * {
+  ?s a owl:Thing, owl:NamedIndividual; rdfs:domain ?class
+} order by ?s
+```
+
+They are represented like this:
+```ttl
+cim:AsynchronousMachineKind.generator a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "generator "@en ;
+  rdfs:domain cim:AsynchronousMachineKind ;
+  skos:definition "The Asynchronous Machine is a generator."@en ;
+  ssh:isenum "True" .
+``` 
+Problems:
+- `owl:NamedIndividual, owl:Thing` are useless since they are too generic, you'd never query by these classes
+- `rdfs:domain cim:AsynchronousMachineKind` is wrong, should be `rdf:type`
+
+So we want to change this to:
+```ttl
+cim:AsynchronousMachineKind.generator a cim:AsynchronousMachineKind ;
+  rdfs:label "generator "@en ;
+  skos:definition "The Asynchronous Machine is a generator."@en ;
+  ssh:isenum "True" .
+```
 
 ## Mis-declared Packages
 https://github.com/Sveino/Inst4CIM-KG/issues/12
@@ -591,10 +623,35 @@ This can be fixed easily with SPARQL Update.
 
 TODO:  does it appear in `skos:definition` only?
 
+## Whitespace and Lang Tags in Key Values
+Key values must be spelled with ultimate care because... well, they are key.
+This is similar to the previous section but worse.
+
+Extraneous spaces in key values are NOK because:
+- People will use these values in queries
+- In some cases SPARQL updates will upgrade strings to things, i.e. use them in URLs
+
+Bad examples:
+```ttl
+cim:UnitSymbol.VA a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VA "@en ;
+  eq:isenum "True" ;
+
+cim:UnitMultiplier.M a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "M "@en ;
+
+cim:Temperature.multiplier
+  sc:isFixed "True ";
+  dy:isFixed "True".
+```
+- "VA" and "M" are SI unit and multiplier respectively. SI is international, so these codes cannot have lang tags
+- The last one is worst: some profiles map `isFixed` to a value with space, others without a space
+
+
 ## Datatypes and Units of Measure
 https://github.com/Sveino/Inst4CIM-KG/issues/38
-
-TODO: I've posted such issue in NC and in Grunprofil: link them, and check if there's any extra material.
+- https://github.com/Sveino/Inst4CIM-KG/issues/29 is a subset of this
+- TODO: check if https://github.com/3lbits/CIM4NoUtility/issues/338 has anything more
 
 CGMES datatype properties are defined like this:
 
@@ -780,7 +837,7 @@ select * {
 Saved as [qk-CGMES_NC.txt](qk-CGMES_NC.txt)
 
 Removed the namespaces (they differ between 2.3 and 3.0) and merged as the full list [qk-all.txt](qk-all.txt).
-There are 30 QuantityKinds:
+There are 30 QuantityKinds in use:
 - ActivePower
 - ActivePowerChangeRate
 - ActivePowerPerCurrentFlow
@@ -921,3 +978,23 @@ We need to submit a MR to QUDT for these new QuantityKinds and Units (https://gi
 | ActivePowerPerFrequency   | W-PER-SEC          | MegaW-PER-SEC          |
 | ActivePowerChangeRate     | W-PER-SEC          | MegaW-PER-SEC          |
 | VoltagePerReactivePower   | V-PER-V-A_Reactive | KiloV-PER-V-A_Reactive |
+
+### All QuantityKinds and Units
+
+This query finds all enumeration members:
+```sparql
+select ?class (count(*) as ?c) {
+    ?s a  owl:NamedIndividual; rdfs:domain ?class
+} group by ?class order by desc(?c)
+```
+3 of the top 4 are related to units, multipliers and currencies.
+But a very small number of them are in actual use in CGMES ontologies (see last column):
+|   | class              | c     | in use |
+|---|--------------------|-------|--------|
+| 1 | cim:Currency       | "161" |      0 |
+| 2 | cim:UnitSymbol     | "141" |     30 |
+| 3 | cim:PhaseCode      | "26"  |        |
+| 4 | cim:UnitMultiplier | "21"  |      2 |
+
+We should fix all units and multipliers as shown in [Fixed Units Representation](#fixed-units-representation),
+but will map to QUDT only the ones that are in use.
