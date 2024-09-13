@@ -620,9 +620,40 @@ A type with the value space "true" and "false".
 
 \t"""@en .
 ```
-This can be fixed easily with SPARQL Update.
 
-TODO:  does it appear in `skos:definition` only?
+This query finds 1556 instances of leading/trailing whitespace in strings.
+(I guess some are duplicated between 2.3 and 3.0 CIM namespaces):
+```
+select * {
+    ?x ?p ?label
+    filter(regex(?label,"^\\s|\\s$"))
+}
+```
+
+This query counts by property:
+```sparql
+select ?p (count(*) as ?c) {
+    ?x ?p ?label
+    filter(regex(?label,"^\\s|\\s$"))
+} group by ?p order by desc(?c)
+```
+| p               | c                  | comment                                                                                                                             |
+|-----------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| skos:definition | "660"^^xsd:integer |                                                                                                                                     |
+| rdfs:label      | "614"^^xsd:integer | Most of these are key values (see next section) but some are prop names. Eg `ssh:isDescription` has multiple trailing spaces or tab |
+| rdfs:comment    | "150"^^xsd:integer | This and all below are key values (see next section)                                                                                |
+| eq:isFixed      | "43"^^xsd:integer  |                                                                                                                                     |
+| sc:isFixed      | "24"^^xsd:integer  |                                                                                                                                     |
+| ssh:isFixed     | "22"^^xsd:integer  |                                                                                                                                     |
+| dy:isFixed      | "20"^^xsd:integer  |                                                                                                                                     |
+| sv:isFixed      | "10"^^xsd:integer  |                                                                                                                                     |
+| dcterms:creator | "7"^^xsd:integer   |                                                                                                                                     |
+| dl:isFixed      | "2"^^xsd:integer   |                                                                                                                                     |
+| eqbd:isFixed    | "2"^^xsd:integer   |                                                                                                                                     |
+| op:isFixed      | "2"^^xsd:integer   |                                                                                                                                     |
+
+This can be fixed easily with SPARQL Update.
+Just need to be careful to restore a lang tag if such was present.
 
 ## Whitespace and Lang Tags in Key Values
 Key values must be spelled with ultimate care because... well, they are key.
@@ -684,7 +715,7 @@ This is a large data cleaning task because all occurrences need to be analyzed, 
   - "Meta-variables" like `&lt;tool_name&gt;` should be retained
 - Replace HTML constructs with Markdown. It is ok because people can read it easily 
   (assuming newlines are rendered as newlines not `\n`: `owl-cli` does that using `"""` for string quotes)
-  - Lists: `<ul><li>` to `- `)
+  - Lists: `<ul><li>` to `- `
   - Emphasis: `<i>` and `<em>` to `*`, `<b>` and `<strong>` to `**`
 
 ## Datatypes and Units of Measure
