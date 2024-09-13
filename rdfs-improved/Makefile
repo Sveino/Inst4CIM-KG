@@ -1,0 +1,87 @@
+CGMES_RDF    = $(wildcard ../source/CGMES/v3.0/RDFSEd2Beta/RDFS/*)
+CGMES_NC_RDF = $(wildcard ../source/CGMES-NC/r2.3/ap-voc/rdf/*)
+
+CGMES_TTL    = $(patsubst ../source/CGMES/v3.0/RDFSEd2Beta/RDFS/%.rdf, CGMES/ttl/%.ttl,    $(CGMES_RDF))
+CGMES_NC_TTL = $(patsubst ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf,    CGMES-NC/ttl/%.ttl, $(CGMES_NC_RDF))
+
+# https://atextor.de/owl-cli/main/snapshot/usage.html#write-command
+# Prefix sorting: CIM/CGMES/NC/model/header/meta, CGMES profiles, NC profiles, other (standard prefixes).
+TTL = owl write --prefixAlign=left --useCommaByDefault \
+  --prefixOrder cim			\
+  --prefixOrder nc			\
+  --prefixOrder cims			\
+  --prefixOrder dcat-cim		\
+  --prefixOrder dm			\
+  --prefixOrder eu			\
+  --prefixOrder eumd			\
+  --prefixOrder md			\
+  --prefixOrder prof			\
+  --prefixOrder profcim			\
+					\
+  --prefixOrder dh			\
+  --prefixOrder dl			\
+  --prefixOrder dy			\
+  --prefixOrder eq			\
+  --prefixOrder eqbd			\
+  --prefixOrder gl			\
+  --prefixOrder op			\
+  --prefixOrder sc			\
+  --prefixOrder ssh			\
+  --prefixOrder sv			\
+  --prefixOrder tp			\
+					\
+  --prefixOrder ae			\
+  --prefixOrder as			\
+  --prefixOrder co			\
+  --prefixOrder er			\
+  --prefixOrder gd			\
+  --prefixOrder iam			\
+  --prefixOrder ma			\
+  --prefixOrder or			\
+  --prefixOrder ps			\
+  --prefixOrder psp			\
+  --prefixOrder ra			\
+  --prefixOrder ras			\
+  --prefixOrder sar			\
+  --prefixOrder sm			\
+  --prefixOrder sis			\
+  --prefixOrder shs			\
+  --prefixOrder ssi			\
+					\
+  --prefixOrder dcat			\
+  --prefixOrder dct			\
+  --prefixOrder dcterms			\
+  --prefixOrder euvoc			\
+  --prefixOrder owl			\
+  --prefixOrder prov			\
+  --prefixOrder rdf			\
+  --prefixOrder rdfs			\
+  --prefixOrder sh			\
+  --prefixOrder skos			\
+  --prefixOrder xsd			\
+  --subjectOrder owl:Ontology		\
+  --subjectOrder rdfs:Class		\
+  --subjectOrder owl:Class		\
+  --subjectOrder rdf:Property		\
+  --subjectOrder owl:ObjectProperty	\
+  --subjectOrder owl:DatatypeProperty	\
+  --subjectOrder owl:AnnotationProperty \
+  --subjectOrder owl:NamedIndividual	\
+  --subjectOrder owl:AllDifferent	\
+  --subjectOrder owl:Axiom
+
+RDF2TTL = $(TTL) --input=rdfxml 
+
+all: clean $(CGMES_TTL) $(CGMES_NC_TTL)
+
+clean::
+	find . -type f -size 0 -delete
+
+CGMES/ttl/%.ttl: ../source/CGMES/v3.0/RDFSEd2Beta/RDFS/%.rdf
+	$(RDF2TTL) $^ $@
+
+CGMES-NC/ttl/%.ttl: ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf
+	$(RDF2TTL) $^ $@
+
+dirs::
+	mkdir CGMES CGMES/ttl CGMES-NC CGMES-NC/ttl

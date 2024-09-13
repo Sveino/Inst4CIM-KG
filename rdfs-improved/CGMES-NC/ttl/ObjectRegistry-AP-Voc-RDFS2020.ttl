@@ -1,0 +1,373 @@
+@prefix cim    : <https://cim.ucaiug.io/ns#> .
+@prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix eu     : <https://cim.ucaiug.io/ns/eu#> .
+@prefix dcat   : <http://www.w3.org/ns/dcat#> .
+@prefix owl    : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf    : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs   : <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/#> .
+@prefix nc     : <https://cim4.eu/ns/nc#> .
+@prefix or     : <https://ap.cim4.eu/ObjectRegistry#> .
+
+cim:Date a rdfs:Class ;
+  rdfs:label "Date"@en ;
+  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive" .
+
+cim:DateTime a rdfs:Class ;
+  rdfs:label "DateTime"@en ;
+  rdfs:comment "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive" .
+
+cim:IdentifiedObject a rdfs:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory or:Package_ObjectRegistryProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+cim:Name a rdfs:Class ;
+  rdfs:label "Name"@en ;
+  rdfs:comment "The Name class provides the means to define any number of human readable  names for an object. A name is <b>not</b> to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'." ;
+  cims:belongsToCategory or:Package_ObjectRegistryProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+cim:NameType a rdfs:Class ;
+  rdfs:label "NameType"@en ;
+  rdfs:comment """Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName as defined in CIM version 14. The definition from CIM14 is:
+The localName is a human readable name of the object. It is a free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.""" ;
+  cims:belongsToCategory or:Package_ObjectRegistryProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+cim:String a rdfs:Class ;
+  rdfs:label "String"@en ;
+  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
+  cims:belongsToCategory or:Package_ObjectRegistryProfile ;
+  cims:stereotype "Primitive" .
+
+<http://iec.ch/TC57/ns/CIM/prof-cim#IRI> a rdfs:Class ;
+  rdfs:label "IRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as rdf:resource in RDFXML.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+<http://iec.ch/TC57/ns/CIM/prof-cim#StringFixedLanguage> a rdfs:Class ;
+  rdfs:label "StringFixedLanguage"@en ;
+  rdfs:comment """A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.""" ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+<http://iec.ch/TC57/ns/CIM/prof-cim#StringIRI> a rdfs:Class ;
+  rdfs:label "StringIRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+<http://iec.ch/TC57/ns/CIM/prof-cim#URL> a rdfs:Class ;
+  rdfs:label "URL"@en ;
+  rdfs:comment "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications." ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+nc:NamingAuthority a rdfs:Class ;
+  rdfs:label "NamingAuthority"@en ;
+  rdfs:comment "Authority responsible for creation and management of names of a given name type and/or name; typically an organization or an enterprise system." ;
+  cims:belongsToCategory or:Package_ObjectRegistryProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:ObjectType a rdfs:Class ;
+  rdfs:label "ObjectType"@en ;
+  rdfs:comment "Identifies the specialised type of an object when the instance object is serialised using a generalised class. It may be useful when the object type is not otherwise included in the exchange. For example, a Meter may be serialised as an EndDevice in message exchanges and need to have the ObjectType.type be specified as 'Meter' to provide context to the message receiver." ;
+  cims:belongsToCategory or:Package_ObjectRegistryProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+or:Ontology a owl:Ontology ;
+  dcat:keyword "OR" ;
+  dcat:theme "vocabulary"@en ;
+  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dcterms:creator "ENTSO-E CIM WG NC project"@en ;
+  dcterms:description "This vocabulary is describing the object registry profile."@en ;
+  dcterms:identifier "urn:uuid:14166b65-abaa-4611-b466-34975c15c27d" ;
+  dcterms:language "en-GB" ;
+  dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dcterms:modified "2024-03-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:publisher "ENTSO-E"@en ;
+  dcterms:rightsHolder "ENTSO-E"@en ;
+  dcterms:title "Object Registry vocabulary"@en ;
+  owl:priorVersion <http://entsoe.eu/ns/CIM/ObjectRegistry-EU/2.1> ;
+  owl:versionIRI <https://ap.cim4.eu/ObjectRegistry/2.2> ;
+  owl:versionInfo "2.2.0"@en .
+
+cim:IdentifiedObject.aliasName a rdf:Property ;
+  rdfs:label "aliasName"@en ;
+  rdfs:comment """The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.
+The attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.description a rdf:Property ;
+  rdfs:label "description"@en ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.name a rdf:Property ;
+  rdfs:label "name"@en ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:Name.name a rdf:Property ;
+  rdfs:label "name"@en ;
+  rdfs:comment "Any free text that used as a name or alternative identifier of the object." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Name .
+
+cim:NameType.description a rdf:Property ;
+  rdfs:label "description"@en ;
+  rdfs:comment "Description of the name type." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:NameType .
+
+cim:NameType.name a rdf:Property ;
+  rdfs:label "name"@en ;
+  rdfs:comment "Name of the name type." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:NameType .
+
+eu:IdentifiedObject.energyIdentCodeEic a rdf:Property ;
+  rdfs:label "energyIdentCodeEic"@en ;
+  rdfs:comment "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "European", "deprecated", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+eu:IdentifiedObject.shortName a rdf:Property ;
+  rdfs:label "shortName"@en ;
+  rdfs:comment "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "European", "deprecated", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+nc:IdentifiedObject.AlternativeIdentifier a rdf:Property ;
+  rdfs:label "AlternativeIdentifier"@en ;
+  rdfs:comment "All alternative identifiers of this identified object. No two identified objects can have the same alternative identifier." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:Name.UniqueIdentifiedObject ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range cim:Name .
+
+nc:IdentifiedObject.Name a rdf:Property ;
+  rdfs:label "Name"@en ;
+  rdfs:comment "All names of this identified object. Names may be but are not guaranteed to be unique." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:Name.IdentifiedObject ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range cim:Name .
+
+nc:IdentifiedObject.ObjectType a rdf:Property ;
+  rdfs:label "ObjectType"@en ;
+  rdfs:comment "The object type of the IdentifiedObject." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ObjectType.IdentifiedObject ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range nc:ObjectType .
+
+nc:Name.IdentifiedObject a rdf:Property ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "Identified object that this name designates." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:IdentifiedObject.Name ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Name ;
+  rdfs:range cim:IdentifiedObject .
+
+nc:Name.NameType a rdf:Property ;
+  rdfs:label "NameType"@en ;
+  rdfs:comment "Type of this name." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:NameType.Name ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Name ;
+  rdfs:range cim:NameType .
+
+nc:Name.NamingAuthority a rdf:Property ;
+  rdfs:label "NamingAuthority"@en ;
+  rdfs:comment "Authority responsible for managing this name." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:NamingAuthority.Name ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Name ;
+  rdfs:range nc:NamingAuthority .
+
+nc:Name.UniqueIdentifiedObject a rdf:Property ;
+  rdfs:label "UniqueIdentifiedObject"@en ;
+  rdfs:comment "Identified object that this alternative identifier designates." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:IdentifiedObject.AlternativeIdentifier ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Name ;
+  rdfs:range cim:IdentifiedObject .
+
+nc:Name.language a rdf:Property ;
+  rdfs:label "language"@en ;
+  rdfs:comment """Shall be specified as an IETF BCP 47 language tag (e.g. en-US).  Applies to the Name.name attribute. 
+IETF language tags combine subtags from other standards such as ISO 639, ISO 15924, ISO 3166-1, and UN M.49. The tag structure has been standardized by the IETF in Best Current Practice (BCP) 47; the subtags are maintained by the IANA Language Subtag Registry.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Name .
+
+nc:Name.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Name .
+
+nc:NameType.Name a rdf:Property ;
+  rdfs:label "Name"@en ;
+  rdfs:comment "All names of this type." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:Name.NameType ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:NameType ;
+  rdfs:range cim:Name .
+
+nc:NameType.NamingAuthority a rdf:Property ;
+  rdfs:label "NamingAuthority"@en ;
+  rdfs:comment "Authority responsible for managing this name type." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:NamingAuthority.NameType ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:NameType ;
+  rdfs:range nc:NamingAuthority .
+
+nc:NameType.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:NameType .
+
+nc:NamingAuthority.Name a rdf:Property ;
+  rdfs:label "Name"@en ;
+  rdfs:comment "All names managed by this authority." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:Name.NamingAuthority ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:NamingAuthority ;
+  rdfs:range cim:Name .
+
+nc:NamingAuthority.NameType a rdf:Property ;
+  rdfs:label "NameType"@en ;
+  rdfs:comment "All name types managed by this authority." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:NameType.NamingAuthority ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:NamingAuthority ;
+  rdfs:range cim:NameType .
+
+nc:NamingAuthority.description a rdf:Property ;
+  rdfs:label "description"@en ;
+  rdfs:comment "Description of the name authority." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:NamingAuthority .
+
+nc:NamingAuthority.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:NamingAuthority .
+
+nc:NamingAuthority.name a rdf:Property ;
+  rdfs:label "name"@en ;
+  rdfs:comment "Name of the name authority." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:NamingAuthority .
+
+nc:ObjectType.IdentifiedObject a rdf:Property ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "The IdentifiedObject whose type is identified by ObjectType." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:IdentifiedObject.ObjectType ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ObjectType ;
+  rdfs:range cim:IdentifiedObject .
+
+nc:ObjectType.type a rdf:Property ;
+  rdfs:label "type"@en ;
+  rdfs:comment "The specialised type of an object when the instance object is serialised using a generalised class. For example, a Meter being serialised as an EndDevice in a message exchange should have the type attribute specified as 'Meter'." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ObjectType .
+
+or:Package_DocObjectRegistryProfile a cims:ClassCategory ;
+  rdfs:label "DocObjectRegistryProfile"@en ;
+  rdfs:comment "This package contains datatypes used only in the RDFS header." .
+
+or:Package_ObjectRegistryProfile a cims:ClassCategory ;
+  rdfs:label "ObjectRegistryProfile"@en ;
+  rdfs:comment "This package contains the equipment object registry profile." .
+
+

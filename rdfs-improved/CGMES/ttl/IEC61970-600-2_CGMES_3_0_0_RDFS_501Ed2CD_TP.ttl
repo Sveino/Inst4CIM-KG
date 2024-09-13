@@ -1,0 +1,363 @@
+@prefix cim    : <http://iec.ch/TC57/CIM100#> .
+@prefix eu     : <http://iec.ch/TC57/CIM100-European#> .
+@prefix tp     : <http://iec.ch/TC57/ns/CIM/Topology-EU#> .
+@prefix dcat   : <http://www.w3.org/ns/dcat#> .
+@prefix dct    : <http://purl.org/dc/terms/> .
+@prefix owl    : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf    : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs   : <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos   : <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd    : <http://www.w3.org/2001/XMLSchema#> .
+
+tp:Ontology a owl:Ontology ;
+  dct:description "This vocabulary is describing the topology profile from IEC 61970-600-2."@en ;
+  dcat:keyword "TP" ;
+  dcat:theme "vocabulary"@en ;
+  dct:conformsTo "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:creator "ENTSO-E CIM EG"@en ;
+  dct:identifier "urn:uuid:2c5559fa-12b4-445a-b92a-958c90628cee" ;
+  dct:issued "2021-01-27T15:27:22Z"^^xsd:dateTime ;
+  dct:language "en-GB" ;
+  dct:modified "2020-10-12"^^xsd:date ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rights "Copyright"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  dct:title "Topology Vocabulary"@en ;
+  owl:incompatibleWith <http://entsoe.eu/2009/profile1> ;
+  owl:priorVersion <http://entsoe.eu/CIM/Topology/4/1> ;
+  owl:versionIRI <http://iec.ch/TC57/ns/CIM/Topology-EU/3.0> ;
+  owl:versionInfo "3.0.0"@en .
+
+cim:ACDCConverterDCTerminal a owl:Class ;
+  rdfs:label "ACDCConverterDCTerminal"@en ;
+  rdfs:subClassOf cim:DCBaseTerminal ;
+  skos:definition "A DC electrical connection point at the AC/DC converter. The AC/DC converter is electrically connected also to the AC side. The AC connection is inherited from the AC conducting equipment in the same way as any other AC equipment. The AC/DC converter DC terminal is separate from generic DC terminal to restrict the connection with the AC side to AC/DC converter and so that no other DC conducting equipment can be connected to the AC side."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isDescription "True" .
+
+cim:ACDCTerminal a owl:Class ;
+  rdfs:label "ACDCTerminal"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isAbstract "True" .
+
+cim:BaseVoltage a owl:Class ;
+  rdfs:label "BaseVoltage"@en ;
+  skos:definition "Defines a system base voltage which is referenced. "@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isAbstract "True" .
+
+cim:ConnectivityNode a owl:Class ;
+  rdfs:label "ConnectivityNode"@en ;
+  skos:definition "Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isDescription "True" .
+
+cim:ConnectivityNodeContainer a owl:Class ;
+  rdfs:label "ConnectivityNodeContainer"@en ;
+  skos:definition """
+A base class for all objects that may contain connectivity nodes or topological nodes.
+
+\t"""@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isAbstract "True" .
+
+cim:DCBaseTerminal a owl:Class ;
+  rdfs:label "DCBaseTerminal"@en ;
+  rdfs:subClassOf cim:ACDCTerminal ;
+  skos:definition "An electrical connection point at a piece of DC conducting equipment. DC terminals are connected at one physical DC node that may have multiple DC terminals connected. A DC node is similar to an AC connectivity node. The model requires that DC connections are distinct from AC connections. "@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isAbstract "True" .
+
+cim:DCEquipmentContainer a owl:Class ;
+  rdfs:label "DCEquipmentContainer"@en ;
+  skos:definition "A modelling construct to provide a root class for containment of DC as well as AC equipment. The class differ from the EquipmentContaner for AC in that it may also contain DCNode-s. Hence it can contain both AC and DC equipment."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isAbstract "True" .
+
+cim:DCNode a owl:Class ;
+  rdfs:label "DCNode"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition "DC nodes are points where terminals of DC conducting equipment are connected together with zero impedance."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isDescription "True" .
+
+cim:DCTerminal a owl:Class ;
+  rdfs:label "DCTerminal"@en ;
+  rdfs:subClassOf cim:DCBaseTerminal ;
+  skos:definition "An electrical connection point to generic DC conducting equipment."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isDescription "True" .
+
+cim:DCTopologicalNode a owl:Class ;
+  rdfs:label "DCTopologicalNode"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition "DC bus."@en ;
+  tp:Package "Package_TopologyProfile" .
+
+cim:Date a owl:Class ;
+  rdfs:label "Date"@en ;
+  skos:definition "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isPrimitive "True" .
+
+cim:IdentifiedObject a owl:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  skos:definition "This is a root class to provide common identification for all classes needing identification and naming attributes."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isAbstract "True" .
+
+cim:ReportingGroup a owl:Class ;
+  rdfs:label "ReportingGroup"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition """
+A reporting group is used for various ad-hoc groupings used for reporting.
+
+\t"""@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isAbstract "True" .
+
+cim:String a owl:Class ;
+  rdfs:label "String"@en ;
+  skos:definition "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isPrimitive "True" .
+
+cim:Terminal a owl:Class ;
+  rdfs:label "Terminal"@en ;
+  rdfs:subClassOf cim:ACDCTerminal ;
+  skos:definition "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."@en ;
+  tp:Package "Package_TopologyProfile" ;
+  tp:isDescription "True" .
+
+cim:TopologicalNode a owl:Class ;
+  rdfs:label "TopologicalNode"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition """
+For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).
+For a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called "busses".
+\t"""@en ;
+  tp:Package "Package_TopologyProfile" .
+
+tp:Enumeration a owl:Class ;
+  rdfs:label " enumeration "@en ;
+  rdfs:comment " An abstract superclass for all Enumerators. "@en ;
+  tp:isAbstract "true" .
+
+cim:BaseVoltage.TopologicalNode a owl:ObjectProperty ;
+  rdfs:label "TopologicalNode"@en ;
+  owl:inverseOf cim:TopologicalNode.BaseVoltage ;
+  rdfs:domain cim:BaseVoltage ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "The topological nodes at the base voltage."@en .
+
+cim:ConnectivityNode.TopologicalNode a owl:ObjectProperty ;
+  rdfs:label "TopologicalNode"@en ;
+  owl:inverseOf cim:TopologicalNode.ConnectivityNodes ;
+  rdfs:domain cim:ConnectivityNode ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "The topological node to which this connectivity node is assigned.  May depend on the current state of switches in the network."@en .
+
+cim:ConnectivityNodeContainer.TopologicalNode a owl:ObjectProperty ;
+  rdfs:label "TopologicalNode"@en ;
+  owl:inverseOf cim:TopologicalNode.ConnectivityNodeContainer ;
+  rdfs:domain cim:ConnectivityNodeContainer ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "The topological nodes which belong to this connectivity node container."@en .
+
+cim:DCBaseTerminal.DCTopologicalNode a owl:ObjectProperty ;
+  rdfs:label "DCTopologicalNode"@en ;
+  owl:inverseOf cim:DCTopologicalNode.DCTerminals ;
+  rdfs:domain cim:DCBaseTerminal ;
+  rdfs:range cim:DCTopologicalNode ;
+  skos:definition "See association end Terminal.TopologicalNode."@en .
+
+cim:DCEquipmentContainer.DCTopologicalNode a owl:ObjectProperty ;
+  rdfs:label "DCTopologicalNode"@en ;
+  owl:inverseOf cim:DCTopologicalNode.DCEquipmentContainer ;
+  rdfs:domain cim:DCEquipmentContainer ;
+  rdfs:range cim:DCTopologicalNode ;
+  skos:definition "The topological nodes which belong to this connectivity node container."@en .
+
+cim:DCNode.DCTopologicalNode a owl:ObjectProperty ;
+  rdfs:label "DCTopologicalNode"@en ;
+  owl:inverseOf cim:DCTopologicalNode.DCNodes ;
+  rdfs:domain cim:DCNode ;
+  rdfs:range cim:DCTopologicalNode ;
+  skos:definition "The DC topological node to which this DC connectivity node is assigned.  May depend on the current state of switches in the network."@en .
+
+cim:DCTopologicalNode.DCEquipmentContainer a owl:ObjectProperty ;
+  rdfs:label "DCEquipmentContainer"@en ;
+  owl:inverseOf cim:DCEquipmentContainer.DCTopologicalNode ;
+  rdfs:domain cim:DCTopologicalNode ;
+  rdfs:range cim:DCEquipmentContainer ;
+  skos:definition "The connectivity node container to which the topological node belongs."@en .
+
+cim:DCTopologicalNode.DCNodes a owl:ObjectProperty ;
+  rdfs:label "DCNodes"@en ;
+  owl:inverseOf cim:DCNode.DCTopologicalNode ;
+  rdfs:domain cim:DCTopologicalNode ;
+  rdfs:range cim:DCNode ;
+  skos:definition "The DC connectivity nodes combined together to form this DC topological node.  May depend on the current state of switches in the network."@en .
+
+cim:DCTopologicalNode.DCTerminals a owl:ObjectProperty ;
+  rdfs:label "DCTerminals"@en ;
+  owl:inverseOf cim:DCBaseTerminal.DCTopologicalNode ;
+  rdfs:domain cim:DCTopologicalNode ;
+  rdfs:range cim:DCBaseTerminal ;
+  skos:definition "See association end TopologicalNode.Terminal."@en .
+
+cim:ReportingGroup.TopologicalNode a owl:ObjectProperty ;
+  rdfs:label "TopologicalNode"@en ;
+  owl:inverseOf cim:TopologicalNode.ReportingGroup ;
+  rdfs:domain cim:ReportingGroup ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "The topological nodes that belong to the reporting group."@en .
+
+cim:Terminal.TopologicalNode a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "TopologicalNode"@en ;
+  owl:inverseOf cim:TopologicalNode.Terminal ;
+  rdfs:domain cim:Terminal ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "The topological node associated with the terminal.   This can be used as an alternative to the connectivity node path to topological node, thus making it unnecessary to model connectivity nodes in some cases.   Note that the if connectivity nodes are in the model, this association would probably not be used as an input specification."@en .
+
+cim:TopologicalNode.BaseVoltage a owl:ObjectProperty ;
+  rdfs:label "BaseVoltage"@en ;
+  owl:inverseOf cim:BaseVoltage.TopologicalNode ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:BaseVoltage ;
+  skos:definition "The base voltage of the topological node."@en .
+
+cim:TopologicalNode.ConnectivityNodeContainer a owl:ObjectProperty ;
+  rdfs:label "ConnectivityNodeContainer"@en ;
+  owl:inverseOf cim:ConnectivityNodeContainer.TopologicalNode ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:ConnectivityNodeContainer ;
+  skos:definition "The connectivity node container to which the topological node belongs."@en .
+
+cim:TopologicalNode.ConnectivityNodes a owl:ObjectProperty ;
+  rdfs:label "ConnectivityNodes"@en ;
+  owl:inverseOf cim:ConnectivityNode.TopologicalNode ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:ConnectivityNode ;
+  skos:definition "The connectivity nodes combine together to form this topological node.  May depend on the current state of switches in the network."@en .
+
+cim:TopologicalNode.ReportingGroup a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "ReportingGroup"@en ;
+  owl:inverseOf cim:ReportingGroup.TopologicalNode ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:ReportingGroup ;
+  skos:definition "The reporting group to which the topological node belongs."@en .
+
+cim:TopologicalNode.Terminal a owl:ObjectProperty ;
+  rdfs:label "Terminal"@en ;
+  owl:inverseOf cim:Terminal.TopologicalNode ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:Terminal ;
+  skos:definition "The terminals associated with the topological node.   This can be used as an alternative to the connectivity node path to terminal, thus making it unnecessary to model connectivity nodes in some cases.   Note that if connectivity nodes are in the model, this association would probably not be used as an input specification."@en .
+
+cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "description"@en ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string ;
+  skos:definition "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."@en .
+
+cim:IdentifiedObject.mRID a owl:DatatypeProperty ;
+  rdfs:label "mRID"@en ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string ;
+  skos:definition """
+Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.
+\t"""@en .
+
+cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "name"@en ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string ;
+  skos:definition """
+The name is any free human readable and possibly non unique text naming the object.
+
+\t"""@en .
+
+eu:IdentifiedObject.energyIdentCodeEic a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "energyIdentCodeEic"@en ;
+  rdfs:domain eu:IdentifiedObject ;
+  rdfs:range xsd:string ;
+  skos:definition "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site."@en ;
+  tp:isEuropean "True" ;
+  tp:isdeprecated "True" .
+
+eu:IdentifiedObject.shortName a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "shortName"@en ;
+  rdfs:domain eu:IdentifiedObject ;
+  rdfs:range xsd:string ;
+  skos:definition "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum."@en ;
+  tp:isEuropean "True" ;
+  tp:isdeprecated "True" .
+
+tp:Package a owl:AnnotationProperty ;
+  rdfs:label "MOF Package"@en ;
+  rdfs:comment "Declaration that this is a MOF Package."@en ;
+  rdfs:domain rdfs:Class ;
+  rdfs:range xsd:string .
+
+tp:isAbstract a owl:AnnotationProperty ;
+  rdfs:label "is abstract"@en ;
+  rdfs:comment "Flag indicating whether the class is permitted to have any direct instances."@en ;
+  rdfs:domain rdfs:Class ;
+  rdfs:range xsd:boolean .
+
+tp:isConst a owl:AnnotationProperty ;
+  rdfs:label "is fixed property"@en ;
+  rdfs:comment " Flag indicating whether the property for a specific object can be updated."@en ;
+  rdfs:domain rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+tp:isDescription a owl:AnnotationProperty ;
+  rdfs:label "isDescription\t"@en ;
+  rdfs:comment "Flag indicating whether the class is a Description."@en ;
+  rdfs:domain rdfs:Class, rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+tp:isEuropean a owl:AnnotationProperty ;
+  rdfs:label "isEuropean\t"@en ;
+  rdfs:comment "Flag indicating whether the class is a European."@en ;
+  rdfs:domain rdfs:Class, rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+tp:isFixed a owl:AnnotationProperty ;
+  rdfs:label "is fixed property"@en ;
+  rdfs:comment " Flag indicating whether the property for a specific object can be updated."@en ;
+  rdfs:domain rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+tp:isPrimitive a owl:AnnotationProperty ;
+  rdfs:label "isPrimitive\t"@en ;
+  rdfs:comment "Flag indicating whether the class is a Primitive."@en ;
+  rdfs:domain rdfs:Class ;
+  rdfs:range xsd:boolean .
+
+tp:isUnique a owl:AnnotationProperty ;
+  rdfs:label "is unique "@en ;
+  rdfs:comment " Flag indicating whether the property for a specific object can contain the same value more than once."@en ;
+  rdfs:domain rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+tp:isdeprecated a owl:AnnotationProperty ;
+  rdfs:label "isdeprecated\t"@en ;
+  rdfs:comment "Flag indicating whether the class is a deprecated."@en ;
+  rdfs:domain rdfs:Class, rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+tp:isenum a owl:AnnotationProperty ;
+  rdfs:label "isenum\t"@en ;
+  rdfs:comment "Flag indicating whether the enumerated literal is an enum."@en ;
+  rdfs:domain rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+tp:Package_TopologyProfile a tp:Package ;
+  rdfs:comment "A topology dataset which conforms to the IEC 61970-456 topology profile contains all objects defined in a topology profile and includes data for topology information relating to a given exchange."@en .
+
+
