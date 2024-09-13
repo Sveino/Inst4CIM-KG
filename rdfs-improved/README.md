@@ -25,6 +25,7 @@
     - [Mis-declared Packages](#mis-declared-packages)
     - [Whitespace in Definitions](#whitespace-in-definitions)
     - [Whitespace and Lang Tags in Key Values](#whitespace-and-lang-tags-in-key-values)
+    - [HTML Tags and Escaped Entities in Definitions](#html-tags-and-escaped-entities-in-definitions)
     - [Datatypes and Units of Measure](#datatypes-and-units-of-measure)
         - [Fixed Units Representation](#fixed-units-representation)
         - [CompleteDatatypeMap](#completedatatypemap)
@@ -647,6 +648,44 @@ cim:Temperature.multiplier
 - "VA" and "M" are SI unit and multiplier respectively. SI is international, so these codes cannot have lang tags
 - The last one is worst: some profiles map `isFixed` to a value with space, others without a space
 
+## HTML Tags and Escaped Entities in Definitions
+https://github.com/Sveino/Inst4CIM-KG/issues/21
+
+This query finds 2776 instances of HTML tags and entities 
+(I guess some are duplicated between 2.3 and 3.0 CIM namespaces):
+```sparql
+select * {
+    ?x ?p ?label
+    filter(regex(?label,"[&<][^ =]|\\\\"))
+}
+```
+
+Saved as [literals-html.tsv](literals-html.tsv).
+
+It includes:
+- False hits like `e.g. <tool_name>-<major_version>.<minor_version>.<patch>` 
+  (these are not HTML tags, but "meta-variables")
+- Unicode entities like `&#178;` (GraphDB workbench displays it as the unicode char ² but maybe that's a misfeature)
+- HTML entities like `&lt;md:Model.created&gt;2014-05-15T17:48:31.474Z&lt;/md:Model.created&gt;`
+- HTML block markup like `\n<ul>\n\t<li> ...`. This is nok: markdown is ok (`\n- ...`)
+- HTML inline markup like `field voltage (<i>Efd</i>)`. This is nok: markdown is ok (`*Efd*`)
+- Useless HTML markup like `<font color="#636671">...</font>`
+
+The problem is that HTML is not interpreted in RDF strings.
+- We could use the `^^rdf:HTML` datatype, but that's more complex, 
+  and no guarantee that tools will interpret it in fields like `rdfs:comment`
+- It was decided not to use this datatype
+
+This is a large data cleaning task because all occurrences need to be analyzed, then fixing patterns should be defined:
+- Replace Unicode escapes with the real Unicode char (RDF/XML and Turtle allow UTF8 chars)
+- Remove &lt;...&gt; or replace with real ASCII chars `<...>`:
+  - RDF tags in examples like `<md:Model.created>...</md:Model.created>` should be removed
+    because they are syntax specific to RDF/XML, and we don't need to repeat the prop name in the comment
+  - "Meta-variables" like `&lt;tool_name&gt;` should be retained
+- Replace HTML constructs with Markdown. It is ok because people can read it easily 
+  (assuming newlines are rendered as newlines not `\n`: `owl-cli` does that using `"""` for string quotes)
+  - Lists: `<ul><li>` to `- `)
+  - Emphasis: `<i>` and `<em>` to `*`, `<b>` and `<strong>` to `**`
 
 ## Datatypes and Units of Measure
 https://github.com/Sveino/Inst4CIM-KG/issues/38
