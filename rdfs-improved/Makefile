@@ -1,3 +1,6 @@
+all::
+	 @echo "targets: dirs, clean (zero files), ttl, rm-ttl"
+
 CGMES_RDF    = $(wildcard ../source/CGMES/v3.0/RDFSEd2Beta/RDFS/*)
 CGMES_NC_RDF = $(wildcard ../source/CGMES-NC/r2.3/ap-voc/rdf/*)
 
@@ -6,73 +9,83 @@ CGMES_NC_TTL = $(patsubst ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf,    CGMES-NC/
 
 # https://atextor.de/owl-cli/main/snapshot/usage.html#write-command
 # Prefix sorting: CIM/CGMES/NC/model/header/meta, CGMES profiles, NC profiles, other (standard prefixes).
-TTL = owl write --prefixAlign=left --useCommaByDefault \
-  --prefixOrder cim			\
-  --prefixOrder nc			\
-  --prefixOrder cims			\
-  --prefixOrder dcat-cim		\
-  --prefixOrder dm			\
-  --prefixOrder eu			\
-  --prefixOrder eumd			\
-  --prefixOrder md			\
-  --prefixOrder prof			\
-  --prefixOrder profcim			\
-					\
-  --prefixOrder dh			\
-  --prefixOrder dl			\
-  --prefixOrder dy			\
-  --prefixOrder eq			\
-  --prefixOrder eqbd			\
-  --prefixOrder gl			\
-  --prefixOrder op			\
-  --prefixOrder sc			\
-  --prefixOrder ssh			\
-  --prefixOrder sv			\
-  --prefixOrder tp			\
-					\
-  --prefixOrder ae			\
-  --prefixOrder as			\
-  --prefixOrder co			\
-  --prefixOrder er			\
-  --prefixOrder gd			\
-  --prefixOrder iam			\
-  --prefixOrder ma			\
-  --prefixOrder or			\
-  --prefixOrder ps			\
-  --prefixOrder psp			\
-  --prefixOrder ra			\
-  --prefixOrder ras			\
-  --prefixOrder sar			\
-  --prefixOrder sm			\
-  --prefixOrder sis			\
-  --prefixOrder shs			\
-  --prefixOrder ssi			\
-					\
-  --prefixOrder dcat			\
-  --prefixOrder dct			\
-  --prefixOrder dcterms			\
-  --prefixOrder euvoc			\
-  --prefixOrder owl			\
-  --prefixOrder prov			\
-  --prefixOrder rdf			\
-  --prefixOrder rdfs			\
-  --prefixOrder sh			\
-  --prefixOrder skos			\
-  --prefixOrder xsd			\
-  --subjectOrder owl:Ontology		\
-  --subjectOrder rdfs:Class		\
-  --subjectOrder owl:Class		\
-  --subjectOrder rdf:Property		\
-  --subjectOrder owl:ObjectProperty	\
-  --subjectOrder owl:DatatypeProperty	\
-  --subjectOrder owl:AnnotationProperty \
-  --subjectOrder owl:NamedIndividual	\
-  --subjectOrder owl:AllDifferent	\
-  --subjectOrder owl:Axiom
+_2TTL = owl write --prefixAlign=left --useCommaByDefault \
+  --prefixOrder cim							\
+  --prefixOrder nc							\
+  --prefixOrder cims							\
+  --prefixOrder dcat-cim						\
+  --prefixOrder dm							\
+  --prefixOrder eu							\
+  --prefixOrder eumd							\
+  --prefixOrder md							\
+  --prefixOrder prof							\
+  --prefixOrder profcim							\
+									\
+  --prefixOrder dh							\
+  --prefixOrder dl							\
+  --prefixOrder dy							\
+  --prefixOrder eq							\
+  --prefixOrder eqbd							\
+  --prefixOrder gl							\
+  --prefixOrder op							\
+  --prefixOrder sc							\
+  --prefixOrder ssh							\
+  --prefixOrder sv							\
+  --prefixOrder tp							\
+									\
+  --prefixOrder ae							\
+  --prefixOrder as							\
+  --prefixOrder co							\
+  --prefixOrder er							\
+  --prefixOrder gd							\
+  --prefixOrder iam							\
+  --prefixOrder ma							\
+  --prefixOrder or							\
+  --prefixOrder ps							\
+  --prefixOrder psp							\
+  --prefixOrder ra							\
+  --prefixOrder ras							\
+  --prefixOrder sar							\
+  --prefixOrder sm							\
+  --prefixOrder sis							\
+  --prefixOrder shs							\
+  --prefixOrder ssi							\
+									\
+  --prefixOrder dcat							\
+  --prefixOrder dct							\
+  --prefixOrder dcterms							\
+  --prefixOrder euvoc							\
+  --prefixOrder owl							\
+  --prefixOrder prov							\
+  --prefixOrder rdf							\
+  --prefixOrder rdfs							\
+  --prefixOrder sh							\
+  --prefixOrder skos							\
+  --prefixOrder xsd							
 
-RDF2TTL = $(TTL) --input=rdfxml 
+# This is worse: https://github.com/atextor/turtle-formatter/issues/27
+  # --prefix owl								\
+  # --prefix rdf								\
+  # --prefix rdfs								\
+  # --prefix cims=http://iec.ch/TC57/1999/rdf-schema-extensions-19990926# \
+  # 									\
+  # --subjectOrder owl:Ontology						\
+  # --subjectOrder cims:ClassCategory					\
+  # --subjectOrder rdfs:Class						\
+  # --subjectOrder owl:Class						\
+  # --subjectOrder rdf:Property						\
+  # --subjectOrder owl:ObjectProperty					\
+  # --subjectOrder owl:DatatypeProperty					\
+  # --subjectOrder owl:AnnotationProperty					\
+  # --subjectOrder owl:NamedIndividual
 
-all: clean $(CGMES_TTL) $(CGMES_NC_TTL)
+
+RDF2TTL = $(_2TTL) --input=rdfxml 
+
+ttl: clean $(CGMES_TTL) $(CGMES_NC_TTL)
+
+rm-ttl::
+	rm $(CGMES_TTL) $(CGMES_NC_TTL)
 
 clean::
 	find . -type f -size 0 -delete

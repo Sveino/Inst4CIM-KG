@@ -32,6 +32,7 @@
         - [Actual QuantityKinds](#actual-quantitykinds)
         - [Actual Multipliers and Units](#actual-multipliers-and-units)
         - [All QuantityKinds and Units](#all-quantitykinds-and-units)
+    - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
 
 <!-- markdown-toc end -->
 
@@ -329,11 +330,29 @@ Only the `xx:Ontology` terms are ok (but don't need a namespace).
 The other terms in profile-specific namespaces are not ok, as analyzed in subsequent sections.
 
 ## Improve Ordering of Ontology Terms
-https://github.com/Sveino/Inst4CIM-KG/issues/40 , related to https://github.com/atextor/turtle-formatter/issues/22
+https://github.com/Sveino/Inst4CIM-KG/issues/40
 
-Currently rdfs:Class comes before owl:Ontology
-- use a query to find all types of things in the ontologies
-- use the `--subjectOrder` option of `owl-cli` to sort them in the best possible way
+- rdfs:Class should come after owl:Ontology:  https://github.com/atextor/turtle-formatter/issues/22
+- This query finds all types of things in the ontologies that don't have a type from the standard namespaces:
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select ?type (count(*) as ?c) {
+  ?x a ?type
+  filter not exists {
+    ?x a ?standard
+    bind(concat(str(owl:),"|",str(rdf:),"|",str(rdfs:)) as ?regex)
+    filter(regex(str(?standard),?regex))
+  }
+} group by ?type order by desc(?c)
+```
+- `cims:Category` (35) is the only extra we need to add
+  - `xx:Package` (28+1+1...) should be added as `cims:Package` after fixing https://github.com/Sveino/Inst4CIM-KG/issues/10
+  - The others are enumeration values (`Currency, PhaseCode` etc) that will go last, where `NamedIndividuals` belong anyway
+- Use the `--subjectOrder` option of `owl-cli` to sort them in the best possible way
+  - Blocked by https://github.com/atextor/turtle-formatter/issues/27 , so we use the standard order
 
 ## Terms Per Namespace
 Let's analyze all terms per namespace:
@@ -1068,3 +1087,35 @@ But a very small number of them are in actual use in CGMES ontologies (see last 
 
 We should fix all units and multipliers as shown in [Fixed Units Representation](#fixed-units-representation),
 but will map to QUDT only the ones that are in use.
+
+## Add Datatypes To Instance Data
+https://github.com/Sveino/Inst4CIM-KG/issues/49
+
+In CGMES instance data, all literals are string, but should be marked with the appropriate datatype.
+- E.g. `cim:ACDCConverter.baseS` should be marked `^^xsd:float`
+- Otherwise sort won't work and range queries will be slower.
+- This pertains to `boolean, dateTme, float, gMonthDay, integer` as `string` is the default datatype
+
+This query counts props by XSD datatype:
+```sparql
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+select ?range (count(*) as ?c) {
+   ?x rdfs:range ?range
+    filter(strstarts(str(?range), str(xsd:)))
+} group by ?range order by ?range
+```
+
+Here are the current results, but it should be rerun after fixes to ontology: see col "comment"
+| range         |   c | comment                                                                             |
+|---------------|-----|-------------------------------------------------------------------------------------|
+| xsd:boolean   | 218 | Inflated because meta-data props are duplicated, and many are boolean               |
+| xsd:dateTime  |   5 |                                                                                     |
+| xsd:decimal   |   1 |                                                                                     |
+| xsd:float     | 310 | Deflated because eg `cim:ActivePower.value` may be used by hundreds of "real" props |
+| xsd:gMonthDay |   2 |                                                                                     |
+| xsd:integer   |  36 |                                                                                     |
+| xsd:string    |  51 |                                                                                     |
+
+I have a tentative SPARQL Update, but need to revise it.
