@@ -228,3 +228,32 @@ sarc:PowerFlowResult-CurrentLimitSparql
 		BIND(EXISTS{$this $PATH ?o1} AS ?val).
         FILTER ((?oltype=cim:CurrentLimit || ?oltype=cim16:CurrentLimit || ?oltype=cim17:CurrentLimit) && ?val=false ).
 			}""" .			
+			
+sarc:RemedialActionApplied  a          sh:NodeShape ;
+        sh:property      sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinality;
+        sh:targetClass  nc:RemedialActionApplied .
+
+
+
+sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinality
+        a               sh:PropertyShape ;
+        sh:description  "The association end RemedialActionApplied.StageForRemedialActionScheme is required if RemedialActionApplied.RemedialAction references SchemeRemedialAction and it is not provided for any other RemedialAction objects." ;
+        sh:sparql       sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinalitySparql ;
+        sh:path         rdf:type ;
+        sh:group        sarc:SARgroup ;
+        sh:name         "C:NC:SAR:RemedialActionApplied.StageForRemedialActionScheme:cardinality" ;
+        sh:order        8 ;
+        sh:severity     sh:Violation .
+        
+sarc:RemedialActionApplied.StageForRemedialActionScheme-cardinalitySparql
+		a         sh:SPARQLConstraint ;  
+		sh:message      "RemedialActionApplied is either not associated with Stage for a SchemeRemedialAction or it is provided for other type of RemedialAction." ;
+		sh:prefixes cim: ;
+		sh:select """
+			SELECT  $this  
+			WHERE {  
+		$this nc:RemedialActionApplied.RemedialAction/rdf:type ?ratype.
+        BIND(EXISTS{$this nc:RemedialActionApplied.StageForRemedialActionScheme ?o1} AS ?stage).
+
+        FILTER ((?stage=false && ?ra=cim:SchemeRemedialAction) || (?stage=true && ?ra!=cim:SchemeRemedialAction) ).
+			}""" .    			
