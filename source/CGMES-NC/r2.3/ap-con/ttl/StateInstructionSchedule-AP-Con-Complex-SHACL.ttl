@@ -19,16 +19,16 @@ sisc:Ontology  rdf:type         owl:Ontology ;
         dcterms:creator           "ENTSO-E CIM WG"@en ;
         dcterms:description       "The custom constraints for state instruction schedule profile."@en ;
         dcterms:identifier        "urn:uuid:fa2ea505-930f-4033-bad6-005d1b401467" ;
-        dcterms:issued            "2024-05-05T12:09:21Z"^^xsd:dateTime ;
+        dcterms:issued            "2024-09-08T12:09:21Z"^^xsd:dateTime ;
         dcterms:language          "en-GB" ;
-        dcterms:modified          "2024-05-05"^^xsd:date ;
+        dcterms:modified          "2024-09-08"^^xsd:date ;
         dcterms:publisher         "ENTSO-E"@en ;
         dcterms:rights            "Copyright"@en ;
         dcterms:rightsHolder      "ENTSO-E"@en ;
         dcterms:title             "State instruction schedule profile custom constraints"@en ;
         owl:versionIRI        <https://ap-con.cim4.eu/StateInstructionSchedule-Complex/2.3> ;
 		dcterms:license        "https://www.apache.org/licenses/LICENSE-2.0" ;
-        owl:versionInfo       "2.3.0"@en ;
+        owl:versionInfo       "2.3.1"@en ;
         dcat:landingPage      "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
         dcat:theme            "constraints"@en .
 
@@ -166,3 +166,18 @@ sisc:PowerShiftKeyDistribution-associationsSparql
 			(?vPBS=false && ?vPSKS=false) 
 		).
 			}""" . 
+
+sisc:GenericSequenceSchedule  a          sh:NodeShape ;
+        sh:property      sisc:GenericSequenceSchedule-associations;
+        sh:targetClass  nc:GenericSequenceSchedule .
+
+sisc:GenericSequenceSchedule-associations
+        a               sh:PropertyShape ;
+        sh:description  "Association end GenericSequenceSchedule.EnergyBlockOrder is required." ;
+		sh:message      "The association end GenericSequenceSchedule.EnergyBlockOrder is not provided." ;
+        sh:path         nc:GenericSequenceSchedule.EnergyBlockOrder ;
+		sh:MinCount		1;
+        sh:group        sisc:SISCustomGroup ;
+        sh:name         "C:NC:SIS:GenericSequenceSchedule:associations" ;
+        sh:order        4 ;
+        sh:severity     sh:Violation .
