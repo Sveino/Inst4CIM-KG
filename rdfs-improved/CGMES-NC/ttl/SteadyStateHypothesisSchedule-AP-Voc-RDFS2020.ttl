@@ -1,0 +1,3565 @@
+@prefix cim    : <https://cim.ucaiug.io/ns#> .
+@prefix nc     : <https://cim4.eu/ns/nc#> .
+@prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
+@prefix shs    : <https://ap-voc.cim4.eu/SteadyStateHypothesisSchedule#> .
+@prefix dcat   : <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/#> .
+@prefix owl    : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf    : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs   : <http://www.w3.org/2000/01/rdf-schema#> .
+
+cim:ActivePower a rdfs:Class ;
+  rdfs:label "ActivePower"@en ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:ActivePowerLimit a rdfs:Class ;
+  rdfs:label "ActivePowerLimit"@en ;
+  rdfs:comment "Limit on active power flow." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:AngleDegrees a rdfs:Class ;
+  rdfs:label "AngleDegrees"@en ;
+  rdfs:comment "Measurement of angle in degrees." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:ApparentPower a rdfs:Class ;
+  rdfs:label "ApparentPower"@en ;
+  rdfs:comment "Product of the RMS value of the voltage and the RMS value of the current." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:ApparentPowerLimit a rdfs:Class ;
+  rdfs:label "ApparentPowerLimit"@en ;
+  rdfs:comment "Apparent power limit." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:AsynchronousMachine a rdfs:Class ;
+  rdfs:label "AsynchronousMachine"@en ;
+  rdfs:comment "A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g. squirrel-cage induction machine." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:AsynchronousMachineKind a rdfs:Class ;
+  rdfs:label "AsynchronousMachineKind"@en ;
+  rdfs:comment "Kind of Asynchronous Machine." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:BatteryStateKind a rdfs:Class ;
+  rdfs:label "BatteryStateKind"@en ;
+  rdfs:comment "The state of the battery unit." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:BatteryUnit a rdfs:Class ;
+  rdfs:label "BatteryUnit"@en ;
+  rdfs:comment "An electrochemical energy storage device." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:Boolean a rdfs:Class ;
+  rdfs:label "Boolean"@en ;
+  rdfs:comment "A type with the value space \"true\" and \"false\"." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:ControlArea a rdfs:Class ;
+  rdfs:label "ControlArea"@en ;
+  rdfs:comment """A control area is a grouping of generating units and/or loads and a cutset of tie lines (as terminals) which may be used for a variety of purposes including automatic generation control, power flow solution area interchange control specification, and input to load forecasting. All generation and load within the area defined by the terminals on the border are considered in the area interchange control. Note that any number of overlapping control area specifications can be superimposed on the physical model. The following general principles apply to ControlArea:
+1.  The control area orientation for net interchange is positive for an import, negative for an export.
+2.  The control area net interchange is determined by summing flows in Terminals. The Terminals are identified by creating a set of TieFlow objects associated with a ControlArea object. Each TieFlow object identifies one Terminal.
+3.  In a single network model, a tie between two control areas must be modelled in both control area specifications, such that the two representations of the tie flow sum to zero.
+4.  The normal orientation of Terminal flow is positive for flow into the conducting equipment that owns the Terminal. (i.e. flow from a bus into a device is positive.) However, the orientation of each flow in the control area specification must align with the control area convention, i.e. import is positive. If the orientation of the Terminal flow referenced by a TieFlow is positive into the control area, then this is confirmed by setting TieFlow.positiveFlowIn flag TRUE. If not, the orientation must be reversed by setting the TieFlow.positiveFlowIn flag FALSE.""" ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:CsConverter a rdfs:Class ;
+  rdfs:label "CsConverter"@en ;
+  rdfs:comment """DC side of the current source converter (CSC).
+The firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.
+The reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.
+The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.
+The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees.""" ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:CsOperatingModeKind a rdfs:Class ;
+  rdfs:label "CsOperatingModeKind"@en ;
+  rdfs:comment "Operating mode for HVDC line operating as Current Source Converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:CsPpccControlKind a rdfs:Class ;
+  rdfs:label "CsPpccControlKind"@en ;
+  rdfs:comment "Active power control modes for HVDC line operating as Current Source Converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:CurrentFlow a rdfs:Class ;
+  rdfs:label "CurrentFlow"@en ;
+  rdfs:comment "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:CurrentLimit a rdfs:Class ;
+  rdfs:label "CurrentLimit"@en ;
+  rdfs:comment "Operational limit on current. " ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:Date a rdfs:Class ;
+  rdfs:label "Date"@en ;
+  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
+  cims:belongsToCategory shs:Package_DocSteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:DateTime a rdfs:Class ;
+  rdfs:label "DateTime"@en ;
+  rdfs:comment "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:EnergyConnection a rdfs:Class ;
+  rdfs:label "EnergyConnection"@en ;
+  rdfs:comment "A connection of energy generation or consumption on the power system model." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:Equipment a rdfs:Class ;
+  rdfs:label "Equipment"@en ;
+  rdfs:comment "The parts of a power system that are physical devices, electronic or mechanical." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:EquivalentInjection a rdfs:Class ;
+  rdfs:label "EquivalentInjection"@en ;
+  rdfs:comment "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:ExternalNetworkInjection a rdfs:Class ;
+  rdfs:label "ExternalNetworkInjection"@en ;
+  rdfs:comment "This class represents the external network and it is used for IEC 60909 calculations." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:Float a rdfs:Class ;
+  rdfs:label "Float"@en ;
+  rdfs:comment "A floating point number. The range is unspecified and not limited." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:GeneratingUnit a rdfs:Class ;
+  rdfs:label "GeneratingUnit"@en ;
+  rdfs:comment "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:IdentifiedObject a rdfs:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:Integer a rdfs:Class ;
+  rdfs:label "Integer"@en ;
+  rdfs:comment "An integer number. The range is unspecified and not limited." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:MonthDay a rdfs:Class ;
+  rdfs:label "MonthDay"@en ;
+  rdfs:comment "MonthDay format as \"--mm-dd\", which conforms with XSD data type gMonthDay." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:PU a rdfs:Class ;
+  rdfs:label "PU"@en ;
+  rdfs:comment "Per Unit - a positive or negative value referred to a defined base. Values typically range from -10 to +10." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:PerCent a rdfs:Class ;
+  rdfs:label "PerCent"@en ;
+  rdfs:comment "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:ReactivePower a rdfs:Class ;
+  rdfs:label "ReactivePower"@en ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:RealEnergy a rdfs:Class ;
+  rdfs:label "RealEnergy"@en ;
+  rdfs:comment "Real electrical energy." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:RegulatingControl a rdfs:Class ;
+  rdfs:label "RegulatingControl"@en ;
+  rdfs:comment """Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. 
+Remote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.
+The specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.
+For flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.
+The attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:
+- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;
+- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.
+The attributes minAllowedTargetValue and maxAllowedTargetValue are not related to the attribute targetDeadband and thus they are not treated as an alternative of the targetDeadband. They are needed due to limitations in the local substation controller. The attribute targetDeadband is used to prevent the power flow from move the tap position in circles (hunting) that is to be used regardless of the attributes minAllowedTargetValue and maxAllowedTargetValue.""" ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:Resistance a rdfs:Class ;
+  rdfs:label "Resistance"@en ;
+  rdfs:comment "Resistance (real part of impedance)." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:Season a rdfs:Class ;
+  rdfs:label "Season"@en ;
+  rdfs:comment "A specified time period of the year." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:ShuntCompensator a rdfs:Class ;
+  rdfs:label "ShuntCompensator"@en ;
+  rdfs:comment "A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor. A negative value for bPerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:StaticVarCompensator a rdfs:Class ;
+  rdfs:label "StaticVarCompensator"@en ;
+  rdfs:comment """A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.
+
+The SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.""" ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:String a rdfs:Class ;
+  rdfs:label "String"@en ;
+  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Switch a rdfs:Class ;
+  rdfs:label "Switch"@en ;
+  rdfs:comment "A generic device designed to close, or open, or both, one or more electric circuits.  All switches are two terminal devices including grounding switches. The ACDCTerminal.connected at the two sides of the switch shall not be considered for assessing switch connectivity, i.e. only Switch.open, .normalOpen and .locked are relevant." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:SynchronousMachine a rdfs:Class ;
+  rdfs:label "SynchronousMachine"@en ;
+  rdfs:comment "An electromechanical device that operates with shaft rotating synchronously with the network. It is a single machine operating either as a generator or synchronous condenser or pump." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:SynchronousMachineOperatingMode a rdfs:Class ;
+  rdfs:label "SynchronousMachineOperatingMode"@en ;
+  rdfs:comment "Synchronous machine operating mode." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:TapChanger a rdfs:Class ;
+  rdfs:label "TapChanger"@en ;
+  rdfs:comment "Mechanism for changing transformer winding tap positions." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:TapChangerControl a rdfs:Class ;
+  rdfs:label "TapChangerControl"@en ;
+  rdfs:comment "Describes behaviour specific to tap changers, e.g. how the voltage at the end of a line varies with the load level and compensation of the voltage drop by tap adjustment." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:Time a rdfs:Class ;
+  rdfs:label "Time"@en ;
+  rdfs:comment "Time as \"hh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"hh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"hh:mm:ss.sss±hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:UnitMultiplier a rdfs:Class ;
+  rdfs:label "UnitMultiplier"@en ;
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:UnitSymbol a rdfs:Class ;
+  rdfs:label "UnitSymbol"@en ;
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.""" ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:Voltage a rdfs:Class ;
+  rdfs:label "Voltage"@en ;
+  rdfs:comment "Electrical voltage, can be both AC and DC." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:VoltageLimit a rdfs:Class ;
+  rdfs:label "VoltageLimit"@en ;
+  rdfs:comment """Operational limit applied to voltage.
+The use of operational VoltageLimit is preferred instead of limits defined at VoltageLevel. The operational VoltageLimits are used, if present.""" ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:VsConverter a rdfs:Class ;
+  rdfs:label "VsConverter"@en ;
+  rdfs:comment "DC side of the voltage source converter (VSC)." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile .
+
+cim:VsPpccControlKind a rdfs:Class ;
+  rdfs:label "VsPpccControlKind"@en ;
+  rdfs:comment "Types applicable to the control of real power and/or DC voltage by voltage source converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:VsQpccControlKind a rdfs:Class ;
+  rdfs:label "VsQpccControlKind"@en ;
+  rdfs:comment "Kind of reactive power control at point of common coupling for a voltage source converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:ACDCConverterRegularSchedule a rdfs:Class ;
+  rdfs:label "ACDCConverterRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for ACDC converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:ACDCTimePoint a rdfs:Class ;
+  rdfs:label "ACDCTimePoint"@en ;
+  rdfs:comment "ACDC values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:ActivePowerLimitSchedule a rdfs:Class ;
+  rdfs:label "ActivePowerLimitSchedule"@en ;
+  rdfs:comment "Schedule for active power limit." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:ActivePowerLimitTimePoint a rdfs:Class ;
+  rdfs:label "ActivePowerLimitTimePoint"@en ;
+  rdfs:comment "Active power limit for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:ApparentPowerLimitSchedule a rdfs:Class ;
+  rdfs:label "ApparentPowerLimitSchedule"@en ;
+  rdfs:comment "Schedule for apparent power limit." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:ApparentPowerLimitTimePoint a rdfs:Class ;
+  rdfs:label "ApparentPowerLimitTimePoint"@en ;
+  rdfs:comment "Apparent power limit for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:AsynchronousMachineRegularSchedule a rdfs:Class ;
+  rdfs:label "AsynchronousMachineRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for asynchronous machine." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:AsynchronousMachineSchedule a rdfs:Class ;
+  rdfs:label "AsynchronousMachineSchedule"@en ;
+  rdfs:comment "Schedule for asynchronous machine." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:AsynchronousMachineTimePoint a rdfs:Class ;
+  rdfs:label "AsynchronousMachineTimePoint"@en ;
+  rdfs:comment "Asynchronous machine values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:BaseIrregularTimeSeries a rdfs:Class ;
+  rdfs:label "BaseIrregularTimeSeries"@en ;
+  rdfs:comment "Time series that has irregular points in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseTimeSeries .
+
+nc:BaseRegularIntervalSchedule a rdfs:Class ;
+  rdfs:label "BaseRegularIntervalSchedule"@en ;
+  rdfs:comment "Time series that has regular points in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf nc:BaseTimeSeries .
+
+nc:BaseTimeSeries a rdfs:Class ;
+  rdfs:label "BaseTimeSeries"@en ;
+  rdfs:comment "Time series of values at points in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:BaseTimeSeriesKind a rdfs:Class ;
+  rdfs:label "BaseTimeSeriesKind"@en ;
+  rdfs:comment "Kind of time series. " ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:BatteryUnitSchedule a rdfs:Class ;
+  rdfs:label "BatteryUnitSchedule"@en ;
+  rdfs:comment "Schedule for battery unit." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:BatteryUnitTimePoint a rdfs:Class ;
+  rdfs:label "BatteryUnitTimePoint"@en ;
+  rdfs:comment "Battery unit values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:ControlAreaRegularSchedule a rdfs:Class ;
+  rdfs:label "ControlAreaRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for control area." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:ControlAreaSchedule a rdfs:Class ;
+  rdfs:label "ControlAreaSchedule"@en ;
+  rdfs:comment "Schedule for control area." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:ControlAreaTimePoint a rdfs:Class ;
+  rdfs:label "ControlAreaTimePoint"@en ;
+  rdfs:comment "Participation factor for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:CsConverterRegularSchedule a rdfs:Class ;
+  rdfs:label "CsConverterRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for CS converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:ACDCConverterRegularSchedule .
+
+nc:CsConverterSchedule a rdfs:Class ;
+  rdfs:label "CsConverterSchedule"@en ;
+  rdfs:comment "Schedule for CS converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:CsConverterTimePoint a rdfs:Class ;
+  rdfs:label "CsConverterTimePoint"@en ;
+  rdfs:comment "CSConverter values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:ACDCTimePoint .
+
+nc:CurrentLimitSchedule a rdfs:Class ;
+  rdfs:label "CurrentLimitSchedule"@en ;
+  rdfs:comment "Schedule for current limit." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:CurrentLimitTimePoint a rdfs:Class ;
+  rdfs:label "CurrentLimitTimePoint"@en ;
+  rdfs:comment "Current limit values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:DayOfWeekKind a rdfs:Class ;
+  rdfs:label "DayOfWeekKind"@en ;
+  rdfs:comment "The kind of day to be included in a regular schedule." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:EnergyConnectionRegularSchedule a rdfs:Class ;
+  rdfs:label "EnergyConnectionRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for energy connection." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:EnergyConnectionSchedule a rdfs:Class ;
+  rdfs:label "EnergyConnectionSchedule"@en ;
+  rdfs:comment "Schedule for energy connection." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:EnergyConnectionTimePoint a rdfs:Class ;
+  rdfs:label "EnergyConnectionTimePoint"@en ;
+  rdfs:comment "Energy connection values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:EnergyDemandKind a rdfs:Class ;
+  rdfs:label "EnergyDemandKind"@en ;
+  rdfs:comment "Kind of energy demand." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:EquivalentInjectionRegularSchedule a rdfs:Class ;
+  rdfs:label "EquivalentInjectionRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for equivalent injection." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:EquivalentInjectionSchedule a rdfs:Class ;
+  rdfs:label "EquivalentInjectionSchedule"@en ;
+  rdfs:comment "Regular schedule for equivalent injection." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:EquivalentInjectionTimePoint a rdfs:Class ;
+  rdfs:label "EquivalentInjectionTimePoint"@en ;
+  rdfs:comment "Equivalent injection values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:ExternalNetworkInjectionRegularSchedule a rdfs:Class ;
+  rdfs:label "ExternalNetworkInjectionRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for external network injection." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:ExternalNetworkInjectionSchedule a rdfs:Class ;
+  rdfs:label "ExternalNetworkInjectionSchedule"@en ;
+  rdfs:comment "Schedule for external network injection." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:ExternalNetworkInjectionTimePoint a rdfs:Class ;
+  rdfs:label "ExternalNetworkInjectionTimePoint"@en ;
+  rdfs:comment "External network injection values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:GeneratingUnitSchedule a rdfs:Class ;
+  rdfs:label "GeneratingUnitSchedule"@en ;
+  rdfs:comment "Schedule for generating unit." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:GeneratingUnitTimePoint a rdfs:Class ;
+  rdfs:label "GeneratingUnitTimePoint"@en ;
+  rdfs:comment "Generating unit values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:HourPattern a rdfs:Class ;
+  rdfs:label "HourPattern"@en ;
+  rdfs:comment "Pattern of hourly period in a day with the same kind of intensity." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:HourPeriod a rdfs:Class ;
+  rdfs:label "HourPeriod"@en ;
+  rdfs:comment "Period of hours in a day." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:InServiceRegularSchedule a rdfs:Class ;
+  rdfs:label "InServiceRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for elements having in service." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:InServiceSchedule a rdfs:Class ;
+  rdfs:label "InServiceSchedule"@en ;
+  rdfs:comment "Schedule for elements having in service." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:InServiceTimePoint a rdfs:Class ;
+  rdfs:label "InServiceTimePoint"@en ;
+  rdfs:comment "In service values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:PeakKind a rdfs:Class ;
+  rdfs:label "PeakKind"@en ;
+  rdfs:comment "Kind of time period with similar intensity." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:RegulatingControlRegularSchedule a rdfs:Class ;
+  rdfs:label "RegulatingControlRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for regulating control." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:RegulatingControlSchedule a rdfs:Class ;
+  rdfs:label "RegulatingControlSchedule"@en ;
+  rdfs:comment "Schedule for regulating control." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:RegulatingControlTimePoint a rdfs:Class ;
+  rdfs:label "RegulatingControlTimePoint"@en ;
+  rdfs:comment "Regulating control values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:ShuntCompensatorSchedule a rdfs:Class ;
+  rdfs:label "ShuntCompensatorSchedule"@en ;
+  rdfs:comment "Schedule for shunt compensator." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:ShuntCompensatorTimePoint a rdfs:Class ;
+  rdfs:label "ShuntCompensatorTimePoint"@en ;
+  rdfs:comment "Shunt compensator values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:StaticVarCompensatorSchedule a rdfs:Class ;
+  rdfs:label "StaticVarCompensatorSchedule"@en ;
+  rdfs:comment "Schedule for static var compensator." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:StaticVarCompensatorTimePoint a rdfs:Class ;
+  rdfs:label "StaticVarCompensatorTimePoint"@en ;
+  rdfs:comment "Static var compensator values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:SwitchRegularSchedule a rdfs:Class ;
+  rdfs:label "SwitchRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for switch." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:SwitchSchedule a rdfs:Class ;
+  rdfs:label "SwitchSchedule"@en ;
+  rdfs:comment "Schedule for switch." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:SwitchTimePoint a rdfs:Class ;
+  rdfs:label "SwitchTimePoint"@en ;
+  rdfs:comment "Switch values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:SynchronousMachineRegularSchedule a rdfs:Class ;
+  rdfs:label "SynchronousMachineRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for synchronous machine." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:SynchronousMachineSchedule a rdfs:Class ;
+  rdfs:label "SynchronousMachineSchedule"@en ;
+  rdfs:comment "Schedule for synchronous machine." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:SynchronousMachineTimePoint a rdfs:Class ;
+  rdfs:label "SynchronousMachineTimePoint"@en ;
+  rdfs:comment "Synchronous machine values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:TapChangerControlRegularSchedule a rdfs:Class ;
+  rdfs:label "TapChangerControlRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for tap changer control." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:RegulatingControlRegularSchedule .
+
+nc:TapChangerControlSchedule a rdfs:Class ;
+  rdfs:label "TapChangerControlSchedule"@en ;
+  rdfs:comment "Schedule for tap changer control." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:TapRegularSchedule a rdfs:Class ;
+  rdfs:label "TapRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for tap." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseRegularIntervalSchedule .
+
+nc:TapSchedule a rdfs:Class ;
+  rdfs:label "TapSchedule"@en ;
+  rdfs:comment "Schedule for tap." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:TapScheduleTimePoint a rdfs:Class ;
+  rdfs:label "TapScheduleTimePoint"@en ;
+  rdfs:comment "Tap schedule values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:TimeSeriesInterpolationKind a rdfs:Class ;
+  rdfs:label "TimeSeriesInterpolationKind"@en ;
+  rdfs:comment "Kinds of interpolation of values between two time point. " ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:VoltageLimitSchedule a rdfs:Class ;
+  rdfs:label "VoltageLimitSchedule"@en ;
+  rdfs:comment "Schedule for voltage limit." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:VoltageLimitTimePoint a rdfs:Class ;
+  rdfs:label "VoltageLimitTimePoint"@en ;
+  rdfs:comment "Voltage limit values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:VsConverterRegularSchedule a rdfs:Class ;
+  rdfs:label "VsConverterRegularSchedule"@en ;
+  rdfs:comment "Regular schedule for VS converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:ACDCConverterRegularSchedule .
+
+nc:VsConverterSchedule a rdfs:Class ;
+  rdfs:label "VsConverterSchedule"@en ;
+  rdfs:comment "Schedule for VS converter." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:VsConverterTimePoint a rdfs:Class ;
+  rdfs:label "VsConverterTimePoint"@en ;
+  rdfs:comment "VS converter values for a given point in time." ;
+  cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:ACDCTimePoint .
+
+profcim:IRI a rdfs:Class ;
+  rdfs:label "IRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as rdf:resource in RDFXML.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory shs:Package_DocSteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:StringFixedLanguage a rdfs:Class ;
+  rdfs:label "StringFixedLanguage"@en ;
+  rdfs:comment """A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.""" ;
+  cims:belongsToCategory shs:Package_DocSteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:StringIRI a rdfs:Class ;
+  rdfs:label "StringIRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory shs:Package_DocSteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:URL a rdfs:Class ;
+  rdfs:label "URL"@en ;
+  rdfs:comment "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications." ;
+  cims:belongsToCategory shs:Package_DocSteadyStateHypothesisScheduleProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+shs:Ontology a owl:Ontology ;
+  dcat:keyword "SHS" ;
+  dcat:theme "vocabulary"@en ;
+  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dcterms:creator "ENTSO-E CIM WG NC project"@en ;
+  dcterms:description "This vocabulary is describing the steady state hypothesis schedule."@en ;
+  dcterms:identifier "urn:uuid:0d815deb-9968-4c6f-85d7-503d49e0b81f" ;
+  dcterms:language "en-GB" ;
+  dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:publisher "ENTSO-E"@en ;
+  dcterms:rightsHolder "ENTSO-E"@en ;
+  dcterms:title "Steady State Hypothesis Schedule Vocabulary"@en ;
+  owl:versionIRI <https://ap-voc.cim4.eu/SteadyStateHypothesisSchedule/1.0> ;
+  owl:versionInfo "1.0.1"@en .
+
+cim:ActivePower.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "M" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:ActivePower.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "W" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range cim:UnitSymbol .
+
+cim:ActivePower.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower .
+
+cim:AngleDegrees.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:AngleDegrees.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "deg" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range cim:UnitSymbol .
+
+cim:AngleDegrees.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees .
+
+cim:ApparentPower.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "M" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ApparentPower ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:ApparentPower.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "VA" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ApparentPower ;
+  rdfs:range cim:UnitSymbol .
+
+cim:ApparentPower.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ApparentPower .
+
+cim:CurrentFlow.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:CurrentFlow ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:CurrentFlow.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "A" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:CurrentFlow ;
+  rdfs:range cim:UnitSymbol .
+
+cim:CurrentFlow.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:CurrentFlow .
+
+cim:IdentifiedObject.description a rdf:Property ;
+  rdfs:label "description"@en ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.name a rdf:Property ;
+  rdfs:label "name"@en ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:PU.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PU ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:PU.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PU ;
+  rdfs:range cim:UnitSymbol .
+
+cim:PU.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PU .
+
+cim:PerCent.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:PerCent.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent ;
+  rdfs:range cim:UnitSymbol .
+
+cim:PerCent.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Normally 0 to 100 on a defined base." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent .
+
+cim:ReactivePower.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "M" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ReactivePower ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:ReactivePower.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "VAr" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ReactivePower ;
+  rdfs:range cim:UnitSymbol .
+
+cim:ReactivePower.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ReactivePower .
+
+cim:RealEnergy.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "M" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:RealEnergy ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:RealEnergy.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "Wh" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:RealEnergy ;
+  rdfs:range cim:UnitSymbol .
+
+cim:RealEnergy.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:RealEnergy .
+
+cim:Resistance.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Resistance ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Resistance.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "ohm" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Resistance ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Resistance.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Resistance .
+
+cim:Season.endDate a rdf:Property ;
+  rdfs:label "endDate"@en ;
+  rdfs:comment "Date season ends." ;
+  cims:dataType cim:MonthDay ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Season .
+
+cim:Season.startDate a rdf:Property ;
+  rdfs:label "startDate"@en ;
+  rdfs:comment "Date season starts." ;
+  cims:dataType cim:MonthDay ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Season .
+
+cim:Voltage.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "k" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Voltage ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Voltage.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "V" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Voltage ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Voltage.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Voltage .
+
+nc:ACDCConverterRegularSchedule.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment """Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution in the case a simplified power flow model is used.""" ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCConverterRegularSchedule .
+
+nc:ACDCConverterRegularSchedule.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution in the case a simplified power flow model is used.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCConverterRegularSchedule .
+
+nc:ACDCConverterRegularSchedule.targetPpcc a rdf:Property ;
+  rdfs:label "targetPpcc"@en ;
+  rdfs:comment "Real power injection target in AC grid, at point of common coupling.  Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCConverterRegularSchedule .
+
+nc:ACDCConverterRegularSchedule.targetUdc a rdf:Property ;
+  rdfs:label "targetUdc"@en ;
+  rdfs:comment "Target value for DC voltage magnitude. The attribute shall be a positive value." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCConverterRegularSchedule .
+
+nc:ACDCTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCTimePoint .
+
+nc:ACDCTimePoint.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment """Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution in the case a simplified power flow model is used.""" ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCTimePoint .
+
+nc:ACDCTimePoint.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution in the case a simplified power flow model is used.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCTimePoint .
+
+nc:ACDCTimePoint.targetPpcc a rdf:Property ;
+  rdfs:label "targetPpcc"@en ;
+  rdfs:comment "Real power injection target in AC grid, at point of common coupling.  Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCTimePoint .
+
+nc:ACDCTimePoint.targetUdc a rdf:Property ;
+  rdfs:label "targetUdc"@en ;
+  rdfs:comment "Target value for DC voltage magnitude. The attribute shall be a positive value." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ACDCTimePoint .
+
+nc:ActivePowerLimit.ActivePowerLimitSchedule a rdf:Property ;
+  rdfs:label "ActivePowerLimitSchedule"@en ;
+  rdfs:comment "Active power limit schedule associated with an active power limit." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ActivePowerLimitSchedule.ActivePowerLimit ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:ActivePowerLimit ;
+  rdfs:range nc:ActivePowerLimitSchedule .
+
+nc:ActivePowerLimitSchedule.ActivePowerLimit a rdf:Property ;
+  rdfs:label "ActivePowerLimit"@en ;
+  rdfs:comment "Active power limit which has active power limit schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ActivePowerLimit.ActivePowerLimitSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ActivePowerLimitSchedule ;
+  rdfs:range cim:ActivePowerLimit .
+
+nc:ActivePowerLimitSchedule.ActivePowerLimitTimePoint a rdf:Property ;
+  rdfs:label "ActivePowerLimitTimePoint"@en ;
+  rdfs:comment "The time point that relates to this active pwoer limit schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ActivePowerLimitTimePoint.ActivePowerLimitSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:ActivePowerLimitSchedule ;
+  rdfs:range nc:ActivePowerLimitTimePoint .
+
+nc:ActivePowerLimitTimePoint.ActivePowerLimitSchedule a rdf:Property ;
+  rdfs:label "ActivePowerLimitSchedule"@en ;
+  rdfs:comment "The active power limit schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ActivePowerLimitSchedule.ActivePowerLimitTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ActivePowerLimitTimePoint ;
+  rdfs:range nc:ActivePowerLimitSchedule .
+
+nc:ActivePowerLimitTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ActivePowerLimitTimePoint .
+
+nc:ActivePowerLimitTimePoint.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Value of active power limit. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ActivePowerLimitTimePoint .
+
+nc:ApparentPowerLimit.ApparentPowerLimitSchedule a rdf:Property ;
+  rdfs:label "ApparentPowerLimitSchedule"@en ;
+  rdfs:comment "Apparent power limit schedule associated with an apparent power limit." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ApparentPowerLimitSchedule.ApparentPowerLimit ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:ApparentPowerLimit ;
+  rdfs:range nc:ApparentPowerLimitSchedule .
+
+nc:ApparentPowerLimitSchedule.ApparentPowerLimit a rdf:Property ;
+  rdfs:label "ApparentPowerLimit"@en ;
+  rdfs:comment "Apparent power limit which has apparent power limit schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ApparentPowerLimit.ApparentPowerLimitSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ApparentPowerLimitSchedule ;
+  rdfs:range cim:ApparentPowerLimit .
+
+nc:ApparentPowerLimitSchedule.ApparentPowerLimitTimePoint a rdf:Property ;
+  rdfs:label "ApparentPowerLimitTimePoint"@en ;
+  rdfs:comment "The time point that relates to this apparent power limit schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ApparentPowerLimitTimePoint.ApparentPowerLimitSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:ApparentPowerLimitSchedule ;
+  rdfs:range nc:ApparentPowerLimitTimePoint .
+
+nc:ApparentPowerLimitTimePoint.ApparentPowerLimitSchedule a rdf:Property ;
+  rdfs:label "ApparentPowerLimitSchedule"@en ;
+  rdfs:comment "The apparent power limit schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ApparentPowerLimitSchedule.ApparentPowerLimitTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ApparentPowerLimitTimePoint ;
+  rdfs:range nc:ApparentPowerLimitSchedule .
+
+nc:ApparentPowerLimitTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ApparentPowerLimitTimePoint .
+
+nc:ApparentPowerLimitTimePoint.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The apparent power limit. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:ApparentPower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ApparentPowerLimitTimePoint .
+
+nc:AsynchronousMachine.AsynchronousMachineRegularSchedule a rdf:Property ;
+  rdfs:label "AsynchronousMachineRegularSchedule"@en ;
+  rdfs:comment "AsynchronousMachineRegularSchedule which belongs to an asynchronous machine." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:AsynchronousMachineRegularSchedule.AsynchronousMachine ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:AsynchronousMachine ;
+  rdfs:range nc:AsynchronousMachineRegularSchedule .
+
+nc:AsynchronousMachine.AsynchronousMachineSchedule a rdf:Property ;
+  rdfs:label "AsynchronousMachineSchedule"@en ;
+  rdfs:comment "Asynchronous machine schedule associated with an asynchronous machine." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:AsynchronousMachineSchedule.AsynchronousMachine ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:AsynchronousMachine ;
+  rdfs:range nc:AsynchronousMachineSchedule .
+
+nc:AsynchronousMachineRegularSchedule.AsynchronousMachine a rdf:Property ;
+  rdfs:label "AsynchronousMachine"@en ;
+  rdfs:comment "AsynchronousMachine which has AsynchronousMachineRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:AsynchronousMachine.AsynchronousMachineRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:AsynchronousMachineRegularSchedule ;
+  rdfs:range cim:AsynchronousMachine .
+
+nc:AsynchronousMachineRegularSchedule.asynchronousMachineType a rdf:Property ;
+  rdfs:label "asynchronousMachineType"@en ;
+  rdfs:comment "Indicates the type of Asynchronous Machine (motor or generator)." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:AsynchronousMachineRegularSchedule ;
+  rdfs:range cim:AsynchronousMachineKind .
+
+nc:AsynchronousMachineSchedule.AsynchronousMachine a rdf:Property ;
+  rdfs:label "AsynchronousMachine"@en ;
+  rdfs:comment "Asynchronous machine which has asynchronous machine schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:AsynchronousMachine.AsynchronousMachineSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:AsynchronousMachineSchedule ;
+  rdfs:range cim:AsynchronousMachine .
+
+nc:AsynchronousMachineSchedule.AsynchronousMachineTimePoint a rdf:Property ;
+  rdfs:label "AsynchronousMachineTimePoint"@en ;
+  rdfs:comment "The time point that relates to this asynchronous machine schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:AsynchronousMachineTimePoint.AsynchronousMachineSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:AsynchronousMachineSchedule ;
+  rdfs:range nc:AsynchronousMachineTimePoint .
+
+nc:AsynchronousMachineTimePoint.AsynchronousMachineSchedule a rdf:Property ;
+  rdfs:label "AsynchronousMachineSchedule"@en ;
+  rdfs:comment "The asynchronous machine schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:AsynchronousMachineSchedule.AsynchronousMachineTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:AsynchronousMachineTimePoint ;
+  rdfs:range nc:AsynchronousMachineSchedule .
+
+nc:AsynchronousMachineTimePoint.asynchronousMachineType a rdf:Property ;
+  rdfs:label "asynchronousMachineType"@en ;
+  rdfs:comment "Indicates the type of Asynchronous Machine (motor or generator)." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:AsynchronousMachineTimePoint ;
+  rdfs:range cim:AsynchronousMachineKind .
+
+nc:AsynchronousMachineTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:AsynchronousMachineTimePoint .
+
+nc:BaseRegularIntervalSchedule.HourPattern a rdf:Property ;
+  rdfs:label "HourPattern"@en ;
+  rdfs:comment "HourPattern that has base regular interval schedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:HourPattern.BaseRegularIntervalSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:BaseRegularIntervalSchedule ;
+  rdfs:range nc:HourPattern .
+
+nc:BaseRegularIntervalSchedule.Season a rdf:Property ;
+  rdfs:label "Season"@en ;
+  rdfs:comment "Season associated with a base regular interval schedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Season.BaseRegularIntervalSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:BaseRegularIntervalSchedule ;
+  rdfs:range cim:Season .
+
+nc:BaseRegularIntervalSchedule.dayOfWeek a rdf:Property ;
+  rdfs:label "dayOfWeek"@en ;
+  rdfs:comment "Day of the week for which the schedule is valid for." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BaseRegularIntervalSchedule ;
+  rdfs:range nc:DayOfWeekKind .
+
+nc:BaseRegularIntervalSchedule.intervalEndTime a rdf:Property ;
+  rdfs:label "intervalEndTime"@en ;
+  rdfs:comment "Interval end time for which the schedule is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BaseRegularIntervalSchedule .
+
+nc:BaseRegularIntervalSchedule.intervalStartTime a rdf:Property ;
+  rdfs:label "intervalStartTime"@en ;
+  rdfs:comment "Interval start time for which the schedule is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BaseRegularIntervalSchedule .
+
+nc:BaseTimeSeries.generatedAtTime a rdf:Property ;
+  rdfs:label "generatedAtTime"@en ;
+  rdfs:comment "The time this time series (entity) come to existents and available for use." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BaseTimeSeries .
+
+nc:BaseTimeSeries.interpolationKind a rdf:Property ;
+  rdfs:label "interpolationKind"@en ;
+  rdfs:comment "Kind of interpolation done between time point." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BaseTimeSeries ;
+  rdfs:range nc:TimeSeriesInterpolationKind .
+
+nc:BaseTimeSeries.percentile a rdf:Property ;
+  rdfs:label "percentile"@en ;
+  rdfs:comment "The percentile is a number where a certain percentage of scores/ranking/values of a sample fall below that number. This is a way for expressing uncertainty in the number provided." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BaseTimeSeries .
+
+nc:BaseTimeSeries.timeSeriesKind a rdf:Property ;
+  rdfs:label "timeSeriesKind"@en ;
+  rdfs:comment "Kind of base time series." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BaseTimeSeries ;
+  rdfs:range nc:BaseTimeSeriesKind .
+
+nc:BatteryUnit.BatteryUnitSchedule a rdf:Property ;
+  rdfs:label "BatteryUnitSchedule"@en ;
+  rdfs:comment "Battery unit schedule associated with a battery unit." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:BatteryUnitSchedule.BatteryUnit ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:BatteryUnit ;
+  rdfs:range nc:BatteryUnitSchedule .
+
+nc:BatteryUnitSchedule.BatteryUnit a rdf:Property ;
+  rdfs:label "BatteryUnit"@en ;
+  rdfs:comment "Battery unit which has battery unit schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:BatteryUnit.BatteryUnitSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:BatteryUnitSchedule ;
+  rdfs:range cim:BatteryUnit .
+
+nc:BatteryUnitSchedule.BatteryUnitTimePoint a rdf:Property ;
+  rdfs:label "BatteryUnitTimePoint"@en ;
+  rdfs:comment "The time point that relates to this battery unit schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:BatteryUnitTimePoint.BatteryUnitSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:BatteryUnitSchedule ;
+  rdfs:range nc:BatteryUnitTimePoint .
+
+nc:BatteryUnitTimePoint.BatteryUnitSchedule a rdf:Property ;
+  rdfs:label "BatteryUnitSchedule"@en ;
+  rdfs:comment "The battery unit schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:BatteryUnitSchedule.BatteryUnitTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:BatteryUnitTimePoint ;
+  rdfs:range nc:BatteryUnitSchedule .
+
+nc:BatteryUnitTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BatteryUnitTimePoint .
+
+nc:BatteryUnitTimePoint.batteryState a rdf:Property ;
+  rdfs:label "batteryState"@en ;
+  rdfs:comment "The current state of the battery (charging, full, etc.)." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BatteryUnitTimePoint ;
+  rdfs:range cim:BatteryStateKind .
+
+nc:BatteryUnitTimePoint.storedE a rdf:Property ;
+  rdfs:label "storedE"@en ;
+  rdfs:comment "Amount of energy currently stored. The attribute shall be a positive value or zero and lower than BatteryUnit.ratedE." ;
+  cims:dataType cim:RealEnergy ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BatteryUnitTimePoint .
+
+nc:ControlArea.ControlAreaRegularSchedule a rdf:Property ;
+  rdfs:label "ControlAreaRegularSchedule"@en ;
+  rdfs:comment "ControlAreaRegularSchedule which belongs to a control area." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ControlAreaRegularSchedule.ControlArea ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:ControlArea ;
+  rdfs:range nc:ControlAreaRegularSchedule .
+
+nc:ControlArea.ControlAreaSchedule a rdf:Property ;
+  rdfs:label "ControlAreaSchedule"@en ;
+  rdfs:comment "Control area schedule associated with a control area." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ControlAreaSchedule.ControlArea ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:ControlArea ;
+  rdfs:range nc:ControlAreaSchedule .
+
+nc:ControlAreaRegularSchedule.ControlArea a rdf:Property ;
+  rdfs:label "ControlArea"@en ;
+  rdfs:comment "ControlArea which has ControlAreaRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ControlArea.ControlAreaRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ControlAreaRegularSchedule ;
+  rdfs:range cim:ControlArea .
+
+nc:ControlAreaRegularSchedule.netInterchange a rdf:Property ;
+  rdfs:label "netInterchange"@en ;
+  rdfs:comment "The specified positive net interchange into the control area, i.e. positive sign means flow into the area." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ControlAreaRegularSchedule .
+
+nc:ControlAreaRegularSchedule.pTolerance a rdf:Property ;
+  rdfs:label "pTolerance"@en ;
+  rdfs:comment "Active power net interchange tolerance. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ControlAreaRegularSchedule .
+
+nc:ControlAreaSchedule.ControlArea a rdf:Property ;
+  rdfs:label "ControlArea"@en ;
+  rdfs:comment "Control area which has control area schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ControlArea.ControlAreaSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ControlAreaSchedule ;
+  rdfs:range cim:ControlArea .
+
+nc:ControlAreaSchedule.ControlAreaTimePoint a rdf:Property ;
+  rdfs:label "ControlAreaTimePoint"@en ;
+  rdfs:comment "The time point that relates to this control area schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ControlAreaTimePoint.ControlAreaSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:ControlAreaSchedule ;
+  rdfs:range nc:ControlAreaTimePoint .
+
+nc:ControlAreaTimePoint.ControlAreaSchedule a rdf:Property ;
+  rdfs:label "ControlAreaSchedule"@en ;
+  rdfs:comment "The control area schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ControlAreaSchedule.ControlAreaTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ControlAreaTimePoint ;
+  rdfs:range nc:ControlAreaSchedule .
+
+nc:ControlAreaTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ControlAreaTimePoint .
+
+nc:ControlAreaTimePoint.netInterchange a rdf:Property ;
+  rdfs:label "netInterchange"@en ;
+  rdfs:comment "The specified positive net interchange into the control area, i.e. positive sign means flow into the area." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ControlAreaTimePoint .
+
+nc:ControlAreaTimePoint.pTolerance a rdf:Property ;
+  rdfs:label "pTolerance"@en ;
+  rdfs:comment "Active power net interchange tolerance. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ControlAreaTimePoint .
+
+nc:CsConverter.CsConverterSchedule a rdf:Property ;
+  rdfs:label "CsConverterSchedule"@en ;
+  rdfs:comment "Cs converter schedule associated with a control area.", "CsConverterRegularSchedule which belongs to a CSConverter." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:CsConverterRegularSchedule.CsConverter, nc:CsConverterSchedule.CsConverter ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:CsConverter ;
+  rdfs:range nc:CsConverterRegularSchedule, nc:CsConverterSchedule .
+
+nc:CsConverterRegularSchedule.CsConverter a rdf:Property ;
+  rdfs:label "CsConverter"@en ;
+  rdfs:comment "CsConverter which has CsConverterRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:CsConverter.CsConverterSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:CsConverterRegularSchedule ;
+  rdfs:range cim:CsConverter .
+
+nc:CsConverterRegularSchedule.operatingMode a rdf:Property ;
+  rdfs:label "operatingMode"@en ;
+  rdfs:comment "Indicates whether the DC pole is operating as an inverter or as a rectifier. It is converter’s control variable used in power flow." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterRegularSchedule ;
+  rdfs:range cim:CsOperatingModeKind .
+
+nc:CsConverterRegularSchedule.pPccControl a rdf:Property ;
+  rdfs:label "pPccControl"@en ;
+  rdfs:comment "Kind of active power control." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterRegularSchedule ;
+  rdfs:range cim:CsPpccControlKind .
+
+nc:CsConverterRegularSchedule.targetAlpha a rdf:Property ;
+  rdfs:label "targetAlpha"@en ;
+  rdfs:comment "Target firing angle. It is converter’s control variable used in power flow. It is only applicable for rectifier if continuous tap changer control is used. Allowed values are within the range minAlpha&lt;=targetAlpha&lt;=maxAlpha. The attribute shall be a positive value." ;
+  cims:dataType cim:AngleDegrees ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterRegularSchedule .
+
+nc:CsConverterRegularSchedule.targetGamma a rdf:Property ;
+  rdfs:label "targetGamma"@en ;
+  rdfs:comment "Target extinction angle. It is converter’s control variable used in power flow. It is only applicable for inverter if continuous tap changer control is used. Allowed values are within the range minGamma&lt;=targetGamma&lt;=maxGamma. The attribute shall be a positive value." ;
+  cims:dataType cim:AngleDegrees ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterRegularSchedule .
+
+nc:CsConverterRegularSchedule.targetIdc a rdf:Property ;
+  rdfs:label "targetIdc"@en ;
+  rdfs:comment "DC current target value. It is converter’s control variable used in power flow. The attribute shall be a positive value." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterRegularSchedule .
+
+nc:CsConverterSchedule.CsConverter a rdf:Property ;
+  rdfs:label "CsConverter"@en ;
+  rdfs:comment "Cs converter which has Cs converter schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:CsConverter.CsConverterSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:CsConverterSchedule ;
+  rdfs:range cim:CsConverter .
+
+nc:CsConverterSchedule.CsConverterTimePoint a rdf:Property ;
+  rdfs:label "CsConverterTimePoint"@en ;
+  rdfs:comment "The time point that relates to this CS converter schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:CsConverterTimePoint.CsConverterSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:CsConverterSchedule ;
+  rdfs:range nc:CsConverterTimePoint .
+
+nc:CsConverterTimePoint.CsConverterSchedule a rdf:Property ;
+  rdfs:label "CsConverterSchedule"@en ;
+  rdfs:comment "The CS converter schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:CsConverterSchedule.CsConverterTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:CsConverterTimePoint ;
+  rdfs:range nc:CsConverterSchedule .
+
+nc:CsConverterTimePoint.operatingMode a rdf:Property ;
+  rdfs:label "operatingMode"@en ;
+  rdfs:comment "Indicates whether the DC pole is operating as an inverter or as a rectifier. It is converter’s control variable used in power flow." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterTimePoint ;
+  rdfs:range cim:CsOperatingModeKind .
+
+nc:CsConverterTimePoint.pPccControl a rdf:Property ;
+  rdfs:label "pPccControl"@en ;
+  rdfs:comment "Kind of active power control." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterTimePoint ;
+  rdfs:range cim:CsPpccControlKind .
+
+nc:CsConverterTimePoint.targetAlpha a rdf:Property ;
+  rdfs:label "targetAlpha"@en ;
+  rdfs:comment "Target firing angle. It is converter’s control variable used in power flow. It is only applicable for rectifier if continuous tap changer control is used. Allowed values are within the range minAlpha&lt;=targetAlpha&lt;=maxAlpha. The attribute shall be a positive value." ;
+  cims:dataType cim:AngleDegrees ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterTimePoint .
+
+nc:CsConverterTimePoint.targetGamma a rdf:Property ;
+  rdfs:label "targetGamma"@en ;
+  rdfs:comment "Target extinction angle. It is converter’s control variable used in power flow. It is only applicable for inverter if continuous tap changer control is used. Allowed values are within the range minGamma&lt;=targetGamma&lt;=maxGamma. The attribute shall be a positive value." ;
+  cims:dataType cim:AngleDegrees ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterTimePoint .
+
+nc:CsConverterTimePoint.targetIdc a rdf:Property ;
+  rdfs:label "targetIdc"@en ;
+  rdfs:comment "DC current target value. It is converter’s control variable used in power flow. The attribute shall be a positive value." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CsConverterTimePoint .
+
+nc:CurrentLimit.CurrentLimitSchedule a rdf:Property ;
+  rdfs:label "CurrentLimitSchedule"@en ;
+  rdfs:comment "Current limit schedule associated with a current limit." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:CurrentLimitSchedule.CurrentLimit ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:CurrentLimit ;
+  rdfs:range nc:CurrentLimitSchedule .
+
+nc:CurrentLimitSchedule.CurrentLimit a rdf:Property ;
+  rdfs:label "CurrentLimit"@en ;
+  rdfs:comment "Current limit which has current limit schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:CurrentLimit.CurrentLimitSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:CurrentLimitSchedule ;
+  rdfs:range cim:CurrentLimit .
+
+nc:CurrentLimitSchedule.CurrentLimitTimePoint a rdf:Property ;
+  rdfs:label "CurrentLimitTimePoint"@en ;
+  rdfs:comment "The time point that relates to this current limit schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:CurrentLimitTimePoint.CurrentLimitSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:CurrentLimitSchedule ;
+  rdfs:range nc:CurrentLimitTimePoint .
+
+nc:CurrentLimitTimePoint.CurrentLimitSchedule a rdf:Property ;
+  rdfs:label "CurrentLimitSchedule"@en ;
+  rdfs:comment "The current limit schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:CurrentLimitSchedule.CurrentLimitTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:CurrentLimitTimePoint ;
+  rdfs:range nc:CurrentLimitSchedule .
+
+nc:CurrentLimitTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CurrentLimitTimePoint .
+
+nc:CurrentLimitTimePoint.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Limit on current flow. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CurrentLimitTimePoint .
+
+nc:EnergyConnection.EnergyConnectionSchedule a rdf:Property ;
+  rdfs:label "EnergyConnectionSchedule"@en ;
+  rdfs:comment "Energy connection schedule associated with a Vs converter.", "EnergyConnectionSchedule which belongs to an energy connection." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:EnergyConnectionRegularSchedule.EnergyConnection, nc:EnergyConnectionSchedule.EnergyConnection ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:EnergyConnection ;
+  rdfs:range nc:EnergyConnectionRegularSchedule, nc:EnergyConnectionSchedule .
+
+nc:EnergyConnectionRegularSchedule.EnergyConnection a rdf:Property ;
+  rdfs:label "EnergyConnection"@en ;
+  rdfs:comment "EnergyConnection which has EnergyConnectionSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:EnergyConnection.EnergyConnectionSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:EnergyConnectionRegularSchedule ;
+  rdfs:range cim:EnergyConnection .
+
+nc:EnergyConnectionRegularSchedule.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment """Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution.""" ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EnergyConnectionRegularSchedule .
+
+nc:EnergyConnectionRegularSchedule.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EnergyConnectionRegularSchedule .
+
+nc:EnergyConnectionSchedule.EnergyConnection a rdf:Property ;
+  rdfs:label "EnergyConnection"@en ;
+  rdfs:comment "Energy connection which has energy connection schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:EnergyConnection.EnergyConnectionSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:EnergyConnectionSchedule ;
+  rdfs:range cim:EnergyConnection .
+
+nc:EnergyConnectionSchedule.EnergyConnectionTimePoint a rdf:Property ;
+  rdfs:label "EnergyConnectionTimePoint"@en ;
+  rdfs:comment "The time point that relates to this energy connection schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:EnergyConnectionTimePoint.EnergyConnectionSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:EnergyConnectionSchedule ;
+  rdfs:range nc:EnergyConnectionTimePoint .
+
+nc:EnergyConnectionTimePoint.EnergyConnectionSchedule a rdf:Property ;
+  rdfs:label "EnergyConnectionSchedule"@en ;
+  rdfs:comment "The energy connection schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:EnergyConnectionSchedule.EnergyConnectionTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:EnergyConnectionTimePoint ;
+  rdfs:range nc:EnergyConnectionSchedule .
+
+nc:EnergyConnectionTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EnergyConnectionTimePoint .
+
+nc:EnergyConnectionTimePoint.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment """Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution.""" ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EnergyConnectionTimePoint .
+
+nc:EnergyConnectionTimePoint.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EnergyConnectionTimePoint .
+
+nc:Equipment.InServiceRegularSchedule a rdf:Property ;
+  rdfs:label "InServiceRegularSchedule"@en ;
+  rdfs:comment "InServiceRegularSchedule which belongs to an equipment." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:InServiceRegularSchedule.Equipment ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Equipment ;
+  rdfs:range nc:InServiceRegularSchedule .
+
+nc:Equipment.InServiceSchedule a rdf:Property ;
+  rdfs:label "InServiceSchedule"@en ;
+  rdfs:comment "In service schedule associated with an equipment." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:InServiceSchedule.Equipment ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Equipment ;
+  rdfs:range nc:InServiceSchedule .
+
+nc:EquivalentInjection.EquivalentInjectionRegularSchedule a rdf:Property ;
+  rdfs:label "EquivalentInjectionRegularSchedule"@en ;
+  rdfs:comment "EquivalentInjectionRegularSchedule which belongs to an equivalent injection." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:EquivalentInjectionRegularSchedule.EquivalentInjection ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:EquivalentInjection ;
+  rdfs:range nc:EquivalentInjectionRegularSchedule .
+
+nc:EquivalentInjection.EquivalentInjectionSchedule a rdf:Property ;
+  rdfs:label "EquivalentInjectionSchedule"@en ;
+  rdfs:comment "Equivalent injection schedule associated with an equivalent injection." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:EquivalentInjectionSchedule.EquivalentInjection ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:EquivalentInjection ;
+  rdfs:range nc:EquivalentInjectionSchedule .
+
+nc:EquivalentInjectionRegularSchedule.EquivalentInjection a rdf:Property ;
+  rdfs:label "EquivalentInjection"@en ;
+  rdfs:comment "EquivalentInjection which has EquivalentInjectionRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:EquivalentInjection.EquivalentInjectionRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:EquivalentInjectionRegularSchedule ;
+  rdfs:range cim:EquivalentInjection .
+
+nc:EquivalentInjectionRegularSchedule.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment """Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for steady state solutions.""" ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionRegularSchedule .
+
+nc:EquivalentInjectionRegularSchedule.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for steady state solutions.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionRegularSchedule .
+
+nc:EquivalentInjectionRegularSchedule.regulationStatus a rdf:Property ;
+  rdfs:label "regulationStatus"@en ;
+  rdfs:comment "Specifies the regulation status of the EquivalentInjection.  True is regulating.  False is not regulating." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionRegularSchedule .
+
+nc:EquivalentInjectionRegularSchedule.regulationTarget a rdf:Property ;
+  rdfs:label "regulationTarget"@en ;
+  rdfs:comment "The target voltage for voltage regulation. The attribute shall be a positive value." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionRegularSchedule .
+
+nc:EquivalentInjectionSchedule.EquivalentInjection a rdf:Property ;
+  rdfs:label "EquivalentInjection"@en ;
+  rdfs:comment "Equivalent injection which has equivalent injection schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:EquivalentInjection.EquivalentInjectionSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:EquivalentInjectionSchedule ;
+  rdfs:range cim:EquivalentInjection .
+
+nc:EquivalentInjectionSchedule.EquivalentInjectionTimePoint a rdf:Property ;
+  rdfs:label "EquivalentInjectionTimePoint"@en ;
+  rdfs:comment "The time point that relates to this equivalent injection schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:EquivalentInjectionTimePoint.EquivalentInjectionSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:EquivalentInjectionSchedule ;
+  rdfs:range nc:EquivalentInjectionTimePoint .
+
+nc:EquivalentInjectionTimePoint.EquivalentInjectionSchedule a rdf:Property ;
+  rdfs:label "EquivalentInjectionSchedule"@en ;
+  rdfs:comment "The EquivalentInjection schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:EquivalentInjectionSchedule.EquivalentInjectionTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:EquivalentInjectionTimePoint ;
+  rdfs:range nc:EquivalentInjectionSchedule .
+
+nc:EquivalentInjectionTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionTimePoint .
+
+nc:EquivalentInjectionTimePoint.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment """Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for steady state solutions.""" ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionTimePoint .
+
+nc:EquivalentInjectionTimePoint.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for steady state solutions.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionTimePoint .
+
+nc:EquivalentInjectionTimePoint.regulationStatus a rdf:Property ;
+  rdfs:label "regulationStatus"@en ;
+  rdfs:comment "Specifies the regulation status of the EquivalentInjection.  True is regulating.  False is not regulating." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionTimePoint .
+
+nc:EquivalentInjectionTimePoint.regulationTarget a rdf:Property ;
+  rdfs:label "regulationTarget"@en ;
+  rdfs:comment "The target voltage for voltage regulation. The attribute shall be a positive value." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EquivalentInjectionTimePoint .
+
+nc:ExternalNetworkInjection.ExternalNetowrkInjectionSchedule a rdf:Property ;
+  rdfs:label "ExternalNetowrkInjectionSchedule"@en ;
+  rdfs:comment "External Network Injection schedule associated with an External Network Injection." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ExternalNetworkInjectionSchedule.ExternalNetworkInjection ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:ExternalNetworkInjection ;
+  rdfs:range nc:ExternalNetworkInjectionSchedule .
+
+nc:ExternalNetworkInjection.ExternalNetworkinjectionRegularSchedule a rdf:Property ;
+  rdfs:label "ExternalNetworkinjectionRegularSchedule"@en ;
+  rdfs:comment "ExternalNetworkinjectionRegularSchedule which belongs to a external network injection." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ExternalNetworkInjectionRegularSchedule.ExternalNetworkinjection ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:ExternalNetworkInjection ;
+  rdfs:range nc:ExternalNetworkInjectionRegularSchedule .
+
+nc:ExternalNetworkInjectionRegularSchedule.ExternalNetworkinjection a rdf:Property ;
+  rdfs:label "ExternalNetworkinjection"@en ;
+  rdfs:comment "External network injection which has ExternalNetworkinjectionRegularSchedule" ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ExternalNetworkInjection.ExternalNetworkinjectionRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ExternalNetworkInjectionRegularSchedule ;
+  rdfs:range cim:ExternalNetworkInjection .
+
+nc:ExternalNetworkInjectionRegularSchedule.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment """Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for steady state solutions.""" ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ExternalNetworkInjectionRegularSchedule .
+
+nc:ExternalNetworkInjectionRegularSchedule.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for steady state solutions.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ExternalNetworkInjectionRegularSchedule .
+
+nc:ExternalNetworkInjectionRegularSchedule.referencePriority a rdf:Property ;
+  rdfs:label "referencePriority"@en ;
+  rdfs:comment "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ExternalNetworkInjectionRegularSchedule .
+
+nc:ExternalNetworkInjectionSchedule.ExternalNetworkInjection a rdf:Property ;
+  rdfs:label "ExternalNetworkInjection"@en ;
+  rdfs:comment "External Network Injection which has External Network Injection schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ExternalNetworkInjection.ExternalNetowrkInjectionSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ExternalNetworkInjectionSchedule ;
+  rdfs:range cim:ExternalNetworkInjection .
+
+nc:ExternalNetworkInjectionSchedule.ExternalNetworkinjectionTimePoint a rdf:Property ;
+  rdfs:label "ExternalNetworkinjectionTimePoint"@en ;
+  rdfs:comment "The time point that relates to this external network injection schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ExternalNetworkInjectionTimePoint.ExternalNetworkInjectionSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:ExternalNetworkInjectionSchedule ;
+  rdfs:range nc:ExternalNetworkInjectionTimePoint .
+
+nc:ExternalNetworkInjectionTimePoint.ExternalNetworkInjectionSchedule a rdf:Property ;
+  rdfs:label "ExternalNetworkInjectionSchedule"@en ;
+  rdfs:comment "The external network injection schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ExternalNetworkInjectionSchedule.ExternalNetworkinjectionTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ExternalNetworkInjectionTimePoint ;
+  rdfs:range nc:ExternalNetworkInjectionSchedule .
+
+nc:ExternalNetworkInjectionTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ExternalNetworkInjectionTimePoint .
+
+nc:ExternalNetworkInjectionTimePoint.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment """Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for steady state solutions.""" ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ExternalNetworkInjectionTimePoint .
+
+nc:ExternalNetworkInjectionTimePoint.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for steady state solutions.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ExternalNetworkInjectionTimePoint .
+
+nc:ExternalNetworkInjectionTimePoint.referencePriority a rdf:Property ;
+  rdfs:label "referencePriority"@en ;
+  rdfs:comment "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ExternalNetworkInjectionTimePoint .
+
+nc:GeneratingUnit.GeneratingUnitSchedule a rdf:Property ;
+  rdfs:label "GeneratingUnitSchedule"@en ;
+  rdfs:comment "Generating unit schedule associated with a generating unit." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:GeneratingUnitSchedule.GeneratingUnit ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:GeneratingUnit ;
+  rdfs:range nc:GeneratingUnitSchedule .
+
+nc:GeneratingUnitSchedule.GeneratingUnit a rdf:Property ;
+  rdfs:label "GeneratingUnit"@en ;
+  rdfs:comment "Generating unit which has generating unit schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:GeneratingUnit.GeneratingUnitSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:GeneratingUnitSchedule ;
+  rdfs:range cim:GeneratingUnit .
+
+nc:GeneratingUnitSchedule.GeneratingUnitTimePoint a rdf:Property ;
+  rdfs:label "GeneratingUnitTimePoint"@en ;
+  rdfs:comment "The time point that relates to this generating unit schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:GeneratingUnitTimePoint.GeneratingUnitSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:GeneratingUnitSchedule ;
+  rdfs:range nc:GeneratingUnitTimePoint .
+
+nc:GeneratingUnitTimePoint.GeneratingUnitSchedule a rdf:Property ;
+  rdfs:label "GeneratingUnitSchedule"@en ;
+  rdfs:comment "The generating unit schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:GeneratingUnitSchedule.GeneratingUnitTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain nc:GeneratingUnitTimePoint ;
+  rdfs:range nc:GeneratingUnitSchedule .
+
+nc:GeneratingUnitTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:GeneratingUnitTimePoint .
+
+nc:GeneratingUnitTimePoint.normalPF a rdf:Property ;
+  rdfs:label "normalPF"@en ;
+  rdfs:comment "Generating unit economic participation factor.  The sum of the participation factors across generating units does not have to sum to one.  It is used for representing distributed slack participation factor. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:GeneratingUnitTimePoint .
+
+nc:HourPattern.BaseRegularIntervalSchedule a rdf:Property ;
+  rdfs:label "BaseRegularIntervalSchedule"@en ;
+  rdfs:comment "Base regulat interval schedule which belongs to an hour pattern." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:BaseRegularIntervalSchedule.HourPattern ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:HourPattern ;
+  rdfs:range nc:BaseRegularIntervalSchedule .
+
+nc:HourPattern.HourPeriod a rdf:Property ;
+  rdfs:label "HourPeriod"@en ;
+  rdfs:comment "Hour period which belongs to an hour pattern." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:HourPeriod.HourPattern ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:HourPattern ;
+  rdfs:range nc:HourPeriod .
+
+nc:HourPattern.energyDemandKind a rdf:Property ;
+  rdfs:label "energyDemandKind"@en ;
+  rdfs:comment "Type of energy demand that the pattern is valid for." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:HourPattern ;
+  rdfs:range nc:EnergyDemandKind .
+
+nc:HourPattern.peakKind a rdf:Property ;
+  rdfs:label "peakKind"@en ;
+  rdfs:comment "Type of peak or intensity that the pattern is valid for." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:HourPattern ;
+  rdfs:range nc:PeakKind .
+
+nc:HourPeriod.HourPattern a rdf:Property ;
+  rdfs:label "HourPattern"@en ;
+  rdfs:comment "HourPattern which has some hour periods." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:HourPattern.HourPeriod ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:HourPeriod ;
+  rdfs:range nc:HourPattern .
+
+nc:HourPeriod.endTime a rdf:Property ;
+  rdfs:label "endTime"@en ;
+  rdfs:comment "Time the period end and not including, e.g. 13:00 which means it does not include the time of 13:00 but 12:59." ;
+  cims:dataType cim:Time ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:HourPeriod .
+
+nc:HourPeriod.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:HourPeriod .
+
+nc:HourPeriod.startTime a rdf:Property ;
+  rdfs:label "startTime"@en ;
+  rdfs:comment "Time the period start and including, e.g. 12:00 which means it include the time of 12:00." ;
+  cims:dataType cim:Time ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:HourPeriod .
+
+nc:InServiceRegularSchedule.Equipment a rdf:Property ;
+  rdfs:label "Equipment"@en ;
+  rdfs:comment "Equipment which has InServiceRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Equipment.InServiceRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:InServiceRegularSchedule ;
+  rdfs:range cim:Equipment .
+
+nc:InServiceRegularSchedule.inService a rdf:Property ;
+  rdfs:label "inService"@en ;
+  rdfs:comment "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:InServiceRegularSchedule .
+
+nc:InServiceSchedule.Equipment a rdf:Property ;
+  rdfs:label "Equipment"@en ;
+  rdfs:comment "Equipment which has equipment schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Equipment.InServiceSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:InServiceSchedule ;
+  rdfs:range cim:Equipment .
+
+nc:InServiceSchedule.InServiceTimePoint a rdf:Property ;
+  rdfs:label "InServiceTimePoint"@en ;
+  rdfs:comment "The time point that relates to this in service schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:InServiceTimePoint.InServiceSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:InServiceSchedule ;
+  rdfs:range nc:InServiceTimePoint .
+
+nc:InServiceTimePoint.InServiceSchedule a rdf:Property ;
+  rdfs:label "InServiceSchedule"@en ;
+  rdfs:comment "The in service schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:InServiceSchedule.InServiceTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:InServiceTimePoint ;
+  rdfs:range nc:InServiceSchedule .
+
+nc:InServiceTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:InServiceTimePoint .
+
+nc:InServiceTimePoint.inService a rdf:Property ;
+  rdfs:label "inService"@en ;
+  rdfs:comment "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:InServiceTimePoint .
+
+nc:RegulatingControl.RegulatingControlRegularSchedule a rdf:Property ;
+  rdfs:label "RegulatingControlRegularSchedule"@en ;
+  rdfs:comment "RegulatingControlRegularSchedule which belongs to a regulating control." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RegulatingControlRegularSchedule.RegulatingControl ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:RegulatingControl ;
+  rdfs:range nc:RegulatingControlRegularSchedule .
+
+nc:RegulatingControl.RegulatingControlSchedule a rdf:Property ;
+  rdfs:label "RegulatingControlSchedule"@en ;
+  rdfs:comment "Regulating control schedule associated with a regulating control." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RegulatingControlSchedule.RegulatingControl ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:RegulatingControl ;
+  rdfs:range nc:RegulatingControlSchedule .
+
+nc:RegulatingControlRegularSchedule.RegulatingControl a rdf:Property ;
+  rdfs:label "RegulatingControl"@en ;
+  rdfs:comment "Regulating control which has RegulatingControlRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RegulatingControl.RegulatingControlRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RegulatingControlRegularSchedule ;
+  rdfs:range cim:RegulatingControl .
+
+nc:RegulatingControlRegularSchedule.maxAllowedTargetValue a rdf:Property ;
+  rdfs:label "maxAllowedTargetValue"@en ;
+  rdfs:comment "Maximum allowed target value (RegulatingControl.targetValue)." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlRegularSchedule .
+
+nc:RegulatingControlRegularSchedule.minAllowedTargetValue a rdf:Property ;
+  rdfs:label "minAllowedTargetValue"@en ;
+  rdfs:comment "Minimum allowed target value (RegulatingControl.targetValue)." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlRegularSchedule .
+
+nc:RegulatingControlRegularSchedule.targetValue a rdf:Property ;
+  rdfs:label "targetValue"@en ;
+  rdfs:comment "The target value specified for case input.   This value can be used for the target value without the use of schedules. The value has the units appropriate to the mode attribute." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlRegularSchedule .
+
+nc:RegulatingControlRegularSchedule.targetValueUnitMultiplier a rdf:Property ;
+  rdfs:label "targetValueUnitMultiplier"@en ;
+  rdfs:comment "Specify the multiplier for used for the targetValue." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlRegularSchedule ;
+  rdfs:range cim:UnitMultiplier .
+
+nc:RegulatingControlSchedule.RegulatingControl a rdf:Property ;
+  rdfs:label "RegulatingControl"@en ;
+  rdfs:comment "Regulating control which has regulating control schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RegulatingControl.RegulatingControlSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RegulatingControlSchedule ;
+  rdfs:range cim:RegulatingControl .
+
+nc:RegulatingControlSchedule.RegulatingControlTimePoint a rdf:Property ;
+  rdfs:label "RegulatingControlTimePoint"@en ;
+  rdfs:comment "The time point that relates to this regulating control schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RegulatingControlTimePoint.RegulatingControlSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:RegulatingControlSchedule ;
+  rdfs:range nc:RegulatingControlTimePoint .
+
+nc:RegulatingControlTimePoint.RegulatingControlSchedule a rdf:Property ;
+  rdfs:label "RegulatingControlSchedule"@en ;
+  rdfs:comment "The regulating control schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RegulatingControlSchedule.RegulatingControlTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RegulatingControlTimePoint ;
+  rdfs:range nc:RegulatingControlSchedule .
+
+nc:RegulatingControlTimePoint.TapChangerControlSchedule a rdf:Property ;
+  rdfs:label "TapChangerControlSchedule"@en ;
+  rdfs:comment "The tap changer control schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:TapChangerControlSchedule.RegulatingControlTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RegulatingControlTimePoint ;
+  rdfs:range nc:TapChangerControlSchedule .
+
+nc:RegulatingControlTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlTimePoint .
+
+nc:RegulatingControlTimePoint.maxAllowedTargetValue a rdf:Property ;
+  rdfs:label "maxAllowedTargetValue"@en ;
+  rdfs:comment "Maximum allowed target value (RegulatingControl.targetValue)." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlTimePoint .
+
+nc:RegulatingControlTimePoint.minAllowedTargetValue a rdf:Property ;
+  rdfs:label "minAllowedTargetValue"@en ;
+  rdfs:comment "Minimum allowed target value (RegulatingControl.targetValue)." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlTimePoint .
+
+nc:RegulatingControlTimePoint.targetValue a rdf:Property ;
+  rdfs:label "targetValue"@en ;
+  rdfs:comment "The target value specified for case input.   This value can be used for the target value without the use of schedules. The value has the units appropriate to the mode attribute." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlTimePoint .
+
+nc:RegulatingControlTimePoint.targetValueUnitMultiplier a rdf:Property ;
+  rdfs:label "targetValueUnitMultiplier"@en ;
+  rdfs:comment "Specify the multiplier for used for the targetValue." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RegulatingControlTimePoint ;
+  rdfs:range cim:UnitMultiplier .
+
+nc:Season.BaseRegularIntervalSchedule a rdf:Property ;
+  rdfs:label "BaseRegularIntervalSchedule"@en ;
+  rdfs:comment "Base regular interval schedule which has seasons." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:BaseRegularIntervalSchedule.Season ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Season ;
+  rdfs:range nc:BaseRegularIntervalSchedule .
+
+nc:ShuntCompensator.ShuntCompensatorSchedule a rdf:Property ;
+  rdfs:label "ShuntCompensatorSchedule"@en ;
+  rdfs:comment "Shunt compensator schedule associated with a shunt compensator." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ShuntCompensatorSchedule.ShuntCompensator ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:ShuntCompensator ;
+  rdfs:range nc:ShuntCompensatorSchedule .
+
+nc:ShuntCompensatorSchedule.ShuntCompensator a rdf:Property ;
+  rdfs:label "ShuntCompensator"@en ;
+  rdfs:comment "Shunt compensator which has shunt compensator schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ShuntCompensator.ShuntCompensatorSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ShuntCompensatorSchedule ;
+  rdfs:range cim:ShuntCompensator .
+
+nc:ShuntCompensatorSchedule.ShuntCompensatorTimePoint a rdf:Property ;
+  rdfs:label "ShuntCompensatorTimePoint"@en ;
+  rdfs:comment "The time point that relates to this shunt compensator schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ShuntCompensatorTimePoint.ShuntCompensatorSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:ShuntCompensatorSchedule ;
+  rdfs:range nc:ShuntCompensatorTimePoint .
+
+nc:ShuntCompensatorTimePoint.ShuntCompensatorSchedule a rdf:Property ;
+  rdfs:label "ShuntCompensatorSchedule"@en ;
+  rdfs:comment "The shunt compensator schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ShuntCompensatorSchedule.ShuntCompensatorTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ShuntCompensatorTimePoint ;
+  rdfs:range nc:ShuntCompensatorSchedule .
+
+nc:ShuntCompensatorTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ShuntCompensatorTimePoint .
+
+nc:ShuntCompensatorTimePoint.sections a rdf:Property ;
+  rdfs:label "sections"@en ;
+  rdfs:comment """Shunt compensator sections in use. Starting value for steady state solution. The attribute shall be a positive value or zero. Non integer values are allowed to support continuous variables. The reasons for continuous value are to support study cases where no discrete shunt compensators has yet been designed, a solutions where a narrow voltage band force the sections to oscillate or accommodate for a continuous solution as input. 
+For LinearShuntConpensator the value shall be between zero and ShuntCompensator.maximumSections. At value zero the shunt compensator conductance and admittance is zero. Linear interpolation of conductance and admittance between the previous and next integer section is applied in case of non-integer values.
+For NonlinearShuntCompensator-s shall only be set to one of the NonlinearShuntCompenstorPoint.sectionNumber. There is no interpolation between NonlinearShuntCompenstorPoint-s.""" ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ShuntCompensatorTimePoint .
+
+nc:StaticVarCompensator.StaticVarCompensatorSchedule a rdf:Property ;
+  rdfs:label "StaticVarCompensatorSchedule"@en ;
+  rdfs:comment "Static var compensator schedule associated with a static var compensator." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:StaticVarCompensatorSchedule.StaticVarCompensator ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:StaticVarCompensator ;
+  rdfs:range nc:StaticVarCompensatorSchedule .
+
+nc:StaticVarCompensatorSchedule.StaticVarCompensator a rdf:Property ;
+  rdfs:label "StaticVarCompensator"@en ;
+  rdfs:comment "Static var compensator which has static var compensator schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:StaticVarCompensator.StaticVarCompensatorSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:StaticVarCompensatorSchedule ;
+  rdfs:range cim:StaticVarCompensator .
+
+nc:StaticVarCompensatorSchedule.StaticVarCompensatorTimePoint a rdf:Property ;
+  rdfs:label "StaticVarCompensatorTimePoint"@en ;
+  rdfs:comment "The time point that relates to this static var compensator schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:StaticVarCompensatorTimePoint.StaticVarCompensatorSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:StaticVarCompensatorSchedule ;
+  rdfs:range nc:StaticVarCompensatorTimePoint .
+
+nc:StaticVarCompensatorTimePoint.StaticVarCompensatorSchedule a rdf:Property ;
+  rdfs:label "StaticVarCompensatorSchedule"@en ;
+  rdfs:comment "The StaticVarCompensator schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:StaticVarCompensatorSchedule.StaticVarCompensatorTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:StaticVarCompensatorTimePoint ;
+  rdfs:range nc:StaticVarCompensatorSchedule .
+
+nc:StaticVarCompensatorTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:StaticVarCompensatorTimePoint .
+
+nc:StaticVarCompensatorTimePoint.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment """Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+Starting value for a steady state solution.""" ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:StaticVarCompensatorTimePoint .
+
+nc:Switch.SwitchRegularSchedule a rdf:Property ;
+  rdfs:label "SwitchRegularSchedule"@en ;
+  rdfs:comment "SwitchRegularSchedule which belongs to a switch." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:SwitchRegularSchedule.Switch ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Switch ;
+  rdfs:range nc:SwitchRegularSchedule .
+
+nc:Switch.SwitchSchedule a rdf:Property ;
+  rdfs:label "SwitchSchedule"@en ;
+  rdfs:comment "Switch schedule associated with a switch." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:SwitchSchedule.Switch ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Switch ;
+  rdfs:range nc:SwitchSchedule .
+
+nc:SwitchRegularSchedule.Switch a rdf:Property ;
+  rdfs:label "Switch"@en ;
+  rdfs:comment "Switch which has SwitchRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Switch.SwitchRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SwitchRegularSchedule ;
+  rdfs:range cim:Switch .
+
+nc:SwitchRegularSchedule.locked a rdf:Property ;
+  rdfs:label "locked"@en ;
+  rdfs:comment """If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:
+<ul>
+\t<li>locked=true and Switch.open=true. The resulting state is open and locked;</li>
+\t<li>locked=false and Switch.open=true. The resulting state is open;</li>
+\t<li>locked=false and Switch.open=false. The resulting state is closed.</li>
+</ul>""" ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SwitchRegularSchedule .
+
+nc:SwitchRegularSchedule.open a rdf:Property ;
+  rdfs:label "open"@en ;
+  rdfs:comment "The attribute tells if the switch is considered open when used as input to topology processing." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SwitchRegularSchedule .
+
+nc:SwitchSchedule.Switch a rdf:Property ;
+  rdfs:label "Switch"@en ;
+  rdfs:comment "Switch which has switch schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Switch.SwitchSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SwitchSchedule ;
+  rdfs:range cim:Switch .
+
+nc:SwitchSchedule.SwitchTimePoint a rdf:Property ;
+  rdfs:label "SwitchTimePoint"@en ;
+  rdfs:comment "The time point that relates to this switch schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:SwitchTimePoint.SwitchSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:SwitchSchedule ;
+  rdfs:range nc:SwitchTimePoint .
+
+nc:SwitchTimePoint.SwitchSchedule a rdf:Property ;
+  rdfs:label "SwitchSchedule"@en ;
+  rdfs:comment "The switch schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SwitchSchedule.SwitchTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain nc:SwitchTimePoint ;
+  rdfs:range nc:SwitchSchedule .
+
+nc:SwitchTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SwitchTimePoint .
+
+nc:SwitchTimePoint.locked a rdf:Property ;
+  rdfs:label "locked"@en ;
+  rdfs:comment """If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:
+<ul>
+\t<li>locked=true and Switch.open=true. The resulting state is open and locked;</li>
+\t<li>locked=false and Switch.open=true. The resulting state is open;</li>
+\t<li>locked=false and Switch.open=false. The resulting state is closed.</li>
+</ul>""" ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SwitchTimePoint .
+
+nc:SwitchTimePoint.open a rdf:Property ;
+  rdfs:label "open"@en ;
+  rdfs:comment "The attribute tells if the switch is considered open when used as input to topology processing." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SwitchTimePoint .
+
+nc:SynchronousMachine.SynchronousMachineRegularSchedule a rdf:Property ;
+  rdfs:label "SynchronousMachineRegularSchedule"@en ;
+  rdfs:comment "SynchronousMachineRegularSchedule which belongs to a synchronous machine." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:SynchronousMachineRegularSchedule.SynchronousMachine ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:SynchronousMachine ;
+  rdfs:range nc:SynchronousMachineRegularSchedule .
+
+nc:SynchronousMachine.SynchronousMachineSchedule a rdf:Property ;
+  rdfs:label "SynchronousMachineSchedule"@en ;
+  rdfs:comment "Synchronous machine schedule associated with a synchronous machine." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:SynchronousMachineSchedule.SynchronousMachine ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:SynchronousMachine ;
+  rdfs:range nc:SynchronousMachineSchedule .
+
+nc:SynchronousMachineRegularSchedule.SynchronousMachine a rdf:Property ;
+  rdfs:label "SynchronousMachine"@en ;
+  rdfs:comment "SynchronousMachine which has SynchronousMachineRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SynchronousMachine.SynchronousMachineRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SynchronousMachineRegularSchedule ;
+  rdfs:range cim:SynchronousMachine .
+
+nc:SynchronousMachineRegularSchedule.operatingMode a rdf:Property ;
+  rdfs:label "operatingMode"@en ;
+  rdfs:comment "Current mode of operation." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SynchronousMachineRegularSchedule ;
+  rdfs:range cim:SynchronousMachineOperatingMode .
+
+nc:SynchronousMachineRegularSchedule.referencePriority a rdf:Property ;
+  rdfs:label "referencePriority"@en ;
+  rdfs:comment "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SynchronousMachineRegularSchedule .
+
+nc:SynchronousMachineSchedule.SynchronousMachine a rdf:Property ;
+  rdfs:label "SynchronousMachine"@en ;
+  rdfs:comment "Synchronous machine which has synchronous machine schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SynchronousMachine.SynchronousMachineSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SynchronousMachineSchedule ;
+  rdfs:range cim:SynchronousMachine .
+
+nc:SynchronousMachineSchedule.SynchronousMachineTimePoint a rdf:Property ;
+  rdfs:label "SynchronousMachineTimePoint"@en ;
+  rdfs:comment "The time point that relates to this synchronous machine schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:SynchronousMachineTimePoint.SynchronousMachineSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:SynchronousMachineSchedule ;
+  rdfs:range nc:SynchronousMachineTimePoint .
+
+nc:SynchronousMachineTimePoint.SynchronousMachineSchedule a rdf:Property ;
+  rdfs:label "SynchronousMachineSchedule"@en ;
+  rdfs:comment "The synchronous machine schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SynchronousMachineSchedule.SynchronousMachineTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SynchronousMachineTimePoint ;
+  rdfs:range nc:SynchronousMachineSchedule .
+
+nc:SynchronousMachineTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SynchronousMachineTimePoint .
+
+nc:SynchronousMachineTimePoint.operatingMode a rdf:Property ;
+  rdfs:label "operatingMode"@en ;
+  rdfs:comment "Current mode of operation." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SynchronousMachineTimePoint ;
+  rdfs:range cim:SynchronousMachineOperatingMode .
+
+nc:SynchronousMachineTimePoint.referencePriority a rdf:Property ;
+  rdfs:label "referencePriority"@en ;
+  rdfs:comment "Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SynchronousMachineTimePoint .
+
+nc:TapChanger.TapRegularSchedule a rdf:Property ;
+  rdfs:label "TapRegularSchedule"@en ;
+  rdfs:comment "TapRegularSchedule which belongs to a tap change." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:TapRegularSchedule.TapChanger ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:TapChanger ;
+  rdfs:range nc:TapRegularSchedule .
+
+nc:TapChanger.TapSchedule a rdf:Property ;
+  rdfs:label "TapSchedule"@en ;
+  rdfs:comment "Tap schedule associated with a tap changer." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:TapSchedule.TapChanger ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:TapChanger ;
+  rdfs:range nc:TapSchedule .
+
+nc:TapChangerControl.TapChangerControlRegularSchedule a rdf:Property ;
+  rdfs:label "TapChangerControlRegularSchedule"@en ;
+  rdfs:comment "TapChangerControlRegularSchedule which belongs to a tap changer control." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:TapChangerControlRegularSchedule.TapChangerControl ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:TapChangerControl ;
+  rdfs:range nc:TapChangerControlRegularSchedule .
+
+nc:TapChangerControl.TapChangerControlSchedule a rdf:Property ;
+  rdfs:label "TapChangerControlSchedule"@en ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:TapChangerControlSchedule.TapChangerControl ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:TapChangerControl ;
+  rdfs:range nc:TapChangerControlSchedule .
+
+nc:TapChangerControlRegularSchedule.TapChangerControl a rdf:Property ;
+  rdfs:label "TapChangerControl"@en ;
+  rdfs:comment "Tap changer control which has TapChangerControlRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:TapChangerControl.TapChangerControlRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:TapChangerControlRegularSchedule ;
+  rdfs:range cim:TapChangerControl .
+
+nc:TapChangerControlSchedule.RegulatingControlTimePoint a rdf:Property ;
+  rdfs:label "RegulatingControlTimePoint"@en ;
+  rdfs:comment "The time point that relates to this stap changer control schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RegulatingControlTimePoint.TapChangerControlSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:TapChangerControlSchedule ;
+  rdfs:range nc:RegulatingControlTimePoint .
+
+nc:TapChangerControlSchedule.TapChangerControl a rdf:Property ;
+  rdfs:label "TapChangerControl"@en ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:TapChangerControl.TapChangerControlSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:TapChangerControlSchedule ;
+  rdfs:range cim:TapChangerControl .
+
+nc:TapRegularSchedule.TapChanger a rdf:Property ;
+  rdfs:label "TapChanger"@en ;
+  rdfs:comment "Tap changer which has TapRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:TapChanger.TapRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:TapRegularSchedule ;
+  rdfs:range cim:TapChanger .
+
+nc:TapRegularSchedule.controlEnabled a rdf:Property ;
+  rdfs:label "controlEnabled"@en ;
+  rdfs:comment "Specifies the regulation status of the equipment.  True is regulating, false is not regulating." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:TapRegularSchedule .
+
+nc:TapRegularSchedule.step a rdf:Property ;
+  rdfs:label "step"@en ;
+  rdfs:comment """Tap changer position.
+Starting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changer has yet been designed, a solution where a narrow voltage band forces the tap step to oscillate or to accommodate for a continuous solution as input.
+The attribute shall be equal to or greater than lowStep and equal to or less than highStep.""" ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:TapRegularSchedule .
+
+nc:TapSchedule.TapChanger a rdf:Property ;
+  rdfs:label "TapChanger"@en ;
+  rdfs:comment "Tap changer which has tap schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:TapChanger.TapSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:TapSchedule ;
+  rdfs:range cim:TapChanger .
+
+nc:TapSchedule.TapScheduleTimePoint a rdf:Property ;
+  rdfs:label "TapScheduleTimePoint"@en ;
+  rdfs:comment "The time point that relates to this tap schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:TapScheduleTimePoint.TapSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:TapSchedule ;
+  rdfs:range nc:TapScheduleTimePoint .
+
+nc:TapScheduleTimePoint.TapSchedule a rdf:Property ;
+  rdfs:label "TapSchedule"@en ;
+  rdfs:comment "The tap schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:TapSchedule.TapScheduleTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:TapScheduleTimePoint ;
+  rdfs:range nc:TapSchedule .
+
+nc:TapScheduleTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:TapScheduleTimePoint .
+
+nc:TapScheduleTimePoint.controlEnabled a rdf:Property ;
+  rdfs:label "controlEnabled"@en ;
+  rdfs:comment "Specifies the regulation status of the equipment.  True is regulating, false is not regulating." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:TapScheduleTimePoint .
+
+nc:TapScheduleTimePoint.step a rdf:Property ;
+  rdfs:label "step"@en ;
+  rdfs:comment """Tap changer position.
+Starting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changer has yet been designed, a solution where a narrow voltage band forces the tap step to oscillate or to accommodate for a continuous solution as input.
+The attribute shall be equal to or greater than lowStep and equal to or less than highStep.""" ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:TapScheduleTimePoint .
+
+nc:VoltageLimit.VoltageLimitSchedule a rdf:Property ;
+  rdfs:label "VoltageLimitSchedule"@en ;
+  rdfs:comment "Voltage limit schedule associated with a voltage limit." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:VoltageLimitSchedule.VoltageLimit ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:VoltageLimit ;
+  rdfs:range nc:VoltageLimitSchedule .
+
+nc:VoltageLimitSchedule.VoltageLimit a rdf:Property ;
+  rdfs:label "VoltageLimit"@en ;
+  rdfs:comment "Voltage limit which has voltage limit schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:VoltageLimit.VoltageLimitSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:VoltageLimitSchedule ;
+  rdfs:range cim:VoltageLimit .
+
+nc:VoltageLimitSchedule.VoltageLimitTimePoint a rdf:Property ;
+  rdfs:label "VoltageLimitTimePoint"@en ;
+  rdfs:comment "The time point that relates to this voltage limit schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:VoltageLimitTimePoint.VoltageLimitSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:VoltageLimitSchedule ;
+  rdfs:range nc:VoltageLimitTimePoint .
+
+nc:VoltageLimitTimePoint.VoltageLimitSchedule a rdf:Property ;
+  rdfs:label "VoltageLimitSchedule"@en ;
+  rdfs:comment "The voltage limit schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:VoltageLimitSchedule.VoltageLimitTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:VoltageLimitTimePoint ;
+  rdfs:range nc:VoltageLimitSchedule .
+
+nc:VoltageLimitTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VoltageLimitTimePoint .
+
+nc:VoltageLimitTimePoint.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Limit on voltage. High or low limit nature of the limit depends upon the properties of the operational limit type. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VoltageLimitTimePoint .
+
+nc:VsConverter.VsConverterRegularSchedule a rdf:Property ;
+  rdfs:label "VsConverterRegularSchedule"@en ;
+  rdfs:comment "VsConverterRegularSchedule which belongs to a VSConverter." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:VsConverterRegularSchedule.VsConverter ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:VsConverter ;
+  rdfs:range nc:VsConverterRegularSchedule .
+
+nc:VsConverter.VsConverterSchedule a rdf:Property ;
+  rdfs:label "VsConverterSchedule"@en ;
+  rdfs:comment "Vs converter schedule associated with a Vs converter." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:VsConverterSchedule.VsConverter ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:VsConverter ;
+  rdfs:range nc:VsConverterSchedule .
+
+nc:VsConverterRegularSchedule.VsConverter a rdf:Property ;
+  rdfs:label "VsConverter"@en ;
+  rdfs:comment "VsConverter which has VsConverterRegularSchedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:VsConverter.VsConverterRegularSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:VsConverterRegularSchedule ;
+  rdfs:range cim:VsConverter .
+
+nc:VsConverterRegularSchedule.droop a rdf:Property ;
+  rdfs:label "droop"@en ;
+  rdfs:comment "Droop constant. The pu value is obtained as D [kV/MW] x Sb / Ubdc. The attribute shall be a positive value." ;
+  cims:dataType cim:PU ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule .
+
+nc:VsConverterRegularSchedule.droopCompensation a rdf:Property ;
+  rdfs:label "droopCompensation"@en ;
+  rdfs:comment "Compensation constant. Used to compensate for voltage drop when controlling voltage at a distant bus. The attribute shall be a positive value." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule .
+
+nc:VsConverterRegularSchedule.pPccControl a rdf:Property ;
+  rdfs:label "pPccControl"@en ;
+  rdfs:comment "Kind of control of real power and/or DC voltage." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule ;
+  rdfs:range cim:VsPpccControlKind .
+
+nc:VsConverterRegularSchedule.qPccControl a rdf:Property ;
+  rdfs:label "qPccControl"@en ;
+  rdfs:comment "Kind of reactive power control." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule ;
+  rdfs:range cim:VsQpccControlKind .
+
+nc:VsConverterRegularSchedule.qShare a rdf:Property ;
+  rdfs:label "qShare"@en ;
+  rdfs:comment "Reactive power sharing factor among parallel converters on Uac control. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:PerCent ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule .
+
+nc:VsConverterRegularSchedule.targetPWMfactor a rdf:Property ;
+  rdfs:label "targetPWMfactor"@en ;
+  rdfs:comment "Magnitude of pulse-modulation factor. The attribute shall be a positive value." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule .
+
+nc:VsConverterRegularSchedule.targetPhasePcc a rdf:Property ;
+  rdfs:label "targetPhasePcc"@en ;
+  rdfs:comment "Phase target at AC side, at point of common coupling. The attribute shall be a positive value." ;
+  cims:dataType cim:AngleDegrees ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule .
+
+nc:VsConverterRegularSchedule.targetPowerFactorPcc a rdf:Property ;
+  rdfs:label "targetPowerFactorPcc"@en ;
+  rdfs:comment "Power factor target at the AC side, at point of common coupling. The attribute shall be a positive value." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule .
+
+nc:VsConverterRegularSchedule.targetQpcc a rdf:Property ;
+  rdfs:label "targetQpcc"@en ;
+  rdfs:comment "Reactive power injection target in AC grid, at point of common coupling.  Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule .
+
+nc:VsConverterRegularSchedule.targetUpcc a rdf:Property ;
+  rdfs:label "targetUpcc"@en ;
+  rdfs:comment "Voltage target in AC grid, at point of common coupling. The attribute shall be a positive value." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterRegularSchedule .
+
+nc:VsConverterSchedule.VsConverter a rdf:Property ;
+  rdfs:label "VsConverter"@en ;
+  rdfs:comment "Vs converter which has Vs converter schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:VsConverter.VsConverterSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:VsConverterSchedule ;
+  rdfs:range cim:VsConverter .
+
+nc:VsConverterSchedule.VsConverterTimePoint a rdf:Property ;
+  rdfs:label "VsConverterTimePoint"@en ;
+  rdfs:comment "The time point that relates to this VS converter schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:VsConverterTimePoint.VsConverterSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:VsConverterSchedule ;
+  rdfs:range nc:VsConverterTimePoint .
+
+nc:VsConverterTimePoint.VsConverterSchedule a rdf:Property ;
+  rdfs:label "VsConverterSchedule"@en ;
+  rdfs:comment "The VS converter schedule that has this time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:VsConverterSchedule.VsConverterTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:VsConverterTimePoint ;
+  rdfs:range nc:VsConverterSchedule .
+
+nc:VsConverterTimePoint.droop a rdf:Property ;
+  rdfs:label "droop"@en ;
+  rdfs:comment "Droop constant. The pu value is obtained as D [kV/MW] x Sb / Ubdc. The attribute shall be a positive value." ;
+  cims:dataType cim:PU ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint .
+
+nc:VsConverterTimePoint.droopCompensation a rdf:Property ;
+  rdfs:label "droopCompensation"@en ;
+  rdfs:comment "Compensation constant. Used to compensate for voltage drop when controlling voltage at a distant bus. The attribute shall be a positive value." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint .
+
+nc:VsConverterTimePoint.pPccControl a rdf:Property ;
+  rdfs:label "pPccControl"@en ;
+  rdfs:comment "Kind of control of real power and/or DC voltage." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint ;
+  rdfs:range cim:VsPpccControlKind .
+
+nc:VsConverterTimePoint.qPccControl a rdf:Property ;
+  rdfs:label "qPccControl"@en ;
+  rdfs:comment "Kind of reactive power control." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint ;
+  rdfs:range cim:VsQpccControlKind .
+
+nc:VsConverterTimePoint.qShare a rdf:Property ;
+  rdfs:label "qShare"@en ;
+  rdfs:comment "Reactive power sharing factor among parallel converters on Uac control. The attribute shall be a positive value or zero." ;
+  cims:dataType cim:PerCent ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint .
+
+nc:VsConverterTimePoint.targetPWMfactor a rdf:Property ;
+  rdfs:label "targetPWMfactor"@en ;
+  rdfs:comment "Magnitude of pulse-modulation factor. The attribute shall be a positive value." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint .
+
+nc:VsConverterTimePoint.targetPhasePcc a rdf:Property ;
+  rdfs:label "targetPhasePcc"@en ;
+  rdfs:comment "Phase target at AC side, at point of common coupling. The attribute shall be a positive value." ;
+  cims:dataType cim:AngleDegrees ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint .
+
+nc:VsConverterTimePoint.targetPowerFactorPcc a rdf:Property ;
+  rdfs:label "targetPowerFactorPcc"@en ;
+  rdfs:comment "Power factor target at the AC side, at point of common coupling. The attribute shall be a positive value." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint .
+
+nc:VsConverterTimePoint.targetQpcc a rdf:Property ;
+  rdfs:label "targetQpcc"@en ;
+  rdfs:comment "Reactive power injection target in AC grid, at point of common coupling.  Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint .
+
+nc:VsConverterTimePoint.targetUpcc a rdf:Property ;
+  rdfs:label "targetUpcc"@en ;
+  rdfs:comment "Voltage target in AC grid, at point of common coupling. The attribute shall be a positive value." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:VsConverterTimePoint .
+
+cim:AsynchronousMachineKind.generator a cim:AsynchronousMachineKind ;
+  rdfs:label "generator"@en ;
+  rdfs:comment "The Asynchronous Machine is a generator." ;
+  cims:stereotype "enum" .
+
+cim:AsynchronousMachineKind.motor a cim:AsynchronousMachineKind ;
+  rdfs:label "motor"@en ;
+  rdfs:comment "The Asynchronous Machine is a motor." ;
+  cims:stereotype "enum" .
+
+cim:BatteryStateKind.charging a cim:BatteryStateKind ;
+  rdfs:label "charging"@en ;
+  rdfs:comment "Stored energy is increasing." ;
+  cims:stereotype "enum" .
+
+cim:BatteryStateKind.discharging a cim:BatteryStateKind ;
+  rdfs:label "discharging"@en ;
+  rdfs:comment "Stored energy is decreasing." ;
+  cims:stereotype "enum" .
+
+cim:BatteryStateKind.empty a cim:BatteryStateKind ;
+  rdfs:label "empty"@en ;
+  rdfs:comment "Unable to discharge, and not charging." ;
+  cims:stereotype "enum" .
+
+cim:BatteryStateKind.full a cim:BatteryStateKind ;
+  rdfs:label "full"@en ;
+  rdfs:comment "Unable to charge, and not discharging." ;
+  cims:stereotype "enum" .
+
+cim:BatteryStateKind.waiting a cim:BatteryStateKind ;
+  rdfs:label "waiting"@en ;
+  rdfs:comment "Neither charging nor discharging, but able to do so." ;
+  cims:stereotype "enum" .
+
+cim:CsOperatingModeKind.inverter a cim:CsOperatingModeKind ;
+  rdfs:label "inverter"@en ;
+  rdfs:comment "Operating as inverter, which is the power receiving end." ;
+  cims:stereotype "enum" .
+
+cim:CsOperatingModeKind.rectifier a cim:CsOperatingModeKind ;
+  rdfs:label "rectifier"@en ;
+  rdfs:comment "Operating as rectifier, which is the power sending end." ;
+  cims:stereotype "enum" .
+
+cim:CsPpccControlKind.activePower a cim:CsPpccControlKind ;
+  rdfs:label "activePower"@en ;
+  rdfs:comment "Control is active power control at AC side, at point of common coupling. Target is provided by ACDCConverter.targetPpcc." ;
+  cims:stereotype "enum" .
+
+cim:CsPpccControlKind.dcCurrent a cim:CsPpccControlKind ;
+  rdfs:label "dcCurrent"@en ;
+  rdfs:comment "Control is DC current  with target value provided by CsConverter.targetIdc." ;
+  cims:stereotype "enum" .
+
+cim:CsPpccControlKind.dcVoltage a cim:CsPpccControlKind ;
+  rdfs:label "dcVoltage"@en ;
+  rdfs:comment "Control is DC voltage  with target value provided by ACDCConverter.targetUdc." ;
+  cims:stereotype "enum" .
+
+cim:SynchronousMachineOperatingMode.condenser a cim:SynchronousMachineOperatingMode ;
+  rdfs:label "condenser"@en ;
+  rdfs:comment "Operating as condenser." ;
+  cims:stereotype "enum" .
+
+cim:SynchronousMachineOperatingMode.generator a cim:SynchronousMachineOperatingMode ;
+  rdfs:label "generator"@en ;
+  rdfs:comment "Operating as generator." ;
+  cims:stereotype "enum" .
+
+cim:SynchronousMachineOperatingMode.motor a cim:SynchronousMachineOperatingMode ;
+  rdfs:label "motor"@en ;
+  rdfs:comment "Operating as motor." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.M a cim:UnitMultiplier ;
+  rdfs:label "M"@en ;
+  rdfs:comment "Mega 10**6." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.k a cim:UnitMultiplier ;
+  rdfs:label "k"@en ;
+  rdfs:comment "Kilo 10**3." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.none a cim:UnitMultiplier ;
+  rdfs:label "none"@en ;
+  rdfs:comment "No multiplier or equivalently multiply by 1." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A a cim:UnitSymbol ;
+  rdfs:label "A"@en ;
+  rdfs:comment "Current in amperes." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.V a cim:UnitSymbol ;
+  rdfs:label "V"@en ;
+  rdfs:comment "Electric potential in volts (W/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VA a cim:UnitSymbol ;
+  rdfs:label "VA"@en ;
+  rdfs:comment "Apparent power in volt amperes. See also real power and reactive power." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VAr a cim:UnitSymbol ;
+  rdfs:label "VAr"@en ;
+  rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.""" ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.W a cim:UnitSymbol ;
+  rdfs:label "W"@en ;
+  rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Wh a cim:UnitSymbol ;
+  rdfs:label "Wh"@en ;
+  rdfs:comment "Real energy in watt hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.deg a cim:UnitSymbol ;
+  rdfs:label "deg"@en ;
+  rdfs:comment "Plane angle in degrees." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.none a cim:UnitSymbol ;
+  rdfs:label "none"@en ;
+  rdfs:comment "Dimension less quantity, e.g. count, per unit, etc." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ohm a cim:UnitSymbol ;
+  rdfs:label "ohm"@en ;
+  rdfs:comment "Electric resistance in ohms (V/A)." ;
+  cims:stereotype "enum" .
+
+cim:VsPpccControlKind.pPcc a cim:VsPpccControlKind ;
+  rdfs:label "pPcc"@en ;
+  rdfs:comment "Control is real power at point of common coupling. The target value is provided by ACDCConverter.targetPpcc." ;
+  cims:stereotype "enum" .
+
+cim:VsPpccControlKind.pPccAndUdcDroop a cim:VsPpccControlKind ;
+  rdfs:label "pPccAndUdcDroop"@en ;
+  rdfs:comment "Control is active power at point of common coupling and local DC voltage, with the droop. Target values are provided by ACDCConverter.targetPpcc, ACDCConverter.targetUdc and VsConverter.droop." ;
+  cims:stereotype "enum" .
+
+cim:VsPpccControlKind.pPccAndUdcDroopPilot a cim:VsPpccControlKind ;
+  rdfs:label "pPccAndUdcDroopPilot"@en ;
+  rdfs:comment "Control is active power at point of common coupling and the pilot DC voltage, with the droop. The mode is used for Multi Terminal High Voltage DC (MTDC) systems where multiple HVDC Substations are connected to the HVDC transmission lines. The pilot voltage is then used to coordinate the control the DC voltage across the HVDC substations. Targets are provided by ACDCConverter.targetPpcc, ACDCConverter.targetUdc and  VsConverter.droop." ;
+  cims:stereotype "enum" .
+
+cim:VsPpccControlKind.pPccAndUdcDroopWithCompensation a cim:VsPpccControlKind ;
+  rdfs:label "pPccAndUdcDroopWithCompensation"@en ;
+  rdfs:comment "Control is active power at point of common coupling and compensated DC voltage, with the droop. Compensation factor is the resistance, as an approximation of the DC voltage of a common (real or virtual) node in the DC network. Targets are provided by ACDCConverter.targetPpcc, ACDCConverter.targetUdc, VsConverter.droop and VsConverter.droopCompensation." ;
+  cims:stereotype "enum" .
+
+cim:VsPpccControlKind.phasePcc a cim:VsPpccControlKind ;
+  rdfs:label "phasePcc"@en ;
+  rdfs:comment "Control is phase at point of common coupling. Target is provided by VsConverter.targetPhasePcc." ;
+  cims:stereotype "enum" .
+
+cim:VsPpccControlKind.udc a cim:VsPpccControlKind ;
+  rdfs:label "udc"@en ;
+  rdfs:comment "Control is DC voltage  with target value provided by ACDCConverter.targetUdc." ;
+  cims:stereotype "enum" .
+
+cim:VsQpccControlKind.powerFactorPcc a cim:VsQpccControlKind ;
+  rdfs:label "powerFactorPcc"@en ;
+  rdfs:comment "Control is power factor at point of common coupling. Target is provided by VsConverter.targetPowerFactorPcc." ;
+  cims:stereotype "enum" .
+
+cim:VsQpccControlKind.pulseWidthModulation a cim:VsQpccControlKind ;
+  rdfs:label "pulseWidthModulation"@en ;
+  rdfs:comment "No explicit control. Pulse-modulation factor is directly set in magnitude (VsConverter.targetPWMfactor) and phase (VsConverter.targetPhasePcc)." ;
+  cims:stereotype "enum" .
+
+cim:VsQpccControlKind.reactivePcc a cim:VsQpccControlKind ;
+  rdfs:label "reactivePcc"@en ;
+  rdfs:comment "Control is reactive power at point of common coupling. Target is provided by VsConverter.targetQpcc." ;
+  cims:stereotype "enum" .
+
+cim:VsQpccControlKind.voltagePcc a cim:VsQpccControlKind ;
+  rdfs:label "voltagePcc"@en ;
+  rdfs:comment "Control is voltage at point of common coupling. Target is provided by VsConverter.targetUpcc." ;
+  cims:stereotype "enum" .
+
+nc:BaseTimeSeriesKind.actual a nc:BaseTimeSeriesKind ;
+  rdfs:label "actual"@en ;
+  rdfs:comment "Time series is actual data. The values represent measured or calculated values that represent the actual behaviour. " ;
+  cims:stereotype "enum" .
+
+nc:BaseTimeSeriesKind.forecast a nc:BaseTimeSeriesKind ;
+  rdfs:label "forecast"@en ;
+  rdfs:comment "Time series is forecast data. The values represent the result of scientific predictions based on historical time stamped data." ;
+  cims:stereotype "enum" .
+
+nc:BaseTimeSeriesKind.hindcast a nc:BaseTimeSeriesKind ;
+  rdfs:label "hindcast"@en ;
+  rdfs:comment "Time series is hindcast data. The value represent probable past (historic) condition given by calculation done using actual values. For instance, determine the among of wind based on the energy produced by wind. However, hindcast is typical the result of a simulated forecasts for historical periods." ;
+  cims:stereotype "enum" .
+
+nc:BaseTimeSeriesKind.schedule a nc:BaseTimeSeriesKind ;
+  rdfs:label "schedule"@en ;
+  rdfs:comment "Time series is schedule data. The values represent the result of a committed and plan forecast data that has been through a quality control and could incur penalty when not followed." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.all a nc:DayOfWeekKind ;
+  rdfs:label "all"@en ;
+  rdfs:comment "All days of the week." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.bridgeDay a nc:DayOfWeekKind ;
+  rdfs:label "bridgeDay"@en ;
+  rdfs:comment "A day that is a gap between two distinguished days e.g holiday and weekend that leads to an abnormal scheduling behavior. e.g. if Ascension day falls on a Thursday, then Friday would be a bridge day due to the schedule will not have a normal Friday consumption and production." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.friday a nc:DayOfWeekKind ;
+  rdfs:label "friday"@en ;
+  rdfs:comment "Friday as the day of the week." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.holiday a nc:DayOfWeekKind ;
+  rdfs:label "holiday"@en ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.monday a nc:DayOfWeekKind ;
+  rdfs:label "monday"@en ;
+  rdfs:comment "Monday as the day of the week." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.saturday a nc:DayOfWeekKind ;
+  rdfs:label "saturday"@en ;
+  rdfs:comment "Saturday as the day of the week." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.sunday a nc:DayOfWeekKind ;
+  rdfs:label "sunday"@en ;
+  rdfs:comment "Sunday as the day of the week." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.thursday a nc:DayOfWeekKind ;
+  rdfs:label "thursday"@en ;
+  rdfs:comment "Thursday as the day of the week." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.tuesday a nc:DayOfWeekKind ;
+  rdfs:label "tuesday"@en ;
+  rdfs:comment "Tuesday as the day of the week." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.wednesday a nc:DayOfWeekKind ;
+  rdfs:label "wednesday"@en ;
+  rdfs:comment "Wednesday as the day of the week." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.weekday a nc:DayOfWeekKind ;
+  rdfs:label "weekday"@en ;
+  rdfs:comment "A day of the week other than Sunday or Saturday." ;
+  cims:stereotype "enum" .
+
+nc:DayOfWeekKind.weekend a nc:DayOfWeekKind ;
+  rdfs:label "weekend"@en ;
+  rdfs:comment "A day of the week which is Sunday or Saturday." ;
+  cims:stereotype "enum" .
+
+nc:EnergyDemandKind.consumption a nc:EnergyDemandKind ;
+  rdfs:label "consumption"@en ;
+  cims:stereotype "enum" .
+
+nc:EnergyDemandKind.export a nc:EnergyDemandKind ;
+  rdfs:label "export"@en ;
+  cims:stereotype "enum" .
+
+nc:EnergyDemandKind.import a nc:EnergyDemandKind ;
+  rdfs:label "import"@en ;
+  cims:stereotype "enum" .
+
+nc:EnergyDemandKind.production a nc:EnergyDemandKind ;
+  rdfs:label "production"@en ;
+  cims:stereotype "enum" .
+
+nc:EnergyDemandKind.storage a nc:EnergyDemandKind ;
+  rdfs:label "storage"@en ;
+  cims:stereotype "enum" .
+
+nc:PeakKind.offPeak a nc:PeakKind ;
+  rdfs:label "offPeak"@en ;
+  rdfs:comment "Off-peak refer to periods of lower demand for a particular service or commodity." ;
+  cims:stereotype "enum" .
+
+nc:PeakKind.onPeak a nc:PeakKind ;
+  rdfs:label "onPeak"@en ;
+  rdfs:comment "Off-peak refer to periods of higher demand for a particular service or commodity." ;
+  cims:stereotype "enum" .
+
+nc:TimeSeriesInterpolationKind.linear a nc:TimeSeriesInterpolationKind ;
+  rdfs:label "linear"@en ;
+  rdfs:comment "Linear interpolation is applied for values between two time points." ;
+  cims:stereotype "enum" .
+
+nc:TimeSeriesInterpolationKind.next a nc:TimeSeriesInterpolationKind ;
+  rdfs:label "next"@en ;
+  rdfs:comment "The value between two time points is set to next value." ;
+  cims:stereotype "enum" .
+
+nc:TimeSeriesInterpolationKind.none a nc:TimeSeriesInterpolationKind ;
+  rdfs:label "none"@en ;
+  rdfs:comment "No interpolation is applied." ;
+  cims:stereotype "enum" .
+
+nc:TimeSeriesInterpolationKind.previous a nc:TimeSeriesInterpolationKind ;
+  rdfs:label "previous"@en ;
+  rdfs:comment "The value between two time points is set to previous value." ;
+  cims:stereotype "enum" .
+
+nc:TimeSeriesInterpolationKind.zero a nc:TimeSeriesInterpolationKind ;
+  rdfs:label "zero"@en ;
+  rdfs:comment "The value between two time points is set to zero." ;
+  cims:stereotype "enum" .
+
+shs:Package_DocSteadyStateHypothesisScheduleProfile a cims:ClassCategory ;
+  rdfs:label "DocSteadyStateHypothesisScheduleProfile"@en ;
+  rdfs:comment "This package contains datatypes used only in the RDFS header." .
+
+shs:Package_SteadyStateHypothesisScheduleProfile a cims:ClassCategory ;
+  rdfs:label "SteadyStateHypothesisScheduleProfile"@en ;
+  rdfs:comment "This package contains steady state hypothesis schedule profile." .
+
+

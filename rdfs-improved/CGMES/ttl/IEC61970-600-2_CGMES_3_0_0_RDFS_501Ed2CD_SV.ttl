@@ -1,0 +1,1709 @@
+@prefix cim    : <http://iec.ch/TC57/CIM100#> .
+@prefix sv     : <http://iec.ch/TC57/ns/CIM/StateVariables-EU#> .
+@prefix dcat   : <http://www.w3.org/ns/dcat#> .
+@prefix dct    : <http://purl.org/dc/terms/> .
+@prefix owl    : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf    : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs   : <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos   : <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd    : <http://www.w3.org/2001/XMLSchema#> .
+
+sv:Ontology a owl:Ontology ;
+  dct:description "This vocabulary is describing the state variables profile from IEC 61970-600-2."@en ;
+  dcat:keyword "SV" ;
+  dcat:theme "vocabulary"@en ;
+  dct:conformsTo "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:creator "ENTSO-E CIM EG"@en ;
+  dct:identifier "urn:uuid:767279cf-b7f6-4693-a5a1-7c7c0ead64c4" ;
+  dct:issued "2021-01-27T15:29:03Z"^^xsd:dateTime ;
+  dct:language "en-GB" ;
+  dct:modified "2020-10-12"^^xsd:date ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rights "Copyright"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  dct:title "State Variables Vocabulary"@en ;
+  owl:incompatibleWith <http://entsoe.eu/2009/profile1> ;
+  owl:priorVersion <http://entsoe.eu/CIM/StateVariables/4/1> ;
+  owl:versionIRI <http://iec.ch/TC57/ns/CIM/StateVariables-EU/3.0> ;
+  owl:versionInfo "3.0.0"@en .
+
+cim:ACDCConverter a owl:Class ;
+  rdfs:label "ACDCConverter"@en ;
+  rdfs:subClassOf cim:ConductingEquipment ;
+  skos:definition "A unit with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:ACDCTerminal a owl:Class ;
+  rdfs:label "ACDCTerminal"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:ActivePower a owl:Class ;
+  rdfs:label "ActivePower"@en ;
+  skos:definition "Product of RMS value of the voltage and the RMS value of the in-phase component of the current."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isCIMDatatype "True" .
+
+cim:AngleDegrees a owl:Class ;
+  rdfs:label "AngleDegrees"@en ;
+  skos:definition """
+Measurement of angle in degrees.
+
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isCIMDatatype "True" .
+
+cim:Boolean a owl:Class ;
+  rdfs:label "Boolean"@en ;
+  skos:definition """
+A type with the value space "true" and "false".
+
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isPrimitive "True" .
+
+cim:ConductingEquipment a owl:Class ;
+  rdfs:label "ConductingEquipment"@en ;
+  skos:definition "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:CsConverter a owl:Class ;
+  rdfs:label "CsConverter"@en ;
+  rdfs:subClassOf cim:ACDCConverter ;
+  skos:definition """
+DC side of the current source converter (CSC).
+The firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.
+The reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.
+The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.
+The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees.
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isDescription "True" .
+
+cim:CurrentFlow a owl:Class ;
+  rdfs:label "CurrentFlow"@en ;
+  skos:definition "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isCIMDatatype "True" .
+
+cim:DCTopologicalIsland a owl:Class ;
+  rdfs:label "DCTopologicalIsland"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition """
+An electrically connected subset of the network. DC topological islands can change as the current network state changes, e.g. due to: 
+- disconnect switches or breakers changing state in a SCADA/EMS.
+- manual creation, change or deletion of topological nodes in a planning tool.
+Only energised TopologicalNode-s shall be part of the topological island.
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:DCTopologicalNode a owl:Class ;
+  rdfs:label "DCTopologicalNode"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition "DC bus."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:Date a owl:Class ;
+  rdfs:label "Date"@en ;
+  skos:definition "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isPrimitive "True" .
+
+cim:Float a owl:Class ;
+  rdfs:label "Float"@en ;
+  skos:definition """
+A floating point number. The range is unspecified and not limited.
+
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isPrimitive "True" .
+
+cim:IdentifiedObject a owl:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  skos:definition "This is a root class to provide common identification for all classes needing identification and naming attributes."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:ReactivePower a owl:Class ;
+  rdfs:label "ReactivePower"@en ;
+  skos:definition """
+Product of RMS value of the voltage and the RMS value of the quadrature component of the current.
+
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isCIMDatatype "True" .
+
+cim:ShuntCompensator a owl:Class ;
+  rdfs:label "ShuntCompensator"@en ;
+  skos:definition "A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor. A negative value for bPerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:String a owl:Class ;
+  rdfs:label "String"@en ;
+  skos:definition "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isPrimitive "True" .
+
+cim:SvInjection a owl:Class ;
+  rdfs:label "SvInjection"@en ;
+  skos:definition "The SvInjection reports the calculated bus injection minus the sum of the terminal flows. The terminal flow is positive out from the bus (load sign convention) and bus injection has positive flow into the bus. SvInjection may have the remainder after state estimation or slack after power flow calculation."@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:SvPowerFlow a owl:Class ;
+  rdfs:label "SvPowerFlow"@en ;
+  skos:definition "State variable for power flow. Load convention is used for flow direction. This means flow out from the TopologicalNode into the equipment is positive."@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:SvShuntCompensatorSections a owl:Class ;
+  rdfs:label "SvShuntCompensatorSections"@en ;
+  skos:definition "State variable for the number of sections in service for a shunt compensator."@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:SvStatus a owl:Class ;
+  rdfs:label "SvStatus"@en ;
+  skos:definition "State variable for status."@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:SvSwitch a owl:Class ;
+  rdfs:label "SvSwitch"@en ;
+  skos:definition "State variable for switch. "@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:SvTapStep a owl:Class ;
+  rdfs:label "SvTapStep"@en ;
+  skos:definition "State variable for transformer tap step. "@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:SvVoltage a owl:Class ;
+  rdfs:label "SvVoltage"@en ;
+  skos:definition "State variable for voltage."@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:Switch a owl:Class ;
+  rdfs:label "Switch"@en ;
+  rdfs:subClassOf cim:ConductingEquipment ;
+  skos:definition "A generic device designed to close, or open, or both, one or more electric circuits.  All switches are two terminal devices including grounding switches. The ACDCTerminal.connected at the two sides of the switch shall not be considered for assessing switch connectivity, i.e. only Switch.open, .normalOpen and .locked are relevant."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:TapChanger a owl:Class ;
+  rdfs:label "TapChanger"@en ;
+  skos:definition "Mechanism for changing transformer winding tap positions."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:Terminal a owl:Class ;
+  rdfs:label "Terminal"@en ;
+  rdfs:subClassOf cim:ACDCTerminal ;
+  skos:definition "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:TopologicalIsland a owl:Class ;
+  rdfs:label "TopologicalIsland"@en ;
+  rdfs:subClassOf cim:IdentifiedObject ;
+  skos:definition """
+An electrically connected subset of the network. Topological islands can change as the current network state changes, e.g. due to: 
+- disconnect switches or breakers changing state in a SCADA/EMS.
+- manual creation, change or deletion of topological nodes in a planning tool.
+Only energised TopologicalNode-s shall be part of the topological island.
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:TopologicalNode a owl:Class ;
+  rdfs:label "TopologicalNode"@en ;
+  skos:definition """
+For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).
+For a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called "busses".
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isAbstract "True" .
+
+cim:UnitMultiplier a owl:Class ;
+  rdfs:label "UnitMultiplier"@en ;
+  owl:oneOf ( cim:UnitMultiplier.y cim:UnitMultiplier.z cim:UnitMultiplier.a cim:UnitMultiplier.f
+    cim:UnitMultiplier.p cim:UnitMultiplier.n cim:UnitMultiplier.micro cim:UnitMultiplier.m
+    cim:UnitMultiplier.c cim:UnitMultiplier.d cim:UnitMultiplier.none cim:UnitMultiplier.da
+    cim:UnitMultiplier.h cim:UnitMultiplier.k cim:UnitMultiplier.M cim:UnitMultiplier.G
+    cim:UnitMultiplier.T cim:UnitMultiplier.P cim:UnitMultiplier.E cim:UnitMultiplier.Z
+    cim:UnitMultiplier.Y ) ;
+  rdfs:subClassOf cim:Enumeration ;
+  skos:definition """
+The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:UnitSymbol a owl:Class ;
+  rdfs:label "UnitSymbol"@en ;
+  owl:oneOf ( cim:UnitSymbol.none cim:UnitSymbol.m cim:UnitSymbol.kg cim:UnitSymbol.s
+    cim:UnitSymbol.A cim:UnitSymbol.K cim:UnitSymbol.mol cim:UnitSymbol.cd cim:UnitSymbol.deg
+    cim:UnitSymbol.rad cim:UnitSymbol.sr cim:UnitSymbol.Gy cim:UnitSymbol.Bq cim:UnitSymbol.degC
+    cim:UnitSymbol.Sv cim:UnitSymbol.F cim:UnitSymbol.C cim:UnitSymbol.S cim:UnitSymbol.H
+    cim:UnitSymbol.V cim:UnitSymbol.ohm cim:UnitSymbol.J cim:UnitSymbol.N cim:UnitSymbol.Hz
+    cim:UnitSymbol.lx cim:UnitSymbol.lm cim:UnitSymbol.Wb cim:UnitSymbol.T cim:UnitSymbol.W
+    cim:UnitSymbol.Pa cim:UnitSymbol.m2 cim:UnitSymbol.m3 cim:UnitSymbol.mPers cim:UnitSymbol.mPers2
+    cim:UnitSymbol.m3Pers cim:UnitSymbol.mPerm3 cim:UnitSymbol.kgm cim:UnitSymbol.kgPerm3
+    cim:UnitSymbol.m2Pers cim:UnitSymbol.WPermK cim:UnitSymbol.JPerK cim:UnitSymbol.ppm
+    cim:UnitSymbol.rotPers cim:UnitSymbol.radPers cim:UnitSymbol.WPerm2 cim:UnitSymbol.JPerm2
+    cim:UnitSymbol.SPerm cim:UnitSymbol.KPers cim:UnitSymbol.PaPers cim:UnitSymbol.JPerkgK
+    cim:UnitSymbol.VA cim:UnitSymbol.VAr cim:UnitSymbol.cosPhi cim:UnitSymbol.Vs cim:UnitSymbol.V2
+    cim:UnitSymbol.As cim:UnitSymbol.A2 cim:UnitSymbol.A2s cim:UnitSymbol.VAh cim:UnitSymbol.Wh
+    cim:UnitSymbol.VArh cim:UnitSymbol.VPerHz cim:UnitSymbol.HzPers cim:UnitSymbol.character
+    cim:UnitSymbol.charPers cim:UnitSymbol.kgm2 cim:UnitSymbol.dB cim:UnitSymbol.WPers
+    cim:UnitSymbol.lPers cim:UnitSymbol.dBm cim:UnitSymbol.h cim:UnitSymbol.min cim:UnitSymbol.Q
+    cim:UnitSymbol.Qh cim:UnitSymbol.ohmm cim:UnitSymbol.APerm cim:UnitSymbol.V2h cim:UnitSymbol.A2h
+    cim:UnitSymbol.Ah cim:UnitSymbol.count cim:UnitSymbol.ft3 cim:UnitSymbol.m3Perh
+    cim:UnitSymbol.gal cim:UnitSymbol.Btu cim:UnitSymbol.l cim:UnitSymbol.lPerh cim:UnitSymbol.lPerl
+    cim:UnitSymbol.gPerg cim:UnitSymbol.molPerm3 cim:UnitSymbol.molPermol cim:UnitSymbol.molPerkg
+    cim:UnitSymbol.sPers cim:UnitSymbol.HzPerHz cim:UnitSymbol.VPerV cim:UnitSymbol.APerA
+    cim:UnitSymbol.VPerVA cim:UnitSymbol.rev cim:UnitSymbol.kat cim:UnitSymbol.JPerkg
+    cim:UnitSymbol.m3Uncompensated cim:UnitSymbol.m3Compensated cim:UnitSymbol.WPerW
+    cim:UnitSymbol.therm cim:UnitSymbol.onePerm cim:UnitSymbol.m3Perkg cim:UnitSymbol.Pas
+    cim:UnitSymbol.Nm cim:UnitSymbol.NPerm cim:UnitSymbol.radPers2 cim:UnitSymbol.JPerm3
+    cim:UnitSymbol.VPerm cim:UnitSymbol.CPerm3 cim:UnitSymbol.CPerm2 cim:UnitSymbol.FPerm
+    cim:UnitSymbol.HPerm cim:UnitSymbol.JPermol cim:UnitSymbol.JPermolK cim:UnitSymbol.CPerkg
+    cim:UnitSymbol.GyPers cim:UnitSymbol.WPersr cim:UnitSymbol.WPerm2sr cim:UnitSymbol.katPerm3
+    cim:UnitSymbol.d cim:UnitSymbol.anglemin cim:UnitSymbol.anglesec cim:UnitSymbol.ha
+    cim:UnitSymbol.tonne cim:UnitSymbol.bar cim:UnitSymbol.mmHg cim:UnitSymbol.M cim:UnitSymbol.kn
+    cim:UnitSymbol.Mx cim:UnitSymbol.G cim:UnitSymbol.Oe cim:UnitSymbol.Vh cim:UnitSymbol.WPerA
+    cim:UnitSymbol.onePerHz cim:UnitSymbol.VPerVAr cim:UnitSymbol.ohmPerm cim:UnitSymbol.kgPerJ
+    cim:UnitSymbol.JPers ) ;
+  rdfs:subClassOf cim:Enumeration ;
+  skos:definition """
+The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.
+\t"""@en ;
+  sv:Package "Package_StateVariablesProfile" .
+
+cim:Voltage a owl:Class ;
+  rdfs:label "Voltage"@en ;
+  skos:definition "Electrical voltage, can be both AC and DC."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isCIMDatatype "True" .
+
+cim:VsConverter a owl:Class ;
+  rdfs:label "VsConverter"@en ;
+  rdfs:subClassOf cim:ACDCConverter ;
+  skos:definition "DC side of the voltage source converter (VSC)."@en ;
+  sv:Package "Package_StateVariablesProfile" ;
+  sv:isDescription "True" .
+
+sv:Enumeration a owl:Class ;
+  rdfs:label " enumeration "@en ;
+  rdfs:comment " An abstract superclass for all Enumerators. "@en ;
+  sv:isAbstract "true" .
+
+cim:ConductingEquipment.SvStatus a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "SvStatus"@en ;
+  owl:inverseOf cim:SvStatus.ConductingEquipment ;
+  rdfs:domain cim:ConductingEquipment ;
+  rdfs:range cim:SvStatus ;
+  skos:definition "The status state variable associated with this conducting equipment."@en .
+
+cim:ShuntCompensator.SvShuntCompensatorSections a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "SvShuntCompensatorSections"@en ;
+  owl:inverseOf cim:SvShuntCompensatorSections.ShuntCompensator ;
+  rdfs:domain cim:ShuntCompensator ;
+  rdfs:range cim:SvShuntCompensatorSections ;
+  skos:definition "The state for the number of shunt compensator sections in service."@en .
+
+cim:SvInjection.TopologicalNode a owl:ObjectProperty ;
+  rdfs:label "TopologicalNode"@en ;
+  owl:inverseOf cim:TopologicalNode.SvInjection ;
+  rdfs:domain cim:SvInjection ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "The topological node associated with the flow injection state variable."@en .
+
+cim:SvPowerFlow.Terminal a owl:ObjectProperty ;
+  rdfs:label "Terminal"@en ;
+  owl:inverseOf cim:Terminal.SvPowerFlow ;
+  rdfs:domain cim:SvPowerFlow ;
+  rdfs:range cim:Terminal ;
+  skos:definition "The terminal associated with the power flow state variable."@en .
+
+cim:SvShuntCompensatorSections.ShuntCompensator a owl:ObjectProperty ;
+  rdfs:label "ShuntCompensator"@en ;
+  owl:inverseOf cim:ShuntCompensator.SvShuntCompensatorSections ;
+  rdfs:domain cim:SvShuntCompensatorSections ;
+  rdfs:range cim:ShuntCompensator ;
+  skos:definition "The shunt compensator for which the state applies."@en .
+
+cim:SvStatus.ConductingEquipment a owl:ObjectProperty ;
+  rdfs:label "ConductingEquipment"@en ;
+  owl:inverseOf cim:ConductingEquipment.SvStatus ;
+  rdfs:domain cim:SvStatus ;
+  rdfs:range cim:ConductingEquipment ;
+  skos:definition "The conducting equipment associated with the status state variable."@en .
+
+cim:SvSwitch.Switch a owl:ObjectProperty ;
+  rdfs:label "Switch"@en ;
+  owl:inverseOf cim:Switch.SvSwitch ;
+  rdfs:domain cim:SvSwitch ;
+  rdfs:range cim:Switch ;
+  skos:definition "The switch associated with the switch state."@en .
+
+cim:SvTapStep.TapChanger a owl:ObjectProperty ;
+  rdfs:label "TapChanger"@en ;
+  owl:inverseOf cim:TapChanger.SvTapStep ;
+  rdfs:domain cim:SvTapStep ;
+  rdfs:range cim:TapChanger ;
+  skos:definition "The tap changer associated with the tap step state."@en .
+
+cim:SvVoltage.TopologicalNode a owl:ObjectProperty ;
+  rdfs:label "TopologicalNode"@en ;
+  owl:inverseOf cim:TopologicalNode.SvVoltage ;
+  rdfs:domain cim:SvVoltage ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "The topological node associated with the voltage state."@en .
+
+cim:Switch.SvSwitch a owl:ObjectProperty ;
+  rdfs:label "SvSwitch"@en ;
+  owl:inverseOf cim:SvSwitch.Switch ;
+  rdfs:domain cim:Switch ;
+  rdfs:range cim:SvSwitch ;
+  skos:definition "The switch state associated with the switch."@en .
+
+cim:TapChanger.SvTapStep a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "SvTapStep"@en ;
+  owl:inverseOf cim:SvTapStep.TapChanger ;
+  rdfs:domain cim:TapChanger ;
+  rdfs:range cim:SvTapStep ;
+  skos:definition "The tap step state associated with the tap changer."@en .
+
+cim:Terminal.SvPowerFlow a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "SvPowerFlow"@en ;
+  owl:inverseOf cim:SvPowerFlow.Terminal ;
+  rdfs:domain cim:Terminal ;
+  rdfs:range cim:SvPowerFlow ;
+  skos:definition "The power flow state variable associated with the terminal."@en .
+
+cim:TopologicalIsland.AngleRefTopologicalNode a owl:ObjectProperty ;
+  rdfs:label "AngleRefTopologicalNode"@en ;
+  owl:inverseOf cim:TopologicalNode.AngleRefTopologicalIsland ;
+  rdfs:domain cim:TopologicalIsland ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "The angle reference for the island.   Normally there is one TopologicalNode that is selected as the angle reference for each island.   Other reference schemes exist, so the association is typically optional."@en .
+
+cim:TopologicalIsland.TopologicalNodes a owl:ObjectProperty ;
+  rdfs:label "TopologicalNodes"@en ;
+  owl:inverseOf cim:TopologicalNode.TopologicalIsland ;
+  rdfs:domain cim:TopologicalIsland ;
+  rdfs:range cim:TopologicalNode ;
+  skos:definition "A topological node belongs to a topological island."@en .
+
+cim:TopologicalNode.AngleRefTopologicalIsland a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "AngleRefTopologicalIsland"@en ;
+  owl:inverseOf cim:TopologicalIsland.AngleRefTopologicalNode ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:TopologicalIsland ;
+  skos:definition "The island for which the node is an angle reference.   Normally there is one angle reference node for each island."@en .
+
+cim:TopologicalNode.SvInjection a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "SvInjection"@en ;
+  owl:inverseOf cim:SvInjection.TopologicalNode ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:SvInjection ;
+  skos:definition "The injection flows state variables associated with the topological node."@en .
+
+cim:TopologicalNode.SvVoltage a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "SvVoltage"@en ;
+  owl:inverseOf cim:SvVoltage.TopologicalNode ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:SvVoltage ;
+  skos:definition "The state voltage associated with the topological node."@en .
+
+cim:TopologicalNode.TopologicalIsland a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "TopologicalIsland"@en ;
+  owl:inverseOf cim:TopologicalIsland.TopologicalNodes ;
+  rdfs:domain cim:TopologicalNode ;
+  rdfs:range cim:TopologicalIsland ;
+  skos:definition "A topological node belongs to a topological island."@en .
+
+cim:ACDCConverter.idc a owl:DatatypeProperty ;
+  rdfs:label "idc"@en ;
+  rdfs:domain cim:ACDCConverter ;
+  rdfs:range cim:CurrentFlow ;
+  skos:definition "Converter DC current, also called Id. It is converter’s state variable, result from power flow."@en .
+
+cim:ACDCConverter.poleLossP a owl:DatatypeProperty ;
+  rdfs:label "poleLossP"@en ;
+  rdfs:domain cim:ACDCConverter ;
+  rdfs:range cim:ActivePower ;
+  skos:definition """
+The active power loss at a DC Pole 
+= idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2.
+For lossless operation Pdc=Pac.
+For rectifier operation with losses Pdc=Pac-lossP.
+For inverter operation with losses Pdc=Pac+lossP.
+It is converter’s state variable used in power flow. The attribute shall be a positive value.
+\t"""@en .
+
+cim:ACDCConverter.uc a owl:DatatypeProperty ;
+  rdfs:label "uc"@en ;
+  rdfs:domain cim:ACDCConverter ;
+  rdfs:range cim:Voltage ;
+  skos:definition "Line-to-line converter voltage, the voltage at the AC side of the valve. It is converter’s state variable, result from power flow. The attribute shall be a positive value."@en .
+
+cim:ACDCConverter.udc a owl:DatatypeProperty ;
+  rdfs:label "udc"@en ;
+  rdfs:domain cim:ACDCConverter ;
+  rdfs:range cim:Voltage ;
+  skos:definition "Converter voltage at the DC side, also called Ud. It is converter’s state variable, result from power flow. The attribute shall be a positive value."@en .
+
+cim:ActivePower.multiplier a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "multiplier"@en ;
+  rdf:value "M" ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range cim:UnitMultiplier ;
+  sv:isFixed "True " .
+
+cim:ActivePower.unit a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "unit"@en ;
+  rdf:value "W" ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range cim:UnitSymbol ;
+  sv:isFixed "True " .
+
+cim:ActivePower.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range xsd:float .
+
+cim:AngleDegrees.multiplier a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "multiplier"@en ;
+  rdf:value "none" ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range cim:UnitMultiplier ;
+  sv:isFixed "True " .
+
+cim:AngleDegrees.unit a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "unit"@en ;
+  rdf:value "deg" ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range cim:UnitSymbol ;
+  sv:isFixed "True " .
+
+cim:AngleDegrees.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range xsd:float .
+
+cim:CsConverter.alpha a owl:DatatypeProperty ;
+  rdfs:label "alpha"@en ;
+  rdfs:domain cim:CsConverter ;
+  rdfs:range cim:AngleDegrees ;
+  skos:definition "Firing angle that determines the dc voltage at the converter dc terminal. Typical value between 10 degrees and 18 degrees for a rectifier. It is converter’s state variable, result from power flow. The attribute shall be a positive value."@en .
+
+cim:CsConverter.gamma a owl:DatatypeProperty ;
+  rdfs:label "gamma"@en ;
+  rdfs:domain cim:CsConverter ;
+  rdfs:range cim:AngleDegrees ;
+  skos:definition "Extinction angle. It is used to limit the dc voltage at the inverter if needed. Typical value between 17 degrees and 20 degrees for an inverter. It is converter’s state variable, result from power flow. The attribute shall be a positive value."@en .
+
+cim:CurrentFlow.multiplier a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "multiplier"@en ;
+  rdf:value "none" ;
+  rdfs:domain cim:CurrentFlow ;
+  rdfs:range cim:UnitMultiplier ;
+  sv:isFixed "True " .
+
+cim:CurrentFlow.unit a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "unit"@en ;
+  rdf:value "A" ;
+  rdfs:domain cim:CurrentFlow ;
+  rdfs:range cim:UnitSymbol ;
+  sv:isFixed "True " .
+
+cim:CurrentFlow.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:domain cim:CurrentFlow ;
+  rdfs:range xsd:float .
+
+cim:IdentifiedObject.mRID a owl:DatatypeProperty ;
+  rdfs:label "mRID"@en ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string ;
+  skos:definition """
+Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.
+\t"""@en .
+
+cim:IdentifiedObject.name a owl:DatatypeProperty ;
+  rdfs:label "name"@en ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string ;
+  skos:definition """
+The name is any free human readable and possibly non unique text naming the object.
+
+\t"""@en .
+
+cim:ReactivePower.multiplier a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "multiplier"@en ;
+  rdf:value "M" ;
+  rdfs:domain cim:ReactivePower ;
+  rdfs:range cim:UnitMultiplier ;
+  sv:isFixed "True " .
+
+cim:ReactivePower.unit a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "unit"@en ;
+  rdf:value "VAr" ;
+  rdfs:domain cim:ReactivePower ;
+  rdfs:range cim:UnitSymbol ;
+  sv:isFixed "True " .
+
+cim:ReactivePower.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:domain cim:ReactivePower ;
+  rdfs:range xsd:float .
+
+cim:SvInjection.pInjection a owl:DatatypeProperty ;
+  rdfs:label "pInjection"@en ;
+  rdfs:domain cim:SvInjection ;
+  rdfs:range cim:ActivePower ;
+  skos:definition "The active power mismatch between calculated injection and initial injection.  Positive sign means injection into the TopologicalNode (bus)."@en .
+
+cim:SvInjection.qInjection a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "qInjection"@en ;
+  rdfs:domain cim:SvInjection ;
+  rdfs:range cim:ReactivePower ;
+  skos:definition "The reactive power mismatch between calculated injection and initial injection.  Positive sign means injection into the TopologicalNode (bus)."@en .
+
+cim:SvPowerFlow.p a owl:DatatypeProperty ;
+  rdfs:label "p"@en ;
+  rdfs:domain cim:SvPowerFlow ;
+  rdfs:range cim:ActivePower ;
+  skos:definition "The active power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."@en .
+
+cim:SvPowerFlow.q a owl:DatatypeProperty ;
+  rdfs:label "q"@en ;
+  rdfs:domain cim:SvPowerFlow ;
+  rdfs:range cim:ReactivePower ;
+  skos:definition "The reactive power flow. Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."@en .
+
+cim:SvShuntCompensatorSections.sections a owl:DatatypeProperty ;
+  rdfs:label "sections"@en ;
+  rdfs:domain cim:SvShuntCompensatorSections ;
+  rdfs:range xsd:float ;
+  skos:definition "The number of sections in service as a continuous variable. The attribute shall be a positive value or zero. To get integer value scale with ShuntCompensator.bPerSection."@en .
+
+cim:SvStatus.inService a owl:DatatypeProperty ;
+  rdfs:label "inService"@en ;
+  rdfs:domain cim:SvStatus ;
+  rdfs:range xsd:boolean ;
+  skos:definition "The in service status as a result of topology processing.  It indicates if the equipment is considered as energized by the power flow. It reflects if the equipment is connected within a solvable island.  It does not necessarily reflect whether or not the island was solved by the power flow."@en .
+
+cim:SvSwitch.open a owl:DatatypeProperty ;
+  rdfs:label "open"@en ;
+  rdfs:domain cim:SvSwitch ;
+  rdfs:range xsd:boolean ;
+  skos:definition "The attribute tells if the computed state of the switch is considered open."@en .
+
+cim:SvTapStep.position a owl:DatatypeProperty ;
+  rdfs:label "position"@en ;
+  rdfs:domain cim:SvTapStep ;
+  rdfs:range xsd:float ;
+  skos:definition "The floating point tap position.   This is not the tap ratio, but rather the tap step position as defined by the related tap changer model and normally is constrained to be within the range of minimum and maximum tap positions."@en .
+
+cim:SvVoltage.angle a owl:DatatypeProperty ;
+  rdfs:label "angle"@en ;
+  rdfs:domain cim:SvVoltage ;
+  rdfs:range cim:AngleDegrees ;
+  skos:definition """
+The voltage angle of the topological node complex voltage with respect to system reference.
+
+\t"""@en .
+
+cim:SvVoltage.v a owl:DatatypeProperty ;
+  rdfs:label "v"@en ;
+  rdfs:domain cim:SvVoltage ;
+  rdfs:range cim:Voltage ;
+  skos:definition "The voltage magnitude at the topological node. The attribute shall be a positive value."@en .
+
+cim:Voltage.multiplier a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "multiplier"@en ;
+  rdf:value "k" ;
+  rdfs:domain cim:Voltage ;
+  rdfs:range cim:UnitMultiplier ;
+  sv:isFixed "True " .
+
+cim:Voltage.unit a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "unit"@en ;
+  rdf:value "V" ;
+  rdfs:domain cim:Voltage ;
+  rdfs:range cim:UnitSymbol ;
+  sv:isFixed "True " .
+
+cim:Voltage.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:domain cim:Voltage ;
+  rdfs:range xsd:float .
+
+cim:VsConverter.delta a owl:DatatypeProperty ;
+  rdfs:label "delta"@en ;
+  rdfs:domain cim:VsConverter ;
+  rdfs:range cim:AngleDegrees ;
+  skos:definition "Angle between VsConverter.uv and ACDCConverter.uc. It is converter’s state variable used in power flow. The attribute shall be a positive value or zero."@en .
+
+cim:VsConverter.uv a owl:DatatypeProperty ;
+  rdfs:label "uv"@en ;
+  rdfs:domain cim:VsConverter ;
+  rdfs:range cim:Voltage ;
+  skos:definition "Line-to-line voltage on the valve side of the converter transformer. It is converter’s state variable, result from power flow. The attribute shall be a positive value."@en .
+
+sv:Package a owl:AnnotationProperty ;
+  rdfs:label "MOF Package"@en ;
+  rdfs:comment "Declaration that this is a MOF Package."@en ;
+  rdfs:domain rdfs:Class ;
+  rdfs:range xsd:string .
+
+sv:isAbstract a owl:AnnotationProperty ;
+  rdfs:label "is abstract"@en ;
+  rdfs:comment "Flag indicating whether the class is permitted to have any direct instances."@en ;
+  rdfs:domain rdfs:Class ;
+  rdfs:range xsd:boolean .
+
+sv:isCIMDatatype a owl:AnnotationProperty ;
+  rdfs:label "isCIMDatatype\t"@en ;
+  rdfs:comment "Flag indicating whether the class is a CIMDatatype."@en ;
+  rdfs:domain rdfs:Class ;
+  rdfs:range xsd:boolean .
+
+sv:isConst a owl:AnnotationProperty ;
+  rdfs:label "is fixed property"@en ;
+  rdfs:comment " Flag indicating whether the property for a specific object can be updated."@en ;
+  rdfs:domain rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+sv:isDescription a owl:AnnotationProperty ;
+  rdfs:label "isDescription\t"@en ;
+  rdfs:comment "Flag indicating whether the class is a Description."@en ;
+  rdfs:domain rdfs:Class, rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+sv:isFixed a owl:AnnotationProperty ;
+  rdfs:label "is fixed property"@en ;
+  rdfs:comment " Flag indicating whether the property for a specific object can be updated."@en ;
+  rdfs:domain rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+sv:isPrimitive a owl:AnnotationProperty ;
+  rdfs:label "isPrimitive\t"@en ;
+  rdfs:comment "Flag indicating whether the class is a Primitive."@en ;
+  rdfs:domain rdfs:Class ;
+  rdfs:range xsd:boolean .
+
+sv:isUnique a owl:AnnotationProperty ;
+  rdfs:label "is unique "@en ;
+  rdfs:comment " Flag indicating whether the property for a specific object can contain the same value more than once."@en ;
+  rdfs:domain rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+sv:isenum a owl:AnnotationProperty ;
+  rdfs:label "isenum\t"@en ;
+  rdfs:comment "Flag indicating whether the enumerated literal is an enum."@en ;
+  rdfs:domain rdfs:Property ;
+  rdfs:range xsd:boolean .
+
+cim:UnitMultiplier.E a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "E "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Exa 10**18."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.G a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "G "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Giga 10**9."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.M a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "M "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Mega 10**6."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.P a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "P "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Peta 10**15."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.T a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "T "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Tera 10**12."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.Y a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Y "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Yotta 10**24."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.Z a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Z "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Zetta 10**21."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.a a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "a "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Atto 10**-18."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.c a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "c "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Centi 10**-2."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.d a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "d "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Deci 10**-1."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.da a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "da "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Deca 10**1."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.f a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "f "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Femto 10**-15."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.h a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "h "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Hecto 10**2."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.k a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "k "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Kilo 10**3."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.m a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Milli 10**-3."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.micro a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "micro "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Micro 10**-6."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.n a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "n "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Nano 10**-9."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.none a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "none "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "No multiplier or equivalently multiply by 1."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.p a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "p "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Pico 10**-12."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.y a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "y "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Yocto 10**-24."@en ;
+  sv:isenum "True" .
+
+cim:UnitMultiplier.z a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "z "@en ;
+  rdfs:domain cim:UnitMultiplier ;
+  skos:definition "Zepto 10**-21."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.A a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "A "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Current in amperes."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.A2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "A2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Amperes squared (A²)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.A2h a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "A2h "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Ampere-squared hour, ampere-squared hour."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.A2s a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "A2s "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Ampere squared time in square amperes (A²s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.APerA a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "APerA "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.APerm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "APerm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "A/m, magnetic field strength, amperes per metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Ah a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Ah "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Ampere-hours, ampere-hours."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.As a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "As "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Ampere seconds (A·s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Bq a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Bq "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Radioactivity in becquerels (1/s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Btu a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Btu "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Energy, British Thermal Units."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.C a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "C "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Electric charge in coulombs (A·s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.CPerkg a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "CPerkg "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Exposure (x rays), coulombs per kilogram."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.CPerm2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "CPerm2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Surface charge density, coulombs per square metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.CPerm3 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "CPerm3 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Electric charge density, coulombs per cubic metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.F a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "F "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Electric capacitance in farads (C/V)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.FPerm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "FPerm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Permittivity, farads per metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.G a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "G "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Magnetic flux density, gausses (1 G = 10-4 T)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Gy a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Gy "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Absorbed dose in grays (J/kg)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.GyPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "GyPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Absorbed dose rate, grays per second."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.H a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "H "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Electric inductance in henrys (Wb/A)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.HPerm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "HPerm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Permeability, henrys per metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Hz a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Hz "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Frequency in hertz (1/s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.HzPerHz a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "HzPerHz "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Frequency, rate of frequency change.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mHz/Hz’."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.HzPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "HzPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Rate of change of frequency in hertz per second."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.J a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "J "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Energy in joules (N·m = C·V = W·s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.JPerK a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "JPerK "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Heat capacity in joules/kelvin."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.JPerkg a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "JPerkg "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Specific energy, Joules / kg."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.JPerkgK a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "JPerkgK "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Specific heat capacity, specific entropy, joules per kilogram Kelvin."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.JPerm2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "JPerm2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Insulation energy density, joules per square metre or watt second per square metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.JPerm3 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "JPerm3 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Energy density, joules per cubic metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.JPermol a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "JPermol "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Molar energy, joules per mole."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.JPermolK a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "JPermolK "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Molar entropy, molar heat capacity, joules per mole kelvin."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.JPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "JPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Energy rate in joules per second (J/s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.K a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "K "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Temperature in kelvins."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.KPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "KPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Temperature change rate in kelvins per second."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.M a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "M "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Length, nautical miles (1 M = 1852 m)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Mx a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Mx "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Magnetic flux, maxwells (1 Mx = 10-8 Wb)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.N a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "N "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Force in newtons (kg·m/s²)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.NPerm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "NPerm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Surface tension, newton per metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Nm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Nm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Moment of force, newton metres."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Oe a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Oe "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Magnetic field in oersteds, (1 Oe = (103/4p) A/m)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Pa a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Pa "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.PaPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "PaPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Pressure change rate in pascals per second."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Pas a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Pas "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Dynamic viscosity, pascal seconds."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Q a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Q "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Quantity power, Q."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Qh a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Qh "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Quantity energy, Qh."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.S a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "S "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Conductance in siemens."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.SPerm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "SPerm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Conductance per length (F/m)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Sv a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Sv "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Dose equivalent in sieverts (J/kg)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.T a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "T "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Magnetic flux density in teslas (Wb/m2)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.V a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "V "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Electric potential in volts (W/A)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.V2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "V2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volt squared (W²/A²)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.V2h a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "V2h "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volt-squared hour, volt-squared-hours."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VA a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VA "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Apparent power in volt amperes. See also real power and reactive power."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VAh a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VAh "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Apparent energy in volt ampere hours."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VAr a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VAr "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition """
+Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.
+\t"""@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VArh a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VArh "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Reactive energy in volt ampere reactive hours."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VPerHz a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VPerHz "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Magnetic flux in volt per hertz."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VPerV a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VPerV "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Voltage, ratio of voltages.  Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VPerVA a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VPerVA "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VPerVAr a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VPerVAr "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.VPerm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "VPerm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Electric field strength, volts per metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Vh a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Vh "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volt-hour, Volt hours."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Vs a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Vs "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volt seconds (Ws/A)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.W a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "W "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.WPerA a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "WPerA "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Active power per current flow, watts per Ampere."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.WPerW a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "WPerW "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Signal Strength, ratio of power.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mW/W’."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.WPerm2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "WPerm2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Heat flux density, irradiance, watts per square metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.WPerm2sr a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "WPerm2sr "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Radiance, watts per square metre steradian."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.WPermK a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "WPermK "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Thermal conductivity in watt/metres kelvin."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.WPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "WPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Ramp rate in watts per second."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.WPersr a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "WPersr "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Radiant intensity, watts per steradian."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Wb a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Wb "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Magnetic flux in webers (V·s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.Wh a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "Wh "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Real energy in watt hours."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.anglemin a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "anglemin "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Plane angle, minutes."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.anglesec a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "anglesec "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Plane angle, seconds."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.bar a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "bar "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Pressure in bars, (1 bar = 100 kPa)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.cd a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "cd "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Luminous intensity in candelas."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.charPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "charPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Data rate (baud) in characters per second."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.character a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "character "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Number of characters."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.cosPhi a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "cosPhi "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition """
+Power factor, dimensionless.
+Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.
+Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.
+\t"""@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.count a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "count "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Amount of substance, Counter value."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.d a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "d "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Time in days, day = 24 h = 86400 s."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.dB a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "dB "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Sound pressure level in decibels. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.dBm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "dBm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1mW. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.deg a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "deg "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Plane angle in degrees."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.degC a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "degC "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition """
+Relative temperature in degrees Celsius.
+In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.
+\t"""@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.ft3 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "ft3 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volume, cubic feet."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.gPerg a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "gPerg "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Concentration, The ratio of the mass of a solute divided by the mass of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µg/g’."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.gal a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "gal "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volume in gallons, US gallon (1 gal = 231 in3 = 128 fl ounce)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.h a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "h "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Time in hours, hour = 60 min = 3600 s."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.ha a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "ha "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Area, hectares."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.kat a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "kat "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Catalytic activity, katal = mol / s."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.katPerm3 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "katPerm3 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Catalytic activity concentration, katals per cubic metre."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.kg a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "kg "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Mass in kilograms.  Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.kgPerJ a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "kgPerJ "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Weight per energy in kilograms per joule (kg/J). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.kgPerm3 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "kgPerm3 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Density in kilogram/cubic metres (kg/m³). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.kgm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "kgm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Moment of mass in kilogram metres (kg·m) (first moment of mass). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.kgm2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "kgm2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Moment of mass in kilogram square metres (kg·m²) (Second moment of mass, commonly called the moment of inertia). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.kn a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "kn "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Speed, knots (1 kn = 1852/3600) m/s."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.l a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "l "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volume in litres, litre = dm3 = m3/1000."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.lPerh a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "lPerh "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volumetric flow rate, litres per hour."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.lPerl a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "lPerl "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Concentration, The ratio of the volume of a solute divided by the volume of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µL/L’."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.lPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "lPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volumetric flow rate in litres per second."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.lm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "lm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Luminous flux in lumens (cd·sr)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.lx a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "lx "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Illuminance in lux (lm/m²)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Length in metres."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Area in square metres (m²)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m2Pers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m2Pers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Viscosity in square metres / second (m²/s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m3 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m3 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volume in cubic metres (m³)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m3Compensated a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m3Compensated "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volume, cubic metres, with the value compensated for weather effects."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m3Perh a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m3Perh "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volumetric flow rate, cubic metres per hour."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m3Perkg a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m3Perkg "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Specific volume, cubic metres per kilogram, v."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m3Pers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m3Pers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volumetric flow rate in cubic metres per second (m³/s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.m3Uncompensated a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "m3Uncompensated "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Volume, cubic metres, with the value uncompensated for weather effects."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.mPerm3 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "mPerm3 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Fuel efficiency in metres per cubic metres (m/m³)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.mPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "mPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Velocity in metres per second (m/s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.mPers2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "mPers2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Acceleration in metres per second squared (m/s²)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.min a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "min "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Time in minutes, minute  = 60 s."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.mmHg a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "mmHg "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.mol a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "mol "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Amount of substance in moles."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.molPerkg a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "molPerkg "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.molPerm3 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "molPerm3 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in m³."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.molPermol a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "molPermol "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.none a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "none "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Dimension less quantity, e.g. count, per unit, etc."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.ohm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "ohm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Electric resistance in ohms (V/A)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.ohmPerm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "ohmPerm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Electric resistance per length in ohms per metre ((V/A)/m)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.ohmm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "ohmm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Resistivity, ohm metres, (rho)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.onePerHz a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "onePerHz "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Reciprocal of frequency (1/Hz)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.onePerm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "onePerm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Wavenumber, reciprocal metres,  (1/m)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.ppm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "ppm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Concentration in parts per million."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.rad a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "rad "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Plane angle in radians (m/m)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.radPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "radPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Angular velocity in radians per second (rad/s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.radPers2 a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "radPers2 "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Angular acceleration, radians per second squared."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.rev a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "rev "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Amount of rotation, revolutions."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.rotPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "rotPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Rotations per second (1/s). See also Hz (1/s)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.s a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "s "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Time in seconds."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.sPers a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "sPers "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&#181;’ to show rates such as ‘&#181;s/s’."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.sr a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "sr "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Solid angle in steradians (m2/m2)."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.therm a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "therm "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Energy, therms."@en ;
+  sv:isenum "True" .
+
+cim:UnitSymbol.tonne a owl:NamedIndividual, owl:Thing ;
+  rdfs:label "tonne "@en ;
+  rdfs:domain cim:UnitSymbol ;
+  skos:definition "Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg)."@en ;
+  sv:isenum "True" .
+
+sv:Package_StateVariablesProfile a sv:Package ;
+  rdfs:comment """
+A state variables dataset which conforms to the IEC 61970-456 state variables profile contains all objects required to complete the specification of a steady-state solution. 
+A state variables dataset is always exchanged in full. 
+A state variables dataset of an assembled model contains state variables related objects for all model authority sets being part of the assembled model.
+\t"""@en .
+
+

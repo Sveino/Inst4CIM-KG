@@ -1,0 +1,470 @@
+@prefix cim    : <https://cim.ucaiug.io/ns#> .
+@prefix nc     : <https://cim4.eu/ns/nc#> .
+@prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
+@prefix psp    : <https://ap-voc.cim4.eu/PowerSystemProject#> .
+@prefix dcat   : <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/#> .
+@prefix owl    : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf    : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs   : <http://www.w3.org/2000/01/rdf-schema#> .
+
+cim:Date a rdfs:Class ;
+  rdfs:label "Date"@en ;
+  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "Primitive" .
+
+cim:DateTime a rdfs:Class ;
+  rdfs:label "DateTime"@en ;
+  rdfs:comment "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Integer a rdfs:Class ;
+  rdfs:label "Integer"@en ;
+  rdfs:comment "An integer number. The range is unspecified and not limited." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "Primitive" .
+
+cim:String a rdfs:Class ;
+  rdfs:label "String"@en ;
+  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "Primitive" .
+
+dcat:Resource a rdfs:Class ;
+  rdfs:label "Resource"@en ;
+  rdfs:comment "Resource published or curated by a single agent." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "dcat" .
+
+nc:AvailabilitySchedule a rdfs:Class ;
+  rdfs:label "AvailabilitySchedule"@en ;
+  rdfs:comment "A given (un)availability schedule with a given status and cause that include multiple equipment that need to follow the same scheduling periods." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "NC" .
+
+nc:DifferenceModel a rdfs:Class ;
+  rdfs:label "DifferenceModel"@en ;
+  rdfs:comment "A set of statements describing the changes in the network model. The statement is defined in the difference model. " ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf dcat:Resource .
+
+nc:PowerSystemProject a rdfs:Class ;
+  rdfs:label "PowerSystemProject"@en ;
+  rdfs:comment "Knowledge data for the power system project that describe the status and the planned implementation of the changes into the as-built model." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf dcat:Resource .
+
+nc:PowerSystemProjectGroup a rdfs:Class ;
+  rdfs:label "PowerSystemProjectGroup"@en ;
+  rdfs:comment "A container with project that are grouped together. Primarily used for navigation and to highlight the phases that an overall project can go though." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+profcim:IRI a rdfs:Class ;
+  rdfs:label "IRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as rdf:resource in RDFXML.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:StringFixedLanguage a rdfs:Class ;
+  rdfs:label "StringFixedLanguage"@en ;
+  rdfs:comment """A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.""" ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:StringIRI a rdfs:Class ;
+  rdfs:label "StringIRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:URL a rdfs:Class ;
+  rdfs:label "URL"@en ;
+  rdfs:comment "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications." ;
+  cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+psp:Ontology a owl:Ontology ;
+  dcat:keyword "PSP" ;
+  dcat:theme "vocabulary"@en ;
+  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dcterms:creator "ENTSO-E CIM WG NC project "@en ;
+  dcterms:description "This vocabulary is describing the power system profile."@en ;
+  dcterms:identifier "urn:uuid:29bfa45c-7d04-42f1-97c1-2e0f70f476a0" ;
+  dcterms:language "en-GB" ;
+  dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:publisher "ENTSO-E"@en ;
+  dcterms:rightsHolder "ENTSO-E"@en ;
+  dcterms:title "Power System Project Vocabulary"@en ;
+  owl:versionIRI <https://ap-voc.cim4.eu/PowerSystemProject/2.3> ;
+  owl:versionInfo "2.3.1"@en .
+
+dcat:Resource.hasVersion a rdf:Property ;
+  rdfs:label "hasVersion"@en ;
+  rdfs:comment "This resource has a more specific, versioned resource." ;
+  cims:dataType profcim:IRI ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcat", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcat:Resource.isVersionOf a rdf:Property ;
+  rdfs:label "isVersionOf"@en ;
+  rdfs:comment """A related resource of which the described resource is a version, edition, or adaptation.
+Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of hasVersion.""" ;
+  cims:dataType profcim:IRI ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "dcat", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcat:Resource.keyword a rdf:Property ;
+  rdfs:label "keyword"@en ;
+  rdfs:comment "A keyword or tag describing a resource." ;
+  cims:dataType profcim:StringFixedLanguage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcat", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcat:Resource.version a rdf:Property ;
+  rdfs:label "version"@en ;
+  rdfs:comment "The version indicator (name or identifier) of a resource." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcat", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcat:Resource.versionNotes a rdf:Property ;
+  rdfs:label "versionNotes"@en ;
+  rdfs:comment "A description of changes between this version and the previous version of the resource." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "adms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:PowerSystemProjectGroup.description a rdf:Property ;
+  rdfs:label "description"@en ;
+  rdfs:comment """A free-text account of the resource.
+Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProjectGroup .
+
+dcterms:PowerSystemProjectGroup.identifier a rdf:Property ;
+  rdfs:label "identifier"@en ;
+  rdfs:comment """A unique identifier of the resource being described or cataloged.
+The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
+The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.""" ;
+  cims:dataType profcim:StringIRI ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProjectGroup .
+
+dcterms:PowerSystemProjectGroup.title a rdf:Property ;
+  rdfs:label "title"@en ;
+  rdfs:comment "A name given to the resource." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProjectGroup .
+
+dcterms:Resource.accessRights a rdf:Property ;
+  rdfs:label "accessRights"@en ;
+  rdfs:comment """Information about who access the resource or an indication of its security status.
+Access Rights may include information regarding access or restrictions based on privacy, security, or other policies.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.conformsTo a rdf:Property ;
+  rdfs:label "conformsTo"@en ;
+  rdfs:comment "An established standard to which the described resource conforms." ;
+  cims:dataType profcim:StringIRI ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.creator a rdf:Property ;
+  rdfs:label "creator"@en ;
+  rdfs:comment """An entity responsible for making the resource.
+Recommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.description a rdf:Property ;
+  rdfs:label "description"@en ;
+  rdfs:comment """A free-text account of the resource.
+Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.identifier a rdf:Property ;
+  rdfs:label "identifier"@en ;
+  rdfs:comment """A unique identifier of the resource being described or cataloged.
+The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
+The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.""" ;
+  cims:dataType profcim:StringIRI ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.issued a rdf:Property ;
+  rdfs:label "issued"@en ;
+  rdfs:comment """Date of formal issuance of the resource.
+Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.""" ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.license a rdf:Property ;
+  rdfs:label "license"@en ;
+  rdfs:comment """A legal document under which the resource is made available.
+Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.modified a rdf:Property ;
+  rdfs:label "modified"@en ;
+  rdfs:comment """Most recent date on which the item was changed, updated or modified.
+Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.""" ;
+  cims:dataType cim:Date ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.publisher a rdf:Property ;
+  rdfs:label "publisher"@en ;
+  rdfs:comment "An entity responsible for making the resource available." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.rights a rdf:Property ;
+  rdfs:label "rights"@en ;
+  rdfs:comment "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.rightsHolder a rdf:Property ;
+  rdfs:label "rightsHolder"@en ;
+  rdfs:comment """Information about rights held in and over the resource.
+Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+dcterms:Resource.title a rdf:Property ;
+  rdfs:label "title"@en ;
+  rdfs:comment "A name given to the resource." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain dcat:Resource .
+
+nc:AvailabilitySchedule.PowerSystemProject a rdf:Property ;
+  rdfs:label "PowerSystemProject"@en ;
+  rdfs:comment "The power system project that has this availability schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerSystemProject.AvailabilitySchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:AvailabilitySchedule ;
+  rdfs:range nc:PowerSystemProject .
+
+nc:DifferenceModel.PowerSystemProject a rdf:Property ;
+  rdfs:label "PowerSystemProject"@en ;
+  rdfs:comment "The power system project that is described by this difference model." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerSystemProject.DifferenceModel ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:DifferenceModel ;
+  rdfs:range nc:PowerSystemProject .
+
+nc:PowerSystemProject.AlternativeProject a rdf:Property ;
+  rdfs:label "AlternativeProject"@en ;
+  rdfs:comment "Alternative project. Only one of the projects will be commissioned." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerSystemProject.PriorityProject ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:PowerSystemProject .
+
+nc:PowerSystemProject.AvailabilitySchedule a rdf:Property ;
+  rdfs:label "AvailabilitySchedule"@en ;
+  rdfs:comment "The availability schedule associated with this power system project." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:AvailabilitySchedule.PowerSystemProject ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:AvailabilitySchedule .
+
+nc:PowerSystemProject.DependentOnProject a rdf:Property ;
+  rdfs:label "DependentOnProject"@en ;
+  rdfs:comment "Grouping of projects that are depending on each other. A project can only be linked to one dependent project." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:PowerSystemProject.Project ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:PowerSystemProject .
+
+nc:PowerSystemProject.DifferenceModel a rdf:Property ;
+  rdfs:label "DifferenceModel"@en ;
+  rdfs:comment "The difference model describing this power system project." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:DifferenceModel.PowerSystemProject ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:DifferenceModel .
+
+nc:PowerSystemProject.PriorityProject a rdf:Property ;
+  rdfs:label "PriorityProject"@en ;
+  rdfs:comment "The project that has an alternative project." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:PowerSystemProject.AlternativeProject ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:PowerSystemProject .
+
+nc:PowerSystemProject.Project a rdf:Property ;
+  rdfs:label "Project"@en ;
+  rdfs:comment "The project that has a dependent on project." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerSystemProject.DependentOnProject ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:PowerSystemProject .
+
+nc:PowerSystemProject.ProjectGroup a rdf:Property ;
+  rdfs:label "ProjectGroup"@en ;
+  rdfs:comment "Power system project group to which this project belongs." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:PowerSystemProjectGroup.Project ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:PowerSystemProjectGroup .
+
+nc:PowerSystemProject.ShadowProject a rdf:Property ;
+  rdfs:label "ShadowProject"@en ;
+  rdfs:comment "A shadowing project that includes the same change set, but different timeline." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:PowerSystemProject.SilhouetteProject ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:PowerSystemProject .
+
+nc:PowerSystemProject.SilhouetteProject a rdf:Property ;
+  rdfs:label "SilhouetteProject"@en ;
+  rdfs:comment "The project that has a shadow project." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerSystemProject.ShadowProject ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProject ;
+  rdfs:range nc:PowerSystemProject .
+
+nc:PowerSystemProject.cancelled a rdf:Property ;
+  rdfs:label "cancelled"@en ;
+  rdfs:comment "From this date the project is in cancelled state. No further development will be done to the project or associated change set in this state." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProject .
+
+nc:PowerSystemProject.commissioned a rdf:Property ;
+  rdfs:label "commissioned"@en ;
+  rdfs:comment "From this date the project is in commissioned state. Any conducting equipment in the change set can be energized from this day. No further changes will be done to the change set." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProject .
+
+nc:PowerSystemProject.committed a rdf:Property ;
+  rdfs:label "committed"@en ;
+  rdfs:comment "From this date the project is in committed state. The change set will from this day be part of the as-build model." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProject .
+
+nc:PowerSystemProject.inBuild a rdf:Property ;
+  rdfs:label "inBuild"@en ;
+  rdfs:comment "From this day the project is in build state. Alternative project have been evaluated. Any procurement has started and the change set is being updated to an as-build model." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProject .
+
+nc:PowerSystemProject.inPlan a rdf:Property ;
+  rdfs:label "inPlan"@en ;
+  rdfs:comment "From this date the project is in planning state. Study or procurement strategy has triggered the start of a project involving changes to one or more models. Alternative projects and change sets are evaluated.  " ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProject .
+
+nc:PowerSystemProject.officialExpectedCommissioning a rdf:Property ;
+  rdfs:label "officialExpectedCommissioning"@en ;
+  rdfs:comment "Published official commissioning date." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProject .
+
+nc:PowerSystemProject.priority a rdf:Property ;
+  rdfs:label "priority"@en ;
+  rdfs:comment "Priority between competing project. Use 0 for do not care. Use 1 for highest priority. Use 2 as priority is less than 1 and so on." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerSystemProject .
+
+nc:PowerSystemProjectGroup.Project a rdf:Property ;
+  rdfs:label "Project"@en ;
+  rdfs:comment "The project included in the power system project group." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerSystemProject.ProjectGroup ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSystemProjectGroup ;
+  rdfs:range nc:PowerSystemProject .
+
+psp:Package_PowerSystemProjectProfile a cims:ClassCategory ;
+  rdfs:label "PowerSystemProjectProfile"@en ;
+  rdfs:comment "This package contains power system project profile." .
+
+

@@ -1,0 +1,2247 @@
+@prefix cim    : <https://cim.ucaiug.io/ns#> .
+@prefix nc     : <https://cim4.eu/ns/nc#> .
+@prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
+@prefix ras    : <https://ap-voc.cim4.eu/RemedialActionSchedule#> .
+@prefix dcat   : <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/#> .
+@prefix owl    : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf    : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs   : <http://www.w3.org/2000/01/rdf-schema#> .
+
+cim:ActivePower a rdfs:Class ;
+  rdfs:label "ActivePower"@en ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:Boolean a rdfs:Class ;
+  rdfs:label "Boolean"@en ;
+  rdfs:comment "A type with the value space \"true\" and \"false\"." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Contingency a rdfs:Class ;
+  rdfs:label "Contingency"@en ;
+  rdfs:comment "An event threatening system reliability, consisting of one or more contingency elements." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile .
+
+cim:Currency a rdfs:Class ;
+  rdfs:label "Currency"@en ;
+  rdfs:comment "Monetary currencies.  ISO 4217 standard including 3-character currency code." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:Date a rdfs:Class ;
+  rdfs:label "Date"@en ;
+  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
+  cims:belongsToCategory ras:Package_DocRemedialActionScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:DateTime a rdfs:Class ;
+  rdfs:label "DateTime"@en ;
+  rdfs:comment "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Decimal a rdfs:Class ;
+  rdfs:label "Decimal"@en ;
+  rdfs:comment "Decimal is the base-10 notational system for representing real numbers." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Duration a rdfs:Class ;
+  rdfs:label "Duration"@en ;
+  rdfs:comment "Duration as \"PnYnMnDTnHnMnS\" which conforms to ISO 8601, where nY expresses a number of years, nM a number of months, nD a number of days. The letter T separates the date expression from the time expression and, after it, nH identifies a number of hours, nM a number of minutes and nS a number of seconds. The number of seconds could be expressed as a decimal number, but all other numbers are integers." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Float a rdfs:Class ;
+  rdfs:label "Float"@en ;
+  rdfs:comment "A floating point number. The range is unspecified and not limited." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:IdentifiedObject a rdfs:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile .
+
+cim:Integer a rdfs:Class ;
+  rdfs:label "Integer"@en ;
+  rdfs:comment "An integer number. The range is unspecified and not limited." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:ReactivePower a rdfs:Class ;
+  rdfs:label "ReactivePower"@en ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:RealEnergy a rdfs:Class ;
+  rdfs:label "RealEnergy"@en ;
+  rdfs:comment "Real electrical energy." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:Seconds a rdfs:Class ;
+  rdfs:label "Seconds"@en ;
+  rdfs:comment "Time, in seconds." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:String a rdfs:Class ;
+  rdfs:label "String"@en ;
+  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Primitive" .
+
+cim:UnitMultiplier a rdfs:Class ;
+  rdfs:label "UnitMultiplier"@en ;
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:UnitSymbol a rdfs:Class ;
+  rdfs:label "UnitSymbol"@en ;
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.""" ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:AvailabilityRemedialAction a rdfs:Class ;
+  rdfs:label "AvailabilityRemedialAction"@en ;
+  rdfs:comment "Availability remedial action is a remedial action that cancels or reschedules an availability schedule." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf nc:RemedialAction .
+
+nc:AvailabilitySchedule a rdfs:Class ;
+  rdfs:label "AvailabilitySchedule"@en ;
+  rdfs:comment "A given (un)availability schedule with a given status and cause that include multiple equipment that need to follow the same scheduling periods." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Description", "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:BaseIrregularTimeSeries a rdfs:Class ;
+  rdfs:label "BaseIrregularTimeSeries"@en ;
+  rdfs:comment "Time series that has irregular points in time." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf nc:BaseTimeSeries .
+
+nc:BaseTimeSeries a rdfs:Class ;
+  rdfs:label "BaseTimeSeries"@en ;
+  rdfs:comment "Time series of values at points in time." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:CostSettledKind a rdfs:Class ;
+  rdfs:label "CostSettledKind"@en ;
+  rdfs:comment "Kind describing how settled the cost is in regards to changes." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:CountertradeScheduleAction a rdfs:Class ;
+  rdfs:label "CountertradeScheduleAction"@en ;
+  rdfs:comment "Countertrade schedule action is an action to rearrange power schedules based on a Generation and Load Shift Key (GLSK) strategy." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:PowerScheduleAction .
+
+nc:EventSchedule a rdfs:Class ;
+  rdfs:label "EventSchedule"@en ;
+  rdfs:comment "Time series represent irregular event described by event points in time." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:EventTimePoint a rdfs:Class ;
+  rdfs:label "EventTimePoint"@en ;
+  rdfs:comment "Event valid for a given point in time." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:GenericValueSchedule a rdfs:Class ;
+  rdfs:label "GenericValueSchedule"@en ;
+  rdfs:comment "Time series represent irregular generic value at given points in time. The type of value is given by the reference association.  " ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:GenericValueTimePoint a rdfs:Class ;
+  rdfs:label "GenericValueTimePoint"@en ;
+  rdfs:comment "Generic value for a given point in time." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:GridStateAlteration a rdfs:Class ;
+  rdfs:label "GridStateAlteration"@en ;
+  rdfs:comment "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:GridStateIntensitySchedule a rdfs:Class ;
+  rdfs:label "GridStateIntensitySchedule"@en ;
+  rdfs:comment "Defines the intensity applied for a given grid state alteration. It is primarily used in exchanges related to the remedial action schedule. The value provided by the schedule replaces the value of the attribute to which the schedule refers to." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:GenericValueSchedule .
+
+nc:PowerBidSchedule a rdfs:Class ;
+  rdfs:label "PowerBidSchedule"@en ;
+  rdfs:comment "Power bid or offer related to a redispatch or countertrading measures. In the case of market place for economic efficiency of the bids and offers, this is equivalent to BidTimeSeries class in 62325 package." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:PowerSchedule a rdfs:Class ;
+  rdfs:label "PowerSchedule"@en ;
+  rdfs:comment "Time series represent irregular power, active and reactive, values at given points in time." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:PowerScheduleAction a rdfs:Class ;
+  rdfs:label "PowerScheduleAction"@en ;
+  rdfs:comment "Power schedule action is an action to rearrange power schedules." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:PowerTimePoint a rdfs:Class ;
+  rdfs:label "PowerTimePoint"@en ;
+  rdfs:comment "Power, active and reactive, value at a given point in time." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:ProposingRemedialActionScheduleShare a rdfs:Class ;
+  rdfs:label "ProposingRemedialActionScheduleShare"@en ;
+  rdfs:comment "Proposing entity (System Operator) with a proper cost share for a given remedial action schedule." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:RedispatchScheduleAction a rdfs:Class ;
+  rdfs:label "RedispatchScheduleAction"@en ;
+  rdfs:comment "Redispatch schedule action is an action to rearrange power schedules for a scheduled resource to obtain a feasible and secure operational state of the power electricity system." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:PowerScheduleAction .
+
+nc:Region a rdfs:Class ;
+  rdfs:label "Region"@en ;
+  rdfs:comment "A region where the system operator belongs to." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:RemedialAction a rdfs:Class ;
+  rdfs:label "RemedialAction"@en ;
+  rdfs:comment "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly. " ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:RemedialActionCost a rdfs:Class ;
+  rdfs:label "RemedialActionCost"@en ;
+  rdfs:comment "Remedial action cost is the total cost itemised cost by category and type for the remedial action." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:RemedialActionSchedule a rdfs:Class ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "A schedule for a determined remedial action." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:RemedialActionScheduleAcceptance a rdfs:Class ;
+  rdfs:label "RemedialActionScheduleAcceptance"@en ;
+  rdfs:comment "It identifies if the remedial action schedule is accepted for a given system operator." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:RemedialActionScheduleAcceptanceKind a rdfs:Class ;
+  rdfs:label "RemedialActionScheduleAcceptanceKind"@en ;
+  rdfs:comment "The kind of acceptance for a remedial action schedule." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:RemedialActionScheduleDependency a rdfs:Class ;
+  rdfs:label "RemedialActionScheduleDependency"@en ;
+  rdfs:comment "Remedial action schedule dependency is making two remedial action schedules depending on each other. " ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:RemedialActionScheduleDependencyKind a rdfs:Class ;
+  rdfs:label "RemedialActionScheduleDependencyKind"@en ;
+  rdfs:comment "Kind of dependency between remedial action schedules." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:RemedialActionScheduleGroup a rdfs:Class ;
+  rdfs:label "RemedialActionScheduleGroup"@en ;
+  rdfs:comment "Remedial action schedule group collects two or more remedial action schedules together. The remedial action schedule group needs to be set up for the same remedial action or proposing alternative remedial action by including a reference to another remedial action." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:RemedialActionScheduleStatusKind a rdfs:Class ;
+  rdfs:label "RemedialActionScheduleStatusKind"@en ;
+  rdfs:comment "Remedial action schedule status kinds." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:RemedialActionSchemeSchedule a rdfs:Class ;
+  rdfs:label "RemedialActionSchemeSchedule"@en ;
+  rdfs:comment "The schedule for a remedial action scheme." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Description", "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:ScheduleResource a rdfs:Class ;
+  rdfs:label "ScheduleResource"@en ;
+  rdfs:comment "A schedule resource is a market-based method for handling participation of small units, particularly located on the lower voltage level that is controlled by a Distributed System Operator (DSO). It is a collection of units that can operate in the market by providing bids, offers and a resulting committed operational schedule for the collection." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:SchemeRemedialAction a rdfs:Class ;
+  rdfs:label "SchemeRemedialAction"@en ;
+  rdfs:comment "Scheme remedial action is remedial action that involves a scheme that can include conditional logic and stages of grid alteration. The primary remedial action is the arming of these schemes, that will then perform curative remedial action when the condition is met. System Integrity Protection Scheme (SIPS) and Special Protection Scheme (SPS) are example of this. " ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "Description", "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:RemedialAction .
+
+nc:SecurityCoordinator a rdfs:Class ;
+  rdfs:label "SecurityCoordinator"@en ;
+  rdfs:comment "A role that coordinates the relevant remedial actions and their optimisation to ensure efficient use to achieve required operational security of the power system." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:SystemOperator a rdfs:Class ;
+  rdfs:label "SystemOperator"@en ;
+  rdfs:comment "System operator." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:TimeSeriesInterpolationKind a rdfs:Class ;
+  rdfs:label "TimeSeriesInterpolationKind"@en ;
+  rdfs:comment "Kinds of interpolation of values between two time point. " ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+nc:ValueOffsetKind a rdfs:Class ;
+  rdfs:label "ValueOffsetKind"@en ;
+  rdfs:comment "The kind of the value offset." ;
+  cims:belongsToCategory ras:Package_RemedialActionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+profcim:IRI a rdfs:Class ;
+  rdfs:label "IRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as rdf:resource in RDFXML.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory ras:Package_DocRemedialActionScheduleProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:StringFixedLanguage a rdfs:Class ;
+  rdfs:label "StringFixedLanguage"@en ;
+  rdfs:comment """A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.""" ;
+  cims:belongsToCategory ras:Package_DocRemedialActionScheduleProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:StringIRI a rdfs:Class ;
+  rdfs:label "StringIRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory ras:Package_DocRemedialActionScheduleProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:URL a rdfs:Class ;
+  rdfs:label "URL"@en ;
+  rdfs:comment "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications." ;
+  cims:belongsToCategory ras:Package_DocRemedialActionScheduleProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+ras:Ontology a owl:Ontology ;
+  dcat:keyword "RAS" ;
+  dcat:theme "vocabulary"@en ;
+  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dcterms:creator "ENTSO-E CIM WG NC project "@en ;
+  dcterms:description "This vocabulary is describing the remedial action schedule profile."@en ;
+  dcterms:identifier "urn:uuid:6e90c546-3c6c-471b-8040-e05037081c59" ;
+  dcterms:language "en-GB" ;
+  dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:publisher "ENTSO-E"@en ;
+  dcterms:rightsHolder "ENTSO-E"@en ;
+  dcterms:title "Remedial Action Schedule Vocabulary"@en ;
+  owl:priorVersion <http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2> ;
+  owl:versionIRI <https://ap-voc.cim4.eu/RemedialActionSchedule/2.3> ;
+  owl:versionInfo "2.3.1"@en .
+
+cim:ActivePower.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "M" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:ActivePower.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "W" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range cim:UnitSymbol .
+
+cim:ActivePower.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower .
+
+cim:IdentifiedObject.description a rdf:Property ;
+  rdfs:label "description"@en ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.name a rdf:Property ;
+  rdfs:label "name"@en ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:ReactivePower.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "M" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ReactivePower ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:ReactivePower.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "VAr" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ReactivePower ;
+  rdfs:range cim:UnitSymbol .
+
+cim:ReactivePower.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ReactivePower .
+
+cim:RealEnergy.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "M" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:RealEnergy ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:RealEnergy.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "Wh" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:RealEnergy ;
+  rdfs:range cim:UnitSymbol .
+
+cim:RealEnergy.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:RealEnergy .
+
+cim:Seconds.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Seconds ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Seconds.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "s" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Seconds ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Seconds.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Time, in seconds" ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Seconds .
+
+nc:AvailabilityRemedialAction.AvailabilitySchedule a rdf:Property ;
+  rdfs:label "AvailabilitySchedule"@en ;
+  rdfs:comment "Availability schedule that is part of the remedial action." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:AvailabilitySchedule.RemedialAction ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:AvailabilityRemedialAction ;
+  rdfs:range nc:AvailabilitySchedule .
+
+nc:AvailabilitySchedule.RemedialAction a rdf:Property ;
+  rdfs:label "RemedialAction"@en ;
+  rdfs:comment "Remedial action that is cancelling this availability schedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:AvailabilityRemedialAction.AvailabilitySchedule ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:AvailabilitySchedule ;
+  rdfs:range nc:AvailabilityRemedialAction .
+
+nc:AvailabilitySchedule.isCancelled a rdf:Property ;
+  rdfs:label "isCancelled"@en ;
+  rdfs:comment "Defines the cancelling of the availability schedule. True means that is cancelling, False means that it is not cancelling." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:AvailabilitySchedule .
+
+nc:AvailabilitySchedule.priority a rdf:Property ;
+  rdfs:label "priority"@en ;
+  rdfs:comment "Value 0 means ignore priority. 1 means the highest priority, 2 is the second highest priority." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:AvailabilitySchedule .
+
+nc:BaseTimeSeries.interpolationKind a rdf:Property ;
+  rdfs:label "interpolationKind"@en ;
+  rdfs:comment "Kind of interpolation done between time point." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:BaseTimeSeries ;
+  rdfs:range nc:TimeSeriesInterpolationKind .
+
+nc:Contingency.CurativeRemedialActionSchedule a rdf:Property ;
+  rdfs:label "CurativeRemedialActionSchedule"@en ;
+  rdfs:comment "Curative remedial action schedule linked to this contingency." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.Contingency ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Contingency ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:EventSchedule.EventTimePoint a rdf:Property ;
+  rdfs:label "EventTimePoint"@en ;
+  rdfs:comment "Value for the point in time." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:EventTimePoint.EventSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:EventSchedule ;
+  rdfs:range nc:EventTimePoint .
+
+nc:EventSchedule.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "Remedial action schedule is the event that is validity for the given time series." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.EventSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain nc:EventSchedule ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:EventTimePoint.EventSchedule a rdf:Property ;
+  rdfs:label "EventSchedule"@en ;
+  rdfs:comment "Time series the time point values belongs to." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:EventSchedule.EventTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:EventTimePoint ;
+  rdfs:range nc:EventSchedule .
+
+nc:EventTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EventTimePoint .
+
+nc:EventTimePoint.isActive a rdf:Property ;
+  rdfs:label "isActive"@en ;
+  rdfs:comment "True, if the event is occurring (Active) at this time point. Otherwise false." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:EventTimePoint .
+
+nc:GenericValueSchedule.GenericValueTimePoint a rdf:Property ;
+  rdfs:label "GenericValueTimePoint"@en ;
+  rdfs:comment "Value for the point in time." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:GenericValueTimePoint.GenericValueSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:GenericValueSchedule ;
+  rdfs:range nc:GenericValueTimePoint .
+
+nc:GenericValueSchedule.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "Remedial action schedule which has generic value schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.GenericValueSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:GenericValueSchedule ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:GenericValueTimePoint.GenericValueSchedule a rdf:Property ;
+  rdfs:label "GenericValueSchedule"@en ;
+  rdfs:comment "Time series the time point values belongs to." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:GenericValueSchedule.GenericValueTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:GenericValueTimePoint ;
+  rdfs:range nc:GenericValueSchedule .
+
+nc:GenericValueTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:GenericValueTimePoint .
+
+nc:GenericValueTimePoint.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The value at the time. The meaning of the value is defined by the derived type of the associated schedule. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:GenericValueTimePoint .
+
+nc:GridStateAlteration.GridStateIntensitySchedule a rdf:Property ;
+  rdfs:label "GridStateIntensitySchedule"@en ;
+  rdfs:comment "The intensity associated with a given GridStateAlterationSchedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:GridStateIntensitySchedule.GridStateAlteration ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:GridStateAlteration ;
+  rdfs:range nc:GridStateIntensitySchedule .
+
+nc:GridStateIntensitySchedule.GridStateAlteration a rdf:Property ;
+  rdfs:label "GridStateAlteration"@en ;
+  rdfs:comment "The grid state alteration which has intensity." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:GridStateAlteration.GridStateIntensitySchedule ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:GridStateIntensitySchedule ;
+  rdfs:range nc:GridStateAlteration .
+
+nc:GridStateIntensitySchedule.valueKind a rdf:Property ;
+  rdfs:label "valueKind"@en ;
+  rdfs:comment "The kind of value1 and value2 of the associated IrregularIntervalSchedule." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:GridStateIntensitySchedule ;
+  rdfs:range nc:ValueOffsetKind .
+
+nc:PowerBidSchedule.PowerSchedulelAction a rdf:Property ;
+  rdfs:label "PowerSchedulelAction"@en ;
+  rdfs:comment "The power schedule action pointed by the power bid schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerScheduleAction.PowerBidSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerBidSchedule ;
+  rdfs:range nc:PowerScheduleAction .
+
+nc:PowerSchedule.PowerScheduleAction a rdf:Property ;
+  rdfs:label "PowerScheduleAction"@en ;
+  rdfs:comment "Power schedule action which belongs to the power schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerScheduleAction.PowerSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerSchedule ;
+  rdfs:range nc:PowerScheduleAction .
+
+nc:PowerSchedule.PowerTimePoint a rdf:Property ;
+  rdfs:label "PowerTimePoint"@en ;
+  rdfs:comment "Value for the point in time." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerTimePoint.PowerSchedule ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  rdfs:domain nc:PowerSchedule ;
+  rdfs:range nc:PowerTimePoint .
+
+nc:PowerScheduleAction.PowerBidSchedule a rdf:Property ;
+  rdfs:label "PowerBidSchedule"@en ;
+  rdfs:comment "The power bid schedule which contains the power schedule action." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:PowerBidSchedule.PowerSchedulelAction ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerScheduleAction ;
+  rdfs:range nc:PowerBidSchedule .
+
+nc:PowerScheduleAction.PowerSchedule a rdf:Property ;
+  rdfs:label "PowerSchedule"@en ;
+  rdfs:comment "Power schedule which contains the power schedule action." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:PowerSchedule.PowerScheduleAction ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerScheduleAction ;
+  rdfs:range nc:PowerSchedule .
+
+nc:PowerScheduleAction.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "Remedial action schedule which power schedule actions." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.PowerScheduleAction ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerScheduleAction ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:PowerScheduleAction.currency a rdf:Property ;
+  rdfs:label "currency"@en ;
+  rdfs:comment "Currency the energy price is given in." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerScheduleAction ;
+  rdfs:range cim:Currency .
+
+nc:PowerScheduleAction.energyPrice a rdf:Property ;
+  rdfs:label "energyPrice"@en ;
+  rdfs:comment "Energy price for the power schedule action." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerScheduleAction .
+
+nc:PowerTimePoint.PowerSchedule a rdf:Property ;
+  rdfs:label "PowerSchedule"@en ;
+  rdfs:comment "Time series the time point values belongs to." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:PowerSchedule.PowerTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range nc:PowerSchedule .
+
+nc:PowerTimePoint.activatedP a rdf:Property ;
+  rdfs:label "activatedP"@en ;
+  rdfs:comment "Active power activated as part of redispatch. Negative number means that the value is scheduling down. Positive number means that the value is scheduling up." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerTimePoint .
+
+nc:PowerTimePoint.activatedPrice a rdf:Property ;
+  rdfs:label "activatedPrice"@en ;
+  rdfs:comment "Price for the activated active power per unit e.g. per MW." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerTimePoint .
+
+nc:PowerTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerTimePoint .
+
+nc:PowerTimePoint.p a rdf:Property ;
+  rdfs:label "p"@en ;
+  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerTimePoint .
+
+nc:PowerTimePoint.price a rdf:Property ;
+  rdfs:label "price"@en ;
+  rdfs:comment "Price for the scheduled active power per unit of active power. e.g. per MW." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerTimePoint .
+
+nc:PowerTimePoint.q a rdf:Property ;
+  rdfs:label "q"@en ;
+  rdfs:comment "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cims:dataType cim:ReactivePower ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:PowerTimePoint .
+
+nc:ProposingRemedialActionScheduleShare.ProposingEntity a rdf:Property ;
+  rdfs:label "ProposingEntity"@en ;
+  rdfs:comment "Proposing entity making the proposing remedial action schedule share." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SystemOperator.ProposingRemedialActionScheduleShare ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ProposingRemedialActionScheduleShare ;
+  rdfs:range nc:SystemOperator .
+
+nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "Remedial action schedule proposed by the proposing entity." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.ProposingRemedialActionScheduleShare ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ProposingRemedialActionScheduleShare ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:ProposingRemedialActionScheduleShare.costSharingFactor a rdf:Property ;
+  rdfs:label "costSharingFactor"@en ;
+  rdfs:comment "Sharing factor of the cost of the remedial action as a  fraction of the total cost, i.e. system operator's cost = cost x (costSharingFactor / sum of all costSharingFactor)." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ProposingRemedialActionScheduleShare .
+
+nc:ProposingRemedialActionScheduleShare.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:ProposingRemedialActionScheduleShare .
+
+nc:RedispatchScheduleAction.ScheduleResource a rdf:Property ;
+  rdfs:label "ScheduleResource"@en ;
+  rdfs:comment "The schedule resource that has this redispatch action." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:ScheduleResource.RedispatchAction ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RedispatchScheduleAction ;
+  rdfs:range nc:ScheduleResource .
+
+nc:Region.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "The remedial action schedule relevant for this region." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.AssignedRegion ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:Region ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:RemedialAction.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "The remedial action schedule associated with a remedial action, i.e. the assigning a schedule to a remedial action." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.RemedialAction ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialAction ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:RemedialActionCost.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "Remedial action schedule for which this remedial action cost relates to." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.RemedialActionCost ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionCost ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:RemedialActionCost.costAllocationTime a rdf:Property ;
+  rdfs:label "costAllocationTime"@en ;
+  rdfs:comment "Cost allocation time is the time the cost shall be allocated." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionCost.kind a rdf:Property ;
+  rdfs:label "kind"@en ;
+  rdfs:comment "Remedial action cost category related to the confirmation of the cost in regards to changes." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost ;
+  rdfs:range nc:CostSettledKind .
+
+nc:RemedialActionCost.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionCost.operationalCost a rdf:Property ;
+  rdfs:label "operationalCost"@en ;
+  rdfs:comment "Operational cost is the total cost directly related to operate the unit according to the remedial action, e.g. fuel cost." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionCost.opportunityCost a rdf:Property ;
+  rdfs:label "opportunityCost"@en ;
+  rdfs:comment "Opportunity cost is the total cost of potential earning that is missed due to performing the remedial action." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionCost.otherCost a rdf:Property ;
+  rdfs:label "otherCost"@en ;
+  rdfs:comment "Other cost is the total cost that cannot be directly allocated to any of the other items." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionCost.processingFee a rdf:Property ;
+  rdfs:label "processingFee"@en ;
+  rdfs:comment "Processing fee is the total cost for processing the remedial action." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionCost.savedFuelCost a rdf:Property ;
+  rdfs:label "savedFuelCost"@en ;
+  rdfs:comment "Saved fuel cost is the total saving due to not consuming the expected fuel as part of the remedial action." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionCost.shutdownCost a rdf:Property ;
+  rdfs:label "shutdownCost"@en ;
+  rdfs:comment "Shutdown cost is the total cost for shutting down a unit as part of the remedial action." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionCost.startupCost a rdf:Property ;
+  rdfs:label "startupCost"@en ;
+  rdfs:comment "Start-up cost is the total cost for activating the remedial action, e.g. if a generator needs to be started before it can perform the remedial action." ;
+  cims:dataType cim:Decimal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionCost .
+
+nc:RemedialActionSchedule.AssignedRegion a rdf:Property ;
+  rdfs:label "AssignedRegion"@en ;
+  rdfs:comment "The assigned region for this remedial action schedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Region.RemedialActionSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:Region .
+
+nc:RemedialActionSchedule.Contingency a rdf:Property ;
+  rdfs:label "Contingency"@en ;
+  rdfs:comment "The contingency for a curative remedial action schedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Contingency.CurativeRemedialActionSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range cim:Contingency .
+
+nc:RemedialActionSchedule.EventSchedule a rdf:Property ;
+  rdfs:label "EventSchedule"@en ;
+  rdfs:comment "Event schedule that describes the validity of the remedial action schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:EventSchedule.RemedialActionSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:EventSchedule .
+
+nc:RemedialActionSchedule.GenericValueSchedule a rdf:Property ;
+  rdfs:label "GenericValueSchedule"@en ;
+  rdfs:comment "Generic value schedule which belongs to a remedial action schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:GenericValueSchedule.RemedialActionSchedule ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:GenericValueSchedule .
+
+nc:RemedialActionSchedule.PowerScheduleAction a rdf:Property ;
+  rdfs:label "PowerScheduleAction"@en ;
+  rdfs:comment "Power schedule action which belongs to a remedial action schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:PowerScheduleAction.RemedialActionSchedule ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:PowerScheduleAction .
+
+nc:RemedialActionSchedule.ProposedDependency a rdf:Property ;
+  rdfs:label "ProposedDependency"@en ;
+  rdfs:comment "Dependency for the proposed remedial action schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:RemedialActionScheduleDependency .
+
+nc:RemedialActionSchedule.ProposingEntity a rdf:Property ;
+  rdfs:label "ProposingEntity"@en ;
+  rdfs:comment "The security coordinator that is proposing this remedial action schedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SecurityCoordinator.RemedialActionSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:SecurityCoordinator .
+
+nc:RemedialActionSchedule.ProposingRemedialActionScheduleShare a rdf:Property ;
+  rdfs:label "ProposingRemedialActionScheduleShare"@en ;
+  rdfs:comment "The entity with its associated share that are making the proposal of the remedial action schedule" ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:ProposingRemedialActionScheduleShare .
+
+nc:RemedialActionSchedule.RemedialAction a rdf:Property ;
+  rdfs:label "RemedialAction"@en ;
+  rdfs:comment "The remedial action that has a remedial action schedule associated." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialAction.RemedialActionSchedule ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:RemedialAction .
+
+nc:RemedialActionSchedule.RemedialActionCost a rdf:Property ;
+  rdfs:label "RemedialActionCost"@en ;
+  rdfs:comment "Remedial action cost related to this remedial schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionCost.RemedialActionSchedule ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:RemedialActionCost .
+
+nc:RemedialActionSchedule.RemedialActionScheduleAcceptance a rdf:Property ;
+  rdfs:label "RemedialActionScheduleAcceptance"@en ;
+  rdfs:comment "The remedial action schedule acceptance related to a remedial action schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionScheduleAcceptance.RemedialActionSchedule ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:RemedialActionScheduleAcceptance .
+
+nc:RemedialActionSchedule.ReplacedDependency a rdf:Property ;
+  rdfs:label "ReplacedDependency"@en ;
+  rdfs:comment "Replaced dependency for this remedial action schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:RemedialActionScheduleDependency .
+
+nc:RemedialActionSchedule.statusKind a rdf:Property ;
+  rdfs:label "statusKind"@en ;
+  rdfs:comment "Indicates the status kind for the remedial action schedule." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range nc:RemedialActionScheduleStatusKind .
+
+nc:RemedialActionSchedule.statusReason a rdf:Property ;
+  rdfs:label "statusReason"@en ;
+  rdfs:comment "Description of reasoning for the status. For instance, in case of rejected remedial action, the reason for this rejection is described here." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionSchedule .
+
+nc:RemedialActionSchedule.totalCostCurrency a rdf:Property ;
+  rdfs:label "totalCostCurrency"@en ;
+  rdfs:comment "The currency of the total cost." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionSchedule ;
+  rdfs:range cim:Currency .
+
+nc:RemedialActionScheduleAcceptance.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "A remedial action schedule for which a remedial action schedule acceptance is reported." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.RemedialActionScheduleAcceptance ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionScheduleAcceptance ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:RemedialActionScheduleAcceptance.SystemOperator a rdf:Property ;
+  rdfs:label "SystemOperator"@en ;
+  rdfs:comment "A system operator for which a remedial action schedule acceptances are reported." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SystemOperator.RemedialActionScheduleAcceptance ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionScheduleAcceptance ;
+  rdfs:range nc:SystemOperator .
+
+nc:RemedialActionScheduleAcceptance.kind a rdf:Property ;
+  rdfs:label "kind"@en ;
+  rdfs:comment "The kind of the remedial action acceptance." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionScheduleAcceptance ;
+  rdfs:range nc:RemedialActionScheduleAcceptanceKind .
+
+nc:RemedialActionScheduleAcceptance.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionScheduleAcceptance .
+
+nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule a rdf:Property ;
+  rdfs:label "ProposedRemedialActionSchedule"@en ;
+  rdfs:comment "Proposed remedial action schedule that has dependency." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.ProposedDependency ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionScheduleDependency ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup a rdf:Property ;
+  rdfs:label "RemedialActionScheduleGroup"@en ;
+  rdfs:comment "Remedial action schedule group which has remedial action schedule dependency." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionScheduleGroup.GroupDependency ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionScheduleDependency ;
+  rdfs:range nc:RemedialActionScheduleGroup .
+
+nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule a rdf:Property ;
+  rdfs:label "ReplacedRemedialActionSchedule"@en ;
+  rdfs:comment "Remedial action schedule that is replaced by dependent remedial action schedule." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.ReplacedDependency ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionScheduleDependency ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:RemedialActionScheduleDependency.kind a rdf:Property ;
+  rdfs:label "kind"@en ;
+  rdfs:comment "Type of dependency between two remedial action schedules." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionScheduleDependency ;
+  rdfs:range nc:RemedialActionScheduleDependencyKind .
+
+nc:RemedialActionScheduleDependency.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionScheduleDependency .
+
+nc:RemedialActionScheduleGroup.GroupDependency a rdf:Property ;
+  rdfs:label "GroupDependency"@en ;
+  rdfs:comment "Group dependency for this remedial action schedule group." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionScheduleGroup ;
+  rdfs:range nc:RemedialActionScheduleDependency .
+
+nc:RemedialActionSchemeSchedule.SchemeRemedialAction a rdf:Property ;
+  rdfs:label "SchemeRemedialAction"@en ;
+  rdfs:comment "Remedial action scheme which has remedial action scheme schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SchemeRemedialAction.RemedialActionSchemeSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionSchemeSchedule ;
+  rdfs:range nc:SchemeRemedialAction .
+
+nc:ScheduleResource.RedispatchAction a rdf:Property ;
+  rdfs:label "RedispatchAction"@en ;
+  rdfs:comment "The redispatch action that relates to this schedule resource." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RedispatchScheduleAction.ScheduleResource ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:ScheduleResource ;
+  rdfs:range nc:RedispatchScheduleAction .
+
+nc:SchemeRemedialAction.RemedialActionSchemeSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchemeSchedule"@en ;
+  rdfs:comment "Remedial action scheme schedule associated with a remedial action scheme." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionSchemeSchedule.SchemeRemedialAction ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SchemeRemedialAction ;
+  rdfs:range nc:RemedialActionSchemeSchedule .
+
+nc:SecurityCoordinator.RemedialActionSchedule a rdf:Property ;
+  rdfs:label "RemedialActionSchedule"@en ;
+  rdfs:comment "Remedial action schedule for this security coordinator." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionSchedule.ProposingEntity ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SecurityCoordinator ;
+  rdfs:range nc:RemedialActionSchedule .
+
+nc:SystemOperator.ProposingRemedialActionScheduleShare a rdf:Property ;
+  rdfs:label "ProposingRemedialActionScheduleShare"@en ;
+  rdfs:comment "Proposing remedial action schedule share which is made by the proposing entity." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:ProposingRemedialActionScheduleShare.ProposingEntity ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SystemOperator ;
+  rdfs:range nc:ProposingRemedialActionScheduleShare .
+
+nc:SystemOperator.RemedialActionScheduleAcceptance a rdf:Property ;
+  rdfs:label "RemedialActionScheduleAcceptance"@en ;
+  rdfs:comment "Remedial action schedule acceptance related to a system operator." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionScheduleAcceptance.SystemOperator ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SystemOperator ;
+  rdfs:range nc:RemedialActionScheduleAcceptance .
+
+cim:Currency.AED a cim:Currency ;
+  rdfs:label "AED"@en ;
+  rdfs:comment "United Arab Emirates dirham." ;
+  cims:stereotype "enum" .
+
+cim:Currency.AFN a cim:Currency ;
+  rdfs:label "AFN"@en ;
+  rdfs:comment "Afghan afghani." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ALL a cim:Currency ;
+  rdfs:label "ALL"@en ;
+  rdfs:comment "Albanian lek." ;
+  cims:stereotype "enum" .
+
+cim:Currency.AMD a cim:Currency ;
+  rdfs:label "AMD"@en ;
+  rdfs:comment "Armenian dram." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ANG a cim:Currency ;
+  rdfs:label "ANG"@en ;
+  rdfs:comment "Netherlands Antillean guilder." ;
+  cims:stereotype "enum" .
+
+cim:Currency.AOA a cim:Currency ;
+  rdfs:label "AOA"@en ;
+  rdfs:comment "Angolan kwanza." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ARS a cim:Currency ;
+  rdfs:label "ARS"@en ;
+  rdfs:comment "Argentine peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.AUD a cim:Currency ;
+  rdfs:label "AUD"@en ;
+  rdfs:comment "Australian dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.AWG a cim:Currency ;
+  rdfs:label "AWG"@en ;
+  rdfs:comment "Aruban florin." ;
+  cims:stereotype "enum" .
+
+cim:Currency.AZN a cim:Currency ;
+  rdfs:label "AZN"@en ;
+  rdfs:comment "Azerbaijani manat." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BAM a cim:Currency ;
+  rdfs:label "BAM"@en ;
+  rdfs:comment "Bosnia and Herzegovina convertible mark." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BBD a cim:Currency ;
+  rdfs:label "BBD"@en ;
+  rdfs:comment "Barbados dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BDT a cim:Currency ;
+  rdfs:label "BDT"@en ;
+  rdfs:comment "Bangladeshi taka." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BGN a cim:Currency ;
+  rdfs:label "BGN"@en ;
+  rdfs:comment "Bulgarian lev." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BHD a cim:Currency ;
+  rdfs:label "BHD"@en ;
+  rdfs:comment "Bahraini dinar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BIF a cim:Currency ;
+  rdfs:label "BIF"@en ;
+  rdfs:comment "Burundian franc." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BMD a cim:Currency ;
+  rdfs:label "BMD"@en ;
+  rdfs:comment "Bermudian dollar (customarily known as Bermuda dollar)." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BND a cim:Currency ;
+  rdfs:label "BND"@en ;
+  rdfs:comment "Brunei dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BOB a cim:Currency ;
+  rdfs:label "BOB"@en ;
+  rdfs:comment "Boliviano." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BOV a cim:Currency ;
+  rdfs:label "BOV"@en ;
+  rdfs:comment "Bolivian Mvdol (funds code)." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BRL a cim:Currency ;
+  rdfs:label "BRL"@en ;
+  rdfs:comment "Brazilian real." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BSD a cim:Currency ;
+  rdfs:label "BSD"@en ;
+  rdfs:comment "Bahamian dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BTN a cim:Currency ;
+  rdfs:label "BTN"@en ;
+  rdfs:comment "Bhutanese ngultrum." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BWP a cim:Currency ;
+  rdfs:label "BWP"@en ;
+  rdfs:comment "Botswana pula." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BYR a cim:Currency ;
+  rdfs:label "BYR"@en ;
+  rdfs:comment "Belarusian ruble." ;
+  cims:stereotype "enum" .
+
+cim:Currency.BZD a cim:Currency ;
+  rdfs:label "BZD"@en ;
+  rdfs:comment "Belize dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CAD a cim:Currency ;
+  rdfs:label "CAD"@en ;
+  rdfs:comment "Canadian dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CDF a cim:Currency ;
+  rdfs:label "CDF"@en ;
+  rdfs:comment "Congolese franc." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CHF a cim:Currency ;
+  rdfs:label "CHF"@en ;
+  rdfs:comment "Swiss franc." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CLF a cim:Currency ;
+  rdfs:label "CLF"@en ;
+  rdfs:comment "Unidad de Fomento (funds code), Chile." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CLP a cim:Currency ;
+  rdfs:label "CLP"@en ;
+  rdfs:comment "Chilean peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CNY a cim:Currency ;
+  rdfs:label "CNY"@en ;
+  rdfs:comment "Chinese yuan." ;
+  cims:stereotype "enum" .
+
+cim:Currency.COP a cim:Currency ;
+  rdfs:label "COP"@en ;
+  rdfs:comment "Colombian peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.COU a cim:Currency ;
+  rdfs:label "COU"@en ;
+  rdfs:comment "Unidad de Valor Real." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CRC a cim:Currency ;
+  rdfs:label "CRC"@en ;
+  rdfs:comment "Costa Rican colon." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CUC a cim:Currency ;
+  rdfs:label "CUC"@en ;
+  rdfs:comment "Cuban convertible peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CUP a cim:Currency ;
+  rdfs:label "CUP"@en ;
+  rdfs:comment "Cuban peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CVE a cim:Currency ;
+  rdfs:label "CVE"@en ;
+  rdfs:comment "Cape Verde escudo." ;
+  cims:stereotype "enum" .
+
+cim:Currency.CZK a cim:Currency ;
+  rdfs:label "CZK"@en ;
+  rdfs:comment "Czech koruna." ;
+  cims:stereotype "enum" .
+
+cim:Currency.DJF a cim:Currency ;
+  rdfs:label "DJF"@en ;
+  rdfs:comment "Djiboutian franc." ;
+  cims:stereotype "enum" .
+
+cim:Currency.DKK a cim:Currency ;
+  rdfs:label "DKK"@en ;
+  rdfs:comment "Danish krone." ;
+  cims:stereotype "enum" .
+
+cim:Currency.DOP a cim:Currency ;
+  rdfs:label "DOP"@en ;
+  rdfs:comment "Dominican peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.DZD a cim:Currency ;
+  rdfs:label "DZD"@en ;
+  rdfs:comment "Algerian dinar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.EEK a cim:Currency ;
+  rdfs:label "EEK"@en ;
+  rdfs:comment "Estonian kroon." ;
+  cims:stereotype "enum" .
+
+cim:Currency.EGP a cim:Currency ;
+  rdfs:label "EGP"@en ;
+  rdfs:comment "Egyptian pound." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ERN a cim:Currency ;
+  rdfs:label "ERN"@en ;
+  rdfs:comment "Eritrean nakfa." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ETB a cim:Currency ;
+  rdfs:label "ETB"@en ;
+  rdfs:comment "Ethiopian birr." ;
+  cims:stereotype "enum" .
+
+cim:Currency.EUR a cim:Currency ;
+  rdfs:label "EUR"@en ;
+  rdfs:comment "Euro." ;
+  cims:stereotype "enum" .
+
+cim:Currency.FJD a cim:Currency ;
+  rdfs:label "FJD"@en ;
+  rdfs:comment "Fiji dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.FKP a cim:Currency ;
+  rdfs:label "FKP"@en ;
+  rdfs:comment "Falkland Islands pound." ;
+  cims:stereotype "enum" .
+
+cim:Currency.GBP a cim:Currency ;
+  rdfs:label "GBP"@en ;
+  rdfs:comment "Pound sterling." ;
+  cims:stereotype "enum" .
+
+cim:Currency.GEL a cim:Currency ;
+  rdfs:label "GEL"@en ;
+  rdfs:comment "Georgian lari." ;
+  cims:stereotype "enum" .
+
+cim:Currency.GHS a cim:Currency ;
+  rdfs:label "GHS"@en ;
+  rdfs:comment "Ghanaian cedi." ;
+  cims:stereotype "enum" .
+
+cim:Currency.GIP a cim:Currency ;
+  rdfs:label "GIP"@en ;
+  rdfs:comment "Gibraltar pound." ;
+  cims:stereotype "enum" .
+
+cim:Currency.GMD a cim:Currency ;
+  rdfs:label "GMD"@en ;
+  rdfs:comment "Gambian dalasi." ;
+  cims:stereotype "enum" .
+
+cim:Currency.GNF a cim:Currency ;
+  rdfs:label "GNF"@en ;
+  rdfs:comment "Guinean franc." ;
+  cims:stereotype "enum" .
+
+cim:Currency.GTQ a cim:Currency ;
+  rdfs:label "GTQ"@en ;
+  rdfs:comment "Guatemalan quetzal." ;
+  cims:stereotype "enum" .
+
+cim:Currency.GYD a cim:Currency ;
+  rdfs:label "GYD"@en ;
+  rdfs:comment "Guyanese dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.HKD a cim:Currency ;
+  rdfs:label "HKD"@en ;
+  rdfs:comment "Hong Kong dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.HNL a cim:Currency ;
+  rdfs:label "HNL"@en ;
+  rdfs:comment "Honduran lempira." ;
+  cims:stereotype "enum" .
+
+cim:Currency.HRK a cim:Currency ;
+  rdfs:label "HRK"@en ;
+  rdfs:comment "Croatian kuna." ;
+  cims:stereotype "enum" .
+
+cim:Currency.HTG a cim:Currency ;
+  rdfs:label "HTG"@en ;
+  rdfs:comment "Haitian gourde." ;
+  cims:stereotype "enum" .
+
+cim:Currency.HUF a cim:Currency ;
+  rdfs:label "HUF"@en ;
+  rdfs:comment "Hungarian forint." ;
+  cims:stereotype "enum" .
+
+cim:Currency.IDR a cim:Currency ;
+  rdfs:label "IDR"@en ;
+  rdfs:comment "Indonesian rupiah." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ILS a cim:Currency ;
+  rdfs:label "ILS"@en ;
+  rdfs:comment "Israeli new sheqel." ;
+  cims:stereotype "enum" .
+
+cim:Currency.INR a cim:Currency ;
+  rdfs:label "INR"@en ;
+  rdfs:comment "Indian rupee." ;
+  cims:stereotype "enum" .
+
+cim:Currency.IQD a cim:Currency ;
+  rdfs:label "IQD"@en ;
+  rdfs:comment "Iraqi dinar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.IRR a cim:Currency ;
+  rdfs:label "IRR"@en ;
+  rdfs:comment "Iranian rial." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ISK a cim:Currency ;
+  rdfs:label "ISK"@en ;
+  rdfs:comment "Icelandic króna." ;
+  cims:stereotype "enum" .
+
+cim:Currency.JMD a cim:Currency ;
+  rdfs:label "JMD"@en ;
+  rdfs:comment "Jamaican dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.JOD a cim:Currency ;
+  rdfs:label "JOD"@en ;
+  rdfs:comment "Jordanian dinar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.JPY a cim:Currency ;
+  rdfs:label "JPY"@en ;
+  rdfs:comment "Japanese yen." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KES a cim:Currency ;
+  rdfs:label "KES"@en ;
+  rdfs:comment "Kenyan shilling." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KGS a cim:Currency ;
+  rdfs:label "KGS"@en ;
+  rdfs:comment "Kyrgyzstani som." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KHR a cim:Currency ;
+  rdfs:label "KHR"@en ;
+  rdfs:comment "Cambodian riel." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KMF a cim:Currency ;
+  rdfs:label "KMF"@en ;
+  rdfs:comment "Comoro franc." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KPW a cim:Currency ;
+  rdfs:label "KPW"@en ;
+  rdfs:comment "North Korean won." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KRW a cim:Currency ;
+  rdfs:label "KRW"@en ;
+  rdfs:comment "South Korean won." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KWD a cim:Currency ;
+  rdfs:label "KWD"@en ;
+  rdfs:comment "Kuwaiti dinar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KYD a cim:Currency ;
+  rdfs:label "KYD"@en ;
+  rdfs:comment "Cayman Islands dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.KZT a cim:Currency ;
+  rdfs:label "KZT"@en ;
+  rdfs:comment "Kazakhstani tenge." ;
+  cims:stereotype "enum" .
+
+cim:Currency.LAK a cim:Currency ;
+  rdfs:label "LAK"@en ;
+  rdfs:comment "Lao kip." ;
+  cims:stereotype "enum" .
+
+cim:Currency.LBP a cim:Currency ;
+  rdfs:label "LBP"@en ;
+  rdfs:comment "Lebanese pound." ;
+  cims:stereotype "enum" .
+
+cim:Currency.LKR a cim:Currency ;
+  rdfs:label "LKR"@en ;
+  rdfs:comment "Sri Lanka rupee." ;
+  cims:stereotype "enum" .
+
+cim:Currency.LRD a cim:Currency ;
+  rdfs:label "LRD"@en ;
+  rdfs:comment "Liberian dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.LSL a cim:Currency ;
+  rdfs:label "LSL"@en ;
+  rdfs:comment "Lesotho loti." ;
+  cims:stereotype "enum" .
+
+cim:Currency.LTL a cim:Currency ;
+  rdfs:label "LTL"@en ;
+  rdfs:comment "Lithuanian litas." ;
+  cims:stereotype "enum" .
+
+cim:Currency.LVL a cim:Currency ;
+  rdfs:label "LVL"@en ;
+  rdfs:comment "Latvian lats." ;
+  cims:stereotype "enum" .
+
+cim:Currency.LYD a cim:Currency ;
+  rdfs:label "LYD"@en ;
+  rdfs:comment "Libyan dinar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MAD a cim:Currency ;
+  rdfs:label "MAD"@en ;
+  rdfs:comment "Moroccan dirham." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MDL a cim:Currency ;
+  rdfs:label "MDL"@en ;
+  rdfs:comment "Moldovan leu." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MGA a cim:Currency ;
+  rdfs:label "MGA"@en ;
+  rdfs:comment "Malagasy ariary." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MKD a cim:Currency ;
+  rdfs:label "MKD"@en ;
+  rdfs:comment "Macedonian denar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MMK a cim:Currency ;
+  rdfs:label "MMK"@en ;
+  rdfs:comment "Myanma kyat." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MNT a cim:Currency ;
+  rdfs:label "MNT"@en ;
+  rdfs:comment "Mongolian tugrik." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MOP a cim:Currency ;
+  rdfs:label "MOP"@en ;
+  rdfs:comment "Macanese pataca." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MRO a cim:Currency ;
+  rdfs:label "MRO"@en ;
+  rdfs:comment "Mauritanian ouguiya." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MUR a cim:Currency ;
+  rdfs:label "MUR"@en ;
+  rdfs:comment "Mauritian rupee." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MVR a cim:Currency ;
+  rdfs:label "MVR"@en ;
+  rdfs:comment "Maldivian rufiyaa." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MWK a cim:Currency ;
+  rdfs:label "MWK"@en ;
+  rdfs:comment "Malawian kwacha." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MXN a cim:Currency ;
+  rdfs:label "MXN"@en ;
+  rdfs:comment "Mexican peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MYR a cim:Currency ;
+  rdfs:label "MYR"@en ;
+  rdfs:comment "Malaysian ringgit." ;
+  cims:stereotype "enum" .
+
+cim:Currency.MZN a cim:Currency ;
+  rdfs:label "MZN"@en ;
+  rdfs:comment "Mozambican metical." ;
+  cims:stereotype "enum" .
+
+cim:Currency.NAD a cim:Currency ;
+  rdfs:label "NAD"@en ;
+  rdfs:comment "Namibian dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.NGN a cim:Currency ;
+  rdfs:label "NGN"@en ;
+  rdfs:comment "Nigerian naira." ;
+  cims:stereotype "enum" .
+
+cim:Currency.NIO a cim:Currency ;
+  rdfs:label "NIO"@en ;
+  rdfs:comment "Cordoba oro." ;
+  cims:stereotype "enum" .
+
+cim:Currency.NOK a cim:Currency ;
+  rdfs:label "NOK"@en ;
+  rdfs:comment "Norwegian krone." ;
+  cims:stereotype "enum" .
+
+cim:Currency.NPR a cim:Currency ;
+  rdfs:label "NPR"@en ;
+  rdfs:comment "Nepalese rupee." ;
+  cims:stereotype "enum" .
+
+cim:Currency.NZD a cim:Currency ;
+  rdfs:label "NZD"@en ;
+  rdfs:comment "New Zealand dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.OMR a cim:Currency ;
+  rdfs:label "OMR"@en ;
+  rdfs:comment "Omani rial." ;
+  cims:stereotype "enum" .
+
+cim:Currency.PAB a cim:Currency ;
+  rdfs:label "PAB"@en ;
+  rdfs:comment "Panamanian balboa." ;
+  cims:stereotype "enum" .
+
+cim:Currency.PEN a cim:Currency ;
+  rdfs:label "PEN"@en ;
+  rdfs:comment "Peruvian nuevo sol." ;
+  cims:stereotype "enum" .
+
+cim:Currency.PGK a cim:Currency ;
+  rdfs:label "PGK"@en ;
+  rdfs:comment "Papua New Guinean kina." ;
+  cims:stereotype "enum" .
+
+cim:Currency.PHP a cim:Currency ;
+  rdfs:label "PHP"@en ;
+  rdfs:comment "Philippine peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.PKR a cim:Currency ;
+  rdfs:label "PKR"@en ;
+  rdfs:comment "Pakistani rupee." ;
+  cims:stereotype "enum" .
+
+cim:Currency.PLN a cim:Currency ;
+  rdfs:label "PLN"@en ;
+  rdfs:comment "Polish zloty." ;
+  cims:stereotype "enum" .
+
+cim:Currency.PYG a cim:Currency ;
+  rdfs:label "PYG"@en ;
+  rdfs:comment "Paraguayan guaraní." ;
+  cims:stereotype "enum" .
+
+cim:Currency.QAR a cim:Currency ;
+  rdfs:label "QAR"@en ;
+  rdfs:comment "Qatari rial." ;
+  cims:stereotype "enum" .
+
+cim:Currency.RON a cim:Currency ;
+  rdfs:label "RON"@en ;
+  rdfs:comment "Romanian new leu." ;
+  cims:stereotype "enum" .
+
+cim:Currency.RSD a cim:Currency ;
+  rdfs:label "RSD"@en ;
+  rdfs:comment "Serbian dinar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.RUB a cim:Currency ;
+  rdfs:label "RUB"@en ;
+  rdfs:comment "Russian rouble." ;
+  cims:stereotype "enum" .
+
+cim:Currency.RWF a cim:Currency ;
+  rdfs:label "RWF"@en ;
+  rdfs:comment "Rwandan franc." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SAR a cim:Currency ;
+  rdfs:label "SAR"@en ;
+  rdfs:comment "Saudi riyal." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SBD a cim:Currency ;
+  rdfs:label "SBD"@en ;
+  rdfs:comment "Solomon Islands dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SCR a cim:Currency ;
+  rdfs:label "SCR"@en ;
+  rdfs:comment "Seychelles rupee." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SDG a cim:Currency ;
+  rdfs:label "SDG"@en ;
+  rdfs:comment "Sudanese pound." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SEK a cim:Currency ;
+  rdfs:label "SEK"@en ;
+  rdfs:comment "Swedish krona/kronor." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SGD a cim:Currency ;
+  rdfs:label "SGD"@en ;
+  rdfs:comment "Singapore dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SHP a cim:Currency ;
+  rdfs:label "SHP"@en ;
+  rdfs:comment "Saint Helena pound." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SLL a cim:Currency ;
+  rdfs:label "SLL"@en ;
+  rdfs:comment "Sierra Leonean leone." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SOS a cim:Currency ;
+  rdfs:label "SOS"@en ;
+  rdfs:comment "Somali shilling." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SRD a cim:Currency ;
+  rdfs:label "SRD"@en ;
+  rdfs:comment "Surinamese dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.STD a cim:Currency ;
+  rdfs:label "STD"@en ;
+  rdfs:comment "São Tomé and Príncipe dobra." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SYP a cim:Currency ;
+  rdfs:label "SYP"@en ;
+  rdfs:comment "Syrian pound." ;
+  cims:stereotype "enum" .
+
+cim:Currency.SZL a cim:Currency ;
+  rdfs:label "SZL"@en ;
+  rdfs:comment "Lilangeni." ;
+  cims:stereotype "enum" .
+
+cim:Currency.THB a cim:Currency ;
+  rdfs:label "THB"@en ;
+  rdfs:comment "Thai baht." ;
+  cims:stereotype "enum" .
+
+cim:Currency.TJS a cim:Currency ;
+  rdfs:label "TJS"@en ;
+  rdfs:comment "Tajikistani somoni." ;
+  cims:stereotype "enum" .
+
+cim:Currency.TMT a cim:Currency ;
+  rdfs:label "TMT"@en ;
+  rdfs:comment "Turkmenistani manat." ;
+  cims:stereotype "enum" .
+
+cim:Currency.TND a cim:Currency ;
+  rdfs:label "TND"@en ;
+  rdfs:comment "Tunisian dinar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.TOP a cim:Currency ;
+  rdfs:label "TOP"@en ;
+  rdfs:comment "Tongan pa'anga." ;
+  cims:stereotype "enum" .
+
+cim:Currency.TRY a cim:Currency ;
+  rdfs:label "TRY"@en ;
+  rdfs:comment "Turkish lira." ;
+  cims:stereotype "enum" .
+
+cim:Currency.TTD a cim:Currency ;
+  rdfs:label "TTD"@en ;
+  rdfs:comment "Trinidad and Tobago dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.TWD a cim:Currency ;
+  rdfs:label "TWD"@en ;
+  rdfs:comment "New Taiwan dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.TZS a cim:Currency ;
+  rdfs:label "TZS"@en ;
+  rdfs:comment "Tanzanian shilling." ;
+  cims:stereotype "enum" .
+
+cim:Currency.UAH a cim:Currency ;
+  rdfs:label "UAH"@en ;
+  rdfs:comment "Ukrainian hryvnia." ;
+  cims:stereotype "enum" .
+
+cim:Currency.UGX a cim:Currency ;
+  rdfs:label "UGX"@en ;
+  rdfs:comment "Ugandan shilling." ;
+  cims:stereotype "enum" .
+
+cim:Currency.USD a cim:Currency ;
+  rdfs:label "USD"@en ;
+  rdfs:comment "United States dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.UYU a cim:Currency ;
+  rdfs:label "UYU"@en ;
+  rdfs:comment "Uruguayan peso." ;
+  cims:stereotype "enum" .
+
+cim:Currency.UZS a cim:Currency ;
+  rdfs:label "UZS"@en ;
+  rdfs:comment "Uzbekistan som." ;
+  cims:stereotype "enum" .
+
+cim:Currency.VEF a cim:Currency ;
+  rdfs:label "VEF"@en ;
+  rdfs:comment "Venezuelan bolívar fuerte." ;
+  cims:stereotype "enum" .
+
+cim:Currency.VND a cim:Currency ;
+  rdfs:label "VND"@en ;
+  rdfs:comment "Vietnamese Dong." ;
+  cims:stereotype "enum" .
+
+cim:Currency.VUV a cim:Currency ;
+  rdfs:label "VUV"@en ;
+  rdfs:comment "Vanuatu vatu." ;
+  cims:stereotype "enum" .
+
+cim:Currency.WST a cim:Currency ;
+  rdfs:label "WST"@en ;
+  rdfs:comment "Samoan tala." ;
+  cims:stereotype "enum" .
+
+cim:Currency.XAF a cim:Currency ;
+  rdfs:label "XAF"@en ;
+  rdfs:comment "CFA franc BEAC." ;
+  cims:stereotype "enum" .
+
+cim:Currency.XCD a cim:Currency ;
+  rdfs:label "XCD"@en ;
+  rdfs:comment "East Caribbean dollar." ;
+  cims:stereotype "enum" .
+
+cim:Currency.XOF a cim:Currency ;
+  rdfs:label "XOF"@en ;
+  rdfs:comment "CFA Franc BCEAO." ;
+  cims:stereotype "enum" .
+
+cim:Currency.XPF a cim:Currency ;
+  rdfs:label "XPF"@en ;
+  rdfs:comment "CFP franc." ;
+  cims:stereotype "enum" .
+
+cim:Currency.YER a cim:Currency ;
+  rdfs:label "YER"@en ;
+  rdfs:comment "Yemeni rial." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ZAR a cim:Currency ;
+  rdfs:label "ZAR"@en ;
+  rdfs:comment "South African rand." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ZMK a cim:Currency ;
+  rdfs:label "ZMK"@en ;
+  rdfs:comment "Zambian kwacha." ;
+  cims:stereotype "enum" .
+
+cim:Currency.ZWL a cim:Currency ;
+  rdfs:label "ZWL"@en ;
+  rdfs:comment "Zimbabwe dollar." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.M a cim:UnitMultiplier ;
+  rdfs:label "M"@en ;
+  rdfs:comment "Mega 10**6." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.none a cim:UnitMultiplier ;
+  rdfs:label "none"@en ;
+  rdfs:comment "No multiplier or equivalently multiply by 1." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VAr a cim:UnitSymbol ;
+  rdfs:label "VAr"@en ;
+  rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.""" ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.W a cim:UnitSymbol ;
+  rdfs:label "W"@en ;
+  rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Wh a cim:UnitSymbol ;
+  rdfs:label "Wh"@en ;
+  rdfs:comment "Real energy in watt hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.s a cim:UnitSymbol ;
+  rdfs:label "s"@en ;
+  rdfs:comment "Time in seconds." ;
+  cims:stereotype "enum" .
+
+nc:CostSettledKind.final a nc:CostSettledKind ;
+  rdfs:label "final"@en ;
+  rdfs:comment "Final cost. For instance, the cost is not expected to be changed on a later stage." ;
+  cims:stereotype "enum" .
+
+nc:CostSettledKind.indicative a nc:CostSettledKind ;
+  rdfs:label "indicative"@en ;
+  rdfs:comment "Indicative cost." ;
+  cims:stereotype "enum" .
+
+nc:CostSettledKind.provisional a nc:CostSettledKind ;
+  rdfs:label "provisional"@en ;
+  rdfs:comment "Provisional cost." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleAcceptanceKind.accepted a nc:RemedialActionScheduleAcceptanceKind ;
+  rdfs:label "accepted"@en ;
+  rdfs:comment "The acceptance of remedial action schedule is concluded and accepted." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleAcceptanceKind.refused a nc:RemedialActionScheduleAcceptanceKind ;
+  rdfs:label "refused"@en ;
+  rdfs:comment "The acceptance of the remedial action schedule is concluded and refused." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleAcceptanceKind.timeout a nc:RemedialActionScheduleAcceptanceKind ;
+  rdfs:label "timeout"@en ;
+  rdfs:comment "The acceptance of the remedial action schedule was not completed due to timeout." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleAcceptanceKind.waiting a nc:RemedialActionScheduleAcceptanceKind ;
+  rdfs:label "waiting"@en ;
+  rdfs:comment "The acceptance of the remedial action schedule is waiting (in progress)." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleDependencyKind.exclusive a nc:RemedialActionScheduleDependencyKind ;
+  rdfs:label "exclusive"@en ;
+  rdfs:comment "Remedial action schedules are exclusive depending on each other. e.g. Only one of the remedial action schedules can be selected at the same time." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleDependencyKind.inclusive a nc:RemedialActionScheduleDependencyKind ;
+  rdfs:label "inclusive"@en ;
+  rdfs:comment "Remedial action schedules are inclusive depending on each other. e.g. Both remedial action schedules need to be picked if one of them is needed." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleDependencyKind.none a nc:RemedialActionScheduleDependencyKind ;
+  rdfs:label "none"@en ;
+  rdfs:comment "Remedial action schedules are not depending on each other. However, the two remedial action schedules should be evaluated together." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.activated a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "activated"@en ;
+  rdfs:comment "Activated remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.agreed a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "agreed"@en ;
+  rdfs:comment "Agreed remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.agreementValidated a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "agreementValidated"@en ;
+  rdfs:comment "The agreement is validated for the remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.implemented a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "implemented"@en ;
+  rdfs:comment "An ordered remedial action is implemented." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.notUsed a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "notUsed"@en ;
+  rdfs:comment "Not used remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.ordered a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "ordered"@en ;
+  rdfs:comment "Ordered remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.previouslyAgreed a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "previouslyAgreed"@en ;
+  rdfs:comment "Previously agreed remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.proposed a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "proposed"@en ;
+  rdfs:comment "Proposed remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.rejected a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "rejected"@en ;
+  rdfs:comment "Rejected remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:RemedialActionScheduleStatusKind.rejectionValidated a nc:RemedialActionScheduleStatusKind ;
+  rdfs:label "rejectionValidated"@en ;
+  rdfs:comment "The rejection is validated for the remedial action schedule." ;
+  cims:stereotype "enum" .
+
+nc:TimeSeriesInterpolationKind.next a nc:TimeSeriesInterpolationKind ;
+  rdfs:label "next"@en ;
+  rdfs:comment "The value between two time points is set to next value." ;
+  cims:stereotype "enum" .
+
+nc:TimeSeriesInterpolationKind.none a nc:TimeSeriesInterpolationKind ;
+  rdfs:label "none"@en ;
+  rdfs:comment "No interpolation is applied." ;
+  cims:stereotype "enum" .
+
+nc:ValueOffsetKind.absolute a nc:ValueOffsetKind ;
+  rdfs:label "absolute"@en ;
+  rdfs:comment "Value of the range constraint is replacing the attribute value referenced by the PropertyReference in a determined operational scenario." ;
+  cims:stereotype "enum" .
+
+nc:ValueOffsetKind.incremental a nc:ValueOffsetKind ;
+  rdfs:label "incremental"@en ;
+  rdfs:comment "Value of the range constraint is incrementing the attribute value referenced by the PropertyReference in a determined operational scenario." ;
+  cims:stereotype "enum" .
+
+nc:ValueOffsetKind.incrementalPercentage a nc:ValueOffsetKind ;
+  rdfs:label "incrementalPercentage"@en ;
+  rdfs:comment "Value of the range constraint is incrementing in percentage the attribute value referenced by the PropertyReference in a determined operational scenario. " ;
+  cims:stereotype "enum" .
+
+ras:Package_DocRemedialActionScheduleProfile a cims:ClassCategory ;
+  rdfs:label "DocRemedialActionScheduleProfile"@en ;
+  rdfs:comment "This package contains datatypes used only in the RDFS header." .
+
+ras:Package_RemedialActionScheduleProfile a cims:ClassCategory ;
+  rdfs:label "RemedialActionScheduleProfile"@en ;
+  rdfs:comment "This package contains remedial action schedule profile." .
+
+
