@@ -5,7 +5,10 @@
 - [Improvements to CIM and CGMES RDFS Representation](#improvements-to-cim-and-cgmes-rdfs-representation)
     - [Source Files](#source-files)
     - [RDF Serializations](#rdf-serializations)
-        - [Turtle Serialization](#turtle-serialization)
+        - [Turtle Serialization Tools](#turtle-serialization-tools)
+            - [atextor tools: owl-cli and turtle-formatter](#atextor-tools-owl-cli-and-turtle-formatter)
+            - [EDMC Tools](#edmc-tools)
+            - [OBO Robot](#obo-robot)
 - [Fixes](#fixes)
     - [Upgrade From RDFS2020 Style to RDFSEd2Beta Style](#upgrade-from-rdfs2020-style-to-rdfsed2beta-style)
     - [Duplication Between Ontologies](#duplication-between-ontologies)
@@ -53,24 +56,18 @@ TODO:
   - Or see [spotless](https://github.com/diffplug/spotless/), which is used to automate file manipulation in a project
 - [ ] Produce good JSON-LD (see GS1 EPCIS tooling)
 
-### Turtle Serialization
+### Turtle Serialization Tools
 It was agreed to adopt `ttl` as master format.
 
 What tool to use to format Turtle? Requirements:
 - Do it in a predictable way
 - The conversion should be stable, i.e. diff-friendly
-- Should be abel to sort by term kind
+- Should be able to sort by term kind
 
-Tools:
-- Selected: [atextor/turtle-formatter](https://github.com/atextor/turtle-formatter) which is a Jena/Java tool specifically for this purpose.
-  - Under active development and the author is responsive
-  - Incorporated in the `owl-cli` tool ([owl-cli-snapshot.jar](https://github.com/atextor/owl-cli/releases/download/snapshot/owl-cli-snapshot.jar))
-  - See usage guide of [write-command](https://atextor.de/owl-cli/main/snapshot/usage.html#write-command)
-  - QUDT is also likely to use it: [qudt-public-repo#959](https://github.com/qudt/qudt-public-repo/issues/959)
-  - Invocation (where `owl` is `java -jar owl-cli-snapshot.jar %*`)
-```
-owl write <many-options> --input=rdfxml <source.rdf> <target.ttl>
-```
+A relevant thread "Diff'ing RDF files" appeared on the <semantic-web@w3.org> and <public-rdf-star-wg@w3.org> mailing lists in [Sep 2024](https://lists.w3.org/Archives/Public/semantic-web/2024Sep/0011.html).
+It mentions the atextor tools (my current choice), EDMC tools, and ROBOT.
+
+Here is a list of tools. But I have made sub-sections for the most promising ones (see below):
 - For a long time I used Jena RIOT.
   - It has Formatted and Streaming mode (better for very large files)
   - But has no options how to sort terms
@@ -80,6 +77,17 @@ riot --formatted ttl IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQ.rdf > IEC61970-
 ```
 - [rdflib#2880 about longturtle](https://github.com/RDFLib/rdflib/issues/2880) which is a request to add pretty-printing features to Python's `rdflib`
 
+#### atextor tools: owl-cli and turtle-formatter
+- Selected: [atextor/turtle-formatter](https://github.com/atextor/turtle-formatter) which is a Jena/Java tool specifically for this purpose.
+  - Under active development and the author is responsive
+  - Incorporated in the `owl-cli` tool ([owl-cli-snapshot.jar](https://github.com/atextor/owl-cli/releases/download/snapshot/owl-cli-snapshot.jar))
+  - See usage guide of [write-command](https://atextor.de/owl-cli/main/snapshot/usage.html#write-command)
+  - QUDT is also likely to use it: [qudt-public-repo#959](https://github.com/qudt/qudt-public-repo/issues/959)
+  - Invocation (where `owl` is `java -jar owl-cli-snapshot.jar %*`)
+```
+owl write <many-options> --input=rdfxml <source.rdf> <target.ttl>
+```
+
 Features of `turtle-formatter` (`owl-cli`) that we use:
 - First sort CIM-related prefixes, then others (see `Makefile`).
   IMHO there's too many prefixes, so the profile prefixes should be removed: https://github.com/Sveino/Inst4CIM-KG/issues/4
@@ -87,6 +95,26 @@ Features of `turtle-formatter` (`owl-cli`) that we use:
 - Don't align predicates and objects since that leaves too much whitespace (this can be changed)
 
 We'll watch closely its development and add more options as needed
+
+#### EDMC Tools
+Elisa Kendall (one of the main FIBO ontologists):
+
+There is an open-source tool available from the EDM Council for converting between RDF/XML, Turtle, and JSON-LD and for consistent serialization of any of these representations of RDF and OWL. The GitHub site for it is https://github.com/edmcouncil/rdf-toolkit. It is actively maintained, freely available, and addresses a number of issues mentioned on the thread, among other things. It also allows users to turn any of its features on/off as desired. It runs on the command line, or can be invoked automatically through GitHub commit hooks, for example.
+
+For collaborative work across development teams for large ontology projects, consistent serialization for comparison purposes was one of our first and relatively important issues. It enables visual comparison in GitHub (and likely other source code management systems), so that anyone reviewing the changes can see exactly what changed, down to the single character level. 
+
+We also have a pipeline that looks for a myriad of issues in ontologies, performs regression testing using examples and reference data, and includes an html-based publication process that itself has a comparison feature, enabling comparison of any pull request or prior release with another version or with the latest version. The code for this is also open source, available from the EDM Council GitHub repository, though support is required for hosting and customization.
+
+#### OBO Robot
+https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](https://github.com/ontodev/robot/releases) page 
+- By the OBO Foundry
+- Used by EDM Council. Elisa: I don’t know how well it works on RDF alone, mainly because I haven’t attempted to use it for that, but it works well as a companion tool to the RDF Toolkit
+- Used in the [Emacs Literate Ontology Tool](https://github.com/johanwk/elot/) by Johan Wolter Kluwer (DNV) and Vladimir Alexiev (Ontotext)
+- Axiomatic diff
+- Output Turtle
+- Run SPARQL and capture results
+- Convert Manchester notation
+- Ontology metrics
 
 # Fixes
 

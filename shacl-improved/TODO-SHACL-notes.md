@@ -11,10 +11,11 @@
 <!-- markdown-toc end -->
 
 ## Intro
-samuel.dayet@ext.entsoe.eu
-Samuel Dayet
-Intern in Standardization Team
-ENTSO-E
+samuel.dayet@ext.entsoe.eu, Intern in Standardization Team, ENTSO-E
+Olivier Aine <olivier.aine@entsoe.eu>,
+Erik Wolfs <erik.wolfs@sec.entsoe.eu>,
+Eduardo Relano Algaba <eduardo.relanoalgaba@entsoe.eu>,
+Fedder Skovgaard <FSD@energinet.dk>
 
 Find attached some of the CGMES 3.0 SHACL shapes to validate EQ profile.
 You can find test profiles here in CGMES Conformity Assessment Scheme v3.
