@@ -109,7 +109,8 @@ We also have a pipeline that looks for a myriad of issues in ontologies, perform
 https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](https://github.com/ontodev/robot/releases) page 
 - By the OBO Foundry
 - Used by EDM Council. Elisa: I don’t know how well it works on RDF alone, mainly because I haven’t attempted to use it for that, but it works well as a companion tool to the RDF Toolkit
-- Used in the [Emacs Literate Ontology Tool](https://github.com/johanwk/elot/) by Johan Wolter Kluwer (DNV) and Vladimir Alexiev (Ontotext)
+- Used in the [Emacs Literate Ontology Tool](https://github.com/johanwk/elot/) by Johan Wolter Kluwer (DNV) and Vladimir Alexiev (Ontotext). 
+  This tool is used in the development of the Industrial Data Ontology.
 - Axiomatic diff
 - Output Turtle
 - Run SPARQL and capture results
@@ -873,7 +874,7 @@ cim:ApparentPower a qudt:QuantityKind ;
   eq:Package "Package_CoreEquipmentProfile" ;
   eq:isCIMDatatype "True" ;
   qudt:applicableUnit cim:UnitSymbol.VA;
-  skos:broader quantitykind:ComplexPower;
+  skos:exactMatch quantitykind:ApparentPower;
   skos:definition "\nProduct of the RMS value of the voltage and the RMS value of the current.\n\n\t"@en .
 ```
 
@@ -1071,7 +1072,7 @@ We add corresponding QUDT resources (last columns):
 | cim:ActivePower             | "M"    | "W"       | cim:Float   | quantitykind:ActivePower        | unit:MegaW            |
 | cim:ActivePowerChangeRate   | "M"    | "WPers"   | cim:Float   |                                 |                       |
 | cim:AngleDegrees            | "none" | "deg"     | cim:Float   | quantitykind:Angle              | unit:DEG              |
-| cim:ApparentPower           | "M"    | "VA"      | cim:Float   | < quantitykind:ComplexPower     | unit:MegaV-A          |
+| cim:ApparentPower           | "M"    | "VA"      | cim:Float   | quantitykind:ApparentPower      | unit:MegaV-A          |
 | cim:CurrentFlow             | "none" | "A"       | cim:Float   | quantitykind:ElectricCurrent    | unit:A                |
 | cim:Frequency               | "none" | "Hz"      | cim:Float   | quantitykind:Frequency          | unit:HZ               |
 | cim:Impedance               | "none" | "ohm"     | cim:Float   | quantitykind:Impedance          | unit:OHM              |
