@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix as     : <https://ap.cim4.eu/AvailabilitySchedule#> .
+@prefix as     : <https://ap-voc.cim4.eu/AvailabilitySchedule#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -280,13 +280,13 @@ as:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:8d128e35-86c7-4d67-b2dd-93229bf1005a" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-03-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Availability schedule vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/AvailabilitySchedule-EU/2.2> ;
-  owl:versionIRI <https://ap.cim4.eu/AvailabilitySchedule/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/AvailabilitySchedule/2.3> ;
+  owl:versionInfo "2.3.1"@en .
 
 cim:IdentifiedObject.description a rdf:Property ;
   rdfs:label "description"@en ;

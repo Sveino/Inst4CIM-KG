@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix gd     : <https://ap.cim4.eu/GridDisturbance#> .
+@prefix gd     : <https://ap-voc.cim4.eu/GridDisturbance#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -315,12 +315,12 @@ gd:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:81c488d7-a09f-49ef-a3cd-3bb19a1d6f16" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-04-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Grid Disturbance vocabulary"@en ;
-  owl:versionIRI <https://ap.cim4.eu/GridDisturbance/1.1> ;
-  owl:versionInfo "1.1.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/GridDisturbance/1.1> ;
+  owl:versionInfo "1.1.1"@en .
 
 cim:ActivePower.multiplier a rdf:Property ;
   rdfs:label "multiplier"@en ;

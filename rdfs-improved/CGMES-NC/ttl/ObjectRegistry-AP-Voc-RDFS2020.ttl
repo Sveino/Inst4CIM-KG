@@ -2,7 +2,8 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix eu     : <https://cim.ucaiug.io/ns/eu#> .
-@prefix or     : <https://ap.cim4.eu/ObjectRegistry#> .
+@prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
+@prefix or     : <https://ap-voc.cim4.eu/ObjectRegistry#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -46,39 +47,6 @@ cim:String a rdfs:Class ;
   cims:belongsToCategory or:Package_ObjectRegistryProfile ;
   cims:stereotype "Primitive" .
 
-<http://iec.ch/TC57/ns/CIM/prof-cim#IRI> a rdfs:Class ;
-  rdfs:label "IRI"@en ;
-  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as rdf:resource in RDFXML.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
-  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-<http://iec.ch/TC57/ns/CIM/prof-cim#StringFixedLanguage> a rdfs:Class ;
-  rdfs:label "StringFixedLanguage"@en ;
-  rdfs:comment """A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
-The primitive is serialized as literal without language support.""" ;
-  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-<http://iec.ch/TC57/ns/CIM/prof-cim#StringIRI> a rdfs:Class ;
-  rdfs:label "StringIRI"@en ;
-  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as literal without language support.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
-  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-<http://iec.ch/TC57/ns/CIM/prof-cim#URL> a rdfs:Class ;
-  rdfs:label "URL"@en ;
-  rdfs:comment "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications." ;
-  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
 nc:NamingAuthority a rdfs:Class ;
   rdfs:label "NamingAuthority"@en ;
   rdfs:comment "Authority responsible for creation and management of names of a given name type and/or name; typically an organization or an enterprise system." ;
@@ -91,6 +59,39 @@ nc:ObjectType a rdfs:Class ;
   cims:belongsToCategory or:Package_ObjectRegistryProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
 
+profcim:IRI a rdfs:Class ;
+  rdfs:label "IRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as rdf:resource in RDFXML.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:StringFixedLanguage a rdfs:Class ;
+  rdfs:label "StringFixedLanguage"@en ;
+  rdfs:comment """A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
+The primitive is serialized as literal without language support.""" ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:StringIRI a rdfs:Class ;
+  rdfs:label "StringIRI"@en ;
+  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
+The primitive is serialized as literal without language support.
+IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
+IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
+IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
+profcim:URL a rdfs:Class ;
+  rdfs:label "URL"@en ;
+  rdfs:comment "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications." ;
+  cims:belongsToCategory or:Package_DocObjectRegistryProfile ;
+  cims:stereotype "Primitive", "profcim" .
+
 or:Ontology a owl:Ontology ;
   dcat:keyword "OR" ;
   dcat:theme "vocabulary"@en ;
@@ -100,13 +101,13 @@ or:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:14166b65-abaa-4611-b466-34975c15c27d" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-03-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Object Registry vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/ObjectRegistry-EU/2.1> ;
-  owl:versionIRI <https://ap.cim4.eu/ObjectRegistry/2.2> ;
-  owl:versionInfo "2.2.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/ObjectRegistry/2.2> ;
+  owl:versionInfo "2.2.3"@en .
 
 cim:IdentifiedObject.aliasName a rdf:Property ;
   rdfs:label "aliasName"@en ;

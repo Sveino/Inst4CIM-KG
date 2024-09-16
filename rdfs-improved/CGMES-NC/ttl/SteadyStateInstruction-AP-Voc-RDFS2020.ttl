@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix ssi    : <https://ap.cim4.eu/SteadyStateInstruction#> .
+@prefix ssi    : <https://ap-voc.cim4.eu/SteadyStateInstruction#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -293,6 +293,12 @@ nc:CountertradeRemedialAction a rdfs:Class ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
   rdfs:subClassOf nc:PowerRemedialAction .
+
+nc:CrossBorderRelevance a rdfs:Class ;
+  rdfs:label "CrossBorderRelevance"@en ;
+  rdfs:comment "Combination of an assessed element and one or more bidding zone border that are affected by the assessment." ;
+  cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
+  cims:stereotype "Description", "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
 
 nc:CurrentControlFunction a rdfs:Class ;
   rdfs:label "CurrentControlFunction"@en ;
@@ -693,13 +699,13 @@ ssi:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:6d01969f-38fd-460d-b260-b839a8123319" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-04-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Steady state instruction Vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/SteadyStateInstruction-EU/2.2> ;
-  owl:versionIRI <https://ap.cim4.eu/SteadyStateInstruction/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/SteadyStateInstruction/2.3> ;
+  owl:versionInfo "2.3.1"@en .
 
 cim:ActivePower.multiplier a rdf:Property ;
   rdfs:label "multiplier"@en ;
@@ -1266,6 +1272,14 @@ nc:ContingencyWithRemedialAction.enabled a rdf:Property ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:ContingencyWithRemedialAction .
 
+nc:CrossBorderRelevance.enabled a rdf:Property ;
+  rdfs:label "enabled"@en ;
+  rdfs:comment "If true, the cross border relevance is enabled, otherwise it is disabled." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CrossBorderRelevance .
+
 nc:CurrentControlFunction.targetValue a rdf:Property ;
   rdfs:label "targetValue"@en ;
   rdfs:comment "Target value for the current that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
@@ -1716,7 +1730,7 @@ nc:PowerRemedialAction.maxRegulatingDown a rdf:Property ;
   rdfs:label "maxRegulatingDown"@en ;
   rdfs:comment "Maximum net amount of active power that the remedial action can regulate down." ;
   cims:dataType cim:ActivePower ;
-  cims:multiplicity cims:M:1..1 ;
+  cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:PowerRemedialAction .
 
@@ -1724,7 +1738,7 @@ nc:PowerRemedialAction.maxRegulatingUp a rdf:Property ;
   rdfs:label "maxRegulatingUp"@en ;
   rdfs:comment "Maximum net amount of active power that the remedial action can regulate up." ;
   cims:dataType cim:ActivePower ;
-  cims:multiplicity cims:M:1..1 ;
+  cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:PowerRemedialAction .
 
@@ -1790,7 +1804,7 @@ nc:RemedialActionGroup.maxRegulatingDown a rdf:Property ;
   rdfs:label "maxRegulatingDown"@en ;
   rdfs:comment "Maximum net amount of active power that the group of remedial actions can regulate down." ;
   cims:dataType cim:ActivePower ;
-  cims:multiplicity cims:M:1..1 ;
+  cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:RemedialActionGroup .
 
@@ -1798,7 +1812,7 @@ nc:RemedialActionGroup.maxRegulatingUp a rdf:Property ;
   rdfs:label "maxRegulatingUp"@en ;
   rdfs:comment "Maximum net amount of active power that the group of remedial actions can regulate up." ;
   cims:dataType cim:ActivePower ;
-  cims:multiplicity cims:M:1..1 ;
+  cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:RemedialActionGroup .
 
@@ -1881,6 +1895,14 @@ In the case of priority strategy, the item with the lowest number gets allocated
 nc:StageTrigger.armed a rdf:Property ;
   rdfs:label "armed"@en ;
   rdfs:comment "The status of the class set by operation or by signal. Optional field that will override other status fields." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:StageTrigger .
+
+nc:StageTrigger.inService a rdf:Property ;
+  rdfs:label "inService"@en ;
+  rdfs:comment "Indicates if the stage trigger is in service." ;
   cims:dataType cim:Boolean ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;

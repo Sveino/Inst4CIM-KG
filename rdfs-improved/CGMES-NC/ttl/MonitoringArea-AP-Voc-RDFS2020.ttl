@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix ma     : <https://ap.cim4.eu/MonitoringArea#> .
+@prefix ma     : <https://ap-voc.cim4.eu/MonitoringArea#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -176,12 +176,12 @@ ma:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:41075091-91f0-4b14-a5b8-93945aa528ed" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-03-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Monitoring area Vocabulary"@en ;
-  owl:versionIRI <https://ap.cim4.eu/MonitoringArea/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/MonitoringArea/2.3> ;
+  owl:versionInfo "2.3.1"@en .
 
 cim:IdentifiedObject.description a rdf:Property ;
   rdfs:label "description"@en ;

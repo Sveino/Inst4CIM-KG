@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix ra     : <https://ap.cim4.eu/RemedialAction#> .
+@prefix ra     : <https://ap-voc.cim4.eu/RemedialAction#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -141,12 +141,6 @@ cim:PerCent a rdfs:Class ;
   rdfs:comment "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base." ;
   cims:belongsToCategory ra:Package_RemedialActionProfile ;
   cims:stereotype "CIMDatatype" .
-
-cim:PinTerminalKind a rdfs:Class ;
-  rdfs:label "PinTerminalKind"@en ;
-  rdfs:comment "Categorisation of type of compare done on Terminal." ;
-  cims:belongsToCategory ra:Package_RemedialActionProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
 
 cim:PowerElectronicsConnection a rdfs:Class ;
   rdfs:label "PowerElectronicsConnection"@en ;
@@ -407,6 +401,13 @@ nc:GridStateAlterationRemedialAction a rdfs:Class ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
   rdfs:subClassOf nc:RemedialAction .
 
+nc:InServiceAction a rdfs:Class ;
+  rdfs:label "InServiceAction"@en ;
+  rdfs:comment "In service action represents a change of the status of the equipment in the grid model compared to the base case." ;
+  cims:belongsToCategory ra:Package_RemedialActionProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:GridStateAlteration .
+
 nc:IntertemporalPropertyRange a rdfs:Class ;
   rdfs:label "IntertemporalPropertyRange"@en ;
   rdfs:comment """It represents the intertemporal range, which means that this is the maximum change of an attribute value between two time stamps or per time unit (e.g. hour). Both up and down directions are defined by the direction attribute, i.e. There are different schedules per direction. 
@@ -526,6 +527,12 @@ nc:PinTerminal a rdfs:Class ;
   cims:belongsToCategory ra:Package_RemedialActionProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
   rdfs:subClassOf nc:GateInputPin .
+
+nc:PinTerminalKind a rdfs:Class ;
+  rdfs:label "PinTerminalKind"@en ;
+  rdfs:comment "The kind of quantities that can serve as an input value for the pin." ;
+  cims:belongsToCategory ra:Package_RemedialActionProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
 
 nc:PowerElectronicsConnectionAction a rdfs:Class ;
   rdfs:label "PowerElectronicsConnectionAction"@en ;
@@ -684,7 +691,7 @@ nc:StageTrigger a rdfs:Class ;
   rdfs:comment "Stage that is triggered either by TriggerCondition or by gate condition within a stage." ;
   cims:belongsToCategory ra:Package_RemedialActionProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
+  rdfs:subClassOf cim:PowerSystemResource .
 
 nc:StaticPropertyRange a rdfs:Class ;
   rdfs:label "StaticPropertyRange"@en ;
@@ -771,19 +778,19 @@ profcim:URL a rdfs:Class ;
 ra:Ontology a owl:Ontology ;
   dcat:keyword "RA" ;
   dcat:theme "vocabulary"@en ;
-  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC24v01_MM10v02.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
   dcterms:creator "ENTSO-E CIM WG NC project "@en ;
   dcterms:description "This vocabulary is describing the remedial action profile."@en ;
   dcterms:identifier "urn:uuid:57fcfe0e-258c-45f2-b2ed-ff5b6a9859bc" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-04-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Remedial action Vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/RemedialAction-EU/2.2> ;
-  owl:versionIRI <https://ap.cim4.eu/RemedialAction/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/RemedialAction/2.3> ;
+  owl:versionInfo "2.3.1"@en .
 
 cim:ActivePower.multiplier a rdf:Property ;
   rdfs:label "multiplier"@en ;
@@ -1127,6 +1134,16 @@ nc:EnergySourceModification.EnergySource a rdf:Property ;
   rdfs:domain nc:EnergySourceModification ;
   rdfs:range cim:EnergySource .
 
+nc:Equipment.InServiceAction a rdf:Property ;
+  rdfs:label "InServiceAction"@en ;
+  rdfs:comment "Action that is applied to an equipment." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:InServiceAction.Equipment ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Equipment ;
+  rdfs:range nc:InServiceAction .
+
 nc:Equipment.PinEquipment a rdf:Property ;
   rdfs:label "PinEquipment"@en ;
   rdfs:comment "The pin that uses this input." ;
@@ -1454,6 +1471,16 @@ nc:GridStateAlterationRemedialAction.GridStateAlteration a rdf:Property ;
   rdfs:domain nc:GridStateAlterationRemedialAction ;
   rdfs:range nc:GridStateAlteration .
 
+nc:InServiceAction.Equipment a rdf:Property ;
+  rdfs:label "Equipment"@en ;
+  rdfs:comment "Equipment that has a in service action associated." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Equipment.InServiceAction ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:InServiceAction ;
+  rdfs:range cim:Equipment .
+
 nc:LoadAction.EnergyConsumer a rdf:Property ;
   rdfs:label "EnergyConsumer"@en ;
   rdfs:comment "The EnergyConsumer that is associated with a load action." ;
@@ -1726,7 +1753,7 @@ nc:PinTerminal.kind a rdf:Property ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:PinTerminal ;
-  rdfs:range cim:PinTerminalKind .
+  rdfs:range nc:PinTerminalKind .
 
 nc:PowerElectronicsConnection.PowerElectronicsConnectionAction a rdf:Property ;
   rdfs:label "PowerElectronicsConnectionAction"@en ;
@@ -1787,16 +1814,6 @@ nc:PowerShiftKeyStrategy.PowerRemedialAction a rdf:Property ;
   cims:stereotype "NC" ;
   rdfs:domain nc:PowerShiftKeyStrategy ;
   rdfs:range nc:PowerRemedialAction .
-
-nc:PowerTransferCorridor.ObservingTerminal a rdf:Property ;
-  rdfs:label "ObservingTerminal"@en ;
-  rdfs:comment "The terminal that identifies the power transfer corridor." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:Terminal.PowerTransferCorridor ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC" ;
-  rdfs:domain nc:PowerTransferCorridor ;
-  rdfs:range cim:Terminal .
 
 nc:PowerTransferCorridor.PTCActivePowerSupport a rdf:Property ;
   rdfs:label "PTCActivePowerSupport"@en ;
@@ -2066,16 +2083,6 @@ nc:RemedialActionGroup.RemedialAction a rdf:Property ;
   rdfs:domain nc:RemedialActionGroup ;
   rdfs:range nc:RemedialActionDependency .
 
-nc:RemedialActionScheme.ArmedRemedialAction a rdf:Property ;
-  rdfs:label "ArmedRemedialAction"@en ;
-  rdfs:comment "Remedial action scheme schedule that has this armed remedial action." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:SchemeRemedialAction.RemedialActionScheme ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC" ;
-  rdfs:domain nc:RemedialActionScheme ;
-  rdfs:range nc:SchemeRemedialAction .
-
 nc:RemedialActionScheme.GateArmed a rdf:Property ;
   rdfs:label "GateArmed"@en ;
   rdfs:comment "Gate that through a gate logic and input pin defines arming of a Remedial Action Scheme." ;
@@ -2095,6 +2102,16 @@ nc:RemedialActionScheme.PTCActivePowerSupport a rdf:Property ;
   cims:stereotype "NC" ;
   rdfs:domain nc:RemedialActionScheme ;
   rdfs:range nc:PTCActivePowerSupport .
+
+nc:RemedialActionScheme.SchemeRemedialAction a rdf:Property ;
+  rdfs:label "SchemeRemedialAction"@en ;
+  rdfs:comment "Scheme remedial action that belongs to the remedial action scheme." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:SchemeRemedialAction.RemedialActionScheme ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionScheme ;
+  rdfs:range nc:SchemeRemedialAction .
 
 nc:RemedialActionScheme.Stage a rdf:Property ;
   rdfs:label "Stage"@en ;
@@ -2154,9 +2171,9 @@ nc:RotatingMachineAction.RotatingMachine a rdf:Property ;
 
 nc:SchemeRemedialAction.RemedialActionScheme a rdf:Property ;
   rdfs:label "RemedialActionScheme"@en ;
-  rdfs:comment "Armed remedial action for a remedial action scheme." ;
+  rdfs:comment "Remedial action scheme for this scheme remedial action." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:RemedialActionScheme.ArmedRemedialAction ;
+  cims:inverseRoleName nc:RemedialActionScheme.SchemeRemedialAction ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
   rdfs:domain nc:SchemeRemedialAction ;
@@ -2354,16 +2371,6 @@ nc:Terminal.PinTerminal a rdf:Property ;
   cims:stereotype "NC" ;
   rdfs:domain cim:Terminal ;
   rdfs:range nc:PinTerminal .
-
-nc:Terminal.PowerTransferCorridor a rdf:Property ;
-  rdfs:label "PowerTransferCorridor"@en ;
-  rdfs:comment "The power transfer corridor which is identified by  terminal." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerTransferCorridor.ObservingTerminal ;
-  cims:multiplicity cims:M:0..n ;
-  cims:stereotype "NC" ;
-  rdfs:domain cim:Terminal ;
-  rdfs:range nc:PowerTransferCorridor .
 
 nc:TopologyAction.Switch a rdf:Property ;
   rdfs:label "Switch"@en ;
@@ -3200,26 +3207,6 @@ cim:Currency.ZWL a cim:Currency ;
   rdfs:comment "Zimbabwe dollar." ;
   cims:stereotype "enum" .
 
-cim:PinTerminalKind.activePower a cim:PinTerminalKind ;
-  rdfs:label "activePower"@en ;
-  rdfs:comment "Active Power on the Terminal." ;
-  cims:stereotype "enum" .
-
-cim:PinTerminalKind.apparentPower a cim:PinTerminalKind ;
-  rdfs:label "apparentPower"@en ;
-  rdfs:comment "Apparent Power on the Terminal." ;
-  cims:stereotype "enum" .
-
-cim:PinTerminalKind.reactivePower a cim:PinTerminalKind ;
-  rdfs:label "reactivePower"@en ;
-  rdfs:comment "Reactive Power on the Terminal." ;
-  cims:stereotype "enum" .
-
-cim:PinTerminalKind.voltage a cim:PinTerminalKind ;
-  rdfs:label "voltage"@en ;
-  rdfs:comment "Voltage on the Terminal." ;
-  cims:stereotype "enum" .
-
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
   rdfs:label "M"@en ;
   rdfs:comment "Mega 10**6." ;
@@ -3369,6 +3356,36 @@ nc:PinPowerTransferCorridorKind.activePower a nc:PinPowerTransferCorridorKind ;
 nc:PinPowerTransferCorridorKind.reactivePower a nc:PinPowerTransferCorridorKind ;
   rdfs:label "reactivePower"@en ;
   rdfs:comment "Reactive power in the branch group." ;
+  cims:stereotype "enum" .
+
+nc:PinTerminalKind.activePower a nc:PinTerminalKind ;
+  rdfs:label "activePower"@en ;
+  rdfs:comment "Active power on the Terminal." ;
+  cims:stereotype "enum" .
+
+nc:PinTerminalKind.apparentPower a nc:PinTerminalKind ;
+  rdfs:label "apparentPower"@en ;
+  rdfs:comment "Apparent power on the Terminal." ;
+  cims:stereotype "enum" .
+
+nc:PinTerminalKind.current a nc:PinTerminalKind ;
+  rdfs:label "current"@en ;
+  rdfs:comment "Current on the Terminal." ;
+  cims:stereotype "enum" .
+
+nc:PinTerminalKind.reactivePower a nc:PinTerminalKind ;
+  rdfs:label "reactivePower"@en ;
+  rdfs:comment "Reactive power on the Terminal." ;
+  cims:stereotype "enum" .
+
+nc:PinTerminalKind.voltageAngle a nc:PinTerminalKind ;
+  rdfs:label "voltageAngle"@en ;
+  rdfs:comment "Voltage angle on the Terminal." ;
+  cims:stereotype "enum" .
+
+nc:PinTerminalKind.voltageMagnitude a nc:PinTerminalKind ;
+  rdfs:label "voltageMagnitude"@en ;
+  rdfs:comment "Voltage magnitude on the Terminal." ;
   cims:stereotype "enum" .
 
 nc:RelativeDirectionKind.down a nc:RelativeDirectionKind ;

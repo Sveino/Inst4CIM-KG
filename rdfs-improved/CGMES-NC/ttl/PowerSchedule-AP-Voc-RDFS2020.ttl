@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix ps     : <https://ap.cim4.eu/PowerSchedule#> .
+@prefix ps     : <https://ap-voc.cim4.eu/PowerSchedule#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -267,13 +267,13 @@ ps:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:470c9792-7798-4eb6-b7f2-6e18293c5f7b" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-03-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Power schedule vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2> ;
-  owl:versionIRI <https://ap.cim4.eu/PowerSchedule/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/PowerSchedule/2.3> ;
+  owl:versionInfo "2.3.1"@en .
 
 cim:ActivePower.multiplier a rdf:Property ;
   rdfs:label "multiplier"@en ;

@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix sis    : <https://ap.cim4.eu/StateInstructionSchedule#> .
+@prefix sis    : <https://ap-voc.cim4.eu/StateInstructionSchedule#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -324,9 +324,9 @@ nc:ContingencyWithRemedialAction a rdfs:Class ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC" .
 
-nc:CrossBorderRelevant a rdfs:Class ;
-  rdfs:label "CrossBorderRelevant"@en ;
-  rdfs:comment "Combination of an assessed element and a bidding zone border." ;
+nc:CrossBorderRelevance a rdfs:Class ;
+  rdfs:label "CrossBorderRelevance"@en ;
+  rdfs:comment "Combination of an assessed element and one or more bidding zone border that are affected by the assessment." ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC" .
 
@@ -386,6 +386,13 @@ nc:GenericEnablingSchedule a rdfs:Class ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
   rdfs:subClassOf nc:BaseIrregularTimeSeries .
 
+nc:GenericSequenceSchedule a rdfs:Class ;
+  rdfs:label "GenericSequenceSchedule"@en ;
+  rdfs:comment "Schedule for sequence." ;
+  cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
 nc:GenericValueSchedule a rdfs:Class ;
   rdfs:label "GenericValueSchedule"@en ;
   rdfs:comment "Time series represent irregular generic value at given points in time. The type of value is given by the reference association.  " ;
@@ -427,13 +434,14 @@ nc:GridStateIntensitySchedule a rdfs:Class ;
 
 nc:HourPattern a rdfs:Class ;
   rdfs:label "HourPattern"@en ;
-  rdfs:comment "A period of the day with a given pattern." ;
+  rdfs:comment "Pattern of hourly period in a day with the same kind of intensity." ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
   rdfs:subClassOf cim:IdentifiedObject .
 
 nc:HourPeriod a rdfs:Class ;
   rdfs:label "HourPeriod"@en ;
+  rdfs:comment "Period of hours in a day." ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
 
@@ -464,6 +472,7 @@ nc:ParticipationFactorTimePoint a rdfs:Class ;
 
 nc:PeakKind a rdfs:Class ;
   rdfs:label "PeakKind"@en ;
+  rdfs:comment "Kind of time period with similar intensity." ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
 
@@ -613,6 +622,31 @@ nc:SecuredExclusionReasonKind a rdfs:Class ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
 
+nc:SequenceTimePoint a rdfs:Class ;
+  rdfs:label "SequenceTimePoint"@en ;
+  rdfs:comment "Sequence at a given point in time." ;
+  cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:StageTrigger a rdfs:Class ;
+  rdfs:label "StageTrigger"@en ;
+  rdfs:comment "Stage that is triggered either by TriggerCondition or by gate condition within a stage." ;
+  cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:StageTriggerSchedule a rdfs:Class ;
+  rdfs:label "StageTriggerSchedule"@en ;
+  rdfs:comment "Schedule for a stage trigger." ;
+  cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:StageTriggerTimePoint a rdfs:Class ;
+  rdfs:label "StageTriggerTimePoint"@en ;
+  rdfs:comment "Stage trigger values at a given point in time." ;
+  cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
 nc:TimeSeriesInterpolationKind a rdfs:Class ;
   rdfs:label "TimeSeriesInterpolationKind"@en ;
   rdfs:comment "Kinds of interpolation of values between two time point. " ;
@@ -699,13 +733,13 @@ sis:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:af884936-ea95-416b-b4c9-1214caa68658" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-03-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "State instruction schedule vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/StateInstructionSchedule-EU/2.2> ;
-  owl:versionIRI <https://ap.cim4.eu/StateInstructionSchedule/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/StateInstructionSchedule/2.3> ;
+  owl:versionInfo "2.3.1"@en .
 
 cim:ActivePower.multiplier a rdf:Property ;
   rdfs:label "multiplier"@en ;
@@ -1348,14 +1382,14 @@ nc:ContingencyWithRemedialAction.GenericEnablingSchedule a rdf:Property ;
   rdfs:domain nc:ContingencyWithRemedialAction ;
   rdfs:range nc:GenericEnablingSchedule .
 
-nc:CrossBorderRelevant.GenericEnablingSchedule a rdf:Property ;
+nc:CrossBorderRelevance.GenericEnablingSchedule a rdf:Property ;
   rdfs:label "GenericEnablingSchedule"@en ;
-  rdfs:comment "Cross border relevant that has enabling schedules." ;
+  rdfs:comment "Enabling schedule which belongs to the cross border relevant." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:GenericEnablingSchedule.CrossBorderRelevant ;
+  cims:inverseRoleName nc:GenericEnablingSchedule.CrossBorderRelevance ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
-  rdfs:domain nc:CrossBorderRelevant ;
+  rdfs:domain nc:CrossBorderRelevance ;
   rdfs:range nc:GenericEnablingSchedule .
 
 nc:DCPole.PowerShiftKeySchedule a rdf:Property ;
@@ -1393,6 +1427,16 @@ nc:EnablingTimePoint.enabled a rdf:Property ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:EnablingTimePoint .
+
+nc:EnergyBlockOrder.GenericSequenceSchedule a rdf:Property ;
+  rdfs:label "GenericSequenceSchedule"@en ;
+  rdfs:comment "Generic sequence schedule associated with an energy block order." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:GenericSequenceSchedule.EnergyBlockOrder ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:EnergyBlockOrder ;
+  rdfs:range nc:GenericSequenceSchedule .
 
 nc:EnergyBlockOrder.PowerShiftKeySchedule a rdf:Property ;
   rdfs:label "PowerShiftKeySchedule"@en ;
@@ -1544,15 +1588,15 @@ nc:GenericEnablingSchedule.ContingencyWithRemedialAction a rdf:Property ;
   rdfs:domain nc:GenericEnablingSchedule ;
   rdfs:range nc:ContingencyWithRemedialAction .
 
-nc:GenericEnablingSchedule.CrossBorderRelevant a rdf:Property ;
-  rdfs:label "CrossBorderRelevant"@en ;
-  rdfs:comment "Enabling schedule which belongs to the cross border relevant." ;
+nc:GenericEnablingSchedule.CrossBorderRelevance a rdf:Property ;
+  rdfs:label "CrossBorderRelevance"@en ;
+  rdfs:comment "Cross border relevant that has enabling schedules." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:CrossBorderRelevant.GenericEnablingSchedule ;
+  cims:inverseRoleName nc:CrossBorderRelevance.GenericEnablingSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
   rdfs:domain nc:GenericEnablingSchedule ;
-  rdfs:range nc:CrossBorderRelevant .
+  rdfs:range nc:CrossBorderRelevance .
 
 nc:GenericEnablingSchedule.EnablingTimePoint a rdf:Property ;
   rdfs:label "EnablingTimePoint"@en ;
@@ -1593,6 +1637,26 @@ nc:GenericEnablingSchedule.RemedialActionDependency a rdf:Property ;
   cims:stereotype "NC" ;
   rdfs:domain nc:GenericEnablingSchedule ;
   rdfs:range nc:RemedialActionDependency .
+
+nc:GenericSequenceSchedule.EnergyBlockOrder a rdf:Property ;
+  rdfs:label "EnergyBlockOrder"@en ;
+  rdfs:comment "Energy block order which has generic sequence schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:EnergyBlockOrder.GenericSequenceSchedule ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:GenericSequenceSchedule ;
+  rdfs:range nc:EnergyBlockOrder .
+
+nc:GenericSequenceSchedule.SequenceTimePoint a rdf:Property ;
+  rdfs:label "SequenceTimePoint"@en ;
+  rdfs:comment "The sequence timepoint for a sequence schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:SequenceTimePoint.GenericSequenceSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:GenericSequenceSchedule ;
+  rdfs:range nc:SequenceTimePoint .
 
 nc:GenericValueSchedule.GenericValueTimePoint a rdf:Property ;
   rdfs:label "GenericValueTimePoint"@en ;
@@ -1737,6 +1801,7 @@ nc:HourPattern.HourPeriod a rdf:Property ;
 
 nc:HourPattern.energyDemandKind a rdf:Property ;
   rdfs:label "energyDemandKind"@en ;
+  rdfs:comment "Type of energy demand that the pattern is valid for." ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:HourPattern ;
@@ -1744,7 +1809,7 @@ nc:HourPattern.energyDemandKind a rdf:Property ;
 
 nc:HourPattern.peakKind a rdf:Property ;
   rdfs:label "peakKind"@en ;
-  rdfs:comment "Kind of peak for a given hour pattern." ;
+  rdfs:comment "Type of peak or intensity that the pattern is valid for." ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:HourPattern ;
@@ -1762,6 +1827,7 @@ nc:HourPeriod.HourPattern a rdf:Property ;
 
 nc:HourPeriod.endTime a rdf:Property ;
   rdfs:label "endTime"@en ;
+  rdfs:comment "Time the period end and not including, e.g. 13:00 which means it does not include the time of 13:00 but 12:59." ;
   cims:dataType cim:Time ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
@@ -1778,6 +1844,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
 
 nc:HourPeriod.startTime a rdf:Property ;
   rdfs:label "startTime"@en ;
+  rdfs:comment "Time the period start and including, e.g. 12:00 which means it include the time of 12:00." ;
   cims:dataType cim:Time ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
@@ -2528,17 +2595,17 @@ nc:RemedialActionGroupTimePoint.maxRegulatingUp a rdf:Property ;
 
 nc:RemedialActionScheme.RemedialActionSchemeSchedule a rdf:Property ;
   rdfs:label "RemedialActionSchemeSchedule"@en ;
-  rdfs:comment "Remedial action scheme schedule associated with a remedial action scheme." ;
+  rdfs:comment "Remedial action scheme schedule that has this armed remedial action." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:RemedialActionSchemeSchedule.RemedialActionScheme ;
+  cims:inverseRoleName nc:RemedialActionSchemeSchedule.ArmedRemedialAction ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
   rdfs:domain nc:RemedialActionScheme ;
   rdfs:range nc:RemedialActionSchemeSchedule .
 
-nc:RemedialActionSchemeSchedule.RemedialActionScheme a rdf:Property ;
-  rdfs:label "RemedialActionScheme"@en ;
-  rdfs:comment "Remedial action scheme which has remedial action scheme schedules." ;
+nc:RemedialActionSchemeSchedule.ArmedRemedialAction a rdf:Property ;
+  rdfs:label "ArmedRemedialAction"@en ;
+  rdfs:comment "Armed remedial action for a remedial action scheme." ;
   cims:AssociationUsed "Yes" ;
   cims:inverseRoleName nc:RemedialActionScheme.RemedialActionSchemeSchedule ;
   cims:multiplicity cims:M:1 ;
@@ -2619,6 +2686,96 @@ nc:Season.BaseRegularIntervalSchedule a rdf:Property ;
   cims:stereotype "NC" ;
   rdfs:domain cim:Season ;
   rdfs:range nc:BaseRegularIntervalSchedule .
+
+nc:SequenceTimePoint.GenericSequenceSchedule a rdf:Property ;
+  rdfs:label "GenericSequenceSchedule"@en ;
+  rdfs:comment "The sequence schedule which belongs to the sequence timepoint." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:GenericSequenceSchedule.SequenceTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:SequenceTimePoint ;
+  rdfs:range nc:GenericSequenceSchedule .
+
+nc:SequenceTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SequenceTimePoint .
+
+nc:SequenceTimePoint.sequence a rdf:Property ;
+  rdfs:label "sequence"@en ;
+  rdfs:comment "Sequence needs to be ordered by the scheduling area. It has to be unique by the scheduling area." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:SequenceTimePoint .
+
+nc:StageTrigger.StageTriggerSchedule a rdf:Property ;
+  rdfs:label "StageTriggerSchedule"@en ;
+  rdfs:comment "Stage trigger schedule associated with a stage trigger." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:StageTriggerSchedule.StageTrigger ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:StageTrigger ;
+  rdfs:range nc:StageTriggerSchedule .
+
+nc:StageTriggerSchedule.StageTrigger a rdf:Property ;
+  rdfs:label "StageTrigger"@en ;
+  rdfs:comment "Stage trigger which has stage trigger schedules." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:StageTrigger.StageTriggerSchedule ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:StageTriggerSchedule ;
+  rdfs:range nc:StageTrigger .
+
+nc:StageTriggerSchedule.StageTriggerTimePoint a rdf:Property ;
+  rdfs:label "StageTriggerTimePoint"@en ;
+  rdfs:comment "Stage trigger time point that relates to this remedial action scheme schedule." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:StageTriggerTimePoint.StageTriggerSchedule ;
+  cims:multiplicity cims:M:1..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:StageTriggerSchedule ;
+  rdfs:range nc:StageTriggerTimePoint .
+
+nc:StageTriggerTimePoint.StageTriggerSchedule a rdf:Property ;
+  rdfs:label "StageTriggerSchedule"@en ;
+  rdfs:comment "Stage trigger schedule that has time point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:StageTriggerSchedule.StageTriggerTimePoint ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:StageTriggerTimePoint ;
+  rdfs:range nc:StageTriggerSchedule .
+
+nc:StageTriggerTimePoint.armed a rdf:Property ;
+  rdfs:label "armed"@en ;
+  rdfs:comment "Defines the arming status of the remedial action scheme. It is set by operation or by signal." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:StageTriggerTimePoint .
+
+nc:StageTriggerTimePoint.atTime a rdf:Property ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:StageTriggerTimePoint .
+
+nc:StageTriggerTimePoint.inService a rdf:Property ;
+  rdfs:label "inService"@en ;
+  rdfs:comment "Specifies the availability of the Remedial Action Scheme (RAS). If true, the RAS is available for contingency processing. If false, the RAS is treated by contingency processing as if it is not in the model." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:StageTriggerTimePoint .
 
 nc:UnitCostSchedule.GeneratingUnit a rdf:Property ;
   rdfs:label "GeneratingUnit"@en ;
@@ -3737,6 +3894,11 @@ nc:TimeSeriesInterpolationKind.next a nc:TimeSeriesInterpolationKind ;
 nc:TimeSeriesInterpolationKind.none a nc:TimeSeriesInterpolationKind ;
   rdfs:label "none"@en ;
   rdfs:comment "No interpolation is applied." ;
+  cims:stereotype "enum" .
+
+nc:TimeSeriesInterpolationKind.previous a nc:TimeSeriesInterpolationKind ;
+  rdfs:label "previous"@en ;
+  rdfs:comment "The value between two time points is set to previous value." ;
   cims:stereotype "enum" .
 
 nc:ValueOffsetKind.absolute a nc:ValueOffsetKind ;

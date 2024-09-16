@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix ae     : <https://ap.cim4.eu/AssessedElement#> .
+@prefix ae     : <https://ap-voc.cim4.eu/AssessedElement#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -221,13 +221,13 @@ ae:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:a2de1738-214d-4552-b894-5b33cbc34218" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-04-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Assessed Element Vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/AssessedElement-EU/2.2> ;
-  owl:versionIRI <https://ap.cim4.eu/AssessedElement/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/AssessedElement/2.3> ;
+  owl:versionInfo "2.3.1"@en .
 
 cim:ActivePower.multiplier a rdf:Property ;
   rdfs:label "multiplier"@en ;
@@ -753,6 +753,14 @@ nc:CrossBorderRelevance.mRID a rdf:Property ;
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
   cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:CrossBorderRelevance .
+
+nc:CrossBorderRelevance.normalEnabled a rdf:Property ;
+  rdfs:label "normalEnabled"@en ;
+  rdfs:comment "If true, the cross border relevance shall be considered under normal operating conditions." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:CrossBorderRelevance .
 

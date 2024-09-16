@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix sar    : <https://ap.cim4.eu/SecurityAnalysisResult#> .
+@prefix sar    : <https://ap-voc.cim4.eu/SecurityAnalysisResult#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -144,6 +144,24 @@ nc:Region a rdfs:Class ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype "NC" .
 
+nc:RemedialAction a rdfs:Class ;
+  rdfs:label "RemedialAction"@en ;
+  rdfs:comment "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly. " ;
+  cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
+  cims:stereotype "NC" .
+
+nc:RemedialActionApplied a rdfs:Class ;
+  rdfs:label "RemedialActionApplied"@en ;
+  rdfs:comment "Remedial Action or Remedial Action Stage that has been applied to the power flow case which has the associated power flow result. " ;
+  cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+nc:Stage a rdfs:Class ;
+  rdfs:label "Stage"@en ;
+  rdfs:comment "Stage of a remedial action scheme." ;
+  cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
 profcim:IRI a rdfs:Class ;
   rdfs:label "IRI"@en ;
   rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
@@ -186,13 +204,13 @@ sar:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:7d53a1b2-0dcc-4556-b868-6ed099bd9ac9" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-03-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Security Analysis Result Vocabulary"@en ;
-  owl:priorVersion <http://entsoe.eu/ns/CIM/SecurityAnalysisResult-EU/2.2> ;
-  owl:versionIRI <https://ap.cim4.eu/SecurityAnalysisResult/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:priorVersion <https://ap-voc.cim4.eu/SecurityAnalysisResult/2.3> ;
+  owl:versionIRI <https://ap-voc.cim4.eu/SecurityAnalysisResult/2.4> ;
+  owl:versionInfo "2.4"@en .
 
 cim:ActivePower.multiplier a rdf:Property ;
   rdfs:label "multiplier"@en ;
@@ -414,6 +432,16 @@ nc:PowerFlowResult.OperationalLimit a rdf:Property ;
   rdfs:domain nc:PowerFlowResult ;
   rdfs:range cim:OperationalLimit .
 
+nc:PowerFlowResult.RemedialActionApplied a rdf:Property ;
+  rdfs:label "RemedialActionApplied"@en ;
+  rdfs:comment "Remedial action that is applied when the power flow result is calculated." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionApplied.PowerFlowResult ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:PowerFlowResult ;
+  rdfs:range nc:RemedialActionApplied .
+
 nc:PowerFlowResult.ReportedByRegion a rdf:Property ;
   rdfs:label "ReportedByRegion"@en ;
   rdfs:comment "The region which reports this limit violation." ;
@@ -458,8 +486,7 @@ nc:PowerFlowResult.value a rdf:Property ;
 
 nc:PowerFlowResult.valueA a rdf:Property ;
   rdfs:label "valueA"@en ;
-  rdfs:comment """Current from a power flow calculation on a given terminal.
-Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.""" ;
+  rdfs:comment "Current from a power flow calculation on a given terminal. The value shall be a positive value or zero." ;
   cims:dataType cim:CurrentFlow ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
@@ -516,6 +543,65 @@ nc:Region.LimitViolation a rdf:Property ;
   cims:stereotype "NC" ;
   rdfs:domain nc:Region ;
   rdfs:range nc:PowerFlowResult .
+
+nc:RemedialAction.RemedialActionApplied a rdf:Property ;
+  rdfs:label "RemedialActionApplied"@en ;
+  rdfs:comment "The relationship of the applied remedial action and power flow result." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionApplied.RemedialAction ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialAction ;
+  rdfs:range nc:RemedialActionApplied .
+
+nc:RemedialActionApplied.PowerFlowResult a rdf:Property ;
+  rdfs:label "PowerFlowResult"@en ;
+  rdfs:comment "Power flow result that is obtained when the remedial action is applied." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:PowerFlowResult.RemedialActionApplied ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionApplied ;
+  rdfs:range nc:PowerFlowResult .
+
+nc:RemedialActionApplied.RemedialAction a rdf:Property ;
+  rdfs:label "RemedialAction"@en ;
+  rdfs:comment "Remedial action that is applied." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:RemedialAction.RemedialActionApplied ;
+  cims:multiplicity cims:M:1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionApplied ;
+  rdfs:range nc:RemedialAction .
+
+nc:RemedialActionApplied.StageForRemedialActionScheme a rdf:Property ;
+  rdfs:label "StageForRemedialActionScheme"@en ;
+  rdfs:comment "The stage of the remedial action scheme that is applied." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Stage.RemedialActionApplied ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:RemedialActionApplied ;
+  rdfs:range nc:Stage .
+
+nc:RemedialActionApplied.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:RemedialActionApplied .
+
+nc:Stage.RemedialActionApplied a rdf:Property ;
+  rdfs:label "RemedialActionApplied"@en ;
+  rdfs:comment "The applied relationship between remedial action and a power flow result." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:RemedialActionApplied.StageForRemedialActionScheme ;
+  cims:multiplicity cims:M:0..n ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:Stage ;
+  rdfs:range nc:RemedialActionApplied .
 
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
   rdfs:label "M"@en ;

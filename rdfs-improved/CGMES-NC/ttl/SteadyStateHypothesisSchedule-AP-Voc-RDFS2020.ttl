@@ -2,7 +2,7 @@
 @prefix nc     : <https://cim4.eu/ns/nc#> .
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix shs    : <https://ap.cim4.eu/SteadyStateHypothesisSchedule#> .
+@prefix shs    : <https://ap-voc.cim4.eu/SteadyStateHypothesisSchedule#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -554,13 +554,14 @@ nc:GeneratingUnitTimePoint a rdfs:Class ;
 
 nc:HourPattern a rdfs:Class ;
   rdfs:label "HourPattern"@en ;
-  rdfs:comment "A period of the day with a given pattern." ;
+  rdfs:comment "Pattern of hourly period in a day with the same kind of intensity." ;
   cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
   rdfs:subClassOf cim:IdentifiedObject .
 
 nc:HourPeriod a rdfs:Class ;
   rdfs:label "HourPeriod"@en ;
+  rdfs:comment "Period of hours in a day." ;
   cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
 
@@ -586,6 +587,7 @@ nc:InServiceTimePoint a rdfs:Class ;
 
 nc:PeakKind a rdfs:Class ;
   rdfs:label "PeakKind"@en ;
+  rdfs:comment "Kind of time period with similar intensity." ;
   cims:belongsToCategory shs:Package_SteadyStateHypothesisScheduleProfile ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
 
@@ -791,12 +793,12 @@ shs:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:0d815deb-9968-4c6f-85d7-503d49e0b81f" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-04-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Steady State Hypothesis Schedule Vocabulary"@en ;
-  owl:versionIRI <https://ap.cim4.eu/SteadyStateHypothesisSchedule/1.0> ;
-  owl:versionInfo "1.0.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/SteadyStateHypothesisSchedule/1.0> ;
+  owl:versionInfo "1.0.1"@en .
 
 cim:ActivePower.multiplier a rdf:Property ;
   rdfs:label "multiplier"@en ;
@@ -2215,6 +2217,7 @@ nc:HourPattern.HourPeriod a rdf:Property ;
 
 nc:HourPattern.energyDemandKind a rdf:Property ;
   rdfs:label "energyDemandKind"@en ;
+  rdfs:comment "Type of energy demand that the pattern is valid for." ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:HourPattern ;
@@ -2222,7 +2225,7 @@ nc:HourPattern.energyDemandKind a rdf:Property ;
 
 nc:HourPattern.peakKind a rdf:Property ;
   rdfs:label "peakKind"@en ;
-  rdfs:comment "Kind of peak for a given hour pattern." ;
+  rdfs:comment "Type of peak or intensity that the pattern is valid for." ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:HourPattern ;
@@ -2240,6 +2243,7 @@ nc:HourPeriod.HourPattern a rdf:Property ;
 
 nc:HourPeriod.endTime a rdf:Property ;
   rdfs:label "endTime"@en ;
+  rdfs:comment "Time the period end and not including, e.g. 13:00 which means it does not include the time of 13:00 but 12:59." ;
   cims:dataType cim:Time ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
@@ -2256,6 +2260,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
 
 nc:HourPeriod.startTime a rdf:Property ;
   rdfs:label "startTime"@en ;
+  rdfs:comment "Time the period start and including, e.g. 12:00 which means it include the time of 12:00." ;
   cims:dataType cim:Time ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;

@@ -3,7 +3,7 @@
 @prefix cims   : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix eu     : <https://cim.ucaiug.io/ns/eu#> .
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix er     : <https://ap.cim4.eu/EquipmentReliability#> .
+@prefix er     : <https://ap-voc.cim4.eu/EquipmentReliability#> .
 @prefix dcat   : <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/#> .
 @prefix owl    : <http://www.w3.org/2002/07/owl#> .
@@ -599,7 +599,8 @@ nc:AreaDispatchableUnit a rdfs:Class ;
   rdfs:label "AreaDispatchableUnit"@en ;
   rdfs:comment "Allocates a given producing or consuming unit, including direct current corridor and collection of units, to a given control area (through the scheduling area) for supporting the control of the given area through dispatch instruction. " ;
   cims:belongsToCategory er:Package_EquipmentReliabilityProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:PowerSystemResource .
 
 nc:AreaInterchangeController a rdfs:Class ;
   rdfs:label "AreaInterchangeController"@en ;
@@ -1692,13 +1693,13 @@ er:Ontology a owl:Ontology ;
   dcterms:identifier "urn:uuid:5f727c5c-b49f-47be-b750-a00fefb7e806" ;
   dcterms:language "en-GB" ;
   dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-04-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
   dcterms:publisher "ENTSO-E"@en ;
   dcterms:rightsHolder "ENTSO-E"@en ;
   dcterms:title "Equipment Reliability Vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/EquipmentReliability-EU/2.2> ;
-  owl:versionIRI <https://ap.cim4.eu/EquipmentReliability/2.3> ;
-  owl:versionInfo "2.3.0"@en .
+  owl:versionIRI <https://ap-voc.cim4.eu/EquipmentReliability/2.3> ;
+  owl:versionInfo "2.3.1"@en .
 
 cim:ACDCTerminal.OperationalLimitSet a rdf:Property ;
   rdfs:label "OperationalLimitSet"@en ;
@@ -3018,10 +3019,28 @@ nc:Circuit.Equipment a rdf:Property ;
   rdfs:comment "The equipment which is part of the circuit. This includes all equipment related to the circuit (e.g. If the circuit is a transformer, the equipment could be all switching and auxiliary equipments related to the transformer). A BusbarSection shall not be part of the circuit." ;
   cims:AssociationUsed "No" ;
   cims:inverseRoleName nc:Equipment.Circuit ;
-  cims:multiplicity cims:M:1..n ;
+  cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
   rdfs:domain nc:Circuit ;
   rdfs:range cim:Equipment .
+
+nc:Circuit.IdentifyingTerminal a rdf:Property ;
+  rdfs:label "IdentifyingTerminal"@en ;
+  rdfs:comment "Terminal that identifies the circuit." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName nc:Terminal.Circuit ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain nc:Circuit ;
+  rdfs:range cim:Terminal .
+
+nc:Circuit.positiveFlowIn a rdf:Property ;
+  rdfs:label "positiveFlowIn"@en ;
+  rdfs:comment "True, if the positive value on the terminal shall be considered flow into the circuit. False, if the positive value on the terminal shall be considered flow out of the circuit." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:Circuit .
 
 nc:CircuitShare.Circuit a rdf:Property ;
   rdfs:label "Circuit"@en ;
@@ -4059,19 +4078,67 @@ nc:FACTSEquipment.LossCurve a rdf:Property ;
   rdfs:domain nc:FACTSEquipment ;
   rdfs:range nc:LossCurve .
 
-nc:FACTSEquipment.capacitiveRating a rdf:Property ;
-  rdfs:label "capacitiveRating"@en ;
+nc:FACTSEquipment.maxC a rdf:Property ;
+  rdfs:label "maxC"@en ;
   rdfs:comment "Capacitive reactance at maximum reactive power.  Shall always be positive." ;
   cims:dataType cim:Reactance ;
-  cims:multiplicity cims:M:1..1 ;
+  cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:FACTSEquipment .
 
-nc:FACTSEquipment.inductiveRating a rdf:Property ;
-  rdfs:label "inductiveRating"@en ;
+nc:FACTSEquipment.maxL a rdf:Property ;
+  rdfs:label "maxL"@en ;
   rdfs:comment "Inductive rating at maximum inductive reactive power.  Shall always be negative.  " ;
   cims:dataType cim:Reactance ;
-  cims:multiplicity cims:M:1..1 ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:FACTSEquipment .
+
+nc:FACTSEquipment.minC a rdf:Property ;
+  rdfs:label "minC"@en ;
+  rdfs:comment "Capacitive reactance at minimum reactive power.  Shall always be positive." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:FACTSEquipment .
+
+nc:FACTSEquipment.minL a rdf:Property ;
+  rdfs:label "minL"@en ;
+  rdfs:comment "Inductive rating at minimum inductive reactive power.  Shall always be negative.  " ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:FACTSEquipment .
+
+nc:FACTSEquipment.ratedC a rdf:Property ;
+  rdfs:label "ratedC"@en ;
+  rdfs:comment "Capacitive reactance at maximum reactive power.  Shall always be positive." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:FACTSEquipment .
+
+nc:FACTSEquipment.ratedI a rdf:Property ;
+  rdfs:label "ratedI"@en ;
+  rdfs:comment "Rated current of the FACTS equipment." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:FACTSEquipment .
+
+nc:FACTSEquipment.ratedL a rdf:Property ;
+  rdfs:label "ratedL"@en ;
+  rdfs:comment "Inductive rating at maximum inductive reactive power.  Shall always be negative.  " ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain nc:FACTSEquipment .
+
+nc:FACTSEquipment.ratedU a rdf:Property ;
+  rdfs:label "ratedU"@en ;
+  rdfs:comment "Rated voltage of the FACTS equipment." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:FACTSEquipment .
 
@@ -5822,6 +5889,16 @@ nc:TapChangerController.TapChanger a rdf:Property ;
   rdfs:domain nc:TapChangerController ;
   rdfs:range cim:TapChanger .
 
+nc:Terminal.Circuit a rdf:Property ;
+  rdfs:label "Circuit"@en ;
+  rdfs:comment "Circuit that is identified by the given Terminal." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName nc:Circuit.IdentifyingTerminal ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC" ;
+  rdfs:domain cim:Terminal ;
+  rdfs:range nc:Circuit .
+
 nc:Terminal.FrequencyMonitoringTerminal a rdf:Property ;
   rdfs:label "FrequencyMonitoringTerminal"@en ;
   rdfs:comment "Frequency monitoring terminal that has a terminal." ;
@@ -5886,8 +5963,8 @@ nc:ThyristorControlledSeriesCompensator.minI a rdf:Property ;
   cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:ThyristorControlledSeriesCompensator .
 
-nc:ThyristorControlledSeriesCompensator.reconnectionCurrent a rdf:Property ;
-  rdfs:label "reconnectionCurrent"@en ;
+nc:ThyristorControlledSeriesCompensator.reconnectionI a rdf:Property ;
+  rdfs:label "reconnectionI"@en ;
   rdfs:comment "The current for which the TCSC returns back to operation after bypass." ;
   cims:dataType cim:CurrentFlow ;
   cims:multiplicity cims:M:1..1 ;
