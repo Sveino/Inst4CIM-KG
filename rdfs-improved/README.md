@@ -156,11 +156,36 @@ The actual fixing can be done in two ways:
   - Export the graph to a file
   - Format the file as Turtle (see above)
 - Using a tool that does updates in-memory (eg Jena `update`)
-  - Run the tool with the original file and the update query
+  - Run `update` with the original file and concatenated update queries
   - Pass the result through the Turtle formatter
   - Save it to a file
 
 The latter is slightly simpler, so we use that.
+
+We write one Update per issue, using a strict structure to allow comprehension and evolution:
+- Naming: `fixNN-Topic-M.ru`, eg [fix01-whitespace-6.ru](fix01-whitespace-6.ru), where
+  - `NN` is the sequence number of the update. Some must be run in a specified order, and we concat all updates to `fix-all.ru` in order.
+  - `Topic` is a short phrase about what it does
+  - `M` is the issue number
+- Content:
+  - Two links: to the section in this doc, and to the issue, eg
+```
+# https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#whitespace-in-definitions
+# https://github.com/Sveino/Inst4CIM-KG/issues/6
+```
+  - SPARQL that typically looks like this. The `where` part reuses analysis queries from this doc, and adds more binds and tricks
+```sparql
+prefix ...
+delete {?x ?p ?old}
+insert {?x ?p ?new}
+where { 
+  ...
+}
+```
+  - Trailing semicolon and newline, so the concat works ok
+
+SPARQL Update allows multiple update blocks separated with semicolon, and intervening prefixes.
+This approach allows us to run fixes one by one, or all at once.
 
 ## Use Only One of RDFS2020 and RDFSEd2Beta Style
 https://github.com/Sveino/Inst4CIM-KG/issues/41
@@ -714,23 +739,42 @@ select ?p (count(*) as ?c) {
     filter(regex(?label,"^\\s|\\s$"))
 } group by ?p order by desc(?c)
 ```
-| p               | c                  | comment                                                                                                                             |
-|-----------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| skos:definition | "660"^^xsd:integer |                                                                                                                                     |
-| rdfs:label      | "614"^^xsd:integer | Most of these are key values (see next section) but some are prop names. Eg `ssh:isDescription` has multiple trailing spaces or tab |
-| rdfs:comment    | "150"^^xsd:integer | This and all below are key values (see next section)                                                                                |
-| eq:isFixed      | "43"^^xsd:integer  |                                                                                                                                     |
-| sc:isFixed      | "24"^^xsd:integer  |                                                                                                                                     |
-| ssh:isFixed     | "22"^^xsd:integer  |                                                                                                                                     |
-| dy:isFixed      | "20"^^xsd:integer  |                                                                                                                                     |
-| sv:isFixed      | "10"^^xsd:integer  |                                                                                                                                     |
-| dcterms:creator | "7"^^xsd:integer   |                                                                                                                                     |
-| dl:isFixed      | "2"^^xsd:integer   |                                                                                                                                     |
-| eqbd:isFixed    | "2"^^xsd:integer   |                                                                                                                                     |
-| op:isFixed      | "2"^^xsd:integer   |                                                                                                                                     |
+New style:
+| p               | c     | comment                                                                                                                              |
+|-----------------|-------|--------------------------------------------------------------------------------------------------------------------------------------|
+| skos:definition | "660" |                                                                                                                                      |
+| rdfs:label      | "614" | Most of these are key values (see next section) but some are prop names. Eg `ssh:isDescription` has multiple trailing spaces or tabs |
+| rdfs:comment    | "150" | This and all below are key values (see next section)                                                                                 |
+| eq:isFixed      | "43"  |                                                                                                                                      |
+| sc:isFixed      | "24"  |                                                                                                                                      |
+| ssh:isFixed     | "22"  |                                                                                                                                      |
+| dy:isFixed      | "20"  |                                                                                                                                      |
+| sv:isFixed      | "10"  |                                                                                                                                      |
+| dcterms:creator | "7"   |                                                                                                                                      |
+| dl:isFixed      | "2"   |                                                                                                                                      |
+| eqbd:isFixed    | "2"   |                                                                                                                                      |
+| op:isFixed      | "2"   |                                                                                                                                      |
+
+Old style is much better:
+| p               | c     |
+|-----------------|-------|
+| rdfs:comment    | "299" |
+| dcterms:creator | "7"   |
 
 This can be fixed easily with SPARQL Update.
-Just need to be careful to restore a lang tag if such was present.
+- Just need to be careful to restore a lang tag if such was present
+- So we need a conditional like this:
+```sparql
+select * {
+    values ?label {"plain" "langString"@en}
+    bind(if(lang(?label)!="",strlang(str(?label),lang(?label)),?label) as ?label1)
+    bind(datatype(?label1) as ?dt)
+}
+```
+| label            | label1           | dt              |
+|------------------|------------------|-----------------|
+| "plain"          | "plain"          | xsd: string     |
+| "langString" @en | "langString" @en | rdf: langString |
 
 ## Whitespace and Lang Tags in Key Values
 Key values must be spelled with ultimate care because... well, they are key.
@@ -759,15 +803,13 @@ cim:Temperature.multiplier
 ## HTML Tags and Escaped Entities in Definitions
 https://github.com/Sveino/Inst4CIM-KG/issues/21
 
-This query finds 2776 instances of HTML tags and entities 
-(I guess some are duplicated between 2.3 and 3.0 CIM namespaces):
+This query finds 2776 instances of HTML tags and entities:
 ```sparql
 select * {
     ?x ?p ?label
     filter(regex(?label,"[&<][^ =]|\\\\"))
 }
 ```
-
 Saved as [literals-html.tsv](literals-html.tsv).
 
 It includes:
@@ -778,6 +820,21 @@ It includes:
 - HTML block markup like `\n<ul>\n\t<li> ...`. This is nok: markdown is ok (`\n- ...`)
 - HTML inline markup like `field voltage (<i>Efd</i>)`. This is nok: markdown is ok (`*Efd*`)
 - Useless HTML markup like `<font color="#636671">...</font>`
+
+Some lists use a mix of HTML and markdown, eg `cim:AsynchronousMachineTimeConstantReactance`:
+```
+Parameter details:
+<ol>
+	<li>If <i>X'' </i>=<i> X'</i>, a single cage (one equivalent rotor winding per axis) is modelled.</li>
+	<li>The “<i>p</i>” in the attribute names is a substitution for a “prime” in the usual parameter notation, e.g. <i>tpo</i> refers to <i>T'o</i>.</li>
+</ol>
+The parameters used for models expressed in time constant reactance form include:
+- RotatingMachine.ratedS (<i>MVAbase</i>);
+- RotatingMachineDynamics.damping (<i>D</i>);
+- RotatingMachineDynamics.inertia (<i>H</i>);
+```
+Note: the code block may show "block" chars. These are actually smart quotes:
+> The “p” in the attribute names
 
 The problem is that HTML is not interpreted in RDF strings.
 - We could use the `^^rdf:HTML` datatype, but that's more complex, 
