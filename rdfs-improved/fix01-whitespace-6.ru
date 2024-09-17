@@ -5,6 +5,7 @@ delete {?x ?p ?old}
 insert {?x ?p ?new}
 where {
   ?x ?p ?old
+  filter(isLiteral(?old))
   bind(str(?old) as ?oldStr)
   filter(regex(?oldStr,"^\\s|\\s$"))
   bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)

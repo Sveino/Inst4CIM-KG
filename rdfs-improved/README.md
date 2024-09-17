@@ -39,6 +39,9 @@
         - [Mapping Unit Multipliers](#mapping-unit-multipliers)
         - [All QuantityKinds, Units and Multipliers](#all-quantitykinds-units-and-multipliers)
     - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
+- [Fix Technical Notes](#fix-technical-notes)
+    - [Fix Structure](#fix-structure)
+    - [Fix Debugging](#fix-debugging)
 
 <!-- markdown-toc end -->
 
@@ -148,44 +151,6 @@ In general, we proceed in this way:
 - We load all ontologies to a semantic database (I used Ontotext's GraphDB Free version 10.6 or later)
 - We analyze the patterns to be fixed using command-line tools (`grep, uniq` etc) or SPARQL
 - Then we write SPARQL Updates to fix the problems
-
-The actual fixing can be done in two ways:
-- Using a semantic database:
-  - Load the ontology to a defined graph (usually same as the ontology URL)
-  - Run the updates over that graph only
-  - Export the graph to a file
-  - Format the file as Turtle (see above)
-- Using a tool that does updates in-memory (eg Jena `update`)
-  - Run `update` with the original file and concatenated update queries
-  - Pass the result through the Turtle formatter
-  - Save it to a file
-
-The latter is slightly simpler, so we use that.
-
-We write one Update per issue, using a strict structure to allow comprehension and evolution:
-- Naming: `fixNN-Topic-M.ru`, eg [fix01-whitespace-6.ru](fix01-whitespace-6.ru), where
-  - `NN` is the sequence number of the update. Some must be run in a specified order, and we concat all updates to `fix-all.ru` in order.
-  - `Topic` is a short phrase about what it does
-  - `M` is the issue number
-- Content:
-  - Two links: to the section in this doc, and to the issue, eg
-```
-# https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#whitespace-in-definitions
-# https://github.com/Sveino/Inst4CIM-KG/issues/6
-```
-  - SPARQL that typically looks like this. The `where` part reuses analysis queries from this doc, and adds more binds and tricks
-```sparql
-prefix ...
-delete {?x ?p ?old}
-insert {?x ?p ?new}
-where { 
-  ...
-}
-```
-  - Trailing semicolon and newline, so the concat works ok
-
-SPARQL Update allows multiple update blocks separated with semicolon, and intervening prefixes.
-This approach allows us to run fixes one by one, or all at once.
 
 ## Use Only One of RDFS2020 and RDFSEd2Beta Style
 https://github.com/Sveino/Inst4CIM-KG/issues/41
@@ -1234,3 +1199,139 @@ Here are the current results, but it should be rerun after fixes to ontology: se
 | xsd:string    |  51 |                                                                                     |
 
 I have a tentative SPARQL Update, but need to revise it.
+
+# Fix Technical Notes
+The actual fixing can be done in two ways:
+- Using a semantic database:
+  - Load the ontology to a defined graph (usually same as the ontology URL)
+  - Run the updates over that graph only
+  - Export the graph to a file
+  - Format the file as Turtle (see above)
+- Using a tool that does updates in-memory (eg Jena `update`)
+  - Run `update` with the original file and concatenated update queries
+  - Pass the result through the Turtle formatter
+  - Save it to a file
+
+The latter is slightly simpler, so we use that.
+
+## Fix Structure
+We write one Update per issue, using a strict structure to allow comprehension and evolution:
+- Naming: `fixNN-Topic-M.ru`, eg [fix01-whitespace-6.ru](fix01-whitespace-6.ru), where
+  - `NN` is the sequence number of the update. Some must be run in a specified order, and we concat all updates to `fix-all.ru` in order.
+  - `Topic` is a short phrase about what it does
+  - `M` is the issue number
+- Content:
+  - Two links: to the section in this doc, and to the issue, eg
+```
+# https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#whitespace-in-definitions
+# https://github.com/Sveino/Inst4CIM-KG/issues/6
+```
+  - SPARQL that typically looks like this. The `where` part reuses analysis queries from this doc, and adds more binds and tricks
+```sparql
+prefix ...
+delete {?x ?p ?old}
+insert {?x ?p ?new}
+where { 
+  ...
+}
+```
+  - Trailing semicolon and newline, so the concat works ok
+
+SPARQL Update allows multiple update blocks separated with semicolon, and intervening prefixes.
+This approach allows us to run fixes one by one, or all at once.
+
+## Fix Debugging
+
+It will be a very bad thing if a fix loses some data because of some mistake in the query.
+- As we develop fixes, we apply them one by one
+- Then we make a PR and review it on git to ensure that the intended changes to ontologies are properly done
+- But this development cycle is longer: requires commits, then someone else takes a look...
+
+So here we explain a way to debug fixes faster, using SPARQL.
+Say that you run `fix01-whitespace-6.ru`, which fixes whitespace:
+```sparql
+delete {?x ?p ?old}
+insert {?x ?p ?new}
+where {
+  ?x ?p ?old
+  bind(str(?old) as ?oldStr)
+  filter(regex(?oldStr,"^\\s|\\s$"))
+  bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)
+  bind(if(lang(?old)!="",strlang(?newStr,lang(?old)),?newStr) as ?new)
+};
+
+```
+GraphDB reports "3 statements deleted" (it doesn't say how many were changes, but the net difference).
+
+WHAT? This update shouldn't lose triples, so let's debug it.
+
+First we change it to a `select` and look for unbound `?new`:
+maybe we made a mistake when calculating it?
+(SPARQL is very tolerant: if there's some problem in evaluating an expression, it just returns unbound):
+```sparql
+select ?x ?p ?old ?new
+where {
+  ?x ?p ?old
+  bind(str(?old) as ?oldStr)
+  filter(regex(?oldStr,"^\\s|\\s$"))
+  bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)
+  bind(if(lang(?old)!="",strlang(?newStr,lang(?old)),?newStr) as ?new)
+  filter(!bound(?new))
+}
+```
+Nothing returned. 
+
+Then let's count `?old` and `?new` (should be the same because `count` discards nulls, but to make sure):
+```sparql
+select (count(distinct ?old) as ?oldCpount) (count(distinct ?new) as ?newCount)
+where {
+  ?x ?p ?old
+  bind(str(?old) as ?oldStr)
+  filter(regex(?oldStr,"^\\s|\\s$"))
+  bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)
+  bind(if(lang(?old)!="",strlang(?newStr,lang(?old)),?newStr) as ?new)
+}
+```
+
+Same, so now let's count `distinct`.
+The same triple cannot be recorded twice, so if two `?old` are mapped to the same `?new` for the same subject and property `?x ?p`, that will decrease number of triples:
+```sparql
+select (count(distinct ?old) as ?oldCpount) (count(distinct ?new) as ?newCount)
+where {
+  ?x ?p ?old
+  bind(str(?old) as ?oldStr)
+  filter(regex(?oldStr,"^\\s|\\s$"))
+  bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)
+  bind(if(lang(?old)!="",strlang(?newStr,lang(?old)),?newStr) as ?new)
+}
+```
+Here it is: the count is reduced by 3.
+
+But how to catch these duplicate instances?
+It takes some doing. 
+- It turns out the duplication is due to trailing whitespace added in some ontologies but not others.
+- If you grok this below, then your SPARQL force is strong indeed, Luke!
+```sparql
+select ?x ?p ?old1 ?old2 ?new1
+where {
+  ?x ?p ?old1, ?old2
+  filter(isLiteral(?old1))
+  filter(isLiteral(?old2))
+  bind(str(?old1) as ?oldStr1)
+  bind(str(?old2) as ?oldStr2)
+  filter(?old1 != ?old2)
+  filter(regex(?oldStr2,"^\\s|\\s$"))
+
+  bind(replace(replace(?oldStr1,"^\\s+",""),"\\s+$","") as ?newStr1)
+  bind(if(lang(?old1)!="",strlang(?newStr1,lang(?old1)),?newStr1) as ?new1)
+  bind(replace(replace(?oldStr2,"^\\s+",""),"\\s+$","") as ?newStr2)
+  bind(if(lang(?old2)!="",strlang(?newStr2,lang(?old2)),?newStr2) as ?new2)
+  
+  filter(?new1 = ?new2)
+}
+```
+
+This exercise, and looking at intermediate results, gave me the idea to add a safety feature to the fix:
+```sparql
+  filter(isLiteral(?old))
+```
