@@ -1,0 +1,2395 @@
+@prefix     cim: <http://iec.ch/TC57/CIM100#> .
+@prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix      sc: <http://iec.ch/TC57/ns/CIM/ShortCircuit-EU#> .
+@prefix    dcat: <http://www.w3.org/ns/dcat#> .
+@prefix     dct: <http://purl.org/dc/terms/> .
+@prefix     owl: <http://www.w3.org/2002/07/owl#> .
+@prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix     xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cim:ACDCTerminal a rdfs:Class ;
+  rdfs:label "ACDCTerminal"@en ;
+  rdfs:comment "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:ACLineSegment a rdfs:Class ;
+  rdfs:label "ACLineSegment"@en ;
+  rdfs:comment """A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.
+For symmetrical, transposed three phase lines, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.
+The BaseVoltage at the two ends of ACLineSegments in a Line shall have the same BaseVoltage.nominalVoltage. However, boundary lines may have slightly different BaseVoltage.nominalVoltages and variation is allowed. Larger voltage difference in general requires use of an equivalent branch.""" ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Conductor .
+
+cim:ActivePower a rdfs:Class ;
+  rdfs:label "ActivePower"@en ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:AngleDegrees a rdfs:Class ;
+  rdfs:label "AngleDegrees"@en ;
+  rdfs:comment "Measurement of angle in degrees." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:AsynchronousMachine a rdfs:Class ;
+  rdfs:label "AsynchronousMachine"@en ;
+  rdfs:comment "A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g. squirrel-cage induction machine." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:RotatingMachine .
+
+cim:Boolean a rdfs:Class ;
+  rdfs:label "Boolean"@en ;
+  rdfs:comment "A type with the value space \"true\" and \"false\"." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Primitive" .
+
+cim:BusbarSection a rdfs:Class ;
+  rdfs:label "BusbarSection"@en ;
+  rdfs:comment """A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation. 
+Voltage measurements are typically obtained from voltage transformers that are connected to busbar sections. A bus bar section may have many physical terminals but for analysis is modelled with exactly one logical terminal.""" ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Connector .
+
+cim:Conductance a rdfs:Class ;
+  rdfs:label "Conductance"@en ;
+  rdfs:comment "Factor by which voltage must be multiplied to give corresponding power lost from a circuit. Real part of admittance." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:ConductingEquipment a rdfs:Class ;
+  rdfs:label "ConductingEquipment"@en ;
+  rdfs:comment "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:Equipment .
+
+cim:Conductor a rdfs:Class ;
+  rdfs:label "Conductor"@en ;
+  rdfs:comment "Combination of conducting material with consistent electrical characteristics, building a single electrical system, used to carry current between points in the power system.  " ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:ConductingEquipment .
+
+cim:Connector a rdfs:Class ;
+  rdfs:label "Connector"@en ;
+  rdfs:comment "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation and are modelled with a single logical terminal." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:ConductingEquipment .
+
+cim:CurrentFlow a rdfs:Class ;
+  rdfs:label "CurrentFlow"@en ;
+  rdfs:comment "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:Date a rdfs:Class ;
+  rdfs:label "Date"@en ;
+  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Primitive" .
+
+cim:EarthFaultCompensator a rdfs:Class ;
+  rdfs:label "EarthFaultCompensator"@en ;
+  rdfs:comment "A conducting equipment used to represent a connection to ground which is typically used to compensate earth faults.   An earth fault compensator device modelled with a single terminal implies a second terminal solidly connected to ground.  If two terminals are modelled, the ground is not assumed and normal connection rules apply." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:ConductingEquipment .
+
+cim:EnergyConnection a rdfs:Class ;
+  rdfs:label "EnergyConnection"@en ;
+  rdfs:comment "A connection of energy generation or consumption on the power system model." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:ConductingEquipment .
+
+cim:EnergySource a rdfs:Class ;
+  rdfs:label "EnergySource"@en ;
+  rdfs:comment "A generic equivalent for an energy supplier on a transmission or distribution voltage level." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:EnergyConnection .
+
+cim:Equipment a rdfs:Class ;
+  rdfs:label "Equipment"@en ;
+  rdfs:comment "The parts of a power system that are physical devices, electronic or mechanical." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:PowerSystemResource .
+
+cim:EquivalentBranch a rdfs:Class ;
+  rdfs:label "EquivalentBranch"@en ;
+  rdfs:comment "The class represents equivalent branches. In cases where a transformer phase shift is modelled and the EquivalentBranch is spanning the same nodes, the impedance quantities for the EquivalentBranch shall consider the needed phase shift." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:EquivalentEquipment .
+
+cim:EquivalentEquipment a rdfs:Class ;
+  rdfs:label "EquivalentEquipment"@en ;
+  rdfs:comment "The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:ConductingEquipment .
+
+cim:EquivalentInjection a rdfs:Class ;
+  rdfs:label "EquivalentInjection"@en ;
+  rdfs:comment "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:EquivalentEquipment .
+
+cim:ExternalNetworkInjection a rdfs:Class ;
+  rdfs:label "ExternalNetworkInjection"@en ;
+  rdfs:comment "This class represents the external network and it is used for IEC 60909 calculations." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:RegulatingCondEq .
+
+cim:Float a rdfs:Class ;
+  rdfs:label "Float"@en ;
+  rdfs:comment "A floating point number. The range is unspecified and not limited." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Primitive" .
+
+cim:GroundingImpedance a rdfs:Class ;
+  rdfs:label "GroundingImpedance"@en ;
+  rdfs:comment "A fixed impedance device used for grounding." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:EarthFaultCompensator .
+
+cim:IdentifiedObject a rdfs:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile .
+
+cim:Integer a rdfs:Class ;
+  rdfs:label "Integer"@en ;
+  rdfs:comment "An integer number. The range is unspecified and not limited." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Length a rdfs:Class ;
+  rdfs:label "Length"@en ;
+  rdfs:comment "Unit of length. It shall be a positive value or zero." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:LinearShuntCompensator a rdfs:Class ;
+  rdfs:label "LinearShuntCompensator"@en ;
+  rdfs:comment "A linear shunt compensator has banks or sections with equal admittance values." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:ShuntCompensator .
+
+cim:MutualCoupling a rdfs:Class ;
+  rdfs:label "MutualCoupling"@en ;
+  rdfs:comment "This class represents the zero sequence line mutual coupling." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:NonlinearShuntCompensatorPoint a rdfs:Class ;
+  rdfs:label "NonlinearShuntCompensatorPoint"@en ;
+  rdfs:comment "A non linear shunt compensator bank or section admittance value. The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. ShuntCompensator.sections shall only be set to one of the NonlinearShuntCompenstorPoint.sectionNumber. There is no interpolation between NonlinearShuntCompenstorPoint-s." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+cim:PU a rdfs:Class ;
+  rdfs:label "PU"@en ;
+  rdfs:comment "Per Unit - a positive or negative value referred to a defined base. Values typically range from -10 to +10." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:PerCent a rdfs:Class ;
+  rdfs:label "PerCent"@en ;
+  rdfs:comment "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:PetersenCoil a rdfs:Class ;
+  rdfs:label "PetersenCoil"@en ;
+  rdfs:comment "A variable impedance device normally used to offset line charging during single line faults in an ungrounded section of network." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:EarthFaultCompensator .
+
+cim:PetersenCoilModeKind a rdfs:Class ;
+  rdfs:label "PetersenCoilModeKind"@en ;
+  rdfs:comment "The mode of operation for a Petersen coil." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:PowerSystemResource a rdfs:Class ;
+  rdfs:label "PowerSystemResource"@en ;
+  rdfs:comment "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:PowerTransformer a rdfs:Class ;
+  rdfs:label "PowerTransformer"@en ;
+  rdfs:comment """An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).
+A power transformer may be composed of separate transformer tanks that need not be identical.
+A power transformer can be modelled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.
+The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.""" ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:ConductingEquipment .
+
+cim:PowerTransformerEnd a rdfs:Class ;
+  rdfs:label "PowerTransformerEnd"@en ;
+  rdfs:comment """A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.
+The impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows.
+1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.
+2) for a three Terminal PowerTransformer the three PowerTransformerEnds represent a star equivalent with each leg in the star represented by r, r0, x, and x0 values.
+3) For a three Terminal transformer each PowerTransformerEnd shall have g, g0, b and b0 values corresponding to the no load losses distributed on the three PowerTransformerEnds. The total no load loss shunt impedances may also be placed at one of the PowerTransformerEnds, preferably the end numbered 1, having the shunt values on end 1.  This is the preferred way.
+4) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.
+Each PowerTransformerEnd must be contained by a PowerTransformer. Because a PowerTransformerEnd (or any other object) can not be contained by more than one parent, a PowerTransformerEnd can not have an association to an EquipmentContainer (Substation, VoltageLevel, etc).""" ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:TransformerEnd .
+
+cim:Reactance a rdfs:Class ;
+  rdfs:label "Reactance"@en ;
+  rdfs:comment "Reactance (imaginary part of impedance), at rated frequency." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:RegulatingCondEq a rdfs:Class ;
+  rdfs:label "RegulatingCondEq"@en ;
+  rdfs:comment "A type of conducting equipment that can regulate a quantity (i.e. voltage or flow) at a specific point in the network. " ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:EnergyConnection .
+
+cim:Resistance a rdfs:Class ;
+  rdfs:label "Resistance"@en ;
+  rdfs:comment "Resistance (real part of impedance)." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:RotatingMachine a rdfs:Class ;
+  rdfs:label "RotatingMachine"@en ;
+  rdfs:comment "A rotating machine which may be used as a generator or motor." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:RegulatingCondEq .
+
+cim:SeriesCompensator a rdfs:Class ;
+  rdfs:label "SeriesCompensator"@en ;
+  rdfs:comment "A Series Compensator is a series capacitor or reactor or an AC transmission line without charging susceptance.  It is a two terminal device." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:ConductingEquipment .
+
+cim:ShortCircuitRotorKind a rdfs:Class ;
+  rdfs:label "ShortCircuitRotorKind"@en ;
+  rdfs:comment "Type of rotor, used by short circuit applications." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:ShuntCompensator a rdfs:Class ;
+  rdfs:label "ShuntCompensator"@en ;
+  rdfs:comment "A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor. A negative value for bPerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:RegulatingCondEq .
+
+cim:String a rdfs:Class ;
+  rdfs:label "String"@en ;
+  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Susceptance a rdfs:Class ;
+  rdfs:label "Susceptance"@en ;
+  rdfs:comment "Imaginary part of admittance." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:SynchronousMachine a rdfs:Class ;
+  rdfs:label "SynchronousMachine"@en ;
+  rdfs:comment "An electromechanical device that operates with shaft rotating synchronously with the network. It is a single machine operating either as a generator or synchronous condenser or pump." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "Description", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:RotatingMachine .
+
+cim:Temperature a rdfs:Class ;
+  rdfs:label "Temperature"@en ;
+  rdfs:comment "Value of temperature in degrees Celsius." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:Terminal a rdfs:Class ;
+  rdfs:label "Terminal"@en ;
+  rdfs:comment "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:ACDCTerminal .
+
+cim:TransformerEnd a rdfs:Class ;
+  rdfs:label "TransformerEnd"@en ;
+  rdfs:comment "A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:UnitMultiplier a rdfs:Class ;
+  rdfs:label "UnitMultiplier"@en ;
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:UnitSymbol a rdfs:Class ;
+  rdfs:label "UnitSymbol"@en ;
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.""" ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:Voltage a rdfs:Class ;
+  rdfs:label "Voltage"@en ;
+  rdfs:comment "Electrical voltage, can be both AC and DC." ;
+  cims:belongsToCategory sc:Package_ShortCircuitProfile ;
+  cims:stereotype "CIMDatatype" .
+
+sc:Ontology a owl:Ontology ;
+  dct:description "This vocabulary is describing the short circuit profile from IEC 61970-600-2."@en ;
+  dcat:keyword "SC" ;
+  dcat:landingPage "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+  dcat:theme "vocabulary"@en ;
+  dct:conformsTo "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:creator "ENTSO-E CIM EG"@en ;
+  dct:identifier "urn:uuid:97938d45-bb5f-4424-b64d-219c1f76ab31" ;
+  dct:issued "2021-01-27T12:17:39Z"^^xsd:dateTime ;
+  dct:language "en-GB" ;
+  dct:modified "2020-10-12"^^xsd:date ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rights "Copyright"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  dct:title "Short Circuit Vocabulary"@en ;
+  owl:incompatibleWith <http://entsoe.eu/2009/profile1> ;
+  owl:priorVersion <http://entsoe.eu/CIM/EquipmentShortCircuit/3/1> ;
+  owl:versionIRI <http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0> ;
+  owl:versionInfo "3.0.0"@en .
+
+cim:ACLineSegment.b0ch a rdf:Property ;
+  rdfs:label "b0ch"@en ;
+  rdfs:comment "Zero sequence shunt (charging) susceptance, uniformly distributed, of the entire line section." ;
+  cims:dataType cim:Susceptance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ACLineSegment .
+
+cim:ACLineSegment.g0ch a rdf:Property ;
+  rdfs:label "g0ch"@en ;
+  rdfs:comment "Zero sequence shunt (charging) conductance, uniformly distributed, of the entire line section." ;
+  cims:dataType cim:Conductance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ACLineSegment .
+
+cim:ACLineSegment.r0 a rdf:Property ;
+  rdfs:label "r0"@en ;
+  rdfs:comment "Zero sequence series resistance of the entire line section." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ACLineSegment .
+
+cim:ACLineSegment.shortCircuitEndTemperature a rdf:Property ;
+  rdfs:label "shortCircuitEndTemperature"@en ;
+  rdfs:comment "Maximum permitted temperature at the end of SC for the calculation of minimum short-circuit currents. Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Temperature ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ACLineSegment .
+
+cim:ACLineSegment.x0 a rdf:Property ;
+  rdfs:label "x0"@en ;
+  rdfs:comment "Zero sequence series reactance of the entire line section." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ACLineSegment .
+
+cim:ActivePower.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "M" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:ActivePower.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "W" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower ;
+  rdfs:range cim:UnitSymbol .
+
+cim:ActivePower.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ActivePower .
+
+cim:AngleDegrees.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:AngleDegrees.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "deg" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range cim:UnitSymbol .
+
+cim:AngleDegrees.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees .
+
+cim:AsynchronousMachine.converterFedDrive a rdf:Property ;
+  rdfs:label "converterFedDrive"@en ;
+  rdfs:comment "Indicates whether the machine is a converter fed drive. Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AsynchronousMachine .
+
+cim:AsynchronousMachine.efficiency a rdf:Property ;
+  rdfs:label "efficiency"@en ;
+  rdfs:comment "Efficiency of the asynchronous machine at nominal operation as a percentage. Indicator for converter drive motors. Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:PerCent ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AsynchronousMachine .
+
+cim:AsynchronousMachine.iaIrRatio a rdf:Property ;
+  rdfs:label "iaIrRatio"@en ;
+  rdfs:comment "Ratio of locked-rotor current to the rated current of the motor (Ia/Ir). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AsynchronousMachine .
+
+cim:AsynchronousMachine.polePairNumber a rdf:Property ;
+  rdfs:label "polePairNumber"@en ;
+  rdfs:comment "Number of pole pairs of stator. Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AsynchronousMachine .
+
+cim:AsynchronousMachine.ratedMechanicalPower a rdf:Property ;
+  rdfs:label "ratedMechanicalPower"@en ;
+  rdfs:comment "Rated mechanical power (Pr in IEC 60909-0). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:ActivePower ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AsynchronousMachine .
+
+cim:AsynchronousMachine.reversible a rdf:Property ;
+  rdfs:label "reversible"@en ;
+  rdfs:comment "Indicates for converter drive motors if the power can be reversible. Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AsynchronousMachine .
+
+cim:AsynchronousMachine.rxLockedRotorRatio a rdf:Property ;
+  rdfs:label "rxLockedRotorRatio"@en ;
+  rdfs:comment "Locked rotor ratio (R/X). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AsynchronousMachine .
+
+cim:BusbarSection.ipMax a rdf:Property ;
+  rdfs:label "ipMax"@en ;
+  rdfs:comment """Maximum allowable peak short-circuit current of busbar (Ipmax in IEC 60909-0). 
+Mechanical limit of the busbar in the substation itself. Used for short circuit data exchange according to IEC 60909.""" ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:BusbarSection .
+
+cim:Conductance.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Conductance ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Conductance.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "S" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Conductance ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Conductance.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Conductance .
+
+cim:CurrentFlow.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:CurrentFlow ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:CurrentFlow.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "A" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:CurrentFlow ;
+  rdfs:range cim:UnitSymbol .
+
+cim:CurrentFlow.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:CurrentFlow .
+
+cim:EarthFaultCompensator.r a rdf:Property ;
+  rdfs:label "r"@en ;
+  rdfs:comment "Nominal resistance of device." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EarthFaultCompensator .
+
+cim:EnergySource.r a rdf:Property ;
+  rdfs:label "r"@en ;
+  rdfs:comment "Positive sequence Thevenin resistance." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EnergySource .
+
+cim:EnergySource.r0 a rdf:Property ;
+  rdfs:label "r0"@en ;
+  rdfs:comment "Zero sequence Thevenin resistance." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EnergySource .
+
+cim:EnergySource.rn a rdf:Property ;
+  rdfs:label "rn"@en ;
+  rdfs:comment "Negative sequence Thevenin resistance." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EnergySource .
+
+cim:EnergySource.x a rdf:Property ;
+  rdfs:label "x"@en ;
+  rdfs:comment "Positive sequence Thevenin reactance." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EnergySource .
+
+cim:EnergySource.x0 a rdf:Property ;
+  rdfs:label "x0"@en ;
+  rdfs:comment "Zero sequence Thevenin reactance." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EnergySource .
+
+cim:EnergySource.xn a rdf:Property ;
+  rdfs:label "xn"@en ;
+  rdfs:comment "Negative sequence Thevenin reactance." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EnergySource .
+
+cim:EquivalentBranch.negativeR12 a rdf:Property ;
+  rdfs:label "negativeR12"@en ;
+  rdfs:comment """Negative sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.
+EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.negativeR21 a rdf:Property ;
+  rdfs:label "negativeR21"@en ;
+  rdfs:comment """Negative sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.
+EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.negativeX12 a rdf:Property ;
+  rdfs:label "negativeX12"@en ;
+  rdfs:comment """Negative sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.
+Usage : EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.negativeX21 a rdf:Property ;
+  rdfs:label "negativeX21"@en ;
+  rdfs:comment """Negative sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.
+Usage: EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.positiveR12 a rdf:Property ;
+  rdfs:label "positiveR12"@en ;
+  rdfs:comment """Positive sequence series resistance from terminal sequence  1 to terminal sequence 2 . Used for short circuit data exchange according to IEC 60909. 
+EquivalentBranch is a result of network reduction prior to the data exchange. """ ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.positiveR21 a rdf:Property ;
+  rdfs:label "positiveR21"@en ;
+  rdfs:comment """Positive sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.
+EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.positiveX12 a rdf:Property ;
+  rdfs:label "positiveX12"@en ;
+  rdfs:comment """Positive sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.
+Usage : EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.positiveX21 a rdf:Property ;
+  rdfs:label "positiveX21"@en ;
+  rdfs:comment """Positive sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.
+Usage : EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.zeroR12 a rdf:Property ;
+  rdfs:label "zeroR12"@en ;
+  rdfs:comment """Zero sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.
+EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.zeroR21 a rdf:Property ;
+  rdfs:label "zeroR21"@en ;
+  rdfs:comment """Zero sequence series resistance from terminal sequence  2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.
+Usage : EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.zeroX12 a rdf:Property ;
+  rdfs:label "zeroX12"@en ;
+  rdfs:comment """Zero sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.
+Usage : EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentBranch.zeroX21 a rdf:Property ;
+  rdfs:label "zeroX21"@en ;
+  rdfs:comment """Zero sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.
+Usage : EquivalentBranch is a result of network reduction prior to the data exchange.""" ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentBranch .
+
+cim:EquivalentInjection.r a rdf:Property ;
+  rdfs:label "r"@en ;
+  rdfs:comment """Positive sequence resistance. Used to represent Extended-Ward (IEC 60909).
+Usage : Extended-Ward is a result of network reduction prior to the data exchange. """ ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentInjection .
+
+cim:EquivalentInjection.r0 a rdf:Property ;
+  rdfs:label "r0"@en ;
+  rdfs:comment """Zero sequence resistance. Used to represent Extended-Ward (IEC 60909).
+Usage : Extended-Ward is a result of network reduction prior to the data exchange. """ ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentInjection .
+
+cim:EquivalentInjection.r2 a rdf:Property ;
+  rdfs:label "r2"@en ;
+  rdfs:comment """Negative sequence resistance. Used to represent Extended-Ward (IEC 60909).
+Usage : Extended-Ward is a result of network reduction prior to the data exchange. """ ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentInjection .
+
+cim:EquivalentInjection.x a rdf:Property ;
+  rdfs:label "x"@en ;
+  rdfs:comment """Positive sequence reactance. Used to represent Extended-Ward (IEC 60909).
+Usage : Extended-Ward is a result of network reduction prior to the data exchange. """ ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentInjection .
+
+cim:EquivalentInjection.x0 a rdf:Property ;
+  rdfs:label "x0"@en ;
+  rdfs:comment """Zero sequence reactance. Used to represent Extended-Ward (IEC 60909).
+Usage : Extended-Ward is a result of network reduction prior to the data exchange. """ ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentInjection .
+
+cim:EquivalentInjection.x2 a rdf:Property ;
+  rdfs:label "x2"@en ;
+  rdfs:comment """Negative sequence reactance. Used to represent Extended-Ward (IEC 60909).
+Usage : Extended-Ward is a result of network reduction prior to the data exchange. """ ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:EquivalentInjection .
+
+cim:ExternalNetworkInjection.ikSecond a rdf:Property ;
+  rdfs:label "ikSecond"@en ;
+  rdfs:comment "Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik\").  Used only if short circuit calculations are done according to superposition method." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.maxInitialSymShCCurrent a rdf:Property ;
+  rdfs:label "maxInitialSymShCCurrent"@en ;
+  rdfs:comment "  Maximum initial symmetrical short-circuit currents (Ik\" max) in A (Ik\" = Sk\"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.maxR0ToX0Ratio a rdf:Property ;
+  rdfs:label "maxR0ToX0Ratio"@en ;
+  rdfs:comment "Maximum ratio of zero sequence resistance of Network Feeder to its zero sequence reactance (R(0)/X(0) max). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.maxR1ToX1Ratio a rdf:Property ;
+  rdfs:label "maxR1ToX1Ratio"@en ;
+  rdfs:comment "Maximum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) max). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.maxZ0ToZ1Ratio a rdf:Property ;
+  rdfs:label "maxZ0ToZ1Ratio"@en ;
+  rdfs:comment "Maximum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) max). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.minInitialSymShCCurrent a rdf:Property ;
+  rdfs:label "minInitialSymShCCurrent"@en ;
+  rdfs:comment "Minimum initial symmetrical short-circuit currents (Ik\" min) in A (Ik\" = Sk\"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.minR0ToX0Ratio a rdf:Property ;
+  rdfs:label "minR0ToX0Ratio"@en ;
+  rdfs:comment "Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik\"). Used for short circuit data exchange according to IEC 6090." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.minR1ToX1Ratio a rdf:Property ;
+  rdfs:label "minR1ToX1Ratio"@en ;
+  rdfs:comment "Minimum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) min). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.minZ0ToZ1Ratio a rdf:Property ;
+  rdfs:label "minZ0ToZ1Ratio"@en ;
+  rdfs:comment "Minimum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) min). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:ExternalNetworkInjection.voltageFactor a rdf:Property ;
+  rdfs:label "voltageFactor"@en ;
+  rdfs:comment "Voltage factor in pu, which was used to calculate short-circuit current Ik\" and power Sk\".  Used only if short circuit calculations are done according to superposition method." ;
+  cims:dataType cim:PU ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ExternalNetworkInjection .
+
+cim:GroundingImpedance.x a rdf:Property ;
+  rdfs:label "x"@en ;
+  rdfs:comment "Reactance of device." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:GroundingImpedance .
+
+cim:IdentifiedObject.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:Length.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "k" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Length ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Length.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "m" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Length ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Length.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Length .
+
+cim:LinearShuntCompensator.b0PerSection a rdf:Property ;
+  rdfs:label "b0PerSection"@en ;
+  rdfs:comment "Zero sequence shunt (charging) susceptance per section." ;
+  cims:dataType cim:Susceptance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:LinearShuntCompensator .
+
+cim:LinearShuntCompensator.g0PerSection a rdf:Property ;
+  rdfs:label "g0PerSection"@en ;
+  rdfs:comment "Zero sequence shunt (charging) conductance per section." ;
+  cims:dataType cim:Conductance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:LinearShuntCompensator .
+
+cim:MutualCoupling.First_Terminal a rdf:Property ;
+  rdfs:label "First_Terminal"@en ;
+  rdfs:comment "The starting terminal for the calculation of distances along the first branch of the mutual coupling.  Normally MutualCoupling would only be used for terminals of AC line segments.  The first and second terminals of a mutual coupling should point to different AC line segments." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:Terminal.HasFirstMutualCoupling ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:MutualCoupling ;
+  rdfs:range cim:Terminal .
+
+cim:MutualCoupling.Second_Terminal a rdf:Property ;
+  rdfs:label "Second_Terminal"@en ;
+  rdfs:comment "The starting terminal for the calculation of distances along the second branch of the mutual coupling." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:Terminal.HasSecondMutualCoupling ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:MutualCoupling ;
+  rdfs:range cim:Terminal .
+
+cim:MutualCoupling.b0ch a rdf:Property ;
+  rdfs:label "b0ch"@en ;
+  rdfs:comment "Zero sequence mutual coupling shunt (charging) susceptance, uniformly distributed, of the entire line section." ;
+  cims:dataType cim:Susceptance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MutualCoupling .
+
+cim:MutualCoupling.distance11 a rdf:Property ;
+  rdfs:label "distance11"@en ;
+  rdfs:comment "Distance to the start of the coupled region from the first line's terminal having sequence number equal to 1." ;
+  cims:dataType cim:Length ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MutualCoupling .
+
+cim:MutualCoupling.distance12 a rdf:Property ;
+  rdfs:label "distance12"@en ;
+  rdfs:comment "Distance to the end of the coupled region from the first line's terminal with sequence number equal to 1." ;
+  cims:dataType cim:Length ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MutualCoupling .
+
+cim:MutualCoupling.distance21 a rdf:Property ;
+  rdfs:label "distance21"@en ;
+  rdfs:comment "Distance to the start of coupled region from the second line's terminal with sequence number equal to 1." ;
+  cims:dataType cim:Length ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MutualCoupling .
+
+cim:MutualCoupling.distance22 a rdf:Property ;
+  rdfs:label "distance22"@en ;
+  rdfs:comment "Distance to the end of coupled region from the second line's terminal with sequence number equal to 1." ;
+  cims:dataType cim:Length ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MutualCoupling .
+
+cim:MutualCoupling.g0ch a rdf:Property ;
+  rdfs:label "g0ch"@en ;
+  rdfs:comment "Zero sequence mutual coupling shunt (charging) conductance, uniformly distributed, of the entire line section." ;
+  cims:dataType cim:Conductance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MutualCoupling .
+
+cim:MutualCoupling.r0 a rdf:Property ;
+  rdfs:label "r0"@en ;
+  rdfs:comment "Zero sequence branch-to-branch mutual impedance coupling, resistance." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MutualCoupling .
+
+cim:MutualCoupling.x0 a rdf:Property ;
+  rdfs:label "x0"@en ;
+  rdfs:comment "Zero sequence branch-to-branch mutual impedance coupling, reactance." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MutualCoupling .
+
+cim:NonlinearShuntCompensatorPoint.b0 a rdf:Property ;
+  rdfs:label "b0"@en ;
+  rdfs:comment "Zero sequence shunt (charging) susceptance per section." ;
+  cims:dataType cim:Susceptance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:NonlinearShuntCompensatorPoint .
+
+cim:NonlinearShuntCompensatorPoint.g0 a rdf:Property ;
+  rdfs:label "g0"@en ;
+  rdfs:comment "Zero sequence shunt (charging) conductance per section." ;
+  cims:dataType cim:Conductance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:NonlinearShuntCompensatorPoint .
+
+cim:PU.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PU ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:PU.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PU ;
+  rdfs:range cim:UnitSymbol .
+
+cim:PU.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PU .
+
+cim:PerCent.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:PerCent.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent ;
+  rdfs:range cim:UnitSymbol .
+
+cim:PerCent.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Normally 0 to 100 on a defined base." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent .
+
+cim:PetersenCoil.mode a rdf:Property ;
+  rdfs:label "mode"@en ;
+  rdfs:comment "The mode of operation of the Petersen coil." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PetersenCoil ;
+  rdfs:range cim:PetersenCoilModeKind .
+
+cim:PetersenCoil.nominalU a rdf:Property ;
+  rdfs:label "nominalU"@en ;
+  rdfs:comment "The nominal voltage for which the coil is designed." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PetersenCoil .
+
+cim:PetersenCoil.offsetCurrent a rdf:Property ;
+  rdfs:label "offsetCurrent"@en ;
+  rdfs:comment "The offset current that the Petersen coil controller is operating from the resonant point.  This is normally a fixed amount for which the controller is configured and could be positive or negative.  Typically 0 to 60 A depending on voltage and resonance conditions." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PetersenCoil .
+
+cim:PetersenCoil.positionCurrent a rdf:Property ;
+  rdfs:label "positionCurrent"@en ;
+  rdfs:comment "The control current used to control the Petersen coil also known as the position current.  Typically in the range of 20 mA to 200 mA." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PetersenCoil .
+
+cim:PetersenCoil.xGroundMax a rdf:Property ;
+  rdfs:label "xGroundMax"@en ;
+  rdfs:comment "The maximum reactance. " ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PetersenCoil .
+
+cim:PetersenCoil.xGroundMin a rdf:Property ;
+  rdfs:label "xGroundMin"@en ;
+  rdfs:comment "The minimum reactance." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PetersenCoil .
+
+cim:PetersenCoil.xGroundNominal a rdf:Property ;
+  rdfs:label "xGroundNominal"@en ;
+  rdfs:comment "The nominal reactance.  This is the operating point (normally over compensation) that is defined based on the resonance point in the healthy network condition.  The impedance is calculated based on nominal voltage divided by position current." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PetersenCoil .
+
+cim:PowerTransformer.beforeShCircuitHighestOperatingCurrent a rdf:Property ;
+  rdfs:label "beforeShCircuitHighestOperatingCurrent"@en ;
+  rdfs:comment "The highest operating current (Ib in IEC 60909-0) before short circuit (depends on network configuration and relevant reliability philosophy). It is used for calculation of the impedance correction factor KT defined in IEC 60909-0." ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformer .
+
+cim:PowerTransformer.beforeShCircuitHighestOperatingVoltage a rdf:Property ;
+  rdfs:label "beforeShCircuitHighestOperatingVoltage"@en ;
+  rdfs:comment "The highest operating voltage (Ub in IEC 60909-0) before short circuit. It is used for calculation of the impedance correction factor KT defined in IEC 60909-0. This is worst case voltage on the low side winding (3.7.1 of IEC 60909:2001). Used to define operating conditions." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformer .
+
+cim:PowerTransformer.beforeShortCircuitAnglePf a rdf:Property ;
+  rdfs:label "beforeShortCircuitAnglePf"@en ;
+  rdfs:comment "The angle of power factor before short circuit (phib in IEC 60909-0). It is used for calculation of the impedance correction factor KT defined in IEC 60909-0. This is the worst case power factor. Used to define operating conditions." ;
+  cims:dataType cim:AngleDegrees ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformer .
+
+cim:PowerTransformer.highSideMinOperatingU a rdf:Property ;
+  rdfs:label "highSideMinOperatingU"@en ;
+  rdfs:comment "The minimum operating voltage (uQmin in IEC 60909-0) at the high voltage side (Q side) of the unit transformer of the power station unit. A value well established from long-term operating experience of the system. It is used for calculation of the impedance correction factor KG defined in IEC 60909-0." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformer .
+
+cim:PowerTransformer.isPartOfGeneratorUnit a rdf:Property ;
+  rdfs:label "isPartOfGeneratorUnit"@en ;
+  rdfs:comment "Indicates whether the machine is part of a power station unit. Used for short circuit data exchange according to IEC 60909.  It has an impact on how the correction factors are calculated for transformers, since the transformer is not necessarily part of a synchronous machine and generating unit. It is not always possible to derive this information from the model. This is why the attribute is necessary." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformer .
+
+cim:PowerTransformer.operationalValuesConsidered a rdf:Property ;
+  rdfs:label "operationalValuesConsidered"@en ;
+  rdfs:comment "It is used to define if the data (other attributes related to short circuit data exchange) defines long term operational conditions or not. Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformer .
+
+cim:PowerTransformerEnd.b0 a rdf:Property ;
+  rdfs:label "b0"@en ;
+  rdfs:comment "Zero sequence magnetizing branch susceptance." ;
+  cims:dataType cim:Susceptance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformerEnd .
+
+cim:PowerTransformerEnd.g0 a rdf:Property ;
+  rdfs:label "g0"@en ;
+  rdfs:comment "Zero sequence magnetizing branch conductance (star-model)." ;
+  cims:dataType cim:Conductance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformerEnd .
+
+cim:PowerTransformerEnd.phaseAngleClock a rdf:Property ;
+  rdfs:label "phaseAngleClock"@en ;
+  rdfs:comment "Terminal voltage phase angle displacement where 360 degrees are represented with clock hours. The valid values are 0 to 11. For example, for the secondary side end of a transformer with vector group code of 'Dyn11', specify the connection kind as wye with neutral and specify the phase angle of the clock as 11.  The clock value of the transformer end number specified as 1, is assumed to be zero.  Note the transformer end number is not assumed to be the same as the terminal sequence number." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformerEnd .
+
+cim:PowerTransformerEnd.r0 a rdf:Property ;
+  rdfs:label "r0"@en ;
+  rdfs:comment "Zero sequence series resistance (star-model) of the transformer end." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformerEnd .
+
+cim:PowerTransformerEnd.x0 a rdf:Property ;
+  rdfs:label "x0"@en ;
+  rdfs:comment "Zero sequence series reactance of the transformer end." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PowerTransformerEnd .
+
+cim:Reactance.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Reactance ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Reactance.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "ohm" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Reactance ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Reactance.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Reactance .
+
+cim:Resistance.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Resistance ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Resistance.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "ohm" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Resistance ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Resistance.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Resistance .
+
+cim:SeriesCompensator.r0 a rdf:Property ;
+  rdfs:label "r0"@en ;
+  rdfs:comment "Zero sequence resistance." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SeriesCompensator .
+
+cim:SeriesCompensator.varistorPresent a rdf:Property ;
+  rdfs:label "varistorPresent"@en ;
+  rdfs:comment "Describe if a metal oxide varistor (mov) for over voltage protection is configured in parallel with the series compensator. It is used for short circuit calculations." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SeriesCompensator .
+
+cim:SeriesCompensator.varistorRatedCurrent a rdf:Property ;
+  rdfs:label "varistorRatedCurrent"@en ;
+  rdfs:comment """The maximum current the varistor is designed to handle at specified duration. It is used for short circuit calculations and exchanged only if SeriesCompensator.varistorPresent is true.
+The attribute shall be a positive value.""" ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SeriesCompensator .
+
+cim:SeriesCompensator.varistorVoltageThreshold a rdf:Property ;
+  rdfs:label "varistorVoltageThreshold"@en ;
+  rdfs:comment "The dc voltage at which the varistor starts conducting. It is used for short circuit calculations and exchanged only if SeriesCompensator.varistorPresent is true." ;
+  cims:dataType cim:Voltage ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SeriesCompensator .
+
+cim:SeriesCompensator.x0 a rdf:Property ;
+  rdfs:label "x0"@en ;
+  rdfs:comment "Zero sequence reactance." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SeriesCompensator .
+
+cim:Susceptance.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Susceptance ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Susceptance.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "S" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Susceptance ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Susceptance.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Susceptance .
+
+cim:SynchronousMachine.earthing a rdf:Property ;
+  rdfs:label "earthing"@en ;
+  rdfs:comment "Indicates whether or not the generator is earthed. Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.earthingStarPointR a rdf:Property ;
+  rdfs:label "earthingStarPointR"@en ;
+  rdfs:comment "Generator star point earthing resistance (Re). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.earthingStarPointX a rdf:Property ;
+  rdfs:label "earthingStarPointX"@en ;
+  rdfs:comment "Generator star point earthing reactance (Xe). Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.ikk a rdf:Property ;
+  rdfs:label "ikk"@en ;
+  rdfs:comment """Steady-state short-circuit current (in A for the profile) of generator with compound excitation during 3-phase short circuit.
+- Ikk=0: Generator with no compound excitation.
+- Ikk&lt;&gt;0: Generator with compound excitation.
+Ikk is used to calculate the minimum steady-state short-circuit current for generators with compound excitation.
+(4.6.1.2 in IEC 60909-0:2001).
+Used only for single fed short circuit on a generator. (4.3.4.2. in IEC 60909-0:2001).""" ;
+  cims:dataType cim:CurrentFlow ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.mu a rdf:Property ;
+  rdfs:label "mu"@en ;
+  rdfs:comment """Factor to calculate the breaking current (Section 4.5.2.1 in IEC 60909-0).
+Used only for single fed short circuit on a generator (Section 4.3.4.2. in IEC 60909-0).""" ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.r a rdf:Property ;
+  rdfs:label "r"@en ;
+  rdfs:comment "Equivalent resistance (RG) of generator. RG is considered for the calculation of all currents, except for the calculation of the peak current ip. Used for short circuit data exchange according to IEC 60909." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.r0 a rdf:Property ;
+  rdfs:label "r0"@en ;
+  rdfs:comment "Zero sequence resistance of the synchronous machine." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.r2 a rdf:Property ;
+  rdfs:label "r2"@en ;
+  rdfs:comment "Negative sequence resistance." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.satDirectSubtransX a rdf:Property ;
+  rdfs:label "satDirectSubtransX"@en ;
+  rdfs:comment "Direct-axis subtransient reactance saturated, also known as Xd\"sat." ;
+  cims:dataType cim:PU ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.satDirectSyncX a rdf:Property ;
+  rdfs:label "satDirectSyncX"@en ;
+  rdfs:comment "Direct-axes saturated synchronous reactance (xdsat); reciprocal of short-circuit ration. Used for short circuit data exchange, only for single fed short circuit on a generator. (4.3.4.2. in IEC 60909-0:2001)." ;
+  cims:dataType cim:PU ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.satDirectTransX a rdf:Property ;
+  rdfs:label "satDirectTransX"@en ;
+  rdfs:comment "Saturated Direct-axis transient reactance. The attribute is primarily used for short circuit calculations according to ANSI." ;
+  cims:dataType cim:PU ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.shortCircuitRotorType a rdf:Property ;
+  rdfs:label "shortCircuitRotorType"@en ;
+  rdfs:comment "Type of rotor, used by short circuit applications, only for single fed short circuit according to IEC 60909." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine ;
+  rdfs:range cim:ShortCircuitRotorKind .
+
+cim:SynchronousMachine.voltageRegulationRange a rdf:Property ;
+  rdfs:label "voltageRegulationRange"@en ;
+  rdfs:comment """Range of generator voltage regulation (PG in IEC 60909-0) used for calculation of the impedance correction factor KG defined in IEC 60909-0.
+This attribute is used to describe the operating voltage of the generating unit.""" ;
+  cims:dataType cim:PerCent ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.x0 a rdf:Property ;
+  rdfs:label "x0"@en ;
+  rdfs:comment "Zero sequence reactance of the synchronous machine." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:SynchronousMachine.x2 a rdf:Property ;
+  rdfs:label "x2"@en ;
+  rdfs:comment "Negative sequence reactance." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SynchronousMachine .
+
+cim:Temperature.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Temperature ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Temperature.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "degC" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Temperature ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Temperature.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Temperature .
+
+cim:Terminal.HasFirstMutualCoupling a rdf:Property ;
+  rdfs:label "HasFirstMutualCoupling"@en ;
+  rdfs:comment "Mutual couplings associated with the branch as the first branch." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:MutualCoupling.First_Terminal ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:Terminal ;
+  rdfs:range cim:MutualCoupling .
+
+cim:Terminal.HasSecondMutualCoupling a rdf:Property ;
+  rdfs:label "HasSecondMutualCoupling"@en ;
+  rdfs:comment "Mutual couplings with the branch associated as the first branch." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:MutualCoupling.Second_Terminal ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:Terminal ;
+  rdfs:range cim:MutualCoupling .
+
+cim:TransformerEnd.grounded a rdf:Property ;
+  rdfs:label "grounded"@en ;
+  rdfs:comment "(for Yn and Zn connections) True if the neutral is solidly grounded." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:TransformerEnd .
+
+cim:TransformerEnd.rground a rdf:Property ;
+  rdfs:label "rground"@en ;
+  rdfs:comment "(for Yn and Zn connections) Resistance part of neutral impedance where 'grounded' is true." ;
+  cims:dataType cim:Resistance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:TransformerEnd .
+
+cim:TransformerEnd.xground a rdf:Property ;
+  rdfs:label "xground"@en ;
+  rdfs:comment "(for Yn and Zn connections) Reactive part of neutral impedance where 'grounded' is true." ;
+  cims:dataType cim:Reactance ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:TransformerEnd .
+
+cim:Voltage.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "k" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Voltage ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Voltage.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "V" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Voltage ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Voltage.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Voltage .
+
+cim:PetersenCoilModeKind.automaticPositioning a cim:PetersenCoilModeKind ;
+  rdfs:label "automaticPositioning"@en ;
+  rdfs:comment "Automatic positioning." ;
+  cims:stereotype "enum" .
+
+cim:PetersenCoilModeKind.fixed a cim:PetersenCoilModeKind ;
+  rdfs:label "fixed"@en ;
+  rdfs:comment "Fixed position." ;
+  cims:stereotype "enum" .
+
+cim:PetersenCoilModeKind.manual a cim:PetersenCoilModeKind ;
+  rdfs:label "manual"@en ;
+  rdfs:comment "Manual positioning." ;
+  cims:stereotype "enum" .
+
+cim:ShortCircuitRotorKind.salientPole1 a cim:ShortCircuitRotorKind ;
+  rdfs:label "salientPole1"@en ;
+  rdfs:comment "Salient pole 1 in IEC 60909." ;
+  cims:stereotype "enum" .
+
+cim:ShortCircuitRotorKind.salientPole2 a cim:ShortCircuitRotorKind ;
+  rdfs:label "salientPole2"@en ;
+  rdfs:comment "Salient pole 2 in IEC 60909." ;
+  cims:stereotype "enum" .
+
+cim:ShortCircuitRotorKind.turboSeries1 a cim:ShortCircuitRotorKind ;
+  rdfs:label "turboSeries1"@en ;
+  rdfs:comment "Turbo Series 1 in IEC 60909." ;
+  cims:stereotype "enum" .
+
+cim:ShortCircuitRotorKind.turboSeries2 a cim:ShortCircuitRotorKind ;
+  rdfs:label "turboSeries2"@en ;
+  rdfs:comment "Turbo series 2 in IEC 60909." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.E a cim:UnitMultiplier ;
+  rdfs:label "E"@en ;
+  rdfs:comment "Exa 10**18." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.G a cim:UnitMultiplier ;
+  rdfs:label "G"@en ;
+  rdfs:comment "Giga 10**9." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.M a cim:UnitMultiplier ;
+  rdfs:label "M"@en ;
+  rdfs:comment "Mega 10**6." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.P a cim:UnitMultiplier ;
+  rdfs:label "P"@en ;
+  rdfs:comment "Peta 10**15." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.T a cim:UnitMultiplier ;
+  rdfs:label "T"@en ;
+  rdfs:comment "Tera 10**12." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.Y a cim:UnitMultiplier ;
+  rdfs:label "Y"@en ;
+  rdfs:comment "Yotta 10**24." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.Z a cim:UnitMultiplier ;
+  rdfs:label "Z"@en ;
+  rdfs:comment "Zetta 10**21." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.a a cim:UnitMultiplier ;
+  rdfs:label "a"@en ;
+  rdfs:comment "Atto 10**-18." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.c a cim:UnitMultiplier ;
+  rdfs:label "c"@en ;
+  rdfs:comment "Centi 10**-2." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.d a cim:UnitMultiplier ;
+  rdfs:label "d"@en ;
+  rdfs:comment "Deci 10**-1." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.da a cim:UnitMultiplier ;
+  rdfs:label "da"@en ;
+  rdfs:comment "Deca 10**1." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.f a cim:UnitMultiplier ;
+  rdfs:label "f"@en ;
+  rdfs:comment "Femto 10**-15." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.h a cim:UnitMultiplier ;
+  rdfs:label "h"@en ;
+  rdfs:comment "Hecto 10**2." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.k a cim:UnitMultiplier ;
+  rdfs:label "k"@en ;
+  rdfs:comment "Kilo 10**3." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.m a cim:UnitMultiplier ;
+  rdfs:label "m"@en ;
+  rdfs:comment "Milli 10**-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.micro a cim:UnitMultiplier ;
+  rdfs:label "micro"@en ;
+  rdfs:comment "Micro 10**-6." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.n a cim:UnitMultiplier ;
+  rdfs:label "n"@en ;
+  rdfs:comment "Nano 10**-9." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.none a cim:UnitMultiplier ;
+  rdfs:label "none"@en ;
+  rdfs:comment "No multiplier or equivalently multiply by 1." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.p a cim:UnitMultiplier ;
+  rdfs:label "p"@en ;
+  rdfs:comment "Pico 10**-12." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.y a cim:UnitMultiplier ;
+  rdfs:label "y"@en ;
+  rdfs:comment "Yocto 10**-24." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.z a cim:UnitMultiplier ;
+  rdfs:label "z"@en ;
+  rdfs:comment "Zepto 10**-21." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A a cim:UnitSymbol ;
+  rdfs:label "A"@en ;
+  rdfs:comment "Current in amperes." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A2 a cim:UnitSymbol ;
+  rdfs:label "A2"@en ;
+  rdfs:comment "Amperes squared (A²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A2h a cim:UnitSymbol ;
+  rdfs:label "A2h"@en ;
+  rdfs:comment "Ampere-squared hour, ampere-squared hour." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A2s a cim:UnitSymbol ;
+  rdfs:label "A2s"@en ;
+  rdfs:comment "Ampere squared time in square amperes (A²s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.APerA a cim:UnitSymbol ;
+  rdfs:label "APerA"@en ;
+  rdfs:comment "Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.APerm a cim:UnitSymbol ;
+  rdfs:label "APerm"@en ;
+  rdfs:comment "A/m, magnetic field strength, amperes per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Ah a cim:UnitSymbol ;
+  rdfs:label "Ah"@en ;
+  rdfs:comment "Ampere-hours, ampere-hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.As a cim:UnitSymbol ;
+  rdfs:label "As"@en ;
+  rdfs:comment "Ampere seconds (A·s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Bq a cim:UnitSymbol ;
+  rdfs:label "Bq"@en ;
+  rdfs:comment "Radioactivity in becquerels (1/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Btu a cim:UnitSymbol ;
+  rdfs:label "Btu"@en ;
+  rdfs:comment "Energy, British Thermal Units." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.C a cim:UnitSymbol ;
+  rdfs:label "C"@en ;
+  rdfs:comment "Electric charge in coulombs (A·s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.CPerkg a cim:UnitSymbol ;
+  rdfs:label "CPerkg"@en ;
+  rdfs:comment "Exposure (x rays), coulombs per kilogram." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.CPerm2 a cim:UnitSymbol ;
+  rdfs:label "CPerm2"@en ;
+  rdfs:comment "Surface charge density, coulombs per square metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.CPerm3 a cim:UnitSymbol ;
+  rdfs:label "CPerm3"@en ;
+  rdfs:comment "Electric charge density, coulombs per cubic metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.F a cim:UnitSymbol ;
+  rdfs:label "F"@en ;
+  rdfs:comment "Electric capacitance in farads (C/V)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.FPerm a cim:UnitSymbol ;
+  rdfs:label "FPerm"@en ;
+  rdfs:comment "Permittivity, farads per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.G a cim:UnitSymbol ;
+  rdfs:label "G"@en ;
+  rdfs:comment "Magnetic flux density, gausses (1 G = 10-4 T)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Gy a cim:UnitSymbol ;
+  rdfs:label "Gy"@en ;
+  rdfs:comment "Absorbed dose in grays (J/kg)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.GyPers a cim:UnitSymbol ;
+  rdfs:label "GyPers"@en ;
+  rdfs:comment "Absorbed dose rate, grays per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.H a cim:UnitSymbol ;
+  rdfs:label "H"@en ;
+  rdfs:comment "Electric inductance in henrys (Wb/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.HPerm a cim:UnitSymbol ;
+  rdfs:label "HPerm"@en ;
+  rdfs:comment "Permeability, henrys per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Hz a cim:UnitSymbol ;
+  rdfs:label "Hz"@en ;
+  rdfs:comment "Frequency in hertz (1/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.HzPerHz a cim:UnitSymbol ;
+  rdfs:label "HzPerHz"@en ;
+  rdfs:comment "Frequency, rate of frequency change.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mHz/Hz’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.HzPers a cim:UnitSymbol ;
+  rdfs:label "HzPers"@en ;
+  rdfs:comment "Rate of change of frequency in hertz per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.J a cim:UnitSymbol ;
+  rdfs:label "J"@en ;
+  rdfs:comment "Energy in joules (N·m = C·V = W·s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerK a cim:UnitSymbol ;
+  rdfs:label "JPerK"@en ;
+  rdfs:comment "Heat capacity in joules/kelvin." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerkg a cim:UnitSymbol ;
+  rdfs:label "JPerkg"@en ;
+  rdfs:comment "Specific energy, Joules / kg." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerkgK a cim:UnitSymbol ;
+  rdfs:label "JPerkgK"@en ;
+  rdfs:comment "Specific heat capacity, specific entropy, joules per kilogram Kelvin." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerm2 a cim:UnitSymbol ;
+  rdfs:label "JPerm2"@en ;
+  rdfs:comment "Insulation energy density, joules per square metre or watt second per square metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerm3 a cim:UnitSymbol ;
+  rdfs:label "JPerm3"@en ;
+  rdfs:comment "Energy density, joules per cubic metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPermol a cim:UnitSymbol ;
+  rdfs:label "JPermol"@en ;
+  rdfs:comment "Molar energy, joules per mole." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPermolK a cim:UnitSymbol ;
+  rdfs:label "JPermolK"@en ;
+  rdfs:comment "Molar entropy, molar heat capacity, joules per mole kelvin." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPers a cim:UnitSymbol ;
+  rdfs:label "JPers"@en ;
+  rdfs:comment "Energy rate in joules per second (J/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.K a cim:UnitSymbol ;
+  rdfs:label "K"@en ;
+  rdfs:comment "Temperature in kelvins." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.KPers a cim:UnitSymbol ;
+  rdfs:label "KPers"@en ;
+  rdfs:comment "Temperature change rate in kelvins per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.M a cim:UnitSymbol ;
+  rdfs:label "M"@en ;
+  rdfs:comment "Length, nautical miles (1 M = 1852 m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Mx a cim:UnitSymbol ;
+  rdfs:label "Mx"@en ;
+  rdfs:comment "Magnetic flux, maxwells (1 Mx = 10-8 Wb)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.N a cim:UnitSymbol ;
+  rdfs:label "N"@en ;
+  rdfs:comment "Force in newtons (kg·m/s²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.NPerm a cim:UnitSymbol ;
+  rdfs:label "NPerm"@en ;
+  rdfs:comment "Surface tension, newton per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Nm a cim:UnitSymbol ;
+  rdfs:label "Nm"@en ;
+  rdfs:comment "Moment of force, newton metres." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Oe a cim:UnitSymbol ;
+  rdfs:label "Oe"@en ;
+  rdfs:comment "Magnetic field in oersteds, (1 Oe = (103/4p) A/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Pa a cim:UnitSymbol ;
+  rdfs:label "Pa"@en ;
+  rdfs:comment "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.PaPers a cim:UnitSymbol ;
+  rdfs:label "PaPers"@en ;
+  rdfs:comment "Pressure change rate in pascals per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Pas a cim:UnitSymbol ;
+  rdfs:label "Pas"@en ;
+  rdfs:comment "Dynamic viscosity, pascal seconds." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Q a cim:UnitSymbol ;
+  rdfs:label "Q"@en ;
+  rdfs:comment "Quantity power, Q." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Qh a cim:UnitSymbol ;
+  rdfs:label "Qh"@en ;
+  rdfs:comment "Quantity energy, Qh." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.S a cim:UnitSymbol ;
+  rdfs:label "S"@en ;
+  rdfs:comment "Conductance in siemens." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.SPerm a cim:UnitSymbol ;
+  rdfs:label "SPerm"@en ;
+  rdfs:comment "Conductance per length (F/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Sv a cim:UnitSymbol ;
+  rdfs:label "Sv"@en ;
+  rdfs:comment "Dose equivalent in sieverts (J/kg)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.T a cim:UnitSymbol ;
+  rdfs:label "T"@en ;
+  rdfs:comment "Magnetic flux density in teslas (Wb/m2)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.V a cim:UnitSymbol ;
+  rdfs:label "V"@en ;
+  rdfs:comment "Electric potential in volts (W/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.V2 a cim:UnitSymbol ;
+  rdfs:label "V2"@en ;
+  rdfs:comment "Volt squared (W²/A²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.V2h a cim:UnitSymbol ;
+  rdfs:label "V2h"@en ;
+  rdfs:comment "Volt-squared hour, volt-squared-hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VA a cim:UnitSymbol ;
+  rdfs:label "VA"@en ;
+  rdfs:comment "Apparent power in volt amperes. See also real power and reactive power." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VAh a cim:UnitSymbol ;
+  rdfs:label "VAh"@en ;
+  rdfs:comment "Apparent energy in volt ampere hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VAr a cim:UnitSymbol ;
+  rdfs:label "VAr"@en ;
+  rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.""" ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VArh a cim:UnitSymbol ;
+  rdfs:label "VArh"@en ;
+  rdfs:comment "Reactive energy in volt ampere reactive hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerHz a cim:UnitSymbol ;
+  rdfs:label "VPerHz"@en ;
+  rdfs:comment "Magnetic flux in volt per hertz." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerV a cim:UnitSymbol ;
+  rdfs:label "VPerV"@en ;
+  rdfs:comment "Voltage, ratio of voltages.  Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerVA a cim:UnitSymbol ;
+  rdfs:label "VPerVA"@en ;
+  rdfs:comment "Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerVAr a cim:UnitSymbol ;
+  rdfs:label "VPerVAr"@en ;
+  rdfs:comment "Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerm a cim:UnitSymbol ;
+  rdfs:label "VPerm"@en ;
+  rdfs:comment "Electric field strength, volts per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Vh a cim:UnitSymbol ;
+  rdfs:label "Vh"@en ;
+  rdfs:comment "Volt-hour, Volt hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Vs a cim:UnitSymbol ;
+  rdfs:label "Vs"@en ;
+  rdfs:comment "Volt seconds (Ws/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.W a cim:UnitSymbol ;
+  rdfs:label "W"@en ;
+  rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPerA a cim:UnitSymbol ;
+  rdfs:label "WPerA"@en ;
+  rdfs:comment "Active power per current flow, watts per Ampere." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPerW a cim:UnitSymbol ;
+  rdfs:label "WPerW"@en ;
+  rdfs:comment "Signal Strength, ratio of power.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mW/W’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPerm2 a cim:UnitSymbol ;
+  rdfs:label "WPerm2"@en ;
+  rdfs:comment "Heat flux density, irradiance, watts per square metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPerm2sr a cim:UnitSymbol ;
+  rdfs:label "WPerm2sr"@en ;
+  rdfs:comment "Radiance, watts per square metre steradian." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPermK a cim:UnitSymbol ;
+  rdfs:label "WPermK"@en ;
+  rdfs:comment "Thermal conductivity in watt/metres kelvin." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPers a cim:UnitSymbol ;
+  rdfs:label "WPers"@en ;
+  rdfs:comment "Ramp rate in watts per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPersr a cim:UnitSymbol ;
+  rdfs:label "WPersr"@en ;
+  rdfs:comment "Radiant intensity, watts per steradian." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Wb a cim:UnitSymbol ;
+  rdfs:label "Wb"@en ;
+  rdfs:comment "Magnetic flux in webers (V·s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Wh a cim:UnitSymbol ;
+  rdfs:label "Wh"@en ;
+  rdfs:comment "Real energy in watt hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.anglemin a cim:UnitSymbol ;
+  rdfs:label "anglemin"@en ;
+  rdfs:comment "Plane angle, minutes." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.anglesec a cim:UnitSymbol ;
+  rdfs:label "anglesec"@en ;
+  rdfs:comment "Plane angle, seconds." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.bar a cim:UnitSymbol ;
+  rdfs:label "bar"@en ;
+  rdfs:comment "Pressure in bars, (1 bar = 100 kPa)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.cd a cim:UnitSymbol ;
+  rdfs:label "cd"@en ;
+  rdfs:comment "Luminous intensity in candelas." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.charPers a cim:UnitSymbol ;
+  rdfs:label "charPers"@en ;
+  rdfs:comment "Data rate (baud) in characters per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.character a cim:UnitSymbol ;
+  rdfs:label "character"@en ;
+  rdfs:comment "Number of characters." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.cosPhi a cim:UnitSymbol ;
+  rdfs:label "cosPhi"@en ;
+  rdfs:comment """Power factor, dimensionless.
+Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.
+Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.""" ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.count a cim:UnitSymbol ;
+  rdfs:label "count"@en ;
+  rdfs:comment "Amount of substance, Counter value." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.d a cim:UnitSymbol ;
+  rdfs:label "d"@en ;
+  rdfs:comment "Time in days, day = 24 h = 86400 s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.dB a cim:UnitSymbol ;
+  rdfs:label "dB"@en ;
+  rdfs:comment "Sound pressure level in decibels. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.dBm a cim:UnitSymbol ;
+  rdfs:label "dBm"@en ;
+  rdfs:comment "Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1mW. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.deg a cim:UnitSymbol ;
+  rdfs:label "deg"@en ;
+  rdfs:comment "Plane angle in degrees." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.degC a cim:UnitSymbol ;
+  rdfs:label "degC"@en ;
+  rdfs:comment """Relative temperature in degrees Celsius.
+In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.""" ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ft3 a cim:UnitSymbol ;
+  rdfs:label "ft3"@en ;
+  rdfs:comment "Volume, cubic feet." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.gPerg a cim:UnitSymbol ;
+  rdfs:label "gPerg"@en ;
+  rdfs:comment "Concentration, The ratio of the mass of a solute divided by the mass of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µg/g’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.gal a cim:UnitSymbol ;
+  rdfs:label "gal"@en ;
+  rdfs:comment "Volume in gallons, US gallon (1 gal = 231 in3 = 128 fl ounce)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.h a cim:UnitSymbol ;
+  rdfs:label "h"@en ;
+  rdfs:comment "Time in hours, hour = 60 min = 3600 s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ha a cim:UnitSymbol ;
+  rdfs:label "ha"@en ;
+  rdfs:comment "Area, hectares." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kat a cim:UnitSymbol ;
+  rdfs:label "kat"@en ;
+  rdfs:comment "Catalytic activity, katal = mol / s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.katPerm3 a cim:UnitSymbol ;
+  rdfs:label "katPerm3"@en ;
+  rdfs:comment "Catalytic activity concentration, katals per cubic metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kg a cim:UnitSymbol ;
+  rdfs:label "kg"@en ;
+  rdfs:comment "Mass in kilograms.  Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kgPerJ a cim:UnitSymbol ;
+  rdfs:label "kgPerJ"@en ;
+  rdfs:comment "Weight per energy in kilograms per joule (kg/J). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kgPerm3 a cim:UnitSymbol ;
+  rdfs:label "kgPerm3"@en ;
+  rdfs:comment "Density in kilogram/cubic metres (kg/m³). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kgm a cim:UnitSymbol ;
+  rdfs:label "kgm"@en ;
+  rdfs:comment "Moment of mass in kilogram metres (kg·m) (first moment of mass). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kgm2 a cim:UnitSymbol ;
+  rdfs:label "kgm2"@en ;
+  rdfs:comment "Moment of mass in kilogram square metres (kg·m²) (Second moment of mass, commonly called the moment of inertia). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kn a cim:UnitSymbol ;
+  rdfs:label "kn"@en ;
+  rdfs:comment "Speed, knots (1 kn = 1852/3600) m/s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.l a cim:UnitSymbol ;
+  rdfs:label "l"@en ;
+  rdfs:comment "Volume in litres, litre = dm3 = m3/1000." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lPerh a cim:UnitSymbol ;
+  rdfs:label "lPerh"@en ;
+  rdfs:comment "Volumetric flow rate, litres per hour." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lPerl a cim:UnitSymbol ;
+  rdfs:label "lPerl"@en ;
+  rdfs:comment "Concentration, The ratio of the volume of a solute divided by the volume of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µL/L’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lPers a cim:UnitSymbol ;
+  rdfs:label "lPers"@en ;
+  rdfs:comment "Volumetric flow rate in litres per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lm a cim:UnitSymbol ;
+  rdfs:label "lm"@en ;
+  rdfs:comment "Luminous flux in lumens (cd·sr)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lx a cim:UnitSymbol ;
+  rdfs:label "lx"@en ;
+  rdfs:comment "Illuminance in lux (lm/m²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m a cim:UnitSymbol ;
+  rdfs:label "m"@en ;
+  rdfs:comment "Length in metres." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m2 a cim:UnitSymbol ;
+  rdfs:label "m2"@en ;
+  rdfs:comment "Area in square metres (m²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m2Pers a cim:UnitSymbol ;
+  rdfs:label "m2Pers"@en ;
+  rdfs:comment "Viscosity in square metres / second (m²/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3 a cim:UnitSymbol ;
+  rdfs:label "m3"@en ;
+  rdfs:comment "Volume in cubic metres (m³)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Compensated a cim:UnitSymbol ;
+  rdfs:label "m3Compensated"@en ;
+  rdfs:comment "Volume, cubic metres, with the value compensated for weather effects." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Perh a cim:UnitSymbol ;
+  rdfs:label "m3Perh"@en ;
+  rdfs:comment "Volumetric flow rate, cubic metres per hour." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Perkg a cim:UnitSymbol ;
+  rdfs:label "m3Perkg"@en ;
+  rdfs:comment "Specific volume, cubic metres per kilogram, v." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Pers a cim:UnitSymbol ;
+  rdfs:label "m3Pers"@en ;
+  rdfs:comment "Volumetric flow rate in cubic metres per second (m³/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Uncompensated a cim:UnitSymbol ;
+  rdfs:label "m3Uncompensated"@en ;
+  rdfs:comment "Volume, cubic metres, with the value uncompensated for weather effects." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mPerm3 a cim:UnitSymbol ;
+  rdfs:label "mPerm3"@en ;
+  rdfs:comment "Fuel efficiency in metres per cubic metres (m/m³)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mPers a cim:UnitSymbol ;
+  rdfs:label "mPers"@en ;
+  rdfs:comment "Velocity in metres per second (m/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mPers2 a cim:UnitSymbol ;
+  rdfs:label "mPers2"@en ;
+  rdfs:comment "Acceleration in metres per second squared (m/s²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.min a cim:UnitSymbol ;
+  rdfs:label "min"@en ;
+  rdfs:comment "Time in minutes, minute  = 60 s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mmHg a cim:UnitSymbol ;
+  rdfs:label "mmHg"@en ;
+  rdfs:comment "Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mol a cim:UnitSymbol ;
+  rdfs:label "mol"@en ;
+  rdfs:comment "Amount of substance in moles." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.molPerkg a cim:UnitSymbol ;
+  rdfs:label "molPerkg"@en ;
+  rdfs:comment "Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.molPerm3 a cim:UnitSymbol ;
+  rdfs:label "molPerm3"@en ;
+  rdfs:comment "Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in m³." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.molPermol a cim:UnitSymbol ;
+  rdfs:label "molPermol"@en ;
+  rdfs:comment "Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.none a cim:UnitSymbol ;
+  rdfs:label "none"@en ;
+  rdfs:comment "Dimension less quantity, e.g. count, per unit, etc." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ohm a cim:UnitSymbol ;
+  rdfs:label "ohm"@en ;
+  rdfs:comment "Electric resistance in ohms (V/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ohmPerm a cim:UnitSymbol ;
+  rdfs:label "ohmPerm"@en ;
+  rdfs:comment "Electric resistance per length in ohms per metre ((V/A)/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ohmm a cim:UnitSymbol ;
+  rdfs:label "ohmm"@en ;
+  rdfs:comment "Resistivity, ohm metres, (rho)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.onePerHz a cim:UnitSymbol ;
+  rdfs:label "onePerHz"@en ;
+  rdfs:comment "Reciprocal of frequency (1/Hz)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.onePerm a cim:UnitSymbol ;
+  rdfs:label "onePerm"@en ;
+  rdfs:comment "Wavenumber, reciprocal metres,  (1/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ppm a cim:UnitSymbol ;
+  rdfs:label "ppm"@en ;
+  rdfs:comment "Concentration in parts per million." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.rad a cim:UnitSymbol ;
+  rdfs:label "rad"@en ;
+  rdfs:comment "Plane angle in radians (m/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.radPers a cim:UnitSymbol ;
+  rdfs:label "radPers"@en ;
+  rdfs:comment "Angular velocity in radians per second (rad/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.radPers2 a cim:UnitSymbol ;
+  rdfs:label "radPers2"@en ;
+  rdfs:comment "Angular acceleration, radians per second squared." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.rev a cim:UnitSymbol ;
+  rdfs:label "rev"@en ;
+  rdfs:comment "Amount of rotation, revolutions." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.rotPers a cim:UnitSymbol ;
+  rdfs:label "rotPers"@en ;
+  rdfs:comment "Rotations per second (1/s). See also Hz (1/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.s a cim:UnitSymbol ;
+  rdfs:label "s"@en ;
+  rdfs:comment "Time in seconds." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.sPers a cim:UnitSymbol ;
+  rdfs:label "sPers"@en ;
+  rdfs:comment "Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&#181;’ to show rates such as ‘&#181;s/s’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.sr a cim:UnitSymbol ;
+  rdfs:label "sr"@en ;
+  rdfs:comment "Solid angle in steradians (m2/m2)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.therm a cim:UnitSymbol ;
+  rdfs:label "therm"@en ;
+  rdfs:comment "Energy, therms." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.tonne a cim:UnitSymbol ;
+  rdfs:label "tonne"@en ;
+  rdfs:comment "Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg)." ;
+  cims:stereotype "enum" .
+
+sc:Package_ShortCircuitProfile a cims:ClassCategory ;
+  rdfs:label "ShortCircuitProfile"@en ;
+  rdfs:comment "This is the IEC 61970-452 short circuit profile." .
+
+

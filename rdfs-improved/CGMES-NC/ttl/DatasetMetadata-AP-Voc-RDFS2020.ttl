@@ -1,16 +1,16 @@
-@prefix cim     : <https://cim.ucaiug.io/ns#> .
-@prefix cims    : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix      cim: <https://cim.ucaiug.io/ns#> .
+@prefix     cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix dcat-cim: <https://cim4.eu/ns/dcat-cim#> .
-@prefix dm      : <https://ap-voc.cim4.eu/DatasetMetadata#> .
-@prefix eumd    : <https://cim4.eu/ns/Metadata-European#> .
-@prefix profcim : <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix dcat    : <http://www.w3.org/ns/dcat#> .
-@prefix dcterms : <http://purl.org/dc/terms/#> .
-@prefix owl     : <http://www.w3.org/2002/07/owl#> .
-@prefix prov    : <http://www.w3.org/ns/prov#> .
-@prefix rdf     : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs    : <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix adms    : <http://www.w3.org/ns/adms#> .
+@prefix       dm: <https://ap-voc.cim4.eu/DatasetMetadata#> .
+@prefix     eumd: <https://cim4.eu/ns/Metadata-European#> .
+@prefix  profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
+@prefix     dcat: <http://www.w3.org/ns/dcat#> .
+@prefix  dcterms: <http://purl.org/dc/terms/#> .
+@prefix      owl: <http://www.w3.org/2002/07/owl#> .
+@prefix     prov: <http://www.w3.org/ns/prov#> .
+@prefix      rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix     rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix     adms: <http://www.w3.org/ns/adms#> .
 
 cim:Date a rdfs:Class ;
   rdfs:label "Date"@en ;
