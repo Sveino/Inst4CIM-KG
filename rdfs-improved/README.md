@@ -10,7 +10,7 @@
             - [EDMC Tools](#edmc-tools)
             - [OBO Robot](#obo-robot)
 - [Fixes](#fixes)
-    - [Upgrade From RDFS2020 Style to RDFSEd2Beta Style](#upgrade-from-rdfs2020-style-to-rdfsed2beta-style)
+    - [Use Only One of RDFS2020 and RDFSEd2Beta Style](#use-only-one-of-rdfs2020-and-rdfsed2beta-style)
     - [Duplication Between Ontologies](#duplication-between-ontologies)
         - [Duplicated Definitions](#duplicated-definitions)
         - [Duplicated Terms](#duplicated-terms)
@@ -31,18 +31,24 @@
     - [HTML Tags and Escaped Entities in Definitions](#html-tags-and-escaped-entities-in-definitions)
     - [Datatypes and Units of Measure](#datatypes-and-units-of-measure)
         - [Fixed Units Representation](#fixed-units-representation)
+        - [Fixed Multipliers Representation](#fixed-multipliers-representation)
         - [CompleteDatatypeMap](#completedatatypemap)
         - [Actual QuantityKinds](#actual-quantitykinds)
         - [Actual Multipliers and Units](#actual-multipliers-and-units)
-        - [All QuantityKinds and Units](#all-quantitykinds-and-units)
+        - [Mapping QuantityKinds and Units](#mapping-quantitykinds-and-units)
+        - [Mapping Unit Multipliers](#mapping-unit-multipliers)
+        - [All QuantityKinds, Units and Multipliers](#all-quantitykinds-units-and-multipliers)
     - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
+- [Fix Technical Notes](#fix-technical-notes)
+    - [Fix Structure](#fix-structure)
+    - [Fix Debugging](#fix-debugging)
 
 <!-- markdown-toc end -->
 
 ## Source Files
 We start from these RDFS renditions, which are the latest versions of CIM/CGMES and CGMES-NC respectively:
-- https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/IEC61970-600-2_CGMES_3_0_1_ApplicationProfiles.zip folder `v3.0/RDFSEd2Beta`.
-  Available locally in [source/CGMES/v3.0/RDFSEd2Beta/RDFS](../source/CGMES/v3.0/RDFSEd2Beta/RDFS)
+- https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/IEC61970-600-2_CGMES_3_0_1_ApplicationProfiles.zip folder `v3.0/RDFS2020`.
+  Available locally in [source/CGMES/v3.0/RDFS2020](../source/CGMES/v3.0/RDFSEd2Beta/RDFS)
 - https://github.com/Sveino/CGMES-NC/tree/develop/r2.3/ap-voc/rdf
   Available locally in [source/CGMES-NC/r2.3/ap-voc/rdf](../source/CGMES-NC/r2.3/ap-voc/rdf)
 
@@ -51,8 +57,7 @@ TODO:
 - [ ] Agree folder structure: `rdf` vs `ttl` vs `jsonld`.
   - But given the multitude of subfolders in `source/CGMES/v3.0/SHACL`, where do we make the format subfolders
   - For now I make the latter two but don't copy `rdf`
-- [ ] Automate the conversion
-  - I would do it with a simple Makefile
+- [x] Automate the conversion: I did it with a Makefile
   - Or see [spotless](https://github.com/diffplug/spotless/), which is used to automate file manipulation in a project
 - [ ] Produce good JSON-LD (see GS1 EPCIS tooling)
 
@@ -68,7 +73,7 @@ A relevant thread "Diff'ing RDF files" appeared on the <semantic-web@w3.org> and
 It mentions the atextor tools (my current choice), EDMC tools, and ROBOT.
 
 Here is a list of tools. But I have made sub-sections for the most promising ones (see below):
-- For a long time I used Jena RIOT.
+- For a long time I used Jena `riot`.
   - It has Formatted and Streaming mode (better for very large files)
   - But has no options how to sort terms
   - Invocation command:
@@ -78,23 +83,45 @@ riot --formatted ttl IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQ.rdf > IEC61970-
 - [rdflib#2880 about longturtle](https://github.com/RDFLib/rdflib/issues/2880) which is a request to add pretty-printing features to Python's `rdflib`
 
 #### atextor tools: owl-cli and turtle-formatter
-- Selected: [atextor/turtle-formatter](https://github.com/atextor/turtle-formatter) which is a Jena/Java tool specifically for this purpose.
-  - Under active development and the author is responsive
-  - Incorporated in the `owl-cli` tool ([owl-cli-snapshot.jar](https://github.com/atextor/owl-cli/releases/download/snapshot/owl-cli-snapshot.jar))
-  - See usage guide of [write-command](https://atextor.de/owl-cli/main/snapshot/usage.html#write-command)
-  - QUDT is also likely to use it: [qudt-public-repo#959](https://github.com/qudt/qudt-public-repo/issues/959)
-  - Invocation (where `owl` is `java -jar owl-cli-snapshot.jar %*`)
+This is my current selection:
+
+[atextor/turtle-formatter](https://github.com/atextor/turtle-formatter) is a Jena/Java tool specifically for this purpose.
+- Under active development and the author is responsive
+- Incorporated in the `owl-cli` tool ([owl-cli-snapshot.jar](https://github.com/atextor/owl-cli/releases/download/snapshot/owl-cli-snapshot.jar))
+- See usage guide of [write-command](https://atextor.de/owl-cli/main/snapshot/usage.html#write-command)
+- QUDT is also likely to use it: [qudt-public-repo#959](https://github.com/qudt/qudt-public-repo/issues/959)
+- Invocation (where `owl.bat` is `java -jar owl-cli-snapshot.jar %*`)
 ```
-owl write <many-options> --input=rdfxml <source.rdf> <target.ttl>
+owl.bat write <many-options> --input=rdfxml <source.rdf> <target.ttl>
 ```
 
 Features of `turtle-formatter` (`owl-cli`) that we use:
 - First sort CIM-related prefixes, then others (see `Makefile`).
   IMHO there's too many prefixes, so the profile prefixes should be removed: https://github.com/Sveino/Inst4CIM-KG/issues/4
 - Sort by term kind: ontology, classes, object properties, data properties, individuals
-- Don't align predicates and objects since that leaves too much whitespace (this can be changed)
+- Don't align predicates and objects since that leaves too much whitespace (a matter of preference)
 
-We'll watch closely its development and add more options as needed
+We'll watch closely its development and fixes.
+I posted a large number of issues. As of 17-Sep-2024:
+- https://github.com/atextor/turtle-formatter/issues/created_by/vladimiralexiev (9). The important ones are:
+  - #22 section sorting: 
+    I want to sort all props alphabetically, but currently it is not possible (`ObjectProperty` first, `DatatypeProperty` next)
+  - #27 prefixes trouble when using `--subjectOrder`: 
+    rdfs:Class comes before `owl:Ontology`
+  - #32 `prefixAlign=left` makes invalid turtle:
+    So we use  `prefixAlign=right`
+  - #33 `--useCommaByDefault` not respected on source build of owl-cli:
+    So multiple values of eg `dct:conformsTo` are printed on separate lines, with the property repeated
+- https://github.com/atextor/owl-cli/issues/created_by/vladimiralexiev (8).  The important ones are:
+  - #21 make frequent binary releases:
+    Until automated, we need to build ourselves to pick up the latest features.
+    For linux, see [Building from Source](https://atextor.de/owl-cli/main/snapshot/index.html#building-from-source)
+  - #22 how to build on Windows (troubles with Cygwin):
+    For Windows, see how I did it
+  - #16 location-mapping.ttl missing:
+    This prints a nasty warning, but is harmless
+  - #14 log messages should go to STDERR not STDOUT bug:
+    It just means that we must specify the output filename when running it
 
 #### EDMC Tools
 Elisa Kendall (one of the main FIBO ontologists):
@@ -109,7 +136,8 @@ We also have a pipeline that looks for a myriad of issues in ontologies, perform
 https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](https://github.com/ontodev/robot/releases) page 
 - By the OBO Foundry
 - Used by EDM Council. Elisa: I don’t know how well it works on RDF alone, mainly because I haven’t attempted to use it for that, but it works well as a companion tool to the RDF Toolkit
-- Used in the [Emacs Literate Ontology Tool](https://github.com/johanwk/elot/) by Johan Wolter Kluwer (DNV) and Vladimir Alexiev (Ontotext)
+- Used in the [Emacs Literate Ontology Tool](https://github.com/johanwk/elot/) by Johan Wolter Kluwer (DNV) and Vladimir Alexiev (Ontotext). 
+  This tool is used in the development of the Industrial Data Ontology.
 - Axiomatic diff
 - Output Turtle
 - Run SPARQL and capture results
@@ -124,26 +152,17 @@ In general, we proceed in this way:
 - We analyze the patterns to be fixed using command-line tools (`grep, uniq` etc) or SPARQL
 - Then we write SPARQL Updates to fix the problems
 
-The actual fixing can be done in two ways:
-- Using a semantic database:
-  - Load the ontology to a defined graph (usually same as the ontology URL)
-  - Run the updates over that graph only
-  - Export the graph to a file
-  - Format the file as Turtle (see above)
-- Using a tool that does updates in-memory (eg Jena `update`)
-  - Run the tool with the original file and the update query
-  - Pass the result through the Turtle formatter
-  - Save it to a file
-
-The latter is slightly simpler, so we use that.
-
-## Upgrade From RDFS2020 Style to RDFSEd2Beta Style
+## Use Only One of RDFS2020 and RDFSEd2Beta Style
 https://github.com/Sveino/Inst4CIM-KG/issues/41
 
-NC 2.3 uses the older RDFS2020 style, CGMES 3.0 uses the new RDFSEd2Beta style.
-Upgrading to RDFSEd2Beta will harmonize data and simplify SPARQL Updates.
+NC 2.3 uses the older RDFS2020 style, CGMES 3.0 is available in the older and the newer RDFSEd2Beta style.
+- Using only one style will harmonize data and simplify SPARQL Updates
+- Currently it's not easy to upgrade NC 2.3 to the RDFSEd2Beta style
+- So we decided to use only the RDFS2020 style
 
 The issue listed above includes a growing list of tasks, so we won't repeat them here.
+- In effect, the SPARQL Updates will upgrade from the old to the new style
+- While avoiding the regressions (bugs) present in the new style
 
 ## Duplication Between Ontologies
 https://github.com/Sveino/Inst4CIM-KG/issues/5
@@ -676,6 +695,7 @@ select * {
     filter(regex(?label,"^\\s|\\s$"))
 }
 ```
+Saved as [literals-whitespace.tsv](literals-whitespace.tsv).
 
 This query counts by property:
 ```sparql
@@ -684,23 +704,42 @@ select ?p (count(*) as ?c) {
     filter(regex(?label,"^\\s|\\s$"))
 } group by ?p order by desc(?c)
 ```
-| p               | c                  | comment                                                                                                                             |
-|-----------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| skos:definition | "660"^^xsd:integer |                                                                                                                                     |
-| rdfs:label      | "614"^^xsd:integer | Most of these are key values (see next section) but some are prop names. Eg `ssh:isDescription` has multiple trailing spaces or tab |
-| rdfs:comment    | "150"^^xsd:integer | This and all below are key values (see next section)                                                                                |
-| eq:isFixed      | "43"^^xsd:integer  |                                                                                                                                     |
-| sc:isFixed      | "24"^^xsd:integer  |                                                                                                                                     |
-| ssh:isFixed     | "22"^^xsd:integer  |                                                                                                                                     |
-| dy:isFixed      | "20"^^xsd:integer  |                                                                                                                                     |
-| sv:isFixed      | "10"^^xsd:integer  |                                                                                                                                     |
-| dcterms:creator | "7"^^xsd:integer   |                                                                                                                                     |
-| dl:isFixed      | "2"^^xsd:integer   |                                                                                                                                     |
-| eqbd:isFixed    | "2"^^xsd:integer   |                                                                                                                                     |
-| op:isFixed      | "2"^^xsd:integer   |                                                                                                                                     |
+New style:
+| p               | c     | comment                                                                                                                              |
+|-----------------|-------|--------------------------------------------------------------------------------------------------------------------------------------|
+| skos:definition | "660" |                                                                                                                                      |
+| rdfs:label      | "614" | Most of these are key values (see next section) but some are prop names. Eg `ssh:isDescription` has multiple trailing spaces or tabs |
+| rdfs:comment    | "150" | This and all below are key values (see next section)                                                                                 |
+| eq:isFixed      | "43"  |                                                                                                                                      |
+| sc:isFixed      | "24"  |                                                                                                                                      |
+| ssh:isFixed     | "22"  |                                                                                                                                      |
+| dy:isFixed      | "20"  |                                                                                                                                      |
+| sv:isFixed      | "10"  |                                                                                                                                      |
+| dcterms:creator | "7"   |                                                                                                                                      |
+| dl:isFixed      | "2"   |                                                                                                                                      |
+| eqbd:isFixed    | "2"   |                                                                                                                                      |
+| op:isFixed      | "2"   |                                                                                                                                      |
+
+Old style is much better:
+| p               | c     |
+|-----------------|-------|
+| rdfs:comment    | "299" |
+| dcterms:creator | "7"   |
 
 This can be fixed easily with SPARQL Update.
-Just need to be careful to restore a lang tag if such was present.
+- Just need to be careful to restore a lang tag if such was present
+- So we need a conditional like this:
+```sparql
+select * {
+    values ?label {"plain" "langString"@en}
+    bind(if(lang(?label)!="",strlang(str(?label),lang(?label)),?label) as ?label1)
+    bind(datatype(?label1) as ?dt)
+}
+```
+| label            | label1           | dt              |
+|------------------|------------------|-----------------|
+| "plain"          | "plain"          | xsd: string     |
+| "langString" @en | "langString" @en | rdf: langString |
 
 ## Whitespace and Lang Tags in Key Values
 Key values must be spelled with ultimate care because... well, they are key.
@@ -729,15 +768,13 @@ cim:Temperature.multiplier
 ## HTML Tags and Escaped Entities in Definitions
 https://github.com/Sveino/Inst4CIM-KG/issues/21
 
-This query finds 2776 instances of HTML tags and entities 
-(I guess some are duplicated between 2.3 and 3.0 CIM namespaces):
+This query finds 2776 instances of HTML tags and entities:
 ```sparql
 select * {
     ?x ?p ?label
     filter(regex(?label,"[&<][^ =]|\\\\"))
 }
 ```
-
 Saved as [literals-html.tsv](literals-html.tsv).
 
 It includes:
@@ -748,6 +785,21 @@ It includes:
 - HTML block markup like `\n<ul>\n\t<li> ...`. This is nok: markdown is ok (`\n- ...`)
 - HTML inline markup like `field voltage (<i>Efd</i>)`. This is nok: markdown is ok (`*Efd*`)
 - Useless HTML markup like `<font color="#636671">...</font>`
+
+Some lists use a mix of HTML and markdown, eg `cim:AsynchronousMachineTimeConstantReactance`:
+```
+Parameter details:
+<ol>
+	<li>If <i>X'' </i>=<i> X'</i>, a single cage (one equivalent rotor winding per axis) is modelled.</li>
+	<li>The “<i>p</i>” in the attribute names is a substitution for a “prime” in the usual parameter notation, e.g. <i>tpo</i> refers to <i>T'o</i>.</li>
+</ol>
+The parameters used for models expressed in time constant reactance form include:
+- RotatingMachine.ratedS (<i>MVAbase</i>);
+- RotatingMachineDynamics.damping (<i>D</i>);
+- RotatingMachineDynamics.inertia (<i>H</i>);
+```
+Note: the code block may show "block" chars. These are actually smart quotes:
+> The “p” in the attribute names
 
 The problem is that HTML is not interpreted in RDF strings.
 - We could use the `^^rdf:HTML` datatype, but that's more complex, 
@@ -770,40 +822,37 @@ https://github.com/Sveino/Inst4CIM-KG/issues/38
 - https://github.com/Sveino/Inst4CIM-KG/issues/29 is a subset of this
 - TODO: check if https://github.com/3lbits/CIM4NoUtility/issues/338 has anything more
 
-CGMES datatype properties are defined like this:
+CGMES datatype properties are defined like this (`# new` shows the new style`):
 
 ```ttl
-cim:ACDCConverter.baseS a owl:FunctionalProperty , owl:DatatypeProperty ;
-  rdfs:domain cim:ACDCConverter ;
-  rdfs:range  cim:ApparentPower.
+cim:ACDCConverter.baseS a rdf:Property;       # new: owl:FunctionalProperty , owl:DatatypeProperty ;
+  rdfs:domain cim:ACDCConverter ; 
+  cims:dataType cim:ApparentPower.            # new: rdfs:range
 
 cim:ApparentPower a owl:Class ;
   rdfs:label "ApparentPower"@en ;
   eq:Package "Package_CoreEquipmentProfile" ;
-  eq:isCIMDatatype "True" ;
-  skos:definition "\nProduct of the RMS value of the voltage and the RMS value of the current.\n\n\t"@en .
+  cims:stereotype "CIMDatatype";              # new: xx:isCIMDatatype "True" ;
+  rdfs:comment                                # new: skos:definition, lang @en, leading/trailing whitespace
+    "Product of the RMS value of the voltage and the RMS value of the current.".
 
-cim:ApparentPower.multiplier
-  a owl:FunctionalProperty , owl:DatatypeProperty ;
-  rdf:value "M" ;
+cim:ApparentPower.multiplier a rdf:Property;  # new: owl:FunctionalProperty , owl:DatatypeProperty ;
+  cims:isFixed "M" ;                          # new: rdf:value "M"; xx:isFixed "True " 
   rdfs:domain cim:ApparentPower ;
   rdfs:label "multiplier"@en ;
-  rdfs:range cim:UnitMultiplier ;
-  eq:isFixed "True " .
+  rdfs:range cim:UnitMultiplier.
 
-cim:ApparentPower.unit
-  a owl:FunctionalProperty , owl:DatatypeProperty ;
-  rdf:value "VA" ;
+cim:ApparentPower.unit a rdf:Property;        # new: owl:FunctionalProperty , owl:DatatypeProperty ;
+  cims:isFixed "VA";                          # new: rdf:value "VA"; xx:isFixed "True " 
   rdfs:domain cim:ApparentPower ;
   rdfs:label "unit"@en ;
-  rdfs:range cim:UnitSymbol ;
-  eq:isFixed "True " .
+  rdfs:range cim:UnitSymbol .
 
-cim:ApparentPower.value
- a owl:FunctionalProperty , owl:DatatypeProperty ;
+cim:ApparentPower.value a rdf:Property;       # new: owl:FunctionalProperty , owl:DatatypeProperty ;
+ cims:multiplicity cims:M:0..1;               # new: missing
  rdfs:domain cim:ApparentPower ;
  rdfs:label "value"@en ;
- rdfs:range xsd:float .
+ cims:dataType cim:Float.                     # new: rdfs:range xsd:float
 ```
 
 There are numerous problems:
@@ -817,21 +866,23 @@ CIM defines a large set of units of measure, eg:
 ```ttl
 cim:UnitSymbol a owl:Class ;
   rdfs:label "UnitSymbol"@en ;
-  owl:oneOf (... cim:UnitSymbol.VA ...).
-cim:UnitSymbol.VA a owl:NamedIndividual, owl:Thing ;
-  rdfs:label "VA "@en ;
-  eq:isenum "True" ;
-  rdfs:domain cim:UnitSymbol ;
-  skos:definition "Apparent power in volt amperes. See also real power and reactive power."@en .
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration>.  # new: missing
+                                                                     # new: owl:oneOf (... cim:UnitSymbol.VA ...).
+
+cim:UnitSymbol.VA a cim:UnitSymbol;                                  # new: owl:NamedIndividual, owl:Thing; rdfs:domain cim:UnitSymbol ;
+  rdfs:label "VA"@en ;                                               # new: trailing whitespace
+  cims:stereotype "enum";                                            # new: xx:isenum "True" ;
+  skos:definition "Apparent power in volt amperes..".                # new: lang @en .
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier"@en ;
-  owl:oneOf (... cim:UnitMultiplier.M ...).
-cim:UnitMultiplier.M a owl:NamedIndividual, owl:Thing ;
-  rdfs:label "M "@en ;
-  eq:isenum "True" ;
-  rdfs:domain cim:UnitMultiplier ;
-  skos:definition "Mega 10**6."@en .
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration>.  # new: missing
+                                                                     # new: owl:oneOf (... cim:UnitMultiplier.M ...).
+
+cim:UnitMultiplier.M a a cim:UnitMultiplier;                         # new: owl:NamedIndividual, owl:Thing; rdfs:domain cim:UnitMultiplier ;
+  rdfs:label "M"@en ;                                                # new: trailing whitespace
+  cims:stereotype "enum";                                            # new: xx:isenum "True" ;
+  rdfs:comment "Mega 10**6."@en .                                    # new: skos:definition
 ```
 - But they are not used: eg `cim:ApparentPower.unit` says it has `rdfs:range cim:UnitSymbol`, but uses a string value "VA". Same for `cim:ApparentPower.multiplier`
 - `cim:UnitSymbol.VA` uses a different label `rdfs:label "VA "@en`, which has two mistakes:
@@ -854,12 +905,12 @@ We link to a global QUDT unit, but also give the multiplier and unitSymbol separ
 @prefix unit: <http://qudt.org/vocab/unit/> .
 
 cim:ACDCConverter.baseS a owl:FunctionalProperty , owl:DatatypeProperty ;
-  rdfs:domain cim:ACDCConverter ;
-  rdfs:range  xsd:float ;
+  rdfs:domain          cim:ACDCConverter ;
+  rdfs:range           xsd:float ;
   qudt:hasQuantityKind cim:ApparentPower;
-  qudt:hasUnit    unit:MegaV-A;
-  cims:multiplier cim:UnitMultiplier.M;
-  cims:unitSymbol cim:UnitSymbol.VA.
+  qudt:hasUnit         unit:MegaV-A;
+  cim:unitMultiplier   cim:UnitMultiplier.M;
+  cim:unitSymbol       cim:UnitSymbol.VA.
 ```
 
 Then we correct the QuantityKind and relate it to QUDT
@@ -869,16 +920,15 @@ Then we correct the QuantityKind and relate it to QUDT
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 
 cim:ApparentPower a qudt:QuantityKind ;
-  rdfs:label "ApparentPower"@en ;
-  eq:Package "Package_CoreEquipmentProfile" ;
-  eq:isCIMDatatype "True" ;
+  rdfs:label          "ApparentPower"@en ;
+  cims:package        "Package_CoreEquipmentProfile" ;
   qudt:applicableUnit cim:UnitSymbol.VA;
-  skos:broader quantitykind:ComplexPower;
-  skos:definition "\nProduct of the RMS value of the voltage and the RMS value of the current.\n\n\t"@en .
+  skos:exactMatch     quantitykind:ApparentPower;
+  rdfs:comment        "Product of the RMS value of the voltage and the RMS value of the current." .
 ```
 
 We delete `cim:ApparentPower.multiplier, cim:ApparentPower.unit` 
-because they are replaced by universal props `cims:multiplier, cims:unitSymbol` respectively.
+because they are replaced by universal props `cim:multiplier, cim:unitSymbol` respectively.
 
 We delete `cim:ApparentPower.value` because the actual DatatypeProperty `cim:ACDCConverter.baseS`
 now carries a number (`xsd:float`).
@@ -887,32 +937,49 @@ We correct CIM unit symbols and relate them to QUDT:
 ```ttl
 cim:UnitSymbol a owl:Class ;
   rdfs:label "UnitSymbol"@en ;
-  owl:oneOf (... cim:UnitSymbol.VA ...);
   skos:exactMatch qudt:Unit.
 
 cim:UnitSymbol.VA a cim:UnitSymbol ;
   rdfs:label "VA" ;
-  cims:isenum "True" ;
-  skos:definition "Apparent power in volt amperes. See also real power and reactive power."@en;
+  cims:stereotype "enum" ; # TODO: should we delete it?
+  skos:definition "Apparent power in volt amperes...";
   qudt:hasQuantityKind cim:ApparentPower;
   skos:exactMatch unit:V-A.
 ```
 
-We correct CIM multipliers and relate them to QUDT (where they are called "prefixes"):
+### Fixed Multipliers Representation
+https://github.com/Sveino/Inst4CIM-KG/issues/62
+
+We correct CIM multipliers, add a numeric `prefixMultiplier` and relate them to QUDT (where they are called "prefixes"):
 ```ttl
 @prefix prefix: <http://qudt.org/vocab/prefix/> .
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier"@en ;
-  owl:oneOf (... cim:UnitMultiplier.M ...);
   skos:exactMatch qudt:DecimalPrefix.
   
 cim:UnitMultiplier.M a cim:UnitMultiplier;
   rdfs:label "M" ;
-  cims:isenum "True" ;
+  cims:stereotype "enum" ;
   skos:definition "Mega 10**6."@en ;
+  qudt:prefixMultiplier 1.0E6;
   skos:exactMatch prefix:Mega.
 ```
+
+
+CIM has a "none" multipler:
+```ttl
+cim:UnitMultiplier.none a cim:UnitMultiplier ;
+  rdfs:label "none"@en ;
+  rdfs:comment "No multiplier or equivalently multiply by 1." ;
+  cims:stereotype "enum" .
+```
+- Some quantity kinds refer to it (as string, not thing):
+  `cim:<QuantityKind>.multiplier/cims:isFixed="none"`
+- QUDT better follows the semantic web principle that when some data is missing or doesn't apply, you don't need to state it:
+  it doesn't have something like `prefix:One`.
+- But we'll follow CIM and use the `cim:UnitMultiplier.none` as given
+
 
 ### CompleteDatatypeMap
 The previous section defines how we want to correct units, but how can we do it?
@@ -988,23 +1055,7 @@ There are 30 QuantityKinds in use:
 
 ### Actual Multipliers and Units
 
-This query finds QuantityKinds, Multipliers and Units for CGMES 3.0:
-```sparql
-select distinct ?qk ?mult ?uom ?multFixed ?uomFixed ?range {
-  values ?isDatatype {dy:isCIMDatatype tp:isCIMDatatype eqbd:isCIMDatatype eq:isCIMDatatype sv:isCIMDatatype ssh:isCIMDatatype sc:isCIMDatatype op:isCIMDatatype gl:isCIMDatatype dl:isCIMDatatype cims:isCIMDatatype}
-  ?qk ?isDatatype "True"
-  optional {
-    values ?isFixed1 {dy:isFixed tp:isFixed eqbd:isFixed eq:isFixed sv:isFixed ssh:isFixed sc:isFixed op:isFixed gl:isFixed dl:isFixed cims:isFixed}
-    ?multiplier rdfs:domain ?qk; rdfs:label "multiplier"@en; rdf:value ?mult; ?isFixed1 ?multFixed}
-  optional {
-    values ?isFixed2 {dy:isFixed tp:isFixed eqbd:isFixed eq:isFixed sv:isFixed ssh:isFixed sc:isFixed op:isFixed gl:isFixed dl:isFixed cims:isFixed}
-    ?unit rdfs:domain ?qk; rdfs:label "unit"@en; rdf:value ?uom; ?isFixed2 ?uomFixed}
-  optional {
-        ?value rdfs:domain ?qk; rdfs:label "value"@en; rdfs:range ?range}
-} order by ?qk
-```
-
-This query finds QuantityKinds, Multipliers and Units for CGMES 3.0:
+This query finds QuantityKinds, Multipliers and Units for the new style:
 ```sparql
 select distinct ?qk ?mult ?uom ?range ?multFixed ?uomFixed {
   values ?isDatatype {dy:isCIMDatatype tp:isCIMDatatype eqbd:isCIMDatatype eq:isCIMDatatype sv:isCIMDatatype ssh:isCIMDatatype sc:isCIMDatatype op:isCIMDatatype gl:isCIMDatatype dl:isCIMDatatype cims:isCIMDatatype}
@@ -1019,43 +1070,8 @@ select distinct ?qk ?mult ?uom ?range ?multFixed ?uomFixed {
         ?value rdfs:domain ?qk; rdfs:label "value"@en; rdfs:range ?range}
 } order by ?qk
 ```
-(`multFixed, uomFixed` are always `"True "` so we skip them).
-We add corresponding QUDT resources (last 2 columns)
-- "<" means it's `skos:broader` (`ApparentPower` is a sub-concept of `ComplexPower`): https://github.com/Sveino/Inst4CIM-KG/issues/43
-- ">" means it's `skos:narrower` (`Hz` is a super-concept of `REV-PER-SEC`): https://github.com/Sveino/Inst4CIM-KG/issues/42
-- else it's `skos:exactMatch`
-| qk                             | mult   | uom       | range       | QuantityKind                    | Unit                  |
-|--------------------------------|--------|-----------|-------------|---------------------------------|-----------------------|
-| cim1:ActivePower               | "M"    | "W"       | xsd:float   | quantitykind:ActivePower        | unit:MegaW            |
-| cim1:ActivePowerPerCurrentFlow | "M"    | "WPerA"   | xsd:float   |                                 |                       |
-| cim1:ActivePowerPerFrequency   | "M"    | "WPers"   | xsd:float   |                                 |                       |
-| cim1:AngleDegrees              | "none" | "deg"     | xsd:float   | quantitykind:Angle              | unit:DEG              |
-| cim1:AngleRadians              | "none" | "rad"     | xsd:float   | quantitykind:Angle              | unit:RAD              |
-| cim1:ApparentPower             | "M"    | "VA"      | xsd:float   | < quantitykind:ComplexPower     | unit:MegaV-A          |
-| cim1:Area                      | "none" | "m2"      | xsd:float   | quantitykind:Area               | unit:M2               |
-| cim1:Capacitance               | "none" | "F"       | xsd:float   | quantitykind:Capacitance        | unit:FARAD            |
-| cim1:Conductance               | "none" | "S"       | xsd:float   | quantitykind:Conductance        | unit:S                |
-| cim1:CurrentFlow               | "none" | "A"       | xsd:float   | quantitykind:ElectricCurrent    | unit:A                |
-| cim1:Frequency                 | "none" | "Hz"      | xsd:float   | quantitykind:Frequency          | unit:HZ               |
-| cim1:Inductance                | "none" | "H"       | xsd:float   | quantitykind:Inductance         | unit:H                |
-| cim1:Length                    | "k"    | "m"       | xsd:float   | quantitykind:Length             | unit:KiloM            |
-| cim1:Money                     | "none" |           | xsd:decimal | quantitykind:Currency           |                       |
-| cim1:PU                        | "none" | "none"    | xsd:float   | quantitykind:DimensionlessRatio |                       |
-| cim1:PerCent                   | "none" | "none"    | xsd:float   | quantitykind:DimensionlessRatio | unit:PERCENT          |
-| cim1:Reactance                 | "none" | "ohm"     | xsd:float   | quantitykind:Reactance          | unit:OHM              |
-| cim1:ReactivePower             | "M"    | "VAr"     | xsd:float   | quantitykind:ReactivePower      | unit:MegaV-A_Reactive |
-| cim1:RealEnergy                | "M"    | "Wh"      | xsd:float   | quantitykind:Energy             | unit:MegaW-HR         |
-| cim1:Resistance                | "none" | "ohm"     | xsd:float   | quantitykind:Resistance         | unit:OHM              |
-| cim1:RotationSpeed             | "none" | "Hz"      | xsd:float   | quantitykind:AngularVelocity    | > unit:REV-PER-SEC    |
-| cim1:Seconds                   | "none" | "s"       | xsd:float   | quantitykind:Time               | unit:SEC              |
-| cim1:Susceptance               | "none" | "S"       | xsd:float   | quantitykind:Susceptance        | unit:S                |
-| cim1:Temperature               | "none" | "degC"    | xsd:float   | quantitykind:Temperature        | unit:DEG_C            |
-| cim1:Voltage                   | "k"    | "V"       | xsd:float   | quantitykind:Voltage            | unit:KiloV            |
-| cim1:VoltagePerReactivePower   | "none" | "VPerVAr" | xsd:float   |                                 |                       |
-| cim1:VolumeFlowRate            | "none" | "m3Pers"  | xsd:float   | quantitykind:VolumeFlowRate     | unit:M3-PER-SEC       |
 
-
-This query finds QuantityKinds, Multipliers and Units for CGMES NC 2.3:
+This query finds QuantityKinds, Multipliers and Units for the old style:
 ```sparql
 select ?qk ?mult ?uom ?range {
   ?qk cims:stereotype "CIMDatatype"
@@ -1064,39 +1080,75 @@ select ?qk ?mult ?uom ?range {
   optional {?value rdfs:domain ?qk; rdfs:label "value"@en; cims:dataType ?range}
 } order by ?qk
 ```
-We see that the data agrees, but `MWPers` is used for two different kinds: `ActivePowerPerFrequency` and `ActivePowerChangeRate`.
-We add corresponding QUDT resources (last columns):
-| qk                          | mult   | uom       | range       | QuantityKind                    | Unit                  |
-|-----------------------------|--------|-----------|-------------|---------------------------------|-----------------------|
-| cim:ActivePower             | "M"    | "W"       | cim:Float   | quantitykind:ActivePower        | unit:MegaW            |
-| cim:ActivePowerChangeRate   | "M"    | "WPers"   | cim:Float   |                                 |                       |
-| cim:AngleDegrees            | "none" | "deg"     | cim:Float   | quantitykind:Angle              | unit:DEG              |
-| cim:ApparentPower           | "M"    | "VA"      | cim:Float   | < quantitykind:ComplexPower     | unit:MegaV-A          |
-| cim:CurrentFlow             | "none" | "A"       | cim:Float   | quantitykind:ElectricCurrent    | unit:A                |
-| cim:Frequency               | "none" | "Hz"      | cim:Float   | quantitykind:Frequency          | unit:HZ               |
-| cim:Impedance               | "none" | "ohm"     | cim:Float   | quantitykind:Impedance          | unit:OHM              |
-| cim:Money                   | "none" |           | cim:Decimal | quantitykind:Currency           |                       |
-| cim:PU                      | "none" | "none"    | cim:Float   | quantitykind:DimensionlessRatio |                       |
-| cim:PerCent                 | "none" | "none"    | cim:Float   | quantitykind:DimensionlessRatio | unit:PERCENT          |
-| cim:Pressure                | "k"    | "Pa"      | cim:Float   | quantitykind:Pressure           | unit:KiloPA           |
-| cim:Reactance               | "none" | "ohm"     | cim:Float   | quantitykind:Reactance          | unit:OHM              |
-| cim:ReactivePower           | "M"    | "VAr"     | cim:Float   | quantitykind:ReactivePower      | unit:MegaV-A_Reactive |
-| cim:RealEnergy              | "M"    | "Wh"      | cim:Float   | quantitykind:Energy             | unit:MegaW-HR         |
-| cim:Resistance              | "none" | "ohm"     | cim:Float   | quantitykind:Resistance         | unit:OHM              |
-| cim:Seconds                 | "none" | "s"       | cim:Float   | quantitykind:Time               | unit:SEC              |
-| cim:Temperature             | "none" | "degC"    | cim:Float   | quantitykind:Temperature        | unit:DEG_C            |
-| cim:Voltage                 | "k"    | "V"       | cim:Float   | quantitykind:Voltage            | unit:KiloV            |
-| cim:VoltagePerReactivePower | "k"    | "VPerVAr" | cim:Float   |                                 |                       |
 
-We need to submit a MR to QUDT for these new QuantityKinds and Units (https://github.com/qudt/qudt-public-repo/issues/970) :
+(`multFixed, uomFixed` are always `"True"` so we skip them from the tables below)
+
+### Mapping QuantityKinds and Units
+We see that the data agrees between old and new style
+- But one uses `cim` and the other uses `xsd` for the numeric datatypes
+- Currently "range" is filled for NC and "new range" is filled for CGMES: in actuality more of them should be filled because CGMES is also available in the old style
+
+We add corresponding QUDT resources (last 3 columns):
+
+| qk                            | mult   | uom       | range       | new range   | QuantityKind                    | Unit                  | unit match      |
+|-------------------------------|--------|-----------|-------------|-------------|---------------------------------|-----------------------|-----------------|
+| cim:ActivePower               | "M"    | "W"       | cim:Float   | xsd:float   | quantitykind:ActivePower        | unit:MegaW            | skos:exactMatch |
+| cim:ActivePowerChangeRate     | "M"    | "WPers"   | cim:Float   |             |                                 |                       |                 |
+| cim:ActivePowerPerCurrentFlow | "M"    | "WPerA"   |             | xsd:float   |                                 |                       |                 |
+| cim:ActivePowerPerFrequency   | "M"    | "WPers"   |             | xsd:float   |                                 |                       |                 |
+| cim:AngleDegrees              | "none" | "deg"     | cim:Float   | xsd:float   | quantitykind:Angle              | unit:DEG              | skos:exactMatch |
+| cim:AngleRadians              | "none" | "rad"     |             | xsd:float   | quantitykind:Angle              | unit:RAD              | skos:exactMatch |
+| cim:ApparentPower             | "M"    | "VA"      | cim:Float   | xsd:float   | quantitykind:ApparentPower      | unit:MegaV-A          | skos:exactMatch |
+| cim:Area                      | "none" | "m2"      |             | xsd:float   | quantitykind:Area               | unit:M2               | skos:exactMatch |
+| cim:Capacitance               | "none" | "F"       |             | xsd:float   | quantitykind:Capacitance        | unit:FARAD            | skos:exactMatch |
+| cim:Conductance               | "none" | "S"       |             | xsd:float   | quantitykind:Conductance        | unit:S                | skos:exactMatch |
+| cim:CurrentFlow               | "none" | "A"       | cim:Float   | xsd:float   | quantitykind:ElectricCurrent    | unit:A                | skos:exactMatch |
+| cim:Frequency                 | "none" | "Hz"      | cim:Float   | xsd:float   | quantitykind:Frequency          | unit:HZ               | skos:exactMatch |
+| cim:Impedance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Inductance         | unit:H                | skos:exactMatch |
+| cim:Length                    | "k"    | "m"       |             | xsd:float   | quantitykind:Length             | unit:KiloM            | skos:exactMatch |
+| cim:Money                     | "none" |           | cim:Decimal | xsd:decimal | quantitykind:Currency           |                       | skos:exactMatch |
+| cim:PU                        | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio |                       |                 |
+| cim:PerCent                   | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio | unit:PERCENT          | skos:exactMatch |
+| cim:Pressure                  | "k"    | "Pa"      | cim:Float   |             | quantitykind:Pressure           | unit:KiloPA           | skos:exactMatch |
+| cim:Reactance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Reactance          | unit:OHM              | skos:exactMatch |
+| cim:ReactivePower             | "M"    | "VAr"     | cim:Float   | xsd:float   | quantitykind:ReactivePower      | unit:MegaV-A_Reactive | skos:exactMatch |
+| cim:RealEnergy                | "M"    | "Wh"      | cim:Float   | xsd:float   | quantitykind:Energy             | unit:MegaW-HR         | skos:exactMatch |
+| cim:Resistance                | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Resistance         | unit:OHM              | skos:exactMatch |
+| cim:RotationSpeed             | "none" | "Hz"      | xsd:float   |             | quantitykind:AngularVelocity    | unit:REV-PER-SEC      | skos:narrower   |
+| cim:Seconds                   | "none" | "s"       | cim:Float   | xsd:float   | quantitykind:Time               | unit:SEC              | skos:exactMatch |
+| cim:Susceptance               | "none" | "S"       |             | xsd:float   | quantitykind:Susceptance        | unit:S                | skos:exactMatch |
+| cim:Temperature               | "none" | "degC"    | cim:Float   | xsd:float   | quantitykind:Temperature        | unit:DEG_C            | skos:exactMatch |
+| cim:Voltage                   | "k"    | "V"       | cim:Float   | xsd:float   | quantitykind:Voltage            | unit:KiloV            | skos:exactMatch |
+| cim:VoltagePerReactivePower   | "k"    | "VPerVAr" | cim:Float   | xsd:float   |                                 |                       |                 |
+| cim:VolumeFlowRate            | "none" | "m3Pers"  |             | xsd:float   | quantitykind:VolumeFlowRate     | unit:M3-PER-SEC       | skos:exactMatch |
+
+We need to submit a MR to QUDT for these new QuantityKinds and Units (https://github.com/qudt/qudt-public-repo/issues/970 ) :
 | QuantityKind              | Unit1              | Unit2                  |
 |---------------------------|--------------------|------------------------|
+| ActivePowerChangeRate     | W-PER-SEC          | MegaW-PER-SEC          |
 | ActivePowerPerCurrentFlow | W-PER-A            | MegaW-PER-A            |
 | ActivePowerPerFrequency   | W-PER-SEC          | MegaW-PER-SEC          |
-| ActivePowerChangeRate     | W-PER-SEC          | MegaW-PER-SEC          |
 | VoltagePerReactivePower   | V-PER-V-A_Reactive | KiloV-PER-V-A_Reactive |
+- Note: `WPers` is used for two different kinds: `ActivePowerPerFrequency` and `ActivePowerChangeRate`.
 
-### All QuantityKinds and Units
+After we add the above kinds, all `QuantityKinds` will be mapped as `skos:exactMatch`.
+- `skos:broader`: no such cases, I thought `ApparentPower` is a sub-concept of `ComplexPower` but QUDT has `ApparentPower`: https://github.com/Sveino/Inst4CIM-KG/issues/43 
+
+Almost all `Units` are `skos:exactMatch` except one:
+- `skos:narrower`: "Hz" is a super-concept of `REV-PER-SEC`: https://github.com/Sveino/Inst4CIM-KG/issues/42 
+
+
+### Mapping Unit Multipliers
+
+Only 3 multipliers are used. We map them as follows:
+
+| cim:UnitMultiplier  | qudt:prefixMultiplier | skos:exactMatch |
+|---------------------|-----------------------|-----------------|
+| UnitMultiplier.none |                   1.0 |                 |
+| UnitMultiplier.k    |                 1.0E3 | prefix:Kilo     |
+| UnitMultiplier.M    |                 1.0E6 | prefix:Mega     |
+
+### All QuantityKinds, Units and Multipliers
 
 This query finds all enumeration members:
 ```sparql
@@ -1111,10 +1163,10 @@ But a very small number of them are in actual use in CGMES ontologies (see last 
 | 1 | cim:Currency       | "161" |      0 |
 | 2 | cim:UnitSymbol     | "141" |     30 |
 | 3 | cim:PhaseCode      | "26"  |        |
-| 4 | cim:UnitMultiplier | "21"  |      2 |
+| 4 | cim:UnitMultiplier | "21"  |      3 |
 
 We should fix all units and multipliers as shown in [Fixed Units Representation](#fixed-units-representation),
-but will map to QUDT only the ones that are in use.
+but will map to QUDT only the ones that are in use: this is shown in the previous two sections.
 
 ## Add Datatypes To Instance Data
 https://github.com/Sveino/Inst4CIM-KG/issues/49
@@ -1147,3 +1199,139 @@ Here are the current results, but it should be rerun after fixes to ontology: se
 | xsd:string    |  51 |                                                                                     |
 
 I have a tentative SPARQL Update, but need to revise it.
+
+# Fix Technical Notes
+The actual fixing can be done in two ways:
+- Using a semantic database:
+  - Load the ontology to a defined graph (usually same as the ontology URL)
+  - Run the updates over that graph only
+  - Export the graph to a file
+  - Format the file as Turtle (see above)
+- Using a tool that does updates in-memory (eg Jena `update`)
+  - Run `update` with the original file and concatenated update queries
+  - Pass the result through the Turtle formatter
+  - Save it to a file
+
+The latter is slightly simpler, so we use that.
+
+## Fix Structure
+We write one Update per issue, using a strict structure to allow comprehension and evolution:
+- Naming: `fixNN-Topic-M.ru`, eg [fix01-whitespace-6.ru](fix01-whitespace-6.ru), where
+  - `NN` is the sequence number of the update. Some must be run in a specified order, and we concat all updates to `fix-all.ru` in order.
+  - `Topic` is a short phrase about what it does
+  - `M` is the issue number
+- Content:
+  - Two links: to the section in this doc, and to the issue, eg
+```
+# https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#whitespace-in-definitions
+# https://github.com/Sveino/Inst4CIM-KG/issues/6
+```
+  - SPARQL that typically looks like this. The `where` part reuses analysis queries from this doc, and adds more binds and tricks
+```sparql
+prefix ...
+delete {?x ?p ?old}
+insert {?x ?p ?new}
+where { 
+  ...
+}
+```
+  - Trailing semicolon and newline, so the concat works ok
+
+SPARQL Update allows multiple update blocks separated with semicolon, and intervening prefixes.
+This approach allows us to run fixes one by one, or all at once.
+
+## Fix Debugging
+
+It will be a very bad thing if a fix loses some data because of some mistake in the query.
+- As we develop fixes, we apply them one by one
+- Then we make a PR and review it on git to ensure that the intended changes to ontologies are properly done
+- But this development cycle is longer: requires commits, then someone else takes a look...
+
+So here we explain a way to debug fixes faster, using SPARQL.
+Say that you run `fix01-whitespace-6.ru`, which fixes whitespace:
+```sparql
+delete {?x ?p ?old}
+insert {?x ?p ?new}
+where {
+  ?x ?p ?old
+  bind(str(?old) as ?oldStr)
+  filter(regex(?oldStr,"^\\s|\\s$"))
+  bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)
+  bind(if(lang(?old)!="",strlang(?newStr,lang(?old)),?newStr) as ?new)
+};
+
+```
+GraphDB reports "3 statements deleted" (it doesn't say how many were changes, but the net difference).
+
+WHAT? This update shouldn't lose triples, so let's debug it.
+
+First we change it to a `select` and look for unbound `?new`:
+maybe we made a mistake when calculating it?
+(SPARQL is very tolerant: if there's some problem in evaluating an expression, it just returns unbound):
+```sparql
+select ?x ?p ?old ?new
+where {
+  ?x ?p ?old
+  bind(str(?old) as ?oldStr)
+  filter(regex(?oldStr,"^\\s|\\s$"))
+  bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)
+  bind(if(lang(?old)!="",strlang(?newStr,lang(?old)),?newStr) as ?new)
+  filter(!bound(?new))
+}
+```
+Nothing returned. 
+
+Then let's count `?old` and `?new` (should be the same because `count` discards nulls, but to make sure):
+```sparql
+select (count(distinct ?old) as ?oldCpount) (count(distinct ?new) as ?newCount)
+where {
+  ?x ?p ?old
+  bind(str(?old) as ?oldStr)
+  filter(regex(?oldStr,"^\\s|\\s$"))
+  bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)
+  bind(if(lang(?old)!="",strlang(?newStr,lang(?old)),?newStr) as ?new)
+}
+```
+
+Same, so now let's count `distinct`.
+The same triple cannot be recorded twice, so if two `?old` are mapped to the same `?new` for the same subject and property `?x ?p`, that will decrease number of triples:
+```sparql
+select (count(distinct ?old) as ?oldCpount) (count(distinct ?new) as ?newCount)
+where {
+  ?x ?p ?old
+  bind(str(?old) as ?oldStr)
+  filter(regex(?oldStr,"^\\s|\\s$"))
+  bind(replace(replace(?oldStr,"^\\s+",""),"\\s+$","") as ?newStr)
+  bind(if(lang(?old)!="",strlang(?newStr,lang(?old)),?newStr) as ?new)
+}
+```
+Here it is: the count is reduced by 3.
+
+But how to catch these duplicate instances?
+It takes some doing. 
+- It turns out the duplication is due to trailing whitespace added in some ontologies but not others.
+- If you grok this below, then your SPARQL force is strong indeed, Luke!
+```sparql
+select ?x ?p ?old1 ?old2 ?new1
+where {
+  ?x ?p ?old1, ?old2
+  filter(isLiteral(?old1))
+  filter(isLiteral(?old2))
+  bind(str(?old1) as ?oldStr1)
+  bind(str(?old2) as ?oldStr2)
+  filter(?old1 != ?old2)
+  filter(regex(?oldStr2,"^\\s|\\s$"))
+
+  bind(replace(replace(?oldStr1,"^\\s+",""),"\\s+$","") as ?newStr1)
+  bind(if(lang(?old1)!="",strlang(?newStr1,lang(?old1)),?newStr1) as ?new1)
+  bind(replace(replace(?oldStr2,"^\\s+",""),"\\s+$","") as ?newStr2)
+  bind(if(lang(?old2)!="",strlang(?newStr2,lang(?old2)),?newStr2) as ?new2)
+  
+  filter(?new1 = ?new2)
+}
+```
+
+This exercise, and looking at intermediate results, gave me the idea to add a safety feature to the fix:
+```sparql
+  filter(isLiteral(?old))
+```

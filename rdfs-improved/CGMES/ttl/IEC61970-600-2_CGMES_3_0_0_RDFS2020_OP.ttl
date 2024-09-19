@@ -1,0 +1,1988 @@
+@prefix     cim: <http://iec.ch/TC57/CIM100#> .
+@prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix      op: <http://iec.ch/TC57/ns/CIM/Operation-EU#> .
+@prefix    dcat: <http://www.w3.org/ns/dcat#> .
+@prefix     dct: <http://purl.org/dc/terms/> .
+@prefix     owl: <http://www.w3.org/2002/07/owl#> .
+@prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix     xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cim:ACDCTerminal a rdfs:Class ;
+  rdfs:label "ACDCTerminal"@en ;
+  rdfs:comment "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:Accumulator a rdfs:Class ;
+  rdfs:label "Accumulator"@en ;
+  rdfs:comment "Accumulator represents an accumulated (counted) Measurement, e.g. an energy value." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Measurement .
+
+cim:AccumulatorLimit a rdfs:Class ;
+  rdfs:label "AccumulatorLimit"@en ;
+  rdfs:comment "Limit values for Accumulator measurements." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Limit .
+
+cim:AccumulatorLimitSet a rdfs:Class ;
+  rdfs:label "AccumulatorLimitSet"@en ;
+  rdfs:comment "An AccumulatorLimitSet specifies a set of Limits that are associated with an Accumulator measurement." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:LimitSet .
+
+cim:AccumulatorReset a rdfs:Class ;
+  rdfs:label "AccumulatorReset"@en ;
+  rdfs:comment "This command resets the counter value to zero." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Control .
+
+cim:AccumulatorValue a rdfs:Class ;
+  rdfs:label "AccumulatorValue"@en ;
+  rdfs:comment "AccumulatorValue represents an accumulated (counted) MeasurementValue." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:MeasurementValue .
+
+cim:Analog a rdfs:Class ;
+  rdfs:label "Analog"@en ;
+  rdfs:comment "Analog represents an analog Measurement." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Measurement .
+
+cim:AnalogControl a rdfs:Class ;
+  rdfs:label "AnalogControl"@en ;
+  rdfs:comment "An analog control used for supervisory control." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:Control .
+
+cim:AnalogLimit a rdfs:Class ;
+  rdfs:label "AnalogLimit"@en ;
+  rdfs:comment "Limit values for Analog measurements." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Limit .
+
+cim:AnalogLimitSet a rdfs:Class ;
+  rdfs:label "AnalogLimitSet"@en ;
+  rdfs:comment "An AnalogLimitSet specifies a set of Limits that are associated with an Analog measurement." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:LimitSet .
+
+cim:AnalogValue a rdfs:Class ;
+  rdfs:label "AnalogValue"@en ;
+  rdfs:comment "AnalogValue represents an analog MeasurementValue." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:MeasurementValue .
+
+cim:Boolean a rdfs:Class ;
+  rdfs:label "Boolean"@en ;
+  rdfs:comment "A type with the value space \"true\" and \"false\"." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Command a rdfs:Class ;
+  rdfs:label "Command"@en ;
+  rdfs:comment "A Command is a discrete control used for supervisory control." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Control .
+
+cim:Control a rdfs:Class ;
+  rdfs:label "Control"@en ;
+  rdfs:comment "Control is used for supervisory/device control. It represents control outputs that are used to change the state in a process, e.g. close or open breaker, a set point value or a raise lower command." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:IOPoint .
+
+cim:Date a rdfs:Class ;
+  rdfs:label "Date"@en ;
+  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype "Primitive" .
+
+cim:DateTime a rdfs:Class ;
+  rdfs:label "DateTime"@en ;
+  rdfs:comment "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Discrete a rdfs:Class ;
+  rdfs:label "Discrete"@en ;
+  rdfs:comment "Discrete represents a discrete Measurement, i.e. a Measurement representing discrete values, e.g. a Breaker position." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Measurement .
+
+cim:DiscreteValue a rdfs:Class ;
+  rdfs:label "DiscreteValue"@en ;
+  rdfs:comment "DiscreteValue represents a discrete MeasurementValue." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:MeasurementValue .
+
+cim:Float a rdfs:Class ;
+  rdfs:label "Float"@en ;
+  rdfs:comment "A floating point number. The range is unspecified and not limited." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype "Primitive" .
+
+cim:IOPoint a rdfs:Class ;
+  rdfs:label "IOPoint"@en ;
+  rdfs:comment "The class describe a measurement or control value. The purpose is to enable having attributes and associations common for measurement and control." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:IdentifiedObject a rdfs:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory op:Package_OperationProfile .
+
+cim:Integer a rdfs:Class ;
+  rdfs:label "Integer"@en ;
+  rdfs:comment "An integer number. The range is unspecified and not limited." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype "Primitive" .
+
+cim:Limit a rdfs:Class ;
+  rdfs:label "Limit"@en ;
+  rdfs:comment "Specifies one limit value for a Measurement. A Measurement typically has several limits that are kept together by the LimitSet class. The actual meaning and use of a Limit instance (i.e., if it is an alarm or warning limit or if it is a high or low limit) is not captured in the Limit class. However the name of a Limit instance may indicate both meaning and use." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:LimitSet a rdfs:Class ;
+  rdfs:label "LimitSet"@en ;
+  rdfs:comment "Specifies a set of Limits that are associated with a Measurement. A Measurement may have several LimitSets corresponding to seasonal or other changing conditions. The condition is captured in the name and description attributes. The same LimitSet may be used for several Measurements. In particular percentage limits are used this way." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:Measurement a rdfs:Class ;
+  rdfs:label "Measurement"@en ;
+  rdfs:comment """A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement. 
+The PSR - Measurement association is intended to capture this use of Measurement and is included in the naming hierarchy based on EquipmentContainer. The naming hierarchy typically has Measurements as leaves, e.g. Substation-VoltageLevel-Bay-Switch-Measurement.
+Some Measurements represent quantities related to a particular sensor location in the network, e.g. a voltage transformer (VT) or potential transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator. The sensing position is not captured in the PSR - Measurement association. Instead it is captured by the Measurement - Terminal association that is used to define the sensing location in the network topology. The location is defined by the connection of the Terminal to ConductingEquipment. 
+If both a Terminal and PSR are associated, and the PSR is of type ConductingEquipment, the associated Terminal should belong to that ConductingEquipment instance.
+When the sensor location is needed both Measurement-PSR and Measurement-Terminal are used. The Measurement-Terminal association is never used alone.""" ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:MeasurementValue a rdfs:Class ;
+  rdfs:label "MeasurementValue"@en ;
+  rdfs:comment "The current state for a measurement. A state value is an instance of a measurement from a specific source. Measurements can be associated with many state values, each representing a different source for the measurement." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:IOPoint .
+
+cim:MeasurementValueQuality a rdfs:Class ;
+  rdfs:label "MeasurementValueQuality"@en ;
+  rdfs:comment "Measurement quality flags. Bits 0-10 are defined for substation automation in IEC 61850-7-3. Bits 11-15 are reserved for future expansion by that document. Bits 16-31 are reserved for EMS applications." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Quality61850 .
+
+cim:MeasurementValueSource a rdfs:Class ;
+  rdfs:label "MeasurementValueSource"@en ;
+  rdfs:comment "MeasurementValueSource describes the alternative sources updating a MeasurementValue. User conventions for how to use the MeasurementValueSource attributes are defined in IEC 61970-301." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:PerCent a rdfs:Class ;
+  rdfs:label "PerCent"@en ;
+  rdfs:comment "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype "CIMDatatype" .
+
+cim:PhaseCode a rdfs:Class ;
+  rdfs:label "PhaseCode"@en ;
+  rdfs:comment """An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.
+Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.
+The integer values are from IEC 61968-9 to support revenue metering applications.""" ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:PowerSystemResource a rdfs:Class ;
+  rdfs:label "PowerSystemResource"@en ;
+  rdfs:comment "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:Quality61850 a rdfs:Class ;
+  rdfs:label "Quality61850"@en ;
+  rdfs:comment "Quality flags in this class are as defined in IEC 61850, except for estimatorReplaced, which has been included in this class for convenience." ;
+  cims:belongsToCategory op:Package_OperationProfile .
+
+cim:RaiseLowerCommand a rdfs:Class ;
+  rdfs:label "RaiseLowerCommand"@en ;
+  rdfs:comment "An analog control that increases or decreases a set point value with pulses. Unless otherwise specified, one pulse moves the set point by one. " ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:AnalogControl .
+
+cim:SetPoint a rdfs:Class ;
+  rdfs:label "SetPoint"@en ;
+  rdfs:comment "An analog control that issues a set point value." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:AnalogControl .
+
+cim:Source a rdfs:Class ;
+  rdfs:label "Source"@en ;
+  rdfs:comment "Source gives information related to the origin of a value." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:String a rdfs:Class ;
+  rdfs:label "String"@en ;
+  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype "Primitive" .
+
+cim:StringMeasurement a rdfs:Class ;
+  rdfs:label "StringMeasurement"@en ;
+  rdfs:comment "StringMeasurement represents a measurement with values of type string." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:Measurement .
+
+cim:StringMeasurementValue a rdfs:Class ;
+  rdfs:label "StringMeasurementValue"@en ;
+  rdfs:comment "StringMeasurementValue represents a measurement value of type string." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:MeasurementValue .
+
+cim:Terminal a rdfs:Class ;
+  rdfs:label "Terminal"@en ;
+  rdfs:comment "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  rdfs:subClassOf cim:ACDCTerminal .
+
+cim:UnitMultiplier a rdfs:Class ;
+  rdfs:label "UnitMultiplier"@en ;
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:UnitSymbol a rdfs:Class ;
+  rdfs:label "UnitSymbol"@en ;
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.""" ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:Validity a rdfs:Class ;
+  rdfs:label "Validity"@en ;
+  rdfs:comment "Validity for MeasurementValue." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
+
+cim:ValueAliasSet a rdfs:Class ;
+  rdfs:label "ValueAliasSet"@en ;
+  rdfs:comment "Describes the translation of a set of values into a name and is intendend to facilitate custom translations. Each ValueAliasSet has a name, description etc. A specific Measurement may represent a discrete state like Open, Closed, Intermediate etc. This requires a translation from the MeasurementValue.value number to a string, e.g. 0-&gt;\"Invalid\", 1-&gt;\"Open\", 2-&gt;\"Closed\", 3-&gt;\"Intermediate\". Each ValueToAlias member in ValueAliasSet.Value describe a mapping for one particular value to a name." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:ValueToAlias a rdfs:Class ;
+  rdfs:label "ValueToAlias"@en ;
+  rdfs:comment "Describes the translation of one particular value into a name, e.g. 1 as \"Open\"." ;
+  cims:belongsToCategory op:Package_OperationProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+op:Ontology a owl:Ontology ;
+  dct:description "This vocabulary is describing the operation profile from IEC 61970-600-2."@en ;
+  dcat:keyword "OP" ;
+  dcat:landingPage "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+  dcat:theme "vocabulary"@en ;
+  dct:conformsTo "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:creator "ENTSO-E CIM EG"@en ;
+  dct:identifier "urn:uuid:b603c770-6469-45da-a569-551394116c97" ;
+  dct:issued "2021-01-27T12:16:55Z"^^xsd:dateTime ;
+  dct:language "en-GB" ;
+  dct:modified "2020-10-12"^^xsd:date ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rights "Copyright"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  dct:title "Operation Vocabulary"@en ;
+  owl:incompatibleWith <http://entsoe.eu/2009/profile1> ;
+  owl:priorVersion <http://entsoe.eu/CIM/EquipmentOperation/3/1> ;
+  owl:versionIRI <http://iec.ch/TC57/ns/CIM/Operation-EU/3.0> ;
+  owl:versionInfo "3.0.0"@en .
+
+cim:ACDCTerminal.Measurements a rdf:Property ;
+  rdfs:label "Measurements"@en ;
+  rdfs:comment "Measurements associated with this terminal defining  where the measurement is placed in the network topology.  It may be used, for instance, to capture the sensor position, such as a voltage transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:Measurement.Terminal ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:ACDCTerminal ;
+  rdfs:range cim:Measurement .
+
+cim:Accumulator.AccumulatorValues a rdf:Property ;
+  rdfs:label "AccumulatorValues"@en ;
+  rdfs:comment "The values connected to this measurement." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:AccumulatorValue.Accumulator ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:Accumulator ;
+  rdfs:range cim:AccumulatorValue .
+
+cim:Accumulator.LimitSets a rdf:Property ;
+  rdfs:label "LimitSets"@en ;
+  rdfs:comment "A measurement may have zero or more limit ranges defined for it." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:AccumulatorLimitSet.Measurements ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:Accumulator ;
+  rdfs:range cim:AccumulatorLimitSet .
+
+cim:AccumulatorLimit.LimitSet a rdf:Property ;
+  rdfs:label "LimitSet"@en ;
+  rdfs:comment "The set of limits." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:AccumulatorLimitSet.Limits ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:AccumulatorLimit ;
+  rdfs:range cim:AccumulatorLimitSet .
+
+cim:AccumulatorLimit.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The value to supervise against. The value is positive." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AccumulatorLimit .
+
+cim:AccumulatorLimitSet.Limits a rdf:Property ;
+  rdfs:label "Limits"@en ;
+  rdfs:comment "The limit values used for supervision of Measurements." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:AccumulatorLimit.LimitSet ;
+  cims:multiplicity cims:M:1..n ;
+  rdfs:domain cim:AccumulatorLimitSet ;
+  rdfs:range cim:AccumulatorLimit .
+
+cim:AccumulatorLimitSet.Measurements a rdf:Property ;
+  rdfs:label "Measurements"@en ;
+  rdfs:comment "The Measurements using the LimitSet." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:Accumulator.LimitSets ;
+  cims:multiplicity cims:M:1..n ;
+  rdfs:domain cim:AccumulatorLimitSet ;
+  rdfs:range cim:Accumulator .
+
+cim:AccumulatorReset.AccumulatorValue a rdf:Property ;
+  rdfs:label "AccumulatorValue"@en ;
+  rdfs:comment "The accumulator value that is reset by the command." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:AccumulatorValue.AccumulatorReset ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:AccumulatorReset ;
+  rdfs:range cim:AccumulatorValue .
+
+cim:AccumulatorValue.Accumulator a rdf:Property ;
+  rdfs:label "Accumulator"@en ;
+  rdfs:comment "Measurement to which this value is connected." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:Accumulator.AccumulatorValues ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:AccumulatorValue ;
+  rdfs:range cim:Accumulator .
+
+cim:AccumulatorValue.AccumulatorReset a rdf:Property ;
+  rdfs:label "AccumulatorReset"@en ;
+  rdfs:comment "The command that resets the accumulator value." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:AccumulatorReset.AccumulatorValue ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:AccumulatorValue ;
+  rdfs:range cim:AccumulatorReset .
+
+cim:Analog.AnalogValues a rdf:Property ;
+  rdfs:label "AnalogValues"@en ;
+  rdfs:comment "The values connected to this measurement." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:AnalogValue.Analog ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:Analog ;
+  rdfs:range cim:AnalogValue .
+
+cim:Analog.LimitSets a rdf:Property ;
+  rdfs:label "LimitSets"@en ;
+  rdfs:comment "A measurement may have zero or more limit ranges defined for it." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:AnalogLimitSet.Measurements ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:Analog ;
+  rdfs:range cim:AnalogLimitSet .
+
+cim:Analog.positiveFlowIn a rdf:Property ;
+  rdfs:label "positiveFlowIn"@en ;
+  rdfs:comment "If true then this measurement is an active power, reactive power or current with the convention that a positive value measured at the Terminal means power is flowing into the related PowerSystemResource." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Analog .
+
+cim:AnalogControl.AnalogValue a rdf:Property ;
+  rdfs:label "AnalogValue"@en ;
+  rdfs:comment "The MeasurementValue that is controlled." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:AnalogValue.AnalogControl ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:AnalogControl ;
+  rdfs:range cim:AnalogValue .
+
+cim:AnalogControl.maxValue a rdf:Property ;
+  rdfs:label "maxValue"@en ;
+  rdfs:comment "Normal value range maximum for any of the Control.value. Used for scaling, e.g. in bar graphs." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AnalogControl .
+
+cim:AnalogControl.minValue a rdf:Property ;
+  rdfs:label "minValue"@en ;
+  rdfs:comment "Normal value range minimum for any of the Control.value. Used for scaling, e.g. in bar graphs." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AnalogControl .
+
+cim:AnalogLimit.LimitSet a rdf:Property ;
+  rdfs:label "LimitSet"@en ;
+  rdfs:comment "The set of limits." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:AnalogLimitSet.Limits ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:AnalogLimit ;
+  rdfs:range cim:AnalogLimitSet .
+
+cim:AnalogLimit.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The value to supervise against." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AnalogLimit .
+
+cim:AnalogLimitSet.Limits a rdf:Property ;
+  rdfs:label "Limits"@en ;
+  rdfs:comment "The limit values used for supervision of Measurements." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:AnalogLimit.LimitSet ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:AnalogLimitSet ;
+  rdfs:range cim:AnalogLimit .
+
+cim:AnalogLimitSet.Measurements a rdf:Property ;
+  rdfs:label "Measurements"@en ;
+  rdfs:comment "The Measurements using the LimitSet." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:Analog.LimitSets ;
+  cims:multiplicity cims:M:1..n ;
+  rdfs:domain cim:AnalogLimitSet ;
+  rdfs:range cim:Analog .
+
+cim:AnalogValue.Analog a rdf:Property ;
+  rdfs:label "Analog"@en ;
+  rdfs:comment "Measurement to which this value is connected." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:Analog.AnalogValues ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:AnalogValue ;
+  rdfs:range cim:Analog .
+
+cim:AnalogValue.AnalogControl a rdf:Property ;
+  rdfs:label "AnalogControl"@en ;
+  rdfs:comment "The Control variable associated with the MeasurementValue." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:AnalogControl.AnalogValue ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:AnalogValue ;
+  rdfs:range cim:AnalogControl .
+
+cim:Command.DiscreteValue a rdf:Property ;
+  rdfs:label "DiscreteValue"@en ;
+  rdfs:comment "The MeasurementValue that is controlled." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:DiscreteValue.Command ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:Command ;
+  rdfs:range cim:DiscreteValue .
+
+cim:Command.ValueAliasSet a rdf:Property ;
+  rdfs:label "ValueAliasSet"@en ;
+  rdfs:comment "The ValueAliasSet used for translation of a Control value to a name." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:ValueAliasSet.Commands ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:Command ;
+  rdfs:range cim:ValueAliasSet .
+
+cim:Command.normalValue a rdf:Property ;
+  rdfs:label "normalValue"@en ;
+  rdfs:comment "Normal value for Control.value e.g. used for percentage scaling." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Command .
+
+cim:Command.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The value representing the actuator output." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Command .
+
+cim:Control.PowerSystemResource a rdf:Property ;
+  rdfs:label "PowerSystemResource"@en ;
+  rdfs:comment "Regulating device governed by this control output." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:PowerSystemResource.Controls ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:Control ;
+  rdfs:range cim:PowerSystemResource .
+
+cim:Control.controlType a rdf:Property ;
+  rdfs:label "controlType"@en ;
+  rdfs:comment "Specifies the type of Control. For example, this specifies if the Control represents BreakerOpen, BreakerClose, GeneratorVoltageSetPoint, GeneratorRaise, GeneratorLower, etc." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Control .
+
+cim:Control.operationInProgress a rdf:Property ;
+  rdfs:label "operationInProgress"@en ;
+  rdfs:comment "Indicates that a client is currently sending control commands that has not completed." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Control .
+
+cim:Control.timeStamp a rdf:Property ;
+  rdfs:label "timeStamp"@en ;
+  rdfs:comment "The last time a control output was sent." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Control .
+
+cim:Control.unitMultiplier a rdf:Property ;
+  rdfs:label "unitMultiplier"@en ;
+  rdfs:comment "The unit multiplier of the controlled quantity." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Control ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Control.unitSymbol a rdf:Property ;
+  rdfs:label "unitSymbol"@en ;
+  rdfs:comment "The unit of measure of the controlled quantity." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Control ;
+  rdfs:range cim:UnitSymbol .
+
+cim:Discrete.DiscreteValues a rdf:Property ;
+  rdfs:label "DiscreteValues"@en ;
+  rdfs:comment "The values connected to this measurement." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:DiscreteValue.Discrete ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:Discrete ;
+  rdfs:range cim:DiscreteValue .
+
+cim:Discrete.ValueAliasSet a rdf:Property ;
+  rdfs:label "ValueAliasSet"@en ;
+  rdfs:comment "The ValueAliasSet used for translation of a MeasurementValue.value to a name." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:ValueAliasSet.Discretes ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:Discrete ;
+  rdfs:range cim:ValueAliasSet .
+
+cim:DiscreteValue.Command a rdf:Property ;
+  rdfs:label "Command"@en ;
+  rdfs:comment "The Control variable associated with the MeasurementValue." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:Command.DiscreteValue ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:DiscreteValue ;
+  rdfs:range cim:Command .
+
+cim:DiscreteValue.Discrete a rdf:Property ;
+  rdfs:label "Discrete"@en ;
+  rdfs:comment "Measurement to which this value is connected." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:Discrete.DiscreteValues ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:DiscreteValue ;
+  rdfs:range cim:Discrete .
+
+cim:IdentifiedObject.description a rdf:Property ;
+  rdfs:label "description"@en ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.mRID a rdf:Property ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:IdentifiedObject.name a rdf:Property ;
+  rdfs:label "name"@en ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:IdentifiedObject .
+
+cim:LimitSet.isPercentageLimits a rdf:Property ;
+  rdfs:label "isPercentageLimits"@en ;
+  rdfs:comment "Tells if the limit values are in percentage of normalValue or the specified Unit for Measurements and Controls." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:LimitSet .
+
+cim:Measurement.PowerSystemResource a rdf:Property ;
+  rdfs:label "PowerSystemResource"@en ;
+  rdfs:comment "The power system resource that contains the measurement." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:PowerSystemResource.Measurements ;
+  cims:multiplicity cims:M:1..1 ;
+  rdfs:domain cim:Measurement ;
+  rdfs:range cim:PowerSystemResource .
+
+cim:Measurement.Terminal a rdf:Property ;
+  rdfs:label "Terminal"@en ;
+  rdfs:comment "One or more measurements may be associated with a terminal in the network." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:ACDCTerminal.Measurements ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:Measurement ;
+  rdfs:range cim:ACDCTerminal .
+
+cim:Measurement.measurementType a rdf:Property ;
+  rdfs:label "measurementType"@en ;
+  rdfs:comment """Specifies the type of measurement.  For example, this specifies if the measurement represents an indoor temperature, outdoor temperature, bus voltage, line flow, etc.
+When the measurementType is set to "Specialization", the type of Measurement is defined in more detail by the specialized class which inherits from Measurement.""" ;
+  cims:dataType cim:String ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Measurement .
+
+cim:Measurement.phases a rdf:Property ;
+  rdfs:label "phases"@en ;
+  rdfs:comment """Indicates to which phases the measurement applies and avoids the need to use 'measurementType' to also encode phase information (which would explode the types). The phase information in Measurement, along with 'measurementType' and 'phases' uniquely defines a Measurement for a device, based on normal network phase. Their meaning will not change when the computed energizing phasing is changed due to jumpers or other reasons.
+If the attribute is missing three phases (ABC) shall be assumed.""" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Measurement ;
+  rdfs:range cim:PhaseCode .
+
+cim:Measurement.unitMultiplier a rdf:Property ;
+  rdfs:label "unitMultiplier"@en ;
+  rdfs:comment "The unit multiplier of the measured quantity." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Measurement ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:Measurement.unitSymbol a rdf:Property ;
+  rdfs:label "unitSymbol"@en ;
+  rdfs:comment "The unit of measure of the measured quantity." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Measurement ;
+  rdfs:range cim:UnitSymbol .
+
+cim:MeasurementValue.MeasurementValueQuality a rdf:Property ;
+  rdfs:label "MeasurementValueQuality"@en ;
+  rdfs:comment "A MeasurementValue has a MeasurementValueQuality associated with it." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:MeasurementValueQuality.MeasurementValue ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:MeasurementValue ;
+  rdfs:range cim:MeasurementValueQuality .
+
+cim:MeasurementValue.MeasurementValueSource a rdf:Property ;
+  rdfs:label "MeasurementValueSource"@en ;
+  rdfs:comment "A reference to the type of source that updates the MeasurementValue, e.g. SCADA, CCLink, manual, etc. User conventions for the names of sources are contained in the introduction to IEC 61970-301." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:MeasurementValueSource.MeasurementValues ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:MeasurementValue ;
+  rdfs:range cim:MeasurementValueSource .
+
+cim:MeasurementValue.sensorAccuracy a rdf:Property ;
+  rdfs:label "sensorAccuracy"@en ;
+  rdfs:comment "The limit, expressed as a percentage of the sensor maximum, that errors will not exceed when the sensor is used under  reference conditions." ;
+  cims:dataType cim:PerCent ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MeasurementValue .
+
+cim:MeasurementValue.timeStamp a rdf:Property ;
+  rdfs:label "timeStamp"@en ;
+  rdfs:comment "The time when the value was last updated." ;
+  cims:dataType cim:DateTime ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:MeasurementValue .
+
+cim:MeasurementValueQuality.MeasurementValue a rdf:Property ;
+  rdfs:label "MeasurementValue"@en ;
+  rdfs:comment "A MeasurementValue has a MeasurementValueQuality associated with it." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:MeasurementValue.MeasurementValueQuality ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:MeasurementValueQuality ;
+  rdfs:range cim:MeasurementValue .
+
+cim:MeasurementValueSource.MeasurementValues a rdf:Property ;
+  rdfs:label "MeasurementValues"@en ;
+  rdfs:comment "The MeasurementValues updated by the source." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:MeasurementValue.MeasurementValueSource ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:MeasurementValueSource ;
+  rdfs:range cim:MeasurementValue .
+
+cim:PerCent.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent ;
+  rdfs:range cim:UnitMultiplier .
+
+cim:PerCent.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent ;
+  rdfs:range cim:UnitSymbol .
+
+cim:PerCent.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Normally 0 to 100 on a defined base." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:PerCent .
+
+cim:PowerSystemResource.Controls a rdf:Property ;
+  rdfs:label "Controls"@en ;
+  rdfs:comment "The controller outputs used to actually govern a regulating device, e.g. the magnetization of a synchronous machine or capacitor bank breaker actuator." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:Control.PowerSystemResource ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:PowerSystemResource ;
+  rdfs:range cim:Control .
+
+cim:PowerSystemResource.Measurements a rdf:Property ;
+  rdfs:label "Measurements"@en ;
+  rdfs:comment "The measurements associated with this power system resource." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:Measurement.PowerSystemResource ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:PowerSystemResource ;
+  rdfs:range cim:Measurement .
+
+cim:Quality61850.badReference a rdf:Property ;
+  rdfs:label "badReference"@en ;
+  rdfs:comment "Measurement value may be incorrect due to a reference being out of calibration." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.estimatorReplaced a rdf:Property ;
+  rdfs:label "estimatorReplaced"@en ;
+  rdfs:comment "Value has been replaced by State Estimator. estimatorReplaced is not an IEC61850 quality bit but has been put in this class for convenience." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.failure a rdf:Property ;
+  rdfs:label "failure"@en ;
+  rdfs:comment "This identifier indicates that a supervision function has detected an internal or external failure, e.g. communication failure." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.oldData a rdf:Property ;
+  rdfs:label "oldData"@en ;
+  rdfs:comment "Measurement value is old and possibly invalid, as it has not been successfully updated during a specified time interval." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.operatorBlocked a rdf:Property ;
+  rdfs:label "operatorBlocked"@en ;
+  rdfs:comment "Measurement value is blocked and hence unavailable for transmission. " ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.oscillatory a rdf:Property ;
+  rdfs:label "oscillatory"@en ;
+  rdfs:comment "To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier \"oscillatory\" is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status \"questionable\" is set. If after this defined numbers of changes the signal is still in the oscillating state the value shall be set either to the opposite state of the previous stable value or to a defined default value. In this case the validity status \"questionable\" is reset and \"invalid\" is set as long as the signal is oscillating. If it is configured such that no transient changes should be passed by then the validity status \"invalid\" is set immediately in addition to the detail quality identifier \"oscillatory\" (used for status information only)." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.outOfRange a rdf:Property ;
+  rdfs:label "outOfRange"@en ;
+  rdfs:comment "Measurement value is beyond a predefined range of value." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.overFlow a rdf:Property ;
+  rdfs:label "overFlow"@en ;
+  rdfs:comment "Measurement value is beyond the capability of being  represented properly. For example, a counter value overflows from maximum count back to a value of zero. " ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.source a rdf:Property ;
+  rdfs:label "source"@en ;
+  rdfs:comment "Source gives information related to the origin of a value. The value may be acquired from the process, defaulted or substituted." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 ;
+  rdfs:range cim:Source .
+
+cim:Quality61850.suspect a rdf:Property ;
+  rdfs:label "suspect"@en ;
+  rdfs:comment "A correlation function has detected that the value is not consistent with other values. Typically set by a network State Estimator." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.test a rdf:Property ;
+  rdfs:label "test"@en ;
+  rdfs:comment "Measurement value is transmitted for test purposes." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 .
+
+cim:Quality61850.validity a rdf:Property ;
+  rdfs:label "validity"@en ;
+  rdfs:comment "Validity of the measurement value." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Quality61850 ;
+  rdfs:range cim:Validity .
+
+cim:RaiseLowerCommand.ValueAliasSet a rdf:Property ;
+  rdfs:label "ValueAliasSet"@en ;
+  rdfs:comment "The ValueAliasSet used for translation of a Control value to a name." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:ValueAliasSet.RaiseLowerCommands ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:RaiseLowerCommand ;
+  rdfs:range cim:ValueAliasSet .
+
+cim:SetPoint.normalValue a rdf:Property ;
+  rdfs:label "normalValue"@en ;
+  rdfs:comment "Normal value for Control.value e.g. used for percentage scaling." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SetPoint .
+
+cim:SetPoint.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The value representing the actuator output." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:SetPoint .
+
+cim:StringMeasurement.StringMeasurementValues a rdf:Property ;
+  rdfs:label "StringMeasurementValues"@en ;
+  rdfs:comment "The values connected to this measurement." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:StringMeasurementValue.StringMeasurement ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:StringMeasurement ;
+  rdfs:range cim:StringMeasurementValue .
+
+cim:StringMeasurementValue.StringMeasurement a rdf:Property ;
+  rdfs:label "StringMeasurement"@en ;
+  rdfs:comment "Measurement to which this value is connected." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:StringMeasurement.StringMeasurementValues ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:StringMeasurementValue ;
+  rdfs:range cim:StringMeasurement .
+
+cim:ValueAliasSet.Commands a rdf:Property ;
+  rdfs:label "Commands"@en ;
+  rdfs:comment "The Commands using the set for translation." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:Command.ValueAliasSet ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:ValueAliasSet ;
+  rdfs:range cim:Command .
+
+cim:ValueAliasSet.Discretes a rdf:Property ;
+  rdfs:label "Discretes"@en ;
+  rdfs:comment "The Measurements using the set for translation." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:Discrete.ValueAliasSet ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:ValueAliasSet ;
+  rdfs:range cim:Discrete .
+
+cim:ValueAliasSet.RaiseLowerCommands a rdf:Property ;
+  rdfs:label "RaiseLowerCommands"@en ;
+  rdfs:comment "The Commands using the set for translation." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:RaiseLowerCommand.ValueAliasSet ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:ValueAliasSet ;
+  rdfs:range cim:RaiseLowerCommand .
+
+cim:ValueAliasSet.Values a rdf:Property ;
+  rdfs:label "Values"@en ;
+  rdfs:comment "The ValueToAlias mappings included in the set." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:ValueToAlias.ValueAliasSet ;
+  cims:multiplicity cims:M:1..n ;
+  rdfs:domain cim:ValueAliasSet ;
+  rdfs:range cim:ValueToAlias .
+
+cim:ValueToAlias.ValueAliasSet a rdf:Property ;
+  rdfs:label "ValueAliasSet"@en ;
+  rdfs:comment "The ValueAliasSet having the ValueToAlias mappings." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:ValueAliasSet.Values ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:ValueToAlias ;
+  rdfs:range cim:ValueAliasSet .
+
+cim:ValueToAlias.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The value that is mapped." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:ValueToAlias .
+
+cim:PhaseCode.A a cim:PhaseCode ;
+  rdfs:label "A"@en ;
+  rdfs:comment "Phase A." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.AB a cim:PhaseCode ;
+  rdfs:label "AB"@en ;
+  rdfs:comment "Phases A and B." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.ABC a cim:PhaseCode ;
+  rdfs:label "ABC"@en ;
+  rdfs:comment "Phases A, B, and C." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.ABCN a cim:PhaseCode ;
+  rdfs:label "ABCN"@en ;
+  rdfs:comment "Phases A, B, C, and N." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.ABN a cim:PhaseCode ;
+  rdfs:label "ABN"@en ;
+  rdfs:comment "Phases A, B, and neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.AC a cim:PhaseCode ;
+  rdfs:label "AC"@en ;
+  rdfs:comment "Phases A and C." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.ACN a cim:PhaseCode ;
+  rdfs:label "ACN"@en ;
+  rdfs:comment "Phases A, C and neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.AN a cim:PhaseCode ;
+  rdfs:label "AN"@en ;
+  rdfs:comment "Phases A and neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.B a cim:PhaseCode ;
+  rdfs:label "B"@en ;
+  rdfs:comment "Phase B." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.BC a cim:PhaseCode ;
+  rdfs:label "BC"@en ;
+  rdfs:comment "Phases B and C." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.BCN a cim:PhaseCode ;
+  rdfs:label "BCN"@en ;
+  rdfs:comment "Phases B, C, and neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.BN a cim:PhaseCode ;
+  rdfs:label "BN"@en ;
+  rdfs:comment "Phases B and neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.C a cim:PhaseCode ;
+  rdfs:label "C"@en ;
+  rdfs:comment "Phase C." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.CN a cim:PhaseCode ;
+  rdfs:label "CN"@en ;
+  rdfs:comment "Phases C and neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.N a cim:PhaseCode ;
+  rdfs:label "N"@en ;
+  rdfs:comment "Neutral phase." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.X a cim:PhaseCode ;
+  rdfs:label "X"@en ;
+  rdfs:comment "Unknown non-neutral phase." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.XN a cim:PhaseCode ;
+  rdfs:label "XN"@en ;
+  rdfs:comment "Unknown non-neutral phase plus neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.XY a cim:PhaseCode ;
+  rdfs:label "XY"@en ;
+  rdfs:comment "Two unknown non-neutral phases." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.XYN a cim:PhaseCode ;
+  rdfs:label "XYN"@en ;
+  rdfs:comment "Two unknown non-neutral phases plus neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.none a cim:PhaseCode ;
+  rdfs:label "none"@en ;
+  rdfs:comment "No phases specified." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.s1 a cim:PhaseCode ;
+  rdfs:label "s1"@en ;
+  rdfs:comment "Secondary phase 1." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.s12 a cim:PhaseCode ;
+  rdfs:label "s12"@en ;
+  rdfs:comment "Secondary phase 1 and 2." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.s12N a cim:PhaseCode ;
+  rdfs:label "s12N"@en ;
+  rdfs:comment "Secondary phases 1, 2, and neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.s1N a cim:PhaseCode ;
+  rdfs:label "s1N"@en ;
+  rdfs:comment "Secondary phase 1 and neutral." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.s2 a cim:PhaseCode ;
+  rdfs:label "s2"@en ;
+  rdfs:comment "Secondary phase 2." ;
+  cims:stereotype "enum" .
+
+cim:PhaseCode.s2N a cim:PhaseCode ;
+  rdfs:label "s2N"@en ;
+  rdfs:comment "Secondary phase 2 and neutral." ;
+  cims:stereotype "enum" .
+
+cim:Source.DEFAULTED a cim:Source ;
+  rdfs:label "DEFAULTED"@en ;
+  rdfs:comment "The value contains a default value." ;
+  cims:stereotype "enum" .
+
+cim:Source.PROCESS a cim:Source ;
+  rdfs:label "PROCESS"@en ;
+  rdfs:comment "The value is provided by input from the process I/O or being calculated from some function." ;
+  cims:stereotype "enum" .
+
+cim:Source.SUBSTITUTED a cim:Source ;
+  rdfs:label "SUBSTITUTED"@en ;
+  rdfs:comment "The value is provided by input of an operator or by an automatic source." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.E a cim:UnitMultiplier ;
+  rdfs:label "E"@en ;
+  rdfs:comment "Exa 10**18." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.G a cim:UnitMultiplier ;
+  rdfs:label "G"@en ;
+  rdfs:comment "Giga 10**9." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.M a cim:UnitMultiplier ;
+  rdfs:label "M"@en ;
+  rdfs:comment "Mega 10**6." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.P a cim:UnitMultiplier ;
+  rdfs:label "P"@en ;
+  rdfs:comment "Peta 10**15." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.T a cim:UnitMultiplier ;
+  rdfs:label "T"@en ;
+  rdfs:comment "Tera 10**12." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.Y a cim:UnitMultiplier ;
+  rdfs:label "Y"@en ;
+  rdfs:comment "Yotta 10**24." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.Z a cim:UnitMultiplier ;
+  rdfs:label "Z"@en ;
+  rdfs:comment "Zetta 10**21." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.a a cim:UnitMultiplier ;
+  rdfs:label "a"@en ;
+  rdfs:comment "Atto 10**-18." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.c a cim:UnitMultiplier ;
+  rdfs:label "c"@en ;
+  rdfs:comment "Centi 10**-2." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.d a cim:UnitMultiplier ;
+  rdfs:label "d"@en ;
+  rdfs:comment "Deci 10**-1." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.da a cim:UnitMultiplier ;
+  rdfs:label "da"@en ;
+  rdfs:comment "Deca 10**1." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.f a cim:UnitMultiplier ;
+  rdfs:label "f"@en ;
+  rdfs:comment "Femto 10**-15." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.h a cim:UnitMultiplier ;
+  rdfs:label "h"@en ;
+  rdfs:comment "Hecto 10**2." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.k a cim:UnitMultiplier ;
+  rdfs:label "k"@en ;
+  rdfs:comment "Kilo 10**3." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.m a cim:UnitMultiplier ;
+  rdfs:label "m"@en ;
+  rdfs:comment "Milli 10**-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.micro a cim:UnitMultiplier ;
+  rdfs:label "micro"@en ;
+  rdfs:comment "Micro 10**-6." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.n a cim:UnitMultiplier ;
+  rdfs:label "n"@en ;
+  rdfs:comment "Nano 10**-9." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.none a cim:UnitMultiplier ;
+  rdfs:label "none"@en ;
+  rdfs:comment "No multiplier or equivalently multiply by 1." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.p a cim:UnitMultiplier ;
+  rdfs:label "p"@en ;
+  rdfs:comment "Pico 10**-12." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.y a cim:UnitMultiplier ;
+  rdfs:label "y"@en ;
+  rdfs:comment "Yocto 10**-24." ;
+  cims:stereotype "enum" .
+
+cim:UnitMultiplier.z a cim:UnitMultiplier ;
+  rdfs:label "z"@en ;
+  rdfs:comment "Zepto 10**-21." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A a cim:UnitSymbol ;
+  rdfs:label "A"@en ;
+  rdfs:comment "Current in amperes." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A2 a cim:UnitSymbol ;
+  rdfs:label "A2"@en ;
+  rdfs:comment "Amperes squared (A²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A2h a cim:UnitSymbol ;
+  rdfs:label "A2h"@en ;
+  rdfs:comment "Ampere-squared hour, ampere-squared hour." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.A2s a cim:UnitSymbol ;
+  rdfs:label "A2s"@en ;
+  rdfs:comment "Ampere squared time in square amperes (A²s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.APerA a cim:UnitSymbol ;
+  rdfs:label "APerA"@en ;
+  rdfs:comment "Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.APerm a cim:UnitSymbol ;
+  rdfs:label "APerm"@en ;
+  rdfs:comment "A/m, magnetic field strength, amperes per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Ah a cim:UnitSymbol ;
+  rdfs:label "Ah"@en ;
+  rdfs:comment "Ampere-hours, ampere-hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.As a cim:UnitSymbol ;
+  rdfs:label "As"@en ;
+  rdfs:comment "Ampere seconds (A·s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Bq a cim:UnitSymbol ;
+  rdfs:label "Bq"@en ;
+  rdfs:comment "Radioactivity in becquerels (1/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Btu a cim:UnitSymbol ;
+  rdfs:label "Btu"@en ;
+  rdfs:comment "Energy, British Thermal Units." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.C a cim:UnitSymbol ;
+  rdfs:label "C"@en ;
+  rdfs:comment "Electric charge in coulombs (A·s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.CPerkg a cim:UnitSymbol ;
+  rdfs:label "CPerkg"@en ;
+  rdfs:comment "Exposure (x rays), coulombs per kilogram." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.CPerm2 a cim:UnitSymbol ;
+  rdfs:label "CPerm2"@en ;
+  rdfs:comment "Surface charge density, coulombs per square metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.CPerm3 a cim:UnitSymbol ;
+  rdfs:label "CPerm3"@en ;
+  rdfs:comment "Electric charge density, coulombs per cubic metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.F a cim:UnitSymbol ;
+  rdfs:label "F"@en ;
+  rdfs:comment "Electric capacitance in farads (C/V)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.FPerm a cim:UnitSymbol ;
+  rdfs:label "FPerm"@en ;
+  rdfs:comment "Permittivity, farads per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.G a cim:UnitSymbol ;
+  rdfs:label "G"@en ;
+  rdfs:comment "Magnetic flux density, gausses (1 G = 10-4 T)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Gy a cim:UnitSymbol ;
+  rdfs:label "Gy"@en ;
+  rdfs:comment "Absorbed dose in grays (J/kg)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.GyPers a cim:UnitSymbol ;
+  rdfs:label "GyPers"@en ;
+  rdfs:comment "Absorbed dose rate, grays per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.H a cim:UnitSymbol ;
+  rdfs:label "H"@en ;
+  rdfs:comment "Electric inductance in henrys (Wb/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.HPerm a cim:UnitSymbol ;
+  rdfs:label "HPerm"@en ;
+  rdfs:comment "Permeability, henrys per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Hz a cim:UnitSymbol ;
+  rdfs:label "Hz"@en ;
+  rdfs:comment "Frequency in hertz (1/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.HzPerHz a cim:UnitSymbol ;
+  rdfs:label "HzPerHz"@en ;
+  rdfs:comment "Frequency, rate of frequency change.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mHz/Hz’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.HzPers a cim:UnitSymbol ;
+  rdfs:label "HzPers"@en ;
+  rdfs:comment "Rate of change of frequency in hertz per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.J a cim:UnitSymbol ;
+  rdfs:label "J"@en ;
+  rdfs:comment "Energy in joules (N·m = C·V = W·s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerK a cim:UnitSymbol ;
+  rdfs:label "JPerK"@en ;
+  rdfs:comment "Heat capacity in joules/kelvin." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerkg a cim:UnitSymbol ;
+  rdfs:label "JPerkg"@en ;
+  rdfs:comment "Specific energy, Joules / kg." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerkgK a cim:UnitSymbol ;
+  rdfs:label "JPerkgK"@en ;
+  rdfs:comment "Specific heat capacity, specific entropy, joules per kilogram Kelvin." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerm2 a cim:UnitSymbol ;
+  rdfs:label "JPerm2"@en ;
+  rdfs:comment "Insulation energy density, joules per square metre or watt second per square metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPerm3 a cim:UnitSymbol ;
+  rdfs:label "JPerm3"@en ;
+  rdfs:comment "Energy density, joules per cubic metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPermol a cim:UnitSymbol ;
+  rdfs:label "JPermol"@en ;
+  rdfs:comment "Molar energy, joules per mole." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPermolK a cim:UnitSymbol ;
+  rdfs:label "JPermolK"@en ;
+  rdfs:comment "Molar entropy, molar heat capacity, joules per mole kelvin." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.JPers a cim:UnitSymbol ;
+  rdfs:label "JPers"@en ;
+  rdfs:comment "Energy rate in joules per second (J/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.K a cim:UnitSymbol ;
+  rdfs:label "K"@en ;
+  rdfs:comment "Temperature in kelvins." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.KPers a cim:UnitSymbol ;
+  rdfs:label "KPers"@en ;
+  rdfs:comment "Temperature change rate in kelvins per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.M a cim:UnitSymbol ;
+  rdfs:label "M"@en ;
+  rdfs:comment "Length, nautical miles (1 M = 1852 m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Mx a cim:UnitSymbol ;
+  rdfs:label "Mx"@en ;
+  rdfs:comment "Magnetic flux, maxwells (1 Mx = 10-8 Wb)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.N a cim:UnitSymbol ;
+  rdfs:label "N"@en ;
+  rdfs:comment "Force in newtons (kg·m/s²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.NPerm a cim:UnitSymbol ;
+  rdfs:label "NPerm"@en ;
+  rdfs:comment "Surface tension, newton per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Nm a cim:UnitSymbol ;
+  rdfs:label "Nm"@en ;
+  rdfs:comment "Moment of force, newton metres." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Oe a cim:UnitSymbol ;
+  rdfs:label "Oe"@en ;
+  rdfs:comment "Magnetic field in oersteds, (1 Oe = (103/4p) A/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Pa a cim:UnitSymbol ;
+  rdfs:label "Pa"@en ;
+  rdfs:comment "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.PaPers a cim:UnitSymbol ;
+  rdfs:label "PaPers"@en ;
+  rdfs:comment "Pressure change rate in pascals per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Pas a cim:UnitSymbol ;
+  rdfs:label "Pas"@en ;
+  rdfs:comment "Dynamic viscosity, pascal seconds." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Q a cim:UnitSymbol ;
+  rdfs:label "Q"@en ;
+  rdfs:comment "Quantity power, Q." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Qh a cim:UnitSymbol ;
+  rdfs:label "Qh"@en ;
+  rdfs:comment "Quantity energy, Qh." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.S a cim:UnitSymbol ;
+  rdfs:label "S"@en ;
+  rdfs:comment "Conductance in siemens." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.SPerm a cim:UnitSymbol ;
+  rdfs:label "SPerm"@en ;
+  rdfs:comment "Conductance per length (F/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Sv a cim:UnitSymbol ;
+  rdfs:label "Sv"@en ;
+  rdfs:comment "Dose equivalent in sieverts (J/kg)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.T a cim:UnitSymbol ;
+  rdfs:label "T"@en ;
+  rdfs:comment "Magnetic flux density in teslas (Wb/m2)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.V a cim:UnitSymbol ;
+  rdfs:label "V"@en ;
+  rdfs:comment "Electric potential in volts (W/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.V2 a cim:UnitSymbol ;
+  rdfs:label "V2"@en ;
+  rdfs:comment "Volt squared (W²/A²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.V2h a cim:UnitSymbol ;
+  rdfs:label "V2h"@en ;
+  rdfs:comment "Volt-squared hour, volt-squared-hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VA a cim:UnitSymbol ;
+  rdfs:label "VA"@en ;
+  rdfs:comment "Apparent power in volt amperes. See also real power and reactive power." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VAh a cim:UnitSymbol ;
+  rdfs:label "VAh"@en ;
+  rdfs:comment "Apparent energy in volt ampere hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VAr a cim:UnitSymbol ;
+  rdfs:label "VAr"@en ;
+  rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.""" ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VArh a cim:UnitSymbol ;
+  rdfs:label "VArh"@en ;
+  rdfs:comment "Reactive energy in volt ampere reactive hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerHz a cim:UnitSymbol ;
+  rdfs:label "VPerHz"@en ;
+  rdfs:comment "Magnetic flux in volt per hertz." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerV a cim:UnitSymbol ;
+  rdfs:label "VPerV"@en ;
+  rdfs:comment "Voltage, ratio of voltages.  Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerVA a cim:UnitSymbol ;
+  rdfs:label "VPerVA"@en ;
+  rdfs:comment "Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerVAr a cim:UnitSymbol ;
+  rdfs:label "VPerVAr"@en ;
+  rdfs:comment "Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.VPerm a cim:UnitSymbol ;
+  rdfs:label "VPerm"@en ;
+  rdfs:comment "Electric field strength, volts per metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Vh a cim:UnitSymbol ;
+  rdfs:label "Vh"@en ;
+  rdfs:comment "Volt-hour, Volt hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Vs a cim:UnitSymbol ;
+  rdfs:label "Vs"@en ;
+  rdfs:comment "Volt seconds (Ws/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.W a cim:UnitSymbol ;
+  rdfs:label "W"@en ;
+  rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPerA a cim:UnitSymbol ;
+  rdfs:label "WPerA"@en ;
+  rdfs:comment "Active power per current flow, watts per Ampere." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPerW a cim:UnitSymbol ;
+  rdfs:label "WPerW"@en ;
+  rdfs:comment "Signal Strength, ratio of power.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mW/W’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPerm2 a cim:UnitSymbol ;
+  rdfs:label "WPerm2"@en ;
+  rdfs:comment "Heat flux density, irradiance, watts per square metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPerm2sr a cim:UnitSymbol ;
+  rdfs:label "WPerm2sr"@en ;
+  rdfs:comment "Radiance, watts per square metre steradian." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPermK a cim:UnitSymbol ;
+  rdfs:label "WPermK"@en ;
+  rdfs:comment "Thermal conductivity in watt/metres kelvin." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPers a cim:UnitSymbol ;
+  rdfs:label "WPers"@en ;
+  rdfs:comment "Ramp rate in watts per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.WPersr a cim:UnitSymbol ;
+  rdfs:label "WPersr"@en ;
+  rdfs:comment "Radiant intensity, watts per steradian." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Wb a cim:UnitSymbol ;
+  rdfs:label "Wb"@en ;
+  rdfs:comment "Magnetic flux in webers (V·s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.Wh a cim:UnitSymbol ;
+  rdfs:label "Wh"@en ;
+  rdfs:comment "Real energy in watt hours." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.anglemin a cim:UnitSymbol ;
+  rdfs:label "anglemin"@en ;
+  rdfs:comment "Plane angle, minutes." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.anglesec a cim:UnitSymbol ;
+  rdfs:label "anglesec"@en ;
+  rdfs:comment "Plane angle, seconds." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.bar a cim:UnitSymbol ;
+  rdfs:label "bar"@en ;
+  rdfs:comment "Pressure in bars, (1 bar = 100 kPa)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.cd a cim:UnitSymbol ;
+  rdfs:label "cd"@en ;
+  rdfs:comment "Luminous intensity in candelas." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.charPers a cim:UnitSymbol ;
+  rdfs:label "charPers"@en ;
+  rdfs:comment "Data rate (baud) in characters per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.character a cim:UnitSymbol ;
+  rdfs:label "character"@en ;
+  rdfs:comment "Number of characters." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.cosPhi a cim:UnitSymbol ;
+  rdfs:label "cosPhi"@en ;
+  rdfs:comment """Power factor, dimensionless.
+Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.
+Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.""" ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.count a cim:UnitSymbol ;
+  rdfs:label "count"@en ;
+  rdfs:comment "Amount of substance, Counter value." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.d a cim:UnitSymbol ;
+  rdfs:label "d"@en ;
+  rdfs:comment "Time in days, day = 24 h = 86400 s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.dB a cim:UnitSymbol ;
+  rdfs:label "dB"@en ;
+  rdfs:comment "Sound pressure level in decibels. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.dBm a cim:UnitSymbol ;
+  rdfs:label "dBm"@en ;
+  rdfs:comment "Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1mW. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.deg a cim:UnitSymbol ;
+  rdfs:label "deg"@en ;
+  rdfs:comment "Plane angle in degrees." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.degC a cim:UnitSymbol ;
+  rdfs:label "degC"@en ;
+  rdfs:comment """Relative temperature in degrees Celsius.
+In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.""" ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ft3 a cim:UnitSymbol ;
+  rdfs:label "ft3"@en ;
+  rdfs:comment "Volume, cubic feet." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.gPerg a cim:UnitSymbol ;
+  rdfs:label "gPerg"@en ;
+  rdfs:comment "Concentration, The ratio of the mass of a solute divided by the mass of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µg/g’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.gal a cim:UnitSymbol ;
+  rdfs:label "gal"@en ;
+  rdfs:comment "Volume in gallons, US gallon (1 gal = 231 in3 = 128 fl ounce)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.h a cim:UnitSymbol ;
+  rdfs:label "h"@en ;
+  rdfs:comment "Time in hours, hour = 60 min = 3600 s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ha a cim:UnitSymbol ;
+  rdfs:label "ha"@en ;
+  rdfs:comment "Area, hectares." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kat a cim:UnitSymbol ;
+  rdfs:label "kat"@en ;
+  rdfs:comment "Catalytic activity, katal = mol / s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.katPerm3 a cim:UnitSymbol ;
+  rdfs:label "katPerm3"@en ;
+  rdfs:comment "Catalytic activity concentration, katals per cubic metre." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kg a cim:UnitSymbol ;
+  rdfs:label "kg"@en ;
+  rdfs:comment "Mass in kilograms.  Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kgPerJ a cim:UnitSymbol ;
+  rdfs:label "kgPerJ"@en ;
+  rdfs:comment "Weight per energy in kilograms per joule (kg/J). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kgPerm3 a cim:UnitSymbol ;
+  rdfs:label "kgPerm3"@en ;
+  rdfs:comment "Density in kilogram/cubic metres (kg/m³). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kgm a cim:UnitSymbol ;
+  rdfs:label "kgm"@en ;
+  rdfs:comment "Moment of mass in kilogram metres (kg·m) (first moment of mass). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kgm2 a cim:UnitSymbol ;
+  rdfs:label "kgm2"@en ;
+  rdfs:comment "Moment of mass in kilogram square metres (kg·m²) (Second moment of mass, commonly called the moment of inertia). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.kn a cim:UnitSymbol ;
+  rdfs:label "kn"@en ;
+  rdfs:comment "Speed, knots (1 kn = 1852/3600) m/s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.l a cim:UnitSymbol ;
+  rdfs:label "l"@en ;
+  rdfs:comment "Volume in litres, litre = dm3 = m3/1000." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lPerh a cim:UnitSymbol ;
+  rdfs:label "lPerh"@en ;
+  rdfs:comment "Volumetric flow rate, litres per hour." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lPerl a cim:UnitSymbol ;
+  rdfs:label "lPerl"@en ;
+  rdfs:comment "Concentration, The ratio of the volume of a solute divided by the volume of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µL/L’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lPers a cim:UnitSymbol ;
+  rdfs:label "lPers"@en ;
+  rdfs:comment "Volumetric flow rate in litres per second." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lm a cim:UnitSymbol ;
+  rdfs:label "lm"@en ;
+  rdfs:comment "Luminous flux in lumens (cd·sr)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.lx a cim:UnitSymbol ;
+  rdfs:label "lx"@en ;
+  rdfs:comment "Illuminance in lux (lm/m²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m a cim:UnitSymbol ;
+  rdfs:label "m"@en ;
+  rdfs:comment "Length in metres." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m2 a cim:UnitSymbol ;
+  rdfs:label "m2"@en ;
+  rdfs:comment "Area in square metres (m²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m2Pers a cim:UnitSymbol ;
+  rdfs:label "m2Pers"@en ;
+  rdfs:comment "Viscosity in square metres / second (m²/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3 a cim:UnitSymbol ;
+  rdfs:label "m3"@en ;
+  rdfs:comment "Volume in cubic metres (m³)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Compensated a cim:UnitSymbol ;
+  rdfs:label "m3Compensated"@en ;
+  rdfs:comment "Volume, cubic metres, with the value compensated for weather effects." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Perh a cim:UnitSymbol ;
+  rdfs:label "m3Perh"@en ;
+  rdfs:comment "Volumetric flow rate, cubic metres per hour." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Perkg a cim:UnitSymbol ;
+  rdfs:label "m3Perkg"@en ;
+  rdfs:comment "Specific volume, cubic metres per kilogram, v." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Pers a cim:UnitSymbol ;
+  rdfs:label "m3Pers"@en ;
+  rdfs:comment "Volumetric flow rate in cubic metres per second (m³/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.m3Uncompensated a cim:UnitSymbol ;
+  rdfs:label "m3Uncompensated"@en ;
+  rdfs:comment "Volume, cubic metres, with the value uncompensated for weather effects." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mPerm3 a cim:UnitSymbol ;
+  rdfs:label "mPerm3"@en ;
+  rdfs:comment "Fuel efficiency in metres per cubic metres (m/m³)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mPers a cim:UnitSymbol ;
+  rdfs:label "mPers"@en ;
+  rdfs:comment "Velocity in metres per second (m/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mPers2 a cim:UnitSymbol ;
+  rdfs:label "mPers2"@en ;
+  rdfs:comment "Acceleration in metres per second squared (m/s²)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.min a cim:UnitSymbol ;
+  rdfs:label "min"@en ;
+  rdfs:comment "Time in minutes, minute  = 60 s." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mmHg a cim:UnitSymbol ;
+  rdfs:label "mmHg"@en ;
+  rdfs:comment "Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.mol a cim:UnitSymbol ;
+  rdfs:label "mol"@en ;
+  rdfs:comment "Amount of substance in moles." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.molPerkg a cim:UnitSymbol ;
+  rdfs:label "molPerkg"@en ;
+  rdfs:comment "Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.molPerm3 a cim:UnitSymbol ;
+  rdfs:label "molPerm3"@en ;
+  rdfs:comment "Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in m³." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.molPermol a cim:UnitSymbol ;
+  rdfs:label "molPermol"@en ;
+  rdfs:comment "Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.none a cim:UnitSymbol ;
+  rdfs:label "none"@en ;
+  rdfs:comment "Dimension less quantity, e.g. count, per unit, etc." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ohm a cim:UnitSymbol ;
+  rdfs:label "ohm"@en ;
+  rdfs:comment "Electric resistance in ohms (V/A)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ohmPerm a cim:UnitSymbol ;
+  rdfs:label "ohmPerm"@en ;
+  rdfs:comment "Electric resistance per length in ohms per metre ((V/A)/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ohmm a cim:UnitSymbol ;
+  rdfs:label "ohmm"@en ;
+  rdfs:comment "Resistivity, ohm metres, (rho)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.onePerHz a cim:UnitSymbol ;
+  rdfs:label "onePerHz"@en ;
+  rdfs:comment "Reciprocal of frequency (1/Hz)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.onePerm a cim:UnitSymbol ;
+  rdfs:label "onePerm"@en ;
+  rdfs:comment "Wavenumber, reciprocal metres,  (1/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.ppm a cim:UnitSymbol ;
+  rdfs:label "ppm"@en ;
+  rdfs:comment "Concentration in parts per million." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.rad a cim:UnitSymbol ;
+  rdfs:label "rad"@en ;
+  rdfs:comment "Plane angle in radians (m/m)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.radPers a cim:UnitSymbol ;
+  rdfs:label "radPers"@en ;
+  rdfs:comment "Angular velocity in radians per second (rad/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.radPers2 a cim:UnitSymbol ;
+  rdfs:label "radPers2"@en ;
+  rdfs:comment "Angular acceleration, radians per second squared." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.rev a cim:UnitSymbol ;
+  rdfs:label "rev"@en ;
+  rdfs:comment "Amount of rotation, revolutions." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.rotPers a cim:UnitSymbol ;
+  rdfs:label "rotPers"@en ;
+  rdfs:comment "Rotations per second (1/s). See also Hz (1/s)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.s a cim:UnitSymbol ;
+  rdfs:label "s"@en ;
+  rdfs:comment "Time in seconds." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.sPers a cim:UnitSymbol ;
+  rdfs:label "sPers"@en ;
+  rdfs:comment "Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&#181;’ to show rates such as ‘&#181;s/s’." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.sr a cim:UnitSymbol ;
+  rdfs:label "sr"@en ;
+  rdfs:comment "Solid angle in steradians (m2/m2)." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.therm a cim:UnitSymbol ;
+  rdfs:label "therm"@en ;
+  rdfs:comment "Energy, therms." ;
+  cims:stereotype "enum" .
+
+cim:UnitSymbol.tonne a cim:UnitSymbol ;
+  rdfs:label "tonne"@en ;
+  rdfs:comment "Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg)." ;
+  cims:stereotype "enum" .
+
+cim:Validity.GOOD a cim:Validity ;
+  rdfs:label "GOOD"@en ;
+  rdfs:comment "The value is marked good if no abnormal condition of the acquisition function or the information source is detected." ;
+  cims:stereotype "enum" .
+
+cim:Validity.INVALID a cim:Validity ;
+  rdfs:label "INVALID"@en ;
+  rdfs:comment "The value is marked invalid when a supervision function recognises abnormal conditions of the acquisition function or the information source (missing or non-operating updating devices). The value is not defined under this condition. The mark invalid is used to indicate to the client that the value may be incorrect and shall not be used." ;
+  cims:stereotype "enum" .
+
+cim:Validity.QUESTIONABLE a cim:Validity ;
+  rdfs:label "QUESTIONABLE"@en ;
+  rdfs:comment "The value is marked questionable if a supervision function detects an abnormal behaviour, however the value could still be valid. The client is responsible for determining whether or not values marked \"questionable\" should be used." ;
+  cims:stereotype "enum" .
+
+op:Package_OperationProfile a cims:ClassCategory ;
+  rdfs:label "OperationProfile"@en ;
+  rdfs:comment "This is the IEC 61970-452 operation profile." .
+
+
