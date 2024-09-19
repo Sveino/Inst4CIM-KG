@@ -4,7 +4,7 @@
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
 @prefix     psp: <https://ap-voc.cim4.eu/PowerSystemProject#> .
 @prefix    dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix     owl: <http://www.w3.org/2002/07/owl#> .
 @prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -101,16 +101,16 @@ profcim:URL a rdfs:Class ;
 psp:Ontology a owl:Ontology ;
   dcat:keyword "PSP" ;
   dcat:theme "vocabulary"@en ;
-  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
-  dcterms:creator "ENTSO-E CIM WG NC project "@en ;
-  dcterms:description "This vocabulary is describing the power system profile."@en ;
-  dcterms:identifier "urn:uuid:29bfa45c-7d04-42f1-97c1-2e0f70f476a0" ;
-  dcterms:language "en-GB" ;
-  dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
-  dcterms:publisher "ENTSO-E"@en ;
-  dcterms:rightsHolder "ENTSO-E"@en ;
-  dcterms:title "Power System Project Vocabulary"@en ;
+  dct:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:creator "ENTSO-E CIM WG NC project "@en ;
+  dct:description "This vocabulary is describing the power system profile."@en ;
+  dct:identifier "urn:uuid:29bfa45c-7d04-42f1-97c1-2e0f70f476a0" ;
+  dct:language "en-GB" ;
+  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  dct:title "Power System Project Vocabulary"@en ;
   owl:versionIRI <https://ap-voc.cim4.eu/PowerSystemProject/2.3> ;
   owl:versionInfo "2.3.1"@en .
 
@@ -155,7 +155,7 @@ dcat:Resource.versionNotes a rdf:Property ;
   cims:stereotype "adms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:PowerSystemProjectGroup.description a rdf:Property ;
+dct:PowerSystemProjectGroup.description a rdf:Property ;
   rdfs:label "description"@en ;
   rdfs:comment """A free-text account of the resource.
 Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""" ;
@@ -164,7 +164,7 @@ Description may include but is not limited to: an abstract, a table of contents,
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:PowerSystemProjectGroup .
 
-dcterms:PowerSystemProjectGroup.identifier a rdf:Property ;
+dct:PowerSystemProjectGroup.identifier a rdf:Property ;
   rdfs:label "identifier"@en ;
   rdfs:comment """A unique identifier of the resource being described or cataloged.
 The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
@@ -174,7 +174,7 @@ The identifier is a text string which is assigned to the resource to provide an 
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:PowerSystemProjectGroup .
 
-dcterms:PowerSystemProjectGroup.title a rdf:Property ;
+dct:PowerSystemProjectGroup.title a rdf:Property ;
   rdfs:label "title"@en ;
   rdfs:comment "A name given to the resource." ;
   cims:dataType cim:String ;
@@ -182,7 +182,7 @@ dcterms:PowerSystemProjectGroup.title a rdf:Property ;
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain nc:PowerSystemProjectGroup .
 
-dcterms:Resource.accessRights a rdf:Property ;
+dct:Resource.accessRights a rdf:Property ;
   rdfs:label "accessRights"@en ;
   rdfs:comment """Information about who access the resource or an indication of its security status.
 Access Rights may include information regarding access or restrictions based on privacy, security, or other policies.""" ;
@@ -191,7 +191,7 @@ Access Rights may include information regarding access or restrictions based on 
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.conformsTo a rdf:Property ;
+dct:Resource.conformsTo a rdf:Property ;
   rdfs:label "conformsTo"@en ;
   rdfs:comment "An established standard to which the described resource conforms." ;
   cims:dataType profcim:StringIRI ;
@@ -199,7 +199,7 @@ dcterms:Resource.conformsTo a rdf:Property ;
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.creator a rdf:Property ;
+dct:Resource.creator a rdf:Property ;
   rdfs:label "creator"@en ;
   rdfs:comment """An entity responsible for making the resource.
 Recommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided.""" ;
@@ -208,7 +208,7 @@ Recommended practice is to identify the creator with a URI. If this is not possi
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.description a rdf:Property ;
+dct:Resource.description a rdf:Property ;
   rdfs:label "description"@en ;
   rdfs:comment """A free-text account of the resource.
 Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""" ;
@@ -217,7 +217,7 @@ Description may include but is not limited to: an abstract, a table of contents,
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.identifier a rdf:Property ;
+dct:Resource.identifier a rdf:Property ;
   rdfs:label "identifier"@en ;
   rdfs:comment """A unique identifier of the resource being described or cataloged.
 The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
@@ -227,7 +227,7 @@ The identifier is a text string which is assigned to the resource to provide an 
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.issued a rdf:Property ;
+dct:Resource.issued a rdf:Property ;
   rdfs:label "issued"@en ;
   rdfs:comment """Date of formal issuance of the resource.
 Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.""" ;
@@ -236,7 +236,7 @@ Recommended practice is to describe the date, date/time, or period of time as re
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.license a rdf:Property ;
+dct:Resource.license a rdf:Property ;
   rdfs:label "license"@en ;
   rdfs:comment """A legal document under which the resource is made available.
 Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.""" ;
@@ -245,7 +245,7 @@ Recommended practice is to identify the license document with a URI. If this is 
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.modified a rdf:Property ;
+dct:Resource.modified a rdf:Property ;
   rdfs:label "modified"@en ;
   rdfs:comment """Most recent date on which the item was changed, updated or modified.
 Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.""" ;
@@ -254,7 +254,7 @@ Recommended practice is to describe the date, date/time, or period of time as re
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.publisher a rdf:Property ;
+dct:Resource.publisher a rdf:Property ;
   rdfs:label "publisher"@en ;
   rdfs:comment "An entity responsible for making the resource available." ;
   cims:dataType cim:String ;
@@ -262,7 +262,7 @@ dcterms:Resource.publisher a rdf:Property ;
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.rights a rdf:Property ;
+dct:Resource.rights a rdf:Property ;
   rdfs:label "rights"@en ;
   rdfs:comment "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements." ;
   cims:dataType cim:String ;
@@ -270,7 +270,7 @@ dcterms:Resource.rights a rdf:Property ;
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.rightsHolder a rdf:Property ;
+dct:Resource.rightsHolder a rdf:Property ;
   rdfs:label "rightsHolder"@en ;
   rdfs:comment """Information about rights held in and over the resource.
 Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.""" ;
@@ -279,7 +279,7 @@ Typically, rights information includes a statement about various property rights
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Resource .
 
-dcterms:Resource.title a rdf:Property ;
+dct:Resource.title a rdf:Property ;
   rdfs:label "title"@en ;
   rdfs:comment "A name given to the resource." ;
   cims:dataType cim:String ;

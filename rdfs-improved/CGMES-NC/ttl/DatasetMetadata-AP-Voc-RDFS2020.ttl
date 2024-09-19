@@ -5,7 +5,7 @@
 @prefix     eumd: <https://cim4.eu/ns/Metadata-European#> .
 @prefix  profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
 @prefix     dcat: <http://www.w3.org/ns/dcat#> .
-@prefix  dcterms: <http://purl.org/dc/terms/#> .
+@prefix  dct: <http://purl.org/dc/terms/> .
 @prefix      owl: <http://www.w3.org/2002/07/owl#> .
 @prefix     prov: <http://www.w3.org/ns/prov#> .
 @prefix      rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -85,15 +85,15 @@ profcim:URL a rdfs:Class ;
 
 dm:Ontology a owl:Ontology ;
   dcat:theme "vocabulary"@en ;
-  dcterms:conformsTo "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2" ;
-  dcterms:creator "ENTSO-E"@en ;
-  dcterms:description "This vocabulary is describing the dataset metadata profile."@en ;
-  dcterms:identifier "urn:uuid:f7bb07f7-8614-4ff5-88da-2b4824b143f1" ;
-  dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
-  dcterms:publisher "ENTSO-E"@en ;
-  dcterms:rightsHolder "ENTSO-E"@en ;
-  dcterms:title "Dataset metadata vocabulary"@en ;
+  dct:conformsTo "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2" ;
+  dct:creator "ENTSO-E"@en ;
+  dct:description "This vocabulary is describing the dataset metadata profile."@en ;
+  dct:identifier "urn:uuid:f7bb07f7-8614-4ff5-88da-2b4824b143f1" ;
+  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  dct:title "Dataset metadata vocabulary"@en ;
   owl:versionIRI <https://ap-voc.cim4.eu/DatasetMetadata/2.4> ;
   owl:versionInfo "2.4.0"@en .
 
@@ -221,7 +221,7 @@ dcat:hasVersion a rdf:Property ;
   rdfs:comment """This resource is a version of a non-versioned or abstract resource.
 This property is intended for relating a versioned resource to a non-versioned or abstract resource.
 
-The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dcterms:isVersionOf, which makes use of a broader notion of version, including editions and adaptations.""" ;
+The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dct:isVersionOf, which makes use of a broader notion of version, including editions and adaptations.""" ;
   cims:AssociationUsed "No" ;
   cims:inverseRoleName dcat:isVersionOf ;
   cims:multiplicity cims:M:0..n ;
@@ -243,7 +243,7 @@ dcat:isVersionOf a rdf:Property ;
   rdfs:label "isVersionOf"@en ;
   rdfs:comment """This resource has a more specific, versioned resource. This property is intended for relating a non-versioned or abstract resource to several versioned resources, e.g., snapshots.
 
-The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dcterms:hasVersion, which makes use of a broader notion of version, including editions and adaptations.""" ;
+The notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dct:hasVersion, which makes use of a broader notion of version, including editions and adaptations.""" ;
   cims:AssociationUsed "Yes" ;
   cims:inverseRoleName dcat:hasVersion ;
   cims:multiplicity cims:M:0..1 ;
@@ -256,7 +256,7 @@ dcat:keyword a rdf:Property ;
   rdfs:comment """A keyword or tag describing a resource.
 [CIM context:
 The intended content type of the model, usually the profile keyword. Used to identify what profiles and content is expected in the document, e.g., Equipment, Boundary, SSH, AE, etc. The same keyword is used for different versions of same profile. It can be also used to identify different content based on the same profile.
-For instance, as the equipment profile can be used for both boundary data and equipment not related to boundary, the keyword is different to indicate that boundary data is exchanged. In order to avoid ambiguity the property is not exchanged in cases where the document contains multiple profiles referenced by dcterms:conformsTo.].""" ;
+For instance, as the equipment profile can be used for both boundary data and equipment not related to boundary, the keyword is different to indicate that boundary data is exchanged. In order to avoid ambiguity the property is not exchanged in cases where the document contains multiple profiles referenced by dct:conformsTo.].""" ;
   cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcat", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
@@ -323,164 +323,164 @@ dcat:version a rdf:Property ;
   cims:stereotype "dcat", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Dataset .
 
-dcterms:HasPart a rdf:Property ;
+dct:HasPart a rdf:Property ;
   rdfs:label "HasPart"@en ;
   rdfs:comment "The dataset which is part of another dataset." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:IsPartOf ;
+  cims:inverseRoleName dct:IsPartOf ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:IsPartOf a rdf:Property ;
+dct:IsPartOf a rdf:Property ;
   rdfs:label "IsPartOf"@en ;
   rdfs:comment "The dataset which this datatset is part of." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:HasPart ;
+  cims:inverseRoleName dct:HasPart ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource1 a rdf:Property ;
+dct:Resource1 a rdf:Property ;
   rdfs:label "Resource1"@en ;
   rdfs:comment "The resource that has these access rights." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:accessRights ;
+  cims:inverseRoleName dct:accessRights ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource10 a rdf:Property ;
+dct:Resource10 a rdf:Property ;
   rdfs:label "Resource10"@en ;
   rdfs:comment "The resource that has this spatial location." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:spatial ;
+  cims:inverseRoleName dct:spatial ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource11 a rdf:Property ;
+dct:Resource11 a rdf:Property ;
   rdfs:label "Resource11"@en ;
   rdfs:comment "The resource that is made available." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:publisher ;
+  cims:inverseRoleName dct:publisher ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource12 a rdf:Property ;
+dct:Resource12 a rdf:Property ;
   rdfs:label "Resource12"@en ;
   rdfs:comment "The resource that replaces the referenced resource." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:replaces ;
+  cims:inverseRoleName dct:replaces ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource13 a rdf:Property ;
+dct:Resource13 a rdf:Property ;
   rdfs:label "Resource13"@en ;
   rdfs:comment "The resource that has these recerences." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:references ;
+  cims:inverseRoleName dct:references ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource2 a rdf:Property ;
+dct:Resource2 a rdf:Property ;
   rdfs:label "Resource2"@en ;
   rdfs:comment "The resource that conforms to." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:conformsTo ;
+  cims:inverseRoleName dct:conformsTo ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource3 a rdf:Property ;
+dct:Resource3 a rdf:Property ;
   rdfs:label "Resource3"@en ;
   rdfs:comment "The resource that has this license." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:license ;
+  cims:inverseRoleName dct:license ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource4 a rdf:Property ;
+dct:Resource4 a rdf:Property ;
   rdfs:label "Resource4"@en ;
   rdfs:comment "The resource that has this type." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:type ;
+  cims:inverseRoleName dct:type ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource5 a rdf:Property ;
+dct:Resource5 a rdf:Property ;
   rdfs:label "Resource5"@en ;
   rdfs:comment "The resource that has this periodicity." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:accrualPeriodicity ;
+  cims:inverseRoleName dct:accrualPeriodicity ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:Resource6 a rdf:Property ;
+dct:Resource6 a rdf:Property ;
   rdfs:label "Resource6"@en ;
   rdfs:comment "The resource that has this source." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName dcterms:source ;
+  cims:inverseRoleName dct:source ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:accessRights a rdf:Property ;
+dct:accessRights a rdf:Property ;
   rdfs:label "accessRights"@en ;
   rdfs:comment """Information about who access the resource or an indication of its security status. Access Rights may include information regarding access or restrictions based on privacy, security, or other policies.
 [CIM context:
 Reference to the confidentiality level that shall be applied when handling this model.].""" ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource1 ;
+  cims:inverseRoleName dct:Resource1 ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:accrualPeriodicity a rdf:Property ;
+dct:accrualPeriodicity a rdf:Property ;
   rdfs:label "accrualPeriodicity"@en ;
   rdfs:comment """The frequency with which items are added to a collection.
 [CIM context:
 Reference to the time frame.].""" ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource5 ;
+  cims:inverseRoleName dct:Resource5 ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:conformsTo a rdf:Property ;
+dct:conformsTo a rdf:Property ;
   rdfs:label "conformsTo"@en ;
   rdfs:comment """An established standard to which the described resource conforms.
 [CIM context:
 An IRI describing the profile that governs this model. It uniquely identifies the profile and its version. Multiple instances of the property describe all standards or specifications to which the model and the document representing this model conform to.
 A document would normally conform to profile definitions, the constraints that relate to the profile and/or the set of business specific constrains. A reference to a machine- readable constraints or specification indicates that the document was tested against these constraints and it conforms to them.].""" ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource2 ;
+  cims:inverseRoleName dct:Resource2 ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:description a rdf:Property ;
+dct:description a rdf:Property ;
   rdfs:label "description"@en ;
   rdfs:comment """A free-text account of the resource.
 Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""" ;
@@ -489,7 +489,7 @@ Description may include but is not limited to: an abstract, a table of contents,
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Dataset .
 
-dcterms:identifier a rdf:Property ;
+dct:identifier a rdf:Property ;
   rdfs:label "identifier"@en ;
   rdfs:comment """A unique identifier of the resource being described or cataloged.
 The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
@@ -502,7 +502,7 @@ If a model is serialized as complete (full) model or as difference model exchang
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Dataset .
 
-dcterms:issued a rdf:Property ;
+dct:issued a rdf:Property ;
   rdfs:label "issued"@en ;
   rdfs:comment """Date of formal issuance of the resource.
 Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.
@@ -513,43 +513,43 @@ Reference to the date that the complete data set was made valid/available.].""" 
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Dataset .
 
-dcterms:license a rdf:Property ;
+dct:license a rdf:Property ;
   rdfs:label "license"@en ;
   rdfs:comment """A legal document giving official permission to do something with the resource. Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.
 [CIM context:
 Reference to the license under which the data is made available. If no license holder is defined, then the original data provider holds the license.].""" ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource3 ;
+  cims:inverseRoleName dct:Resource3 ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:references a rdf:Property ;
+dct:references a rdf:Property ;
   rdfs:label "references"@en ;
   rdfs:comment """A related resource that is referenced, cited, or otherwise pointed to by the described resource[.
 [CIM context: 
 The referenced resource that is being complemented in this dataset, e.g. SSH is referencing EQ.]""" ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource13 ;
+  cims:inverseRoleName dct:Resource13 ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:replaces a rdf:Property ;
+dct:replaces a rdf:Property ;
   rdfs:label "replaces"@en ;
   rdfs:comment """A related resource that is supplanted, displaced, or superseded by the described resource
 [CIM context: 
 The referenced dataset is being replaced by this dataset.]""" ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource12 ;
+  cims:inverseRoleName dct:Resource12 ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:rights a rdf:Property ;
+dct:rights a rdf:Property ;
   rdfs:label "rights"@en ;
   rdfs:comment "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements." ;
   cims:dataType cim:String ;
@@ -557,7 +557,7 @@ dcterms:rights a rdf:Property ;
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Dataset .
 
-dcterms:rightsHolder a rdf:Property ;
+dct:rightsHolder a rdf:Property ;
   rdfs:label "rightsHolder"@en ;
   rdfs:comment """Information about rights held in and over the resource.
 Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.""" ;
@@ -566,30 +566,30 @@ Typically, rights information includes a statement about various property rights
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Dataset .
 
-dcterms:source a rdf:Property ;
+dct:source a rdf:Property ;
   rdfs:label "source"@en ;
   rdfs:comment """A related resource from which the described resource is derived.
 This property is intended to be used with non-literal values. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system.""" ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource6 ;
+  cims:inverseRoleName dct:Resource6 ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:spatial a rdf:Property ;
+dct:spatial a rdf:Property ;
   rdfs:label "spatial"@en ;
   rdfs:comment """The geographical area covered by the dataset.
 [CIM context: 
 The responsibility area that multiple model can describe, also referred to frame.]""" ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource10 ;
+  cims:inverseRoleName dct:Resource10 ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;
   rdfs:range dcat:Dataset .
 
-dcterms:title a rdf:Property ;
+dct:title a rdf:Property ;
   rdfs:label "title"@en ;
   rdfs:comment """A name given to the resource.
 [CIM context: 
@@ -599,11 +599,11 @@ The human readable name of the dataset that can form the instance file name.]"""
   cims:stereotype "dcterms", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain dcat:Dataset .
 
-dcterms:type a rdf:Property ;
+dct:type a rdf:Property ;
   rdfs:label "type"@en ;
   rdfs:comment "The nature or genre of the resource. Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMI-TYPE]. To describe the file format, physical medium, or dimensions of the resource, use the property Format." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName dcterms:Resource4 ;
+  cims:inverseRoleName dct:Resource4 ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms" ;
   rdfs:domain dcat:Dataset ;

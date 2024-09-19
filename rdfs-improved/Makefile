@@ -82,6 +82,12 @@ _2TTL = owl.bat write --prefixAlign=right --useCommaByDefault \
 
 RDF2TTL = $(_2TTL) --input=rdfxml
 
+define RDF2FIXTTL
+ $(RDF2TTL) $(1) temp.ttl
+ perl fix-namespaces.pl temp.ttl > $(2)
+ rm temp.ttl
+endef
+
 ttl: clean $(CGMES_TTL) $(CGMES_NC_TTL)
 
 rm-ttl::
@@ -91,10 +97,10 @@ clean::
 	find . -type f -size 0 -delete
 
 CGMES/ttl/%.ttl: ../source/CGMES/v3.0/RDFS2020/%.rdf
-	$(RDF2TTL) $^ $@
+	$(call RDF2FIXTTL,$^,$@)
 
 CGMES-NC/ttl/%.ttl: ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf
-	$(RDF2TTL) $^ $@
+	$(call RDF2FIXTTL,$^,$@)
 
 dirs::
 	mkdir CGMES CGMES/ttl CGMES-NC CGMES-NC/ttl
