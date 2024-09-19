@@ -1,4 +1,4 @@
-@prefix     cim: <http://iec.ch/TC57/CIM100#> .
+@prefix     cim: <https://cim.ucaiug.io/ns#> .
 @prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix      sv: <http://iec.ch/TC57/ns/CIM/StateVariables-EU#> .
 @prefix    dcat: <http://www.w3.org/ns/dcat#> .

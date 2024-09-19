@@ -1,7 +1,6 @@
-@prefix     cim: <http://iec.ch/TC57/CIM100#> .
+@prefix     cim: <https://cim.ucaiug.io/ns#> .
 @prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
-@prefix      eu: <http://iec.ch/TC57/CIM100-European#> .
-@prefix    eqbd: <http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU#> .
+@prefix      dl: <http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#> .
 @prefix    dcat: <http://www.w3.org/ns/dcat#> .
 @prefix     dct: <http://purl.org/dc/terms/> .
 @prefix     owl: <http://www.w3.org/2002/07/owl#> .
@@ -9,146 +8,99 @@
 @prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix     xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-cim:ACDCTerminal a rdfs:Class ;
-  rdfs:label "ACDCTerminal"@en ;
-  rdfs:comment "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:BaseVoltage a rdfs:Class ;
-  rdfs:label "BaseVoltage"@en ;
-  rdfs:comment "Defines a system base voltage which is referenced. " ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:Bay a rdfs:Class ;
-  rdfs:label "Bay"@en ;
-  rdfs:comment "A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.  A bay typically represents a physical grouping related to modularization of equipment." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:EquipmentContainer .
+cim:AngleDegrees a rdfs:Class ;
+  rdfs:label "AngleDegrees"@en ;
+  rdfs:comment "Measurement of angle in degrees." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype "CIMDatatype" .
 
 cim:Boolean a rdfs:Class ;
   rdfs:label "Boolean"@en ;
   rdfs:comment "A type with the value space \"true\" and \"false\"." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype "Primitive" .
-
-cim:ConductingEquipment a rdfs:Class ;
-  rdfs:label "ConductingEquipment"@en ;
-  rdfs:comment "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:Equipment .
-
-cim:ConnectivityNode a rdfs:Class ;
-  rdfs:label "ConnectivityNode"@en ;
-  rdfs:comment "Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:ConnectivityNodeContainer a rdfs:Class ;
-  rdfs:label "ConnectivityNodeContainer"@en ;
-  rdfs:comment "A base class for all objects that may contain connectivity nodes or topological nodes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:PowerSystemResource .
-
-cim:Connector a rdfs:Class ;
-  rdfs:label "Connector"@en ;
-  rdfs:comment "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation and are modelled with a single logical terminal." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:ConductingEquipment .
 
 cim:Date a rdfs:Class ;
   rdfs:label "Date"@en ;
   rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype "Primitive" .
 
-cim:EnergySchedulingType a rdfs:Class ;
-  rdfs:label "EnergySchedulingType"@en ;
-  rdfs:comment "Used to define the type of generation for scheduling purposes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+cim:Diagram a rdfs:Class ;
+  rdfs:label "Diagram"@en ;
+  rdfs:comment "The diagram being exchanged. The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation. The initial view related attributes can be used to specify an initial view with the x,y coordinates of the diagonal points." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
   rdfs:subClassOf cim:IdentifiedObject .
 
-cim:Equipment a rdfs:Class ;
-  rdfs:label "Equipment"@en ;
-  rdfs:comment "The parts of a power system that are physical devices, electronic or mechanical." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:PowerSystemResource .
+cim:DiagramObject a rdfs:Class ;
+  rdfs:label "DiagramObject"@en ;
+  rdfs:comment "An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
 
-cim:EquipmentContainer a rdfs:Class ;
-  rdfs:label "EquipmentContainer"@en ;
-  rdfs:comment "A modelling construct to provide a root class for containing equipment. " ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:ConnectivityNodeContainer .
+cim:DiagramObjectGluePoint a rdfs:Class ;
+  rdfs:label "DiagramObjectGluePoint"@en ;
+  rdfs:comment "This is used for grouping diagram object points from different diagram objects that are considered to be glued together in a diagram even if they are not at the exact same coordinates." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+cim:DiagramObjectPoint a rdfs:Class ;
+  rdfs:label "DiagramObjectPoint"@en ;
+  rdfs:comment "A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram.  " ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> .
+
+cim:DiagramObjectStyle a rdfs:Class ;
+  rdfs:label "DiagramObjectStyle"@en ;
+  rdfs:comment "A reference to a style used by the originating system for a diagram object.  A diagram object style describes information such as line thickness, shape such as circle or rectangle etc, and colour." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:DiagramStyle a rdfs:Class ;
+  rdfs:label "DiagramStyle"@en ;
+  rdfs:comment "The diagram style refers to a style used by the originating system for a diagram.  A diagram style describes information such as schematic, geographic, etc." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
+  rdfs:subClassOf cim:IdentifiedObject .
 
 cim:Float a rdfs:Class ;
   rdfs:label "Float"@en ;
   rdfs:comment "A floating point number. The range is unspecified and not limited." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype "Primitive" .
-
-cim:GeographicalRegion a rdfs:Class ;
-  rdfs:label "GeographicalRegion"@en ;
-  rdfs:comment "A geographical region of a power system network model." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
 
 cim:IdentifiedObject a rdfs:Class ;
   rdfs:label "IdentifiedObject"@en ;
   rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile .
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile .
 
-cim:Junction a rdfs:Class ;
-  rdfs:label "Junction"@en ;
-  rdfs:comment "A point where one or more conducting equipments are connected with zero resistance." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:Connector .
+cim:Integer a rdfs:Class ;
+  rdfs:label "Integer"@en ;
+  rdfs:comment "An integer number. The range is unspecified and not limited." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype "Primitive" .
 
-cim:Line a rdfs:Class ;
-  rdfs:label "Line"@en ;
-  rdfs:comment "Contains equipment beyond a substation belonging to a power transmission line. " ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:EquipmentContainer .
-
-cim:PowerSystemResource a rdfs:Class ;
-  rdfs:label "PowerSystemResource"@en ;
-  rdfs:comment "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:IdentifiedObject .
+cim:OrientationKind a rdfs:Class ;
+  rdfs:label "OrientationKind"@en ;
+  rdfs:comment "The orientation of the coordinate system with respect to top, left, and the coordinate number system." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
 
 cim:String a rdfs:Class ;
   rdfs:label "String"@en ;
   rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype "Primitive" .
 
-cim:SubGeographicalRegion a rdfs:Class ;
-  rdfs:label "SubGeographicalRegion"@en ;
-  rdfs:comment "A subset of a geographical region of a power system network model." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+cim:TextDiagramObject a rdfs:Class ;
+  rdfs:label "TextDiagramObject"@en ;
+  rdfs:comment "A diagram object for placing free-text or text derived from an associated domain object." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:Substation a rdfs:Class ;
-  rdfs:label "Substation"@en ;
-  rdfs:comment "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics. " ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:EquipmentContainer .
-
-cim:Terminal a rdfs:Class ;
-  rdfs:label "Terminal"@en ;
-  rdfs:comment "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:ACDCTerminal .
+  rdfs:subClassOf cim:DiagramObject .
 
 cim:UnitMultiplier a rdfs:Class ;
   rdfs:label "UnitMultiplier"@en ;
@@ -157,7 +109,7 @@ cim:UnitMultiplier a rdfs:Class ;
 For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
 
 For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
 
 cim:UnitSymbol a rdfs:Class ;
@@ -167,137 +119,294 @@ Every unit symbol is treated as an unparseable text as if it were a single-lette
 To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
 Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
 The integer values are used for harmonization with IEC 61850.""" ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
 
-cim:Voltage a rdfs:Class ;
-  rdfs:label "Voltage"@en ;
-  rdfs:comment "Electrical voltage, can be both AC and DC." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype "CIMDatatype" .
-
-cim:VoltageLevel a rdfs:Class ;
-  rdfs:label "VoltageLevel"@en ;
-  rdfs:comment "A collection of equipment at one common system voltage forming a switchgear. The equipment typically consists of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+cim:VisibilityLayer a rdfs:Class ;
+  rdfs:label "VisibilityLayer"@en ;
+  rdfs:comment """Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering.
+CIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n.""" ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:EquipmentContainer .
+  rdfs:subClassOf cim:IdentifiedObject .
 
-eu:BoundaryPoint a rdfs:Class ;
-  rdfs:label "BoundaryPoint"@en ;
-  rdfs:comment "Designates a connection point at which one or more model authority sets shall connect to. The location of the connection point as well as other properties are agreed between organisations responsible for the interconnection, hence all attributes of the class represent this agreement.  It is primarily used in a boundary model authority set which can contain one or many BoundaryPoint-s among other Equipment-s and their connections." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:PowerSystemResource .
-
-eqbd:Ontology a owl:Ontology ;
-  dct:description "This vocabulary is describing the equipment boundary profile from IEC 61970-600-2."@en ;
-  dcat:keyword "EQBD" ;
+dl:Ontology a owl:Ontology ;
+  dct:description "This vocabulary is describing the diagram layout profile from IEC 61970-453."@en ;
+  dcat:keyword "DL" ;
   dcat:landingPage "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
   dcat:theme "vocabulary"@en ;
   dct:conformsTo "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
   dct:creator "ENTSO-E CIM EG"@en ;
-  dct:identifier "urn:uuid:1e79354a-ccc2-434b-bab3-3dc4a08df5ea" ;
-  dct:issued "2021-01-27T12:30:44Z"^^xsd:dateTime ;
+  dct:identifier "urn:uuid:7b269643-3da3-4dd0-83e8-58d7f13ee3bc" ;
+  dct:issued "2021-01-27T12:18:26Z"^^xsd:dateTime ;
   dct:language "en-GB" ;
   dct:modified "2020-10-12"^^xsd:date ;
   dct:publisher "ENTSO-E"@en ;
   dct:rights "Copyright"@en ;
   dct:rightsHolder "ENTSO-E"@en ;
-  dct:title "Equipment Boundary Vocabulary"@en ;
+  dct:title "Diagram Layout Vocabulary"@en ;
+  owl:backwardCompatibleWith <http://iec.ch/TC57/61970-453/DiagramLayout/2/1> ;
   owl:incompatibleWith <http://entsoe.eu/2009/profile1> ;
-  owl:priorVersion <http://entsoe.eu/CIM/EquipmentBoundary/3/1> ;
-  owl:versionIRI <http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/3.0> ;
+  owl:priorVersion <http://entsoe.eu/CIM/DiagramLayout/3/1> ;
+  owl:versionIRI <http://iec.ch/TC57/ns/CIM/DiagramLayout-EU/3.0> ;
   owl:versionInfo "3.0.0"@en .
 
-cim:BaseVoltage.VoltageLevel a rdf:Property ;
-  rdfs:label "VoltageLevel"@en ;
-  rdfs:comment "The voltage levels having this base voltage." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:VoltageLevel.BaseVoltage ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:BaseVoltage ;
-  rdfs:range cim:VoltageLevel .
+cim:AngleDegrees.multiplier a rdf:Property ;
+  rdfs:label "multiplier"@en ;
+  cims:isFixed "none" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range cim:UnitMultiplier .
 
-cim:BaseVoltage.nominalVoltage a rdf:Property ;
-  rdfs:label "nominalVoltage"@en ;
-  rdfs:comment "The power system resource's base voltage.  Shall be a positive value and not zero." ;
-  cims:dataType cim:Voltage ;
+cim:AngleDegrees.unit a rdf:Property ;
+  rdfs:label "unit"@en ;
+  cims:isFixed "deg" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees ;
+  rdfs:range cim:UnitSymbol .
+
+cim:AngleDegrees.value a rdf:Property ;
+  rdfs:label "value"@en ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:AngleDegrees .
+
+cim:Diagram.DiagramElements a rdf:Property ;
+  rdfs:label "DiagramElements"@en ;
+  rdfs:comment "A diagram is made up of multiple diagram objects." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:DiagramObject.Diagram ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range cim:DiagramObject .
+
+cim:Diagram.DiagramStyle a rdf:Property ;
+  rdfs:label "DiagramStyle"@en ;
+  rdfs:comment "A Diagram may have a DiagramStyle." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:DiagramStyle.Diagram ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range cim:DiagramStyle .
+
+cim:Diagram.orientation a rdf:Property ;
+  rdfs:label "orientation"@en ;
+  rdfs:comment "Coordinate system orientation of the diagram. A positive orientation gives standard “right-hand” orientation, with negative orientation indicating a “left-hand” orientation. For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top. A negative orientation gives the “left-hand” orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom." ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:BaseVoltage .
+  rdfs:domain cim:Diagram ;
+  rdfs:range cim:OrientationKind .
 
-cim:Bay.VoltageLevel a rdf:Property ;
-  rdfs:label "VoltageLevel"@en ;
-  rdfs:comment "The voltage level containing this bay." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:VoltageLevel.Bays ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:Bay ;
-  rdfs:range cim:VoltageLevel .
-
-cim:ConductingEquipment.Terminals a rdf:Property ;
-  rdfs:label "Terminals"@en ;
-  rdfs:comment "Conducting equipment have terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Terminal.ConductingEquipment ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:ConductingEquipment ;
-  rdfs:range cim:Terminal .
-
-cim:ConnectivityNode.ConnectivityNodeContainer a rdf:Property ;
-  rdfs:label "ConnectivityNodeContainer"@en ;
-  rdfs:comment "Container of this connectivity node." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:ConnectivityNodeContainer.ConnectivityNodes ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:ConnectivityNode ;
-  rdfs:range cim:ConnectivityNodeContainer .
-
-cim:ConnectivityNode.Terminals a rdf:Property ;
-  rdfs:label "Terminals"@en ;
-  rdfs:comment "Terminals interconnected with zero impedance at a this connectivity node. " ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Terminal.ConnectivityNode ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:ConnectivityNode ;
-  rdfs:range cim:Terminal .
-
-cim:ConnectivityNodeContainer.ConnectivityNodes a rdf:Property ;
-  rdfs:label "ConnectivityNodes"@en ;
-  rdfs:comment "Connectivity nodes which belong to this connectivity node container." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:ConnectivityNode.ConnectivityNodeContainer ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:ConnectivityNodeContainer ;
-  rdfs:range cim:ConnectivityNode .
-
-cim:Equipment.EquipmentContainer a rdf:Property ;
-  rdfs:label "EquipmentContainer"@en ;
-  rdfs:comment "Container of this equipment." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:EquipmentContainer.Equipments ;
+cim:Diagram.x1InitialView a rdf:Property ;
+  rdfs:label "x1InitialView"@en ;
+  rdfs:comment "X coordinate of the first corner of the initial view." ;
+  cims:dataType cim:Float ;
   cims:multiplicity cims:M:0..1 ;
-  rdfs:domain cim:Equipment ;
-  rdfs:range cim:EquipmentContainer .
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Diagram .
 
-cim:EquipmentContainer.Equipments a rdf:Property ;
-  rdfs:label "Equipments"@en ;
-  rdfs:comment "Contained equipment." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Equipment.EquipmentContainer ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:EquipmentContainer ;
-  rdfs:range cim:Equipment .
+cim:Diagram.x2InitialView a rdf:Property ;
+  rdfs:label "x2InitialView"@en ;
+  rdfs:comment "X coordinate of the second corner of the initial view." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Diagram .
 
-cim:GeographicalRegion.Regions a rdf:Property ;
-  rdfs:label "Regions"@en ;
-  rdfs:comment "All sub-geographical regions within this geographical region." ;
+cim:Diagram.y1InitialView a rdf:Property ;
+  rdfs:label "y1InitialView"@en ;
+  rdfs:comment "Y coordinate of the first corner of the initial view." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Diagram .
+
+cim:Diagram.y2InitialView a rdf:Property ;
+  rdfs:label "y2InitialView"@en ;
+  rdfs:comment "Y coordinate of the second corner of the initial view." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:Diagram .
+
+cim:DiagramObject.Diagram a rdf:Property ;
+  rdfs:label "Diagram"@en ;
+  rdfs:comment "A diagram object is part of a diagram." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:Diagram.DiagramElements ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:Diagram .
+
+cim:DiagramObject.DiagramObjectPoints a rdf:Property ;
+  rdfs:label "DiagramObjectPoints"@en ;
+  rdfs:comment "A diagram object can have 0 or more points to reflect its layout position, routing (for polylines) or boundary (for polygons)." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:SubGeographicalRegion.Region ;
+  cims:inverseRoleName cim:DiagramObjectPoint.DiagramObject ;
   cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:GeographicalRegion ;
-  rdfs:range cim:SubGeographicalRegion .
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:DiagramObjectPoint .
+
+cim:DiagramObject.DiagramObjectStyle a rdf:Property ;
+  rdfs:label "DiagramObjectStyle"@en ;
+  rdfs:comment "A diagram object has a style associated that provides a reference for the style used in the originating system." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:DiagramObjectStyle.StyledObjects ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:DiagramObjectStyle .
+
+cim:DiagramObject.IdentifiedObject a rdf:Property ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "The domain object to which this diagram object is associated." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:IdentifiedObject.DiagramObjects ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:IdentifiedObject .
+
+cim:DiagramObject.VisibilityLayers a rdf:Property ;
+  rdfs:label "VisibilityLayers"@en ;
+  rdfs:comment "A diagram object can be part of multiple visibility layers." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:VisibilityLayer.VisibleObjects ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:VisibilityLayer .
+
+cim:DiagramObject.drawingOrder a rdf:Property ;
+  rdfs:label "drawingOrder"@en ;
+  rdfs:comment "The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObject .
+
+cim:DiagramObject.isPolygon a rdf:Property ;
+  rdfs:label "isPolygon"@en ;
+  rdfs:comment "Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected." ;
+  cims:dataType cim:Boolean ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObject .
+
+cim:DiagramObject.offsetX a rdf:Property ;
+  rdfs:label "offsetX"@en ;
+  rdfs:comment """The offset in the X direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).
+
+The offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right.""" ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObject .
+
+cim:DiagramObject.offsetY a rdf:Property ;
+  rdfs:label "offsetY"@en ;
+  rdfs:comment """The offset in the Y direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).
+
+The offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis.""" ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObject .
+
+cim:DiagramObject.rotation a rdf:Property ;
+  rdfs:label "rotation"@en ;
+  rdfs:comment """Sets the angle of rotation of the diagram object.  Zero degrees is pointing to the top of the diagram.  Rotation is clockwise.  DiagramObject.rotation=0 has the following meaning: The connection point of an element which has one terminal is pointing to the top side of the diagram. The connection point "From side" of an element which has more than one terminal is pointing to the top side of the diagram.
+DiagramObject.rotation=90 has the following meaning: The connection point of an element which has one terminal is pointing to the right hand side of the diagram. The connection point "From side" of an element which has more than one terminal is pointing to the right hand side of the diagram.""" ;
+  cims:dataType cim:AngleDegrees ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObject .
+
+cim:DiagramObjectGluePoint.DiagramObjectPoints a rdf:Property ;
+  rdfs:label "DiagramObjectPoints"@en ;
+  rdfs:comment "A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:DiagramObjectPoint.DiagramObjectGluePoint ;
+  cims:multiplicity cims:M:2..n ;
+  rdfs:domain cim:DiagramObjectGluePoint ;
+  rdfs:range cim:DiagramObjectPoint .
+
+cim:DiagramObjectPoint.DiagramObject a rdf:Property ;
+  rdfs:label "DiagramObject"@en ;
+  rdfs:comment "The diagram object with which the points are associated." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:DiagramObject.DiagramObjectPoints ;
+  cims:multiplicity cims:M:1 ;
+  rdfs:domain cim:DiagramObjectPoint ;
+  rdfs:range cim:DiagramObject .
+
+cim:DiagramObjectPoint.DiagramObjectGluePoint a rdf:Property ;
+  rdfs:label "DiagramObjectGluePoint"@en ;
+  rdfs:comment "The 'glue' point to which this point is associated." ;
+  cims:AssociationUsed "Yes" ;
+  cims:inverseRoleName cim:DiagramObjectGluePoint.DiagramObjectPoints ;
+  cims:multiplicity cims:M:0..1 ;
+  rdfs:domain cim:DiagramObjectPoint ;
+  rdfs:range cim:DiagramObjectGluePoint .
+
+cim:DiagramObjectPoint.sequenceNumber a rdf:Property ;
+  rdfs:label "sequenceNumber"@en ;
+  rdfs:comment "The sequence position of the point, used for defining the order of points for diagram objects acting as a polyline or polygon with more than one point. The attribute shall be a positive value." ;
+  cims:dataType cim:Integer ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObjectPoint .
+
+cim:DiagramObjectPoint.xPosition a rdf:Property ;
+  rdfs:label "xPosition"@en ;
+  rdfs:comment "The X coordinate of this point." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObjectPoint .
+
+cim:DiagramObjectPoint.yPosition a rdf:Property ;
+  rdfs:label "yPosition"@en ;
+  rdfs:comment "The Y coordinate of this point." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObjectPoint .
+
+cim:DiagramObjectPoint.zPosition a rdf:Property ;
+  rdfs:label "zPosition"@en ;
+  rdfs:comment "The Z coordinate of this point." ;
+  cims:dataType cim:Float ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:DiagramObjectPoint .
+
+cim:DiagramObjectStyle.StyledObjects a rdf:Property ;
+  rdfs:label "StyledObjects"@en ;
+  rdfs:comment "A style can be assigned to multiple diagram objects." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:DiagramObject.DiagramObjectStyle ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:DiagramObjectStyle ;
+  rdfs:range cim:DiagramObject .
+
+cim:DiagramStyle.Diagram a rdf:Property ;
+  rdfs:label "Diagram"@en ;
+  rdfs:comment "A DiagramStyle can be used by many Diagrams." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:Diagram.DiagramStyle ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:DiagramStyle ;
+  rdfs:range cim:Diagram .
+
+cim:IdentifiedObject.DiagramObjects a rdf:Property ;
+  rdfs:label "DiagramObjects"@en ;
+  rdfs:comment "The diagram objects that are associated with the domain object." ;
+  cims:AssociationUsed "No" ;
+  cims:inverseRoleName cim:DiagramObject.IdentifiedObject ;
+  cims:multiplicity cims:M:0..n ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range cim:DiagramObject .
 
 cim:IdentifiedObject.description a rdf:Property ;
   rdfs:label "description"@en ;
@@ -324,252 +433,40 @@ cim:IdentifiedObject.name a rdf:Property ;
   cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
   rdfs:domain cim:IdentifiedObject .
 
-cim:Line.Region a rdf:Property ;
-  rdfs:label "Region"@en ;
-  rdfs:comment "The sub-geographical region of the line." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:SubGeographicalRegion.Lines ;
-  cims:multiplicity cims:M:0..1 ;
-  rdfs:domain cim:Line ;
-  rdfs:range cim:SubGeographicalRegion .
-
-cim:SubGeographicalRegion.Lines a rdf:Property ;
-  rdfs:label "Lines"@en ;
-  rdfs:comment "The lines within the sub-geographical region." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Line.Region ;
-  cims:multiplicity cims:M:0..n ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
-  rdfs:domain cim:SubGeographicalRegion ;
-  rdfs:range cim:Line .
-
-cim:SubGeographicalRegion.Region a rdf:Property ;
-  rdfs:label "Region"@en ;
-  rdfs:comment "The geographical region which this sub-geographical region is within." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:GeographicalRegion.Regions ;
+cim:TextDiagramObject.text a rdf:Property ;
+  rdfs:label "text"@en ;
+  rdfs:comment "The text that is displayed by this text diagram object." ;
+  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  rdfs:domain cim:SubGeographicalRegion ;
-  rdfs:range cim:GeographicalRegion .
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  rdfs:domain cim:TextDiagramObject .
 
-cim:SubGeographicalRegion.Substations a rdf:Property ;
-  rdfs:label "Substations"@en ;
-  rdfs:comment "The substations in this sub-geographical region." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Substation.Region ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:SubGeographicalRegion ;
-  rdfs:range cim:Substation .
-
-cim:Substation.Region a rdf:Property ;
-  rdfs:label "Region"@en ;
-  rdfs:comment "The SubGeographicalRegion containing the substation." ;
+cim:VisibilityLayer.VisibleObjects a rdf:Property ;
+  rdfs:label "VisibleObjects"@en ;
+  rdfs:comment "A visibility layer can contain one or more diagram objects." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:SubGeographicalRegion.Substations ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:Substation ;
-  rdfs:range cim:SubGeographicalRegion .
+  cims:inverseRoleName cim:DiagramObject.VisibilityLayers ;
+  cims:multiplicity cims:M:1..n ;
+  rdfs:domain cim:VisibilityLayer ;
+  rdfs:range cim:DiagramObject .
 
-cim:Substation.VoltageLevels a rdf:Property ;
-  rdfs:label "VoltageLevels"@en ;
-  rdfs:comment "The voltage levels within this substation." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:VoltageLevel.Substation ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:Substation ;
-  rdfs:range cim:VoltageLevel .
-
-cim:Terminal.ConductingEquipment a rdf:Property ;
-  rdfs:label "ConductingEquipment"@en ;
-  rdfs:comment "The conducting equipment of the terminal.  Conducting equipment have  terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:ConductingEquipment.Terminals ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:Terminal ;
-  rdfs:range cim:ConductingEquipment .
-
-cim:Terminal.ConnectivityNode a rdf:Property ;
-  rdfs:label "ConnectivityNode"@en ;
-  rdfs:comment "The connectivity node to which this terminal connects with zero impedance." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:ConnectivityNode.Terminals ;
-  cims:multiplicity cims:M:0..1 ;
-  rdfs:domain cim:Terminal ;
-  rdfs:range cim:ConnectivityNode .
-
-cim:Voltage.multiplier a rdf:Property ;
-  rdfs:label "multiplier"@en ;
-  cims:isFixed "k" ;
+cim:VisibilityLayer.drawingOrder a rdf:Property ;
+  rdfs:label "drawingOrder"@en ;
+  rdfs:comment "The drawing order for this layer.  The higher the number, the later the layer and the objects within it are rendered." ;
+  cims:dataType cim:Integer ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Voltage ;
-  rdfs:range cim:UnitMultiplier .
+  rdfs:domain cim:VisibilityLayer .
 
-cim:Voltage.unit a rdf:Property ;
-  rdfs:label "unit"@en ;
-  cims:isFixed "V" ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Voltage ;
-  rdfs:range cim:UnitSymbol .
+cim:OrientationKind.negative a cim:OrientationKind ;
+  rdfs:label "negative"@en ;
+  rdfs:comment "For 2D diagrams, a negative orientation gives the left-hand orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.   This is also known as a left hand orientation." ;
+  cims:stereotype "enum" .
 
-cim:Voltage.value a rdf:Property ;
-  rdfs:label "value"@en ;
-  cims:dataType cim:Float ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Voltage .
-
-cim:VoltageLevel.BaseVoltage a rdf:Property ;
-  rdfs:label "BaseVoltage"@en ;
-  rdfs:comment "The base voltage used for all equipment within the voltage level." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:BaseVoltage.VoltageLevel ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:VoltageLevel ;
-  rdfs:range cim:BaseVoltage .
-
-cim:VoltageLevel.Bays a rdf:Property ;
-  rdfs:label "Bays"@en ;
-  rdfs:comment "The bays within this voltage level." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Bay.VoltageLevel ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:VoltageLevel ;
-  rdfs:range cim:Bay .
-
-cim:VoltageLevel.Substation a rdf:Property ;
-  rdfs:label "Substation"@en ;
-  rdfs:comment "The substation of the voltage level." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:Substation.VoltageLevels ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:VoltageLevel ;
-  rdfs:range cim:Substation .
-
-cim:VoltageLevel.highVoltageLimit a rdf:Property ;
-  rdfs:label "highVoltageLimit"@en ;
-  rdfs:comment """The bus bar's high voltage limit.
-The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with lowVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.""" ;
-  cims:dataType cim:Voltage ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:VoltageLevel .
-
-cim:VoltageLevel.lowVoltageLimit a rdf:Property ;
-  rdfs:label "lowVoltageLimit"@en ;
-  rdfs:comment """The bus bar's low voltage limit.
-The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with highVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.""" ;
-  cims:dataType cim:Voltage ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:VoltageLevel .
-
-eu:BoundaryPoint.ConnectivityNode a rdf:Property ;
-  rdfs:label "ConnectivityNode"@en ;
-  rdfs:comment "The connectivity node that is designated as a boundary point." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName eu:ConnectivityNode.BoundaryPoint ;
-  cims:multiplicity cims:M:1 ;
-  cims:stereotype "European" ;
-  rdfs:domain eu:BoundaryPoint ;
-  rdfs:range cim:ConnectivityNode .
-
-eu:BoundaryPoint.fromEndIsoCode a rdf:Property ;
-  rdfs:label "fromEndIsoCode"@en ;
-  rdfs:comment """The ISO code of the region which the "From" side of the Boundary point belongs to or it is connected to.
-The ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum.""" ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
-
-eu:BoundaryPoint.fromEndName a rdf:Property ;
-  rdfs:label "fromEndName"@en ;
-  rdfs:comment """A human readable name with length of the string 64 characters maximum. It covers the following two cases:
--if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the "From" side of the tie-line is connected to.
--if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the "From" side of the Boundary point is connected to.""" ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
-
-eu:BoundaryPoint.fromEndNameTso a rdf:Property ;
-  rdfs:label "fromEndNameTso"@en ;
-  rdfs:comment "Identifies the name of the transmission system operator, distribution system operator or other entity at which the \"From\" side of the interconnection is connected to. The length of the string is 64 characters maximum." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
-
-eu:BoundaryPoint.isDirectCurrent a rdf:Property ;
-  rdfs:label "isDirectCurrent"@en ;
-  rdfs:comment "If true, this boundary point is a point of common coupling (PCC) of a direct current (DC) interconnection, otherwise the interconnection is AC (default)." ;
-  cims:dataType cim:Boolean ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
-
-eu:BoundaryPoint.isExcludedFromAreaInterchange a rdf:Property ;
-  rdfs:label "isExcludedFromAreaInterchange"@en ;
-  rdfs:comment "If true, this boundary point is on the interconnection that is excluded from control area interchange calculation and consequently has no related tie flows. Otherwise, the interconnection is included in control area interchange and a TieFlow is required at all sides of the boundary point (default)." ;
-  cims:dataType cim:Boolean ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
-
-eu:BoundaryPoint.toEndIsoCode a rdf:Property ;
-  rdfs:label "toEndIsoCode"@en ;
-  rdfs:comment """The ISO code of the region which the "To" side of the Boundary point belongs to or is connected to.
-The ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum.""" ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
-
-eu:BoundaryPoint.toEndName a rdf:Property ;
-  rdfs:label "toEndName"@en ;
-  rdfs:comment """A human readable name with length of the string 64 characters maximum. It covers the following two cases:
--if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the "To" side of the tie-line is connected to.
--if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the "To" side of the Boundary point is connected to.""" ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
-
-eu:BoundaryPoint.toEndNameTso a rdf:Property ;
-  rdfs:label "toEndNameTso"@en ;
-  rdfs:comment "Identifies the name of the transmission system operator, distribution system operator or other entity at which the \"To\" side of the interconnection is connected to. The length of the string is 64 characters maximum." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
-
-eu:ConnectivityNode.BoundaryPoint a rdf:Property ;
-  rdfs:label "BoundaryPoint"@en ;
-  rdfs:comment "The boundary point associated with the connectivity node." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName eu:BoundaryPoint.ConnectivityNode ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European" ;
-  rdfs:domain cim:ConnectivityNode ;
-  rdfs:range eu:BoundaryPoint .
-
-eu:IdentifiedObject.energyIdentCodeEic a rdf:Property ;
-  rdfs:label "energyIdentCodeEic"@en ;
-  rdfs:comment "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European", "deprecated", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
-
-eu:IdentifiedObject.shortName a rdf:Property ;
-  rdfs:label "shortName"@en ;
-  rdfs:comment "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European", "deprecated", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+cim:OrientationKind.positive a cim:OrientationKind ;
+  rdfs:label "positive"@en ;
+  rdfs:comment "For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top.  This is also known as a right hand orientation." ;
+  cims:stereotype "enum" .
 
 cim:UnitMultiplier.E a cim:UnitMultiplier ;
   rdfs:label "E"@en ;
@@ -1385,8 +1282,21 @@ cim:UnitSymbol.tonne a cim:UnitSymbol ;
   rdfs:comment "Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg)." ;
   cims:stereotype "enum" .
 
-eqbd:Package_EquipmentBoundaryProfile a cims:ClassCategory ;
-  rdfs:label "EquipmentBoundaryProfile"@en ;
-  rdfs:comment "This profile is deprecated. Use core equipment profile part of the IEC 61970-452 document. " .
+dl:Package_DiagramLayoutProfile a cims:ClassCategory ;
+  rdfs:label "DiagramLayoutProfile"@en ;
+  rdfs:comment """This standard specifies an exchange profile for schematics with the following characteristics.
+A generic method for linking the diagram object to the domain data. Domain data and diagram layout data can be exchanged together with the domain data, or separately from each other with the assumption that domain data will have already been imported should diagram layout data be imported separately.
+It does not require or imply a specific domain data format. Therefore, it supports domain data modelled according to the IEC 61970-301 Common information model (CIM) that is exchanged in the IEC 61970-501 format (CIM RDF schema). Diagram layout data references domain data in compliance with IEC/TR 62541-1, <i>OPC Unified Architecture</i>).
+The intended usage of this standard is that the source of a diagram will use the standard to encode the layout of their diagram as they created it. It is then incumbent upon any receiver to supply the means of using that diagram layout in their system.
+<ul>
+\t<li>In the simplest situation, if the source uses Switch object placements, the receiver creates a generic Switch template in the receiver's system that will be used to render Switches (i.e. there is no exchange of Switch templates).</li>
+\t<li>In more complex situations, a 1:1 correspondence may not be desirable, and receivers may have to create generic transformations in order to use exchanges.</li>
+\t<li>However, in both situations, it is expected that once an investment is made in a strategy for rendering, repeated imports may be carried out automatically.</li>
+</ul>
+Supports the exchange of diagram objects that have no relationship to domain data, i.e., pure static background objects.
+Supports multiple representations of the same domain object in the same or different diagrams.
+Allows the diagram to be used as the unit of exchange, providing a straightforward approach to partial exchange, or an exchange between systems that have a separate model and repository for diagram layout data. 
+Supports assignment of diagram objects to layers or other means, for showing or hiding information based on zoom level and/or user interest.
+A generic method for proprietary extensions to enable full round tripping (export and import back into the same system) without information loss within a system, and without breaking the standard exchange format.""" .
 
 

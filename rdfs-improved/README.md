@@ -7,10 +7,12 @@
     - [RDF Serializations](#rdf-serializations)
         - [Turtle Serialization Tools](#turtle-serialization-tools)
             - [atextor tools: owl-cli and turtle-formatter](#atextor-tools-owl-cli-and-turtle-formatter)
-            - [EDMC Tools](#edmc-tools)
+            - [EDMC Tools for serialization, diff, hygiene checks, publication](#edmc-tools-for-serialization-diff-hygiene-checks-publication)
             - [OBO Robot](#obo-robot)
 - [Fixes](#fixes)
     - [Use Only One of RDFS2020 and RDFSEd2Beta Style](#use-only-one-of-rdfs2020-and-rdfsed2beta-style)
+        - [Namespace Discrepancies in RDFS2020 CGMES vs NC](#namespace-discrepancies-in-rdfs2020-cgmes-vs-nc)
+    - [Merge and Fix DatasetMetadata, Header, FileHeader](#merge-and-fix-datasetmetadata-header-fileheader)
     - [Duplication Between Ontologies](#duplication-between-ontologies)
         - [Duplicated Definitions](#duplicated-definitions)
         - [Duplicated Terms](#duplicated-terms)
@@ -41,6 +43,7 @@
     - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
 - [Fix Technical Notes](#fix-technical-notes)
     - [Fix Structure](#fix-structure)
+    - [Fix Ordering and List](#fix-ordering-and-list)
     - [Fix Debugging](#fix-debugging)
 
 <!-- markdown-toc end -->
@@ -123,7 +126,9 @@ I posted a large number of issues. As of 17-Sep-2024:
   - #14 log messages should go to STDERR not STDOUT bug:
     It just means that we must specify the output filename when running it
 
-#### EDMC Tools
+#### EDMC Tools for serialization, diff, hygiene checks, publication
+https://github.com/Sveino/Inst4CIM-KG/issues/58
+
 Elisa Kendall (one of the main FIBO ontologists):
 
 There is an open-source tool available from the EDM Council for converting between RDF/XML, Turtle, and JSON-LD and for consistent serialization of any of these representations of RDF and OWL. The GitHub site for it is https://github.com/edmcouncil/rdf-toolkit. It is actively maintained, freely available, and addresses a number of issues mentioned on the thread, among other things. It also allows users to turn any of its features on/off as desired. It runs on the command line, or can be invoked automatically through GitHub commit hooks, for example.
@@ -131,6 +136,12 @@ There is an open-source tool available from the EDM Council for converting betwe
 For collaborative work across development teams for large ontology projects, consistent serialization for comparison purposes was one of our first and relatively important issues. It enables visual comparison in GitHub (and likely other source code management systems), so that anyone reviewing the changes can see exactly what changed, down to the single character level. 
 
 We also have a pipeline that looks for a myriad of issues in ontologies, performs regression testing using examples and reference data, and includes an html-based publication process that itself has a comparison feature, enabling comparison of any pull request or prior release with another version or with the latest version. The code for this is also open source, available from the EDM Council GitHub repository, though support is required for hosting and customization.
+
+- https://spec.edmcouncil.org/fibo/ontology/ it's really quite an interesting system for publishing an ontology.
+- Is there a document explaining how all the EDMCouncil tools are stitched together to achieve this?
+- Paweł Garbacz: see [An Infrastructure for Collaborative Ontology Development](https://ebooks.iospress.nl/pdf/doi/10.3233/FAIA210375).
+  Dean Allemang, Pawel Garbacz, Przemysław Grądzki, Elisa Kendall, Robert Trypuz.
+  Formal Ontology in Information Systems, DOI 10.3233/FAIA210375
 
 #### OBO Robot
 https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](https://github.com/ontodev/robot/releases) page 
@@ -163,6 +174,130 @@ NC 2.3 uses the older RDFS2020 style, CGMES 3.0 is available in the older and th
 The issue listed above includes a growing list of tasks, so we won't repeat them here.
 - In effect, the SPARQL Updates will upgrade from the old to the new style
 - While avoiding the regressions (bugs) present in the new style
+
+### Namespace Discrepancies in RDFS2020 CGMES vs NC
+https://github.com/Sveino/Inst4CIM-KG/issues/68
+
+Even limiting to the RDFS2020 style only, there are some discrepancies between CGMES and NC:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+PREFIX cim: <http://iec.ch/TC57/CIM100#>
+select * {
+    ?prop cims:dataType ?qk1,?qk2
+    filter(str(?qk1)<str(?qk2))
+} order by ?prop
+```
+| prop                                  | qk1           | qk2                               |
+|---------------------------------------|---------------|-----------------------------------|
+| dm:DifferenceModel.forwardDifferences | rdf:Statement | rdf:Statements                    |
+| dm:DifferenceModel.preconditions      | rdf:Statement | rdf:Statements                    |
+| dm:DifferenceModel.reverseDifferences | rdf:Statement | rdf:Statements                    |
+| md:Model.created                      | cim:DateTime  | https://cim.ucaiug.io/ns#DateTime |
+| md:Model.description                  | cim:String    | https://cim.ucaiug.io/ns#String   |
+| md:Model.modelingAuthoritySet         | eu:URI        | https://cim.ucaiug.io/ns/eu#URI   |
+| md:Model.profile                      | eu:URI        | https://cim.ucaiug.io/ns/eu#URI   |
+| md:Model.scenarioTime                 | cim:DateTime  | https://cim.ucaiug.io/ns#DateTime |
+| md:Model.version                      | cim:Integer   | https://cim.ucaiug.io/ns#String   |
+
+- Use different `cim, eu` namespaces
+- Use `rdf:Statement` vs `rdf:Statements` (but neither is correct: https://github.com/Sveino/Inst4CIM-KG/issues/53)
+
+Actually this problem goes much deeper:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+PREFIX cim: <http://iec.ch/TC57/CIM100#>
+select ?qk (count(*) as ?c) {
+    ?prop cims:dataType ?qk
+} group by ?qk order by ?qk
+```
+We can see that most properties are shown twice in two different namespaces, eg:
+- 100 https://cim.ucaiug.io/ns#ActivePower
+- 73 http://iec.ch/TC57/CIM100#ActivePower 
+
+We can confirm this by looking at the files (I've deleted namespaces that are the same):
+```
+head -10 CGMES-NC/ttl/AssessedElement-AP-Voc-RDFS2020.ttl
+@prefix     cim: <https://cim.ucaiug.io/ns#> .
+@prefix      nc: <https://cim4.eu/ns/nc#> .
+@prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
+
+$ head -10 CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS2020_EQ.ttl
+@prefix     cim: <http://iec.ch/TC57/CIM100#> .
+@prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix      eu: <http://iec.ch/TC57/CIM100-European#> .
+```
+
+We find all namespaces, and all discrepant (duplicate) prefixes like this:
+```
+grep -h '^@prefix' */*/*|perl -pe 's{\@prefix *}{}'|sort|uniq >prefixes.txt
+cut -f1 -d ' ' prefixes.txt|uniq -d
+
+cim:
+dm:
+eu:
+```
+
+## Merge and Fix DatasetMetadata, Header, FileHeader
+https://github.com/Sveino/Inst4CIM-KG/issues/69
+
+There are 3 ontologies `DatasetMetadata, Header, FileHeader` with overlapping scope.
+Several of the ontology terms are defined in 2 of the 3, indicating the need to merge:
+```
+grep -E '(dm:|eumd:)\w' */*/*
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:DateTimeStamp a rdfs:Class ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Ontology a owl:Ontology ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:Model1 a rdf:Property ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:usedSettings ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:Model2 a rdf:Property ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:processType ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:processType a rdf:Property ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model2 ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:usedSettings a rdf:Property ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model1 ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Package_DatasetMetadataProfile a cims:ClassCategory ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Package_DocDatasetMetadataProfile a cims:ClassCategory ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel a rdfs:Class ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:DateTimeStamp a rdfs:Class ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.forwardDifferences a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.preconditions a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.reverseDifferences a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model.applicationSoftware a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model1 a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:usedSettings ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model2 a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:processType ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:processType a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model2 ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:usedSettings a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model1 ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel a rdfs:Class ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.forwardDifferences a rdf:Property ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.preconditions a rdf:Property ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.reverseDifferences a rdf:Property ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
+```
+In addition:
+- `eumd:DateTimeStamp` is wrong
+- `eumd:Model1, eumd:Model2` are junk prop names
 
 ## Duplication Between Ontologies
 https://github.com/Sveino/Inst4CIM-KG/issues/5
@@ -1239,6 +1374,19 @@ where {
 
 SPARQL Update allows multiple update blocks separated with semicolon, and intervening prefixes.
 This approach allows us to run fixes one by one, or all at once.
+
+## Fix Ordering and List
+
+Here's a proposed ordering (and numbering) of the fixes, with reasons why.
+We also track status with the tag "DONE" and by adding a link to the fix.
+
+- 02 [Namespace Discrepancies in RDFS2020 CGMES vs NC](#namespace-discrepancies-in-rdfs2020-cgmes-vs-nc) #68, [Mis-defined Prefixes](#mis-defined-prefixes) #13
+  - Else other fixes become much harder because they need to deal with pairs of namespaces
+  - This is best done with a script not SPARQL update
+  - [fix-namespaces.pl](fix-namespaces.pl)
+- 01 [Whitespace in Definitions](#whitespace-in-definitions) #6
+  - Because it's independent of the others
+  - DONE [fix01-whitespace-6.ru](fix01-whitespace-6.ru)
 
 ## Fix Debugging
 

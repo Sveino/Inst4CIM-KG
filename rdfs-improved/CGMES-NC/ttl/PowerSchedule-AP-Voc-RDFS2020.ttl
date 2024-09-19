@@ -4,7 +4,7 @@
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
 @prefix      ps: <https://ap-voc.cim4.eu/PowerSchedule#> .
 @prefix    dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix     owl: <http://www.w3.org/2002/07/owl#> .
 @prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -261,16 +261,16 @@ profcim:URL a rdfs:Class ;
 ps:Ontology a owl:Ontology ;
   dcat:keyword "PS" ;
   dcat:theme "vocabulary"@en ;
-  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
-  dcterms:creator "ENTSO-E CIM WG NC project "@en ;
-  dcterms:description "This vocabulary is describing the object registry profile."@en ;
-  dcterms:identifier "urn:uuid:470c9792-7798-4eb6-b7f2-6e18293c5f7b" ;
-  dcterms:language "en-GB" ;
-  dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
-  dcterms:publisher "ENTSO-E"@en ;
-  dcterms:rightsHolder "ENTSO-E"@en ;
-  dcterms:title "Power schedule vocabulary"@en ;
+  dct:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:creator "ENTSO-E CIM WG NC project "@en ;
+  dct:description "This vocabulary is describing the object registry profile."@en ;
+  dct:identifier "urn:uuid:470c9792-7798-4eb6-b7f2-6e18293c5f7b" ;
+  dct:language "en-GB" ;
+  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  dct:title "Power schedule vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2> ;
   owl:versionIRI <https://ap-voc.cim4.eu/PowerSchedule/2.3> ;
   owl:versionInfo "2.3.1"@en .

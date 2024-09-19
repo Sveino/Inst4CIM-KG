@@ -4,7 +4,7 @@
 @prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
 @prefix      gd: <https://ap-voc.cim4.eu/GridDisturbance#> .
 @prefix    dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix     owl: <http://www.w3.org/2002/07/owl#> .
 @prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -309,16 +309,16 @@ profcim:URL a rdfs:Class ;
 gd:Ontology a owl:Ontology ;
   dcat:keyword "GD" ;
   dcat:theme "vocabulary"@en ;
-  dcterms:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
-  dcterms:creator "ENTSO-E CIM WG PRA project "@en ;
-  dcterms:description "This vocabulary is describing the grid disturbance profile."@en ;
-  dcterms:identifier "urn:uuid:81c488d7-a09f-49ef-a3cd-3bb19a1d6f16" ;
-  dcterms:language "en-GB" ;
-  dcterms:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dcterms:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
-  dcterms:publisher "ENTSO-E"@en ;
-  dcterms:rightsHolder "ENTSO-E"@en ;
-  dcterms:title "Grid Disturbance vocabulary"@en ;
+  dct:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:creator "ENTSO-E CIM WG PRA project "@en ;
+  dct:description "This vocabulary is describing the grid disturbance profile."@en ;
+  dct:identifier "urn:uuid:81c488d7-a09f-49ef-a3cd-3bb19a1d6f16" ;
+  dct:language "en-GB" ;
+  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  dct:title "Grid Disturbance vocabulary"@en ;
   owl:versionIRI <https://ap-voc.cim4.eu/GridDisturbance/1.1> ;
   owl:versionInfo "1.1.1"@en .
 
