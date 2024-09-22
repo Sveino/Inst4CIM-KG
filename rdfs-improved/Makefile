@@ -1,11 +1,18 @@
+.PHONY: all dirs ttl1 ttl rm-ttl clean fix-all
+
 all::
-	 @echo "targets: dirs, clean (zero files), ttl, rm-ttl"
+	 @echo "targets: dirs, clean (zero files), fix-all (concat fix*.ru), ttl1 (for testing), ttl, rm-ttl"
+
+FIX-ALL = $(wildcard fix[0-9]*)
 
 CGMES_RDF    = $(wildcard ../source/CGMES/v3.0/RDFS2020/*)
 CGMES_NC_RDF = $(wildcard ../source/CGMES-NC/r2.3/ap-voc/rdf/*)
 
-CGMES_TTL    = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf, CGMES/ttl/%.ttl,    $(CGMES_RDF))
-CGMES_NC_TTL = $(patsubst ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf,    CGMES-NC/ttl/%.ttl, $(CGMES_NC_RDF))
+CGMES_TTL    = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/ttl/%.ttl,    $(CGMES_RDF))
+CGMES_NC_TTL = $(patsubst ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf, CGMES-NC/ttl/%.ttl, $(CGMES_NC_RDF))
+
+ONE_RDF      = ../source/CGMES/v3.0/RDFS2020/61970-600-2_Equipment-AP-Voc-RDFS2020_v3-0-0.rdf
+ONE_TTL      = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/ttl/%.ttl,    $(ONE_RDF))
 
 # https://atextor.de/owl-cli/main/snapshot/usage.html#write-command
 # Prefix sorting: CIM/CGMES/NC/model/header/meta, CGMES profiles, NC profiles, other (standard prefixes).
@@ -80,15 +87,25 @@ _2TTL = owl.bat write --prefixAlign=right --useCommaByDefault \
 #  --subjectOrder owl:NamedIndividual
 
 
-RDF2TTL = $(_2TTL) --input=rdfxml
-
 define RDF2FIXTTL
- $(RDF2TTL) $(1) temp.ttl
- perl fix-namespaces.pl temp.ttl > $(2)
- rm temp.ttl
+ $(_2TTL) --input=rdfxml $(1) temp1.ttl
+ perl fix-namespaces.pl temp1.ttl > temp2.ttl
+ update.bat --update=fix-all.ru --data=temp2.ttl --dump > temp3.ttl
+ $(_2TTL) temp3.ttl $(2)
+ rm temp1.ttl temp2.ttl temp3.ttl
 endef
 
-ttl: clean $(CGMES_TTL) $(CGMES_NC_TTL)
+fix-all: fix-all.ru
+
+fix-all.ru: $(FIX-ALL)
+	cat $^ > $@
+	update.bat --update=$@
+
+ttl1::
+	$(call RDF2FIXTTL,$(ONE_RDF),one.ttl)
+	TortoiseGitMerge $(ONE_TTL) one.ttl &
+
+ttl: rm-ttl $(CGMES_TTL) $(CGMES_NC_TTL)
 
 rm-ttl::
 	rm $(CGMES_TTL) $(CGMES_NC_TTL)

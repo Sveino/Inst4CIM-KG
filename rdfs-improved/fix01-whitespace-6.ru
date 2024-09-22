@@ -1,4 +1,4 @@
-﻿# https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#whitespace-in-definitions
+# https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#whitespace-in-definitions
 # https://github.com/Sveino/Inst4CIM-KG/issues/6
 
 delete {?x ?p ?old}
