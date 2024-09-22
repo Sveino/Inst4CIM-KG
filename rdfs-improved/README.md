@@ -36,6 +36,8 @@
         - [Multilinguality in CIM?](#multilinguality-in-cim)
         - [rdf:PlainLiteral](#rdfplainliteral)
     - [Change Class and Property Kinds](#change-class-and-property-kinds)
+    - [Use Standard `inverseOf` Property](#use-standard-inverseof-property)
+    - [Express Multiplicity in OWL](#express-multiplicity-in-owl)
     - [QuantityKinds and Units of Measure](#quantitykinds-and-units-of-measure)
         - [Fixed Units Representation](#fixed-units-representation)
         - [Fixed Multipliers Representation](#fixed-multipliers-representation)
@@ -920,8 +922,24 @@ cim:Temperature.multiplier
   sc:isFixed "True ";
   dy:isFixed "True".
 ```
-- "VA" and "M" are SI unit and multiplier respectively. SI is international, so these codes cannot have lang tags
-- The last one is worst: some profiles map `isFixed` to a value with space, others without a space
+
+The last one is worst: some profiles map `isFixed` to a value with space, others without a space.
+
+In addition, the "en" lang tag is not appropriate for code values.
+Eg "VA" and "M" are SI unit and multiplier respectively. 
+SI is the international system of units, so these codes cannot have lang tags.
+
+This query finds 842 enumerations whose label is marked `@en`:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+select * {
+  ?x ?p ?y; cims:stereotype "enum"
+  filter(lang(?y)="en")
+} order by ?x
+```
+
+Examination shows that the following consist entirely of codes, so we'll remove the lang tag:
+`cim:Currency cim:IfdBaseKind cim:PhaseCode cim:StaticLoadModelKind cim:UnitMultiplier cim:UnitSymbol cim:WindingConnection`
 
 ## HTML Tags and Escaped Entities in Definitions
 https://github.com/Sveino/Inst4CIM-KG/issues/21
@@ -1092,6 +1110,43 @@ The new style changes class and property kinds as follows:
  
 It doesn't mean that we need full OWL reasoning much beyond RDFS.
 We are just being more specific about the nature of properties.
+
+## Use Standard `inverseOf` Property
+https://github.com/Sveino/Inst4CIM-KG/issues/26
+
+Inverses are very important in CIM: each object property has its inverse.
+- So we need to enable Inverse reasoning.
+- For this to work, we need to replace `cims:inverseRoleName` with the standard prop `owl:inverseOf`
+
+## Express Multiplicity in OWL
+https://github.com/Sveino/Inst4CIM-KG/issues/30
+
+CIM properties have rich multiplicity (cardinality) information:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+select ?mult (count(*) as ?c) {
+  ?x cims:multiplicity ?mult
+} group by ?mult order by ?mult 
+```
+
+| mult        |    c |
+|-------------|------|
+| cims:M:0..1 | 1123 |
+| cims:M:0..2 |    2 |
+| cims:M:0..n |  462 |
+| cims:M:1    |  304 |
+| cims:M:1..1 | 3240 |
+| cims:M:1..2 |    1 |
+| cims:M:1..n |  100 |
+| cims:M:2..2 |    2 |
+| cims:M:2..n |    3 |
+
+- Fix `M:1` to `M:1..1` for uniformity
+- Declare single-valued props (`0..1, 1..1`) as `owl:FunctionalProperty`
+- Declare their **inverse** (if any) as `owl:InverseFunctionalProperty`
+
+We keep the `cims:multiplicity` annotation because it has more info than these OWL declarations.
+Such cardinalities are reflected in SHACL, but `cims:multiplicity`  gives easier access to this important info.
 
 ## QuantityKinds and Units of Measure
 https://github.com/Sveino/Inst4CIM-KG/issues/38
@@ -1627,10 +1682,8 @@ We also track status with the tag "DONE" and by adding a link to the fix.
 - 01 [Whitespace in Definitions](#whitespace-in-definitions) #6
   - Because it's independent of the others
   - DONE [fix01-whitespace-6.ru](fix01-whitespace-6.ru)
-- 02 [Use Standard Datatypes](#use-standard-datatypes) #28, #61
+- 02 [Use Standard Datatypes](#use-standard-datatypes) (also deletes CIM Primitive datatypes) #28, #61, #74
   - DONE [fix02-datatypes-74.ru](fix02-datatypes-74.ru)
-- 03 Delete CIM Primitive datatypes #74
-  - TODO fix03-deleteCimDatatypes-74.ru
 - 05 Correct a couple of units #76, #77
   - DONE [fix05-units-76,77.ru](fix05-units-76,77.ru)
 - 06 [Fixed Units Representation](#fixed-units-representation), [Fixed Multipliers Representation](#fixed-multipliers-representation) #38
@@ -1643,3 +1696,11 @@ We also track status with the tag "DONE" and by adding a link to the fix.
   - DONE [fix09-map-qkUnitsMultipliers-38.ru](fix09-map-qkUnitsMultipliers-38.ru)
 - 10 Change Class and Property Kinds from RDFS to OWL #75
   - DONE [fix10-classPropKind.ru](fix10-classPropKind.ru)
+- 11 `cims:inverseRoleName -> owl:inverseOf` #26
+  - DONE [fix11-inverseOf-26.ru](fix11-inverseOf-26.ru)
+- 12 [Express Multiplicity in OWL](#express-multiplicity-in-owl) #30
+  - DONE [fix12-multiplicity-30.ru](fix12-multiplicity-30.ru)
+- 13 [Datatype XMLLiteral in Definitions](#datatype-xmlliteral-in-definitions) #72
+  - DONE [fix13-XMLLiteral-72.ru](fix13-XMLLiteral-72.ru)
+- 14 [Whitespace and Lang Tags in Key Values](#whitespace-and-lang-tags-in-key-values) #47
+  - DONE [fix14-langTagInCodes-47.ru](fix14-langTagInCodes-47.ru)
