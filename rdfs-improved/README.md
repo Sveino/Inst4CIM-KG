@@ -35,6 +35,7 @@
     - [Use Standard Datatypes](#use-standard-datatypes)
         - [Multilinguality in CIM?](#multilinguality-in-cim)
         - [rdf:PlainLiteral](#rdfplainliteral)
+    - [Deprecated Properties](#deprecated-properties)
     - [Change Class and Property Kinds](#change-class-and-property-kinds)
     - [Use Standard `inverseOf` Property](#use-standard-inverseof-property)
     - [Express Multiplicity in OWL](#express-multiplicity-in-owl)
@@ -941,6 +942,16 @@ select * {
 Examination shows that the following consist entirely of codes, so we'll remove the lang tag:
 `cim:Currency cim:IfdBaseKind cim:PhaseCode cim:StaticLoadModelKind cim:UnitMultiplier cim:UnitSymbol cim:WindingConnection`
 
+We don't change eg `eu:LimitKind` although it includes mostly codes (`tatl, tc, tct` etc).
+But it also includes an English phrase: `"warningVoltage"@en`
+
+TODO: `rdfs:comment` does not include lang tag but should, eg:
+```ttl
+eu:LimitKind.operationalVoltageLimit a eu:LimitKind ;
+  rdfs:label "operationalVoltageLimit"@en ;
+  rdfs:comment "Operational voltage limit." ;
+```
+
 ## HTML Tags and Escaped Entities in Definitions
 https://github.com/Sveino/Inst4CIM-KG/issues/21
 
@@ -1100,6 +1111,28 @@ What a text field needs to be mapped to depends on its nature:
 - `rdf:PlainLiteral` is appropriate for texts that may but don't have to be translated, i.e. lang tag is not required. It is defined at https://w3.org/TR/rdf-plain-literal , and means `string` or `langString`.
 
 If you want `cim:String` to allow langStrings, then we should map it to `rdf:PlainLiteral`.
+
+## Deprecated Properties
+https://github.com/Sveino/Inst4CIM-KG/issues/24
+
+This query shows 7 props that are marked as deprecated, using `cims:stereotype`:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+select * {
+  ?p cims:stereotype "deprecated"
+}
+```
+| p                                         |
+|-------------------------------------------|
+| eu: IdentifiedObject.energyIdentCodeEic   |
+| eu: IdentifiedObject.shortName            |
+| cim: SVCControlMode                       |
+| cim: PhaseTapChangerLinear.xMin           |
+| cim: PhaseTapChangerNonLinear.xMin        |
+| cim: StaticVarCompensator.sVCControlMode  |
+| cim: StaticVarCompensator.voltageSetPoint |
+
+We convert this to `owl:deprecated true` and delete `cims:stereotype "deprecated"`, so it has fewer free-text values.
 
 ## Change Class and Property Kinds
 https://github.com/Sveino/Inst4CIM-KG/issues/75
@@ -1263,6 +1296,20 @@ because they are replaced by universal props `cim:multiplier, cim:unitSymbol` re
 
 We delete `cim:ApparentPower.value` because the actual DatatypeProperty `cim:ACDCConverter.baseS`
 now carries a number (`xsd:float`).
+Please note that some classes have actual DatatypeProperties named `.value`.
+We keep those, although in some cases the domain class doesn't have any more data so we could skip it, eg:
+```ttl
+cim:ActivePowerLimit.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Value of active power limit. The attribute shall be a positive value or zero." ;
+  cim:unitMultiplier cim:UnitMultiplier.M ;
+  cim:unitSymbol cim:UnitSymbol.W ;
+  cims:multiplicity cims:M:1..1 ;
+  qudt:hasQuantityKind cim:ActivePower ;
+  qudt:hasUnit unit:MegaW ;
+  rdfs:domain cim:ActivePowerLimit ;
+  rdfs:range xsd:float .
+```
 
 We correct CIM unit symbols and relate them to QUDT:
 ```ttl
@@ -1457,7 +1504,8 @@ We add corresponding QUDT resources (last 3 columns):
 
 We need to submit a MR to QUDT for these new QuantityKinds and Units (https://github.com/qudt/qudt-public-repo/issues/970 ) :
 - Note: `WPers` is used for two different kinds: `ActivePowerPerFrequency` and `ActivePowerChangeRate`.
-  The former is wrong: corrected to `WperHz`
+  The former is wrong: corrected to `WperHz`, and defined `cim:UnitSymbol.WperHz`.
+
 | QuantityKind              | Unit1              | Unit2                  |
 |---------------------------|--------------------|------------------------|
 | ActivePowerChangeRate     | W-PER-SEC          | MegaW-PER-SEC          |
@@ -1471,6 +1519,30 @@ After we add the above kinds, all `QuantityKinds` will be mapped as `skos:exactM
 Almost all `Units` are mapped as `skos:exactMatch` except one:
 - `skos:narrower`: "Hz" is a super-concept of `REV-PER-SEC`: https://github.com/Sveino/Inst4CIM-KG/issues/42 
 
+This is also reflected eg in this property:
+```ttl
+cim:AsynchronousMachine.nominalSpeed a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "nominalSpeed"@en ;
+  rdfs:comment "Nameplate data.  Depends on the slip and number of pole pairs." ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.Hz ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  qudt:hasQuantityKind cim:RotationSpeed ;
+  qudt:hasUnit unit:REV-PER-SEC ;
+  rdfs:domain cim:AsynchronousMachine ;
+  rdfs:range xsd:float .
+```
+- `cim:unitSymbol` is `Hz` (1/s), 
+  which is a bit imprecise for `cim:RotationSpeed`
+- `qudt:hasUnit` is unit:REV-PER-SEC, which is more specific (rotations/s)
+
+CIM includes this more specific unit, but unfortunately it's not used for any property:
+```ttl
+cim:UnitSymbol.rotPers a cim:UnitSymbol ;
+  rdfs:label "rotPers" ;
+  rdfs:comment "Rotations per second (1/s). See also Hz (1/s)." ;
+```
 
 ### Mapping Unit Multipliers
 
@@ -1694,6 +1766,12 @@ We also track status with the tag "DONE" and by adding a link to the fix.
   - DONE [fix08-remove-qkProps-38.ru](fix08-remove-qkProps-38.ru)
 - 09 [Mapping QuantityKinds and Units](#mapping-quantitykinds-and-units), [Mapping Unit Multipliers](#mapping-unit-multipliers) #38
   - DONE [fix09-map-qkUnitsMultipliers-38.ru](fix09-map-qkUnitsMultipliers-38.ru)
+  - TODO: It inserts "standalone" `exactMatch`, even if that CIM quantityKind isn't used in a particular file.
+    I am not sure why this happens, but it's harmless (another file has the full definition of that quantityKind), 
+    so I'll leave it in.
+```
+cim:ActivePowerChangeRate skos:exactMatch quantitykind:ActivePowerChangeRate .
+```
 - 10 Change Class and Property Kinds from RDFS to OWL #75
   - DONE [fix10-classPropKind.ru](fix10-classPropKind.ru)
 - 11 `cims:inverseRoleName -> owl:inverseOf` #26
@@ -1702,5 +1780,9 @@ We also track status with the tag "DONE" and by adding a link to the fix.
   - DONE [fix12-multiplicity-30.ru](fix12-multiplicity-30.ru)
 - 13 [Datatype XMLLiteral in Definitions](#datatype-xmlliteral-in-definitions) #72
   - DONE [fix13-XMLLiteral-72.ru](fix13-XMLLiteral-72.ru)
+  - TODO TODO All these appear in Header, but RDFS2020 doesn't include such ontologies.
+    Which is a problem because `CGMES/v3.0/SHACL/ttl, CGMES-NC/r2.3/ap-con/ttl` include shapes about them!
 - 14 [Whitespace and Lang Tags in Key Values](#whitespace-and-lang-tags-in-key-values) #47
   - DONE [fix14-langTagInCodes-47.ru](fix14-langTagInCodes-47.ru)
+- 15 [Deprecated Properties](#deprecated-properties) #24
+  - DONE [fix15-deprecated-24.ru](fix15-deprecated-24.ru)

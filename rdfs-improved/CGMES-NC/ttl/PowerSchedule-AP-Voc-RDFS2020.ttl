@@ -1,273 +1,30 @@
-@prefix     cim: <https://cim.ucaiug.io/ns#> .
-@prefix      nc: <https://cim4.eu/ns/nc#> .
-@prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
-@prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix      ps: <https://ap-voc.cim4.eu/PowerSchedule#> .
-@prefix    dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix     owl: <http://www.w3.org/2002/07/owl#> .
-@prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
-cim:ActivePower a rdfs:Class ;
-  rdfs:label "ActivePower"@en ;
-  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "CIMDatatype" .
-
-cim:Boolean a rdfs:Class ;
-  rdfs:label "Boolean"@en ;
-  rdfs:comment "A type with the value space \"true\" and \"false\"." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "Primitive" .
-
-cim:Date a rdfs:Class ;
-  rdfs:label "Date"@en ;
-  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
-  cims:belongsToCategory ps:Package_DocPowerScheduleProfile ;
-  cims:stereotype "Primitive" .
-
-cim:DateTime a rdfs:Class ;
-  rdfs:label "DateTime"@en ;
-  rdfs:comment "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "Primitive" .
-
-cim:Decimal a rdfs:Class ;
-  rdfs:label "Decimal"@en ;
-  rdfs:comment "Decimal is the base-10 notational system for representing real numbers." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "Primitive" .
-
-cim:EnergyConnection a rdfs:Class ;
-  rdfs:label "EnergyConnection"@en ;
-  rdfs:comment "A connection of energy generation or consumption on the power system model." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile .
-
-cim:EquivalentInjection a rdfs:Class ;
-  rdfs:label "EquivalentInjection"@en ;
-  rdfs:comment "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile .
-
-cim:Float a rdfs:Class ;
-  rdfs:label "Float"@en ;
-  rdfs:comment "A floating point number. The range is unspecified and not limited." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "Primitive" .
-
-cim:GeneratingUnit a rdfs:Class ;
-  rdfs:label "GeneratingUnit"@en ;
-  rdfs:comment "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile .
-
-cim:HydroPump a rdfs:Class ;
-  rdfs:label "HydroPump"@en ;
-  rdfs:comment "A synchronous motor-driven pump, typically associated with a pumped storage plant." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile .
-
-cim:IdentifiedObject a rdfs:Class ;
-  rdfs:label "IdentifiedObject"@en ;
-  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile .
-
-cim:Integer a rdfs:Class ;
-  rdfs:label "Integer"@en ;
-  rdfs:comment "An integer number. The range is unspecified and not limited." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "Primitive" .
-
-cim:PowerElectronicsUnit a rdfs:Class ;
-  rdfs:label "PowerElectronicsUnit"@en ;
-  rdfs:comment "A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile .
-
-cim:ReactivePower a rdfs:Class ;
-  rdfs:label "ReactivePower"@en ;
-  rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "CIMDatatype" .
-
-cim:String a rdfs:Class ;
-  rdfs:label "String"@en ;
-  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "Primitive" .
-
-cim:UnitMultiplier a rdfs:Class ;
-  rdfs:label "UnitMultiplier"@en ;
-  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
-For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-cim:UnitSymbol a rdfs:Class ;
-  rdfs:label "UnitSymbol"@en ;
-  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
-The integer values are used for harmonization with IEC 61850.""" ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-nc:AreaDispatchableUnit a rdfs:Class ;
-  rdfs:label "AreaDispatchableUnit"@en ;
-  rdfs:comment "Allocates a given producing or consuming unit, including direct current corridor and collection of units, to a given control area (through the scheduling area) for supporting the control of the given area through dispatch instruction. " ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" .
-
-nc:BaseIrregularTimeSeries a rdfs:Class ;
-  rdfs:label "BaseIrregularTimeSeries"@en ;
-  rdfs:comment "Time series that has irregular points in time." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" ;
-  rdfs:subClassOf nc:BaseTimeSeries .
-
-nc:BaseTimeSeries a rdfs:Class ;
-  rdfs:label "BaseTimeSeries"@en ;
-  rdfs:comment "Time series of values at points in time." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-nc:BaseTimeSeriesKind a rdfs:Class ;
-  rdfs:label "BaseTimeSeriesKind"@en ;
-  rdfs:comment "Kind of time series. " ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-nc:BiddingZone a rdfs:Class ;
-  rdfs:label "BiddingZone"@en ;
-  rdfs:comment "A bidding zone is a market-based method for handling power transmission congestion. It consists of scheduling areas that include the relevant production (supply) and consumption (demand) to form an electrical area with the same market price without capacity allocation." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" .
-
-nc:BiddingZoneBorder a rdfs:Class ;
-  rdfs:label "BiddingZoneBorder"@en ;
-  rdfs:comment "Defines the aggregated connection capacity between two Bidding Zones." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" .
-
-nc:DCPole a rdfs:Class ;
-  rdfs:label "DCPole"@en ;
-  rdfs:comment "The direct current (DC) system pole (IEC 60633) is part of a DC system consisting of all the equipment in the DC substations and the interconnecting transmission lines, if any, which during normal operation exhibit a common direct voltage polarity with respect to earth." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" .
-
-nc:DCTieCorridor a rdfs:Class ;
-  rdfs:label "DCTieCorridor"@en ;
-  rdfs:comment "A collection of one or more direct current poles that connect two different control areas." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" .
-
-nc:EnergyGroup a rdfs:Class ;
-  rdfs:label "EnergyGroup"@en ;
-  rdfs:comment "An energy group is an aggregation of energy components which have the same energy characteristic, e.g. fuel type and technology. It can be used to allocate energy. " ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" .
-
-nc:MustRunSchedule a rdfs:Class ;
-  rdfs:label "MustRunSchedule"@en ;
-  rdfs:comment "Time series represent irregular must-run instruction values at given points in time. This could be instruction to a reliability must-run (RMR) generation facility that is necessary to run to meet certain operating conditions in order to maintain the security of power systems in a competitive environment." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf nc:BaseIrregularTimeSeries .
-
-nc:MustRunTimePoint a rdfs:Class ;
-  rdfs:label "MustRunTimePoint"@en ;
-  rdfs:comment "Must-run instruction value at a given point in time." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
-
-nc:PowerRemedialAction a rdfs:Class ;
-  rdfs:label "PowerRemedialAction"@en ;
-  rdfs:comment "Energy remedial action describes actions to rearrange power schedules." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" .
-
-nc:PowerSchedule a rdfs:Class ;
-  rdfs:label "PowerSchedule"@en ;
-  rdfs:comment "Time series represent irregular power, active and reactive, values at given points in time." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf nc:BaseIrregularTimeSeries .
-
-nc:PowerScheduleKind a rdfs:Class ;
-  rdfs:label "PowerScheduleKind"@en ;
-  rdfs:comment "Kind of power schedule." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-nc:PowerTimePoint a rdfs:Class ;
-  rdfs:label "PowerTimePoint"@en ;
-  rdfs:comment "Power, active and reactive, value at a given point in time." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
-
-nc:RelativeDirectionKind a rdfs:Class ;
-  rdfs:label "RelativeDirectionKind"@en ;
-  rdfs:comment "Kind of direction for the changes." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-nc:SchedulingArea a rdfs:Class ;
-  rdfs:label "SchedulingArea"@en ;
-  rdfs:comment "An area where production and/or consumption of energy can be forecasted, scheduled and measured. The area is operated by only one system operator, typically a Transmission System Operator (TSO). The area can consist of a sub area, which has the same definition as the main area, but it can be operated by another system operator (typically Distributed System Operator (DSO) or a Closed Distributed System Operator (CDSO)). This includes microgrid concept. A substation is the smallest grouping that can be included in the area. The area size should be considered in terms of the possibility of accumulated reading (settlement metering) and the capability of operating as an island." ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC" .
-
-nc:TimeSeriesInterpolationKind a rdfs:Class ;
-  rdfs:label "TimeSeriesInterpolationKind"@en ;
-  rdfs:comment "Kinds of interpolation of values between two time point. " ;
-  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-profcim:IRI a rdfs:Class ;
-  rdfs:label "IRI"@en ;
-  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as rdf:resource in RDFXML.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
-  cims:belongsToCategory ps:Package_DocPowerScheduleProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-profcim:StringFixedLanguage a rdfs:Class ;
-  rdfs:label "StringFixedLanguage"@en ;
-  rdfs:comment """A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
-The primitive is serialized as literal without language support.""" ;
-  cims:belongsToCategory ps:Package_DocPowerScheduleProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-profcim:StringIRI a rdfs:Class ;
-  rdfs:label "StringIRI"@en ;
-  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as literal without language support.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
-  cims:belongsToCategory ps:Package_DocPowerScheduleProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-profcim:URL a rdfs:Class ;
-  rdfs:label "URL"@en ;
-  rdfs:comment "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications." ;
-  cims:belongsToCategory ps:Package_DocPowerScheduleProfile ;
-  cims:stereotype "Primitive", "profcim" .
+@prefix          cim: <https://cim.ucaiug.io/ns#> .
+@prefix           nc: <https://cim4.eu/ns/nc#> .
+@prefix         cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix           ps: <https://ap-voc.cim4.eu/PowerSchedule#> .
+@prefix         dcat: <http://www.w3.org/ns/dcat#> .
+@prefix          dct: <http://purl.org/dc/terms/> .
+@prefix          owl: <http://www.w3.org/2002/07/owl#> .
+@prefix       prefix: <http://qudt.org/vocab/prefix/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix         qudt: <http://qudt.org/schema/qudt/> .
+@prefix          rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix         rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix         skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix         unit: <http://qudt.org/vocab/unit/> .
+@prefix          xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
 
 ps:Ontology a owl:Ontology ;
+  dct:description "This vocabulary is describing the object registry profile."@en ;
   dcat:keyword "PS" ;
   dcat:theme "vocabulary"@en ;
   dct:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
-  dct:creator "ENTSO-E CIM WG NC project "@en ;
-  dct:description "This vocabulary is describing the object registry profile."@en ;
+  dct:creator "ENTSO-E CIM WG NC project"@en ;
   dct:identifier "urn:uuid:470c9792-7798-4eb6-b7f2-6e18293c5f7b" ;
   dct:language "en-GB" ;
   dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dct:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dct:modified "2024-09-07"^^xsd:date ;
   dct:publisher "ENTSO-E"@en ;
   dct:rightsHolder "ENTSO-E"@en ;
   dct:title "Power schedule vocabulary"@en ;
@@ -275,586 +32,798 @@ ps:Ontology a owl:Ontology ;
   owl:versionIRI <https://ap-voc.cim4.eu/PowerSchedule/2.3> ;
   owl:versionInfo "2.3.1"@en .
 
-cim:ActivePower.multiplier a rdf:Property ;
-  rdfs:label "multiplier"@en ;
-  cims:isFixed "M" ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:ActivePower ;
-  rdfs:range cim:UnitMultiplier .
+cim:EnergyConnection a owl:Class ;
+  rdfs:label "EnergyConnection"@en ;
+  rdfs:comment "A connection of energy generation or consumption on the power system model." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile .
 
-cim:ActivePower.unit a rdf:Property ;
-  rdfs:label "unit"@en ;
-  cims:isFixed "W" ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:ActivePower ;
-  rdfs:range cim:UnitSymbol .
+cim:EquivalentInjection a owl:Class ;
+  rdfs:label "EquivalentInjection"@en ;
+  rdfs:comment "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile .
 
-cim:ActivePower.value a rdf:Property ;
-  rdfs:label "value"@en ;
-  cims:dataType cim:Float ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:ActivePower .
+cim:GeneratingUnit a owl:Class ;
+  rdfs:label "GeneratingUnit"@en ;
+  rdfs:comment "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile .
 
-cim:IdentifiedObject.description a rdf:Property ;
-  rdfs:label "description"@en ;
-  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+cim:HydroPump a owl:Class ;
+  rdfs:label "HydroPump"@en ;
+  rdfs:comment "A synchronous motor-driven pump, typically associated with a pumped storage plant." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile .
 
-cim:IdentifiedObject.mRID a rdf:Property ;
-  rdfs:label "mRID"@en ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+cim:IdentifiedObject a owl:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile .
 
-cim:IdentifiedObject.name a rdf:Property ;
-  rdfs:label "name"@en ;
-  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+cim:PowerElectronicsUnit a owl:Class ;
+  rdfs:label "PowerElectronicsUnit"@en ;
+  rdfs:comment "A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile .
 
-cim:ReactivePower.multiplier a rdf:Property ;
-  rdfs:label "multiplier"@en ;
-  cims:isFixed "M" ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:ReactivePower ;
-  rdfs:range cim:UnitMultiplier .
+cim:UnitMultiplier a owl:Class ;
+  rdfs:label "UnitMultiplier"@en ;
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
 
-cim:ReactivePower.unit a rdf:Property ;
-  rdfs:label "unit"@en ;
-  cims:isFixed "VAr" ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:ReactivePower ;
-  rdfs:range cim:UnitSymbol .
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
 
-cim:ReactivePower.value a rdf:Property ;
-  rdfs:label "value"@en ;
-  cims:dataType cim:Float ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:ReactivePower .
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype uml:enumeration .
 
-nc:AreaDispatchableUnit.PowerSchedule a rdf:Property ;
+cim:UnitSymbol a owl:Class ;
+  rdfs:label "UnitSymbol"@en ;
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.""" ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype uml:enumeration .
+
+nc:AreaDispatchableUnit a owl:Class ;
+  rdfs:label "AreaDispatchableUnit"@en ;
+  rdfs:comment "Allocates a given producing or consuming unit, including direct current corridor and collection of units, to a given control area (through the scheduling area) for supporting the control of the given area through dispatch instruction." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:BaseIrregularTimeSeries a owl:Class ;
+  rdfs:label "BaseIrregularTimeSeries"@en ;
+  rdfs:comment "Time series that has irregular points in time." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf nc:BaseTimeSeries .
+
+nc:BaseTimeSeries a owl:Class ;
+  rdfs:label "BaseTimeSeries"@en ;
+  rdfs:comment "Time series of values at points in time." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:BaseTimeSeriesKind a owl:Class ;
+  rdfs:label "BaseTimeSeriesKind"@en ;
+  rdfs:comment "Kind of time series." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC", uml:enumeration .
+
+nc:BiddingZone a owl:Class ;
+  rdfs:label "BiddingZone"@en ;
+  rdfs:comment "A bidding zone is a market-based method for handling power transmission congestion. It consists of scheduling areas that include the relevant production (supply) and consumption (demand) to form an electrical area with the same market price without capacity allocation." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:BiddingZoneBorder a owl:Class ;
+  rdfs:label "BiddingZoneBorder"@en ;
+  rdfs:comment "Defines the aggregated connection capacity between two Bidding Zones." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:DCPole a owl:Class ;
+  rdfs:label "DCPole"@en ;
+  rdfs:comment "The direct current (DC) system pole (IEC 60633) is part of a DC system consisting of all the equipment in the DC substations and the interconnecting transmission lines, if any, which during normal operation exhibit a common direct voltage polarity with respect to earth." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:DCTieCorridor a owl:Class ;
+  rdfs:label "DCTieCorridor"@en ;
+  rdfs:comment "A collection of one or more direct current poles that connect two different control areas." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:EnergyGroup a owl:Class ;
+  rdfs:label "EnergyGroup"@en ;
+  rdfs:comment "An energy group is an aggregation of energy components which have the same energy characteristic, e.g. fuel type and technology. It can be used to allocate energy." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:MustRunSchedule a owl:Class ;
+  rdfs:label "MustRunSchedule"@en ;
+  rdfs:comment "Time series represent irregular must-run instruction values at given points in time. This could be instruction to a reliability must-run (RMR) generation facility that is necessary to run to meet certain operating conditions in order to maintain the security of power systems in a competitive environment." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC", uml:concrete ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:MustRunTimePoint a owl:Class ;
+  rdfs:label "MustRunTimePoint"@en ;
+  rdfs:comment "Must-run instruction value at a given point in time." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC", uml:concrete .
+
+nc:PowerRemedialAction a owl:Class ;
+  rdfs:label "PowerRemedialAction"@en ;
+  rdfs:comment "Energy remedial action describes actions to rearrange power schedules." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:PowerSchedule a owl:Class ;
+  rdfs:label "PowerSchedule"@en ;
+  rdfs:comment "Time series represent irregular power, active and reactive, values at given points in time." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC", uml:concrete ;
+  rdfs:subClassOf nc:BaseIrregularTimeSeries .
+
+nc:PowerScheduleKind a owl:Class ;
+  rdfs:label "PowerScheduleKind"@en ;
+  rdfs:comment "Kind of power schedule." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC", uml:enumeration .
+
+nc:PowerTimePoint a owl:Class ;
+  rdfs:label "PowerTimePoint"@en ;
+  rdfs:comment "Power, active and reactive, value at a given point in time." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC", uml:concrete .
+
+nc:RelativeDirectionKind a owl:Class ;
+  rdfs:label "RelativeDirectionKind"@en ;
+  rdfs:comment "Kind of direction for the changes." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC", uml:enumeration .
+
+nc:SchedulingArea a owl:Class ;
+  rdfs:label "SchedulingArea"@en ;
+  rdfs:comment "An area where production and/or consumption of energy can be forecasted, scheduled and measured. The area is operated by only one system operator, typically a Transmission System Operator (TSO). The area can consist of a sub area, which has the same definition as the main area, but it can be operated by another system operator (typically Distributed System Operator (DSO) or a Closed Distributed System Operator (CDSO)). This includes microgrid concept. A substation is the smallest grouping that can be included in the area. The area size should be considered in terms of the possibility of accumulated reading (settlement metering) and the capability of operating as an island." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC" .
+
+nc:TimeSeriesInterpolationKind a owl:Class ;
+  rdfs:label "TimeSeriesInterpolationKind"@en ;
+  rdfs:comment "Kinds of interpolation of values between two time point." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  cims:stereotype "NC", uml:enumeration .
+
+nc:AreaDispatchableUnit.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which has area dispatchable units." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.AreaDispatchableUnit ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.AreaDispatchableUnit ;
   rdfs:domain nc:AreaDispatchableUnit ;
   rdfs:range nc:PowerSchedule .
 
-nc:BaseTimeSeries.actionMethod a rdf:Property ;
-  rdfs:label "actionMethod"@en ;
-  rdfs:comment "Action method used to create the value. This is used for identification in the case where there is multiple time series for the same validity period and kind. " ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:BaseTimeSeries .
-
-nc:BaseTimeSeries.generatedAtTime a rdf:Property ;
-  rdfs:label "generatedAtTime"@en ;
-  rdfs:comment "The time this time series (entity) come to existents and available for use." ;
-  cims:dataType cim:DateTime ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:BaseTimeSeries .
-
-nc:BaseTimeSeries.interpolationKind a rdf:Property ;
+nc:BaseTimeSeries.interpolationKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "interpolationKind"@en ;
   rdfs:comment "Kind of interpolation done between time point." ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:BaseTimeSeries ;
   rdfs:range nc:TimeSeriesInterpolationKind .
 
-nc:BaseTimeSeries.percentile a rdf:Property ;
-  rdfs:label "percentile"@en ;
-  rdfs:comment "The percentile is a number where a certain percentage of scores/ranking/values of a sample fall below that number. This is a way for expressing uncertainty in the number provided." ;
-  cims:dataType cim:Integer ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:BaseTimeSeries .
-
-nc:BaseTimeSeries.timeSeriesKind a rdf:Property ;
+nc:BaseTimeSeries.timeSeriesKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "timeSeriesKind"@en ;
   rdfs:comment "Kind of base time series." ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:BaseTimeSeries ;
   rdfs:range nc:BaseTimeSeriesKind .
 
-nc:BiddingZone.PowerSchedule a rdf:Property ;
+nc:BiddingZone.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which belongs to the power bidding zone." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.BiddingZone ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.BiddingZone ;
   rdfs:domain nc:BiddingZone ;
   rdfs:range nc:PowerSchedule .
 
-nc:BiddingZoneBorder.PowerSchedule a rdf:Property ;
+nc:BiddingZoneBorder.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which has bidding zone border." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.BiddingZoneBorder ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.BiddingZoneBorder ;
   rdfs:domain nc:BiddingZoneBorder ;
   rdfs:range nc:PowerSchedule .
 
-nc:DCPole.PowerSchedule a rdf:Property ;
+nc:DCPole.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which has DC poles." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.DCPole ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.DCPole ;
   rdfs:domain nc:DCPole ;
   rdfs:range nc:PowerSchedule .
 
-nc:DCTieCorridor.MustRunSchedule a rdf:Property ;
+nc:DCTieCorridor.MustRunSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "MustRunSchedule"@en ;
   rdfs:comment "Must run schedule which has DC tie corridors." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:MustRunSchedule.DCTieCorridor ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:MustRunSchedule.DCTieCorridor ;
   rdfs:domain nc:DCTieCorridor ;
   rdfs:range nc:MustRunSchedule .
 
-nc:DCTieCorridor.PowerSchedule a rdf:Property ;
+nc:DCTieCorridor.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which has DC tie corridors." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.DCTieCorridor ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.DCTieCorridor ;
   rdfs:domain nc:DCTieCorridor ;
   rdfs:range nc:PowerSchedule .
 
-nc:EnergyConnection.PowerSchedule a rdf:Property ;
+nc:EnergyConnection.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "The power schedule for this energy connection." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.EnergyConnection ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.EnergyConnection ;
   rdfs:domain cim:EnergyConnection ;
   rdfs:range nc:PowerSchedule .
 
-nc:EnergyGroup.PowerSchedule a rdf:Property ;
+nc:EnergyGroup.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which is associated with an energy group." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.EnergyGroup ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.EnergyGroup ;
   rdfs:domain nc:EnergyGroup ;
   rdfs:range nc:PowerSchedule .
 
-nc:EquivalentInjection.PowerSchedule a rdf:Property ;
+nc:EquivalentInjection.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which has equivalent injection." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.EquivalentInjection ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.EquivalentInjection ;
   rdfs:domain cim:EquivalentInjection ;
   rdfs:range nc:PowerSchedule .
 
-nc:GeneratingUnit.MustRunSchedule a rdf:Property ;
+nc:GeneratingUnit.MustRunSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "MustRunSchedule"@en ;
   rdfs:comment "Must run schedule which has generating units." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:MustRunSchedule.GeneratingUnit ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:MustRunSchedule.GeneratingUnit ;
   rdfs:domain cim:GeneratingUnit ;
   rdfs:range nc:MustRunSchedule .
 
-nc:GeneratingUnit.PowerSchedule a rdf:Property ;
+nc:GeneratingUnit.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which has generating unit." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.GeneratingUnit ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.GeneratingUnit ;
   rdfs:domain cim:GeneratingUnit ;
   rdfs:range nc:PowerSchedule .
 
-nc:HydroPump.PowerSchedule a rdf:Property ;
+nc:HydroPump.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which has hydro pump." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.HydroPump ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.HydroPump ;
   rdfs:domain cim:HydroPump ;
   rdfs:range nc:PowerSchedule .
 
-nc:MustRunSchedule.DCTieCorridor a rdf:Property ;
+nc:MustRunSchedule.DCTieCorridor a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "DCTieCorridor"@en ;
   rdfs:comment "Hydro pump which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:DCTieCorridor.MustRunSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:DCTieCorridor.MustRunSchedule ;
   rdfs:domain nc:MustRunSchedule ;
   rdfs:range nc:DCTieCorridor .
 
-nc:MustRunSchedule.GeneratingUnit a rdf:Property ;
+nc:MustRunSchedule.GeneratingUnit a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "GeneratingUnit"@en ;
   rdfs:comment "Generating unit which belongs to the must run schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:GeneratingUnit.MustRunSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:GeneratingUnit.MustRunSchedule ;
   rdfs:domain nc:MustRunSchedule ;
   rdfs:range cim:GeneratingUnit .
 
-nc:MustRunSchedule.MustRunTimePoint a rdf:Property ;
+nc:MustRunSchedule.MustRunTimePoint a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "MustRunTimePoint"@en ;
   rdfs:comment "Value for the point in time." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:MustRunTimePoint.MustRunSchedule ;
   cims:multiplicity cims:M:1..n ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  cims:stereotype "NC", uml:ofAggregate ;
+  owl:inverseOf nc:MustRunTimePoint.MustRunSchedule ;
   rdfs:domain nc:MustRunSchedule ;
   rdfs:range nc:MustRunTimePoint .
 
-nc:MustRunTimePoint.MustRunSchedule a rdf:Property ;
+nc:MustRunTimePoint.MustRunSchedule a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "MustRunSchedule"@en ;
   rdfs:comment "Time series the time point values belongs to." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:MustRunSchedule.MustRunTimePoint ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:MustRunSchedule.MustRunTimePoint ;
   rdfs:domain nc:MustRunTimePoint ;
   rdfs:range nc:MustRunSchedule .
 
-nc:MustRunTimePoint.atTime a rdf:Property ;
-  rdfs:label "atTime"@en ;
-  rdfs:comment "The time the data is valid for." ;
-  cims:dataType cim:DateTime ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:MustRunTimePoint .
-
-nc:MustRunTimePoint.mustRun a rdf:Property ;
-  rdfs:label "mustRun"@en ;
-  rdfs:comment "True, if the must-run instruction is active this time point. Otherwise false." ;
-  cims:dataType cim:Boolean ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:MustRunTimePoint .
-
-nc:MustRunTimePoint.mustRunP a rdf:Property ;
-  rdfs:label "mustRunP"@en ;
-  rdfs:comment "Minimum active power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node." ;
-  cims:dataType cim:ActivePower ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:MustRunTimePoint .
-
-nc:MustRunTimePoint.mustRunQ a rdf:Property ;
-  rdfs:label "mustRunQ"@en ;
-  rdfs:comment "Minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node." ;
-  cims:dataType cim:ReactivePower ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:MustRunTimePoint .
-
-nc:PowerElectronicsUnit.PowerSchedule a rdf:Property ;
+nc:PowerElectronicsUnit.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which has power electronics unit." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.PowerElectronicsUnit ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.PowerElectronicsUnit ;
   rdfs:domain cim:PowerElectronicsUnit ;
   rdfs:range nc:PowerSchedule .
 
-nc:PowerRemedialAction.PowerSchedule a rdf:Property ;
+nc:PowerRemedialAction.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which contains the power remedial action." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.PowerRemedialAction ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.PowerRemedialAction ;
   rdfs:domain nc:PowerRemedialAction ;
   rdfs:range nc:PowerSchedule .
 
-nc:PowerSchedule.AreaDispatchableUnit a rdf:Property ;
+nc:PowerSchedule.AreaDispatchableUnit a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "AreaDispatchableUnit"@en ;
   rdfs:comment "Area disptachable unit which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:AreaDispatchableUnit.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:AreaDispatchableUnit.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:AreaDispatchableUnit .
 
-nc:PowerSchedule.BiddingZone a rdf:Property ;
+nc:PowerSchedule.BiddingZone a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "BiddingZone"@en ;
   rdfs:comment "Bidding zone which has power schedules." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:BiddingZone.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:BiddingZone.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:BiddingZone .
 
-nc:PowerSchedule.BiddingZoneBorder a rdf:Property ;
+nc:PowerSchedule.BiddingZoneBorder a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "BiddingZoneBorder"@en ;
   rdfs:comment "Bidding zone border which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:BiddingZoneBorder.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:BiddingZoneBorder.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:BiddingZoneBorder .
 
-nc:PowerSchedule.DCPole a rdf:Property ;
+nc:PowerSchedule.DCPole a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "DCPole"@en ;
   rdfs:comment "DC pole which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:DCPole.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:DCPole.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:DCPole .
 
-nc:PowerSchedule.DCTieCorridor a rdf:Property ;
+nc:PowerSchedule.DCTieCorridor a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "DCTieCorridor"@en ;
   rdfs:comment "DC tie corridor which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:DCTieCorridor.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:DCTieCorridor.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:DCTieCorridor .
 
-nc:PowerSchedule.EnergyConnection a rdf:Property ;
+nc:PowerSchedule.EnergyConnection a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "EnergyConnection"@en ;
   rdfs:comment "The energy connection that has a power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:EnergyConnection.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:EnergyConnection.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range cim:EnergyConnection .
 
-nc:PowerSchedule.EnergyGroup a rdf:Property ;
+nc:PowerSchedule.EnergyGroup a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "EnergyGroup"@en ;
   rdfs:comment "Energy group which belongs to a power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:EnergyGroup.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:EnergyGroup.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:EnergyGroup .
 
-nc:PowerSchedule.EquivalentInjection a rdf:Property ;
+nc:PowerSchedule.EquivalentInjection a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "EquivalentInjection"@en ;
   rdfs:comment "Equivalent injection which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:EquivalentInjection.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:EquivalentInjection.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range cim:EquivalentInjection .
 
-nc:PowerSchedule.GeneratingUnit a rdf:Property ;
+nc:PowerSchedule.GeneratingUnit a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "GeneratingUnit"@en ;
   rdfs:comment "Generating unit which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:GeneratingUnit.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:GeneratingUnit.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range cim:GeneratingUnit .
 
-nc:PowerSchedule.HydroPump a rdf:Property ;
+nc:PowerSchedule.HydroPump a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "HydroPump"@en ;
   rdfs:comment "Hydro pump which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:HydroPump.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:HydroPump.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range cim:HydroPump .
 
-nc:PowerSchedule.PowerElectronicsUnit a rdf:Property ;
+nc:PowerSchedule.PowerElectronicsUnit a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "PowerElectronicsUnit"@en ;
   rdfs:comment "Power electronics unit which belongs to the power schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:PowerElectronicsUnit.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerElectronicsUnit.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range cim:PowerElectronicsUnit .
 
-nc:PowerSchedule.PowerRemedialAction a rdf:Property ;
+nc:PowerSchedule.PowerRemedialAction a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "PowerRemedialAction"@en ;
   rdfs:comment "Power remedial action which belongs to the Remedial Action Schedule." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:PowerRemedialAction.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerRemedialAction.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:PowerRemedialAction .
 
-nc:PowerSchedule.PowerTimePoint a rdf:Property ;
+nc:PowerSchedule.PowerTimePoint a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerTimePoint"@en ;
   rdfs:comment "Value for the point in time." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerTimePoint.PowerSchedule ;
   cims:multiplicity cims:M:0..n ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  cims:stereotype "NC", uml:ofAggregate ;
+  owl:inverseOf nc:PowerTimePoint.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:PowerTimePoint .
 
-nc:PowerSchedule.SchedulingArea a rdf:Property ;
+nc:PowerSchedule.SchedulingArea a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "SchedulingArea"@en ;
   rdfs:comment "Scheduling area which has power schedules." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:SchedulingArea.PowerSchedule ;
   cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf nc:SchedulingArea.PowerSchedule ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:SchedulingArea .
 
-nc:PowerSchedule.direction a rdf:Property ;
+nc:PowerSchedule.direction a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "direction"@en ;
   rdfs:comment "Kind of direction." ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:RelativeDirectionKind .
 
-nc:PowerSchedule.powerScheduleKind a rdf:Property ;
+nc:PowerSchedule.powerScheduleKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "powerScheduleKind"@en ;
   rdfs:comment "Kind of power schedule." ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerSchedule ;
   rdfs:range nc:PowerScheduleKind .
 
-nc:PowerTimePoint.PowerSchedule a rdf:Property ;
+nc:PowerTimePoint.PowerSchedule a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Time series the time point values belongs to." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:PowerSchedule.PowerTimePoint ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:PowerSchedule.PowerTimePoint ;
   rdfs:domain nc:PowerTimePoint ;
   rdfs:range nc:PowerSchedule .
 
-nc:PowerTimePoint.activatedP a rdf:Property ;
-  rdfs:label "activatedP"@en ;
-  rdfs:comment "Active power activated as part of redispatch. Negative number means that the value is scheduling down. Positive number means that the value is scheduling up." ;
-  cims:dataType cim:ActivePower ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:PowerTimePoint .
-
-nc:PowerTimePoint.activatedPrice a rdf:Property ;
-  rdfs:label "activatedPrice"@en ;
-  rdfs:comment "Price for the activated active power per unit e.g. per MW." ;
-  cims:dataType cim:Decimal ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:PowerTimePoint .
-
-nc:PowerTimePoint.activatedQ a rdf:Property ;
-  rdfs:label "activatedQ"@en ;
-  rdfs:comment "Reactive power activated as part of redispatch. Negative number means that the value is scheduling down. Positive number means that the value is scheduling up." ;
-  cims:dataType cim:ReactivePower ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:PowerTimePoint .
-
-nc:PowerTimePoint.atTime a rdf:Property ;
-  rdfs:label "atTime"@en ;
-  rdfs:comment "The time the data is valid for." ;
-  cims:dataType cim:DateTime ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:PowerTimePoint .
-
-nc:PowerTimePoint.meritOrder a rdf:Property ;
-  rdfs:label "meritOrder"@en ;
-  rdfs:comment "Ranking the energy blocks. Ranking can be based on historical values or other sources. It is required if power schedule is kind merit order." ;
-  cims:dataType cim:Integer ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:PowerTimePoint .
-
-nc:PowerTimePoint.p a rdf:Property ;
-  rdfs:label "p"@en ;
-  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
-  cims:dataType cim:ActivePower ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:PowerTimePoint .
-
-nc:PowerTimePoint.price a rdf:Property ;
-  rdfs:label "price"@en ;
-  rdfs:comment "Price for the scheduled active power per unit of active power. e.g. per MW." ;
-  cims:dataType cim:Decimal ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:PowerTimePoint .
-
-nc:PowerTimePoint.q a rdf:Property ;
-  rdfs:label "q"@en ;
-  rdfs:comment "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
-  cims:dataType cim:ReactivePower ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:PowerTimePoint .
-
-nc:SchedulingArea.PowerSchedule a rdf:Property ;
+nc:SchedulingArea.PowerSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "PowerSchedule"@en ;
   rdfs:comment "Power schedule which belongs to the scheduling area." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:PowerSchedule.SchedulingArea ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf nc:PowerSchedule.SchedulingArea ;
   rdfs:domain nc:SchedulingArea ;
   rdfs:range nc:PowerSchedule .
 
+cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "description"@en ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "name"@en ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+nc:BaseTimeSeries.actionMethod a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "actionMethod"@en ;
+  rdfs:comment "Action method used to create the value. This is used for identification in the case where there is multiple time series for the same validity period and kind." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:BaseTimeSeries ;
+  rdfs:range xsd:string .
+
+nc:BaseTimeSeries.generatedAtTime a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "generatedAtTime"@en ;
+  rdfs:comment "The time this time series (entity) come to existents and available for use." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:BaseTimeSeries ;
+  rdfs:range xsd:dateTime .
+
+nc:BaseTimeSeries.percentile a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "percentile"@en ;
+  rdfs:comment "The percentile is a number where a certain percentage of scores/ranking/values of a sample fall below that number. This is a way for expressing uncertainty in the number provided." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:BaseTimeSeries ;
+  rdfs:range xsd:integer .
+
+nc:MustRunTimePoint.atTime a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:MustRunTimePoint ;
+  rdfs:range xsd:dateTime .
+
+nc:MustRunTimePoint.mustRun a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "mustRun"@en ;
+  rdfs:comment "True, if the must-run instruction is active this time point. Otherwise false." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:MustRunTimePoint ;
+  rdfs:range xsd:boolean .
+
+nc:MustRunTimePoint.mustRunP a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "mustRunP"@en ;
+  rdfs:comment "Minimum active power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cim:unitMultiplier cim:UnitMultiplier.M ;
+  cim:unitSymbol cim:UnitSymbol.W ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:ActivePower ;
+  qudt:hasUnit unit:MegaW ;
+  rdfs:domain nc:MustRunTimePoint ;
+  rdfs:range xsd:float .
+
+nc:MustRunTimePoint.mustRunQ a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "mustRunQ"@en ;
+  rdfs:comment "Minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cim:unitMultiplier cim:UnitMultiplier.M ;
+  cim:unitSymbol cim:UnitSymbol.VAr ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:ReactivePower ;
+  qudt:hasUnit unit:MegaV-A_Reactive ;
+  rdfs:domain nc:MustRunTimePoint ;
+  rdfs:range xsd:float .
+
+nc:PowerTimePoint.activatedP a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "activatedP"@en ;
+  rdfs:comment "Active power activated as part of redispatch. Negative number means that the value is scheduling down. Positive number means that the value is scheduling up." ;
+  cim:unitMultiplier cim:UnitMultiplier.M ;
+  cim:unitSymbol cim:UnitSymbol.W ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:ActivePower ;
+  qudt:hasUnit unit:MegaW ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range xsd:float .
+
+nc:PowerTimePoint.activatedPrice a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "activatedPrice"@en ;
+  rdfs:comment "Price for the activated active power per unit e.g. per MW." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range xsd:decimal .
+
+nc:PowerTimePoint.activatedQ a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "activatedQ"@en ;
+  rdfs:comment "Reactive power activated as part of redispatch. Negative number means that the value is scheduling down. Positive number means that the value is scheduling up." ;
+  cim:unitMultiplier cim:UnitMultiplier.M ;
+  cim:unitSymbol cim:UnitSymbol.VAr ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:ReactivePower ;
+  qudt:hasUnit unit:MegaV-A_Reactive ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range xsd:float .
+
+nc:PowerTimePoint.atTime a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "atTime"@en ;
+  rdfs:comment "The time the data is valid for." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range xsd:dateTime .
+
+nc:PowerTimePoint.meritOrder a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "meritOrder"@en ;
+  rdfs:comment "Ranking the energy blocks. Ranking can be based on historical values or other sources. It is required if power schedule is kind merit order." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range xsd:integer .
+
+nc:PowerTimePoint.p a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "p"@en ;
+  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cim:unitMultiplier cim:UnitMultiplier.M ;
+  cim:unitSymbol cim:UnitSymbol.W ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:ActivePower ;
+  qudt:hasUnit unit:MegaW ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range xsd:float .
+
+nc:PowerTimePoint.price a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "price"@en ;
+  rdfs:comment "Price for the scheduled active power per unit of active power. e.g. per MW." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range xsd:decimal .
+
+nc:PowerTimePoint.q a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "q"@en ;
+  rdfs:comment "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  cim:unitMultiplier cim:UnitMultiplier.M ;
+  cim:unitSymbol cim:UnitSymbol.VAr ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:ReactivePower ;
+  qudt:hasUnit unit:MegaV-A_Reactive ;
+  rdfs:domain nc:PowerTimePoint ;
+  rdfs:range xsd:float .
+
+cim:ActivePower a qudt:QuantityKind ;
+  rdfs:label "ActivePower"@en ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  qudt:applicableUnit cim:UnitSymbol.W ;
+  skos:exactMatch quantitykind:ActivePower .
+
+cim:ActivePowerChangeRate skos:exactMatch quantitykind:ActivePowerChangeRate .
+
+cim:ActivePowerPerCurrentFlow skos:exactMatch quantitykind:ActivePowerPerCurrentFlow .
+
+cim:ActivePowerPerFrequency skos:exactMatch quantitykind:ActivePowerPerFrequency .
+
+cim:AngleDegrees skos:exactMatch quantitykind:Angle .
+
+cim:AngleRadians skos:exactMatch quantitykind:Angle .
+
+cim:ApparentPower skos:exactMatch quantitykind:ApparentPower .
+
+cim:Area skos:exactMatch quantitykind:Area .
+
+cim:Capacitance skos:exactMatch quantitykind:Capacitance .
+
+cim:Conductance skos:exactMatch quantitykind:Conductance .
+
+cim:CurrentFlow skos:exactMatch quantitykind:ElectricCurrent .
+
+cim:Frequency skos:exactMatch quantitykind:Frequency .
+
+cim:Impedance skos:exactMatch quantitykind:Inductance .
+
+cim:Length skos:exactMatch quantitykind:Length .
+
+cim:Money skos:exactMatch quantitykind:Currency .
+
+cim:PU skos:exactMatch quantitykind:DimensionlessRatio .
+
+cim:PerCent skos:exactMatch quantitykind:DimensionlessRatio .
+
+cim:Pressure skos:exactMatch quantitykind:Pressure .
+
+cim:Reactance skos:exactMatch quantitykind:Reactance .
+
+cim:ReactivePower a qudt:QuantityKind ;
+  rdfs:label "ReactivePower"@en ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current." ;
+  cims:belongsToCategory ps:Package_PowerScheduleProfile ;
+  qudt:applicableUnit cim:UnitSymbol.VAr ;
+  skos:exactMatch quantitykind:ReactivePower .
+
+cim:RealEnergy skos:exactMatch quantitykind:Energy .
+
+cim:Resistance skos:exactMatch quantitykind:Resistance .
+
+cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
+
+cim:Seconds skos:exactMatch quantitykind:Time .
+
+cim:Susceptance skos:exactMatch quantitykind:Susceptance .
+
+cim:Temperature skos:exactMatch quantitykind:Temperature .
+
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
-  rdfs:label "M"@en ;
+  rdfs:label "M" ;
   rdfs:comment "Mega 10**6." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E6 ;
+  skos:exactMatch prefix:Mega .
 
 cim:UnitSymbol.VAr a cim:UnitSymbol ;
-  rdfs:label "VAr"@en ;
+  rdfs:label "VAr" ;
   rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
 Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.""" ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-A_Reactive .
 
 cim:UnitSymbol.W a cim:UnitSymbol ;
-  rdfs:label "W"@en ;
+  rdfs:label "W" ;
   rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W .
+
+cim:Voltage skos:exactMatch quantitykind:Voltage .
+
+cim:VoltagePerReactivePower skos:exactMatch quantitykind:VoltagePerReactivePower .
+
+cim:VolumeFlowRate skos:exactMatch quantitykind:VolumeFlowRate .
 
 nc:BaseTimeSeriesKind.actual a nc:BaseTimeSeriesKind ;
   rdfs:label "actual"@en ;
-  rdfs:comment "Time series is actual data. The values represent measured or calculated values that represent the actual behaviour. " ;
+  rdfs:comment "Time series is actual data. The values represent measured or calculated values that represent the actual behaviour." ;
   cims:stereotype "enum" .
 
 nc:BaseTimeSeriesKind.forecast a nc:BaseTimeSeriesKind ;

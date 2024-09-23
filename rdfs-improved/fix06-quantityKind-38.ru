@@ -24,3 +24,4 @@ where {
   cim:Money.unit rdfs:domain cim:Money; rdfs:range cim:Currency.
   ?unit a cim:Currency.
 };
+

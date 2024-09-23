@@ -1,4 +1,4 @@
-﻿# https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#quantitykinds-and-units-of-measure
+# https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#quantitykinds-and-units-of-measure
 # https://github.com/Sveino/Inst4CIM-KG/issues/38
 # https://github.com/Sveino/Inst4CIM-KG/issues/29
 

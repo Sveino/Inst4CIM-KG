@@ -1,4 +1,4 @@
-﻿# https://github.com/Sveino/Inst4CIM-KG/issues/30
+# https://github.com/Sveino/Inst4CIM-KG/issues/30
 
 prefix cims:         <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
 prefix owl:          <http://www.w3.org/2002/07/owl#>

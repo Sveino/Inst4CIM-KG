@@ -1,194 +1,19 @@
-@prefix     cim: <https://cim.ucaiug.io/ns#> .
-@prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
-@prefix      eu: <https://cim.ucaiug.io/ns/eu#> .
-@prefix    eqbd: <http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU#> .
-@prefix    dcat: <http://www.w3.org/ns/dcat#> .
-@prefix     dct: <http://purl.org/dc/terms/> .
-@prefix     owl: <http://www.w3.org/2002/07/owl#> .
-@prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix     xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-cim:ACDCTerminal a rdfs:Class ;
-  rdfs:label "ACDCTerminal"@en ;
-  rdfs:comment "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:BaseVoltage a rdfs:Class ;
-  rdfs:label "BaseVoltage"@en ;
-  rdfs:comment "Defines a system base voltage which is referenced. " ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:Bay a rdfs:Class ;
-  rdfs:label "Bay"@en ;
-  rdfs:comment "A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.  A bay typically represents a physical grouping related to modularization of equipment." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:EquipmentContainer .
-
-cim:Boolean a rdfs:Class ;
-  rdfs:label "Boolean"@en ;
-  rdfs:comment "A type with the value space \"true\" and \"false\"." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype "Primitive" .
-
-cim:ConductingEquipment a rdfs:Class ;
-  rdfs:label "ConductingEquipment"@en ;
-  rdfs:comment "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:Equipment .
-
-cim:ConnectivityNode a rdfs:Class ;
-  rdfs:label "ConnectivityNode"@en ;
-  rdfs:comment "Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:ConnectivityNodeContainer a rdfs:Class ;
-  rdfs:label "ConnectivityNodeContainer"@en ;
-  rdfs:comment "A base class for all objects that may contain connectivity nodes or topological nodes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:PowerSystemResource .
-
-cim:Connector a rdfs:Class ;
-  rdfs:label "Connector"@en ;
-  rdfs:comment "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation and are modelled with a single logical terminal." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:ConductingEquipment .
-
-cim:Date a rdfs:Class ;
-  rdfs:label "Date"@en ;
-  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype "Primitive" .
-
-cim:EnergySchedulingType a rdfs:Class ;
-  rdfs:label "EnergySchedulingType"@en ;
-  rdfs:comment "Used to define the type of generation for scheduling purposes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:Equipment a rdfs:Class ;
-  rdfs:label "Equipment"@en ;
-  rdfs:comment "The parts of a power system that are physical devices, electronic or mechanical." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:PowerSystemResource .
-
-cim:EquipmentContainer a rdfs:Class ;
-  rdfs:label "EquipmentContainer"@en ;
-  rdfs:comment "A modelling construct to provide a root class for containing equipment. " ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:ConnectivityNodeContainer .
-
-cim:Float a rdfs:Class ;
-  rdfs:label "Float"@en ;
-  rdfs:comment "A floating point number. The range is unspecified and not limited." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype "Primitive" .
-
-cim:GeographicalRegion a rdfs:Class ;
-  rdfs:label "GeographicalRegion"@en ;
-  rdfs:comment "A geographical region of a power system network model." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:IdentifiedObject a rdfs:Class ;
-  rdfs:label "IdentifiedObject"@en ;
-  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile .
-
-cim:Junction a rdfs:Class ;
-  rdfs:label "Junction"@en ;
-  rdfs:comment "A point where one or more conducting equipments are connected with zero resistance." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:Connector .
-
-cim:Line a rdfs:Class ;
-  rdfs:label "Line"@en ;
-  rdfs:comment "Contains equipment beyond a substation belonging to a power transmission line. " ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:EquipmentContainer .
-
-cim:PowerSystemResource a rdfs:Class ;
-  rdfs:label "PowerSystemResource"@en ;
-  rdfs:comment "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:String a rdfs:Class ;
-  rdfs:label "String"@en ;
-  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype "Primitive" .
-
-cim:SubGeographicalRegion a rdfs:Class ;
-  rdfs:label "SubGeographicalRegion"@en ;
-  rdfs:comment "A subset of a geographical region of a power system network model." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:Substation a rdfs:Class ;
-  rdfs:label "Substation"@en ;
-  rdfs:comment "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics. " ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:EquipmentContainer .
-
-cim:Terminal a rdfs:Class ;
-  rdfs:label "Terminal"@en ;
-  rdfs:comment "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:ACDCTerminal .
-
-cim:UnitMultiplier a rdfs:Class ;
-  rdfs:label "UnitMultiplier"@en ;
-  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
-For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-cim:UnitSymbol a rdfs:Class ;
-  rdfs:label "UnitSymbol"@en ;
-  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
-The integer values are used for harmonization with IEC 61850.""" ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-cim:Voltage a rdfs:Class ;
-  rdfs:label "Voltage"@en ;
-  rdfs:comment "Electrical voltage, can be both AC and DC." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype "CIMDatatype" .
-
-cim:VoltageLevel a rdfs:Class ;
-  rdfs:label "VoltageLevel"@en ;
-  rdfs:comment "A collection of equipment at one common system voltage forming a switchgear. The equipment typically consists of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:EquipmentContainer .
-
-eu:BoundaryPoint a rdfs:Class ;
-  rdfs:label "BoundaryPoint"@en ;
-  rdfs:comment "Designates a connection point at which one or more model authority sets shall connect to. The location of the connection point as well as other properties are agreed between organisations responsible for the interconnection, hence all attributes of the class represent this agreement.  It is primarily used in a boundary model authority set which can contain one or many BoundaryPoint-s among other Equipment-s and their connections." ;
-  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:PowerSystemResource .
+@prefix          cim: <https://cim.ucaiug.io/ns#> .
+@prefix         cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix           eu: <https://cim.ucaiug.io/ns/eu#> .
+@prefix         eqbd: <http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU#> .
+@prefix         dcat: <http://www.w3.org/ns/dcat#> .
+@prefix          dct: <http://purl.org/dc/terms/> .
+@prefix          owl: <http://www.w3.org/2002/07/owl#> .
+@prefix       prefix: <http://qudt.org/vocab/prefix/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix         qudt: <http://qudt.org/schema/qudt/> .
+@prefix          rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix         rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix         skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix         unit: <http://qudt.org/vocab/unit/> .
+@prefix          xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
 
 eqbd:Ontology a owl:Ontology ;
   dct:description "This vocabulary is describing the equipment boundary profile from IEC 61970-600-2."@en ;
@@ -210,1183 +35,1415 @@ eqbd:Ontology a owl:Ontology ;
   owl:versionIRI <http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/3.0> ;
   owl:versionInfo "3.0.0"@en .
 
-cim:BaseVoltage.VoltageLevel a rdf:Property ;
+cim:ACDCTerminal a owl:Class ;
+  rdfs:label "ACDCTerminal"@en ;
+  rdfs:comment "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:BaseVoltage a owl:Class ;
+  rdfs:label "BaseVoltage"@en ;
+  rdfs:comment "Defines a system base voltage which is referenced." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:Bay a owl:Class ;
+  rdfs:label "Bay"@en ;
+  rdfs:comment "A collection of power system resources (within a given substation) including conducting equipment, protection relays, measurements, and telemetry.  A bay typically represents a physical grouping related to modularization of equipment." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:EquipmentContainer .
+
+cim:ConductingEquipment a owl:Class ;
+  rdfs:label "ConductingEquipment"@en ;
+  rdfs:comment "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  rdfs:subClassOf cim:Equipment .
+
+cim:ConnectivityNode a owl:Class ;
+  rdfs:label "ConnectivityNode"@en ;
+  rdfs:comment "Connectivity nodes are points where terminals of AC conducting equipment are connected together with zero impedance." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:ConnectivityNodeContainer a owl:Class ;
+  rdfs:label "ConnectivityNodeContainer"@en ;
+  rdfs:comment "A base class for all objects that may contain connectivity nodes or topological nodes." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  rdfs:subClassOf cim:PowerSystemResource .
+
+cim:Connector a owl:Class ;
+  rdfs:label "Connector"@en ;
+  rdfs:comment "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation and are modelled with a single logical terminal." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  rdfs:subClassOf cim:ConductingEquipment .
+
+cim:EnergySchedulingType a owl:Class ;
+  rdfs:label "EnergySchedulingType"@en ;
+  rdfs:comment "Used to define the type of generation for scheduling purposes." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:Equipment a owl:Class ;
+  rdfs:label "Equipment"@en ;
+  rdfs:comment "The parts of a power system that are physical devices, electronic or mechanical." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  rdfs:subClassOf cim:PowerSystemResource .
+
+cim:EquipmentContainer a owl:Class ;
+  rdfs:label "EquipmentContainer"@en ;
+  rdfs:comment "A modelling construct to provide a root class for containing equipment." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  rdfs:subClassOf cim:ConnectivityNodeContainer .
+
+cim:GeographicalRegion a owl:Class ;
+  rdfs:label "GeographicalRegion"@en ;
+  rdfs:comment "A geographical region of a power system network model." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:IdentifiedObject a owl:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile .
+
+cim:Junction a owl:Class ;
+  rdfs:label "Junction"@en ;
+  rdfs:comment "A point where one or more conducting equipments are connected with zero resistance." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:Connector .
+
+cim:Line a owl:Class ;
+  rdfs:label "Line"@en ;
+  rdfs:comment "Contains equipment beyond a substation belonging to a power transmission line." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:EquipmentContainer .
+
+cim:PowerSystemResource a owl:Class ;
+  rdfs:label "PowerSystemResource"@en ;
+  rdfs:comment "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:SubGeographicalRegion a owl:Class ;
+  rdfs:label "SubGeographicalRegion"@en ;
+  rdfs:comment "A subset of a geographical region of a power system network model." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:Substation a owl:Class ;
+  rdfs:label "Substation"@en ;
+  rdfs:comment "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:EquipmentContainer .
+
+cim:Terminal a owl:Class ;
+  rdfs:label "Terminal"@en ;
+  rdfs:comment "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:ACDCTerminal .
+
+cim:UnitMultiplier a owl:Class ;
+  rdfs:label "UnitMultiplier"@en ;
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:enumeration .
+
+cim:UnitSymbol a owl:Class ;
+  rdfs:label "UnitSymbol"@en ;
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.""" ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:enumeration .
+
+cim:VoltageLevel a owl:Class ;
+  rdfs:label "VoltageLevel"@en ;
+  rdfs:comment "A collection of equipment at one common system voltage forming a switchgear. The equipment typically consists of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:EquipmentContainer .
+
+eu:BoundaryPoint a owl:Class ;
+  rdfs:label "BoundaryPoint"@en ;
+  rdfs:comment "Designates a connection point at which one or more model authority sets shall connect to. The location of the connection point as well as other properties are agreed between organisations responsible for the interconnection, hence all attributes of the class represent this agreement.  It is primarily used in a boundary model authority set which can contain one or many BoundaryPoint-s among other Equipment-s and their connections." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  cims:stereotype "European", uml:concrete ;
+  rdfs:subClassOf cim:PowerSystemResource .
+
+cim:BaseVoltage.VoltageLevel a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "VoltageLevel"@en ;
   rdfs:comment "The voltage levels having this base voltage." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:VoltageLevel.BaseVoltage ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:VoltageLevel.BaseVoltage ;
   rdfs:domain cim:BaseVoltage ;
   rdfs:range cim:VoltageLevel .
 
-cim:BaseVoltage.nominalVoltage a rdf:Property ;
-  rdfs:label "nominalVoltage"@en ;
-  rdfs:comment "The power system resource's base voltage.  Shall be a positive value and not zero." ;
-  cims:dataType cim:Voltage ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:BaseVoltage .
-
-cim:Bay.VoltageLevel a rdf:Property ;
+cim:Bay.VoltageLevel a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "VoltageLevel"@en ;
   rdfs:comment "The voltage level containing this bay." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:VoltageLevel.Bays ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:VoltageLevel.Bays ;
   rdfs:domain cim:Bay ;
   rdfs:range cim:VoltageLevel .
 
-cim:ConductingEquipment.Terminals a rdf:Property ;
+cim:ConductingEquipment.Terminals a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Terminals"@en ;
   rdfs:comment "Conducting equipment have terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Terminal.ConductingEquipment ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:Terminal.ConductingEquipment ;
   rdfs:domain cim:ConductingEquipment ;
   rdfs:range cim:Terminal .
 
-cim:ConnectivityNode.ConnectivityNodeContainer a rdf:Property ;
+cim:ConnectivityNode.ConnectivityNodeContainer a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "ConnectivityNodeContainer"@en ;
   rdfs:comment "Container of this connectivity node." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:ConnectivityNodeContainer.ConnectivityNodes ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:ConnectivityNodeContainer.ConnectivityNodes ;
   rdfs:domain cim:ConnectivityNode ;
   rdfs:range cim:ConnectivityNodeContainer .
 
-cim:ConnectivityNode.Terminals a rdf:Property ;
+cim:ConnectivityNode.Terminals a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Terminals"@en ;
-  rdfs:comment "Terminals interconnected with zero impedance at a this connectivity node. " ;
+  rdfs:comment "Terminals interconnected with zero impedance at a this connectivity node." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Terminal.ConnectivityNode ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:Terminal.ConnectivityNode ;
   rdfs:domain cim:ConnectivityNode ;
   rdfs:range cim:Terminal .
 
-cim:ConnectivityNodeContainer.ConnectivityNodes a rdf:Property ;
+cim:ConnectivityNodeContainer.ConnectivityNodes a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "ConnectivityNodes"@en ;
   rdfs:comment "Connectivity nodes which belong to this connectivity node container." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:ConnectivityNode.ConnectivityNodeContainer ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:ConnectivityNode.ConnectivityNodeContainer ;
   rdfs:domain cim:ConnectivityNodeContainer ;
   rdfs:range cim:ConnectivityNode .
 
-cim:Equipment.EquipmentContainer a rdf:Property ;
+cim:Equipment.EquipmentContainer a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "EquipmentContainer"@en ;
   rdfs:comment "Container of this equipment." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:EquipmentContainer.Equipments ;
   cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf cim:EquipmentContainer.Equipments ;
   rdfs:domain cim:Equipment ;
   rdfs:range cim:EquipmentContainer .
 
-cim:EquipmentContainer.Equipments a rdf:Property ;
+cim:EquipmentContainer.Equipments a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Equipments"@en ;
   rdfs:comment "Contained equipment." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Equipment.EquipmentContainer ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:Equipment.EquipmentContainer ;
   rdfs:domain cim:EquipmentContainer ;
   rdfs:range cim:Equipment .
 
-cim:GeographicalRegion.Regions a rdf:Property ;
+cim:GeographicalRegion.Regions a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Regions"@en ;
   rdfs:comment "All sub-geographical regions within this geographical region." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:SubGeographicalRegion.Region ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:SubGeographicalRegion.Region ;
   rdfs:domain cim:GeographicalRegion ;
   rdfs:range cim:SubGeographicalRegion .
 
-cim:IdentifiedObject.description a rdf:Property ;
-  rdfs:label "description"@en ;
-  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
-
-cim:IdentifiedObject.mRID a rdf:Property ;
-  rdfs:label "mRID"@en ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
-
-cim:IdentifiedObject.name a rdf:Property ;
-  rdfs:label "name"@en ;
-  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
-
-cim:Line.Region a rdf:Property ;
+cim:Line.Region a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "Region"@en ;
   rdfs:comment "The sub-geographical region of the line." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:SubGeographicalRegion.Lines ;
   cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf cim:SubGeographicalRegion.Lines ;
   rdfs:domain cim:Line ;
   rdfs:range cim:SubGeographicalRegion .
 
-cim:SubGeographicalRegion.Lines a rdf:Property ;
+cim:SubGeographicalRegion.Lines a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Lines"@en ;
   rdfs:comment "The lines within the sub-geographical region." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Line.Region ;
   cims:multiplicity cims:M:0..n ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#ofAggregate> ;
+  cims:stereotype uml:ofAggregate ;
+  owl:inverseOf cim:Line.Region ;
   rdfs:domain cim:SubGeographicalRegion ;
   rdfs:range cim:Line .
 
-cim:SubGeographicalRegion.Region a rdf:Property ;
+cim:SubGeographicalRegion.Region a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "Region"@en ;
   rdfs:comment "The geographical region which this sub-geographical region is within." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:GeographicalRegion.Regions ;
   cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:GeographicalRegion.Regions ;
   rdfs:domain cim:SubGeographicalRegion ;
   rdfs:range cim:GeographicalRegion .
 
-cim:SubGeographicalRegion.Substations a rdf:Property ;
+cim:SubGeographicalRegion.Substations a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Substations"@en ;
   rdfs:comment "The substations in this sub-geographical region." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Substation.Region ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:Substation.Region ;
   rdfs:domain cim:SubGeographicalRegion ;
   rdfs:range cim:Substation .
 
-cim:Substation.Region a rdf:Property ;
+cim:Substation.Region a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "Region"@en ;
   rdfs:comment "The SubGeographicalRegion containing the substation." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:SubGeographicalRegion.Substations ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:SubGeographicalRegion.Substations ;
   rdfs:domain cim:Substation ;
   rdfs:range cim:SubGeographicalRegion .
 
-cim:Substation.VoltageLevels a rdf:Property ;
+cim:Substation.VoltageLevels a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "VoltageLevels"@en ;
   rdfs:comment "The voltage levels within this substation." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:VoltageLevel.Substation ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:VoltageLevel.Substation ;
   rdfs:domain cim:Substation ;
   rdfs:range cim:VoltageLevel .
 
-cim:Terminal.ConductingEquipment a rdf:Property ;
+cim:Terminal.ConductingEquipment a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "ConductingEquipment"@en ;
   rdfs:comment "The conducting equipment of the terminal.  Conducting equipment have  terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:ConductingEquipment.Terminals ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:ConductingEquipment.Terminals ;
   rdfs:domain cim:Terminal ;
   rdfs:range cim:ConductingEquipment .
 
-cim:Terminal.ConnectivityNode a rdf:Property ;
+cim:Terminal.ConnectivityNode a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "ConnectivityNode"@en ;
   rdfs:comment "The connectivity node to which this terminal connects with zero impedance." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:ConnectivityNode.Terminals ;
   cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf cim:ConnectivityNode.Terminals ;
   rdfs:domain cim:Terminal ;
   rdfs:range cim:ConnectivityNode .
 
-cim:Voltage.multiplier a rdf:Property ;
-  rdfs:label "multiplier"@en ;
-  cims:isFixed "k" ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Voltage ;
-  rdfs:range cim:UnitMultiplier .
-
-cim:Voltage.unit a rdf:Property ;
-  rdfs:label "unit"@en ;
-  cims:isFixed "V" ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Voltage ;
-  rdfs:range cim:UnitSymbol .
-
-cim:Voltage.value a rdf:Property ;
-  rdfs:label "value"@en ;
-  cims:dataType cim:Float ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Voltage .
-
-cim:VoltageLevel.BaseVoltage a rdf:Property ;
+cim:VoltageLevel.BaseVoltage a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "BaseVoltage"@en ;
   rdfs:comment "The base voltage used for all equipment within the voltage level." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:BaseVoltage.VoltageLevel ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:BaseVoltage.VoltageLevel ;
   rdfs:domain cim:VoltageLevel ;
   rdfs:range cim:BaseVoltage .
 
-cim:VoltageLevel.Bays a rdf:Property ;
+cim:VoltageLevel.Bays a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Bays"@en ;
   rdfs:comment "The bays within this voltage level." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Bay.VoltageLevel ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:Bay.VoltageLevel ;
   rdfs:domain cim:VoltageLevel ;
   rdfs:range cim:Bay .
 
-cim:VoltageLevel.Substation a rdf:Property ;
+cim:VoltageLevel.Substation a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "Substation"@en ;
   rdfs:comment "The substation of the voltage level." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:Substation.VoltageLevels ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:Substation.VoltageLevels ;
   rdfs:domain cim:VoltageLevel ;
   rdfs:range cim:Substation .
 
-cim:VoltageLevel.highVoltageLimit a rdf:Property ;
-  rdfs:label "highVoltageLimit"@en ;
-  rdfs:comment """The bus bar's high voltage limit.
-The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with lowVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.""" ;
-  cims:dataType cim:Voltage ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:VoltageLevel .
-
-cim:VoltageLevel.lowVoltageLimit a rdf:Property ;
-  rdfs:label "lowVoltageLimit"@en ;
-  rdfs:comment """The bus bar's low voltage limit.
-The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with highVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.""" ;
-  cims:dataType cim:Voltage ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:VoltageLevel .
-
-eu:BoundaryPoint.ConnectivityNode a rdf:Property ;
+eu:BoundaryPoint.ConnectivityNode a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
   rdfs:label "ConnectivityNode"@en ;
   rdfs:comment "The connectivity node that is designated as a boundary point." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName eu:ConnectivityNode.BoundaryPoint ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
   cims:stereotype "European" ;
+  owl:inverseOf eu:ConnectivityNode.BoundaryPoint ;
   rdfs:domain eu:BoundaryPoint ;
   rdfs:range cim:ConnectivityNode .
 
-eu:BoundaryPoint.fromEndIsoCode a rdf:Property ;
+eu:ConnectivityNode.BoundaryPoint a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "BoundaryPoint"@en ;
+  rdfs:comment "The boundary point associated with the connectivity node." ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "European" ;
+  owl:inverseOf eu:BoundaryPoint.ConnectivityNode ;
+  rdfs:domain cim:ConnectivityNode ;
+  rdfs:range eu:BoundaryPoint .
+
+cim:BaseVoltage.nominalVoltage a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "nominalVoltage"@en ;
+  rdfs:comment "The power system resource's base voltage.  Shall be a positive value and not zero." ;
+  cim:unitMultiplier cim:UnitMultiplier.k ;
+  cim:unitSymbol cim:UnitSymbol.V ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:Voltage ;
+  qudt:hasUnit unit:KiloV ;
+  rdfs:domain cim:BaseVoltage ;
+  rdfs:range xsd:float .
+
+cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "description"@en ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "name"@en ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:VoltageLevel.highVoltageLimit a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "highVoltageLimit"@en ;
+  rdfs:comment """The bus bar's high voltage limit.
+The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with lowVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.""" ;
+  cim:unitMultiplier cim:UnitMultiplier.k ;
+  cim:unitSymbol cim:UnitSymbol.V ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:Voltage ;
+  qudt:hasUnit unit:KiloV ;
+  rdfs:domain cim:VoltageLevel ;
+  rdfs:range xsd:float .
+
+cim:VoltageLevel.lowVoltageLimit a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "lowVoltageLimit"@en ;
+  rdfs:comment """The bus bar's low voltage limit.
+The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with highVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.""" ;
+  cim:unitMultiplier cim:UnitMultiplier.k ;
+  cim:unitSymbol cim:UnitSymbol.V ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:Voltage ;
+  qudt:hasUnit unit:KiloV ;
+  rdfs:domain cim:VoltageLevel ;
+  rdfs:range xsd:float .
+
+eu:BoundaryPoint.fromEndIsoCode a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "fromEndIsoCode"@en ;
   rdfs:comment """The ISO code of the region which the "From" side of the Boundary point belongs to or it is connected to.
 The ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum.""" ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
+  cims:stereotype "European", uml:attribute ;
+  rdfs:domain eu:BoundaryPoint ;
+  rdfs:range xsd:string .
 
-eu:BoundaryPoint.fromEndName a rdf:Property ;
+eu:BoundaryPoint.fromEndName a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "fromEndName"@en ;
   rdfs:comment """A human readable name with length of the string 64 characters maximum. It covers the following two cases:
 -if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the "From" side of the tie-line is connected to.
 -if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the "From" side of the Boundary point is connected to.""" ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
+  cims:stereotype "European", uml:attribute ;
+  rdfs:domain eu:BoundaryPoint ;
+  rdfs:range xsd:string .
 
-eu:BoundaryPoint.fromEndNameTso a rdf:Property ;
+eu:BoundaryPoint.fromEndNameTso a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "fromEndNameTso"@en ;
   rdfs:comment "Identifies the name of the transmission system operator, distribution system operator or other entity at which the \"From\" side of the interconnection is connected to. The length of the string is 64 characters maximum." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
+  cims:stereotype "European", uml:attribute ;
+  rdfs:domain eu:BoundaryPoint ;
+  rdfs:range xsd:string .
 
-eu:BoundaryPoint.isDirectCurrent a rdf:Property ;
+eu:BoundaryPoint.isDirectCurrent a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "isDirectCurrent"@en ;
   rdfs:comment "If true, this boundary point is a point of common coupling (PCC) of a direct current (DC) interconnection, otherwise the interconnection is AC (default)." ;
-  cims:dataType cim:Boolean ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
+  cims:stereotype "European", uml:attribute ;
+  rdfs:domain eu:BoundaryPoint ;
+  rdfs:range xsd:boolean .
 
-eu:BoundaryPoint.isExcludedFromAreaInterchange a rdf:Property ;
+eu:BoundaryPoint.isExcludedFromAreaInterchange a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "isExcludedFromAreaInterchange"@en ;
   rdfs:comment "If true, this boundary point is on the interconnection that is excluded from control area interchange calculation and consequently has no related tie flows. Otherwise, the interconnection is included in control area interchange and a TieFlow is required at all sides of the boundary point (default)." ;
-  cims:dataType cim:Boolean ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
+  cims:stereotype "European", uml:attribute ;
+  rdfs:domain eu:BoundaryPoint ;
+  rdfs:range xsd:boolean .
 
-eu:BoundaryPoint.toEndIsoCode a rdf:Property ;
+eu:BoundaryPoint.toEndIsoCode a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "toEndIsoCode"@en ;
   rdfs:comment """The ISO code of the region which the "To" side of the Boundary point belongs to or is connected to.
 The ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum.""" ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
+  cims:stereotype "European", uml:attribute ;
+  rdfs:domain eu:BoundaryPoint ;
+  rdfs:range xsd:string .
 
-eu:BoundaryPoint.toEndName a rdf:Property ;
+eu:BoundaryPoint.toEndName a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "toEndName"@en ;
   rdfs:comment """A human readable name with length of the string 64 characters maximum. It covers the following two cases:
 -if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the "To" side of the tie-line is connected to.
 -if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the "To" side of the Boundary point is connected to.""" ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
+  cims:stereotype "European", uml:attribute ;
+  rdfs:domain eu:BoundaryPoint ;
+  rdfs:range xsd:string .
 
-eu:BoundaryPoint.toEndNameTso a rdf:Property ;
+eu:BoundaryPoint.toEndNameTso a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "toEndNameTso"@en ;
   rdfs:comment "Identifies the name of the transmission system operator, distribution system operator or other entity at which the \"To\" side of the interconnection is connected to. The length of the string is 64 characters maximum." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "European", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain eu:BoundaryPoint .
+  cims:stereotype "European", uml:attribute ;
+  rdfs:domain eu:BoundaryPoint ;
+  rdfs:range xsd:string .
 
-eu:ConnectivityNode.BoundaryPoint a rdf:Property ;
-  rdfs:label "BoundaryPoint"@en ;
-  rdfs:comment "The boundary point associated with the connectivity node." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName eu:BoundaryPoint.ConnectivityNode ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European" ;
-  rdfs:domain cim:ConnectivityNode ;
-  rdfs:range eu:BoundaryPoint .
-
-eu:IdentifiedObject.energyIdentCodeEic a rdf:Property ;
+eu:IdentifiedObject.energyIdentCodeEic a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "energyIdentCodeEic"@en ;
   rdfs:comment "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European", "deprecated", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+  cims:stereotype "European", uml:attribute ;
+  owl:deprecated true ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
 
-eu:IdentifiedObject.shortName a rdf:Property ;
+eu:IdentifiedObject.shortName a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "shortName"@en ;
   rdfs:comment "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "European", "deprecated", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+  cims:stereotype "European", uml:attribute ;
+  owl:deprecated true ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:ActivePower skos:exactMatch quantitykind:ActivePower .
+
+cim:ActivePowerChangeRate skos:exactMatch quantitykind:ActivePowerChangeRate .
+
+cim:ActivePowerPerCurrentFlow skos:exactMatch quantitykind:ActivePowerPerCurrentFlow .
+
+cim:ActivePowerPerFrequency skos:exactMatch quantitykind:ActivePowerPerFrequency .
+
+cim:AngleDegrees skos:exactMatch quantitykind:Angle .
+
+cim:AngleRadians skos:exactMatch quantitykind:Angle .
+
+cim:ApparentPower skos:exactMatch quantitykind:ApparentPower .
+
+cim:Area skos:exactMatch quantitykind:Area .
+
+cim:Capacitance skos:exactMatch quantitykind:Capacitance .
+
+cim:Conductance skos:exactMatch quantitykind:Conductance .
+
+cim:CurrentFlow skos:exactMatch quantitykind:ElectricCurrent .
+
+cim:Frequency skos:exactMatch quantitykind:Frequency .
+
+cim:Impedance skos:exactMatch quantitykind:Inductance .
+
+cim:Length skos:exactMatch quantitykind:Length .
+
+cim:Money skos:exactMatch quantitykind:Currency .
+
+cim:PU skos:exactMatch quantitykind:DimensionlessRatio .
+
+cim:PerCent skos:exactMatch quantitykind:DimensionlessRatio .
+
+cim:Pressure skos:exactMatch quantitykind:Pressure .
+
+cim:Reactance skos:exactMatch quantitykind:Reactance .
+
+cim:ReactivePower skos:exactMatch quantitykind:ReactivePower .
+
+cim:RealEnergy skos:exactMatch quantitykind:Energy .
+
+cim:Resistance skos:exactMatch quantitykind:Resistance .
+
+cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
+
+cim:Seconds skos:exactMatch quantitykind:Time .
+
+cim:Susceptance skos:exactMatch quantitykind:Susceptance .
+
+cim:Temperature skos:exactMatch quantitykind:Temperature .
 
 cim:UnitMultiplier.E a cim:UnitMultiplier ;
-  rdfs:label "E"@en ;
+  rdfs:label "E" ;
   rdfs:comment "Exa 10**18." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.G a cim:UnitMultiplier ;
-  rdfs:label "G"@en ;
+  rdfs:label "G" ;
   rdfs:comment "Giga 10**9." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
-  rdfs:label "M"@en ;
+  rdfs:label "M" ;
   rdfs:comment "Mega 10**6." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E6 ;
+  skos:exactMatch prefix:Mega .
 
 cim:UnitMultiplier.P a cim:UnitMultiplier ;
-  rdfs:label "P"@en ;
+  rdfs:label "P" ;
   rdfs:comment "Peta 10**15." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.T a cim:UnitMultiplier ;
-  rdfs:label "T"@en ;
+  rdfs:label "T" ;
   rdfs:comment "Tera 10**12." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.Y a cim:UnitMultiplier ;
-  rdfs:label "Y"@en ;
+  rdfs:label "Y" ;
   rdfs:comment "Yotta 10**24." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.Z a cim:UnitMultiplier ;
-  rdfs:label "Z"@en ;
+  rdfs:label "Z" ;
   rdfs:comment "Zetta 10**21." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.a a cim:UnitMultiplier ;
-  rdfs:label "a"@en ;
+  rdfs:label "a" ;
   rdfs:comment "Atto 10**-18." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.c a cim:UnitMultiplier ;
-  rdfs:label "c"@en ;
+  rdfs:label "c" ;
   rdfs:comment "Centi 10**-2." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.d a cim:UnitMultiplier ;
-  rdfs:label "d"@en ;
+  rdfs:label "d" ;
   rdfs:comment "Deci 10**-1." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.da a cim:UnitMultiplier ;
-  rdfs:label "da"@en ;
+  rdfs:label "da" ;
   rdfs:comment "Deca 10**1." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.f a cim:UnitMultiplier ;
-  rdfs:label "f"@en ;
+  rdfs:label "f" ;
   rdfs:comment "Femto 10**-15." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.h a cim:UnitMultiplier ;
-  rdfs:label "h"@en ;
+  rdfs:label "h" ;
   rdfs:comment "Hecto 10**2." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.k a cim:UnitMultiplier ;
-  rdfs:label "k"@en ;
+  rdfs:label "k" ;
   rdfs:comment "Kilo 10**3." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1E3 ;
+  skos:exactMatch prefix:Kilo .
 
 cim:UnitMultiplier.m a cim:UnitMultiplier ;
-  rdfs:label "m"@en ;
+  rdfs:label "m" ;
   rdfs:comment "Milli 10**-3." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.micro a cim:UnitMultiplier ;
-  rdfs:label "micro"@en ;
+  rdfs:label "micro" ;
   rdfs:comment "Micro 10**-6." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.n a cim:UnitMultiplier ;
-  rdfs:label "n"@en ;
+  rdfs:label "n" ;
   rdfs:comment "Nano 10**-9." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.none a cim:UnitMultiplier ;
-  rdfs:label "none"@en ;
+  rdfs:label "none" ;
   rdfs:comment "No multiplier or equivalently multiply by 1." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  qudt:prefixMultiplier 1.0 .
 
 cim:UnitMultiplier.p a cim:UnitMultiplier ;
-  rdfs:label "p"@en ;
+  rdfs:label "p" ;
   rdfs:comment "Pico 10**-12." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.y a cim:UnitMultiplier ;
-  rdfs:label "y"@en ;
+  rdfs:label "y" ;
   rdfs:comment "Yocto 10**-24." ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.z a cim:UnitMultiplier ;
-  rdfs:label "z"@en ;
+  rdfs:label "z" ;
   rdfs:comment "Zepto 10**-21." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A a cim:UnitSymbol ;
-  rdfs:label "A"@en ;
+  rdfs:label "A" ;
   rdfs:comment "Current in amperes." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:A .
 
 cim:UnitSymbol.A2 a cim:UnitSymbol ;
-  rdfs:label "A2"@en ;
+  rdfs:label "A2" ;
   rdfs:comment "Amperes squared (A²)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A2h a cim:UnitSymbol ;
-  rdfs:label "A2h"@en ;
+  rdfs:label "A2h" ;
   rdfs:comment "Ampere-squared hour, ampere-squared hour." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A2s a cim:UnitSymbol ;
-  rdfs:label "A2s"@en ;
+  rdfs:label "A2s" ;
   rdfs:comment "Ampere squared time in square amperes (A²s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.APerA a cim:UnitSymbol ;
-  rdfs:label "APerA"@en ;
+  rdfs:label "APerA" ;
   rdfs:comment "Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.APerm a cim:UnitSymbol ;
-  rdfs:label "APerm"@en ;
+  rdfs:label "APerm" ;
   rdfs:comment "A/m, magnetic field strength, amperes per metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Ah a cim:UnitSymbol ;
-  rdfs:label "Ah"@en ;
+  rdfs:label "Ah" ;
   rdfs:comment "Ampere-hours, ampere-hours." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.As a cim:UnitSymbol ;
-  rdfs:label "As"@en ;
+  rdfs:label "As" ;
   rdfs:comment "Ampere seconds (A·s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Bq a cim:UnitSymbol ;
-  rdfs:label "Bq"@en ;
+  rdfs:label "Bq" ;
   rdfs:comment "Radioactivity in becquerels (1/s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Btu a cim:UnitSymbol ;
-  rdfs:label "Btu"@en ;
+  rdfs:label "Btu" ;
   rdfs:comment "Energy, British Thermal Units." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.C a cim:UnitSymbol ;
-  rdfs:label "C"@en ;
+  rdfs:label "C" ;
   rdfs:comment "Electric charge in coulombs (A·s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerkg a cim:UnitSymbol ;
-  rdfs:label "CPerkg"@en ;
+  rdfs:label "CPerkg" ;
   rdfs:comment "Exposure (x rays), coulombs per kilogram." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerm2 a cim:UnitSymbol ;
-  rdfs:label "CPerm2"@en ;
+  rdfs:label "CPerm2" ;
   rdfs:comment "Surface charge density, coulombs per square metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerm3 a cim:UnitSymbol ;
-  rdfs:label "CPerm3"@en ;
+  rdfs:label "CPerm3" ;
   rdfs:comment "Electric charge density, coulombs per cubic metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.F a cim:UnitSymbol ;
-  rdfs:label "F"@en ;
+  rdfs:label "F" ;
   rdfs:comment "Electric capacitance in farads (C/V)." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:FARAD .
 
 cim:UnitSymbol.FPerm a cim:UnitSymbol ;
-  rdfs:label "FPerm"@en ;
+  rdfs:label "FPerm" ;
   rdfs:comment "Permittivity, farads per metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.G a cim:UnitSymbol ;
-  rdfs:label "G"@en ;
+  rdfs:label "G" ;
   rdfs:comment "Magnetic flux density, gausses (1 G = 10-4 T)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Gy a cim:UnitSymbol ;
-  rdfs:label "Gy"@en ;
+  rdfs:label "Gy" ;
   rdfs:comment "Absorbed dose in grays (J/kg)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.GyPers a cim:UnitSymbol ;
-  rdfs:label "GyPers"@en ;
+  rdfs:label "GyPers" ;
   rdfs:comment "Absorbed dose rate, grays per second." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.H a cim:UnitSymbol ;
-  rdfs:label "H"@en ;
+  rdfs:label "H" ;
   rdfs:comment "Electric inductance in henrys (Wb/A)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.HPerm a cim:UnitSymbol ;
-  rdfs:label "HPerm"@en ;
+  rdfs:label "HPerm" ;
   rdfs:comment "Permeability, henrys per metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Hz a cim:UnitSymbol ;
-  rdfs:label "Hz"@en ;
+  rdfs:label "Hz" ;
   rdfs:comment "Frequency in hertz (1/s)." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:HZ ;
+  skos:narrower unit:REV-PER-SEC .
 
 cim:UnitSymbol.HzPerHz a cim:UnitSymbol ;
-  rdfs:label "HzPerHz"@en ;
+  rdfs:label "HzPerHz" ;
   rdfs:comment "Frequency, rate of frequency change.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mHz/Hz’." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.HzPers a cim:UnitSymbol ;
-  rdfs:label "HzPers"@en ;
+  rdfs:label "HzPers" ;
   rdfs:comment "Rate of change of frequency in hertz per second." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.J a cim:UnitSymbol ;
-  rdfs:label "J"@en ;
+  rdfs:label "J" ;
   rdfs:comment "Energy in joules (N·m = C·V = W·s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.JPerK a cim:UnitSymbol ;
-  rdfs:label "JPerK"@en ;
+  rdfs:label "JPerK" ;
   rdfs:comment "Heat capacity in joules/kelvin." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.JPerkg a cim:UnitSymbol ;
-  rdfs:label "JPerkg"@en ;
+  rdfs:label "JPerkg" ;
   rdfs:comment "Specific energy, Joules / kg." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.JPerkgK a cim:UnitSymbol ;
-  rdfs:label "JPerkgK"@en ;
+  rdfs:label "JPerkgK" ;
   rdfs:comment "Specific heat capacity, specific entropy, joules per kilogram Kelvin." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.JPerm2 a cim:UnitSymbol ;
-  rdfs:label "JPerm2"@en ;
+  rdfs:label "JPerm2" ;
   rdfs:comment "Insulation energy density, joules per square metre or watt second per square metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.JPerm3 a cim:UnitSymbol ;
-  rdfs:label "JPerm3"@en ;
+  rdfs:label "JPerm3" ;
   rdfs:comment "Energy density, joules per cubic metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.JPermol a cim:UnitSymbol ;
-  rdfs:label "JPermol"@en ;
+  rdfs:label "JPermol" ;
   rdfs:comment "Molar energy, joules per mole." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.JPermolK a cim:UnitSymbol ;
-  rdfs:label "JPermolK"@en ;
+  rdfs:label "JPermolK" ;
   rdfs:comment "Molar entropy, molar heat capacity, joules per mole kelvin." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.JPers a cim:UnitSymbol ;
-  rdfs:label "JPers"@en ;
+  rdfs:label "JPers" ;
   rdfs:comment "Energy rate in joules per second (J/s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.K a cim:UnitSymbol ;
-  rdfs:label "K"@en ;
+  rdfs:label "K" ;
   rdfs:comment "Temperature in kelvins." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.KPers a cim:UnitSymbol ;
-  rdfs:label "KPers"@en ;
+  rdfs:label "KPers" ;
   rdfs:comment "Temperature change rate in kelvins per second." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.M a cim:UnitSymbol ;
-  rdfs:label "M"@en ;
+  rdfs:label "M" ;
   rdfs:comment "Length, nautical miles (1 M = 1852 m)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Mx a cim:UnitSymbol ;
-  rdfs:label "Mx"@en ;
+  rdfs:label "Mx" ;
   rdfs:comment "Magnetic flux, maxwells (1 Mx = 10-8 Wb)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.N a cim:UnitSymbol ;
-  rdfs:label "N"@en ;
+  rdfs:label "N" ;
   rdfs:comment "Force in newtons (kg·m/s²)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.NPerm a cim:UnitSymbol ;
-  rdfs:label "NPerm"@en ;
+  rdfs:label "NPerm" ;
   rdfs:comment "Surface tension, newton per metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Nm a cim:UnitSymbol ;
-  rdfs:label "Nm"@en ;
+  rdfs:label "Nm" ;
   rdfs:comment "Moment of force, newton metres." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Oe a cim:UnitSymbol ;
-  rdfs:label "Oe"@en ;
+  rdfs:label "Oe" ;
   rdfs:comment "Magnetic field in oersteds, (1 Oe = (103/4p) A/m)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Pa a cim:UnitSymbol ;
-  rdfs:label "Pa"@en ;
+  rdfs:label "Pa" ;
   rdfs:comment "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:PA .
 
 cim:UnitSymbol.PaPers a cim:UnitSymbol ;
-  rdfs:label "PaPers"@en ;
+  rdfs:label "PaPers" ;
   rdfs:comment "Pressure change rate in pascals per second." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Pas a cim:UnitSymbol ;
-  rdfs:label "Pas"@en ;
+  rdfs:label "Pas" ;
   rdfs:comment "Dynamic viscosity, pascal seconds." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Q a cim:UnitSymbol ;
-  rdfs:label "Q"@en ;
+  rdfs:label "Q" ;
   rdfs:comment "Quantity power, Q." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Qh a cim:UnitSymbol ;
-  rdfs:label "Qh"@en ;
+  rdfs:label "Qh" ;
   rdfs:comment "Quantity energy, Qh." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.S a cim:UnitSymbol ;
-  rdfs:label "S"@en ;
+  rdfs:label "S" ;
   rdfs:comment "Conductance in siemens." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:S .
 
 cim:UnitSymbol.SPerm a cim:UnitSymbol ;
-  rdfs:label "SPerm"@en ;
+  rdfs:label "SPerm" ;
   rdfs:comment "Conductance per length (F/m)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Sv a cim:UnitSymbol ;
-  rdfs:label "Sv"@en ;
+  rdfs:label "Sv" ;
   rdfs:comment "Dose equivalent in sieverts (J/kg)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.T a cim:UnitSymbol ;
-  rdfs:label "T"@en ;
+  rdfs:label "T" ;
   rdfs:comment "Magnetic flux density in teslas (Wb/m2)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.V a cim:UnitSymbol ;
-  rdfs:label "V"@en ;
+  rdfs:label "V" ;
   rdfs:comment "Electric potential in volts (W/A)." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V .
 
 cim:UnitSymbol.V2 a cim:UnitSymbol ;
-  rdfs:label "V2"@en ;
+  rdfs:label "V2" ;
   rdfs:comment "Volt squared (W²/A²)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.V2h a cim:UnitSymbol ;
-  rdfs:label "V2h"@en ;
+  rdfs:label "V2h" ;
   rdfs:comment "Volt-squared hour, volt-squared-hours." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.VA a cim:UnitSymbol ;
-  rdfs:label "VA"@en ;
+  rdfs:label "VA" ;
   rdfs:comment "Apparent power in volt amperes. See also real power and reactive power." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-A .
 
 cim:UnitSymbol.VAh a cim:UnitSymbol ;
-  rdfs:label "VAh"@en ;
+  rdfs:label "VAh" ;
   rdfs:comment "Apparent energy in volt ampere hours." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.VAr a cim:UnitSymbol ;
-  rdfs:label "VAr"@en ;
+  rdfs:label "VAr" ;
   rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
 Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.""" ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-A_Reactive .
 
 cim:UnitSymbol.VArh a cim:UnitSymbol ;
-  rdfs:label "VArh"@en ;
+  rdfs:label "VArh" ;
   rdfs:comment "Reactive energy in volt ampere reactive hours." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.VPerHz a cim:UnitSymbol ;
-  rdfs:label "VPerHz"@en ;
+  rdfs:label "VPerHz" ;
   rdfs:comment "Magnetic flux in volt per hertz." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.VPerV a cim:UnitSymbol ;
-  rdfs:label "VPerV"@en ;
+  rdfs:label "VPerV" ;
   rdfs:comment "Voltage, ratio of voltages.  Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.VPerVA a cim:UnitSymbol ;
-  rdfs:label "VPerVA"@en ;
+  rdfs:label "VPerVA" ;
   rdfs:comment "Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.VPerVAr a cim:UnitSymbol ;
-  rdfs:label "VPerVAr"@en ;
+  rdfs:label "VPerVAr" ;
   rdfs:comment "Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:V-PER-V-A_Reactive .
 
 cim:UnitSymbol.VPerm a cim:UnitSymbol ;
-  rdfs:label "VPerm"@en ;
+  rdfs:label "VPerm" ;
   rdfs:comment "Electric field strength, volts per metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Vh a cim:UnitSymbol ;
-  rdfs:label "Vh"@en ;
+  rdfs:label "Vh" ;
   rdfs:comment "Volt-hour, Volt hours." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Vs a cim:UnitSymbol ;
-  rdfs:label "Vs"@en ;
+  rdfs:label "Vs" ;
   rdfs:comment "Volt seconds (Ws/A)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.W a cim:UnitSymbol ;
-  rdfs:label "W"@en ;
+  rdfs:label "W" ;
   rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W .
 
 cim:UnitSymbol.WPerA a cim:UnitSymbol ;
-  rdfs:label "WPerA"@en ;
+  rdfs:label "WPerA" ;
   rdfs:comment "Active power per current flow, watts per Ampere." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-PER-A .
 
 cim:UnitSymbol.WPerW a cim:UnitSymbol ;
-  rdfs:label "WPerW"@en ;
+  rdfs:label "WPerW" ;
   rdfs:comment "Signal Strength, ratio of power.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mW/W’." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.WPerm2 a cim:UnitSymbol ;
-  rdfs:label "WPerm2"@en ;
+  rdfs:label "WPerm2" ;
   rdfs:comment "Heat flux density, irradiance, watts per square metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.WPerm2sr a cim:UnitSymbol ;
-  rdfs:label "WPerm2sr"@en ;
+  rdfs:label "WPerm2sr" ;
   rdfs:comment "Radiance, watts per square metre steradian." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.WPermK a cim:UnitSymbol ;
-  rdfs:label "WPermK"@en ;
+  rdfs:label "WPermK" ;
   rdfs:comment "Thermal conductivity in watt/metres kelvin." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.WPers a cim:UnitSymbol ;
-  rdfs:label "WPers"@en ;
+  rdfs:label "WPers" ;
   rdfs:comment "Ramp rate in watts per second." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-PER-SEC .
 
 cim:UnitSymbol.WPersr a cim:UnitSymbol ;
-  rdfs:label "WPersr"@en ;
+  rdfs:label "WPersr" ;
   rdfs:comment "Radiant intensity, watts per steradian." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Wb a cim:UnitSymbol ;
-  rdfs:label "Wb"@en ;
+  rdfs:label "Wb" ;
   rdfs:comment "Magnetic flux in webers (V·s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Wh a cim:UnitSymbol ;
-  rdfs:label "Wh"@en ;
+  rdfs:label "Wh" ;
   rdfs:comment "Real energy in watt hours." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:W-HR .
 
 cim:UnitSymbol.anglemin a cim:UnitSymbol ;
-  rdfs:label "anglemin"@en ;
+  rdfs:label "anglemin" ;
   rdfs:comment "Plane angle, minutes." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.anglesec a cim:UnitSymbol ;
-  rdfs:label "anglesec"@en ;
+  rdfs:label "anglesec" ;
   rdfs:comment "Plane angle, seconds." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.bar a cim:UnitSymbol ;
-  rdfs:label "bar"@en ;
+  rdfs:label "bar" ;
   rdfs:comment "Pressure in bars, (1 bar = 100 kPa)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.cd a cim:UnitSymbol ;
-  rdfs:label "cd"@en ;
+  rdfs:label "cd" ;
   rdfs:comment "Luminous intensity in candelas." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.charPers a cim:UnitSymbol ;
-  rdfs:label "charPers"@en ;
+  rdfs:label "charPers" ;
   rdfs:comment "Data rate (baud) in characters per second." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.character a cim:UnitSymbol ;
-  rdfs:label "character"@en ;
+  rdfs:label "character" ;
   rdfs:comment "Number of characters." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.cosPhi a cim:UnitSymbol ;
-  rdfs:label "cosPhi"@en ;
+  rdfs:label "cosPhi" ;
   rdfs:comment """Power factor, dimensionless.
 Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.
 Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.""" ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.count a cim:UnitSymbol ;
-  rdfs:label "count"@en ;
+  rdfs:label "count" ;
   rdfs:comment "Amount of substance, Counter value." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.d a cim:UnitSymbol ;
-  rdfs:label "d"@en ;
+  rdfs:label "d" ;
   rdfs:comment "Time in days, day = 24 h = 86400 s." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.dB a cim:UnitSymbol ;
-  rdfs:label "dB"@en ;
+  rdfs:label "dB" ;
   rdfs:comment "Sound pressure level in decibels. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.dBm a cim:UnitSymbol ;
-  rdfs:label "dBm"@en ;
+  rdfs:label "dBm" ;
   rdfs:comment "Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1mW. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.deg a cim:UnitSymbol ;
-  rdfs:label "deg"@en ;
+  rdfs:label "deg" ;
   rdfs:comment "Plane angle in degrees." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:DEG .
 
 cim:UnitSymbol.degC a cim:UnitSymbol ;
-  rdfs:label "degC"@en ;
+  rdfs:label "degC" ;
   rdfs:comment """Relative temperature in degrees Celsius.
 In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.""" ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:DEG_C .
 
 cim:UnitSymbol.ft3 a cim:UnitSymbol ;
-  rdfs:label "ft3"@en ;
+  rdfs:label "ft3" ;
   rdfs:comment "Volume, cubic feet." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.gPerg a cim:UnitSymbol ;
-  rdfs:label "gPerg"@en ;
+  rdfs:label "gPerg" ;
   rdfs:comment "Concentration, The ratio of the mass of a solute divided by the mass of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µg/g’." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.gal a cim:UnitSymbol ;
-  rdfs:label "gal"@en ;
+  rdfs:label "gal" ;
   rdfs:comment "Volume in gallons, US gallon (1 gal = 231 in3 = 128 fl ounce)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.h a cim:UnitSymbol ;
-  rdfs:label "h"@en ;
+  rdfs:label "h" ;
   rdfs:comment "Time in hours, hour = 60 min = 3600 s." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.ha a cim:UnitSymbol ;
-  rdfs:label "ha"@en ;
+  rdfs:label "ha" ;
   rdfs:comment "Area, hectares." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.kat a cim:UnitSymbol ;
-  rdfs:label "kat"@en ;
+  rdfs:label "kat" ;
   rdfs:comment "Catalytic activity, katal = mol / s." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.katPerm3 a cim:UnitSymbol ;
-  rdfs:label "katPerm3"@en ;
+  rdfs:label "katPerm3" ;
   rdfs:comment "Catalytic activity concentration, katals per cubic metre." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.kg a cim:UnitSymbol ;
-  rdfs:label "kg"@en ;
+  rdfs:label "kg" ;
   rdfs:comment "Mass in kilograms.  Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.kgPerJ a cim:UnitSymbol ;
-  rdfs:label "kgPerJ"@en ;
+  rdfs:label "kgPerJ" ;
   rdfs:comment "Weight per energy in kilograms per joule (kg/J). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.kgPerm3 a cim:UnitSymbol ;
-  rdfs:label "kgPerm3"@en ;
+  rdfs:label "kgPerm3" ;
   rdfs:comment "Density in kilogram/cubic metres (kg/m³). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.kgm a cim:UnitSymbol ;
-  rdfs:label "kgm"@en ;
+  rdfs:label "kgm" ;
   rdfs:comment "Moment of mass in kilogram metres (kg·m) (first moment of mass). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.kgm2 a cim:UnitSymbol ;
-  rdfs:label "kgm2"@en ;
+  rdfs:label "kgm2" ;
   rdfs:comment "Moment of mass in kilogram square metres (kg·m²) (Second moment of mass, commonly called the moment of inertia). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.kn a cim:UnitSymbol ;
-  rdfs:label "kn"@en ;
+  rdfs:label "kn" ;
   rdfs:comment "Speed, knots (1 kn = 1852/3600) m/s." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.l a cim:UnitSymbol ;
-  rdfs:label "l"@en ;
+  rdfs:label "l" ;
   rdfs:comment "Volume in litres, litre = dm3 = m3/1000." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.lPerh a cim:UnitSymbol ;
-  rdfs:label "lPerh"@en ;
+  rdfs:label "lPerh" ;
   rdfs:comment "Volumetric flow rate, litres per hour." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.lPerl a cim:UnitSymbol ;
-  rdfs:label "lPerl"@en ;
+  rdfs:label "lPerl" ;
   rdfs:comment "Concentration, The ratio of the volume of a solute divided by the volume of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µL/L’." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.lPers a cim:UnitSymbol ;
-  rdfs:label "lPers"@en ;
+  rdfs:label "lPers" ;
   rdfs:comment "Volumetric flow rate in litres per second." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.lm a cim:UnitSymbol ;
-  rdfs:label "lm"@en ;
+  rdfs:label "lm" ;
   rdfs:comment "Luminous flux in lumens (cd·sr)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.lx a cim:UnitSymbol ;
-  rdfs:label "lx"@en ;
+  rdfs:label "lx" ;
   rdfs:comment "Illuminance in lux (lm/m²)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.m a cim:UnitSymbol ;
-  rdfs:label "m"@en ;
+  rdfs:label "m" ;
   rdfs:comment "Length in metres." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M .
 
 cim:UnitSymbol.m2 a cim:UnitSymbol ;
-  rdfs:label "m2"@en ;
+  rdfs:label "m2" ;
   rdfs:comment "Area in square metres (m²)." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M2 .
 
 cim:UnitSymbol.m2Pers a cim:UnitSymbol ;
-  rdfs:label "m2Pers"@en ;
+  rdfs:label "m2Pers" ;
   rdfs:comment "Viscosity in square metres / second (m²/s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.m3 a cim:UnitSymbol ;
-  rdfs:label "m3"@en ;
+  rdfs:label "m3" ;
   rdfs:comment "Volume in cubic metres (m³)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.m3Compensated a cim:UnitSymbol ;
-  rdfs:label "m3Compensated"@en ;
+  rdfs:label "m3Compensated" ;
   rdfs:comment "Volume, cubic metres, with the value compensated for weather effects." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.m3Perh a cim:UnitSymbol ;
-  rdfs:label "m3Perh"@en ;
+  rdfs:label "m3Perh" ;
   rdfs:comment "Volumetric flow rate, cubic metres per hour." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.m3Perkg a cim:UnitSymbol ;
-  rdfs:label "m3Perkg"@en ;
+  rdfs:label "m3Perkg" ;
   rdfs:comment "Specific volume, cubic metres per kilogram, v." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.m3Pers a cim:UnitSymbol ;
-  rdfs:label "m3Pers"@en ;
+  rdfs:label "m3Pers" ;
   rdfs:comment "Volumetric flow rate in cubic metres per second (m³/s)." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:M3-PER-SEC .
 
 cim:UnitSymbol.m3Uncompensated a cim:UnitSymbol ;
-  rdfs:label "m3Uncompensated"@en ;
+  rdfs:label "m3Uncompensated" ;
   rdfs:comment "Volume, cubic metres, with the value uncompensated for weather effects." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.mPerm3 a cim:UnitSymbol ;
-  rdfs:label "mPerm3"@en ;
+  rdfs:label "mPerm3" ;
   rdfs:comment "Fuel efficiency in metres per cubic metres (m/m³)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.mPers a cim:UnitSymbol ;
-  rdfs:label "mPers"@en ;
+  rdfs:label "mPers" ;
   rdfs:comment "Velocity in metres per second (m/s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.mPers2 a cim:UnitSymbol ;
-  rdfs:label "mPers2"@en ;
+  rdfs:label "mPers2" ;
   rdfs:comment "Acceleration in metres per second squared (m/s²)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.min a cim:UnitSymbol ;
-  rdfs:label "min"@en ;
+  rdfs:label "min" ;
   rdfs:comment "Time in minutes, minute  = 60 s." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.mmHg a cim:UnitSymbol ;
-  rdfs:label "mmHg"@en ;
+  rdfs:label "mmHg" ;
   rdfs:comment "Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.mol a cim:UnitSymbol ;
-  rdfs:label "mol"@en ;
+  rdfs:label "mol" ;
   rdfs:comment "Amount of substance in moles." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.molPerkg a cim:UnitSymbol ;
-  rdfs:label "molPerkg"@en ;
+  rdfs:label "molPerkg" ;
   rdfs:comment "Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.molPerm3 a cim:UnitSymbol ;
-  rdfs:label "molPerm3"@en ;
+  rdfs:label "molPerm3" ;
   rdfs:comment "Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in m³." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.molPermol a cim:UnitSymbol ;
-  rdfs:label "molPermol"@en ;
+  rdfs:label "molPermol" ;
   rdfs:comment "Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.none a cim:UnitSymbol ;
-  rdfs:label "none"@en ;
+  rdfs:label "none" ;
   rdfs:comment "Dimension less quantity, e.g. count, per unit, etc." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.ohm a cim:UnitSymbol ;
-  rdfs:label "ohm"@en ;
+  rdfs:label "ohm" ;
   rdfs:comment "Electric resistance in ohms (V/A)." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:OHM .
 
 cim:UnitSymbol.ohmPerm a cim:UnitSymbol ;
-  rdfs:label "ohmPerm"@en ;
+  rdfs:label "ohmPerm" ;
   rdfs:comment "Electric resistance per length in ohms per metre ((V/A)/m)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.ohmm a cim:UnitSymbol ;
-  rdfs:label "ohmm"@en ;
+  rdfs:label "ohmm" ;
   rdfs:comment "Resistivity, ohm metres, (rho)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.onePerHz a cim:UnitSymbol ;
-  rdfs:label "onePerHz"@en ;
+  rdfs:label "onePerHz" ;
   rdfs:comment "Reciprocal of frequency (1/Hz)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.onePerm a cim:UnitSymbol ;
-  rdfs:label "onePerm"@en ;
+  rdfs:label "onePerm" ;
   rdfs:comment "Wavenumber, reciprocal metres,  (1/m)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.ppm a cim:UnitSymbol ;
-  rdfs:label "ppm"@en ;
+  rdfs:label "ppm" ;
   rdfs:comment "Concentration in parts per million." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.rad a cim:UnitSymbol ;
-  rdfs:label "rad"@en ;
+  rdfs:label "rad" ;
   rdfs:comment "Plane angle in radians (m/m)." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:RAD .
 
 cim:UnitSymbol.radPers a cim:UnitSymbol ;
-  rdfs:label "radPers"@en ;
+  rdfs:label "radPers" ;
   rdfs:comment "Angular velocity in radians per second (rad/s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.radPers2 a cim:UnitSymbol ;
-  rdfs:label "radPers2"@en ;
+  rdfs:label "radPers2" ;
   rdfs:comment "Angular acceleration, radians per second squared." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.rev a cim:UnitSymbol ;
-  rdfs:label "rev"@en ;
+  rdfs:label "rev" ;
   rdfs:comment "Amount of rotation, revolutions." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.rotPers a cim:UnitSymbol ;
-  rdfs:label "rotPers"@en ;
+  rdfs:label "rotPers" ;
   rdfs:comment "Rotations per second (1/s). See also Hz (1/s)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.s a cim:UnitSymbol ;
-  rdfs:label "s"@en ;
+  rdfs:label "s" ;
   rdfs:comment "Time in seconds." ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:SEC .
 
 cim:UnitSymbol.sPers a cim:UnitSymbol ;
-  rdfs:label "sPers"@en ;
+  rdfs:label "sPers" ;
   rdfs:comment "Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&#181;’ to show rates such as ‘&#181;s/s’." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.sr a cim:UnitSymbol ;
-  rdfs:label "sr"@en ;
+  rdfs:label "sr" ;
   rdfs:comment "Solid angle in steradians (m2/m2)." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.therm a cim:UnitSymbol ;
-  rdfs:label "therm"@en ;
+  rdfs:label "therm" ;
   rdfs:comment "Energy, therms." ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.tonne a cim:UnitSymbol ;
-  rdfs:label "tonne"@en ;
+  rdfs:label "tonne" ;
   rdfs:comment "Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg)." ;
   cims:stereotype "enum" .
 
+cim:Voltage a qudt:QuantityKind ;
+  rdfs:label "Voltage"@en ;
+  rdfs:comment "Electrical voltage, can be both AC and DC." ;
+  cims:belongsToCategory eqbd:Package_EquipmentBoundaryProfile ;
+  qudt:applicableUnit cim:UnitSymbol.V ;
+  skos:exactMatch quantitykind:Voltage .
+
+cim:VoltagePerReactivePower skos:exactMatch quantitykind:VoltagePerReactivePower .
+
+cim:VolumeFlowRate skos:exactMatch quantitykind:VolumeFlowRate .
+
 eqbd:Package_EquipmentBoundaryProfile a cims:ClassCategory ;
   rdfs:label "EquipmentBoundaryProfile"@en ;
-  rdfs:comment "This profile is deprecated. Use core equipment profile part of the IEC 61970-452 document. " .
+  rdfs:comment "This profile is deprecated. Use core equipment profile part of the IEC 61970-452 document." .
 
 

@@ -1,4 +1,4 @@
-﻿# https://github.com/Sveino/Inst4CIM-KG/issues/72
+# https://github.com/Sveino/Inst4CIM-KG/issues/72
 
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>

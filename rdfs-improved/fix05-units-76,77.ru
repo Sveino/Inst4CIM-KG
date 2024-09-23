@@ -5,10 +5,16 @@ PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
 
 # https://github.com/Sveino/Inst4CIM-KG/issues/76
 delete {cim:ActivePowerPerFrequency.unit cims:isFixed "WPers"}
-insert {cim:ActivePowerPerFrequency.unit cims:isFixed "WPerHz"}
-where  {cim:ActivePowerPerFrequency.unit cims:isFixed "WPers"};
+insert {
+  cim:ActivePowerPerFrequency.unit cims:isFixed "WPerHz".
+  cim:UnitSymbol.WPerHz a cim:UnitSymbol ;
+    rdfs:label "WPerHz" ;
+    rdfs:comment "Active power variation with frequency in watts per hertz." ;
+    cims:stereotype "enum"
+} where  {cim:ActivePowerPerFrequency.unit cims:isFixed "WPers"};
 
 # https://github.com/Sveino/Inst4CIM-KG/issues/77
 delete {cim:VoltagePerReactivePower.multiplier cims:isFixed "none"}
 insert {cim:VoltagePerReactivePower.multiplier cims:isFixed "k"}
 where  {cim:VoltagePerReactivePower.multiplier cims:isFixed "none"};
+
