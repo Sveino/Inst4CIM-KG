@@ -1,0 +1,228 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cim: <http://iec.ch/TC57/CIM100#> .
+@prefix eu: <http://iec.ch/TC57/CIM100-European#> .
+@prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+
+<urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7> a md:FullModel ;
+  md:Model.DependentOn <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3> ;
+  md:Model.created "2020-12-10T00:21:43Z" ;
+  md:Model.description "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model." ;
+  md:Model.modelingAuthoritySet "http://fullgrid.eu/CGMES/3.0" ;
+  md:Model.profile "http://iec.ch/TC57/ns/CIM/Operation-EU/3.0" ;
+  md:Model.scenarioTime "2021-02-09T19:30:00Z" ;
+  md:Model.version "1" .
+
+
+
+
+<urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7> { # model content
+
+<http://fullgrid.eu/CGMES/3.0#_13dacabf-aa4c-4a78-806e-c7c4c6949718> a cim:Discrete ;
+  cim:Discrete.ValueAliasSet <http://fullgrid.eu/CGMES/3.0#1a457323-2094-440f-8d30-dc93adf0cdb3> ;
+  cim:IdentifiedObject.description "DIS_1" ;
+  cim:IdentifiedObject.mRID "13dacabf-aa4c-4a78-806e-c7c4c6949718" ;
+  cim:IdentifiedObject.name "DIS_1" ;
+  cim:Measurement.PowerSystemResource <http://fullgrid.eu/CGMES/3.0#0d76d781-5117-4e1c-af35-ca8849474b39> ;
+  cim:Measurement.measurementType "SwitchPosition" ;
+  cim:Measurement.phases cim:PhaseCode.ABC ;
+  cim:Measurement.unitMultiplier cim:UnitMultiplier.none ;
+  cim:Measurement.unitSymbol cim:UnitSymbol.none .
+
+<http://fullgrid.eu/CGMES/3.0#_1a457323-2094-440f-8d30-dc93adf0cdb3> a cim:ValueAliasSet ;
+  cim:IdentifiedObject.description "VAL_SET_1" ;
+  cim:IdentifiedObject.mRID "1a457323-2094-440f-8d30-dc93adf0cdb3" ;
+  cim:IdentifiedObject.name "VAL_SET_1" .
+
+<http://fullgrid.eu/CGMES/3.0#_1d70075e-6010-4f62-8f38-9fc3bba6b30b> a cim:ValueToAlias ;
+  cim:IdentifiedObject.description "VAL_TO_ALI_1" ;
+  cim:IdentifiedObject.mRID "1d70075e-6010-4f62-8f38-9fc3bba6b30b" ;
+  cim:IdentifiedObject.name "VAL_TO_ALI_1" ;
+  cim:ValueToAlias.ValueAliasSet <http://fullgrid.eu/CGMES/3.0#1a457323-2094-440f-8d30-dc93adf0cdb3> ;
+  cim:ValueToAlias.value "0" .
+
+<http://fullgrid.eu/CGMES/3.0#_2a593d4f-90a7-4dd6-a35f-de1900b24df8> a cim:AccumulatorReset ;
+  cim:AccumulatorReset.AccumulatorValue <http://fullgrid.eu/CGMES/3.0#472aa91b-8524-4e17-ba84-ef74eacd507e> ;
+  cim:Control.PowerSystemResource <http://fullgrid.eu/CGMES/3.0#d64195f6-4d3d-4052-b91d-6b197995efd4> ;
+  cim:Control.controlType "ThreePhaseActivePower" ;
+  cim:Control.operationInProgress "true" ;
+  cim:Control.timeStamp "2015-12-02T16:06:06" ;
+  cim:Control.unitMultiplier cim:UnitMultiplier.M ;
+  cim:Control.unitSymbol cim:UnitSymbol.Wh ;
+  cim:IdentifiedObject.description "ACC_RESET_1" ;
+  cim:IdentifiedObject.mRID "2a593d4f-90a7-4dd6-a35f-de1900b24df8" ;
+  cim:IdentifiedObject.name "ACC_RESET_1" .
+
+<http://fullgrid.eu/CGMES/3.0#_3bf4b93f-9a03-4da2-862f-dc45dc916fec> a cim:MeasurementValueQuality ;
+  cim:MeasurementValueQuality.MeasurementValue <http://fullgrid.eu/CGMES/3.0#e3883f88-b2d8-4732-95a9-4fd9204a2300> ;
+  cim:Quality61850.badReference "false" ;
+  cim:Quality61850.estimatorReplaced "true" ;
+  cim:Quality61850.failure "false" ;
+  cim:Quality61850.oldData "true" ;
+  cim:Quality61850.operatorBlocked "false" ;
+  cim:Quality61850.oscillatory "true" ;
+  cim:Quality61850.outOfRange "false" ;
+  cim:Quality61850.overFlow "true" ;
+  cim:Quality61850.source cim:Source.PROCESS ;
+  cim:Quality61850.suspect "true" ;
+  cim:Quality61850.test "false" ;
+  cim:Quality61850.validity cim:Validity.GOOD .
+
+<http://fullgrid.eu/CGMES/3.0#_44e63d79-6b05-4c64-b490-d181863af7da> a cim:AccumulatorLimitSet ;
+  cim:AccumulatorLimitSet.Measurements <http://fullgrid.eu/CGMES/3.0#74b45ece-3d90-4356-86ab-985a86bc0064> ;
+  cim:IdentifiedObject.description "ACC_LIMSET_1" ;
+  cim:IdentifiedObject.mRID "44e63d79-6b05-4c64-b490-d181863af7da" ;
+  cim:IdentifiedObject.name "ACC_LIMSET_1" ;
+  cim:LimitSet.isPercentageLimits "false" .
+
+<http://fullgrid.eu/CGMES/3.0#_472aa91b-8524-4e17-ba84-ef74eacd507e> a cim:AccumulatorValue ;
+  cim:AccumulatorValue.Accumulator <http://fullgrid.eu/CGMES/3.0#74b45ece-3d90-4356-86ab-985a86bc0064> ;
+  cim:IdentifiedObject.description "ACC_VALUE_1" ;
+  cim:IdentifiedObject.mRID "472aa91b-8524-4e17-ba84-ef74eacd507e" ;
+  cim:IdentifiedObject.name "ACC_VALUE_1" ;
+  cim:MeasurementValue.MeasurementValueSource <http://fullgrid.eu/CGMES/3.0#d7848aed-83b4-43b5-b54f-c96d1ebe03d5> ;
+  cim:MeasurementValue.sensorAccuracy "98" ;
+  cim:MeasurementValue.timeStamp "2015-12-02T16:06:06" .
+
+<http://fullgrid.eu/CGMES/3.0#_56f7410b-7c71-4ea4-b25f-6e0b2fe9b1f6> a cim:AnalogValue ;
+  cim:AnalogValue.Analog <http://fullgrid.eu/CGMES/3.0#8ad6521e-06a9-4ce9-be0e-00a686fb29e3> ;
+  cim:IdentifiedObject.description "ANA_VALUE_1" ;
+  cim:IdentifiedObject.mRID "56f7410b-7c71-4ea4-b25f-6e0b2fe9b1f6" ;
+  cim:IdentifiedObject.name "ANA_VALUE_2" ;
+  cim:MeasurementValue.MeasurementValueSource <http://fullgrid.eu/CGMES/3.0#d7848aed-83b4-43b5-b54f-c96d1ebe03d5> ;
+  cim:MeasurementValue.sensorAccuracy "98.0" ;
+  cim:MeasurementValue.timeStamp "2015-12-02T16:06:06" .
+
+<http://fullgrid.eu/CGMES/3.0#_66d4d5fc-bad5-4654-b4fe-6ed133bf6096> a cim:AnalogLimitSet ;
+  cim:AnalogLimitSet.Measurements <http://fullgrid.eu/CGMES/3.0#8ad6521e-06a9-4ce9-be0e-00a686fb29e3> ;
+  cim:IdentifiedObject.description "ANA_LIMSET_1" ;
+  cim:IdentifiedObject.mRID "66d4d5fc-bad5-4654-b4fe-6ed133bf6096" ;
+  cim:IdentifiedObject.name "ANA_LIMSET_1" ;
+  cim:LimitSet.isPercentageLimits "false" .
+
+<http://fullgrid.eu/CGMES/3.0#_74b45ece-3d90-4356-86ab-985a86bc0064> a cim:Accumulator ;
+  cim:IdentifiedObject.description "ACCUM_1" ;
+  cim:IdentifiedObject.mRID "74b45ece-3d90-4356-86ab-985a86bc0064" ;
+  cim:IdentifiedObject.name "ACCUM_1" ;
+  cim:Measurement.PowerSystemResource <http://fullgrid.eu/CGMES/3.0#07c65f92-fd67-4967-be59-735ff275e40e> ;
+  cim:Measurement.Terminal <http://fullgrid.eu/CGMES/3.0#dfdc986a-93b6-454c-b9d8-6ab4aadb0139> ;
+  cim:Measurement.measurementType "ActiveEnergy" ;
+  cim:Measurement.phases cim:PhaseCode.ABC ;
+  cim:Measurement.unitMultiplier cim:UnitMultiplier.M ;
+  cim:Measurement.unitSymbol cim:UnitSymbol.Wh .
+
+<http://fullgrid.eu/CGMES/3.0#_8176be1d-346d-4869-a3f7-6ba57de63f2f> a cim:RaiseLowerCommand ;
+  cim:AnalogControl.AnalogValue <http://fullgrid.eu/CGMES/3.0#56f7410b-7c71-4ea4-b25f-6e0b2fe9b1f6> ;
+  cim:AnalogControl.maxValue "39.99" ;
+  cim:AnalogControl.minValue "19.99" ;
+  cim:Control.PowerSystemResource <http://fullgrid.eu/CGMES/3.0#9444340e-9295-4e3b-a4c1-f55dce24ca8e> ;
+  cim:Control.controlType "ThreePhaseActivePower" ;
+  cim:Control.operationInProgress "true" ;
+  cim:Control.timeStamp "2015-12-02T16:06:06" ;
+  cim:Control.unitMultiplier cim:UnitMultiplier.M ;
+  cim:Control.unitSymbol cim:UnitSymbol.W ;
+  cim:IdentifiedObject.description "CMD_RL_1" ;
+  cim:IdentifiedObject.mRID "8176be1d-346d-4869-a3f7-6ba57de63f2f" ;
+  cim:IdentifiedObject.name "CMD_RL_1" ;
+  cim:RaiseLowerCommand.ValueAliasSet <http://fullgrid.eu/CGMES/3.0#1a457323-2094-440f-8d30-dc93adf0cdb3> .
+
+<http://fullgrid.eu/CGMES/3.0#_87478acb-cd1f-40a6-b4a7-59ec99f8b063> a cim:SetPoint ;
+  cim:AnalogControl.AnalogValue <http://fullgrid.eu/CGMES/3.0#e3883f88-b2d8-4732-95a9-4fd9204a2300> ;
+  cim:AnalogControl.maxValue "320.0" ;
+  cim:AnalogControl.minValue "120.0" ;
+  cim:Control.PowerSystemResource <http://fullgrid.eu/CGMES/3.0#62a4d7b2-acca-4726-8d47-a85afbcf0642> ;
+  cim:Control.controlType "ThreePhaseActivePower" ;
+  cim:Control.operationInProgress "true" ;
+  cim:Control.timeStamp "2015-12-02T16:06:06" ;
+  cim:Control.unitMultiplier cim:UnitMultiplier.M ;
+  cim:Control.unitSymbol cim:UnitSymbol.W ;
+  cim:IdentifiedObject.description "SET_PNT_1" ;
+  cim:IdentifiedObject.mRID "87478acb-cd1f-40a6-b4a7-59ec99f8b063" ;
+  cim:IdentifiedObject.name "SET_PNT_1" ;
+  cim:SetPoint.normalValue "156.00" ;
+  cim:SetPoint.value "250.0" .
+
+<http://fullgrid.eu/CGMES/3.0#_8ad6521e-06a9-4ce9-be0e-00a686fb29e3> a cim:Analog ;
+  cim:Analog.positiveFlowIn "true" ;
+  cim:IdentifiedObject.description "Analog_1" ;
+  cim:IdentifiedObject.mRID "8ad6521e-06a9-4ce9-be0e-00a686fb29e3" ;
+  cim:IdentifiedObject.name "ANA_1" ;
+  cim:Measurement.PowerSystemResource <http://fullgrid.eu/CGMES/3.0#2939d1e5-abf0-4494-bc07-6d6b88de49a4> ;
+  cim:Measurement.Terminal <http://fullgrid.eu/CGMES/3.0#df276256-6f23-4ec4-8f8a-774bc1b4d407> ;
+  cim:Measurement.measurementType "ThreePhaseActivePower" ;
+  cim:Measurement.phases cim:PhaseCode.ABC ;
+  cim:Measurement.unitMultiplier cim:UnitMultiplier.M ;
+  cim:Measurement.unitSymbol cim:UnitSymbol.W .
+
+<http://fullgrid.eu/CGMES/3.0#_bbb0ad5d-97e7-449c-9840-115cfca328cc> a cim:StringMeasurementValue ;
+  cim:IdentifiedObject.description "STR_MEA_V_1" ;
+  cim:IdentifiedObject.mRID "bbb0ad5d-97e7-449c-9840-115cfca328cc" ;
+  cim:IdentifiedObject.name "STR_MEA_V_1" ;
+  cim:MeasurementValue.MeasurementValueSource <http://fullgrid.eu/CGMES/3.0#d7848aed-83b4-43b5-b54f-c96d1ebe03d5> ;
+  cim:MeasurementValue.sensorAccuracy "97.00" ;
+  cim:MeasurementValue.timeStamp "2015-12-02T16:06:06" ;
+  cim:StringMeasurementValue.StringMeasurement <http://fullgrid.eu/CGMES/3.0#caa5c91e-d25c-4dd2-8ac2-c36c4eeaa40e> .
+
+<http://fullgrid.eu/CGMES/3.0#_caa5c91e-d25c-4dd2-8ac2-c36c4eeaa40e> a cim:StringMeasurement ;
+  cim:IdentifiedObject.description "STR_MEAS_1" ;
+  cim:IdentifiedObject.mRID "caa5c91e-d25c-4dd2-8ac2-c36c4eeaa40e" ;
+  cim:IdentifiedObject.name "STR_MEAS_1" ;
+  cim:Measurement.PowerSystemResource <http://fullgrid.eu/CGMES/3.0#e2bdd541-97c0-4781-b40d-713a7bbe2777> ;
+  cim:Measurement.Terminal <http://fullgrid.eu/CGMES/3.0#125e8e92-2c08-46c4-a157-817f265a2082> ;
+  cim:Measurement.measurementType "ThreePhasePower" ;
+  cim:Measurement.phases cim:PhaseCode.ABC ;
+  cim:Measurement.unitMultiplier cim:UnitMultiplier.none ;
+  cim:Measurement.unitSymbol cim:UnitSymbol.none .
+
+<http://fullgrid.eu/CGMES/3.0#_d7848aed-83b4-43b5-b54f-c96d1ebe03d5> a cim:MeasurementValueSource ;
+  cim:IdentifiedObject.description "ICCP" ;
+  cim:IdentifiedObject.mRID "d7848aed-83b4-43b5-b54f-c96d1ebe03d5" ;
+  cim:IdentifiedObject.name "ICCP" .
+
+<http://fullgrid.eu/CGMES/3.0#_e3883f88-b2d8-4732-95a9-4fd9204a2300> a cim:AnalogValue ;
+  cim:AnalogValue.Analog <http://fullgrid.eu/CGMES/3.0#8ad6521e-06a9-4ce9-be0e-00a686fb29e3> ;
+  cim:IdentifiedObject.description "ANA_VALUE_1" ;
+  cim:IdentifiedObject.mRID "e3883f88-b2d8-4732-95a9-4fd9204a2300" ;
+  cim:IdentifiedObject.name "ANA_VALUE_1" ;
+  cim:MeasurementValue.MeasurementValueSource <http://fullgrid.eu/CGMES/3.0#d7848aed-83b4-43b5-b54f-c96d1ebe03d5> ;
+  cim:MeasurementValue.sensorAccuracy "98.0" ;
+  cim:MeasurementValue.timeStamp "2015-12-02T16:06:06" .
+
+<http://fullgrid.eu/CGMES/3.0#_ec43b60a-0741-4788-9079-bdac365110f4> a cim:DiscreteValue ;
+  cim:DiscreteValue.Discrete <http://fullgrid.eu/CGMES/3.0#13dacabf-aa4c-4a78-806e-c7c4c6949718> ;
+  cim:IdentifiedObject.description "DIS_VALUE_1" ;
+  cim:IdentifiedObject.mRID "ec43b60a-0741-4788-9079-bdac365110f4" ;
+  cim:IdentifiedObject.name "DIS_VALUE_1" ;
+  cim:MeasurementValue.MeasurementValueSource <http://fullgrid.eu/CGMES/3.0#d7848aed-83b4-43b5-b54f-c96d1ebe03d5> ;
+  cim:MeasurementValue.sensorAccuracy "98" ;
+  cim:MeasurementValue.timeStamp "2015-12-02T16:06:06" .
+
+<http://fullgrid.eu/CGMES/3.0#_f088ed67-3917-4153-9418-2acbb10024a5> a cim:Command ;
+  cim:Command.DiscreteValue <http://fullgrid.eu/CGMES/3.0#ec43b60a-0741-4788-9079-bdac365110f4> ;
+  cim:Command.ValueAliasSet <http://fullgrid.eu/CGMES/3.0#1a457323-2094-440f-8d30-dc93adf0cdb3> ;
+  cim:Command.normalValue "0" ;
+  cim:Command.value "0" ;
+  cim:Control.PowerSystemResource <http://fullgrid.eu/CGMES/3.0#d4f41742-192f-4b1a-8735-e0cf000a478e> ;
+  cim:Control.controlType "SwitchPosition" ;
+  cim:Control.operationInProgress "true" ;
+  cim:Control.timeStamp "2015-12-02T16:06:06" ;
+  cim:Control.unitMultiplier cim:UnitMultiplier.none ;
+  cim:Control.unitSymbol cim:UnitSymbol.none ;
+  cim:IdentifiedObject.description "CMD_1" ;
+  cim:IdentifiedObject.mRID "f088ed67-3917-4153-9418-2acbb10024a5" ;
+  cim:IdentifiedObject.name "CMD_1" .
+
+<http://fullgrid.eu/CGMES/3.0#_f37786d0-b118-4b92-bafb-326eac2a3877> a cim:AccumulatorLimit ;
+  cim:AccumulatorLimit.LimitSet <http://fullgrid.eu/CGMES/3.0#44e63d79-6b05-4c64-b490-d181863af7da> ;
+  cim:AccumulatorLimit.value "99" ;
+  cim:IdentifiedObject.description "ACCUM_LIM_1" ;
+  cim:IdentifiedObject.mRID "f37786d0-b118-4b92-bafb-326eac2a3877" ;
+  cim:IdentifiedObject.name "ACCUM_LIM_1" .
+
+<http://fullgrid.eu/CGMES/3.0#_fc908c16-468f-4a64-ba74-6f57175e0005> a cim:AnalogLimit ;
+  cim:AnalogLimit.LimitSet <http://fullgrid.eu/CGMES/3.0#66d4d5fc-bad5-4654-b4fe-6ed133bf6096> ;
+  cim:AnalogLimit.value "99" ;
+  cim:IdentifiedObject.description "ANA_LIM_1" ;
+  cim:IdentifiedObject.mRID "fc908c16-468f-4a64-ba74-6f57175e0005" ;
+  cim:IdentifiedObject.name "ANA_LIM_1" .
+}
