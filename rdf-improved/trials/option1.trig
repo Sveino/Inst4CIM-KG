@@ -1,0 +1,26 @@
+@prefix cim: <http://iec.ch/TC57/CIM100#> .
+@prefix dm:  <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix eu:  <http://iec.ch/TC57/CIM100-European#> .
+@prefix md:  <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6d>
+        rdf:type               dm:DifferenceModel ;
+        dm:forwardDifferences  <urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d5> , <urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9> ;
+        dm:reverseDifferences  <urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d5> , <urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9> .
+
+<urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d5>
+        rdf:type                   cim:Switch ;
+        cim:IdentifiedObject.Name  "Switch1" , "Switch2" .
+
+<urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9>
+        rdf:type              cim:ACLineSegment ;
+        cim:Conductor.length  [ cim:Length.value  60 ] ;
+        cim:Conductor.length  [ cim:Length.value  65 ] ;
+        cim:Conductor.length  [ cim:Length.value  50 ] ;
+        cim:Conductor.length  [ cim:Length.value  55 ] .
+
+<urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6a>
+        rdf:type               dm:DifferenceModel ;
+        dm:forwardDifferences  <urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9> ;
+        dm:reverseDifferences  <urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9> .

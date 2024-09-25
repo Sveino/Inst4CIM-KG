@@ -1,0 +1,142 @@
+{
+    "@graph": [
+        {
+            "@id": "urn:uuid:base-model",
+            "@type": "dm:Model",
+            "@graph": [
+                {
+                    "@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+                    "cim:Conductor.length": {
+                        "@id": "_:b4"
+                    },
+                    "@type": "cim:ACLineSegment"
+                },
+                {
+                    "@id": "_:b4",
+                    "cim:Length.value": {
+                        "@value": "50",
+                        "@type": "http://www.w3.org/2001/XMLSchema#integer"
+                    }
+                },
+                {
+                    "@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d5",
+                    "cim:IdentifiedObject.Name": "Switch1",
+                    "@type": "cim:Switch"
+                }
+            ]
+        },
+        {
+            "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6a",
+            "dm:forwardDifferences": {
+                "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6a-forward"
+            },
+            "dm:reverseDifferences": {
+                "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6a-reverse"
+            },
+            "md:Model.Supersedes": {
+                "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6d"
+            },
+            "@type": "dm:DifferenceModel"
+        },
+        {
+            "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6a-forward",
+            "@graph": [
+                {
+                    "@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+                    "cim:Conductor.length": {
+                        "@id": "_:b2"
+                    }
+                },
+                {
+                    "@id": "_:b2",
+                    "cim:Length.value": {
+                        "@value": "65",
+                        "@type": "http://www.w3.org/2001/XMLSchema#integer"
+                    }
+                }
+            ]
+        },
+        {
+            "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6a-reverse",
+            "@graph": [
+                {
+                    "@id": "_:b1",
+                    "cim:Length.value": {
+                        "@value": "60",
+                        "@type": "http://www.w3.org/2001/XMLSchema#integer"
+                    }
+                },
+                {
+                    "@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+                    "cim:Conductor.length": {
+                        "@id": "_:b1"
+                    }
+                }
+            ]
+        },
+        {
+            "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6d",
+            "dm:reverseDifferences": {
+                "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6d-reverse"
+            },
+            "dm:forwardDifferences": {
+                "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6d-forward"
+            },
+            "md:Model.Supersedes": {
+                "@id": "urn:uuid:base-model"
+            },
+            "@type": "dm:DifferenceModel"
+        },
+        {
+            "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6d-reverse",
+            "@graph": [
+                {
+                    "@id": "_:b0",
+                    "cim:Length.value": {
+                        "@value": "50",
+                        "@type": "http://www.w3.org/2001/XMLSchema#integer"
+                    }
+                },
+                {
+                    "@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+                    "cim:Conductor.length": {
+                        "@id": "_:b0"
+                    }
+                },
+                {
+                    "@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d5",
+                    "cim:IdentifiedObject.Name": "Switch1"
+                }
+            ]
+        },
+        {
+            "@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6d-forward",
+            "@graph": [
+                {
+                    "@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+                    "cim:Conductor.length": {
+                        "@id": "_:b3"
+                    }
+                },
+                {
+                    "@id": "_:b3",
+                    "cim:Length.value": {
+                        "@value": "55",
+                        "@type": "http://www.w3.org/2001/XMLSchema#integer"
+                    }
+                },
+                {
+                    "@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d5",
+                    "cim:IdentifiedObject.Name": "Switch2"
+                }
+            ]
+        }
+    ],
+    "@context": {
+        "eu": "http://iec.ch/TC57/CIM100-European#",
+        "dm": "http://iec.ch/TC57/61970-552/DifferenceModel/1#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "cim": "http://iec.ch/TC57/CIM100#",
+        "md": "http://iec.ch/TC57/61970-552/ModelDescription/1#"
+    }
+}

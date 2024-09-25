@@ -1,0 +1,322 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cim: <http://iec.ch/TC57/CIM100#> .
+@prefix dm: <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix eu: <http://iec.ch/TC57/CIM100-European#> .
+@prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+
+<urn:uuid:d1081917-ff64-4d0d-bb28-01b5b80a9a5a> a dm:DifferenceModel ;
+  dm:forwardDifferences <urn:uri:98f8c817-22ec-45f1-aa0d-0733ce4f1dd5> ;
+  dm:reverseDifferences <urn:uri:fc0664df-2795-4eb1-bbda-16c98b1bd0f4> ;
+  md:Model.DependentOn <urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61> ;
+  md:Model.Supersedes <urn:uuid:76be4572-58c0-40c0-ae26-e65add81593d> ;
+  md:Model.created "2021-11-19T23:16:27Z" ;
+  md:Model.description "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model." ;
+  md:Model.modelingAuthoritySet "http://tennet.nl/CGMES" ;
+  md:Model.profile "http://iec.ch/TC57/ns/CIM/GeographicalLocation-EU/3.0" ;
+  md:Model.scenarioTime "2021-03-25T15:30:00Z" ;
+  md:Model.version "001" .
+
+
+
+<urn:uri:fc0664df-2795-4eb1-bbda-16c98b1bd0f4> { # reverseDifferences
+<http://tennet.nl/CGMES#_1c577e91-4823-4507-9462-138732ece375> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#e072869d-f08d-34f3-bf8f-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "5.04709" ;
+  cim:PositionPoint.yPosition "52.0699" .
+
+<http://tennet.nl/CGMES#_38876874-fcfc-a4d9-9d16-39fb7da2ad74> a cim:CoordinateSystem ;
+  cim:CoordinateSystem.crsUrn "urn:ogc:def:crs:EPSG::4326" ;
+  cim:IdentifiedObject.mRID "38876874-fcfc-a4d9-9d16-39fb7da2ad74" ;
+  cim:IdentifiedObject.name "WGS84" .
+
+<http://tennet.nl/CGMES#_480fa612-9f7c-44fa-8522-39fb7da2ad7b> a cim:Location ;
+  cim:IdentifiedObject.mRID "480fa612-9f7c-44fa-8522-39fb7da2ad7b" ;
+  cim:IdentifiedObject.name "NL-Line_4" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#38876874-fcfc-a4d9-9d16-39fb7da2ad74> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#8fdc7abd-3746-481a-a65e-3df56acd8b13> .
+
+<http://tennet.nl/CGMES#_4a497a1b-495a-46b7-946e-f0ce456baea2> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#c84ce457-406b-a13c-ad76-39fb7da2ad7a> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "5.04709" ;
+  cim:PositionPoint.yPosition "52.0699" .
+
+<http://tennet.nl/CGMES#_5350c085-4b5e-5909-1d55-39fb7da2ad7b> a cim:Location ;
+  cim:IdentifiedObject.mRID "5350c085-4b5e-5909-1d55-39fb7da2ad7b" ;
+  cim:IdentifiedObject.name "NL-Line_2" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#38876874-fcfc-a4d9-9d16-39fb7da2ad74> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#dad02278-bd25-476f-8f58-dbe44be72586> .
+
+<http://tennet.nl/CGMES#_5a899c67-25ca-40db-8114-8da314040efc> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#5350c085-4b5e-5909-1d55-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84744" ;
+  cim:PositionPoint.yPosition "52.4027" .
+
+<http://tennet.nl/CGMES#_61c447ed-2413-40fa-aca5-3a0758357cc0> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#5350c085-4b5e-5909-1d55-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "5.04709" ;
+  cim:PositionPoint.yPosition "52.0699" .
+
+<http://tennet.nl/CGMES#_64e596c6-a8bf-4626-a955-4fa9e6c12ed1> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#480fa612-9f7c-44fa-8522-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84845" ;
+  cim:PositionPoint.yPosition "52.4023" .
+
+<http://tennet.nl/CGMES#_674c30e0-d3d4-4936-9e88-d1c0cb7cad7f> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#c84ce457-406b-a13c-ad76-39fb7da2ad7a> ;
+  cim:PositionPoint.sequenceNumber "4" ;
+  cim:PositionPoint.xPosition "5.07058" ;
+  cim:PositionPoint.yPosition "51.8731" .
+
+<http://tennet.nl/CGMES#_707917fa-86d5-41c6-84a0-ffc51a940000> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#480fa612-9f7c-44fa-8522-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.79004" ;
+  cim:PositionPoint.yPosition "52.1571" .
+
+<http://tennet.nl/CGMES#_7d673371-9850-4544-8881-1b47ee86edcb> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#e072869d-f08d-34f3-bf8f-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "4" ;
+  cim:PositionPoint.xPosition "5.07294" ;
+  cim:PositionPoint.yPosition "51.8765" .
+
+<http://tennet.nl/CGMES#_a6443772-92de-47de-8bf3-53804c3bc2cb> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#a719fa3b-aec1-c681-8da9-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.79004" ;
+  cim:PositionPoint.yPosition "52.1571" .
+
+<http://tennet.nl/CGMES#_a719fa3b-aec1-c681-8da9-39fb7da2ad7b> a cim:Location ;
+  cim:IdentifiedObject.mRID "a719fa3b-aec1-c681-8da9-39fb7da2ad7b" ;
+  cim:IdentifiedObject.name "NL-Line_3" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#38876874-fcfc-a4d9-9d16-39fb7da2ad74> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#a279a3dc-550b-426c-af3a-61b7be508dcc> .
+
+<http://tennet.nl/CGMES#_acc3e8bc-2ff1-49dd-92bf-d4b78061cc8b> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#e072869d-f08d-34f3-bf8f-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84744" ;
+  cim:PositionPoint.yPosition "52.4027" .
+
+<http://tennet.nl/CGMES#_b352d929-4f26-4c14-a45c-668858a7d0b3> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#c84ce457-406b-a13c-ad76-39fb7da2ad7a> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.98125" ;
+  cim:PositionPoint.yPosition "52.2483" .
+
+<http://tennet.nl/CGMES#_c3c79c7b-2420-4e1f-8409-a33f300a23d0> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#c84ce457-406b-a13c-ad76-39fb7da2ad7a> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84744" ;
+  cim:PositionPoint.yPosition "52.4027" .
+
+<http://tennet.nl/CGMES#_c84ce457-406b-a13c-ad76-39fb7da2ad7a> a cim:Location ;
+  cim:IdentifiedObject.mRID "c84ce457-406b-a13c-ad76-39fb7da2ad7a" ;
+  cim:IdentifiedObject.name "NL-Line_5" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#38876874-fcfc-a4d9-9d16-39fb7da2ad74> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc> .
+
+<http://tennet.nl/CGMES#_ce082601-0923-430b-9063-57df68931720> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#5350c085-4b5e-5909-1d55-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "4" ;
+  cim:PositionPoint.xPosition "5.07186" ;
+  cim:PositionPoint.yPosition "51.8756" .
+
+<http://tennet.nl/CGMES#_daafb8a7-efae-4a7d-91f8-45647a8492a2> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#480fa612-9f7c-44fa-8522-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "4" ;
+  cim:PositionPoint.xPosition "4.88798" ;
+  cim:PositionPoint.yPosition "51.9127" .
+
+<http://tennet.nl/CGMES#_e072869d-f08d-34f3-bf8f-39fb7da2ad7b> a cim:Location ;
+  cim:IdentifiedObject.mRID "e072869d-f08d-34f3-bf8f-39fb7da2ad7b" ;
+  cim:IdentifiedObject.name "NL-Line_1" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#38876874-fcfc-a4d9-9d16-39fb7da2ad74> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#7f43f508-2496-4b64-9146-0a40406cbe49> .
+
+<http://tennet.nl/CGMES#_e1c899b9-e683-4650-b975-e14b99f34339> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#5350c085-4b5e-5909-1d55-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.98125" ;
+  cim:PositionPoint.yPosition "52.2483" .
+
+<http://tennet.nl/CGMES#_e238474d-ba73-4414-b30c-beac239b2561> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#a719fa3b-aec1-c681-8da9-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84845" ;
+  cim:PositionPoint.yPosition "52.4023" .
+
+<http://tennet.nl/CGMES#_ea627c7c-e27a-466d-95f9-a1c9b6a8c7cf> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#e072869d-f08d-34f3-bf8f-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.98125" ;
+  cim:PositionPoint.yPosition "52.2483" .
+
+<http://tennet.nl/CGMES#_fd1b2b5f-73d5-4f65-8c5e-28774dfcd623> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#a719fa3b-aec1-c681-8da9-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "4.88892" ;
+  cim:PositionPoint.yPosition "51.9138" .
+
+<http://tennet.nl/CGMES#_ffb34d5a-4d38-4d9c-acf8-e5b25a9c0ffa> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#480fa612-9f7c-44fa-8522-39fb7da2ad7b> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "4.88892" ;
+  cim:PositionPoint.yPosition "51.9138" .
+}
+
+<urn:uri:98f8c817-22ec-45f1-aa0d-0733ce4f1dd5> { # forwardDifferences
+<http://tennet.nl/CGMES#_0a59fe5f-f75d-4a23-bee0-4019d3da9bf2> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#65fc92a5-86f4-d6e1-0adb-39fb72fb08cd> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84744" ;
+  cim:PositionPoint.yPosition "52.4027" .
+
+<http://tennet.nl/CGMES#_2444303b-fd5d-4f78-ac3e-cb0cfbe43a35> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#65fc92a5-86f4-d6e1-0adb-39fb72fb08cd> ;
+  cim:PositionPoint.sequenceNumber "4" ;
+  cim:PositionPoint.xPosition "5.07058" ;
+  cim:PositionPoint.yPosition "51.8731" .
+
+<http://tennet.nl/CGMES#_305f740a-b7a5-d999-e21f-39fb72fb08ce> a cim:Location ;
+  cim:IdentifiedObject.mRID "305f740a-b7a5-d999-e21f-39fb72fb08ce" ;
+  cim:IdentifiedObject.name "NL-Line_2" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#37396e47-63c0-86b9-4a8b-39fb72fb08c8> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#dad02278-bd25-476f-8f58-dbe44be72586> .
+
+<http://tennet.nl/CGMES#_37396e47-63c0-86b9-4a8b-39fb72fb08c8> a cim:CoordinateSystem ;
+  cim:CoordinateSystem.crsUrn "urn:ogc:def:crs:EPSG::4326" ;
+  cim:IdentifiedObject.mRID "37396e47-63c0-86b9-4a8b-39fb72fb08c8" ;
+  cim:IdentifiedObject.name "WGS84" .
+
+<http://tennet.nl/CGMES#_3c7add0b-4e0d-4776-9c98-c8d7595c8003> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#fd5cdc11-839b-ee50-a070-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84845" ;
+  cim:PositionPoint.yPosition "52.4023" .
+
+<http://tennet.nl/CGMES#_3fe2cc10-7b98-421c-8a45-1182085db2fb> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#54239dea-2bd6-8035-e9fb-39fb72fb08cd> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.98125" ;
+  cim:PositionPoint.yPosition "52.2483" .
+
+<http://tennet.nl/CGMES#_453c5205-af07-475b-b555-2c821515d432> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#305f740a-b7a5-d999-e21f-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "4" ;
+  cim:PositionPoint.xPosition "5.07186" ;
+  cim:PositionPoint.yPosition "51.8756" .
+
+<http://tennet.nl/CGMES#_52c9cfee-bf3a-4029-a27a-7dfeee87e9ee> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#65fc92a5-86f4-d6e1-0adb-39fb72fb08cd> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "5.04709" ;
+  cim:PositionPoint.yPosition "52.0699" .
+
+<http://tennet.nl/CGMES#_54239dea-2bd6-8035-e9fb-39fb72fb08cd> a cim:Location ;
+  cim:IdentifiedObject.mRID "54239dea-2bd6-8035-e9fb-39fb72fb08cd" ;
+  cim:IdentifiedObject.name "NL-Line_1" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#37396e47-63c0-86b9-4a8b-39fb72fb08c8> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#7f43f508-2496-4b64-9146-0a40406cbe49> .
+
+<http://tennet.nl/CGMES#_545c8085-2c7e-6641-6a5c-39fb72fb08ce> a cim:Location ;
+  cim:IdentifiedObject.mRID "545c8085-2c7e-6641-6a5c-39fb72fb08ce" ;
+  cim:IdentifiedObject.name "NL-Line_4" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#37396e47-63c0-86b9-4a8b-39fb72fb08c8> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#8fdc7abd-3746-481a-a65e-3df56acd8b13> .
+
+<http://tennet.nl/CGMES#_627663b9-6727-492b-a25f-c394550b60df> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#fd5cdc11-839b-ee50-a070-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "4.88892" ;
+  cim:PositionPoint.yPosition "51.9138" .
+
+<http://tennet.nl/CGMES#_65fc92a5-86f4-d6e1-0adb-39fb72fb08cd> a cim:Location ;
+  cim:IdentifiedObject.mRID "65fc92a5-86f4-d6e1-0adb-39fb72fb08cd" ;
+  cim:IdentifiedObject.name "NL-Line_5" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#37396e47-63c0-86b9-4a8b-39fb72fb08c8> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#e8acf6b6-99cb-45ad-b8dc-16c7866a4ddc> .
+
+<http://tennet.nl/CGMES#_678a8e55-0458-4793-a813-b68baec591b6> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#54239dea-2bd6-8035-e9fb-39fb72fb08cd> ;
+  cim:PositionPoint.sequenceNumber "4" ;
+  cim:PositionPoint.xPosition "5.07294" ;
+  cim:PositionPoint.yPosition "51.8765" .
+
+<http://tennet.nl/CGMES#_77c9e837-ac85-44af-a506-cd4837b262d3> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#545c8085-2c7e-6641-6a5c-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.79004" ;
+  cim:PositionPoint.yPosition "52.1571" .
+
+<http://tennet.nl/CGMES#_87a1cd8b-ad37-45dc-acc2-c1e4f8bf3c18> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#305f740a-b7a5-d999-e21f-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "5.04709" ;
+  cim:PositionPoint.yPosition "52.0699" .
+
+<http://tennet.nl/CGMES#_993ec067-1d7e-4985-a7be-e15632cb8eea> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#54239dea-2bd6-8035-e9fb-39fb72fb08cd> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84744" ;
+  cim:PositionPoint.yPosition "52.4027" .
+
+<http://tennet.nl/CGMES#_9cedd1a0-ca15-4ae9-b4f2-0f986b4c98ea> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#545c8085-2c7e-6641-6a5c-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84845" ;
+  cim:PositionPoint.yPosition "52.4023" .
+
+<http://tennet.nl/CGMES#_a1d8dcc6-54bd-474f-ab8f-bb4cf41a0280> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#54239dea-2bd6-8035-e9fb-39fb72fb08cd> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "5.04709" ;
+  cim:PositionPoint.yPosition "52.0699" .
+
+<http://tennet.nl/CGMES#_acf55b48-01ec-497e-b00c-1b9623804279> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#305f740a-b7a5-d999-e21f-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.98125" ;
+  cim:PositionPoint.yPosition "52.2483" .
+
+<http://tennet.nl/CGMES#_c339ff2f-ed82-43c2-81be-0ee5a6da96f7> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#305f740a-b7a5-d999-e21f-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "1" ;
+  cim:PositionPoint.xPosition "4.84744" ;
+  cim:PositionPoint.yPosition "52.4027" .
+
+<http://tennet.nl/CGMES#_c3fa8ee3-403e-45d6-8b18-76e2af2ea117> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#545c8085-2c7e-6641-6a5c-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "3" ;
+  cim:PositionPoint.xPosition "4.88892" ;
+  cim:PositionPoint.yPosition "51.9138" .
+
+<http://tennet.nl/CGMES#_c61dc8ec-39bf-4c1a-a6b6-da4ad8bb1897> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#fd5cdc11-839b-ee50-a070-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.79004" ;
+  cim:PositionPoint.yPosition "52.1571" .
+
+<http://tennet.nl/CGMES#_e5595e35-049b-4dd6-8bee-d5c9b76e2f70> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#545c8085-2c7e-6641-6a5c-39fb72fb08ce> ;
+  cim:PositionPoint.sequenceNumber "4" ;
+  cim:PositionPoint.xPosition "4.88798" ;
+  cim:PositionPoint.yPosition "51.9127" .
+
+<http://tennet.nl/CGMES#_f5d22f7f-fdbc-417c-91ca-d1e0a477d383> a cim:PositionPoint ;
+  cim:PositionPoint.Location <http://tennet.nl/CGMES#65fc92a5-86f4-d6e1-0adb-39fb72fb08cd> ;
+  cim:PositionPoint.sequenceNumber "2" ;
+  cim:PositionPoint.xPosition "4.98125" ;
+  cim:PositionPoint.yPosition "52.2483" .
+
+<http://tennet.nl/CGMES#_fd5cdc11-839b-ee50-a070-39fb72fb08ce> a cim:Location ;
+  cim:IdentifiedObject.mRID "fd5cdc11-839b-ee50-a070-39fb72fb08ce" ;
+  cim:IdentifiedObject.name "NL-Line_3" ;
+  cim:Location.CoordinateSystem <http://tennet.nl/CGMES#37396e47-63c0-86b9-4a8b-39fb72fb08c8> ;
+  cim:Location.PowerSystemResources <http://tennet.nl/CGMES#a279a3dc-550b-426c-af3a-61b7be508dcc> .
+}

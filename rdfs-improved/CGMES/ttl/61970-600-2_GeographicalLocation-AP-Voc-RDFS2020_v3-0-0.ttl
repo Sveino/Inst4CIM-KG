@@ -1,110 +1,13 @@
-@prefix     cim: <https://cim.ucaiug.io/ns#> .
-@prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
-@prefix      gl: <http://iec.ch/TC57/ns/CIM/GeographicalLocation-EU#> .
-@prefix    dcat: <http://www.w3.org/ns/dcat#> .
-@prefix     dct: <http://purl.org/dc/terms/> .
-@prefix     owl: <http://www.w3.org/2002/07/owl#> .
-@prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix     xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-cim:Boolean a rdfs:Class ;
-  rdfs:label "Boolean"@en ;
-  rdfs:comment "A type with the value space \"true\" and \"false\"." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Primitive" .
-
-cim:CoordinateSystem a rdfs:Class ;
-  rdfs:label "CoordinateSystem"@en ;
-  rdfs:comment "Coordinate reference system." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:Date a rdfs:Class ;
-  rdfs:label "Date"@en ;
-  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Primitive" .
-
-cim:DateTime a rdfs:Class ;
-  rdfs:label "DateTime"@en ;
-  rdfs:comment "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Primitive" .
-
-cim:IdentifiedObject a rdfs:Class ;
-  rdfs:label "IdentifiedObject"@en ;
-  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile .
-
-cim:Integer a rdfs:Class ;
-  rdfs:label "Integer"@en ;
-  rdfs:comment "An integer number. The range is unspecified and not limited." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Primitive" .
-
-cim:Location a rdfs:Class ;
-  rdfs:label "Location"@en ;
-  rdfs:comment "The place, scene, or point of something where someone or something has been, is, and/or will be at a given moment in time. It can be defined with one or more position points (coordinates) in a given coordinate system." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:PositionPoint a rdfs:Class ;
-  rdfs:label "PositionPoint"@en ;
-  rdfs:comment "Set of spatial coordinates that determine a point, defined in the coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to describe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values)." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> .
-
-cim:PowerSystemResource a rdfs:Class ;
-  rdfs:label "PowerSystemResource"@en ;
-  rdfs:comment "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-cim:ServiceLocation a rdfs:Class ;
-  rdfs:label "ServiceLocation"@en ;
-  rdfs:comment "A real estate location, commonly referred to as premises." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:WorkLocation .
-
-cim:Status a rdfs:Class ;
-  rdfs:label "Status"@en ;
-  rdfs:comment "Current status information relevant to an entity." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Compound" .
-
-cim:StreetAddress a rdfs:Class ;
-  rdfs:label "StreetAddress"@en ;
-  rdfs:comment "General purpose street and postal address information." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Compound" .
-
-cim:StreetDetail a rdfs:Class ;
-  rdfs:label "StreetDetail"@en ;
-  rdfs:comment "Street details, in the context of address." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Compound" .
-
-cim:String a rdfs:Class ;
-  rdfs:label "String"@en ;
-  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Primitive" .
-
-cim:TownDetail a rdfs:Class ;
-  rdfs:label "TownDetail"@en ;
-  rdfs:comment "Town details, in the context of address." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  cims:stereotype "Compound" .
-
-cim:WorkLocation a rdfs:Class ;
-  rdfs:label "WorkLocation"@en ;
-  rdfs:comment "Information about a particular location for various forms of work." ;
-  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
-  rdfs:subClassOf cim:Location .
+@prefix          cim: <https://cim.ucaiug.io/ns#> .
+@prefix         cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix           gl: <http://iec.ch/TC57/ns/CIM/GeographicalLocation-EU#> .
+@prefix         dcat: <http://www.w3.org/ns/dcat#> .
+@prefix          dct: <http://purl.org/dc/terms/> .
+@prefix          owl: <http://www.w3.org/2002/07/owl#> .
+@prefix          rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix         rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix          xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
 
 gl:Ontology a owl:Ontology ;
   dct:description "This vocabulary is describing the geographical location profile from IEC 61970-600-2."@en ;
@@ -126,350 +29,418 @@ gl:Ontology a owl:Ontology ;
   owl:versionIRI <http://iec.ch/TC57/ns/CIM/GeographicalLocation-EU/3.0> ;
   owl:versionInfo "3.0.0"@en .
 
-cim:CoordinateSystem.Locations a rdf:Property ;
+cim:CoordinateSystem a owl:Class ;
+  rdfs:label "CoordinateSystem"@en ;
+  rdfs:comment "Coordinate reference system." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:IdentifiedObject a owl:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile .
+
+cim:Location a owl:Class ;
+  rdfs:label "Location"@en ;
+  rdfs:comment "The place, scene, or point of something where someone or something has been, is, and/or will be at a given moment in time. It can be defined with one or more position points (coordinates) in a given coordinate system." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:PositionPoint a owl:Class ;
+  rdfs:label "PositionPoint"@en ;
+  rdfs:comment "Set of spatial coordinates that determine a point, defined in the coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to describe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values)." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  cims:stereotype uml:concrete .
+
+cim:PowerSystemResource a owl:Class ;
+  rdfs:label "PowerSystemResource"@en ;
+  rdfs:comment "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:ServiceLocation a owl:Class ;
+  rdfs:label "ServiceLocation"@en ;
+  rdfs:comment "A real estate location, commonly referred to as premises." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:WorkLocation .
+
+cim:Status a owl:Class ;
+  rdfs:label "Status"@en ;
+  rdfs:comment "Current status information relevant to an entity." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  cims:stereotype "Compound" .
+
+cim:StreetAddress a owl:Class ;
+  rdfs:label "StreetAddress"@en ;
+  rdfs:comment "General purpose street and postal address information." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  cims:stereotype "Compound" .
+
+cim:StreetDetail a owl:Class ;
+  rdfs:label "StreetDetail"@en ;
+  rdfs:comment "Street details, in the context of address." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  cims:stereotype "Compound" .
+
+cim:TownDetail a owl:Class ;
+  rdfs:label "TownDetail"@en ;
+  rdfs:comment "Town details, in the context of address." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  cims:stereotype "Compound" .
+
+cim:WorkLocation a owl:Class ;
+  rdfs:label "WorkLocation"@en ;
+  rdfs:comment "Information about a particular location for various forms of work." ;
+  cims:belongsToCategory gl:Package_GeographicalLocationProfile ;
+  rdfs:subClassOf cim:Location .
+
+cim:CoordinateSystem.Locations a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "Locations"@en ;
   rdfs:comment "All locations described with position points in this coordinate system." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Location.CoordinateSystem ;
   cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:Location.CoordinateSystem ;
   rdfs:domain cim:CoordinateSystem ;
   rdfs:range cim:Location .
 
-cim:CoordinateSystem.crsUrn a rdf:Property ;
+cim:Location.CoordinateSystem a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "CoordinateSystem"@en ;
+  rdfs:comment "Coordinate system used to describe position points of this location." ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:CoordinateSystem.Locations ;
+  rdfs:domain cim:Location ;
+  rdfs:range cim:CoordinateSystem .
+
+cim:Location.PositionPoints a owl:ObjectProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "PositionPoints"@en ;
+  rdfs:comment "Sequence of position points describing this location, expressed in coordinate system 'Location.CoordinateSystem'." ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:PositionPoint.Location ;
+  rdfs:domain cim:Location ;
+  rdfs:range cim:PositionPoint .
+
+cim:Location.PowerSystemResources a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "PowerSystemResources"@en ;
+  rdfs:comment "All power system resources at this location." ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:PowerSystemResource.Location ;
+  rdfs:domain cim:Location ;
+  rdfs:range cim:PowerSystemResource .
+
+cim:Location.mainAddress a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "mainAddress"@en ;
+  rdfs:comment "Main address of the location." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Location ;
+  rdfs:range cim:StreetAddress .
+
+cim:PositionPoint.Location a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "Location"@en ;
+  rdfs:comment "Location described by this position point." ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:Location.PositionPoints ;
+  rdfs:domain cim:PositionPoint ;
+  rdfs:range cim:Location .
+
+cim:PowerSystemResource.Location a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "Location"@en ;
+  rdfs:comment "Location of this power system resource." ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf cim:Location.PowerSystemResources ;
+  rdfs:domain cim:PowerSystemResource ;
+  rdfs:range cim:Location .
+
+cim:StreetAddress.status a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "status"@en ;
+  rdfs:comment "Status of this address." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetAddress ;
+  rdfs:range cim:Status .
+
+cim:StreetAddress.streetDetail a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "streetDetail"@en ;
+  rdfs:comment "Street detail." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetAddress ;
+  rdfs:range cim:StreetDetail .
+
+cim:StreetAddress.townDetail a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "townDetail"@en ;
+  rdfs:comment "Town detail." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetAddress ;
+  rdfs:range cim:TownDetail .
+
+cim:CoordinateSystem.crsUrn a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "crsUrn"@en ;
   rdfs:comment """A Uniform Resource Name (URN) for the coordinate reference system (crs) used to define 'Location.PositionPoints'.
 An example would be the European Petroleum Survey Group (EPSG) code for a coordinate reference system, defined in URN under the Open Geospatial Consortium (OGC) namespace as: urn:ogc:def:crs:EPSG::XXXX, where XXXX is an EPSG code (a full list of codes can be found at the EPSG Registry web site http://www.epsg-registry.org/). To define the coordinate system as being WGS84 (latitude, longitude) using an EPSG OGC, this attribute would be urn:ogc:def:crs:EPSG::4236.
 A profile should limit this code to a set of allowed URNs agreed to by all sending and receiving parties.""" ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:CoordinateSystem .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:CoordinateSystem ;
+  rdfs:range xsd:string .
 
-cim:IdentifiedObject.mRID a rdf:Property ;
+cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID"@en ;
   rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
 
-cim:IdentifiedObject.name a rdf:Property ;
+cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "name"@en ;
   rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
 
-cim:Location.CoordinateSystem a rdf:Property ;
-  rdfs:label "CoordinateSystem"@en ;
-  rdfs:comment "Coordinate system used to describe position points of this location." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:CoordinateSystem.Locations ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:Location ;
-  rdfs:range cim:CoordinateSystem .
-
-cim:Location.PositionPoints a rdf:Property ;
-  rdfs:label "PositionPoints"@en ;
-  rdfs:comment "Sequence of position points describing this location, expressed in coordinate system 'Location.CoordinateSystem'." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:PositionPoint.Location ;
-  cims:multiplicity cims:M:0..n ;
-  rdfs:domain cim:Location ;
-  rdfs:range cim:PositionPoint .
-
-cim:Location.PowerSystemResources a rdf:Property ;
-  rdfs:label "PowerSystemResources"@en ;
-  rdfs:comment "All power system resources at this location." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:PowerSystemResource.Location ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:Location ;
-  rdfs:range cim:PowerSystemResource .
-
-cim:Location.mainAddress a rdf:Property ;
-  rdfs:label "mainAddress"@en ;
-  rdfs:comment "Main address of the location." ;
-  cims:dataType cim:StreetAddress ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Location .
-
-cim:PositionPoint.Location a rdf:Property ;
-  rdfs:label "Location"@en ;
-  rdfs:comment "Location described by this position point." ;
-  cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName cim:Location.PositionPoints ;
-  cims:multiplicity cims:M:1 ;
-  rdfs:domain cim:PositionPoint ;
-  rdfs:range cim:Location .
-
-cim:PositionPoint.sequenceNumber a rdf:Property ;
+cim:PositionPoint.sequenceNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "sequenceNumber"@en ;
   rdfs:comment "Zero-relative sequence number of this point within a series of points." ;
-  cims:dataType cim:Integer ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:PositionPoint .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:PositionPoint ;
+  rdfs:range xsd:integer .
 
-cim:PositionPoint.xPosition a rdf:Property ;
+cim:PositionPoint.xPosition a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "xPosition"@en ;
   rdfs:comment "X axis position." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:PositionPoint .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:PositionPoint ;
+  rdfs:range xsd:string .
 
-cim:PositionPoint.yPosition a rdf:Property ;
+cim:PositionPoint.yPosition a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "yPosition"@en ;
   rdfs:comment "Y axis position." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:PositionPoint .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:PositionPoint ;
+  rdfs:range xsd:string .
 
-cim:PositionPoint.zPosition a rdf:Property ;
+cim:PositionPoint.zPosition a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "zPosition"@en ;
   rdfs:comment "(if applicable) Z axis position." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:PositionPoint .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:PositionPoint ;
+  rdfs:range xsd:string .
 
-cim:PowerSystemResource.Location a rdf:Property ;
-  rdfs:label "Location"@en ;
-  rdfs:comment "Location of this power system resource." ;
-  cims:AssociationUsed "No" ;
-  cims:inverseRoleName cim:Location.PowerSystemResources ;
-  cims:multiplicity cims:M:0..1 ;
-  rdfs:domain cim:PowerSystemResource ;
-  rdfs:range cim:Location .
-
-cim:Status.dateTime a rdf:Property ;
+cim:Status.dateTime a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "dateTime"@en ;
   rdfs:comment "Date and time for which status 'value' applies." ;
-  cims:dataType cim:DateTime ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Status .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Status ;
+  rdfs:range xsd:dateTime .
 
-cim:Status.reason a rdf:Property ;
+cim:Status.reason a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "reason"@en ;
   rdfs:comment "Reason code or explanation for why an object went to the current status 'value'." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Status .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Status ;
+  rdfs:range xsd:string .
 
-cim:Status.remark a rdf:Property ;
+cim:Status.remark a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "remark"@en ;
   rdfs:comment "Pertinent information regarding the current 'value', as free form text." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Status .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Status ;
+  rdfs:range xsd:string .
 
-cim:Status.value a rdf:Property ;
+cim:Status.value a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "value"@en ;
   rdfs:comment "Status value at 'dateTime'; prior status changes may have been kept in instances of activity records associated with the object to which this status applies." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:Status .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Status ;
+  rdfs:range xsd:string .
 
-cim:StreetAddress.language a rdf:Property ;
+cim:StreetAddress.language a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "language"@en ;
   rdfs:comment "The language in which the address is specified, using ISO 639-1 two digit language code." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetAddress .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetAddress ;
+  rdfs:range xsd:string .
 
-cim:StreetAddress.poBox a rdf:Property ;
+cim:StreetAddress.poBox a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "poBox"@en ;
   rdfs:comment "Post office box." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetAddress .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetAddress ;
+  rdfs:range xsd:string .
 
-cim:StreetAddress.postalCode a rdf:Property ;
+cim:StreetAddress.postalCode a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "postalCode"@en ;
   rdfs:comment "Postal code for the address." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetAddress .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetAddress ;
+  rdfs:range xsd:string .
 
-cim:StreetAddress.status a rdf:Property ;
-  rdfs:label "status"@en ;
-  rdfs:comment "Status of this address." ;
-  cims:dataType cim:Status ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetAddress .
-
-cim:StreetAddress.streetDetail a rdf:Property ;
-  rdfs:label "streetDetail"@en ;
-  rdfs:comment "Street detail." ;
-  cims:dataType cim:StreetDetail ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetAddress .
-
-cim:StreetAddress.townDetail a rdf:Property ;
-  rdfs:label "townDetail"@en ;
-  rdfs:comment "Town detail." ;
-  cims:dataType cim:TownDetail ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetAddress .
-
-cim:StreetDetail.addressGeneral a rdf:Property ;
+cim:StreetDetail.addressGeneral a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "addressGeneral"@en ;
   rdfs:comment "First line of a free form address or some additional address information (for example a mail stop)." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.addressGeneral2 a rdf:Property ;
+cim:StreetDetail.addressGeneral2 a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "addressGeneral2"@en ;
   rdfs:comment "(if applicable) Second line of a free form address." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.addressGeneral3 a rdf:Property ;
+cim:StreetDetail.addressGeneral3 a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "addressGeneral3"@en ;
   rdfs:comment "(if applicable) Third line of a free form address." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.buildingName a rdf:Property ;
+cim:StreetDetail.buildingName a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "buildingName"@en ;
   rdfs:comment "(if applicable) In certain cases the physical location of the place of interest does not have a direct point of entry from the street, but may be located inside a larger structure such as a building, complex, office block, apartment, etc." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.code a rdf:Property ;
+cim:StreetDetail.code a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "code"@en ;
   rdfs:comment "(if applicable) Utilities often make use of external reference systems, such as those of the town-planner's department or surveyor general's mapping system, that allocate global reference codes to streets." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.floorIdentification a rdf:Property ;
+cim:StreetDetail.floorIdentification a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "floorIdentification"@en ;
   rdfs:comment "The identification by name or number, expressed as text, of the floor in the building as part of this address." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.name a rdf:Property ;
+cim:StreetDetail.name a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "name"@en ;
   rdfs:comment "Name of the street." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.number a rdf:Property ;
+cim:StreetDetail.number a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "number"@en ;
   rdfs:comment "Designator of the specific location on the street." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.prefix a rdf:Property ;
+cim:StreetDetail.prefix a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "prefix"@en ;
   rdfs:comment "Prefix to the street name. For example: North, South, East, West." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.suffix a rdf:Property ;
+cim:StreetDetail.suffix a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "suffix"@en ;
   rdfs:comment "Suffix to the street name. For example: North, South, East, West." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.suiteNumber a rdf:Property ;
+cim:StreetDetail.suiteNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "suiteNumber"@en ;
   rdfs:comment "Number of the apartment or suite." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.type a rdf:Property ;
+cim:StreetDetail.type a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "type"@en ;
   rdfs:comment "Type of street. Examples include: street, circle, boulevard, avenue, road, drive, etc." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:string .
 
-cim:StreetDetail.withinTownLimits a rdf:Property ;
+cim:StreetDetail.withinTownLimits a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "withinTownLimits"@en ;
   rdfs:comment "True if this street is within the legal geographical boundaries of the specified town (default)." ;
-  cims:dataType cim:Boolean ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:StreetDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:StreetDetail ;
+  rdfs:range xsd:boolean .
 
-cim:TownDetail.code a rdf:Property ;
+cim:TownDetail.code a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "code"@en ;
   rdfs:comment "Town code." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:TownDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:TownDetail ;
+  rdfs:range xsd:string .
 
-cim:TownDetail.country a rdf:Property ;
+cim:TownDetail.country a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "country"@en ;
   rdfs:comment "Name of the country." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:TownDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:TownDetail ;
+  rdfs:range xsd:string .
 
-cim:TownDetail.name a rdf:Property ;
+cim:TownDetail.name a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "name"@en ;
   rdfs:comment "Town name." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:TownDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:TownDetail ;
+  rdfs:range xsd:string .
 
-cim:TownDetail.section a rdf:Property ;
+cim:TownDetail.section a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "section"@en ;
   rdfs:comment "Town section. For example, it is common for there to be 36 sections per township." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:TownDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:TownDetail ;
+  rdfs:range xsd:string .
 
-cim:TownDetail.stateOrProvince a rdf:Property ;
+cim:TownDetail.stateOrProvince a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "stateOrProvince"@en ;
   rdfs:comment "Name of the state or province." ;
-  cims:dataType cim:String ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:TownDetail .
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:TownDetail ;
+  rdfs:range xsd:string .
 
 gl:Package_GeographicalLocationProfile a cims:ClassCategory ;
   rdfs:label "GeographicalLocationProfile"@en ;

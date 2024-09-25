@@ -1,147 +1,25 @@
-@prefix     cim: <https://cim.ucaiug.io/ns#> .
-@prefix      nc: <https://cim4.eu/ns/nc#> .
-@prefix    cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
-@prefix profcim: <https://cim.ucaiug.io/ns/prof-cim#> .
-@prefix      sm: <https://ap-voc.cim4.eu/SensitivityMatrix#> .
-@prefix    dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix     owl: <http://www.w3.org/2002/07/owl#> .
-@prefix     rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix    rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
-cim:Contingency a rdfs:Class ;
-  rdfs:label "Contingency"@en ;
-  rdfs:comment "An event threatening system reliability, consisting of one or more contingency elements." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile .
-
-cim:Date a rdfs:Class ;
-  rdfs:label "Date"@en ;
-  rdfs:comment "Date as \"yyyy-mm-dd\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddZ\". A local timezone relative UTC is specified as \"yyyy-mm-dd(+/-)hh:mm\"." ;
-  cims:belongsToCategory sm:Package_DocSensitivityMatrixProfile ;
-  cims:stereotype "Primitive" .
-
-cim:DateTime a rdfs:Class ;
-  rdfs:label "DateTime"@en ;
-  rdfs:comment "Date and time as \"yyyy-mm-ddThh:mm:ss.sss\", which conforms with ISO 8601. UTC time zone is specified as \"yyyy-mm-ddThh:mm:ss.sssZ\". A local timezone relative UTC is specified as \"yyyy-mm-ddThh:mm:ss.sss-hh:mm\". The second component (shown here as \"ss.sss\") could have any number of digits in its fractional part to allow any kind of precision beyond seconds." ;
-  cims:belongsToCategory sm:Package_DocSensitivityMatrixProfile ;
-  cims:stereotype "Primitive" .
-
-cim:Float a rdfs:Class ;
-  rdfs:label "Float"@en ;
-  rdfs:comment "A floating point number. The range is unspecified and not limited." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "Primitive" .
-
-cim:IdentifiedObject a rdfs:Class ;
-  rdfs:label "IdentifiedObject"@en ;
-  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile .
-
-cim:String a rdfs:Class ;
-  rdfs:label "String"@en ;
-  rdfs:comment "A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "Primitive" .
-
-nc:AssessedElement a rdfs:Class ;
-  rdfs:label "AssessedElement"@en ;
-  rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.
-The measurements and limits are as defined in the steady state hypothesis.""" ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC" .
-
-nc:ControllableQuantity a rdfs:Class ;
-  rdfs:label "ControllableQuantity"@en ;
-  rdfs:comment "Controllable quantity is a set point quantity on a grid state alteration or on a remedial action." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
-
-nc:GridStateAlteration a rdfs:Class ;
-  rdfs:label "GridStateAlteration"@en ;
-  rdfs:comment "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC" .
-
-nc:ObservableQuantity a rdfs:Class ;
-  rdfs:label "ObservableQuantity"@en ;
-  rdfs:comment "Observable quantity is an electrical quantity on an assessed element or an assessed element with contingency." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
-
-nc:ObservableQuantityKind a rdfs:Class ;
-  rdfs:label "ObservableQuantityKind"@en ;
-  rdfs:comment "Kind of observable quantity." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-nc:RemedialAction a rdfs:Class ;
-  rdfs:label "RemedialAction"@en ;
-  rdfs:comment "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly. " ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC" .
-
-nc:SensitivityFactor a rdfs:Class ;
-  rdfs:label "SensitivityFactor"@en ;
-  rdfs:comment "The sensitivity factor which represents the sensitivity between observable and controllable elements. " ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> .
-
-nc:SensitivityMatrix a rdfs:Class ;
-  rdfs:label "SensitivityMatrix"@en ;
-  rdfs:comment "The sensitivity matrix which represents the sensitivity factors between observable and controllable elements. " ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#concrete> ;
-  rdfs:subClassOf cim:IdentifiedObject .
-
-nc:SensitivityMatrixKind a rdfs:Class ;
-  rdfs:label "SensitivityMatrixKind"@en ;
-  rdfs:comment "Kinds of sensitivity matrix." ;
-  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#enumeration> .
-
-profcim:IRI a rdfs:Class ;
-  rdfs:label "IRI"@en ;
-  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as rdf:resource in RDFXML.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
-  cims:belongsToCategory sm:Package_DocSensitivityMatrixProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-profcim:StringFixedLanguage a rdfs:Class ;
-  rdfs:label "StringFixedLanguage"@en ;
-  rdfs:comment """A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.
-The primitive is serialized as literal without language support.""" ;
-  cims:belongsToCategory sm:Package_DocSensitivityMatrixProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-profcim:StringIRI a rdfs:Class ;
-  rdfs:label "StringIRI"@en ;
-  rdfs:comment """An IRI (Internationalized Resource Identifier) within an RDF graph is a Unicode string that conforms to the syntax defined in RFC 3987.
-The primitive is serialized as literal without language support.
-IRIs in the RDF abstract syntax must be absolute, and may contain a fragment identifier.
-IRI equality: Two IRIs are equal if and only if they are equivalent under Simple String Comparison according to section 5.1 of [RFC3987]. Further normalization must not be performed when comparing IRIs for equality.
-IRIs are a generalization of URIs [RFC3986] that permits a wider range of Unicode characters. Every absolute URI and URL is an IRI, but not every IRI is an URI. When IRIs are used in operations that are only defined for URIs, they must first be converted according to the mapping defined in section 3.1 of [RFC3987]. A notable example is retrieval over the HTTP protocol. The mapping involves UTF-8 encoding of non-ASCII characters, %-encoding of octets not allowed in URIs, and Punycode-encoding of domain names.""" ;
-  cims:belongsToCategory sm:Package_DocSensitivityMatrixProfile ;
-  cims:stereotype "Primitive", "profcim" .
-
-profcim:URL a rdfs:Class ;
-  rdfs:label "URL"@en ;
-  rdfs:comment "A Uniform Resource Locator (URL), colloquially termed a web address, is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it. A URL is a specific type of Uniform Resource Identifier (URI), although many people use the two terms interchangeably.URLs occur most commonly to reference web pages (http), but are also used for file transfer (ftp), email (mailto), database access (JDBC), and many other applications." ;
-  cims:belongsToCategory sm:Package_DocSensitivityMatrixProfile ;
-  cims:stereotype "Primitive", "profcim" .
+@prefix          cim: <https://cim.ucaiug.io/ns#> .
+@prefix           nc: <https://cim4.eu/ns/nc#> .
+@prefix         cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix           sm: <https://ap-voc.cim4.eu/SensitivityMatrix#> .
+@prefix         dcat: <http://www.w3.org/ns/dcat#> .
+@prefix          dct: <http://purl.org/dc/terms/> .
+@prefix          owl: <http://www.w3.org/2002/07/owl#> .
+@prefix          rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix         rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix          xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
 
 sm:Ontology a owl:Ontology ;
+  dct:description "This vocabulary is describing the sensitivity matrix."@en ;
   dcat:keyword "SM" ;
   dcat:theme "vocabulary"@en ;
   dct:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
   dct:creator "ENTSO-E CIM WG NC project"@en ;
-  dct:description "This vocabulary is describing the sensitivity matrix."@en ;
   dct:identifier "urn:uuid:d89a8510-528b-49a9-81f1-c51be51caa6f" ;
   dct:language "en-GB" ;
   dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
-  dct:modified "2024-09-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+  dct:modified "2024-09-07"^^xsd:date ;
   dct:publisher "ENTSO-E"@en ;
   dct:rightsHolder "ENTSO-E"@en ;
   dct:title "Sensitivity Matrix Vocabulary"@en ;
@@ -149,202 +27,268 @@ sm:Ontology a owl:Ontology ;
   owl:versionIRI <https://ap-voc.cim4.eu/SensitivityMatrix/2.3> ;
   owl:versionInfo "2.3.1"@en .
 
-cim:IdentifiedObject.description a rdf:Property ;
-  rdfs:label "description"@en ;
-  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+cim:Contingency a owl:Class ;
+  rdfs:label "Contingency"@en ;
+  rdfs:comment "An event threatening system reliability, consisting of one or more contingency elements." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile .
 
-cim:IdentifiedObject.mRID a rdf:Property ;
-  rdfs:label "mRID"@en ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+cim:IdentifiedObject a owl:Class ;
+  rdfs:label "IdentifiedObject"@en ;
+  rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile .
 
-cim:IdentifiedObject.name a rdf:Property ;
-  rdfs:label "name"@en ;
-  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
-  cims:dataType cim:String ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain cim:IdentifiedObject .
+nc:AssessedElement a owl:Class ;
+  rdfs:label "AssessedElement"@en ;
+  rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.
+The measurements and limits are as defined in the steady state hypothesis.""" ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC" .
 
-nc:AssessedElement.ObservableQuantity a rdf:Property ;
+nc:ControllableQuantity a owl:Class ;
+  rdfs:label "ControllableQuantity"@en ;
+  rdfs:comment "Controllable quantity is a set point quantity on a grid state alteration or on a remedial action." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC", uml:concrete .
+
+nc:GridStateAlteration a owl:Class ;
+  rdfs:label "GridStateAlteration"@en ;
+  rdfs:comment "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC" .
+
+nc:ObservableQuantity a owl:Class ;
+  rdfs:label "ObservableQuantity"@en ;
+  rdfs:comment "Observable quantity is an electrical quantity on an assessed element or an assessed element with contingency." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC", uml:concrete .
+
+nc:ObservableQuantityKind a owl:Class ;
+  rdfs:label "ObservableQuantityKind"@en ;
+  rdfs:comment "Kind of observable quantity." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC", uml:enumeration .
+
+nc:RemedialAction a owl:Class ;
+  rdfs:label "RemedialAction"@en ;
+  rdfs:comment "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC" .
+
+nc:SensitivityFactor a owl:Class ;
+  rdfs:label "SensitivityFactor"@en ;
+  rdfs:comment "The sensitivity factor which represents the sensitivity between observable and controllable elements." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC", uml:concrete .
+
+nc:SensitivityMatrix a owl:Class ;
+  rdfs:label "SensitivityMatrix"@en ;
+  rdfs:comment "The sensitivity matrix which represents the sensitivity factors between observable and controllable elements." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC", uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+nc:SensitivityMatrixKind a owl:Class ;
+  rdfs:label "SensitivityMatrixKind"@en ;
+  rdfs:comment "Kinds of sensitivity matrix." ;
+  cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
+  cims:stereotype "NC", uml:enumeration .
+
+nc:AssessedElement.ObservableQuantity a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "ObservableQuantity"@en ;
   rdfs:comment "The observable quantity for this assessed element with contingency." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:ObservableQuantity.AssessedElement ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:ObservableQuantity.AssessedElement ;
   rdfs:domain nc:AssessedElement ;
   rdfs:range nc:ObservableQuantity .
 
-nc:Contingency.ObservableQuantity a rdf:Property ;
+nc:Contingency.ObservableQuantity a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "ObservableQuantity"@en ;
   rdfs:comment "The observable quantity for this contingency." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:ObservableQuantity.Contingency ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:ObservableQuantity.Contingency ;
   rdfs:domain cim:Contingency ;
   rdfs:range nc:ObservableQuantity .
 
-nc:ControllableQuantity.GridStateAlteration a rdf:Property ;
+nc:ControllableQuantity.GridStateAlteration a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "GridStateAlteration"@en ;
   rdfs:comment "The grid state alteration for this controllable quantity." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:GridStateAlteration.ControllableQuantity ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:GridStateAlteration.ControllableQuantity ;
   rdfs:domain nc:ControllableQuantity ;
   rdfs:range nc:GridStateAlteration .
 
-nc:ControllableQuantity.RemedialAction a rdf:Property ;
+nc:ControllableQuantity.RemedialAction a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "RemedialAction"@en ;
   rdfs:comment "Remedial action which is associated with the controllable quantity." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:RemedialAction.ControllableQuantity ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:RemedialAction.ControllableQuantity ;
   rdfs:domain nc:ControllableQuantity ;
   rdfs:range nc:RemedialAction .
 
-nc:ControllableQuantity.SensitivityFactor a rdf:Property ;
+nc:ControllableQuantity.SensitivityFactor a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "SensitivityFactor"@en ;
   rdfs:comment "The sensitivity factor associated with a controllable quantity." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:SensitivityFactor.ControllableQuantity ;
   cims:multiplicity cims:M:1..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:SensitivityFactor.ControllableQuantity ;
   rdfs:domain nc:ControllableQuantity ;
   rdfs:range nc:SensitivityFactor .
 
-nc:ControllableQuantity.value a rdf:Property ;
-  rdfs:label "value"@en ;
-  rdfs:comment "The value of the change applied to the grid state alteration or remedial action. In the case of multiple changes or non-quantifiable changes (e.g. Topology changes) the value needs to represent the suitable value that makes the derivable value given in the observable quantity for the purpose of the calculation of the sensitivity factor.  The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false." ;
-  cims:dataType cim:Float ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:ControllableQuantity .
-
-nc:GridStateAlteration.ControllableQuantity a rdf:Property ;
+nc:GridStateAlteration.ControllableQuantity a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "ControllableQuantity"@en ;
   rdfs:comment "The controllable quantity associated with this grid state alteration." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:ControllableQuantity.GridStateAlteration ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:ControllableQuantity.GridStateAlteration ;
   rdfs:domain nc:GridStateAlteration ;
   rdfs:range nc:ControllableQuantity .
 
-nc:ObservableQuantity.AssessedElement a rdf:Property ;
+nc:ObservableQuantity.AssessedElement a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "AssessedElement"@en ;
   rdfs:comment "The assessed element with contingency associated with this observable quantity." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:AssessedElement.ObservableQuantity ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:AssessedElement.ObservableQuantity ;
   rdfs:domain nc:ObservableQuantity ;
   rdfs:range nc:AssessedElement .
 
-nc:ObservableQuantity.Contingency a rdf:Property ;
+nc:ObservableQuantity.Contingency a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "Contingency"@en ;
   rdfs:comment "The contingency associated with this observable quantity." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:Contingency.ObservableQuantity ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:Contingency.ObservableQuantity ;
   rdfs:domain nc:ObservableQuantity ;
   rdfs:range cim:Contingency .
 
-nc:ObservableQuantity.SensitivityFactor a rdf:Property ;
+nc:ObservableQuantity.SensitivityFactor a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "SensitivityFactor"@en ;
   rdfs:comment "The sensitivity factor associated with an observable quantity." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:SensitivityFactor.ObservableQuantity ;
   cims:multiplicity cims:M:1..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:SensitivityFactor.ObservableQuantity ;
   rdfs:domain nc:ObservableQuantity ;
   rdfs:range nc:SensitivityFactor .
 
-nc:ObservableQuantity.observableQuantityKind a rdf:Property ;
+nc:ObservableQuantity.observableQuantityKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "observableQuantityKind"@en ;
   rdfs:comment "Kind of observable quantity." ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:ObservableQuantity ;
   rdfs:range nc:ObservableQuantityKind .
 
-nc:RemedialAction.ControllableQuantity a rdf:Property ;
+nc:RemedialAction.ControllableQuantity a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "ControllableQuantity"@en ;
   rdfs:comment "The controllable quantity for a remedial action." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:ControllableQuantity.RemedialAction ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:ControllableQuantity.RemedialAction ;
   rdfs:domain nc:RemedialAction ;
   rdfs:range nc:ControllableQuantity .
 
-nc:SensitivityFactor.ControllableQuantity a rdf:Property ;
+nc:SensitivityFactor.ControllableQuantity a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "ControllableQuantity"@en ;
   rdfs:comment "The controllable quantity for this sensitivity factor." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:ControllableQuantity.SensitivityFactor ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:ControllableQuantity.SensitivityFactor ;
   rdfs:domain nc:SensitivityFactor ;
   rdfs:range nc:ControllableQuantity .
 
-nc:SensitivityFactor.ObservableQuantity a rdf:Property ;
+nc:SensitivityFactor.ObservableQuantity a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "ObservableQuantity"@en ;
   rdfs:comment "The observable quantity for this sensitivity factor." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:ObservableQuantity.SensitivityFactor ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:ObservableQuantity.SensitivityFactor ;
   rdfs:domain nc:SensitivityFactor ;
   rdfs:range nc:ObservableQuantity .
 
-nc:SensitivityFactor.SensitivityMatrix a rdf:Property ;
+nc:SensitivityFactor.SensitivityMatrix a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "SensitivityMatrix"@en ;
   rdfs:comment "The sensitivity matrix which contains this sensitivity factor." ;
   cims:AssociationUsed "Yes" ;
-  cims:inverseRoleName nc:SensitivityMatrix.SensitivityFactor ;
-  cims:multiplicity cims:M:1 ;
+  cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:SensitivityMatrix.SensitivityFactor ;
   rdfs:domain nc:SensitivityFactor ;
   rdfs:range nc:SensitivityMatrix .
 
-nc:SensitivityFactor.value a rdf:Property ;
-  rdfs:label "value"@en ;
-  rdfs:comment "The value of the sensitivity factor." ;
-  cims:dataType cim:Float ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
-  rdfs:domain nc:SensitivityFactor .
-
-nc:SensitivityMatrix.SensitivityFactor a rdf:Property ;
+nc:SensitivityMatrix.SensitivityFactor a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "SensitivityFactor"@en ;
   rdfs:comment "The sensitivity factor which belongs to this sensitivity matrix." ;
   cims:AssociationUsed "No" ;
-  cims:inverseRoleName nc:SensitivityFactor.SensitivityMatrix ;
   cims:multiplicity cims:M:1..n ;
   cims:stereotype "NC" ;
+  owl:inverseOf nc:SensitivityFactor.SensitivityMatrix ;
   rdfs:domain nc:SensitivityMatrix ;
   rdfs:range nc:SensitivityFactor .
 
-nc:SensitivityMatrix.kind a rdf:Property ;
+nc:SensitivityMatrix.kind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "kind"@en ;
-  rdfs:comment "The kind of sensitivity matrix. " ;
+  rdfs:comment "The kind of sensitivity matrix." ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "NC", <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:SensitivityMatrix ;
   rdfs:range nc:SensitivityMatrixKind .
+
+cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "description"@en ;
+  rdfs:comment "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "mRID"@en ;
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "name"@en ;
+  rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range xsd:string .
+
+nc:ControllableQuantity.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The value of the change applied to the grid state alteration or remedial action. In the case of multiple changes or non-quantifiable changes (e.g. Topology changes) the value needs to represent the suitable value that makes the derivable value given in the observable quantity for the purpose of the calculation of the sensitivity factor.  The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false." ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:ControllableQuantity ;
+  rdfs:range xsd:float .
+
+nc:SensitivityFactor.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:comment "The value of the sensitivity factor." ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  rdfs:domain nc:SensitivityFactor ;
+  rdfs:range xsd:float .
 
 nc:ObservableQuantityKind.activePower a nc:ObservableQuantityKind ;
   rdfs:label "activePower"@en ;

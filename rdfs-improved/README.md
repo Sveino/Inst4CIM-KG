@@ -29,9 +29,17 @@
     - [Fix Representation of NamedIndividuals](#fix-representation-of-namedindividuals)
     - [Mis-declared Packages](#mis-declared-packages)
     - [Whitespace in Definitions](#whitespace-in-definitions)
+    - [Datatype XMLLiteral in Definitions](#datatype-xmlliteral-in-definitions)
     - [Whitespace and Lang Tags in Key Values](#whitespace-and-lang-tags-in-key-values)
     - [HTML Tags and Escaped Entities in Definitions](#html-tags-and-escaped-entities-in-definitions)
-    - [Datatypes and Units of Measure](#datatypes-and-units-of-measure)
+    - [Use Standard Datatypes](#use-standard-datatypes)
+        - [Multilinguality in CIM?](#multilinguality-in-cim)
+        - [rdf:PlainLiteral](#rdfplainliteral)
+    - [Deprecated Properties](#deprecated-properties)
+    - [Change Class and Property Kinds](#change-class-and-property-kinds)
+    - [Use Standard `inverseOf` Property](#use-standard-inverseof-property)
+    - [Express Multiplicity in OWL](#express-multiplicity-in-owl)
+    - [QuantityKinds and Units of Measure](#quantitykinds-and-units-of-measure)
         - [Fixed Units Representation](#fixed-units-representation)
         - [Fixed Multipliers Representation](#fixed-multipliers-representation)
         - [CompleteDatatypeMap](#completedatatypemap)
@@ -43,8 +51,8 @@
     - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
 - [Fix Technical Notes](#fix-technical-notes)
     - [Fix Structure](#fix-structure)
-    - [Fix Ordering and List](#fix-ordering-and-list)
     - [Fix Debugging](#fix-debugging)
+    - [Fix Ordering and List](#fix-ordering-and-list)
 
 <!-- markdown-toc end -->
 
@@ -876,7 +884,25 @@ select * {
 | "plain"          | "plain"          | xsd: string     |
 | "langString" @en | "langString" @en | rdf: langString |
 
+## Datatype XMLLiteral in Definitions
+https://github.com/Sveino/Inst4CIM-KG/issues/72
+
+We checked literals for unusual datatypes:
+```sparql
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select * where {
+  ?x ?p ?o
+  filter(isLiteral(?o))
+  bind(datatype(?o) as ?dt)
+  filter(?dt not in (xsd:string, rdf:langString, xsd:date, xsd:dateTime))
+}
+```
+It turns out that 25 definitions are marked as `rdf:XMLLiteral`.
+But they don't include any XML markup, so we should use the simpler datatype `xsd:string`.
+
 ## Whitespace and Lang Tags in Key Values
+
 Key values must be spelled with ultimate care because... well, they are key.
 This is similar to the previous section but worse.
 
@@ -897,8 +923,34 @@ cim:Temperature.multiplier
   sc:isFixed "True ";
   dy:isFixed "True".
 ```
-- "VA" and "M" are SI unit and multiplier respectively. SI is international, so these codes cannot have lang tags
-- The last one is worst: some profiles map `isFixed` to a value with space, others without a space
+
+The last one is worst: some profiles map `isFixed` to a value with space, others without a space.
+
+In addition, the "en" lang tag is not appropriate for code values.
+Eg "VA" and "M" are SI unit and multiplier respectively. 
+SI is the international system of units, so these codes cannot have lang tags.
+
+This query finds 842 enumerations whose label is marked `@en`:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+select * {
+  ?x ?p ?y; cims:stereotype "enum"
+  filter(lang(?y)="en")
+} order by ?x
+```
+
+Examination shows that the following consist entirely of codes, so we'll remove the lang tag:
+`cim:Currency cim:IfdBaseKind cim:PhaseCode cim:StaticLoadModelKind cim:UnitMultiplier cim:UnitSymbol cim:WindingConnection`
+
+We don't change eg `eu:LimitKind` although it includes mostly codes (`tatl, tc, tct` etc).
+But it also includes an English phrase: `"warningVoltage"@en`
+
+TODO: `rdfs:comment` does not include lang tag but should, eg:
+```ttl
+eu:LimitKind.operationalVoltageLimit a eu:LimitKind ;
+  rdfs:label "operationalVoltageLimit"@en ;
+  rdfs:comment "Operational voltage limit." ;
+```
 
 ## HTML Tags and Escaped Entities in Definitions
 https://github.com/Sveino/Inst4CIM-KG/issues/21
@@ -952,7 +1004,184 @@ This is a large data cleaning task because all occurrences need to be analyzed, 
   - Lists: `<ul><li>` to `- `
   - Emphasis: `<i>` and `<em>` to `*`, `<b>` and `<strong>` to `**`
 
-## Datatypes and Units of Measure
+## Use Standard Datatypes
+https://github.com/Sveino/Inst4CIM-KG/issues/74 
+https://github.com/Sveino/Inst4CIM-KG/issues/28
+https://github.com/Sveino/Inst4CIM-KG/issues/61
+
+CIM defines its own datatypes:
+```ttl
+cim:Boolean a rdfs:Class ;
+  rdfs:label "Boolean"@en ;
+  rdfs:comment "A type with the value space \"true\" and \"false\"." ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype "Primitive" .
+```
+
+This query finds all their uses:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+select ?dt (count(*) as ?c) {
+  ?prop cims:dataType ?dt.
+  ?dt cims:stereotype "Primitive"
+} group by ?dt order by ?dt
+```
+(Note: the next section deals with `cims:stereotype "CIMDatatype"`).
+
+We want to map them to corresponding XSD datatypes:
+| dt                          |   c | xsd               |                                       |
+|-----------------------------|-----|-------------------|---------------------------------------|
+| cim:Boolean                 | 230 | xsd:boolean       |                                       |
+| cim:Date                    |   1 | xsd:date          |                                       |
+| cim:DateTime                |  64 | xsd:dateTime      |                                       |
+| cim:Decimal                 |  16 | xsd:decimal       |                                       |
+| cim:Duration                |  26 | xsd:duration      |                                       |
+| cim:Float                   | 369 | xsd:float         |                                       |
+| cim:Integer                 |  59 | xsd:integer       |                                       |
+| cim:MonthDay                |   2 | xsd:gMonthDay     |                                       |
+| cim:String                  | 121 | xsd:string        |                                       |
+| cim:Time                    |   2 | xsd:time          |                                       |
+| eu:URI                      |   2 | xsd:anyURI        |                                       |
+| profcim:URL                 |   0 | xsd:anyURI        | Not used, but mapped for completeness |
+| profcim:IRI                 |   3 | xsd:anyURI        |                                       |
+| profcim:StringFixedLanguage |   1 | xsd:string        |                                       |
+| profcim:StringIRI           |   3 | xsd:string        |                                       |
+| eumd:DateTimeStamp          |   2 | xsd:dateTimeStamp |                                       |
+
+This means to **delete** all their statements, and replace with standard datatypes.
+
+Notes:
+- `profcim:StringIRI` is used for `identifier, conformsTo`,
+  i.e. values that can be "string or IRI" (though its description mentions only IRI).
+  But when we are unsure, we must go with the "lowest common denominator" which is `string`
+- Potentially mapping `cim:String` to `rdf:PlainLiteral` is considered in the next two sections
+ 
+### Multilinguality in CIM?
+
+This section was provoked by pondering the difference between `cim:String` and `profcim:StringFixedLanguage`.
+
+AFAIK, CIM does not allow (and has not considered?) multilinguality
+- https://github.com/Sveino/Inst4CIM-KG/issues/8 : Header-AP-Voc-RDFS2020.ttl misdefines `rdf:LangString` but that doesn't count
+
+Eg `cim:IdentifiedObject.name` doesn't allow multiple values:
+```ttl
+ido:IdentifiedObject.name-cardinality
+        rdf:type        sh:PropertyShape;
+        sh:description  "This constraint validates the cardinality of the property (attribute).";
+        sh:group        ido:CardinalityIO;
+        sh:message      "Missing required property (attribute).";
+        sh:maxCount     1;
+        sh:minCount     1;
+        sh:name         "IdentifiedObject.name-cardinality";
+        sh:order        0.1;
+        sh:path         cim:IdentifiedObject.name;
+        sh:severity     sh:Violation .
+```
+I think it would be better to allow multiple values 
+but impose a `sh:uniqueLang` constraint (`skos:prefLabel` has the same restriction).
+In that way CIM data could accommodate multilinguality.
+Eg looking at some random properties: 
+- `cim:IdentifiedObject.mRID`: always `string`
+- `cim:IdentifiedObject.description`: `string` or `langString`
+- `cim:IdentifiedObject.name`: `string` or `langString`
+- `nc:AssessedElementWithContingency.mRID`: always `string`
+- `nc:AssessedElement.normalTargetRemainingAvailableMarginJustification`: `string` or `langString`
+
+Unfortunately, `cim:String` is used even for props that should not allow `langString`,
+i.e. no distinction is made between these two cases:
+- Names/descriptions could be `string` or `langString`
+- But identifiers should only be `string`
+
+So for the time being I think CIM implicitly **forbids** the use of `langString`:
+if you cannot have multiple `uniqueLang` values, there's not much use for lang tags.
+Also, allowing lang tags may cause some disturbance in some receiving system.
+
+So I'll map `cim:String` to `xsd:string`.
+
+### rdf:PlainLiteral
+
+The EU eProcurement Ontology allows multilingual data, and used `rdfs:Literal`.
+But that datatype is way too broad, so I raised an issue:
+https://github.com/OP-TED/ted-rdf-mapping/issues/407
+
+The datatype hierarchy is like this: `rdfs:Literal > rdf:PlainLiteral > (xsd:string, rdf:langString)`.
+What a text field needs to be mapped to depends on its nature:
+- `xsd:string` is appropriate for codes that are never translated to multiple langs
+- `rdf:langString` is appropriate for texts that are always translated to multiple langs (if not now, then in the future): so a lang tag is required
+- `rdf:PlainLiteral` is appropriate for texts that may but don't have to be translated, i.e. lang tag is not required. It is defined at https://w3.org/TR/rdf-plain-literal , and means `string` or `langString`.
+
+If you want `cim:String` to allow langStrings, then we should map it to `rdf:PlainLiteral`.
+
+## Deprecated Properties
+https://github.com/Sveino/Inst4CIM-KG/issues/24
+
+This query shows 7 props that are marked as deprecated, using `cims:stereotype`:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+select * {
+  ?p cims:stereotype "deprecated"
+}
+```
+| p                                         |
+|-------------------------------------------|
+| eu: IdentifiedObject.energyIdentCodeEic   |
+| eu: IdentifiedObject.shortName            |
+| cim: SVCControlMode                       |
+| cim: PhaseTapChangerLinear.xMin           |
+| cim: PhaseTapChangerNonLinear.xMin        |
+| cim: StaticVarCompensator.sVCControlMode  |
+| cim: StaticVarCompensator.voltageSetPoint |
+
+We convert this to `owl:deprecated true` and delete `cims:stereotype "deprecated"`, so it has fewer free-text values.
+
+## Change Class and Property Kinds
+https://github.com/Sveino/Inst4CIM-KG/issues/75
+
+The new style changes class and property kinds as follows:
+- `rdfs:Class` -> `owl:Class`
+- `rdf:Property` -> `owl:DatatypeProperty` (if range is `xsd:*`), `owl:ObjectProperty` otherwise
+ 
+It doesn't mean that we need full OWL reasoning much beyond RDFS.
+We are just being more specific about the nature of properties.
+
+## Use Standard `inverseOf` Property
+https://github.com/Sveino/Inst4CIM-KG/issues/26
+
+Inverses are very important in CIM: each object property has its inverse.
+- So we need to enable Inverse reasoning.
+- For this to work, we need to replace `cims:inverseRoleName` with the standard prop `owl:inverseOf`
+
+## Express Multiplicity in OWL
+https://github.com/Sveino/Inst4CIM-KG/issues/30
+
+CIM properties have rich multiplicity (cardinality) information:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+select ?mult (count(*) as ?c) {
+  ?x cims:multiplicity ?mult
+} group by ?mult order by ?mult 
+```
+
+| mult        |    c |
+|-------------|------|
+| cims:M:0..1 | 1123 |
+| cims:M:0..2 |    2 |
+| cims:M:0..n |  462 |
+| cims:M:1    |  304 |
+| cims:M:1..1 | 3240 |
+| cims:M:1..2 |    1 |
+| cims:M:1..n |  100 |
+| cims:M:2..2 |    2 |
+| cims:M:2..n |    3 |
+
+- Fix `M:1` to `M:1..1` for uniformity
+- Declare single-valued props (`0..1, 1..1`) as `owl:FunctionalProperty`
+- Declare their **inverse** (if any) as `owl:InverseFunctionalProperty`
+
+We keep the `cims:multiplicity` annotation because it has more info than these OWL declarations.
+Such cardinalities are reflected in SHACL, but `cims:multiplicity`  gives easier access to this important info.
+
+## QuantityKinds and Units of Measure
 https://github.com/Sveino/Inst4CIM-KG/issues/38
 - https://github.com/Sveino/Inst4CIM-KG/issues/29 is a subset of this
 - TODO: check if https://github.com/3lbits/CIM4NoUtility/issues/338 has anything more
@@ -1067,6 +1296,20 @@ because they are replaced by universal props `cim:multiplier, cim:unitSymbol` re
 
 We delete `cim:ApparentPower.value` because the actual DatatypeProperty `cim:ACDCConverter.baseS`
 now carries a number (`xsd:float`).
+Please note that some classes have actual DatatypeProperties named `.value`.
+We keep those, although in some cases the domain class doesn't have any more data so we could skip it, eg:
+```ttl
+cim:ActivePowerLimit.value a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Value of active power limit. The attribute shall be a positive value or zero." ;
+  cim:unitMultiplier cim:UnitMultiplier.M ;
+  cim:unitSymbol cim:UnitSymbol.W ;
+  cims:multiplicity cims:M:1..1 ;
+  qudt:hasQuantityKind cim:ActivePower ;
+  qudt:hasUnit unit:MegaW ;
+  rdfs:domain cim:ActivePowerLimit ;
+  rdfs:range xsd:float .
+```
 
 We correct CIM unit symbols and relate them to QUDT:
 ```ttl
@@ -1225,53 +1468,81 @@ We see that the data agrees between old and new style
 
 We add corresponding QUDT resources (last 3 columns):
 
-| qk                            | mult   | uom       | range       | new range   | QuantityKind                    | Unit                  | unit match      |
-|-------------------------------|--------|-----------|-------------|-------------|---------------------------------|-----------------------|-----------------|
-| cim:ActivePower               | "M"    | "W"       | cim:Float   | xsd:float   | quantitykind:ActivePower        | unit:MegaW            | skos:exactMatch |
-| cim:ActivePowerChangeRate     | "M"    | "WPers"   | cim:Float   |             |                                 |                       |                 |
-| cim:ActivePowerPerCurrentFlow | "M"    | "WPerA"   |             | xsd:float   |                                 |                       |                 |
-| cim:ActivePowerPerFrequency   | "M"    | "WPers"   |             | xsd:float   |                                 |                       |                 |
-| cim:AngleDegrees              | "none" | "deg"     | cim:Float   | xsd:float   | quantitykind:Angle              | unit:DEG              | skos:exactMatch |
-| cim:AngleRadians              | "none" | "rad"     |             | xsd:float   | quantitykind:Angle              | unit:RAD              | skos:exactMatch |
-| cim:ApparentPower             | "M"    | "VA"      | cim:Float   | xsd:float   | quantitykind:ApparentPower      | unit:MegaV-A          | skos:exactMatch |
-| cim:Area                      | "none" | "m2"      |             | xsd:float   | quantitykind:Area               | unit:M2               | skos:exactMatch |
-| cim:Capacitance               | "none" | "F"       |             | xsd:float   | quantitykind:Capacitance        | unit:FARAD            | skos:exactMatch |
-| cim:Conductance               | "none" | "S"       |             | xsd:float   | quantitykind:Conductance        | unit:S                | skos:exactMatch |
-| cim:CurrentFlow               | "none" | "A"       | cim:Float   | xsd:float   | quantitykind:ElectricCurrent    | unit:A                | skos:exactMatch |
-| cim:Frequency                 | "none" | "Hz"      | cim:Float   | xsd:float   | quantitykind:Frequency          | unit:HZ               | skos:exactMatch |
-| cim:Impedance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Inductance         | unit:H                | skos:exactMatch |
-| cim:Length                    | "k"    | "m"       |             | xsd:float   | quantitykind:Length             | unit:KiloM            | skos:exactMatch |
-| cim:Money                     | "none" |           | cim:Decimal | xsd:decimal | quantitykind:Currency           |                       | skos:exactMatch |
-| cim:PU                        | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio |                       |                 |
-| cim:PerCent                   | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio | unit:PERCENT          | skos:exactMatch |
-| cim:Pressure                  | "k"    | "Pa"      | cim:Float   |             | quantitykind:Pressure           | unit:KiloPA           | skos:exactMatch |
-| cim:Reactance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Reactance          | unit:OHM              | skos:exactMatch |
-| cim:ReactivePower             | "M"    | "VAr"     | cim:Float   | xsd:float   | quantitykind:ReactivePower      | unit:MegaV-A_Reactive | skos:exactMatch |
-| cim:RealEnergy                | "M"    | "Wh"      | cim:Float   | xsd:float   | quantitykind:Energy             | unit:MegaW-HR         | skos:exactMatch |
-| cim:Resistance                | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Resistance         | unit:OHM              | skos:exactMatch |
-| cim:RotationSpeed             | "none" | "Hz"      | xsd:float   |             | quantitykind:AngularVelocity    | unit:REV-PER-SEC      | skos:narrower   |
-| cim:Seconds                   | "none" | "s"       | cim:Float   | xsd:float   | quantitykind:Time               | unit:SEC              | skos:exactMatch |
-| cim:Susceptance               | "none" | "S"       |             | xsd:float   | quantitykind:Susceptance        | unit:S                | skos:exactMatch |
-| cim:Temperature               | "none" | "degC"    | cim:Float   | xsd:float   | quantitykind:Temperature        | unit:DEG_C            | skos:exactMatch |
-| cim:Voltage                   | "k"    | "V"       | cim:Float   | xsd:float   | quantitykind:Voltage            | unit:KiloV            | skos:exactMatch |
-| cim:VoltagePerReactivePower   | "k"    | "VPerVAr" | cim:Float   | xsd:float   |                                 |                       |                 |
-| cim:VolumeFlowRate            | "none" | "m3Pers"  |             | xsd:float   | quantitykind:VolumeFlowRate     | unit:M3-PER-SEC       | skos:exactMatch |
+| qk                            | mult   | uom       | range       | new range   | QuantityKind                           | Unit                        | unit match      |
+|-------------------------------|--------|-----------|-------------|-------------|----------------------------------------|-----------------------------|-----------------|
+| cim:ActivePower               | "M"    | "W"       | cim:Float   | xsd:float   | quantitykind:ActivePower               | unit:MegaW                  | skos:exactMatch |
+| cim:ActivePowerChangeRate     | "M"    | "WPers"   | cim:Float   |             | quantitykind:ActivePowerChangeRate     | unit:MegaW-PER-SEC          | skos:exactMatch |
+| cim:ActivePowerPerCurrentFlow | "M"    | "WPerA"   |             | xsd:float   | quantitykind:ActivePowerPerCurrentFlow | unit:MegaW-PER-A            | skos:exactMatch |
+| cim:ActivePowerPerFrequency   | "M"    | "WPerHz"  |             | xsd:float   | quantitykind:ActivePowerPerFrequency   | unit:MegaW-PER-HZ           | skos:exactMatch |
+| cim:AngleDegrees              | "none" | "deg"     | cim:Float   | xsd:float   | quantitykind:Angle                     | unit:DEG                    | skos:exactMatch |
+| cim:AngleRadians              | "none" | "rad"     |             | xsd:float   | quantitykind:Angle                     | unit:RAD                    | skos:exactMatch |
+| cim:ApparentPower             | "M"    | "VA"      | cim:Float   | xsd:float   | quantitykind:ApparentPower             | unit:MegaV-A                | skos:exactMatch |
+| cim:Area                      | "none" | "m2"      |             | xsd:float   | quantitykind:Area                      | unit:M2                     | skos:exactMatch |
+| cim:Capacitance               | "none" | "F"       |             | xsd:float   | quantitykind:Capacitance               | unit:FARAD                  | skos:exactMatch |
+| cim:Conductance               | "none" | "S"       |             | xsd:float   | quantitykind:Conductance               | unit:S                      | skos:exactMatch |
+| cim:CurrentFlow               | "none" | "A"       | cim:Float   | xsd:float   | quantitykind:ElectricCurrent           | unit:A                      | skos:exactMatch |
+| cim:Frequency                 | "none" | "Hz"      | cim:Float   | xsd:float   | quantitykind:Frequency                 | unit:HZ                     | skos:exactMatch |
+| cim:Impedance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Inductance                | unit:OHM                    | skos:exactMatch |
+| cim:Length                    | "k"    | "m"       |             | xsd:float   | quantitykind:Length                    | unit:KiloM                  | skos:exactMatch |
+| cim:Money                     | "none" |           | cim:Decimal | xsd:decimal | quantitykind:Currency                  |                             | skos:exactMatch |
+| cim:PU                        | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio        |                             |                 |
+| cim:PerCent                   | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio        | unit:PERCENT                | skos:exactMatch |
+| cim:Pressure                  | "k"    | "Pa"      | cim:Float   |             | quantitykind:Pressure                  | unit:KiloPA                 | skos:exactMatch |
+| cim:Reactance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Reactance                 | unit:OHM                    | skos:exactMatch |
+| cim:ReactivePower             | "M"    | "VAr"     | cim:Float   | xsd:float   | quantitykind:ReactivePower             | unit:MegaV-A_Reactive       | skos:exactMatch |
+| cim:RealEnergy                | "M"    | "Wh"      | cim:Float   | xsd:float   | quantitykind:Energy                    | unit:MegaW-HR               | skos:exactMatch |
+| cim:Resistance                | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Resistance                | unit:OHM                    | skos:exactMatch |
+| cim:RotationSpeed             | "none" | "Hz"      | xsd:float   |             | quantitykind:AngularVelocity           | unit:REV-PER-SEC            | skos:narrower   |
+| cim:Seconds                   | "none" | "s"       | cim:Float   | xsd:float   | quantitykind:Time                      | unit:SEC                    | skos:exactMatch |
+| cim:Susceptance               | "none" | "S"       |             | xsd:float   | quantitykind:Susceptance               | unit:S                      | skos:exactMatch |
+| cim:Temperature               | "none" | "degC"    | cim:Float   | xsd:float   | quantitykind:Temperature               | unit:DEG_C                  | skos:exactMatch |
+| cim:Voltage                   | "k"    | "V"       | cim:Float   | xsd:float   | quantitykind:Voltage                   | unit:KiloV                  | skos:exactMatch |
+| cim:VoltagePerReactivePower   | "k"    | "VPerVAr" | cim:Float   | xsd:float   | quantitykind:VoltagePerReactivePower   | unit:KiloV-PER-V-A_Reactive | skos:exactMatch |
+| cim:VolumeFlowRate            | "none" | "m3Pers"  |             | xsd:float   | quantitykind:VolumeFlowRate            | unit:M3-PER-SEC             | skos:exactMatch |
+
+- `cim:VoltagePerReactivePower` uses two multipliers, which is inconsistent: https://github.com/Sveino/Inst4CIM-KG/issues/77
 
 We need to submit a MR to QUDT for these new QuantityKinds and Units (https://github.com/qudt/qudt-public-repo/issues/970 ) :
+- Note: `WPers` is used for two different kinds: `ActivePowerPerFrequency` and `ActivePowerChangeRate`.
+  The former is wrong: corrected to `WperHz`, and defined `cim:UnitSymbol.WperHz`.
+
 | QuantityKind              | Unit1              | Unit2                  |
 |---------------------------|--------------------|------------------------|
 | ActivePowerChangeRate     | W-PER-SEC          | MegaW-PER-SEC          |
 | ActivePowerPerCurrentFlow | W-PER-A            | MegaW-PER-A            |
-| ActivePowerPerFrequency   | W-PER-SEC          | MegaW-PER-SEC          |
+| ActivePowerPerFrequency   | W-PER-HZ           | MegaW-PER-HZ           |
 | VoltagePerReactivePower   | V-PER-V-A_Reactive | KiloV-PER-V-A_Reactive |
-- Note: `WPers` is used for two different kinds: `ActivePowerPerFrequency` and `ActivePowerChangeRate`.
 
 After we add the above kinds, all `QuantityKinds` will be mapped as `skos:exactMatch`.
 - `skos:broader`: no such cases, I thought `ApparentPower` is a sub-concept of `ComplexPower` but QUDT has `ApparentPower`: https://github.com/Sveino/Inst4CIM-KG/issues/43 
 
-Almost all `Units` are `skos:exactMatch` except one:
+Almost all `Units` are mapped as `skos:exactMatch` except one:
 - `skos:narrower`: "Hz" is a super-concept of `REV-PER-SEC`: https://github.com/Sveino/Inst4CIM-KG/issues/42 
 
+This is also reflected eg in this property:
+```ttl
+cim:AsynchronousMachine.nominalSpeed a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "nominalSpeed"@en ;
+  rdfs:comment "Nameplate data.  Depends on the slip and number of pole pairs." ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.Hz ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype <http://iec.ch/TC57/NonStandard/UML#attribute> ;
+  qudt:hasQuantityKind cim:RotationSpeed ;
+  qudt:hasUnit unit:REV-PER-SEC ;
+  rdfs:domain cim:AsynchronousMachine ;
+  rdfs:range xsd:float .
+```
+- `cim:unitSymbol` is `Hz` (1/s), 
+  which is a bit imprecise for `cim:RotationSpeed`
+- `qudt:hasUnit` is unit:REV-PER-SEC, which is more specific (rotations/s)
+
+CIM includes this more specific unit, but unfortunately it's not used for any property:
+```ttl
+cim:UnitSymbol.rotPers a cim:UnitSymbol ;
+  rdfs:label "rotPers" ;
+  rdfs:comment "Rotations per second (1/s). See also Hz (1/s)." ;
+```
 
 ### Mapping Unit Multipliers
 
@@ -1375,19 +1646,6 @@ where {
 SPARQL Update allows multiple update blocks separated with semicolon, and intervening prefixes.
 This approach allows us to run fixes one by one, or all at once.
 
-## Fix Ordering and List
-
-Here's a proposed ordering (and numbering) of the fixes, with reasons why.
-We also track status with the tag "DONE" and by adding a link to the fix.
-
-- 02 [Namespace Discrepancies in RDFS2020 CGMES vs NC](#namespace-discrepancies-in-rdfs2020-cgmes-vs-nc) #68, [Mis-defined Prefixes](#mis-defined-prefixes) #13
-  - Else other fixes become much harder because they need to deal with pairs of namespaces
-  - This is best done with a script not SPARQL update
-  - [fix-namespaces.pl](fix-namespaces.pl)
-- 01 [Whitespace in Definitions](#whitespace-in-definitions) #6
-  - Because it's independent of the others
-  - DONE [fix01-whitespace-6.ru](fix01-whitespace-6.ru)
-
 ## Fix Debugging
 
 It will be a very bad thing if a fix loses some data because of some mistake in the query.
@@ -1483,3 +1741,48 @@ This exercise, and looking at intermediate results, gave me the idea to add a sa
 ```sparql
   filter(isLiteral(?old))
 ```
+
+## Fix Ordering and List
+
+Here's a proposed ordering (and numbering) of the fixes, with reasons why.
+We also track status with the tag "DONE" and by adding a link to the fix.
+
+- [Namespace Discrepancies in RDFS2020 CGMES vs NC](#namespace-discrepancies-in-rdfs2020-cgmes-vs-nc) #68, [Mis-defined Prefixes](#mis-defined-prefixes) #13
+  - Else other fixes become harder because they need to deal with pairs of namespaces
+  - This is best done with a script not SPARQL update
+  - DONE [fix-namespaces.pl](fix-namespaces.pl)
+- 01 [Whitespace in Definitions](#whitespace-in-definitions) #6
+  - Because it's independent of the others
+  - DONE [fix01-whitespace-6.ru](fix01-whitespace-6.ru)
+- 02 [Use Standard Datatypes](#use-standard-datatypes) (also deletes CIM Primitive datatypes) #28, #61, #74
+  - DONE [fix02-datatypes-74.ru](fix02-datatypes-74.ru)
+- 05 Correct a couple of units #76, #77
+  - DONE [fix05-units-76,77.ru](fix05-units-76,77.ru)
+- 06 [Fixed Units Representation](#fixed-units-representation), [Fixed Multipliers Representation](#fixed-multipliers-representation) #38
+  - DONE [fix06-quantityKind-38.ru](fix06-quantityKind-38.ru)
+- 07 Attach datatype, unit, multiplier to data props #38
+  - DONE [fix07-dataProps-38.ru](fix07-dataProps-38.ru)
+- 08 Remove intermediate props `.unit, .multiplier, .value` #38
+  - DONE [fix08-remove-qkProps-38.ru](fix08-remove-qkProps-38.ru)
+- 09 [Mapping QuantityKinds and Units](#mapping-quantitykinds-and-units), [Mapping Unit Multipliers](#mapping-unit-multipliers) #38
+  - DONE [fix09-map-qkUnitsMultipliers-38.ru](fix09-map-qkUnitsMultipliers-38.ru)
+  - TODO: It inserts "standalone" `exactMatch`, even if that CIM quantityKind isn't used in a particular file.
+    I am not sure why this happens, but it's harmless (another file has the full definition of that quantityKind), 
+    so I'll leave it in.
+```
+cim:ActivePowerChangeRate skos:exactMatch quantitykind:ActivePowerChangeRate .
+```
+- 10 Change Class and Property Kinds from RDFS to OWL #75
+  - DONE [fix10-classPropKind.ru](fix10-classPropKind.ru)
+- 11 `cims:inverseRoleName -> owl:inverseOf` #26
+  - DONE [fix11-inverseOf-26.ru](fix11-inverseOf-26.ru)
+- 12 [Express Multiplicity in OWL](#express-multiplicity-in-owl) #30
+  - DONE [fix12-multiplicity-30.ru](fix12-multiplicity-30.ru)
+- 13 [Datatype XMLLiteral in Definitions](#datatype-xmlliteral-in-definitions) #72
+  - DONE [fix13-XMLLiteral-72.ru](fix13-XMLLiteral-72.ru)
+  - TODO TODO All these appear in Header, but RDFS2020 doesn't include such ontologies.
+    Which is a problem because `CGMES/v3.0/SHACL/ttl, CGMES-NC/r2.3/ap-con/ttl` include shapes about them!
+- 14 [Whitespace and Lang Tags in Key Values](#whitespace-and-lang-tags-in-key-values) #47
+  - DONE [fix14-langTagInCodes-47.ru](fix14-langTagInCodes-47.ru)
+- 15 [Deprecated Properties](#deprecated-properties) #24
+  - DONE [fix15-deprecated-24.ru](fix15-deprecated-24.ru)

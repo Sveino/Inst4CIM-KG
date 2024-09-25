@@ -1,0 +1,73 @@
+{
+	"@context": {
+		"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+		"cim": "http://iec.ch/TC57/CIM100#",
+		"md": "http://iec.ch/TC57/61970-552/ModelDescription/1#",
+		"eu": "http://iec.ch/TC57/CIM100-European#",
+		"dm": "http://iec.ch/TC57/61970-552/DifferenceModel/1#"
+	},
+	"@graph": [
+		{
+			"@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6d",
+			"@type": "dm:DifferenceModel",
+			"dm:reverseDifferences": [
+				{
+					"@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+					"@type": "cim:ACLineSegment",
+					"cim:Conductor.length": {
+						"cim:Length.value": 50.0
+					}
+				},
+				{
+					"@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d5",
+					"@type": "cim:Switch",
+					"cim:IdentifiedObject.Name": "Switch1"
+				}
+			]
+		},
+		{
+			"@id": "urn:uuid:f1aa3e3a-8391-4bf9-b435-6bd0702f9e0d",
+			"@type": "dm:DifferenceModel",
+			"dm:forwardDifferences": [
+				{
+					"@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+					"@type": "cim:ACLineSegment",
+					"cim:Conductor.length": {
+						"cim:Length.value": 55.0
+					}
+				},
+				{
+					"@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d5",
+					"@type": "cim:Switch",
+					"cim:IdentifiedObject.Name": "Switch2"
+				}
+			]
+		},
+		{
+			"@id": "urn:uuid:f52f12c3-db10-4d41-a9f2-b1fe29ab4d6t",
+			"@type": "dm:DifferenceModel",
+			"dm:reverseDifferences": [
+				{
+					"@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+					"@type": "cim:ACLineSegment",
+					"cim:Conductor.length": {
+						"cim:Length.value": 60.0
+					}
+				}
+			]
+		},
+		{
+			"@id": "urn:uuid:f1aa3e3a-8391-4bf9-b435-6bd0702f9e0ru",
+			"@type": "dm:DifferenceModel",
+			"dm:forwardDifferences": [
+				{
+					"@id": "urn:uuid:9d58e5bb-834c-4faa-928c-7da0bb1497d9",
+					"@type": "cim:ACLineSegment",
+					"cim:Conductor.length": {
+						"cim:Length.value": 65.0
+					}
+				}
+			]
+		}
+	]
+}
