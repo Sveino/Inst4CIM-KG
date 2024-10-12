@@ -1,0 +1,833 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "sar:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the security analysis result profile.",
+      "dct:identifier": "urn:uuid:7d53a1b2-0dcc-4556-b868-6ed099bd9ac9",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Security Analysis Result Vocabulary",
+      "owl:priorVersion": "https://ap-voc.cim4.eu/SecurityAnalysisResult/2.3",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/SecurityAnalysisResult/2.4",
+      "owl:versionInfo": "2.4",
+      "dcat:keyword": "SAR",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:ACDCTerminal",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "rdfs:comment": "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.",
+      "rdfs:label": "ACDCTerminal"
+    },
+    {
+      "@id": "cim:Contingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "rdfs:comment": "An event threatening system reliability, consisting of one or more contingency elements.",
+      "rdfs:label": "Contingency"
+    },
+    {
+      "@id": "cim:OperationalLimit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "rdfs:comment": "A value and normal value associated with a specific kind of limit. \nThe sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \nIf a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.",
+      "rdfs:label": "OperationalLimit"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "nc:BaseCasePowerFlowResult",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Base case power flow result for a given terminal.",
+      "rdfs:label": "BaseCasePowerFlowResult",
+      "rdfs:subClassOf": "nc:PowerFlowResult"
+    },
+    {
+      "@id": "nc:ContingencyPowerFlowResult",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Contingency power flow result on a given terminal for a given contingency.",
+      "rdfs:label": "ContingencyPowerFlowResult",
+      "rdfs:subClassOf": "nc:PowerFlowResult"
+    },
+    {
+      "@id": "nc:PowerFlowResult",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power flow result including any operational limit violation.",
+      "rdfs:label": "PowerFlowResult"
+    },
+    {
+      "@id": "nc:Region",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A region where the system operator belongs to.",
+      "rdfs:label": "Region"
+    },
+    {
+      "@id": "nc:RemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly.",
+      "rdfs:label": "RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialActionApplied",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Remedial Action or Remedial Action Stage that has been applied to the power flow case which has the associated power flow result.",
+      "rdfs:label": "RemedialActionApplied"
+    },
+    {
+      "@id": "nc:Stage",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Stage of a remedial action scheme.",
+      "rdfs:label": "Stage"
+    },
+    {
+      "@id": "nc:ACDCTerminal.PowerFlowResult",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "rdfs:comment": "Power result associated with the ACDC terminal.",
+      "rdfs:domain": "cim:ACDCTerminal",
+      "rdfs:label": "PowerFlowResult",
+      "rdfs:range": "nc:PowerFlowResult",
+      "owl:inverseOf": "nc:PowerFlowResult.ACDCTerminal"
+    },
+    {
+      "@id": "nc:Contingency.ContingencyPowerFlowResult",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The power flow result that is associated with a contingency.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "ContingencyPowerFlowResult",
+      "rdfs:range": "nc:ContingencyPowerFlowResult",
+      "owl:inverseOf": "nc:ContingencyPowerFlowResult.Contingency"
+    },
+    {
+      "@id": "nc:ContingencyPowerFlowResult.Contingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The contingency that has this power flow result.",
+      "rdfs:domain": "nc:ContingencyPowerFlowResult",
+      "rdfs:label": "Contingency",
+      "rdfs:range": "cim:Contingency",
+      "owl:inverseOf": "nc:Contingency.ContingencyPowerFlowResult"
+    },
+    {
+      "@id": "nc:OperationalLimit.PowerFlowResult",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The limit violation associated with an operational limit.",
+      "rdfs:domain": "cim:OperationalLimit",
+      "rdfs:label": "PowerFlowResult",
+      "rdfs:range": "nc:PowerFlowResult",
+      "owl:inverseOf": "nc:PowerFlowResult.OperationalLimit"
+    },
+    {
+      "@id": "nc:PowerFlowResult.ACDCTerminal",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "ACDC terminal where the powerflow result is located.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "ACDCTerminal",
+      "rdfs:range": "cim:ACDCTerminal",
+      "owl:inverseOf": "nc:ACDCTerminal.PowerFlowResult"
+    },
+    {
+      "@id": "nc:PowerFlowResult.OperationalLimit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The operational limit that has this limit violation.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "OperationalLimit",
+      "rdfs:range": "cim:OperationalLimit",
+      "owl:inverseOf": "nc:OperationalLimit.PowerFlowResult"
+    },
+    {
+      "@id": "nc:PowerFlowResult.RemedialActionApplied",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action that is applied when the power flow result is calculated.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "RemedialActionApplied",
+      "rdfs:range": "nc:RemedialActionApplied",
+      "owl:inverseOf": "nc:RemedialActionApplied.PowerFlowResult"
+    },
+    {
+      "@id": "nc:PowerFlowResult.ReportedByRegion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The region which reports this limit violation.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "ReportedByRegion",
+      "rdfs:range": "nc:Region",
+      "owl:inverseOf": "nc:Region.LimitViolation"
+    },
+    {
+      "@id": "nc:Region.LimitViolation",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The limit violation reported by a region.",
+      "rdfs:domain": "nc:Region",
+      "rdfs:label": "LimitViolation",
+      "rdfs:range": "nc:PowerFlowResult",
+      "owl:inverseOf": "nc:PowerFlowResult.ReportedByRegion"
+    },
+    {
+      "@id": "nc:RemedialAction.RemedialActionApplied",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The relationship of the applied remedial action and power flow result.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "RemedialActionApplied",
+      "rdfs:range": "nc:RemedialActionApplied",
+      "owl:inverseOf": "nc:RemedialActionApplied.RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialActionApplied.PowerFlowResult",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power flow result that is obtained when the remedial action is applied.",
+      "rdfs:domain": "nc:RemedialActionApplied",
+      "rdfs:label": "PowerFlowResult",
+      "rdfs:range": "nc:PowerFlowResult",
+      "owl:inverseOf": "nc:PowerFlowResult.RemedialActionApplied"
+    },
+    {
+      "@id": "nc:RemedialActionApplied.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action that is applied.",
+      "rdfs:domain": "nc:RemedialActionApplied",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:RemedialAction",
+      "owl:inverseOf": "nc:RemedialAction.RemedialActionApplied"
+    },
+    {
+      "@id": "nc:RemedialActionApplied.StageForRemedialActionScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The stage of the remedial action scheme that is applied.",
+      "rdfs:domain": "nc:RemedialActionApplied",
+      "rdfs:label": "StageForRemedialActionScheme",
+      "rdfs:range": "nc:Stage",
+      "owl:inverseOf": "nc:Stage.RemedialActionApplied"
+    },
+    {
+      "@id": "nc:Stage.RemedialActionApplied",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The applied relationship between remedial action and a power flow result.",
+      "rdfs:domain": "nc:Stage",
+      "rdfs:label": "RemedialActionApplied",
+      "rdfs:range": "nc:RemedialActionApplied",
+      "owl:inverseOf": "nc:RemedialActionApplied.StageForRemedialActionScheme"
+    },
+    {
+      "@id": "nc:PowerFlowResult.absoluteValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Absolute value from a power flow calculation on a given terminal related to a given operational limit. For instance, if the operational limit is 1000 A and the current flow is 1100 A the absoluteValue is reported as 1100 A.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "absoluteValue",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:PowerFlowResult.atTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The date and time of the scenario time that was studied and at which the limit violation occurred.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "atTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerFlowResult.isViolation",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "True if the power flow result is violating the associated operational limit. False if it is not violating the associated operational limits.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "isViolation",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:PowerFlowResult.value",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "The value of the limit violation in percent related to the value of the operational limit that is violated. For instance, if the operational limit is 1000 A and the current flow is 1100 A the value is reported as 110 %.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "value",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:PowerFlowResult.valueA",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Current from a power flow calculation on a given terminal. The value shall be a positive value or zero.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "valueA",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "nc:PowerFlowResult.valueAngle",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:AngleDegrees",
+      "qudt:hasUnit": "unit:DEG",
+      "rdfs:comment": "Voltage angle value from a power flow calculation on a given terminal.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "valueAngle",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.deg"
+    },
+    {
+      "@id": "nc:PowerFlowResult.valueV",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Voltage",
+      "qudt:hasUnit": "unit:KiloV",
+      "rdfs:comment": "Voltage value from a power flow calculation on a given terminal. The attribute shall be a positive value.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "valueV",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.V"
+    },
+    {
+      "@id": "nc:PowerFlowResult.valueVA",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ApparentPower",
+      "qudt:hasUnit": "unit:MegaV-A",
+      "rdfs:comment": "Apparent power value from a power flow calculation on a given terminal.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "valueVA",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VA"
+    },
+    {
+      "@id": "nc:PowerFlowResult.valueVAR",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Reactive power value from a power flow calculation on a given terminal.\nLoad sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "valueVAR",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "nc:PowerFlowResult.valueW",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power value from a power flow calculation on a given terminal. \nLoad sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.",
+      "rdfs:domain": "nc:PowerFlowResult",
+      "rdfs:label": "valueW",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:RemedialActionApplied.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:RemedialActionApplied",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.W",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+      "rdfs:label": "ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.deg",
+      "rdfs:comment": "Measurement of angle in degrees.",
+      "rdfs:label": "AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.VA",
+      "rdfs:comment": "Product of the RMS value of the voltage and the RMS value of the current.",
+      "rdfs:label": "ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.A",
+      "rdfs:comment": "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.",
+      "rdfs:label": "CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.none",
+      "rdfs:comment": "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.",
+      "rdfs:label": "PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.VAr",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the quadrature component of the current.",
+      "rdfs:label": "ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.M",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E6",
+      "rdfs:comment": "Mega 10**6.",
+      "rdfs:label": "M",
+      "skos:exactMatch": "prefix:Mega"
+    },
+    {
+      "@id": "cim:UnitMultiplier.k",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E3",
+      "rdfs:comment": "Kilo 10**3.",
+      "rdfs:label": "k",
+      "skos:exactMatch": "prefix:Kilo"
+    },
+    {
+      "@id": "cim:UnitMultiplier.none",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E0",
+      "rdfs:comment": "No multiplier or equivalently multiply by 1.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.A",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Current in amperes.",
+      "rdfs:label": "A",
+      "skos:exactMatch": "unit:A"
+    },
+    {
+      "@id": "cim:UnitSymbol.V",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric potential in volts (W/A).",
+      "rdfs:label": "V",
+      "skos:exactMatch": "unit:V"
+    },
+    {
+      "@id": "cim:UnitSymbol.VA",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Apparent power in volt amperes. See also real power and reactive power.",
+      "rdfs:label": "VA",
+      "skos:exactMatch": "unit:V-A"
+    },
+    {
+      "@id": "cim:UnitSymbol.VAr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:label": "VAr",
+      "skos:exactMatch": "unit:V-A_Reactive"
+    },
+    {
+      "@id": "cim:UnitSymbol.W",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.",
+      "rdfs:label": "W",
+      "skos:exactMatch": "unit:W"
+    },
+    {
+      "@id": "cim:UnitSymbol.deg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Plane angle in degrees.",
+      "rdfs:label": "deg",
+      "skos:exactMatch": "unit:DEG"
+    },
+    {
+      "@id": "cim:UnitSymbol.none",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dimension less quantity, e.g. count, per unit, etc.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:Voltage",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sar:Package_SecurityAnalysisResultProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.V",
+      "rdfs:comment": "Electrical voltage, can be both AC and DC.",
+      "rdfs:label": "Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "sar:Package_DocSecurityAnalysisResultProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocSecurityAnalysisResultProfile"
+    },
+    {
+      "@id": "sar:Package_SecurityAnalysisResultProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains the security analysis result profile.\nThis profile is not intended to replace the Topology (TP) and State Variables (SV) profiles. Its intention is to exchange power flow result that is relevant for security optimization, either through violation or through a loading threshold. Systems should not use this profile for dumping a full database. The modeling is optimized to have the minimum size in addition to a well defined value definition (e.g. active power, apparent power,etc.).\nRecommendation: If the terminals are connected with zero impedance, it is recommended to export only one terminal with a voltage (e.g. the terminal of a BusbarSection).\nThe connection between Contingency and Remedial Action is given by the Remedial Action Profile. The connection between AssessedElement and PowerFlowResult is given by the OperationalLimit.",
+      "rdfs:label": "SecurityAnalysisResultProfile"
+    }
+  ]
+}

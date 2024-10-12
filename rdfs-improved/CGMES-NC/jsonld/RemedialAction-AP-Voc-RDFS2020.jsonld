@@ -1,0 +1,5376 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "ra:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC24v01_MM10v02.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the remedial action profile.",
+      "dct:identifier": "urn:uuid:57fcfe0e-258c-45f2-b2ed-ff5b6a9859bc",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Remedial action Vocabulary",
+      "owl:priorVersion": "http://entsoe.eu/ns/CIM/RemedialAction-EU/2.2",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/RemedialAction/2.3",
+      "owl:versionInfo": "2.3.1",
+      "dcat:keyword": "RA",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:ACDCConverter",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A unit with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion.",
+      "rdfs:label": "ACDCConverter"
+    },
+    {
+      "@id": "cim:ACDCTerminal",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.",
+      "rdfs:label": "ACDCTerminal",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:BatteryUnit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "An electrochemical energy storage device.",
+      "rdfs:label": "BatteryUnit"
+    },
+    {
+      "@id": "cim:Contingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "An event threatening system reliability, consisting of one or more contingency elements.",
+      "rdfs:label": "Contingency"
+    },
+    {
+      "@id": "cim:Currency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "Monetary currencies.  ISO 4217 standard including 3-character currency code.",
+      "rdfs:label": "Currency"
+    },
+    {
+      "@id": "cim:DCTerminal",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "An electrical connection point to generic DC conducting equipment.",
+      "rdfs:label": "DCTerminal"
+    },
+    {
+      "@id": "cim:EnergyConsumer",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "Generic user of energy - a  point of consumption on the power system model.\nEnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False.",
+      "rdfs:label": "EnergyConsumer"
+    },
+    {
+      "@id": "cim:EnergySource",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A generic equivalent for an energy supplier on a transmission or distribution voltage level.",
+      "rdfs:label": "EnergySource"
+    },
+    {
+      "@id": "cim:Equipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "The parts of a power system that are physical devices, electronic or mechanical.",
+      "rdfs:label": "Equipment"
+    },
+    {
+      "@id": "cim:EquivalentInjection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection.",
+      "rdfs:label": "EquivalentInjection"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "This class represents the external network and it is used for IEC 60909 calculations.",
+      "rdfs:label": "ExternalNetworkInjection"
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:Line",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Contains equipment beyond a substation belonging to a power transmission line.",
+      "rdfs:label": "Line"
+    },
+    {
+      "@id": "cim:Measurement",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement. \nThe PSR - Measurement association is intended to capture this use of Measurement and is included in the naming hierarchy based on EquipmentContainer. The naming hierarchy typically has Measurements as leaves, e.g. Substation-VoltageLevel-Bay-Switch-Measurement.\nSome Measurements represent quantities related to a particular sensor location in the network, e.g. a voltage transformer (VT) or potential transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator. The sensing position is not captured in the PSR - Measurement association. Instead it is captured by the Measurement - Terminal association that is used to define the sensing location in the network topology. The location is defined by the connection of the Terminal to ConductingEquipment. \nIf both a Terminal and PSR are associated, and the PSR is of type ConductingEquipment, the associated Terminal should belong to that ConductingEquipment instance.\nWhen the sensor location is needed both Measurement-PSR and Measurement-Terminal are used. The Measurement-Terminal association is never used alone.",
+      "rdfs:label": "Measurement"
+    },
+    {
+      "@id": "cim:OperationalLimit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A value and normal value associated with a specific kind of limit. \nThe sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \nIf a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.",
+      "rdfs:label": "OperationalLimit"
+    },
+    {
+      "@id": "cim:PowerElectronicsConnection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A connection to the AC network for energy production or consumption that uses power electronics rather than rotating machines.",
+      "rdfs:label": "PowerElectronicsConnection"
+    },
+    {
+      "@id": "cim:PowerSystemResource",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated.",
+      "rdfs:label": "PowerSystemResource",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:RegulatingControl",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \nRemote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\nThe specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.\nFor flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.\nThe attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:\n- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;\n- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.\nThe attributes minAllowedTargetValue and maxAllowedTargetValue are not related to the attribute targetDeadband and thus they are not treated as an alternative of the targetDeadband. They are needed due to limitations in the local substation controller. The attribute targetDeadband is used to prevent the power flow from move the tap position in circles (hunting) that is to be used regardless of the attributes minAllowedTargetValue and maxAllowedTargetValue.",
+      "rdfs:label": "RegulatingControl"
+    },
+    {
+      "@id": "cim:RotatingMachine",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A rotating machine which may be used as a generator or motor.",
+      "rdfs:label": "RotatingMachine"
+    },
+    {
+      "@id": "cim:ShuntCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor. A negative value for bPerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied.",
+      "rdfs:label": "ShuntCompensator"
+    },
+    {
+      "@id": "cim:StaticVarCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\n\nThe SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.",
+      "rdfs:label": "StaticVarCompensator"
+    },
+    {
+      "@id": "cim:Substation",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics.",
+      "rdfs:label": "Substation"
+    },
+    {
+      "@id": "cim:Switch",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "A generic device designed to close, or open, or both, one or more electric circuits.  All switches are two terminal devices including grounding switches. The ACDCTerminal.connected at the two sides of the switch shall not be considered for assessing switch connectivity, i.e. only Switch.open, .normalOpen and .locked are relevant.",
+      "rdfs:label": "Switch"
+    },
+    {
+      "@id": "cim:TapChanger",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "Mechanism for changing transformer winding tap positions.",
+      "rdfs:label": "TapChanger"
+    },
+    {
+      "@id": "cim:Terminal",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "rdfs:comment": "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.",
+      "rdfs:label": "Terminal"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "nc:ACDCConverterAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Alternate current Direct current (ACDC) converter action.",
+      "rdfs:label": "ACDCConverterAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:AvailabilityRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Availability remedial action is a remedial action that cancels or reschedules an availability schedule.",
+      "rdfs:label": "AvailabilityRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:BatteryUnitAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Battery unit setpoint action.",
+      "rdfs:label": "BatteryUnitAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:BiddingZone",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A bidding zone is a market-based method for handling power transmission congestion. It consists of scheduling areas that include the relevant production (supply) and consumption (demand) to form an electrical area with the same market price without capacity allocation.",
+      "rdfs:label": "BiddingZone"
+    },
+    {
+      "@id": "nc:BiddingZoneAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Bidding zone set point action.",
+      "rdfs:label": "BiddingZoneAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Defines the aggregated connection capacity between two Bidding Zones.",
+      "rdfs:label": "BiddingZoneBorder"
+    },
+    {
+      "@id": "nc:CalculationKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of calculation operation that can be done to Measurement.",
+      "rdfs:label": "CalculationKind"
+    },
+    {
+      "@id": "nc:ContingencyWithRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Combination of a contingency and a remedial action. ContingencyWithRemedialAction shall not be instantiated for preventive RemedialAction (RemedialAction.kind equals RemedialActionKind.preventive).",
+      "rdfs:label": "ContingencyWithRemedialAction"
+    },
+    {
+      "@id": "nc:ControlFunctionBlock",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Control function block is a function block that contains an algorithm for controlling the equipment.",
+      "rdfs:label": "ControlFunctionBlock"
+    },
+    {
+      "@id": "nc:ControlFunctionBlockAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Action for setting the control function block target values.",
+      "rdfs:label": "ControlFunctionBlockAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:CountertradeRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Countertrade is a remedial action to relieve physical congestions where the location of activated resources within the bidding zone is not known.",
+      "rdfs:label": "CountertradeRemedialAction",
+      "rdfs:subClassOf": "nc:PowerRemedialAction"
+    },
+    {
+      "@id": "nc:ElementCombinationConstraintKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of constraint for an element combination.",
+      "rdfs:label": "ElementCombinationConstraintKind"
+    },
+    {
+      "@id": "nc:EnergySourceModification",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Energy source action.",
+      "rdfs:label": "EnergySourceModification",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:EquipmentController",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Equipment controller is an automation function that can control one or multiple equipment function to achieve all the targets inside the given tolerance.",
+      "rdfs:label": "EquipmentController"
+    },
+    {
+      "@id": "nc:EquipmentControllerAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Action for setting the equipment controller action.",
+      "rdfs:label": "EquipmentControllerAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:EquivalentInjectionAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Equivalent injection action.",
+      "rdfs:label": "EquivalentInjectionAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:ExternalNetworkInjectionAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "External network injection action.",
+      "rdfs:label": "ExternalNetworkInjectionAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:FunctionInputVariable",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Functional input variable defines the domain of the function.",
+      "rdfs:label": "FunctionInputVariable",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:Gate",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Logical gate that supports a logical operation based on the input.",
+      "rdfs:label": "Gate",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:GateInputPin",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Input pin for a logical gate. The condition described in the input pin gives a logical true or false. The result from measurement and calculation are converted to a true or false.",
+      "rdfs:label": "GateInputPin",
+      "rdfs:subClassOf": "nc:FunctionInputVariable"
+    },
+    {
+      "@id": "nc:GateLogicKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Define the different logical operations.",
+      "rdfs:label": "GateLogicKind"
+    },
+    {
+      "@id": "nc:GridStateAlteration",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case.",
+      "rdfs:label": "GridStateAlteration",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:GridStateAlterationCollection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A collection of grid state alterations.",
+      "rdfs:label": "GridStateAlterationCollection",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:GridStateAlterationRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Grid state alteration remedial action describes one or many grid state alterations applied to a grid model state or a particular scenario in order to resolve one or more identified constraints.",
+      "rdfs:label": "GridStateAlterationRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:InServiceAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "In service action represents a change of the status of the equipment in the grid model compared to the base case.",
+      "rdfs:label": "InServiceAction",
+      "rdfs:subClassOf": "nc:GridStateAlteration"
+    },
+    {
+      "@id": "nc:IntertemporalPropertyRange",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "It represents the intertemporal range, which means that this is the maximum change of an attribute value between two time stamps or per time unit (e.g. hour). Both up and down directions are defined by the direction attribute, i.e. There are different schedules per direction. \nThe class is not instantiated for PropertyReference which refers to Boolean type attributes. \nFor instance the following example illustrates the approach:\n- A tap changer related grid state alteration having two intertemporal range schedules.\n-   For a particular point in time, the value from up schedule is 6 and the value from down schedule is 3.\n- Then, the GridStateIntensity for the same point in time cannot be more than plus 6 taps from the current, or more than minus 3 taps from the current.",
+      "rdfs:label": "IntertemporalPropertyRange",
+      "rdfs:subClassOf": "nc:RangeConstraint"
+    },
+    {
+      "@id": "nc:LoadAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Load action.",
+      "rdfs:label": "LoadAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:LogicalOperatorsKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kinds of logical operators for comparison.",
+      "rdfs:label": "LogicalOperatorsKind"
+    },
+    {
+      "@id": "nc:MeasurementCalculator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Result of a calculation of one or more measurement.",
+      "rdfs:label": "MeasurementCalculator",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:MeasurementCalculatorInput",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input to measurement calculation. It supports Analog, Discrete and Accumulator measurements.",
+      "rdfs:label": "MeasurementCalculatorInput",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:PTCActivePowerSupport",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Defines the active power capability (support) of the scheme in relation to a PowerTransferCorridor.",
+      "rdfs:label": "PTCActivePowerSupport"
+    },
+    {
+      "@id": "nc:PinContingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input pin associated with a Contingency. It is used for comparison.",
+      "rdfs:label": "PinContingency",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinDCTerminal",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input pin associated with a DCTerminal. It is used for comparison.",
+      "rdfs:label": "PinDCTerminal",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinDCTerminalKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kind of quantities that can serve as an input value for the DCTerminal pin.",
+      "rdfs:label": "PinDCTerminalKind"
+    },
+    {
+      "@id": "nc:PinEquipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input pin associated with an Equipment. It is used for the comparison.",
+      "rdfs:label": "PinEquipment",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinEquipmentTripping",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input pin associated with an Equipment. It is used to determine if the equipment is tripped between two consecutive stages, i.e. the equipment is in service at pre-fault stage and it is out of service at post-fault stage.",
+      "rdfs:label": "PinEquipmentTripping",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinGate",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "An output from one gate represents an input to another gate.",
+      "rdfs:label": "PinGate",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinMeasurement",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input pin associated with a Measurement. It is used for comparison.",
+      "rdfs:label": "PinMeasurement",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinOperationalLimit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input pin associated with the limits of a Terminal. It is used for comparison.",
+      "rdfs:label": "PinOperationalLimit",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinPowerTransferCorridor",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input pin associated with a PowerTransferCorridor. It is used for comparison.",
+      "rdfs:label": "PinPowerTransferCorridor",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinPowerTransferCorridorKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kind of quantities that can serve as an input value for the PowerTransferCorridor pin.",
+      "rdfs:label": "PinPowerTransferCorridorKind"
+    },
+    {
+      "@id": "nc:PinTerminal",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Input pin associated with a Terminal. It is used for comparison.",
+      "rdfs:label": "PinTerminal",
+      "rdfs:subClassOf": "nc:GateInputPin"
+    },
+    {
+      "@id": "nc:PinTerminalKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kind of quantities that can serve as an input value for the pin.",
+      "rdfs:label": "PinTerminalKind"
+    },
+    {
+      "@id": "nc:PowerElectronicsConnectionAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Power electronics setpoint action.",
+      "rdfs:label": "PowerElectronicsConnectionAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:PowerRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Energy remedial action describes actions to rearrange power schedules.",
+      "rdfs:label": "PowerRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:PowerShiftKeyStrategy",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Strategy of the power shift key.",
+      "rdfs:label": "PowerShiftKeyStrategy",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:PowerTransferCorridor",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A power transfer corridor is defined as a set of circuits (transmission lines or transformers) separating two portions of the power system, or a subset of circuits exposed to a substantial portion of the transmission exchange between two parts of the system.",
+      "rdfs:label": "PowerTransferCorridor"
+    },
+    {
+      "@id": "nc:PropertyReference",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The reference to a class and one of its properties.",
+      "rdfs:label": "PropertyReference"
+    },
+    {
+      "@id": "nc:RangeConstraint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Defines the rage constraint.",
+      "rdfs:label": "RangeConstraint",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:RedispatchRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Redispatch remedial action is a remedial action that through rearranging power schedules is eliminating breaches of constraints.",
+      "rdfs:label": "RedispatchRemedialAction",
+      "rdfs:subClassOf": "nc:PowerRemedialAction"
+    },
+    {
+      "@id": "nc:Region",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A region where the system operator belongs to.",
+      "rdfs:label": "Region"
+    },
+    {
+      "@id": "nc:RegulatingControlAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Control action means the set point change of a regulating control power system resource in the grid model compared to the base case.",
+      "rdfs:label": "RegulatingControlAction",
+      "rdfs:subClassOf": "nc:GridStateAlteration"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of direction for the changes.",
+      "rdfs:label": "RelativeDirectionKind"
+    },
+    {
+      "@id": "nc:RemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly.",
+      "rdfs:label": "RemedialAction",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:RemedialActionDependency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.\n<ul>\n\t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>\n\t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>\n\t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>\n</ul>",
+      "rdfs:label": "RemedialActionDependency"
+    },
+    {
+      "@id": "nc:RemedialActionDependencyKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of dependency between remedial actions.",
+      "rdfs:label": "RemedialActionDependencyKind"
+    },
+    {
+      "@id": "nc:RemedialActionGroup",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Grouping of remedial actions that can be operated together.",
+      "rdfs:label": "RemedialActionGroup",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:RemedialActionKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The different kinds for a remedial action.",
+      "rdfs:label": "RemedialActionKind"
+    },
+    {
+      "@id": "nc:RemedialActionScheme",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).\nA Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action.",
+      "rdfs:label": "RemedialActionScheme",
+      "rdfs:subClassOf": "cim:PowerSystemResource"
+    },
+    {
+      "@id": "nc:RemedialActionSchemeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Classification of Remedial Action Scheme.",
+      "rdfs:label": "RemedialActionSchemeKind"
+    },
+    {
+      "@id": "nc:RotatingMachineAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Rotating machine action.",
+      "rdfs:label": "RotatingMachineAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:SchemeRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Scheme remedial action is remedial action that involves a scheme that can include conditional logic and stages of grid alteration. The primary remedial action is the arming of these schemes, that will then perform curative remedial action when the condition is met. System Integrity Protection Scheme (SIPS) and Special Protection Scheme (SPS) are example of this.",
+      "rdfs:label": "SchemeRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:SetPointAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Setpoint action.",
+      "rdfs:label": "SetPointAction",
+      "rdfs:subClassOf": "nc:GridStateAlteration"
+    },
+    {
+      "@id": "nc:ShuntCompensatorModification",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Shunt compensator action.",
+      "rdfs:label": "ShuntCompensatorModification",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:Stage",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Stage of a remedial action scheme.",
+      "rdfs:label": "Stage",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:StageTrigger",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Stage that is triggered either by TriggerCondition or by gate condition within a stage.",
+      "rdfs:label": "StageTrigger",
+      "rdfs:subClassOf": "cim:PowerSystemResource"
+    },
+    {
+      "@id": "nc:StaticPropertyRange",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Defines the static range, which means that this is the minimum and/or maximum of an attribute value. The value provided by the schedule replaces the value of the attribute to which the schedule refers to.\nIn case that the PropertyReference refers to Boolean type attributes, RangeConstraint.direction shall be none or upAndDown and the RangeConstraint.valueKind shall be absolute. If the direction is none then optimization of the attribute referenced by the PropertyReference is not possible if the current status is already as the value in the range. Otherwise if the direction is upAndDown, the optimization can change from true to false or vice versa independently of the initial value in the operational scenario.\nFor instance for a tap changer related grid state alteration for a particular point in time, if the range of TapChanger.step is to be restricted, the value of the schedule will represent that new TapChanger.step range.",
+      "rdfs:label": "StaticPropertyRange",
+      "rdfs:subClassOf": "nc:RangeConstraint"
+    },
+    {
+      "@id": "nc:StaticVarCompensatorAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Static Var compensator action.",
+      "rdfs:label": "StaticVarCompensatorAction",
+      "rdfs:subClassOf": "nc:SetPointAction"
+    },
+    {
+      "@id": "nc:SystemOperator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "System operator.",
+      "rdfs:label": "SystemOperator"
+    },
+    {
+      "@id": "nc:TapPositionAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Tap position action represents a change of a tap changer position in the grid model compared to the base case.",
+      "rdfs:label": "TapPositionAction",
+      "rdfs:subClassOf": "nc:GridStateAlteration"
+    },
+    {
+      "@id": "nc:TopologyAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Topology action means the connection or disconnection of a switch in the grid model compared to the base case.",
+      "rdfs:label": "TopologyAction",
+      "rdfs:subClassOf": "nc:GridStateAlteration"
+    },
+    {
+      "@id": "nc:TriggerCondition",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "The condition that triggers a remedial action scheme.",
+      "rdfs:label": "TriggerCondition",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:ValueOffsetKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kind of the value offset.",
+      "rdfs:label": "ValueOffsetKind"
+    },
+    {
+      "@id": "nc:ACDCConverter.DCConverterAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to an ACDCConverter.",
+      "rdfs:domain": "cim:ACDCConverter",
+      "rdfs:label": "DCConverterAction",
+      "rdfs:range": "nc:ACDCConverterAction",
+      "owl:inverseOf": "nc:ACDCConverterAction.ACDCConverter"
+    },
+    {
+      "@id": "nc:ACDCConverterAction.ACDCConverter",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The ACDCConverter that is associated with an action.",
+      "rdfs:domain": "nc:ACDCConverterAction",
+      "rdfs:label": "ACDCConverter",
+      "rdfs:range": "cim:ACDCConverter",
+      "owl:inverseOf": "nc:ACDCConverter.DCConverterAction"
+    },
+    {
+      "@id": "nc:BatteryUnit.BatteryUnitAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to a BatteryUnit.",
+      "rdfs:domain": "cim:BatteryUnit",
+      "rdfs:label": "BatteryUnitAction",
+      "rdfs:range": "nc:BatteryUnitAction",
+      "owl:inverseOf": "nc:BatteryUnitAction.BatteryUnit"
+    },
+    {
+      "@id": "nc:BatteryUnitAction.BatteryUnit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The BatteryUnit that is associated with an action.",
+      "rdfs:domain": "nc:BatteryUnitAction",
+      "rdfs:label": "BatteryUnit",
+      "rdfs:range": "cim:BatteryUnit",
+      "owl:inverseOf": "nc:BatteryUnit.BatteryUnitAction"
+    },
+    {
+      "@id": "nc:BiddingZone.BiddingZoneAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The bidding zone action that relates to this bidding zone.",
+      "rdfs:domain": "nc:BiddingZone",
+      "rdfs:label": "BiddingZoneAction",
+      "rdfs:range": "nc:BiddingZoneAction",
+      "owl:inverseOf": "nc:BiddingZoneAction.BiddingZone"
+    },
+    {
+      "@id": "nc:BiddingZone.PowerRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The power remedial action applied to this BiddingZone.",
+      "rdfs:domain": "nc:BiddingZone",
+      "rdfs:label": "PowerRemedialAction",
+      "rdfs:range": "nc:PowerRemedialAction",
+      "owl:inverseOf": "nc:PowerRemedialAction.BiddingZone"
+    },
+    {
+      "@id": "nc:BiddingZoneAction.BiddingZone",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The bidding zone that has this bidding zone action.",
+      "rdfs:domain": "nc:BiddingZoneAction",
+      "rdfs:label": "BiddingZone",
+      "rdfs:range": "nc:BiddingZone",
+      "owl:inverseOf": "nc:BiddingZone.BiddingZoneAction"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.PowerRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power remedial action applied to this Bidding Zone Border.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "PowerRemedialAction",
+      "rdfs:range": "nc:PowerRemedialAction",
+      "owl:inverseOf": "nc:PowerRemedialAction.BiddingZoneBorder"
+    },
+    {
+      "@id": "nc:Contingency.ContingencyWithRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The contingency and remedial action combination for this contingency.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "ContingencyWithRemedialAction",
+      "rdfs:range": "nc:ContingencyWithRemedialAction",
+      "owl:inverseOf": "nc:ContingencyWithRemedialAction.Contingency"
+    },
+    {
+      "@id": "nc:Contingency.PinContingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin that uses this input.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "PinContingency",
+      "rdfs:range": "nc:PinContingency",
+      "owl:inverseOf": "nc:PinContingency.Contingency"
+    },
+    {
+      "@id": "nc:ContingencyWithRemedialAction.Contingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The contingency that is associated with a remedial action, i.e. the contingency that is the cause for the creation of a remedial action and justifies it or would usually be resolved with a remedial action.",
+      "rdfs:domain": "nc:ContingencyWithRemedialAction",
+      "rdfs:label": "Contingency",
+      "rdfs:range": "cim:Contingency",
+      "owl:inverseOf": "nc:Contingency.ContingencyWithRemedialAction"
+    },
+    {
+      "@id": "nc:ContingencyWithRemedialAction.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action defined for this contingency and remedial action combination.",
+      "rdfs:domain": "nc:ContingencyWithRemedialAction",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:RemedialAction",
+      "owl:inverseOf": "nc:RemedialAction.ContingencyWithRemedialAction"
+    },
+    {
+      "@id": "nc:ContingencyWithRemedialAction.combinationConstraintKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the combination constraint of the Contingency and Remedial Action. If included, this remedial action can only be applied for this contingency. Else if excluded, this remedial action should not be used for this contingency. Else if considered, this remedial action can be considered for this contingency.",
+      "rdfs:domain": "nc:ContingencyWithRemedialAction",
+      "rdfs:label": "combinationConstraintKind",
+      "rdfs:range": "nc:ElementCombinationConstraintKind"
+    },
+    {
+      "@id": "nc:ControlFunctionBlock.ControlFunctionBlockAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to this control function block.",
+      "rdfs:domain": "nc:ControlFunctionBlock",
+      "rdfs:label": "ControlFunctionBlockAction",
+      "rdfs:range": "nc:ControlFunctionBlockAction",
+      "owl:inverseOf": "nc:ControlFunctionBlockAction.ControlFunctionBlock"
+    },
+    {
+      "@id": "nc:ControlFunctionBlockAction.ControlFunctionBlock",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The control function block that is associated with a ControlFunctionBlockAction.",
+      "rdfs:domain": "nc:ControlFunctionBlockAction",
+      "rdfs:label": "ControlFunctionBlock",
+      "rdfs:range": "nc:ControlFunctionBlock",
+      "owl:inverseOf": "nc:ControlFunctionBlock.ControlFunctionBlockAction"
+    },
+    {
+      "@id": "nc:DCTerminal.PinDCTerminal",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin DC terminal for this DC terminal.",
+      "rdfs:domain": "cim:DCTerminal",
+      "rdfs:label": "PinDCTerminal",
+      "rdfs:range": "nc:PinDCTerminal",
+      "owl:inverseOf": "nc:PinDCTerminal.DCTerminal"
+    },
+    {
+      "@id": "nc:EnergyConsumer.LoadAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action appled to an EnergyConsumer.",
+      "rdfs:domain": "cim:EnergyConsumer",
+      "rdfs:label": "LoadAction",
+      "rdfs:range": "nc:LoadAction",
+      "owl:inverseOf": "nc:LoadAction.EnergyConsumer"
+    },
+    {
+      "@id": "nc:EnergySource.EnergySourceAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The energy source action applied to an EnergySource.",
+      "rdfs:domain": "cim:EnergySource",
+      "rdfs:label": "EnergySourceAction",
+      "rdfs:range": "nc:EnergySourceModification",
+      "owl:inverseOf": "nc:EnergySourceModification.EnergySource"
+    },
+    {
+      "@id": "nc:EnergySourceModification.EnergySource",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The EnergySource which is associated with an EnergySourceAction.",
+      "rdfs:domain": "nc:EnergySourceModification",
+      "rdfs:label": "EnergySource",
+      "rdfs:range": "cim:EnergySource",
+      "owl:inverseOf": "nc:EnergySource.EnergySourceAction"
+    },
+    {
+      "@id": "nc:Equipment.InServiceAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Action that is applied to an equipment.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "InServiceAction",
+      "rdfs:range": "nc:InServiceAction",
+      "owl:inverseOf": "nc:InServiceAction.Equipment"
+    },
+    {
+      "@id": "nc:Equipment.PinEquipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin that uses this input.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "PinEquipment",
+      "rdfs:range": "nc:PinEquipment",
+      "owl:inverseOf": "nc:PinEquipment.Equipment"
+    },
+    {
+      "@id": "nc:Equipment.PinEquipmentTripping",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Pin equipment that is used as gate input.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "PinEquipmentTripping",
+      "rdfs:range": "nc:PinEquipmentTripping",
+      "owl:inverseOf": "nc:PinEquipmentTripping.Equipment"
+    },
+    {
+      "@id": "nc:EquipmentController.EquipmentControllerAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Equipment controller action for this equipment controller.",
+      "rdfs:domain": "nc:EquipmentController",
+      "rdfs:label": "EquipmentControllerAction",
+      "rdfs:range": "nc:EquipmentControllerAction",
+      "owl:inverseOf": "nc:EquipmentControllerAction.EquipmentController"
+    },
+    {
+      "@id": "nc:EquipmentControllerAction.EquipmentController",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Equipment controller that has associated equipment controller actions.",
+      "rdfs:domain": "nc:EquipmentControllerAction",
+      "rdfs:label": "EquipmentController",
+      "rdfs:range": "nc:EquipmentController",
+      "owl:inverseOf": "nc:EquipmentController.EquipmentControllerAction"
+    },
+    {
+      "@id": "nc:EquivalentInjection.EquivalentInjectionAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to an EquivalentInjection.",
+      "rdfs:domain": "cim:EquivalentInjection",
+      "rdfs:label": "EquivalentInjectionAction",
+      "rdfs:range": "nc:EquivalentInjectionAction",
+      "owl:inverseOf": "nc:EquivalentInjectionAction.EquivalentInjection"
+    },
+    {
+      "@id": "nc:EquivalentInjectionAction.EquivalentInjection",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The EquivalentInjection that is associated with an action.",
+      "rdfs:domain": "nc:EquivalentInjectionAction",
+      "rdfs:label": "EquivalentInjection",
+      "rdfs:range": "cim:EquivalentInjection",
+      "owl:inverseOf": "nc:EquivalentInjection.EquivalentInjectionAction"
+    },
+    {
+      "@id": "nc:ExternalNetworkInjection.ExternalNetworkInjectionAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to an ExternalNetworkInjection.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "ExternalNetworkInjectionAction",
+      "rdfs:range": "nc:ExternalNetworkInjectionAction",
+      "owl:inverseOf": "nc:ExternalNetworkInjectionAction.ExternalNetworkInjection"
+    },
+    {
+      "@id": "nc:ExternalNetworkInjectionAction.ExternalNetworkInjection",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The ExternalNetworkInjection that is associated with an action.",
+      "rdfs:domain": "nc:ExternalNetworkInjectionAction",
+      "rdfs:label": "ExternalNetworkInjection",
+      "rdfs:range": "cim:ExternalNetworkInjection",
+      "owl:inverseOf": "nc:ExternalNetworkInjection.ExternalNetworkInjectionAction"
+    },
+    {
+      "@id": "nc:Gate.GateInputPin",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "This is the input to the gate.",
+      "rdfs:domain": "nc:Gate",
+      "rdfs:label": "GateInputPin",
+      "rdfs:range": "nc:GateInputPin",
+      "owl:inverseOf": "nc:GateInputPin.Gate"
+    },
+    {
+      "@id": "nc:Gate.PinGate",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin for this gate output.",
+      "rdfs:domain": "nc:Gate",
+      "rdfs:label": "PinGate",
+      "rdfs:range": "nc:PinGate",
+      "owl:inverseOf": "nc:PinGate.GateOutput"
+    },
+    {
+      "@id": "nc:Gate.RemedialActionScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action scheme which has an armed gate.",
+      "rdfs:domain": "nc:Gate",
+      "rdfs:label": "RemedialActionScheme",
+      "rdfs:range": "nc:RemedialActionScheme",
+      "owl:inverseOf": "nc:RemedialActionScheme.GateArmed"
+    },
+    {
+      "@id": "nc:Gate.StageTrigger",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The stage trigger associated with the gate trigger.",
+      "rdfs:domain": "nc:Gate",
+      "rdfs:label": "StageTrigger",
+      "rdfs:range": "nc:StageTrigger",
+      "owl:inverseOf": "nc:StageTrigger.GateTrigger"
+    },
+    {
+      "@id": "nc:Gate.StageTriggerArmed",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The stage trigger associated with the armed gate.",
+      "rdfs:domain": "nc:Gate",
+      "rdfs:label": "StageTriggerArmed",
+      "rdfs:range": "nc:StageTrigger",
+      "owl:inverseOf": "nc:StageTrigger.GateArmed"
+    },
+    {
+      "@id": "nc:Gate.StageTriggerCom",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The stage trigger associated with the communication gate.",
+      "rdfs:domain": "nc:Gate",
+      "rdfs:label": "StageTriggerCom",
+      "rdfs:range": "nc:StageTrigger",
+      "owl:inverseOf": "nc:StageTrigger.GateComCondition"
+    },
+    {
+      "@id": "nc:Gate.TriggerCondition",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The trigger condition that has a gate trigger.",
+      "rdfs:domain": "nc:Gate",
+      "rdfs:label": "TriggerCondition",
+      "rdfs:range": "nc:TriggerCondition",
+      "owl:inverseOf": "nc:TriggerCondition.GateTrigger"
+    },
+    {
+      "@id": "nc:Gate.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The logical operation of the gate.",
+      "rdfs:domain": "nc:Gate",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:GateLogicKind"
+    },
+    {
+      "@id": "nc:GateInputPin.Gate",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The Gate that has this input.",
+      "rdfs:domain": "nc:GateInputPin",
+      "rdfs:label": "Gate",
+      "rdfs:range": "nc:Gate",
+      "owl:inverseOf": "nc:Gate.GateInputPin"
+    },
+    {
+      "@id": "nc:GateInputPin.logicKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The logical operator kind used for comparison.",
+      "rdfs:domain": "nc:GateInputPin",
+      "rdfs:label": "logicKind",
+      "rdfs:range": "nc:LogicalOperatorsKind"
+    },
+    {
+      "@id": "nc:GridStateAlteration.GridStateAlterationCollection",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The collection that has a GridStateAlteration.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "GridStateAlterationCollection",
+      "rdfs:range": "nc:GridStateAlterationCollection",
+      "owl:inverseOf": "nc:GridStateAlterationCollection.GridStateAlteration"
+    },
+    {
+      "@id": "nc:GridStateAlteration.GridStateAlterationRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The grid state alteration remedial action associated with a given grid state alteration.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "GridStateAlterationRemedialAction",
+      "rdfs:range": "nc:GridStateAlterationRemedialAction",
+      "owl:inverseOf": "nc:GridStateAlterationRemedialAction.GridStateAlteration"
+    },
+    {
+      "@id": "nc:GridStateAlteration.PropertyReference",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The property reference for this grid state alteration.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "PropertyReference",
+      "rdfs:range": "nc:PropertyReference",
+      "owl:inverseOf": "nc:PropertyReference.GridStateAlteration"
+    },
+    {
+      "@id": "nc:GridStateAlteration.RangeConstraint",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The range constraint associated with a given GridStateAlteration.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "RangeConstraint",
+      "rdfs:range": "nc:RangeConstraint",
+      "owl:inverseOf": "nc:RangeConstraint.GridStateAlteration"
+    },
+    {
+      "@id": "nc:GridStateAlterationCollection.GridStateAlteration",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The GridStateAlteration that belongs to the collection.",
+      "rdfs:domain": "nc:GridStateAlterationCollection",
+      "rdfs:label": "GridStateAlteration",
+      "rdfs:range": "nc:GridStateAlteration",
+      "owl:inverseOf": "nc:GridStateAlteration.GridStateAlterationCollection"
+    },
+    {
+      "@id": "nc:GridStateAlterationCollection.StageAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The stage action related to this GridStateAlterationCollection.",
+      "rdfs:domain": "nc:GridStateAlterationCollection",
+      "rdfs:label": "StageAction",
+      "rdfs:range": "nc:Stage",
+      "owl:inverseOf": "nc:Stage.GridStateAlterationCollection"
+    },
+    {
+      "@id": "nc:GridStateAlterationRemedialAction.GridStateAlteration",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The grid state alteration which is part of the grid state alteration remedial action.",
+      "rdfs:domain": "nc:GridStateAlterationRemedialAction",
+      "rdfs:label": "GridStateAlteration",
+      "rdfs:range": "nc:GridStateAlteration",
+      "owl:inverseOf": "nc:GridStateAlteration.GridStateAlterationRemedialAction"
+    },
+    {
+      "@id": "nc:InServiceAction.Equipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Equipment that has a in service action associated.",
+      "rdfs:domain": "nc:InServiceAction",
+      "rdfs:label": "Equipment",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "nc:Equipment.InServiceAction"
+    },
+    {
+      "@id": "nc:LoadAction.EnergyConsumer",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The EnergyConsumer that is associated with a load action.",
+      "rdfs:domain": "nc:LoadAction",
+      "rdfs:label": "EnergyConsumer",
+      "rdfs:range": "cim:EnergyConsumer",
+      "owl:inverseOf": "nc:EnergyConsumer.LoadAction"
+    },
+    {
+      "@id": "nc:Measurement.MeasurementCalculatorInput",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The calculator input used for this measurement.",
+      "rdfs:domain": "cim:Measurement",
+      "rdfs:label": "MeasurementCalculatorInput",
+      "rdfs:range": "nc:MeasurementCalculatorInput",
+      "owl:inverseOf": "nc:MeasurementCalculatorInput.Measurement"
+    },
+    {
+      "@id": "nc:Measurement.PinMeasurement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin that uses this input.",
+      "rdfs:domain": "cim:Measurement",
+      "rdfs:label": "PinMeasurement",
+      "rdfs:range": "nc:PinMeasurement",
+      "owl:inverseOf": "nc:PinMeasurement.Measurement"
+    },
+    {
+      "@id": "nc:MeasurementCalculator.MeasurementCalculatorInput",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The input used for the calculator.",
+      "rdfs:domain": "nc:MeasurementCalculator",
+      "rdfs:label": "MeasurementCalculatorInput",
+      "rdfs:range": "nc:MeasurementCalculatorInput",
+      "owl:inverseOf": "nc:MeasurementCalculatorInput.MeasurementCalculator"
+    },
+    {
+      "@id": "nc:MeasurementCalculator.PinMeasurement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin that uses this input.",
+      "rdfs:domain": "nc:MeasurementCalculator",
+      "rdfs:label": "PinMeasurement",
+      "rdfs:range": "nc:PinMeasurement",
+      "owl:inverseOf": "nc:PinMeasurement.MeasurementCalculator"
+    },
+    {
+      "@id": "nc:MeasurementCalculator.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Calculation operation executed on the operands.",
+      "rdfs:domain": "nc:MeasurementCalculator",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:CalculationKind"
+    },
+    {
+      "@id": "nc:MeasurementCalculatorInput.Measurement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Measurement used as input to a calculation.",
+      "rdfs:domain": "nc:MeasurementCalculatorInput",
+      "rdfs:label": "Measurement",
+      "rdfs:range": "cim:Measurement",
+      "owl:inverseOf": "nc:Measurement.MeasurementCalculatorInput"
+    },
+    {
+      "@id": "nc:MeasurementCalculatorInput.MeasurementCalculator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The measurement calculator using this calculator input.",
+      "rdfs:domain": "nc:MeasurementCalculatorInput",
+      "rdfs:label": "MeasurementCalculator",
+      "rdfs:range": "nc:MeasurementCalculator",
+      "owl:inverseOf": "nc:MeasurementCalculator.MeasurementCalculatorInput"
+    },
+    {
+      "@id": "nc:OperationalLimit.PinOperationallLimit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The operational limit pin pin that uses this operational limit.",
+      "rdfs:domain": "cim:OperationalLimit",
+      "rdfs:label": "PinOperationallLimit",
+      "rdfs:range": "nc:PinOperationalLimit",
+      "owl:inverseOf": "nc:PinOperationalLimit.OperationalLimit"
+    },
+    {
+      "@id": "nc:PTCActivePowerSupport.PowerTransferCorridor",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The PowerTransferCorridor that has a specific active power support.",
+      "rdfs:domain": "nc:PTCActivePowerSupport",
+      "rdfs:label": "PowerTransferCorridor",
+      "rdfs:range": "nc:PowerTransferCorridor",
+      "owl:inverseOf": "nc:PowerTransferCorridor.PTCActivePowerSupport"
+    },
+    {
+      "@id": "nc:PTCActivePowerSupport.RemedialActionScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The RemedialActionScheme which has active power support from the PowerTransferCorridor.",
+      "rdfs:domain": "nc:PTCActivePowerSupport",
+      "rdfs:label": "RemedialActionScheme",
+      "rdfs:range": "nc:RemedialActionScheme",
+      "owl:inverseOf": "nc:RemedialActionScheme.PTCActivePowerSupport"
+    },
+    {
+      "@id": "nc:PinContingency.Contingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The Contingency that is used in the input pin.",
+      "rdfs:domain": "nc:PinContingency",
+      "rdfs:label": "Contingency",
+      "rdfs:range": "cim:Contingency",
+      "owl:inverseOf": "nc:Contingency.PinContingency"
+    },
+    {
+      "@id": "nc:PinDCTerminal.DCTerminal",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The DC terminal that has this pin DC terminal.",
+      "rdfs:domain": "nc:PinDCTerminal",
+      "rdfs:label": "DCTerminal",
+      "rdfs:range": "cim:DCTerminal",
+      "owl:inverseOf": "nc:DCTerminal.PinDCTerminal"
+    },
+    {
+      "@id": "nc:PinDCTerminal.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The kind of quantity which is used as an input value.",
+      "rdfs:domain": "nc:PinDCTerminal",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:PinDCTerminalKind"
+    },
+    {
+      "@id": "nc:PinEquipment.Equipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The Equipment that is used in the input pin.",
+      "rdfs:domain": "nc:PinEquipment",
+      "rdfs:label": "Equipment",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "nc:Equipment.PinEquipment"
+    },
+    {
+      "@id": "nc:PinEquipment.PropertyReference",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The property reference for this pin equipment.",
+      "rdfs:domain": "nc:PinEquipment",
+      "rdfs:label": "PropertyReference",
+      "rdfs:range": "nc:PropertyReference",
+      "owl:inverseOf": "nc:PropertyReference.PinEquipment"
+    },
+    {
+      "@id": "nc:PinEquipmentTripping.Equipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Equipment that is tripped.",
+      "rdfs:domain": "nc:PinEquipmentTripping",
+      "rdfs:label": "Equipment",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "nc:Equipment.PinEquipmentTripping"
+    },
+    {
+      "@id": "nc:PinGate.GateOutput",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The output of the gate.",
+      "rdfs:domain": "nc:PinGate",
+      "rdfs:label": "GateOutput",
+      "rdfs:range": "nc:Gate",
+      "owl:inverseOf": "nc:Gate.PinGate"
+    },
+    {
+      "@id": "nc:PinMeasurement.Measurement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The Measurement that is used in the input pin.",
+      "rdfs:domain": "nc:PinMeasurement",
+      "rdfs:label": "Measurement",
+      "rdfs:range": "cim:Measurement",
+      "owl:inverseOf": "nc:Measurement.PinMeasurement"
+    },
+    {
+      "@id": "nc:PinMeasurement.MeasurementCalculator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The result of the calculation used as input to a gate.",
+      "rdfs:domain": "nc:PinMeasurement",
+      "rdfs:label": "MeasurementCalculator",
+      "rdfs:range": "nc:MeasurementCalculator",
+      "owl:inverseOf": "nc:MeasurementCalculator.PinMeasurement"
+    },
+    {
+      "@id": "nc:PinOperationalLimit.OperationalLimit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The operational limit that is used in the input pin.",
+      "rdfs:domain": "nc:PinOperationalLimit",
+      "rdfs:label": "OperationalLimit",
+      "rdfs:range": "cim:OperationalLimit",
+      "owl:inverseOf": "nc:OperationalLimit.PinOperationallLimit"
+    },
+    {
+      "@id": "nc:PinPowerTransferCorridor.PowerTransferCorridor",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The PowerTransferCorridor that is used in the input pin.",
+      "rdfs:domain": "nc:PinPowerTransferCorridor",
+      "rdfs:label": "PowerTransferCorridor",
+      "rdfs:range": "nc:PowerTransferCorridor",
+      "owl:inverseOf": "nc:PowerTransferCorridor.PinPowerTransferCorridor"
+    },
+    {
+      "@id": "nc:PinPowerTransferCorridor.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The kind of quantity which is used as an input value.",
+      "rdfs:domain": "nc:PinPowerTransferCorridor",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:PinPowerTransferCorridorKind"
+    },
+    {
+      "@id": "nc:PinTerminal.Terminal",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The Terminal that is used in the input pin.",
+      "rdfs:domain": "nc:PinTerminal",
+      "rdfs:label": "Terminal",
+      "rdfs:range": "cim:Terminal",
+      "owl:inverseOf": "nc:Terminal.PinTerminal"
+    },
+    {
+      "@id": "nc:PinTerminal.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The kind of quantity which is used as an input value.",
+      "rdfs:domain": "nc:PinTerminal",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:PinTerminalKind"
+    },
+    {
+      "@id": "nc:PowerElectronicsConnection.PowerElectronicsConnectionAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to a PowerElectronicsConnection.",
+      "rdfs:domain": "cim:PowerElectronicsConnection",
+      "rdfs:label": "PowerElectronicsConnectionAction",
+      "rdfs:range": "nc:PowerElectronicsConnectionAction",
+      "owl:inverseOf": "nc:PowerElectronicsConnectionAction.PowerElectronicsConnection"
+    },
+    {
+      "@id": "nc:PowerElectronicsConnectionAction.PowerElectronicsConnection",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The PowerElectronicsConnection that is applied to an action.",
+      "rdfs:domain": "nc:PowerElectronicsConnectionAction",
+      "rdfs:label": "PowerElectronicsConnection",
+      "rdfs:range": "cim:PowerElectronicsConnection",
+      "owl:inverseOf": "nc:PowerElectronicsConnection.PowerElectronicsConnectionAction"
+    },
+    {
+      "@id": "nc:PowerRemedialAction.BiddingZone",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The Bidding Zone where the power remedial action is done.",
+      "rdfs:domain": "nc:PowerRemedialAction",
+      "rdfs:label": "BiddingZone",
+      "rdfs:range": "nc:BiddingZone",
+      "owl:inverseOf": "nc:BiddingZone.PowerRemedialAction"
+    },
+    {
+      "@id": "nc:PowerRemedialAction.BiddingZoneBorder",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Bidding zone border where the power remedial action is done.",
+      "rdfs:domain": "nc:PowerRemedialAction",
+      "rdfs:label": "BiddingZoneBorder",
+      "rdfs:range": "nc:BiddingZoneBorder",
+      "owl:inverseOf": "nc:BiddingZoneBorder.PowerRemedialAction"
+    },
+    {
+      "@id": "nc:PowerRemedialAction.PowerShiftKeyStrategy",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power Shift Key Strategy which applies to this power remedial action.",
+      "rdfs:domain": "nc:PowerRemedialAction",
+      "rdfs:label": "PowerShiftKeyStrategy",
+      "rdfs:range": "nc:PowerShiftKeyStrategy",
+      "owl:inverseOf": "nc:PowerShiftKeyStrategy.PowerRemedialAction"
+    },
+    {
+      "@id": "nc:PowerShiftKeyStrategy.PowerRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power remedial acion which has power shift key strategy.",
+      "rdfs:domain": "nc:PowerShiftKeyStrategy",
+      "rdfs:label": "PowerRemedialAction",
+      "rdfs:range": "nc:PowerRemedialAction",
+      "owl:inverseOf": "nc:PowerRemedialAction.PowerShiftKeyStrategy"
+    },
+    {
+      "@id": "nc:PowerTransferCorridor.PTCActivePowerSupport",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The active power capability associated with this PowerTransferCorridor.",
+      "rdfs:domain": "nc:PowerTransferCorridor",
+      "rdfs:label": "PTCActivePowerSupport",
+      "rdfs:range": "nc:PTCActivePowerSupport",
+      "owl:inverseOf": "nc:PTCActivePowerSupport.PowerTransferCorridor"
+    },
+    {
+      "@id": "nc:PowerTransferCorridor.PinPowerTransferCorridor",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin that uses this input.",
+      "rdfs:domain": "nc:PowerTransferCorridor",
+      "rdfs:label": "PinPowerTransferCorridor",
+      "rdfs:range": "nc:PinPowerTransferCorridor",
+      "owl:inverseOf": "nc:PinPowerTransferCorridor.PowerTransferCorridor"
+    },
+    {
+      "@id": "nc:PropertyReference.GridStateAlteration",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The grid state alteration for this property reference.",
+      "rdfs:domain": "nc:PropertyReference",
+      "rdfs:label": "GridStateAlteration",
+      "rdfs:range": "nc:GridStateAlteration",
+      "owl:inverseOf": "nc:GridStateAlteration.PropertyReference"
+    },
+    {
+      "@id": "nc:PropertyReference.PinEquipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin equipment that has this property reference.",
+      "rdfs:domain": "nc:PropertyReference",
+      "rdfs:label": "PinEquipment",
+      "rdfs:range": "nc:PinEquipment",
+      "owl:inverseOf": "nc:PinEquipment.PropertyReference"
+    },
+    {
+      "@id": "nc:PropertyReference.StaticPropertyRange",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "rdfs:comment": "Static property range that has this property reference.",
+      "rdfs:domain": "nc:PropertyReference",
+      "rdfs:label": "StaticPropertyRange",
+      "rdfs:range": "nc:StaticPropertyRange",
+      "owl:inverseOf": "nc:StaticPropertyRange.PropertyReference"
+    },
+    {
+      "@id": "nc:RangeConstraint.GridStateAlteration",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The grid state alteration which has static range.",
+      "rdfs:domain": "nc:RangeConstraint",
+      "rdfs:label": "GridStateAlteration",
+      "rdfs:range": "nc:GridStateAlteration",
+      "owl:inverseOf": "nc:GridStateAlteration.RangeConstraint"
+    },
+    {
+      "@id": "nc:RangeConstraint.direction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the direction of the attribute value referenced by the PropertyReference.",
+      "rdfs:domain": "nc:RangeConstraint",
+      "rdfs:label": "direction",
+      "rdfs:range": "nc:RelativeDirectionKind"
+    },
+    {
+      "@id": "nc:RangeConstraint.valueKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of value offset for the range that applies to the attribute referenced by the PropertyReference.",
+      "rdfs:domain": "nc:RangeConstraint",
+      "rdfs:label": "valueKind",
+      "rdfs:range": "nc:ValueOffsetKind"
+    },
+    {
+      "@id": "nc:Region.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action which is considered in the region.",
+      "rdfs:domain": "nc:Region",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:RemedialAction",
+      "owl:inverseOf": "nc:RemedialAction.AppointedToRegion"
+    },
+    {
+      "@id": "nc:RegulatingControl.RegulatingControlAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to a regulating control.",
+      "rdfs:domain": "cim:RegulatingControl",
+      "rdfs:label": "RegulatingControlAction",
+      "rdfs:range": "nc:RegulatingControlAction",
+      "owl:inverseOf": "nc:RegulatingControlAction.RegulatingControl"
+    },
+    {
+      "@id": "nc:RegulatingControlAction.RegulatingControl",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The regulating control which has an action.",
+      "rdfs:domain": "nc:RegulatingControlAction",
+      "rdfs:label": "RegulatingControl",
+      "rdfs:range": "cim:RegulatingControl",
+      "owl:inverseOf": "nc:RegulatingControl.RegulatingControlAction"
+    },
+    {
+      "@id": "nc:RemedialAction.AppointedToRegion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The region in which the remedial action is appointed.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "AppointedToRegion",
+      "rdfs:range": "nc:Region",
+      "owl:inverseOf": "nc:Region.RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialAction.ContingencyWithRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The contingency and remedial action combination.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "ContingencyWithRemedialAction",
+      "rdfs:range": "nc:ContingencyWithRemedialAction",
+      "owl:inverseOf": "nc:ContingencyWithRemedialAction.RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialAction.DependentRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action dependent on a remedial action.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "DependentRemedialAction",
+      "rdfs:range": "nc:RemedialActionDependency",
+      "owl:inverseOf": "nc:RemedialActionDependency.RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialAction.RemedialActionSystemOperator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "System operator operating remedial actions.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "RemedialActionSystemOperator",
+      "rdfs:range": "nc:SystemOperator",
+      "owl:inverseOf": "nc:SystemOperator.RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialAction.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The kind of the remedial action. If curative remedial action, it is required to have an association with ContingencyWithRemedialAction.\nIf preventive remedial action, RemedialAction class shall not have association with ContingencyWithRemedialAction.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:RemedialActionKind"
+    },
+    {
+      "@id": "nc:RemedialActionDependency.DependingRemedialActionGroup",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action group which the remedial action is depending on.",
+      "rdfs:domain": "nc:RemedialActionDependency",
+      "rdfs:label": "DependingRemedialActionGroup",
+      "rdfs:range": "nc:RemedialActionGroup",
+      "owl:inverseOf": "nc:RemedialActionGroup.RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialActionDependency.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action which has dependent remedial actions.",
+      "rdfs:domain": "nc:RemedialActionDependency",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:RemedialAction",
+      "owl:inverseOf": "nc:RemedialAction.DependentRemedialAction"
+    },
+    {
+      "@id": "nc:RemedialActionDependency.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Type of dependency between two remedial actions.",
+      "rdfs:domain": "nc:RemedialActionDependency",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:RemedialActionDependencyKind"
+    },
+    {
+      "@id": "nc:RemedialActionGroup.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action dependecy on a remedial action group.",
+      "rdfs:domain": "nc:RemedialActionGroup",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:RemedialActionDependency",
+      "owl:inverseOf": "nc:RemedialActionDependency.DependingRemedialActionGroup"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.GateArmed",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Gate that through a gate logic and input pin defines arming of a Remedial Action Scheme.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "GateArmed",
+      "rdfs:range": "nc:Gate",
+      "owl:inverseOf": "nc:Gate.RemedialActionScheme"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.PTCActivePowerSupport",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The active power support of the PowerTransferCorridor related to this RemedialActionScheme.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "PTCActivePowerSupport",
+      "rdfs:range": "nc:PTCActivePowerSupport",
+      "owl:inverseOf": "nc:PTCActivePowerSupport.RemedialActionScheme"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.SchemeRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Scheme remedial action that belongs to the remedial action scheme.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "SchemeRemedialAction",
+      "rdfs:range": "nc:SchemeRemedialAction",
+      "owl:inverseOf": "nc:SchemeRemedialAction.RemedialActionScheme"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.Stage",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:ofAggregate"
+        }
+      ],
+      "rdfs:comment": "The stage for this remedial action scheme.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "Stage",
+      "rdfs:range": "nc:Stage",
+      "owl:inverseOf": "nc:Stage.RemedialActionScheme"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.TriggerCondition",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The triggering condition of this Remedial Action Scheme.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "TriggerCondition",
+      "rdfs:range": "nc:TriggerCondition",
+      "owl:inverseOf": "nc:TriggerCondition.RemedialActionScheme"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of Remedial Action Scheme.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:RemedialActionSchemeKind"
+    },
+    {
+      "@id": "nc:RotatingMachine.RotatingMachineAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action applied to a rotating machine.",
+      "rdfs:domain": "cim:RotatingMachine",
+      "rdfs:label": "RotatingMachineAction",
+      "rdfs:range": "nc:RotatingMachineAction",
+      "owl:inverseOf": "nc:RotatingMachineAction.RotatingMachine"
+    },
+    {
+      "@id": "nc:RotatingMachineAction.RotatingMachine",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The rotating machine that has an action.",
+      "rdfs:domain": "nc:RotatingMachineAction",
+      "rdfs:label": "RotatingMachine",
+      "rdfs:range": "cim:RotatingMachine",
+      "owl:inverseOf": "nc:RotatingMachine.RotatingMachineAction"
+    },
+    {
+      "@id": "nc:SchemeRemedialAction.RemedialActionScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action scheme for this scheme remedial action.",
+      "rdfs:domain": "nc:SchemeRemedialAction",
+      "rdfs:label": "RemedialActionScheme",
+      "rdfs:range": "nc:RemedialActionScheme",
+      "owl:inverseOf": "nc:RemedialActionScheme.SchemeRemedialAction"
+    },
+    {
+      "@id": "nc:ShuntCompensator.ShuntCompensatorAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to a ShuntCompensator.",
+      "rdfs:domain": "cim:ShuntCompensator",
+      "rdfs:label": "ShuntCompensatorAction",
+      "rdfs:range": "nc:ShuntCompensatorModification",
+      "owl:inverseOf": "nc:ShuntCompensatorModification.ShuntCompensator"
+    },
+    {
+      "@id": "nc:ShuntCompensatorModification.ShuntCompensator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The ShuntCompensator that is associated with an action.",
+      "rdfs:domain": "nc:ShuntCompensatorModification",
+      "rdfs:label": "ShuntCompensator",
+      "rdfs:range": "cim:ShuntCompensator",
+      "owl:inverseOf": "nc:ShuntCompensator.ShuntCompensatorAction"
+    },
+    {
+      "@id": "nc:Stage.GridStateAlterationCollection",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The GridStateAlterationCollection which belongs to the Stage.",
+      "rdfs:domain": "nc:Stage",
+      "rdfs:label": "GridStateAlterationCollection",
+      "rdfs:range": "nc:GridStateAlterationCollection",
+      "owl:inverseOf": "nc:GridStateAlterationCollection.StageAction"
+    },
+    {
+      "@id": "nc:Stage.RemedialActionScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action scheme that has a stage.",
+      "rdfs:domain": "nc:Stage",
+      "rdfs:label": "RemedialActionScheme",
+      "rdfs:range": "nc:RemedialActionScheme",
+      "owl:inverseOf": "nc:RemedialActionScheme.Stage"
+    },
+    {
+      "@id": "nc:Stage.StageTrigger",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The state trigger that is part of this stage.",
+      "rdfs:domain": "nc:Stage",
+      "rdfs:label": "StageTrigger",
+      "rdfs:range": "nc:StageTrigger",
+      "owl:inverseOf": "nc:StageTrigger.Stage"
+    },
+    {
+      "@id": "nc:StageTrigger.GateArmed",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The gate that is the input pin which defines arming of the StageTrigger.",
+      "rdfs:domain": "nc:StageTrigger",
+      "rdfs:label": "GateArmed",
+      "rdfs:range": "nc:Gate",
+      "owl:inverseOf": "nc:Gate.StageTriggerArmed"
+    },
+    {
+      "@id": "nc:StageTrigger.GateComCondition",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The gate that is the input pin which defines a communication condition.",
+      "rdfs:domain": "nc:StageTrigger",
+      "rdfs:label": "GateComCondition",
+      "rdfs:range": "nc:Gate",
+      "owl:inverseOf": "nc:Gate.StageTriggerCom"
+    },
+    {
+      "@id": "nc:StageTrigger.GateTrigger",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The gate that is the input pin which triggers the protective reactions.",
+      "rdfs:domain": "nc:StageTrigger",
+      "rdfs:label": "GateTrigger",
+      "rdfs:range": "nc:Gate",
+      "owl:inverseOf": "nc:Gate.StageTrigger"
+    },
+    {
+      "@id": "nc:StageTrigger.Stage",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The stage that has this stage trigger.",
+      "rdfs:domain": "nc:StageTrigger",
+      "rdfs:label": "Stage",
+      "rdfs:range": "nc:Stage",
+      "owl:inverseOf": "nc:Stage.StageTrigger"
+    },
+    {
+      "@id": "nc:StaticPropertyRange.PropertyReference",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "Property reference for this static property range.",
+      "rdfs:domain": "nc:StaticPropertyRange",
+      "rdfs:label": "PropertyReference",
+      "rdfs:range": "nc:PropertyReference",
+      "owl:inverseOf": "nc:PropertyReference.StaticPropertyRange"
+    },
+    {
+      "@id": "nc:StaticVarCompensator.StaticVarCompensatorAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action which is applied to a StaticVarCompensator.",
+      "rdfs:domain": "cim:StaticVarCompensator",
+      "rdfs:label": "StaticVarCompensatorAction",
+      "rdfs:range": "nc:StaticVarCompensatorAction",
+      "owl:inverseOf": "nc:StaticVarCompensatorAction.StaticVarCompensator"
+    },
+    {
+      "@id": "nc:StaticVarCompensatorAction.StaticVarCompensator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The StaticVarCompensator which is associated with an action.",
+      "rdfs:domain": "nc:StaticVarCompensatorAction",
+      "rdfs:label": "StaticVarCompensator",
+      "rdfs:range": "cim:StaticVarCompensator",
+      "owl:inverseOf": "nc:StaticVarCompensator.StaticVarCompensatorAction"
+    },
+    {
+      "@id": "nc:Switch.TopologyAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action assigned to a switch.",
+      "rdfs:domain": "cim:Switch",
+      "rdfs:label": "TopologyAction",
+      "rdfs:range": "nc:TopologyAction",
+      "owl:inverseOf": "nc:TopologyAction.Switch"
+    },
+    {
+      "@id": "nc:SystemOperator.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action defined by this system operator.",
+      "rdfs:domain": "nc:SystemOperator",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:RemedialAction",
+      "owl:inverseOf": "nc:RemedialAction.RemedialActionSystemOperator"
+    },
+    {
+      "@id": "nc:TapChanger.TapPositionAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The action that is applied to a tap changer.",
+      "rdfs:domain": "cim:TapChanger",
+      "rdfs:label": "TapPositionAction",
+      "rdfs:range": "nc:TapPositionAction",
+      "owl:inverseOf": "nc:TapPositionAction.TapChanger"
+    },
+    {
+      "@id": "nc:TapPositionAction.TapChanger",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The tap changer that has a tap position action associated.",
+      "rdfs:domain": "nc:TapPositionAction",
+      "rdfs:label": "TapChanger",
+      "rdfs:range": "cim:TapChanger",
+      "owl:inverseOf": "nc:TapChanger.TapPositionAction"
+    },
+    {
+      "@id": "nc:Terminal.PinTerminal",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The pin that uses this input.",
+      "rdfs:domain": "cim:Terminal",
+      "rdfs:label": "PinTerminal",
+      "rdfs:range": "nc:PinTerminal",
+      "owl:inverseOf": "nc:PinTerminal.Terminal"
+    },
+    {
+      "@id": "nc:TopologyAction.Switch",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The switch that has a topology action associated.",
+      "rdfs:domain": "nc:TopologyAction",
+      "rdfs:label": "Switch",
+      "rdfs:range": "cim:Switch",
+      "owl:inverseOf": "nc:Switch.TopologyAction"
+    },
+    {
+      "@id": "nc:TriggerCondition.GateTrigger",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The gate that is the condition for the trigger.",
+      "rdfs:domain": "nc:TriggerCondition",
+      "rdfs:label": "GateTrigger",
+      "rdfs:range": "nc:Gate",
+      "owl:inverseOf": "nc:Gate.TriggerCondition"
+    },
+    {
+      "@id": "nc:TriggerCondition.RemedialActionScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action scheme that has the trigger condition.",
+      "rdfs:domain": "nc:TriggerCondition",
+      "rdfs:label": "RemedialActionScheme",
+      "rdfs:range": "nc:RemedialActionScheme",
+      "owl:inverseOf": "nc:RemedialActionScheme.TriggerCondition"
+    },
+    {
+      "@id": "cim:IdentifiedObject.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The name is any free human readable and possibly non unique text naming the object.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:ContingencyWithRemedialAction.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:ContingencyWithRemedialAction",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:ContingencyWithRemedialAction.normalEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the contingency with remedial action is enabled, otherwise it is disabled under normal operating conditions.",
+      "rdfs:domain": "nc:ContingencyWithRemedialAction",
+      "rdfs:label": "normalEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:CountertradeRemedialAction.maxEconomicPMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "High economic active power limit given by the percentage of the relevant units operating p.   e.g. If a generating unit (G1) with maximum operating active power of 100 MW and a conform load with active maximum load of 50 MW (L1). Max economic p margin of 90% will give the limit of the shift key to be 90 MW for the G1 and 45 MW for the L1.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:CountertradeRemedialAction",
+      "rdfs:label": "maxEconomicPMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:CountertradeRemedialAction.minEconomicPMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Low economic active power limit given by the percentage of the relevant units operating p.   e.g. If a generating unit (G1) with minimum operating active power of 10 MW and a conform load with active maximum load of 5 MW (L1). Min economic p margin of 90%  will give the limit of the shift key to be 11 MW for the G1 and 5.5 MW for the L1.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:CountertradeRemedialAction",
+      "rdfs:label": "minEconomicPMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:GateInputPin.absoluteValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates if the absolute value is used for comparison. If true, use the absolute value. If false, use the complex value (vector).",
+      "rdfs:domain": "nc:GateInputPin",
+      "rdfs:label": "absoluteValue",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:GateInputPin.duration",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time duration for which the condition is satisfied before acting. Default is 0 seconds.",
+      "rdfs:domain": "nc:GateInputPin",
+      "rdfs:label": "duration",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:GateInputPin.isValuePreFault",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates if the gate input pin value is referring to the value prior to a fault (e.g. simulated by a contingency or due to a SIPS activation in a N-x-y case). If it is true, it means that the value is referring to pre-fault. If it is false or not populated, then it is post-fault.",
+      "rdfs:domain": "nc:GateInputPin",
+      "rdfs:label": "isValuePreFault",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:GateInputPin.negate",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Invert/negate the result of the comparison.",
+      "rdfs:domain": "nc:GateInputPin",
+      "rdfs:label": "negate",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:GateInputPin.thresholdPercentage",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "The threshold percentage that should be used for compare with the percentage change between input value and threshold value.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:GateInputPin",
+      "rdfs:label": "thresholdPercentage",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:GateInputPin.thresholdValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The threshold value that should be used for compare with the input value.",
+      "rdfs:domain": "nc:GateInputPin",
+      "rdfs:label": "thresholdValue",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:GridStateAlteration.maximumPerDay",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Maximum number of alterations per day.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "maximumPerDay",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:GridStateAlteration.minimumActivation",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Minimum time duration between activating the same grid state alteration.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "minimumActivation",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:GridStateAlteration.normalEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The default/normal value used when other active signal/values are missing.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "normalEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:GridStateAlteration.timePerStage",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Time to implement a stage of a grid state alteration. If a grid state alteration consists of multiple stages (e.g. A step on a power transformer), this duration comes in addition to the timeToImplement and need to be multiplied by the number of stages. A stage can also be defined as MW in the case of regulating production.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "timePerStage",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:MeasurementCalculatorInput.absoluteValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates if the absolute value is used for comparison. If true, use the absolute value. If false, use the complex value (vector).",
+      "rdfs:domain": "nc:MeasurementCalculatorInput",
+      "rdfs:label": "absoluteValue",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:MeasurementCalculatorInput.order",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Positive number that defines the order of the operand in the calculation. 0 means default in which case the order is not relevant.",
+      "rdfs:domain": "nc:MeasurementCalculatorInput",
+      "rdfs:label": "order",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:PTCActivePowerSupport.maximum",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum support that a System Integrity Protection Scheme (SIPS) can provide to a Power Transfer Corridor (PTC). This is normally limited by the maximum power system disconnect allowed.",
+      "rdfs:domain": "nc:PTCActivePowerSupport",
+      "rdfs:label": "maximum",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PTCActivePowerSupport.normal",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Normal support that a System Integrity Protection Scheme (SIPS) is expected to provide when enabled to a Power Transfer Corridor (PTC).",
+      "rdfs:domain": "nc:PTCActivePowerSupport",
+      "rdfs:label": "normal",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:RangeConstraint.normalValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The normal (initial) value. The meaning of the value is defined by the attribute referenced by the PropertyReference. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false.\nIf the valueKind is incremental or incrementalPercentage, then the value shall be positive (greater than zero).\nIf the valueKind is incrementalPercentage, then the value shall be in the range [0, 100].",
+      "rdfs:domain": "nc:RangeConstraint",
+      "rdfs:label": "normalValue",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:RemedialAction.impactThresholdMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Impact threshold margin for the use of the remedial action. Meaning that the remedial action should not be used if it cannot resolve violation with more than the given impact threshold margin.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "impactThresholdMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:RemedialAction.isCrossBorderRelevant",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates if the remedial action is cross border relevant.  True, means that the remedial action is cross border relevant.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "isCrossBorderRelevant",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:RemedialAction.isManual",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates if the remedial action is manually executed which involves one or many actions performed by human. A SIPS remedial action cannot be manual.  True, means that the remedial action is manual. False, means that the remedial action is automatically executed without human communication.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "isManual",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:RemedialAction.normalAvailable",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "It identifies if the remedial action is available under normal condition. True means available, False means unavailable.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "normalAvailable",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:RemedialAction.penaltyFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the relative penalty for a given remedial action. This is a positive number greater than zero and default is one, meaning the remedial action does not have negative nor positive effect on the quality of the solution. A remedial action that provide changes in the transmission loss can have negative (Between zero and one) or positive effect (Bigger than one) given by 1 / (1 – Incremental Transmission Loss). In a similar way remedial action using generating units or compensation units can have negative or positive effect. Typical value would be between 0.8 and 1.1.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "penaltyFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:RemedialAction.timeToImplement",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Time to implement a remedial action.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "timeToImplement",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:RemedialActionDependency.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:RemedialActionDependency",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:RemedialActionDependency.normalEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the remedial action dependency with contingency shall be considered under normal operating conditions.",
+      "rdfs:domain": "nc:RemedialActionDependency",
+      "rdfs:label": "normalEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.normalArmed",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the normal arming status of the remedial action scheme.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "normalArmed",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:Stage.priority",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The priority of the stage.   0 = do not care (default) 1 = highest priority. 2 is less than 1 and so on. A stage with higher priority needs be activated before a lower stage can be activated.",
+      "rdfs:domain": "nc:Stage",
+      "rdfs:label": "priority",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:StageTrigger.normalArmed",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The default/normal value used when other active signal/values are missing.",
+      "rdfs:domain": "nc:StageTrigger",
+      "rdfs:label": "normalArmed",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:StageTrigger.priority",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Priority of trigger. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on. A trigger with the highest priority will trigger first.",
+      "rdfs:domain": "nc:StageTrigger",
+      "rdfs:label": "priority",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.W",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+      "rdfs:label": "ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:Currency.AED",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "United Arab Emirates dirham.",
+      "rdfs:label": "AED"
+    },
+    {
+      "@id": "cim:Currency.AFN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Afghan afghani.",
+      "rdfs:label": "AFN"
+    },
+    {
+      "@id": "cim:Currency.ALL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Albanian lek.",
+      "rdfs:label": "ALL"
+    },
+    {
+      "@id": "cim:Currency.AMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Armenian dram.",
+      "rdfs:label": "AMD"
+    },
+    {
+      "@id": "cim:Currency.ANG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Netherlands Antillean guilder.",
+      "rdfs:label": "ANG"
+    },
+    {
+      "@id": "cim:Currency.AOA",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Angolan kwanza.",
+      "rdfs:label": "AOA"
+    },
+    {
+      "@id": "cim:Currency.ARS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Argentine peso.",
+      "rdfs:label": "ARS"
+    },
+    {
+      "@id": "cim:Currency.AUD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Australian dollar.",
+      "rdfs:label": "AUD"
+    },
+    {
+      "@id": "cim:Currency.AWG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Aruban florin.",
+      "rdfs:label": "AWG"
+    },
+    {
+      "@id": "cim:Currency.AZN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Azerbaijani manat.",
+      "rdfs:label": "AZN"
+    },
+    {
+      "@id": "cim:Currency.BAM",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bosnia and Herzegovina convertible mark.",
+      "rdfs:label": "BAM"
+    },
+    {
+      "@id": "cim:Currency.BBD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Barbados dollar.",
+      "rdfs:label": "BBD"
+    },
+    {
+      "@id": "cim:Currency.BDT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bangladeshi taka.",
+      "rdfs:label": "BDT"
+    },
+    {
+      "@id": "cim:Currency.BGN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bulgarian lev.",
+      "rdfs:label": "BGN"
+    },
+    {
+      "@id": "cim:Currency.BHD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bahraini dinar.",
+      "rdfs:label": "BHD"
+    },
+    {
+      "@id": "cim:Currency.BIF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Burundian franc.",
+      "rdfs:label": "BIF"
+    },
+    {
+      "@id": "cim:Currency.BMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bermudian dollar (customarily known as Bermuda dollar).",
+      "rdfs:label": "BMD"
+    },
+    {
+      "@id": "cim:Currency.BND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Brunei dollar.",
+      "rdfs:label": "BND"
+    },
+    {
+      "@id": "cim:Currency.BOB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Boliviano.",
+      "rdfs:label": "BOB"
+    },
+    {
+      "@id": "cim:Currency.BOV",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bolivian Mvdol (funds code).",
+      "rdfs:label": "BOV"
+    },
+    {
+      "@id": "cim:Currency.BRL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Brazilian real.",
+      "rdfs:label": "BRL"
+    },
+    {
+      "@id": "cim:Currency.BSD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bahamian dollar.",
+      "rdfs:label": "BSD"
+    },
+    {
+      "@id": "cim:Currency.BTN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bhutanese ngultrum.",
+      "rdfs:label": "BTN"
+    },
+    {
+      "@id": "cim:Currency.BWP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Botswana pula.",
+      "rdfs:label": "BWP"
+    },
+    {
+      "@id": "cim:Currency.BYR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Belarusian ruble.",
+      "rdfs:label": "BYR"
+    },
+    {
+      "@id": "cim:Currency.BZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Belize dollar.",
+      "rdfs:label": "BZD"
+    },
+    {
+      "@id": "cim:Currency.CAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Canadian dollar.",
+      "rdfs:label": "CAD"
+    },
+    {
+      "@id": "cim:Currency.CDF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Congolese franc.",
+      "rdfs:label": "CDF"
+    },
+    {
+      "@id": "cim:Currency.CHF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Swiss franc.",
+      "rdfs:label": "CHF"
+    },
+    {
+      "@id": "cim:Currency.CLF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Unidad de Fomento (funds code), Chile.",
+      "rdfs:label": "CLF"
+    },
+    {
+      "@id": "cim:Currency.CLP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Chilean peso.",
+      "rdfs:label": "CLP"
+    },
+    {
+      "@id": "cim:Currency.CNY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Chinese yuan.",
+      "rdfs:label": "CNY"
+    },
+    {
+      "@id": "cim:Currency.COP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Colombian peso.",
+      "rdfs:label": "COP"
+    },
+    {
+      "@id": "cim:Currency.COU",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Unidad de Valor Real.",
+      "rdfs:label": "COU"
+    },
+    {
+      "@id": "cim:Currency.CRC",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Costa Rican colon.",
+      "rdfs:label": "CRC"
+    },
+    {
+      "@id": "cim:Currency.CUC",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cuban convertible peso.",
+      "rdfs:label": "CUC"
+    },
+    {
+      "@id": "cim:Currency.CUP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cuban peso.",
+      "rdfs:label": "CUP"
+    },
+    {
+      "@id": "cim:Currency.CVE",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cape Verde escudo.",
+      "rdfs:label": "CVE"
+    },
+    {
+      "@id": "cim:Currency.CZK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Czech koruna.",
+      "rdfs:label": "CZK"
+    },
+    {
+      "@id": "cim:Currency.DJF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Djiboutian franc.",
+      "rdfs:label": "DJF"
+    },
+    {
+      "@id": "cim:Currency.DKK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Danish krone.",
+      "rdfs:label": "DKK"
+    },
+    {
+      "@id": "cim:Currency.DOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dominican peso.",
+      "rdfs:label": "DOP"
+    },
+    {
+      "@id": "cim:Currency.DZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Algerian dinar.",
+      "rdfs:label": "DZD"
+    },
+    {
+      "@id": "cim:Currency.EEK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Estonian kroon.",
+      "rdfs:label": "EEK"
+    },
+    {
+      "@id": "cim:Currency.EGP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Egyptian pound.",
+      "rdfs:label": "EGP"
+    },
+    {
+      "@id": "cim:Currency.ERN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Eritrean nakfa.",
+      "rdfs:label": "ERN"
+    },
+    {
+      "@id": "cim:Currency.ETB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ethiopian birr.",
+      "rdfs:label": "ETB"
+    },
+    {
+      "@id": "cim:Currency.EUR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Euro.",
+      "rdfs:label": "EUR"
+    },
+    {
+      "@id": "cim:Currency.FJD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Fiji dollar.",
+      "rdfs:label": "FJD"
+    },
+    {
+      "@id": "cim:Currency.FKP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Falkland Islands pound.",
+      "rdfs:label": "FKP"
+    },
+    {
+      "@id": "cim:Currency.GBP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pound sterling.",
+      "rdfs:label": "GBP"
+    },
+    {
+      "@id": "cim:Currency.GEL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Georgian lari.",
+      "rdfs:label": "GEL"
+    },
+    {
+      "@id": "cim:Currency.GHS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ghanaian cedi.",
+      "rdfs:label": "GHS"
+    },
+    {
+      "@id": "cim:Currency.GIP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Gibraltar pound.",
+      "rdfs:label": "GIP"
+    },
+    {
+      "@id": "cim:Currency.GMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Gambian dalasi.",
+      "rdfs:label": "GMD"
+    },
+    {
+      "@id": "cim:Currency.GNF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guinean franc.",
+      "rdfs:label": "GNF"
+    },
+    {
+      "@id": "cim:Currency.GTQ",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guatemalan quetzal.",
+      "rdfs:label": "GTQ"
+    },
+    {
+      "@id": "cim:Currency.GYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guyanese dollar.",
+      "rdfs:label": "GYD"
+    },
+    {
+      "@id": "cim:Currency.HKD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Hong Kong dollar.",
+      "rdfs:label": "HKD"
+    },
+    {
+      "@id": "cim:Currency.HNL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Honduran lempira.",
+      "rdfs:label": "HNL"
+    },
+    {
+      "@id": "cim:Currency.HRK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Croatian kuna.",
+      "rdfs:label": "HRK"
+    },
+    {
+      "@id": "cim:Currency.HTG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Haitian gourde.",
+      "rdfs:label": "HTG"
+    },
+    {
+      "@id": "cim:Currency.HUF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Hungarian forint.",
+      "rdfs:label": "HUF"
+    },
+    {
+      "@id": "cim:Currency.IDR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Indonesian rupiah.",
+      "rdfs:label": "IDR"
+    },
+    {
+      "@id": "cim:Currency.ILS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Israeli new sheqel.",
+      "rdfs:label": "ILS"
+    },
+    {
+      "@id": "cim:Currency.INR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Indian rupee.",
+      "rdfs:label": "INR"
+    },
+    {
+      "@id": "cim:Currency.IQD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Iraqi dinar.",
+      "rdfs:label": "IQD"
+    },
+    {
+      "@id": "cim:Currency.IRR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Iranian rial.",
+      "rdfs:label": "IRR"
+    },
+    {
+      "@id": "cim:Currency.ISK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Icelandic króna.",
+      "rdfs:label": "ISK"
+    },
+    {
+      "@id": "cim:Currency.JMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Jamaican dollar.",
+      "rdfs:label": "JMD"
+    },
+    {
+      "@id": "cim:Currency.JOD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Jordanian dinar.",
+      "rdfs:label": "JOD"
+    },
+    {
+      "@id": "cim:Currency.JPY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Japanese yen.",
+      "rdfs:label": "JPY"
+    },
+    {
+      "@id": "cim:Currency.KES",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kenyan shilling.",
+      "rdfs:label": "KES"
+    },
+    {
+      "@id": "cim:Currency.KGS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kyrgyzstani som.",
+      "rdfs:label": "KGS"
+    },
+    {
+      "@id": "cim:Currency.KHR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cambodian riel.",
+      "rdfs:label": "KHR"
+    },
+    {
+      "@id": "cim:Currency.KMF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Comoro franc.",
+      "rdfs:label": "KMF"
+    },
+    {
+      "@id": "cim:Currency.KPW",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "North Korean won.",
+      "rdfs:label": "KPW"
+    },
+    {
+      "@id": "cim:Currency.KRW",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "South Korean won.",
+      "rdfs:label": "KRW"
+    },
+    {
+      "@id": "cim:Currency.KWD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kuwaiti dinar.",
+      "rdfs:label": "KWD"
+    },
+    {
+      "@id": "cim:Currency.KYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cayman Islands dollar.",
+      "rdfs:label": "KYD"
+    },
+    {
+      "@id": "cim:Currency.KZT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kazakhstani tenge.",
+      "rdfs:label": "KZT"
+    },
+    {
+      "@id": "cim:Currency.LAK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lao kip.",
+      "rdfs:label": "LAK"
+    },
+    {
+      "@id": "cim:Currency.LBP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lebanese pound.",
+      "rdfs:label": "LBP"
+    },
+    {
+      "@id": "cim:Currency.LKR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sri Lanka rupee.",
+      "rdfs:label": "LKR"
+    },
+    {
+      "@id": "cim:Currency.LRD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Liberian dollar.",
+      "rdfs:label": "LRD"
+    },
+    {
+      "@id": "cim:Currency.LSL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lesotho loti.",
+      "rdfs:label": "LSL"
+    },
+    {
+      "@id": "cim:Currency.LTL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lithuanian litas.",
+      "rdfs:label": "LTL"
+    },
+    {
+      "@id": "cim:Currency.LVL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Latvian lats.",
+      "rdfs:label": "LVL"
+    },
+    {
+      "@id": "cim:Currency.LYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Libyan dinar.",
+      "rdfs:label": "LYD"
+    },
+    {
+      "@id": "cim:Currency.MAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moroccan dirham.",
+      "rdfs:label": "MAD"
+    },
+    {
+      "@id": "cim:Currency.MDL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moldovan leu.",
+      "rdfs:label": "MDL"
+    },
+    {
+      "@id": "cim:Currency.MGA",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malagasy ariary.",
+      "rdfs:label": "MGA"
+    },
+    {
+      "@id": "cim:Currency.MKD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Macedonian denar.",
+      "rdfs:label": "MKD"
+    },
+    {
+      "@id": "cim:Currency.MMK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Myanma kyat.",
+      "rdfs:label": "MMK"
+    },
+    {
+      "@id": "cim:Currency.MNT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mongolian tugrik.",
+      "rdfs:label": "MNT"
+    },
+    {
+      "@id": "cim:Currency.MOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Macanese pataca.",
+      "rdfs:label": "MOP"
+    },
+    {
+      "@id": "cim:Currency.MRO",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mauritanian ouguiya.",
+      "rdfs:label": "MRO"
+    },
+    {
+      "@id": "cim:Currency.MUR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mauritian rupee.",
+      "rdfs:label": "MUR"
+    },
+    {
+      "@id": "cim:Currency.MVR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Maldivian rufiyaa.",
+      "rdfs:label": "MVR"
+    },
+    {
+      "@id": "cim:Currency.MWK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malawian kwacha.",
+      "rdfs:label": "MWK"
+    },
+    {
+      "@id": "cim:Currency.MXN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mexican peso.",
+      "rdfs:label": "MXN"
+    },
+    {
+      "@id": "cim:Currency.MYR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malaysian ringgit.",
+      "rdfs:label": "MYR"
+    },
+    {
+      "@id": "cim:Currency.MZN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mozambican metical.",
+      "rdfs:label": "MZN"
+    },
+    {
+      "@id": "cim:Currency.NAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Namibian dollar.",
+      "rdfs:label": "NAD"
+    },
+    {
+      "@id": "cim:Currency.NGN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Nigerian naira.",
+      "rdfs:label": "NGN"
+    },
+    {
+      "@id": "cim:Currency.NIO",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cordoba oro.",
+      "rdfs:label": "NIO"
+    },
+    {
+      "@id": "cim:Currency.NOK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Norwegian krone.",
+      "rdfs:label": "NOK"
+    },
+    {
+      "@id": "cim:Currency.NPR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Nepalese rupee.",
+      "rdfs:label": "NPR"
+    },
+    {
+      "@id": "cim:Currency.NZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "New Zealand dollar.",
+      "rdfs:label": "NZD"
+    },
+    {
+      "@id": "cim:Currency.OMR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Omani rial.",
+      "rdfs:label": "OMR"
+    },
+    {
+      "@id": "cim:Currency.PAB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Panamanian balboa.",
+      "rdfs:label": "PAB"
+    },
+    {
+      "@id": "cim:Currency.PEN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Peruvian nuevo sol.",
+      "rdfs:label": "PEN"
+    },
+    {
+      "@id": "cim:Currency.PGK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Papua New Guinean kina.",
+      "rdfs:label": "PGK"
+    },
+    {
+      "@id": "cim:Currency.PHP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Philippine peso.",
+      "rdfs:label": "PHP"
+    },
+    {
+      "@id": "cim:Currency.PKR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pakistani rupee.",
+      "rdfs:label": "PKR"
+    },
+    {
+      "@id": "cim:Currency.PLN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Polish zloty.",
+      "rdfs:label": "PLN"
+    },
+    {
+      "@id": "cim:Currency.PYG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Paraguayan guaraní.",
+      "rdfs:label": "PYG"
+    },
+    {
+      "@id": "cim:Currency.QAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Qatari rial.",
+      "rdfs:label": "QAR"
+    },
+    {
+      "@id": "cim:Currency.RON",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Romanian new leu.",
+      "rdfs:label": "RON"
+    },
+    {
+      "@id": "cim:Currency.RSD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Serbian dinar.",
+      "rdfs:label": "RSD"
+    },
+    {
+      "@id": "cim:Currency.RUB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Russian rouble.",
+      "rdfs:label": "RUB"
+    },
+    {
+      "@id": "cim:Currency.RWF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Rwandan franc.",
+      "rdfs:label": "RWF"
+    },
+    {
+      "@id": "cim:Currency.SAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Saudi riyal.",
+      "rdfs:label": "SAR"
+    },
+    {
+      "@id": "cim:Currency.SBD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Solomon Islands dollar.",
+      "rdfs:label": "SBD"
+    },
+    {
+      "@id": "cim:Currency.SCR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Seychelles rupee.",
+      "rdfs:label": "SCR"
+    },
+    {
+      "@id": "cim:Currency.SDG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sudanese pound.",
+      "rdfs:label": "SDG"
+    },
+    {
+      "@id": "cim:Currency.SEK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Swedish krona/kronor.",
+      "rdfs:label": "SEK"
+    },
+    {
+      "@id": "cim:Currency.SGD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Singapore dollar.",
+      "rdfs:label": "SGD"
+    },
+    {
+      "@id": "cim:Currency.SHP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Saint Helena pound.",
+      "rdfs:label": "SHP"
+    },
+    {
+      "@id": "cim:Currency.SLL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sierra Leonean leone.",
+      "rdfs:label": "SLL"
+    },
+    {
+      "@id": "cim:Currency.SOS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Somali shilling.",
+      "rdfs:label": "SOS"
+    },
+    {
+      "@id": "cim:Currency.SRD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Surinamese dollar.",
+      "rdfs:label": "SRD"
+    },
+    {
+      "@id": "cim:Currency.STD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "São Tomé and Príncipe dobra.",
+      "rdfs:label": "STD"
+    },
+    {
+      "@id": "cim:Currency.SYP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Syrian pound.",
+      "rdfs:label": "SYP"
+    },
+    {
+      "@id": "cim:Currency.SZL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lilangeni.",
+      "rdfs:label": "SZL"
+    },
+    {
+      "@id": "cim:Currency.THB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Thai baht.",
+      "rdfs:label": "THB"
+    },
+    {
+      "@id": "cim:Currency.TJS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tajikistani somoni.",
+      "rdfs:label": "TJS"
+    },
+    {
+      "@id": "cim:Currency.TMT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Turkmenistani manat.",
+      "rdfs:label": "TMT"
+    },
+    {
+      "@id": "cim:Currency.TND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tunisian dinar.",
+      "rdfs:label": "TND"
+    },
+    {
+      "@id": "cim:Currency.TOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tongan pa'anga.",
+      "rdfs:label": "TOP"
+    },
+    {
+      "@id": "cim:Currency.TRY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Turkish lira.",
+      "rdfs:label": "TRY"
+    },
+    {
+      "@id": "cim:Currency.TTD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Trinidad and Tobago dollar.",
+      "rdfs:label": "TTD"
+    },
+    {
+      "@id": "cim:Currency.TWD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "New Taiwan dollar.",
+      "rdfs:label": "TWD"
+    },
+    {
+      "@id": "cim:Currency.TZS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tanzanian shilling.",
+      "rdfs:label": "TZS"
+    },
+    {
+      "@id": "cim:Currency.UAH",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ukrainian hryvnia.",
+      "rdfs:label": "UAH"
+    },
+    {
+      "@id": "cim:Currency.UGX",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ugandan shilling.",
+      "rdfs:label": "UGX"
+    },
+    {
+      "@id": "cim:Currency.USD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "United States dollar.",
+      "rdfs:label": "USD"
+    },
+    {
+      "@id": "cim:Currency.UYU",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Uruguayan peso.",
+      "rdfs:label": "UYU"
+    },
+    {
+      "@id": "cim:Currency.UZS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Uzbekistan som.",
+      "rdfs:label": "UZS"
+    },
+    {
+      "@id": "cim:Currency.VEF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Venezuelan bolívar fuerte.",
+      "rdfs:label": "VEF"
+    },
+    {
+      "@id": "cim:Currency.VND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Vietnamese Dong.",
+      "rdfs:label": "VND"
+    },
+    {
+      "@id": "cim:Currency.VUV",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Vanuatu vatu.",
+      "rdfs:label": "VUV"
+    },
+    {
+      "@id": "cim:Currency.WST",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Samoan tala.",
+      "rdfs:label": "WST"
+    },
+    {
+      "@id": "cim:Currency.XAF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFA franc BEAC.",
+      "rdfs:label": "XAF"
+    },
+    {
+      "@id": "cim:Currency.XCD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "East Caribbean dollar.",
+      "rdfs:label": "XCD"
+    },
+    {
+      "@id": "cim:Currency.XOF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFA Franc BCEAO.",
+      "rdfs:label": "XOF"
+    },
+    {
+      "@id": "cim:Currency.XPF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFP franc.",
+      "rdfs:label": "XPF"
+    },
+    {
+      "@id": "cim:Currency.YER",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Yemeni rial.",
+      "rdfs:label": "YER"
+    },
+    {
+      "@id": "cim:Currency.ZAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "South African rand.",
+      "rdfs:label": "ZAR"
+    },
+    {
+      "@id": "cim:Currency.ZMK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Zambian kwacha.",
+      "rdfs:label": "ZMK"
+    },
+    {
+      "@id": "cim:Currency.ZWL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Zimbabwe dollar.",
+      "rdfs:label": "ZWL"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.none",
+      "rdfs:comment": "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.",
+      "rdfs:label": "PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.VAr",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the quadrature component of the current.",
+      "rdfs:label": "ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.s",
+      "rdfs:comment": "Time, in seconds.",
+      "rdfs:label": "Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.M",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E6",
+      "rdfs:comment": "Mega 10**6.",
+      "rdfs:label": "M",
+      "skos:exactMatch": "prefix:Mega"
+    },
+    {
+      "@id": "cim:UnitMultiplier.none",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E0",
+      "rdfs:comment": "No multiplier or equivalently multiply by 1.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.VAr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:label": "VAr",
+      "skos:exactMatch": "unit:V-A_Reactive"
+    },
+    {
+      "@id": "cim:UnitSymbol.W",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.",
+      "rdfs:label": "W",
+      "skos:exactMatch": "unit:W"
+    },
+    {
+      "@id": "cim:UnitSymbol.none",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dimension less quantity, e.g. count, per unit, etc.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.s",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time in seconds.",
+      "rdfs:label": "s",
+      "skos:exactMatch": "unit:SEC"
+    },
+    {
+      "@id": "cim:Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "nc:CalculationKind.division",
+      "@type": "nc:CalculationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Division operation on the input values (operands).",
+      "rdfs:label": "division"
+    },
+    {
+      "@id": "nc:CalculationKind.multiplication",
+      "@type": "nc:CalculationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Multiplication operation on the input values (operands).",
+      "rdfs:label": "multiplication"
+    },
+    {
+      "@id": "nc:CalculationKind.squareRoot",
+      "@type": "nc:CalculationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Square root operator - only one input value (operands).",
+      "rdfs:label": "squareRoot"
+    },
+    {
+      "@id": "nc:CalculationKind.summation",
+      "@type": "nc:CalculationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Summation operation on the input values (operands).",
+      "rdfs:label": "summation"
+    },
+    {
+      "@id": "nc:ElementCombinationConstraintKind.considered",
+      "@type": "nc:ElementCombinationConstraintKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Element combination can be considered.",
+      "rdfs:label": "considered"
+    },
+    {
+      "@id": "nc:ElementCombinationConstraintKind.excluded",
+      "@type": "nc:ElementCombinationConstraintKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Element combination is excluded.",
+      "rdfs:label": "excluded"
+    },
+    {
+      "@id": "nc:ElementCombinationConstraintKind.included",
+      "@type": "nc:ElementCombinationConstraintKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Element combination is included.",
+      "rdfs:label": "included"
+    },
+    {
+      "@id": "nc:GateLogicKind.and",
+      "@type": "nc:GateLogicKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A logical AND operation. True when all inputs are true.",
+      "rdfs:label": "and"
+    },
+    {
+      "@id": "nc:GateLogicKind.nand",
+      "@type": "nc:GateLogicKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A logical NAND operation. False when all inputs are true.",
+      "rdfs:label": "nand"
+    },
+    {
+      "@id": "nc:GateLogicKind.nor",
+      "@type": "nc:GateLogicKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A logical NOR operation. False when one or more inputs are true.",
+      "rdfs:label": "nor"
+    },
+    {
+      "@id": "nc:GateLogicKind.not",
+      "@type": "nc:GateLogicKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A logical NOT operation. Only one input and true input will give false out and false in will give true out. An inverter.",
+      "rdfs:label": "not"
+    },
+    {
+      "@id": "nc:GateLogicKind.or",
+      "@type": "nc:GateLogicKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A logical OR operation. True when one or more inputs are true.",
+      "rdfs:label": "or"
+    },
+    {
+      "@id": "nc:GateLogicKind.xnor",
+      "@type": "nc:GateLogicKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A logical XNOR operation. The function is the inverse of the exclusive OR (XOR) gate. All input false or true will give true. Otherwise false.",
+      "rdfs:label": "xnor"
+    },
+    {
+      "@id": "nc:GateLogicKind.xor",
+      "@type": "nc:GateLogicKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A logical XOR operation.  All input false or true will give false. Otherwise true.",
+      "rdfs:label": "xor"
+    },
+    {
+      "@id": "nc:LogicalOperatorsKind.equals",
+      "@type": "nc:LogicalOperatorsKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Equals (like) comparison operation.",
+      "rdfs:label": "equals"
+    },
+    {
+      "@id": "nc:LogicalOperatorsKind.greaterThan",
+      "@type": "nc:LogicalOperatorsKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Greater than comparison operation.",
+      "rdfs:label": "greaterThan"
+    },
+    {
+      "@id": "nc:LogicalOperatorsKind.greaterThanOrEquals",
+      "@type": "nc:LogicalOperatorsKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Greater than or equals comparison operation.",
+      "rdfs:label": "greaterThanOrEquals"
+    },
+    {
+      "@id": "nc:LogicalOperatorsKind.lessThan",
+      "@type": "nc:LogicalOperatorsKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Less than comparison operation.",
+      "rdfs:label": "lessThan"
+    },
+    {
+      "@id": "nc:LogicalOperatorsKind.lessThanOrEquals",
+      "@type": "nc:LogicalOperatorsKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Less than or equals comparison operation.",
+      "rdfs:label": "lessThanOrEquals"
+    },
+    {
+      "@id": "nc:LogicalOperatorsKind.notEqual",
+      "@type": "nc:LogicalOperatorsKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Not equal (unlike) comparison operation.",
+      "rdfs:label": "notEqual"
+    },
+    {
+      "@id": "nc:PinDCTerminalKind.current",
+      "@type": "nc:PinDCTerminalKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Direct current in the DCTerminal.",
+      "rdfs:label": "current"
+    },
+    {
+      "@id": "nc:PinDCTerminalKind.voltage",
+      "@type": "nc:PinDCTerminalKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Direct current voltage in the DCTerminal.",
+      "rdfs:label": "voltage"
+    },
+    {
+      "@id": "nc:PinPowerTransferCorridorKind.activePower",
+      "@type": "nc:PinPowerTransferCorridorKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Active power in the branch group.",
+      "rdfs:label": "activePower"
+    },
+    {
+      "@id": "nc:PinPowerTransferCorridorKind.reactivePower",
+      "@type": "nc:PinPowerTransferCorridorKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power in the branch group.",
+      "rdfs:label": "reactivePower"
+    },
+    {
+      "@id": "nc:PinTerminalKind.activePower",
+      "@type": "nc:PinTerminalKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Active power on the Terminal.",
+      "rdfs:label": "activePower"
+    },
+    {
+      "@id": "nc:PinTerminalKind.apparentPower",
+      "@type": "nc:PinTerminalKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Apparent power on the Terminal.",
+      "rdfs:label": "apparentPower"
+    },
+    {
+      "@id": "nc:PinTerminalKind.current",
+      "@type": "nc:PinTerminalKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Current on the Terminal.",
+      "rdfs:label": "current"
+    },
+    {
+      "@id": "nc:PinTerminalKind.reactivePower",
+      "@type": "nc:PinTerminalKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power on the Terminal.",
+      "rdfs:label": "reactivePower"
+    },
+    {
+      "@id": "nc:PinTerminalKind.voltageAngle",
+      "@type": "nc:PinTerminalKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Voltage angle on the Terminal.",
+      "rdfs:label": "voltageAngle"
+    },
+    {
+      "@id": "nc:PinTerminalKind.voltageMagnitude",
+      "@type": "nc:PinTerminalKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Voltage magnitude on the Terminal.",
+      "rdfs:label": "voltageMagnitude"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind.down",
+      "@type": "nc:RelativeDirectionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Down signifies that the changes are decreasing from the current status.",
+      "rdfs:label": "down"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind.none",
+      "@type": "nc:RelativeDirectionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "There is no direction on the changes.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind.up",
+      "@type": "nc:RelativeDirectionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Up signifies that the changes are increasing from the current status.",
+      "rdfs:label": "up"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind.upAndDown",
+      "@type": "nc:RelativeDirectionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Up and down signifies that both up and down values are equal.",
+      "rdfs:label": "upAndDown"
+    },
+    {
+      "@id": "nc:RemedialActionDependencyKind.balanced",
+      "@type": "nc:RemedialActionDependencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "This applies only to a set of power remedial actions and means that the remedial action needs to be balanced between the area (directly or indirectly to the bidding zone) that it is applied to.",
+      "rdfs:label": "balanced"
+    },
+    {
+      "@id": "nc:RemedialActionDependencyKind.exclusive",
+      "@type": "nc:RemedialActionDependencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Remedial actions are exclusive depending on each other. e.g. Only one of the remedial actions can be selected at the same time.",
+      "rdfs:label": "exclusive"
+    },
+    {
+      "@id": "nc:RemedialActionDependencyKind.inclusive",
+      "@type": "nc:RemedialActionDependencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Remedial actions are inclusive depending on each other. e.g. Both remedial action need to be picked if one of them is needed.",
+      "rdfs:label": "inclusive"
+    },
+    {
+      "@id": "nc:RemedialActionDependencyKind.none",
+      "@type": "nc:RemedialActionDependencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Remedial actions are not depending on each other. However, the two remedial actions should be evaluated together.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "nc:RemedialActionDependencyKind.restrictive",
+      "@type": "nc:RemedialActionDependencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Remedial actions are restrictive depending on each other. The need to include or to exclude might depend on the model. e.g. In the case of simplified DC model and detailed DC model. In the case where the simplified remedial action is used but not the remedial action for the detail model and opposite for the DC model.",
+      "rdfs:label": "restrictive"
+    },
+    {
+      "@id": "nc:RemedialActionKind.curative",
+      "@type": "nc:RemedialActionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Curative remedial action means a remedial action that is the result of an operational planning process and is activated straight subsequent to the occurrence of the respective contingency for compliance with the (N-1) criterion, taking into account transitory admissible overloads and their accepted duration.",
+      "rdfs:label": "curative"
+    },
+    {
+      "@id": "nc:RemedialActionKind.preventive",
+      "@type": "nc:RemedialActionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Preventive remedial action means a remedial action that is the result of an operational planning process and needs to be activated prior to the investigated timeframe for compliance with the (N-1) criterion.",
+      "rdfs:label": "preventive"
+    },
+    {
+      "@id": "nc:RemedialActionSchemeKind.rasp",
+      "@type": "nc:RemedialActionSchemeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Remedial Action Schema Plan (RASP). The triggering conditions are met through calculation or manual intervention.",
+      "rdfs:label": "rasp"
+    },
+    {
+      "@id": "nc:RemedialActionSchemeKind.sips",
+      "@type": "nc:RemedialActionSchemeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "System Integrity Protection Scheme (SIPS). The triggering conditions are met through field measurements.",
+      "rdfs:label": "sips"
+    },
+    {
+      "@id": "nc:ValueOffsetKind.absolute",
+      "@type": "nc:ValueOffsetKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Value of the range constraint is replacing the attribute value referenced by the PropertyReference in a determined operational scenario.",
+      "rdfs:label": "absolute"
+    },
+    {
+      "@id": "nc:ValueOffsetKind.incremental",
+      "@type": "nc:ValueOffsetKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Value of the range constraint is incrementing the attribute value referenced by the PropertyReference in a determined operational scenario.",
+      "rdfs:label": "incremental"
+    },
+    {
+      "@id": "nc:ValueOffsetKind.incrementalPercentage",
+      "@type": "nc:ValueOffsetKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Value of the range constraint is incrementing in percentage the attribute value referenced by the PropertyReference in a determined operational scenario.",
+      "rdfs:label": "incrementalPercentage"
+    },
+    {
+      "@id": "ra:Package_DocRemedialActionProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocRemedialActionProfile"
+    },
+    {
+      "@id": "ra:Package_RemedialActionProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains remedial action profile.",
+      "rdfs:label": "RemedialActionProfile"
+    }
+  ]
+}

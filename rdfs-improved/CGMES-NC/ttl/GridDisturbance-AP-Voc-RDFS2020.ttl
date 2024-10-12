@@ -25,7 +25,7 @@ gd:Ontology a owl:Ontology ;
   dct:creator "ENTSO-E CIM WG PRA project"@en ;
   dct:identifier "urn:uuid:81c488d7-a09f-49ef-a3cd-3bb19a1d6f16" ;
   dct:language "en-GB" ;
-  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   dct:modified "2024-09-07"^^xsd:date ;
   dct:publisher "ENTSO-E" ;
   dct:rightsHolder "ENTSO-E" ;

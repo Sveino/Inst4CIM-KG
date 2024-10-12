@@ -49,7 +49,7 @@ where {
 insert {?multiplier qudt:prefixMultiplier ?prefixMultiplier; skos:exactMatch ?exactMatch}
 where {
   values (?multiplier             ?prefixMultiplier ?exactMatch ) {
-         (cim:UnitMultiplier.none 1.0               UNDEF       )
+         (cim:UnitMultiplier.none 1.0E0             UNDEF       )
          (cim:UnitMultiplier.k    1.0E3             prefix:Kilo )
          (cim:UnitMultiplier.M    1.0E6             prefix:Mega )
   }

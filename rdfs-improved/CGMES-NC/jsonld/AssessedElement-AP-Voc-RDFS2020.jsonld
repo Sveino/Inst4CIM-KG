@@ -1,0 +1,1555 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "ae:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the aseessed element profile.",
+      "dct:identifier": "urn:uuid:a2de1738-214d-4552-b894-5b33cbc34218",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Assessed Element Vocabulary",
+      "owl:priorVersion": "http://entsoe.eu/ns/CIM/AssessedElement-EU/2.2",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/AssessedElement/2.3",
+      "owl:versionInfo": "2.3.1",
+      "dcat:keyword": "AE",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:ConductingEquipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "rdfs:comment": "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals.",
+      "rdfs:label": "ConductingEquipment"
+    },
+    {
+      "@id": "cim:Contingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "rdfs:comment": "An event threatening system reliability, consisting of one or more contingency elements.",
+      "rdfs:label": "Contingency"
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:OperationalLimit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "rdfs:comment": "A value and normal value associated with a specific kind of limit. \nThe sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \nIf a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.",
+      "rdfs:label": "OperationalLimit"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "nc:AssessedElement",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.\nThe measurements and limits are as defined in the steady state hypothesis.",
+      "rdfs:label": "AssessedElement",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:AssessedElementWithContingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Combination of an assessed element and a contingency.",
+      "rdfs:label": "AssessedElementWithContingency"
+    },
+    {
+      "@id": "nc:AssessedElementWithRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Combination of an assessed element and a remedial action",
+      "rdfs:label": "AssessedElementWithRemedialAction"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Defines the aggregated connection capacity between two Bidding Zones.",
+      "rdfs:label": "BiddingZoneBorder"
+    },
+    {
+      "@id": "nc:CriticalElementContingencyKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kind of critical element contingency.",
+      "rdfs:label": "CriticalElementContingencyKind"
+    },
+    {
+      "@id": "nc:CrossBorderRelevance",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Combination of an assessed element and a bidding zone border.",
+      "rdfs:label": "CrossBorderRelevance"
+    },
+    {
+      "@id": "nc:DCTieCorridor",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A collection of one or more direct current poles that connect two different control areas.",
+      "rdfs:label": "DCTieCorridor"
+    },
+    {
+      "@id": "nc:ElementCombinationConstraintKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of constraint for an element combination.",
+      "rdfs:label": "ElementCombinationConstraintKind"
+    },
+    {
+      "@id": "nc:OverlappingZone",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A collection of all the overlapping cross border assessed elements which have the same sets of impacted and impacting regions.",
+      "rdfs:label": "OverlappingZone"
+    },
+    {
+      "@id": "nc:PowerTransferCorridor",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A power transfer corridor is defined as a set of circuits (transmission lines or transformers) separating two portions of the power system, or a subset of circuits exposed to a substantial portion of the transmission exchange between two parts of the system.",
+      "rdfs:label": "PowerTransferCorridor"
+    },
+    {
+      "@id": "nc:Region",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A region where the system operator belongs to.",
+      "rdfs:label": "Region"
+    },
+    {
+      "@id": "nc:RemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly.",
+      "rdfs:label": "RemedialAction"
+    },
+    {
+      "@id": "nc:SecuredExclusionReasonKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kind of secured exclusion reason.",
+      "rdfs:label": "SecuredExclusionReasonKind"
+    },
+    {
+      "@id": "nc:SystemOperator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "System operator.",
+      "rdfs:label": "SystemOperator"
+    },
+    {
+      "@id": "nc:AssessedElement.AssessedElementWithContingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The contingency and assessed element combination to be simulated for this assessed element.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "AssessedElementWithContingency",
+      "rdfs:range": "nc:AssessedElementWithContingency",
+      "owl:inverseOf": "nc:AssessedElementWithContingency.AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.AssessedElementWithRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element and remedial action combination to be simulated for this assessed element.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "AssessedElementWithRemedialAction",
+      "rdfs:range": "nc:AssessedElementWithRemedialAction",
+      "owl:inverseOf": "nc:AssessedElementWithRemedialAction.AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.AssessedPowerTransferCorridor",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The power transfer corridor that is designated as an assessed element.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "AssessedPowerTransferCorridor",
+      "rdfs:range": "nc:PowerTransferCorridor",
+      "owl:inverseOf": "nc:PowerTransferCorridor.AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.AssessedSystemOperator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A system operator that assesses the element.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "AssessedSystemOperator",
+      "rdfs:range": "nc:SystemOperator",
+      "owl:inverseOf": "nc:SystemOperator.AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.ConductingEquipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The conducting equipment that is designated as an assessed element, i.e. the equipment that is assessed.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "ConductingEquipment",
+      "rdfs:range": "cim:ConductingEquipment",
+      "owl:inverseOf": "nc:ConductingEquipment.AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.CrossBorderRelevance",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The Bidding zone border for which this assessed element is cross border relevant.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "CrossBorderRelevance",
+      "rdfs:range": "nc:CrossBorderRelevance",
+      "owl:inverseOf": "nc:CrossBorderRelevance.AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.DCTieCorridor",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The DC tie corridor that is assessed.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "DCTieCorridor",
+      "rdfs:range": "nc:DCTieCorridor",
+      "owl:inverseOf": "nc:DCTieCorridor.AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.NativeRegion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The native region for an assessed element.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "NativeRegion",
+      "rdfs:range": "nc:Region",
+      "owl:inverseOf": "nc:Region.NativeAssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.OperationalLimit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The terminal limit that is being assessed against.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "OperationalLimit",
+      "rdfs:range": "cim:OperationalLimit",
+      "owl:inverseOf": "nc:OperationalLimit.AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.OverlappingZone",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The overlapping zone grouping the overlapping assessed elements.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "OverlappingZone",
+      "rdfs:range": "nc:OverlappingZone",
+      "owl:inverseOf": "nc:OverlappingZone.OverlappingAssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.ScannedForRegion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "This is the region in which this assessed element is scanned.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "ScannedForRegion",
+      "rdfs:range": "nc:Region",
+      "owl:inverseOf": "nc:Region.ScannedAssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.SecuredForRegion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "This is the region where the element is secured.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "SecuredForRegion",
+      "rdfs:range": "nc:Region",
+      "owl:inverseOf": "nc:Region.SecuredAssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElement.criticalElementContingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates the type of the critical element contingency.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "criticalElementContingency",
+      "rdfs:range": "nc:CriticalElementContingencyKind"
+    },
+    {
+      "@id": "nc:AssessedElement.exclusionReason",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Reason for not associating this assessed element with a secured region.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "exclusionReason",
+      "rdfs:range": "nc:SecuredExclusionReasonKind"
+    },
+    {
+      "@id": "nc:AssessedElementWithContingency.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element defined for this contingency and assessed element combination.",
+      "rdfs:domain": "nc:AssessedElementWithContingency",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.AssessedElementWithContingency"
+    },
+    {
+      "@id": "nc:AssessedElementWithContingency.Contingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The contingency defined for this contingency and assessed element combination.",
+      "rdfs:domain": "nc:AssessedElementWithContingency",
+      "rdfs:label": "Contingency",
+      "rdfs:range": "cim:Contingency",
+      "owl:inverseOf": "nc:Contingency.AssessedElementWithContingency"
+    },
+    {
+      "@id": "nc:AssessedElementWithContingency.combinationConstraintKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the combination constraint of the AssessedElement and Contingency. If included, this assessed element is only assessed for this contingency. Else if excluded, this assessed element should not be assessed for this contingency. Considered shall not be used for this combination.",
+      "rdfs:domain": "nc:AssessedElementWithContingency",
+      "rdfs:label": "combinationConstraintKind",
+      "rdfs:range": "nc:ElementCombinationConstraintKind"
+    },
+    {
+      "@id": "nc:AssessedElementWithRemedialAction.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element defined for this assessed element and remedial action combination.",
+      "rdfs:domain": "nc:AssessedElementWithRemedialAction",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.AssessedElementWithRemedialAction"
+    },
+    {
+      "@id": "nc:AssessedElementWithRemedialAction.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action defined for this assessed element and remedial action combination.",
+      "rdfs:domain": "nc:AssessedElementWithRemedialAction",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:RemedialAction",
+      "owl:inverseOf": "nc:RemedialAction.AssessedElementWithRemedialAction"
+    },
+    {
+      "@id": "nc:AssessedElementWithRemedialAction.combinationConstraintKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the combination constraint of the AssessedElement and Remedial Action. If included, this remedial action is only assessed for this assessed element. Else if excluded, this remedial action should not be used for this assessed element. Else if considered, this remedial action can be considered for this assessed element.",
+      "rdfs:domain": "nc:AssessedElementWithRemedialAction",
+      "rdfs:label": "combinationConstraintKind",
+      "rdfs:range": "nc:ElementCombinationConstraintKind"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.CrossBorderRelevance",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Cross border relevant combination for this bidding zone border.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "CrossBorderRelevance",
+      "rdfs:range": "nc:CrossBorderRelevance",
+      "owl:inverseOf": "nc:CrossBorderRelevance.BiddingZoneBorder"
+    },
+    {
+      "@id": "nc:ConductingEquipment.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element indicating that the conducting equipment is assessed, i.e. monitored.",
+      "rdfs:domain": "cim:ConductingEquipment",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.ConductingEquipment"
+    },
+    {
+      "@id": "nc:Contingency.AssessedElementWithContingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The contingency and assessed element combination to be simulated for this contingency.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "AssessedElementWithContingency",
+      "rdfs:range": "nc:AssessedElementWithContingency",
+      "owl:inverseOf": "nc:AssessedElementWithContingency.Contingency"
+    },
+    {
+      "@id": "nc:CrossBorderRelevance.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Assessed element which is cross border relevant.",
+      "rdfs:domain": "nc:CrossBorderRelevance",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.CrossBorderRelevance"
+    },
+    {
+      "@id": "nc:CrossBorderRelevance.BiddingZoneBorder",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Bidding zone border relevant for this combination.",
+      "rdfs:domain": "nc:CrossBorderRelevance",
+      "rdfs:label": "BiddingZoneBorder",
+      "rdfs:range": "nc:BiddingZoneBorder",
+      "owl:inverseOf": "nc:BiddingZoneBorder.CrossBorderRelevance"
+    },
+    {
+      "@id": "nc:DCTieCorridor.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element indicating that the DC tie corridor is assessed, i.e. monitored.",
+      "rdfs:domain": "nc:DCTieCorridor",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.DCTieCorridor"
+    },
+    {
+      "@id": "nc:OperationalLimit.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element indicating which operational limit is assessed.",
+      "rdfs:domain": "cim:OperationalLimit",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.OperationalLimit"
+    },
+    {
+      "@id": "nc:OverlappingZone.OverlappingAssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The overlapping assessed element on which the physical flows are significantly impacted by\nelectricity exchanges in two or more regions or by remedial actions from two or more regions.",
+      "rdfs:domain": "nc:OverlappingZone",
+      "rdfs:label": "OverlappingAssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.OverlappingZone"
+    },
+    {
+      "@id": "nc:PowerTransferCorridor.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element indicating that the power transfer corridor is assessed, i.e. monitored.",
+      "rdfs:domain": "nc:PowerTransferCorridor",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.AssessedPowerTransferCorridor"
+    },
+    {
+      "@id": "nc:Region.NativeAssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The native assessed element for a native region.",
+      "rdfs:domain": "nc:Region",
+      "rdfs:label": "NativeAssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.NativeRegion"
+    },
+    {
+      "@id": "nc:Region.ScannedAssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "These are the scanned assessed elements for a region.",
+      "rdfs:domain": "nc:Region",
+      "rdfs:label": "ScannedAssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.ScannedForRegion"
+    },
+    {
+      "@id": "nc:Region.SecuredAssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element secured for this region.",
+      "rdfs:domain": "nc:Region",
+      "rdfs:label": "SecuredAssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.SecuredForRegion"
+    },
+    {
+      "@id": "nc:RemedialAction.AssessedElementWithRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assessed element and remedial action combination to be simulated for this remedial action.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "AssessedElementWithRemedialAction",
+      "rdfs:range": "nc:AssessedElementWithRemedialAction",
+      "owl:inverseOf": "nc:AssessedElementWithRemedialAction.RemedialAction"
+    },
+    {
+      "@id": "nc:SystemOperator.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "All relevant network elements on which operational security violations need to be managed in a coordinated way.",
+      "rdfs:domain": "nc:SystemOperator",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.AssessedSystemOperator"
+    },
+    {
+      "@id": "cim:IdentifiedObject.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The name is any free human readable and possibly non unique text naming the object.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElement.flowReliabilityMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Percentage of the maximum flow (margin) reserved to anticipate forecasting errors.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "flowReliabilityMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.inBaseCase",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates if the assessed element is scanned in the base case. In case of a base case overload, the assessed element is considered as a limiting element for the optimization process.\nTrue means that the assessed element is scanned in the base case. False means it is not scanned in the base case.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "inBaseCase",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AssessedElement.insideCapacityMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Percentage of the maximum flow (margin) from coordinated capacity calculation, i.e. capacity available for cross-zonal trade within the considered coordination area.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "insideCapacityMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.isCombinableWithContingency",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines if the AssessedElement is available to be combined with Contingency. If true,  this AssessedElement can be included in various combinations not defined in the data exchange in an explicit way. If false, this assessed element is not to be considered in any combination with remedial actions and contingencies except for the exclusive combination.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "isCombinableWithContingency",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AssessedElement.isCombinableWithRemedialAction",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines if the AssessedElement is available to be combined with RemedialAction. If true,  this AssessedElement can be included in various combinations not defined in the data exchange in an explicit way. If false, this assessed element is not to be considered in any combination with remedial actions and contingencies except for the exclusive combination.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "isCombinableWithRemedialAction",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AssessedElement.maxMarginAdjustment",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Maximum adjustment, relative to maximum flow allowed for exceeding the maximum flow of this assessed element.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "maxMarginAdjustment",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.normalAppointedMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "The normal percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit under normal operating conditions. The maximum percentage shall by default be 10% of the remaining margin.\nIt is only used when an assessed element is considered conservative for a region.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalAppointedMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.normalCoordinatedValidationAdjustment",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Normal positive value calculated and provided by the Coordinated Capacity Calculator (CCC) for the reduction of Remaining Available Margin (RAM) in order to ensure grid security.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalCoordinatedValidationAdjustment",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.normalCoordinatedValidationAdjustmentJustification",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Normal free text description provided by the coordinated capacity calculator (CCC) for justifying the reduction of Remaining Available Margin (RAM) by means of Coordinated Validation Adjustment (CVA). This justification is not intended for any application processing purpose, it should only be used for reporting.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalCoordinatedValidationAdjustmentJustification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElement.normalCriticalElementContingencyJustification",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Normal free text describing the justification  of critical element contingency categorization (e.g. the use of the kind). This justification is not intended for any application processing purpose, it should only be used for reporting.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalCriticalElementContingencyJustification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElement.normalEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the assessed element shall be considered under normal operating conditions.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AssessedElement.normalIndividualValidationAdjustment",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Normal positive value calculated and provided by System Operators from their individual validation process for the reduction of Remaining Available Margin (RAM) in order to ensure grid security.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalIndividualValidationAdjustment",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.normalIndividualValidationAdjustmentJustification",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Normal free text description provided by System Operators for justifying the reduction of Remaining Available Margin (RAM) by means of Individual Validation Adjustment (IVA). This justification is not intended for any application processing purpose, it should only be used for reporting.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalIndividualValidationAdjustmentJustification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElement.normalIndividualValidationAdjustmentShare",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Normal positive value expressed calculated by the Coordinated Capacity Calculator (CCC) based on the provided Individual Validation Adjustment (IVA) by System Operators in order to show the actual reduction of Remaining Available Margin (RAM). Individual Validation Adjustment Share is a positive non-zero value. It is equal or less than the Individual Validation Adjustment value.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalIndividualValidationAdjustmentShare",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.normalMaxFlow",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum flow on a conducting equipment or a collection of conducting equipment forming a power transfer corridor under normal operating conditions. For assessed elements that become critical due to contingency, this value represents the maximum flow with remedial action taken into consideration.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalMaxFlow",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.normalPositiveVirtualMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "A positive margin that defines the overload allowed in a solution for the assessed element for a normal situation. The margin represents influences that can be solved by the System Operators using available remedial action which is not cross-border relevant remedial action.\nAll relevant operational limits (e.g. PATL, TATL, etc) are modified by this margin value. The attribute represents the increase. The allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalPositiveVirtualMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.normalScannedThresholdMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Normal threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalScannedThresholdMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.normalTargetRemainingAvailableMarginJustification",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Normal free text describing the justification for the target Remaining Available Margin (RAM). This justification is not intended for any application processing purpose, it should only be used for reporting.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "normalTargetRemainingAvailableMarginJustification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElement.outsideCapacityMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Percentage of the maximum flow (margin) capacity calculation, i.e. the capacity available for cross-zonal trade outside the considered coordination area. \nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "outsideCapacityMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.targetRemainingAvailableMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Target for the remaining available margin as a percentage of maximum flow.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "targetRemainingAvailableMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElementWithContingency.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:AssessedElementWithContingency",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElementWithContingency.normalEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the assessed element with contingency is enabled, otherwise it is disabled under normal operating conditions.",
+      "rdfs:domain": "nc:AssessedElementWithContingency",
+      "rdfs:label": "normalEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AssessedElementWithRemedialAction.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:AssessedElementWithRemedialAction",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElementWithRemedialAction.normalEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the assessed element with remedial action is enabled, otherwise it is disabled under normal operating conditions.",
+      "rdfs:domain": "nc:AssessedElementWithRemedialAction",
+      "rdfs:label": "normalEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:CrossBorderRelevance.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:CrossBorderRelevance",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:CrossBorderRelevance.normalEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the cross border relevance shall be considered under normal operating conditions.",
+      "rdfs:domain": "nc:CrossBorderRelevance",
+      "rdfs:label": "normalEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "ae:Package_AssessedElementProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains assessed element profile.",
+      "rdfs:label": "AssessedElementProfile"
+    },
+    {
+      "@id": "ae:Package_DocAssessedElementProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocAssessedElementProfile"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.W",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+      "rdfs:label": "ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.none",
+      "rdfs:comment": "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.",
+      "rdfs:label": "PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.M",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E6",
+      "rdfs:comment": "Mega 10**6.",
+      "rdfs:label": "M",
+      "skos:exactMatch": "prefix:Mega"
+    },
+    {
+      "@id": "cim:UnitMultiplier.none",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E0",
+      "rdfs:comment": "No multiplier or equivalently multiply by 1.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.W",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.",
+      "rdfs:label": "W",
+      "skos:exactMatch": "unit:W"
+    },
+    {
+      "@id": "cim:UnitSymbol.none",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dimension less quantity, e.g. count, per unit, etc.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "nc:CriticalElementContingencyKind.critical",
+      "@type": "nc:CriticalElementContingencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Network element is considered to be critical according to the methodology.",
+      "rdfs:label": "critical"
+    },
+    {
+      "@id": "nc:CriticalElementContingencyKind.criticalAndMonitored",
+      "@type": "nc:CriticalElementContingencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Network element is considered to be Critical Network Element monitored under Contingency (CNEC).",
+      "rdfs:label": "criticalAndMonitored"
+    },
+    {
+      "@id": "nc:CriticalElementContingencyKind.monitored",
+      "@type": "nc:CriticalElementContingencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Network element is considered to be monitored under contingency.",
+      "rdfs:label": "monitored"
+    },
+    {
+      "@id": "nc:CriticalElementContingencyKind.validation",
+      "@type": "nc:CriticalElementContingencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Network element should be assessed according to the methodology.",
+      "rdfs:label": "validation"
+    },
+    {
+      "@id": "nc:ElementCombinationConstraintKind.considered",
+      "@type": "nc:ElementCombinationConstraintKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Element combination can be considered.",
+      "rdfs:label": "considered"
+    },
+    {
+      "@id": "nc:ElementCombinationConstraintKind.excluded",
+      "@type": "nc:ElementCombinationConstraintKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Element combination is excluded.",
+      "rdfs:label": "excluded"
+    },
+    {
+      "@id": "nc:ElementCombinationConstraintKind.included",
+      "@type": "nc:ElementCombinationConstraintKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Element combination is included.",
+      "rdfs:label": "included"
+    },
+    {
+      "@id": "nc:SecuredExclusionReasonKind.capacityCalculationRegion",
+      "@type": "nc:SecuredExclusionReasonKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The network element that is going to be assessed is excluded for being secured by the capacity calculation region.",
+      "rdfs:label": "capacityCalculationRegion"
+    },
+    {
+      "@id": "nc:SecuredExclusionReasonKind.nonNativeCapacityCalculationRegion",
+      "@type": "nc:SecuredExclusionReasonKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The network element that is going to be assessed is excluded for being secured for the native capacity calculation region since it would be secured for a non native capacity calculation region.",
+      "rdfs:label": "nonNativeCapacityCalculationRegion"
+    },
+    {
+      "@id": "nc:SecuredExclusionReasonKind.systemOperator",
+      "@type": "nc:SecuredExclusionReasonKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The network element that is going to be assessed is excluded for being secured by the system operator.",
+      "rdfs:label": "systemOperator"
+    }
+  ]
+}

@@ -1,0 +1,1980 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "gd:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG PRA project",
+      "dct:description": "This vocabulary is describing the grid disturbance profile.",
+      "dct:identifier": "urn:uuid:81c488d7-a09f-49ef-a3cd-3bb19a1d6f16",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Grid Disturbance vocabulary",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/GridDisturbance/1.1",
+      "owl:versionInfo": "1.1.1",
+      "dcat:keyword": "GD",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:BaseVoltage",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "rdfs:comment": "Defines a system base voltage which is referenced.",
+      "rdfs:label": "BaseVoltage",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:CoordinateSystem",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "Coordinate reference system.",
+      "rdfs:label": "CoordinateSystem",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:Document",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "rdfs:comment": "Parent class for different groupings of information collected and managed as a part of a business process. It will frequently contain references to other objects, such as assets, people and power system resources.",
+      "rdfs:label": "Document",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:Equipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": "Description",
+      "rdfs:comment": "The parts of a power system that are physical devices, electronic or mechanical.",
+      "rdfs:label": "Equipment"
+    },
+    {
+      "@id": "cim:Fault",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "Abnormal condition causing current flow through conducting equipment, such as caused by equipment failure or short circuits from objects not typically modelled (for example, a tree falling on a line).",
+      "rdfs:label": "Fault",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:FaultCauseType",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "Type of cause of the fault.",
+      "rdfs:label": "FaultCauseType",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:Location",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "The place, scene, or point of something where someone or something has been, is, and/or will be at a given moment in time. It can be defined with one or more position points (coordinates) in a given coordinate system.",
+      "rdfs:label": "Location",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:Outage",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "rdfs:comment": "Document describing details of an active or planned outage in a part of the electrical network.\nA non-planned outage may be created upon:\n- a breaker trip,\n- a fault indicator status change,\n- a meter event indicating customer outage,\n- a reception of one or more customer trouble calls, or\n- an operator command, reflecting information obtained from the field crew.\nOutage restoration may be performed using a switching plan which complements the outage information with detailed switching activities, including the relationship to the crew and work.\nA planned outage may be created upon:\n- a request for service, maintenance or construction work in the field, or\n- an operator-defined outage for what-if/contingency network analysis.",
+      "rdfs:label": "Outage",
+      "rdfs:subClassOf": "cim:Document"
+    },
+    {
+      "@id": "cim:PhaseCode",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.\nResidential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.\nThe integer values are from IEC 61968-9 to support revenue metering applications.",
+      "rdfs:label": "PhaseCode"
+    },
+    {
+      "@id": "cim:PhaseConnectedFaultKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The type of fault connection among phases.",
+      "rdfs:label": "PhaseConnectedFaultKind"
+    },
+    {
+      "@id": "cim:PositionPoint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "Set of spatial coordinates that determine a point, defined in the coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to describe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values).",
+      "rdfs:label": "PositionPoint"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "cim:UnplannedOutage",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "Document describing the consequence of an unplanned outage in a part of the electrical network. For the purposes of this model, an unplanned outage refers to a state where energy is not delivered; such as, customers out of service, a street light is not served, etc.\nA unplanned outage may be created upon:\n- impacts the SAIDI calculation\n- a breaker trip,\n- a fault indicator status change,\n- a meter event indicating customer outage,\n- a reception of one or more customer trouble calls, or\n- an operator command, reflecting information obtained from the field crew.\nOutage restoration may be performed using a switching plan which complements the outage information with detailed switching activities, including the relationship to the crew and work.",
+      "rdfs:label": "UnplannedOutage",
+      "rdfs:subClassOf": "cim:Outage"
+    },
+    {
+      "@id": "nc:AutoReclosingKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The type of autoreclosing that occurred with the trip.\n\nIf high-speed automatic reclosing is successful at one end of a line, but the line needs to be reclosed manually at the other end, choose manual reclosing.\n\nIn this document, high-speed automatic reclosing refers to automatic reclosing after less than 2 seconds.",
+      "rdfs:label": "AutoReclosingKind"
+    },
+    {
+      "@id": "nc:CertaintyLevelKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "High certainty level is used when the cause of a fault is 100 % certain or when the cause is the most probable cause and potentially determined by an expert.",
+      "rdfs:label": "CertaintyLevelKind"
+    },
+    {
+      "@id": "nc:FaultCategoryKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Available kinds of fault categories.",
+      "rdfs:label": "FaultCategoryKind"
+    },
+    {
+      "@id": "nc:FaultCause",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Fault cause.",
+      "rdfs:label": "FaultCause"
+    },
+    {
+      "@id": "nc:FaultKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "One fault can consist of several fault types. If a fault consists of several fault types, the most significant fault type is used.\n\nIn case of developing faults, that is in faults changing from one type to another, the final type is given.",
+      "rdfs:label": "FaultKind"
+    },
+    {
+      "@id": "nc:FaultOutage",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Association class for relating one fault and one outage.",
+      "rdfs:label": "FaultOutage"
+    },
+    {
+      "@id": "nc:GridDisturbance",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Automatic, unintended, or manual undeferrable switching of breakers as a result of faults in the power grid.",
+      "rdfs:label": "GridDisturbance",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:Interruption",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Disappearance of the supply voltage at a delivery point.",
+      "rdfs:label": "Interruption",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:SystemOperator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "System operator.",
+      "rdfs:label": "SystemOperator"
+    },
+    {
+      "@id": "nc:SystemUnitKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "A system unit is defined as:\n\nA group of components which are delimited by one or more circuit breakers.\n\nNote 1: the system unit concept has been defined to simplify the calculation of availability. While a system unit is always delimited by circuit breakers, an individual component may not always be. A system unit may therefore contain more than one component. \n\nNote 2: the circuit breakers are not included in the system unit.\n \nNote 3: a tripped element is synonymous to a tripped system unit.\n\nNote 4: the type of a system unit is determined by its dominant component. The available system unit types are power transformer, overhead line, cable, reactor, busbar, series capacitor, shunt capacitor and SVC.\n\nNote 5: when a system unit is no longer transporting or supplying electrical energy, the system unit is affected by an outage. The system unit is unavailable after the outage has occurred.",
+      "rdfs:label": "SystemUnitKind"
+    },
+    {
+      "@id": "nc:TripKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Whether the type of the trip due to the outage was automatic, automatic with successful automatic reclosing or manual.\n\nIn case of a fault in the reclosing automatics resulting in lack of reclosing, automatic should be chosen as an alternative.",
+      "rdfs:label": "TripKind"
+    },
+    {
+      "@id": "cim:BaseVoltage.Fault",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The fault which belongs to the base voltage.",
+      "rdfs:domain": "cim:BaseVoltage",
+      "rdfs:label": "Fault",
+      "rdfs:range": "cim:Fault",
+      "owl:inverseOf": "cim:Fault.BaseVoltage"
+    },
+    {
+      "@id": "cim:CoordinateSystem.Locations",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "rdfs:comment": "All locations described with position points in this coordinate system.",
+      "rdfs:domain": "cim:CoordinateSystem",
+      "rdfs:label": "Locations",
+      "rdfs:range": "cim:Location",
+      "owl:inverseOf": "cim:Location.CoordinateSystem"
+    },
+    {
+      "@id": "cim:Equipment.Faults",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "rdfs:comment": "All faults on this equipment.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "Faults",
+      "rdfs:range": "cim:Fault",
+      "owl:inverseOf": "cim:Fault.FaultyEquipment"
+    },
+    {
+      "@id": "cim:Equipment.Outages",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "rdfs:comment": "All outages in which this equipment is involved.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "Outages",
+      "rdfs:range": "cim:Outage",
+      "owl:inverseOf": "cim:Outage.Equipments"
+    },
+    {
+      "@id": "cim:Equipment.UnplannedOutage",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The outage this tripped breaker is involved with.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "UnplannedOutage",
+      "rdfs:range": "cim:UnplannedOutage",
+      "owl:inverseOf": "cim:UnplannedOutage.TrippedEquipment"
+    },
+    {
+      "@id": "cim:Fault.BaseVoltage",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The base voltage of this fault.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "BaseVoltage",
+      "rdfs:range": "cim:BaseVoltage",
+      "owl:inverseOf": "cim:BaseVoltage.Fault"
+    },
+    {
+      "@id": "cim:Fault.FaultyEquipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "Equipment carrying this fault.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "FaultyEquipment",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "cim:Equipment.Faults"
+    },
+    {
+      "@id": "cim:Fault.Location",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "Location of this fault.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "Location",
+      "rdfs:range": "cim:Location",
+      "owl:inverseOf": "cim:Location.Fault"
+    },
+    {
+      "@id": "cim:Fault.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The kind of phase fault.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "kind",
+      "rdfs:range": "cim:PhaseConnectedFaultKind"
+    },
+    {
+      "@id": "cim:Fault.phases",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The phases participating in the fault. The fault connections into these phases are further specified by the type of fault.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "phases",
+      "rdfs:range": "cim:PhaseCode"
+    },
+    {
+      "@id": "cim:Location.CoordinateSystem",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "Coordinate system used to describe position points of this location.",
+      "rdfs:domain": "cim:Location",
+      "rdfs:label": "CoordinateSystem",
+      "rdfs:range": "cim:CoordinateSystem",
+      "owl:inverseOf": "cim:CoordinateSystem.Locations"
+    },
+    {
+      "@id": "cim:Location.Fault",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "rdfs:comment": "All faults at this location.",
+      "rdfs:domain": "cim:Location",
+      "rdfs:label": "Fault",
+      "rdfs:range": "cim:Fault",
+      "owl:inverseOf": "cim:Fault.Location"
+    },
+    {
+      "@id": "cim:Location.PositionPoints",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "rdfs:comment": "Sequence of position points describing this location, expressed in coordinate system 'Location.CoordinateSystem'.",
+      "rdfs:domain": "cim:Location",
+      "rdfs:label": "PositionPoints",
+      "rdfs:range": "cim:PositionPoint",
+      "owl:inverseOf": "cim:PositionPoint.Location"
+    },
+    {
+      "@id": "cim:Outage.Equipments",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "All equipments associated with this outage.",
+      "rdfs:domain": "cim:Outage",
+      "rdfs:label": "Equipments",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "cim:Equipment.Outages"
+    },
+    {
+      "@id": "cim:PositionPoint.Location",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "Location described by this position point.",
+      "rdfs:domain": "cim:PositionPoint",
+      "rdfs:label": "Location",
+      "rdfs:range": "cim:Location",
+      "owl:inverseOf": "cim:Location.PositionPoints"
+    },
+    {
+      "@id": "cim:UnplannedOutage.TrippedEquipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The equipment that tripped during the outage.",
+      "rdfs:domain": "cim:UnplannedOutage",
+      "rdfs:label": "TrippedEquipment",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "cim:Equipment.UnplannedOutage"
+    },
+    {
+      "@id": "nc:Equipment.Interruption",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The interruption that belongs to the interrupted delivery equipment.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "Interruption",
+      "rdfs:range": "nc:Interruption",
+      "owl:inverseOf": "nc:Interruption.InterruptedDeliveryEquipment"
+    },
+    {
+      "@id": "nc:Fault.FaultCause",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:ofAggregate"
+        }
+      ],
+      "rdfs:comment": "The fault and cause combination to be simulated for this fault.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "FaultCause",
+      "rdfs:range": "nc:FaultCause",
+      "owl:inverseOf": "nc:FaultCause.Fault"
+    },
+    {
+      "@id": "nc:Fault.FaultOutage",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The combination of a fault and an outage to be simulated for this fault.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "FaultOutage",
+      "rdfs:range": "nc:FaultOutage",
+      "owl:inverseOf": "nc:FaultOutage.Fault"
+    },
+    {
+      "@id": "nc:Fault.GridDisturbance",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A grid disturbance to contain all faults.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "GridDisturbance",
+      "rdfs:range": "nc:GridDisturbance",
+      "owl:inverseOf": "nc:GridDisturbance.Fault"
+    },
+    {
+      "@id": "nc:Fault.SystemOperator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The system operator in whose control area this fault occurred.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "SystemOperator",
+      "rdfs:range": "nc:SystemOperator",
+      "owl:inverseOf": "nc:SystemOperator.Fault"
+    },
+    {
+      "@id": "nc:Fault.category",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The fault category.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "category",
+      "rdfs:range": "nc:FaultCategoryKind"
+    },
+    {
+      "@id": "nc:Fault.faultKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "One fault can consist of several fault types. If a fault consists of several fault types, the most significant fault type is used.\n\nIn case of developing faults, that is in faults changing from one type to another, the final type is given.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "faultKind",
+      "rdfs:range": "nc:FaultKind"
+    },
+    {
+      "@id": "nc:FaultCause.Fault",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The fault defined for this fault and cause combination.",
+      "rdfs:domain": "nc:FaultCause",
+      "rdfs:label": "Fault",
+      "rdfs:range": "cim:Fault",
+      "owl:inverseOf": "nc:Fault.FaultCause"
+    },
+    {
+      "@id": "nc:FaultCause.FaultCauseType",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The fault and cause combination to be simulated for this cause.",
+      "rdfs:domain": "nc:FaultCause",
+      "rdfs:label": "FaultCauseType",
+      "rdfs:range": "cim:FaultCauseType",
+      "owl:inverseOf": "nc:FaultCauseType.FaultCause"
+    },
+    {
+      "@id": "nc:FaultCause.certaintyLevel",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The degree of certainty of which the cause of a fault is determined by a user. \nNote 1: the used certainty levels are low, medium and high. High certainty level is used when the cause of a fault is 100 % certain or when the cause is the most probable cause and potentially determined by an expert. Medium certainty level is used when the cause of the fault is very probable but there is not enough evidence to fully support the claim. Low certainty level is used when there is some idea of what the cause could be with the help of, for example, the fault details or expert knowledge. \nNote 2: the fault cause ‘unknown’ is used if no other fault cause can be chosen by any degree of certainty.",
+      "rdfs:domain": "nc:FaultCause",
+      "rdfs:label": "certaintyLevel",
+      "rdfs:range": "nc:CertaintyLevelKind"
+    },
+    {
+      "@id": "nc:FaultCauseType.FaultCause",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The fault cause defined for this fault and cause combination.",
+      "rdfs:domain": "cim:FaultCauseType",
+      "rdfs:label": "FaultCause",
+      "rdfs:range": "nc:FaultCause",
+      "owl:inverseOf": "nc:FaultCause.FaultCauseType"
+    },
+    {
+      "@id": "nc:FaultOutage.Fault",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The fault defined for this combination of a fault and an outage.",
+      "rdfs:domain": "nc:FaultOutage",
+      "rdfs:label": "Fault",
+      "rdfs:range": "cim:Fault",
+      "owl:inverseOf": "nc:Fault.FaultOutage"
+    },
+    {
+      "@id": "nc:FaultOutage.Outage",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The outage defined for this combination of a fault and an outage.",
+      "rdfs:domain": "nc:FaultOutage",
+      "rdfs:label": "Outage",
+      "rdfs:range": "cim:Outage",
+      "owl:inverseOf": "nc:Outage.FaultOutage"
+    },
+    {
+      "@id": "nc:GridDisturbance.Fault",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Faults that are related to one grid disturbance.",
+      "rdfs:domain": "nc:GridDisturbance",
+      "rdfs:label": "Fault",
+      "rdfs:range": "cim:Fault",
+      "owl:inverseOf": "nc:Fault.GridDisturbance"
+    },
+    {
+      "@id": "nc:Interruption.InterruptedDeliveryEquipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The delivery point (equipment) that is affected by the interruption. It is an equipment, power transformer or busbar in the grid where electricity is exchanged.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "InterruptedDeliveryEquipment",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "nc:Equipment.Interruption"
+    },
+    {
+      "@id": "nc:Interruption.Outage",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "One outage may have multiple interruptions.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "Outage",
+      "rdfs:range": "cim:Outage",
+      "owl:inverseOf": "nc:Outage.Interruption"
+    },
+    {
+      "@id": "nc:Interruption.energyNotDelivered",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:dataType": {
+        "@id": "cim:RealEnergy"
+      },
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The estimated energy which would have been delivered through the delivery point if no interruption and no transmission restrictions had occurred.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "energyNotDelivered"
+    },
+    {
+      "@id": "nc:Interruption.energyNotSupplied",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:dataType": {
+        "@id": "cim:RealEnergy"
+      },
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The estimated energy which would have been supplied to end-users if no interruption and no transmission restrictions had occurred.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "energyNotSupplied"
+    },
+    {
+      "@id": "nc:Outage.FaultOutage",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The combination of a fault and an outage to be simulated for this outage.",
+      "rdfs:domain": "cim:Outage",
+      "rdfs:label": "FaultOutage",
+      "rdfs:range": "nc:FaultOutage",
+      "owl:inverseOf": "nc:FaultOutage.Outage"
+    },
+    {
+      "@id": "nc:Outage.Interruption",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Multiple interruptions may be connected with an outage.",
+      "rdfs:domain": "cim:Outage",
+      "rdfs:label": "Interruption",
+      "rdfs:range": "nc:Interruption",
+      "owl:inverseOf": "nc:Interruption.Outage"
+    },
+    {
+      "@id": "nc:SystemOperator.Fault",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The faults that have occurred in this System Operator's control area.",
+      "rdfs:domain": "nc:SystemOperator",
+      "rdfs:label": "Fault",
+      "rdfs:range": "cim:Fault",
+      "owl:inverseOf": "nc:Fault.SystemOperator"
+    },
+    {
+      "@id": "nc:UnplannedOutage.autoReclosingKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The type of autoreclosing that occurred with the trip.\n\nIf high-speed automatic reclosing is successful at one end of a line, but the line needs to be reclosed manually at the other end, choose manual reclosing.\n\nIn this document, high-speed automatic reclosing refers to automatic reclosing after less than 2 seconds.",
+      "rdfs:domain": "cim:UnplannedOutage",
+      "rdfs:label": "autoReclosingKind",
+      "rdfs:range": "nc:AutoReclosingKind"
+    },
+    {
+      "@id": "nc:UnplannedOutage.systemUnitKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The type of system unit of the component affected by the outage.\n\nA system unit is defined as:\n\nA group of components which are delimited by one or more circuit breakers.\n\nNote 1: the system unit concept has been defined to simplify the calculation of availability. While a system unit is always delimited by circuit breakers, an individual component may not always be. A system unit may therefore contain more than one component. \n\nNote 2: the circuit breakers are not included in the system unit.\n\nNote 3: a tripped element is synonymous to a tripped system unit.\n\nNote 4: the type of a system unit is determined by its dominant component. The available system unit types are power transformer, overhead line, cable, reactor, busbar, series capacitor, shunt capacitor and SVC.\n\nNote 5: when a system unit is no longer transporting or supplying electrical energy, the system unit is affected by an outage. The system unit is unavailable after the outage has occurred.",
+      "rdfs:domain": "cim:UnplannedOutage",
+      "rdfs:label": "systemUnitKind",
+      "rdfs:range": "nc:SystemUnitKind"
+    },
+    {
+      "@id": "nc:UnplannedOutage.tripKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Whether the type of the trip due to the outage was automatic, automatic with successful automatic reclosing or manual.\n\nIn case of a fault in the reclosing automatics resulting in lack of reclosing, automatic should be chosen as an alternative.",
+      "rdfs:domain": "cim:UnplannedOutage",
+      "rdfs:label": "tripKind",
+      "rdfs:range": "nc:TripKind"
+    },
+    {
+      "@id": "cim:CoordinateSystem.crsUrn",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "A Uniform Resource Name (URN) for the coordinate reference system (crs) used to define 'Location.PositionPoints'.\nAn example would be the European Petroleum Survey Group (EPSG) code for a coordinate reference system, defined in URN under the Open Geospatial Consortium (OGC) namespace as: urn:ogc:def:crs:EPSG::XXXX, where XXXX is an EPSG code (a full list of codes can be found at the EPSG Registry web site http://www.epsg-registry.org/). To define the coordinate system as being WGS84 (latitude, longitude) using an EPSG OGC, this attribute would be urn:ogc:def:crs:EPSG::4236.\nA profile should limit this code to a set of allowed URNs agreed to by all sending and receiving parties.",
+      "rdfs:domain": "cim:CoordinateSystem",
+      "rdfs:label": "crsUrn",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:Fault.occurredDateTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The date and time at which the fault occurred.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "occurredDateTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "cim:IdentifiedObject.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The name is any free human readable and possibly non unique text naming the object.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:PositionPoint.xPosition",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "X axis position.",
+      "rdfs:domain": "cim:PositionPoint",
+      "rdfs:label": "xPosition",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:PositionPoint.yPosition",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Y axis position.",
+      "rdfs:domain": "cim:PositionPoint",
+      "rdfs:label": "yPosition",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:PositionPoint.zPosition",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "(if applicable) Z axis position.",
+      "rdfs:domain": "cim:PositionPoint",
+      "rdfs:label": "zPosition",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:UnplannedOutage.reportedStartTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The earliest start time of the Outage - as reported by some system or individual",
+      "rdfs:domain": "cim:UnplannedOutage",
+      "rdfs:label": "reportedStartTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:Fault.duration",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The duration of the fault.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "duration",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:Fault.isDirectlyEarthed",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Whether the power system is directly earthed (true) or compensated (false). \nUsually optional for faults on units with reactive compensation with voltages lower than 100 kV.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "isDirectlyEarthed",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:Fault.isIntermittent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The kind of occurrence of the fault. It is either intermittent (true) or non-intermittent (false).\nAn intermittent fault is a recurring fault in the same unit and in the same place and for the same reason which repeats itself before it becomes necessary to carry out any repairs or eliminate the cause [8].\nA non-intermittent fault occurs only once.\n\nNote 1: a fault which repeats itself after an inspection, which did not result in the fault being pinpointed or repaired, is not considered an intermittent fault. A fault like this is considered as the beginning of a grid disturbance every time the fault occurs.\nNote 2: one example of an intermittent fault is galloping lines.\nNote 3: when deciding whether a fault is intermittent or not, one should consider more of the cause, location and consequence of the fault and not on the time between the faults. An intermittent fault is counted as one fault. However, all individual caused outages are connected to this fault.\nNote 4: there is no standard for the required timespan between intermittent faults. Some system operators use 2 hours.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "isIntermittent",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:Fault.isPermanent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Whether the fault is a permanent (true) or a temporary (false) fault.\nA permanent fault is a fault that will remain unless it is removed by some intervention.\nNote 1 to entry: The “intervention” may be modification or maintenance.\nNote 2: a permanent fault requires repair or adjustment before the unit is ready for operation. For example, the resetting of computers is considered as repair work and a switch in the wrong position is considered as a permanent fault. Signal acknowledgement is not considered as repair work. \nNote 3: the duration of the disconnection is irrelevant when determining if a fault is permanent or not.\n\nA temporary fault is a fault where the unit or component is undamaged and is restored to service by switching operations without repair but possibly with on-site inspection.  \nNote 1: a temporary fault does not require measures other than the reconnection of circuit breakers, replacement of fuses or signal acknowledgement.\nNote 2: the duration of the disconnection is irrelevant when determining if a fault is temporary or not. If, for example, a fault results in long-term disconnection and (on-site) inspection cannot pinpoint its source, the fault is considered to be temporary as no repairs are carried out.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "isPermanent",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:Fault.repairTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Time from when repair commences, including necessary troubleshooting, until the unit’s function(s) has (have) been resumed and the unit is ready for operation.\n\nNote 1: repair time is registered only for permanent faults and does not include administrative delays (voluntary waiting time). However, any preparations necessary to carry out repairs, for example the collection or ordering of spare parts, waiting for spare parts or transport, are included in the repair time. \n\nNote 2: the repair time is zero if a fault is left unrepaired deliberately.\n\nNote 3: this definition differs from the IEC 192-07-19 definition by also including the preparation time necessary to carry out the repairs mentioned in note 1.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "repairTime",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:Fault.sequenceNumber",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A chronological serial number indicating the order of the faults related to the grid disturbance. \n\nPrimary faults have fault ID “1”, and secondary/latent faults have fault ID “2” or more.",
+      "rdfs:domain": "cim:Fault",
+      "rdfs:label": "sequenceNumber",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:FaultCause.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:FaultCause",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:FaultOutage.isMainFault",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true the fault outage is the main fault.",
+      "rdfs:domain": "nc:FaultOutage",
+      "rdfs:label": "isMainFault",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:FaultOutage.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:FaultOutage",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:Interruption.duration",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The duration of the interruption.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "duration",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:Interruption.interruptedPower",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "The estimated power that was delivered through the delivery point when the interruption occurred.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "interruptedPower",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:Interruption.startDateTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The date and time at which the interruption occurred.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "startDateTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:UnplannedOutage.duration",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The duration of the unplanned outage.",
+      "rdfs:domain": "cim:UnplannedOutage",
+      "rdfs:label": "duration",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:UnplannedOutage.startDateTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The date and time at which the unplanned outage occurred.",
+      "rdfs:domain": "cim:UnplannedOutage",
+      "rdfs:label": "startDateTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.W",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+      "rdfs:label": "ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PhaseCode.A",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phase A.",
+      "rdfs:label": "A"
+    },
+    {
+      "@id": "cim:PhaseCode.AB",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases A and B.",
+      "rdfs:label": "AB"
+    },
+    {
+      "@id": "cim:PhaseCode.ABC",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases A, B, and C.",
+      "rdfs:label": "ABC"
+    },
+    {
+      "@id": "cim:PhaseCode.ABCN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases A, B, C, and N.",
+      "rdfs:label": "ABCN"
+    },
+    {
+      "@id": "cim:PhaseCode.ABN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases A, B, and neutral.",
+      "rdfs:label": "ABN"
+    },
+    {
+      "@id": "cim:PhaseCode.AC",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases A and C.",
+      "rdfs:label": "AC"
+    },
+    {
+      "@id": "cim:PhaseCode.ACN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases A, C and neutral.",
+      "rdfs:label": "ACN"
+    },
+    {
+      "@id": "cim:PhaseCode.AN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases A and neutral.",
+      "rdfs:label": "AN"
+    },
+    {
+      "@id": "cim:PhaseCode.B",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phase B.",
+      "rdfs:label": "B"
+    },
+    {
+      "@id": "cim:PhaseCode.BC",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases B and C.",
+      "rdfs:label": "BC"
+    },
+    {
+      "@id": "cim:PhaseCode.BCN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases B, C, and neutral.",
+      "rdfs:label": "BCN"
+    },
+    {
+      "@id": "cim:PhaseCode.BN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases B and neutral.",
+      "rdfs:label": "BN"
+    },
+    {
+      "@id": "cim:PhaseCode.C",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phase C.",
+      "rdfs:label": "C"
+    },
+    {
+      "@id": "cim:PhaseCode.CN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Phases C and neutral.",
+      "rdfs:label": "CN"
+    },
+    {
+      "@id": "cim:PhaseCode.N",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Neutral phase.",
+      "rdfs:label": "N"
+    },
+    {
+      "@id": "cim:PhaseCode.X",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Unknown non-neutral phase.",
+      "rdfs:label": "X"
+    },
+    {
+      "@id": "cim:PhaseCode.XN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Unknown non-neutral phase plus neutral.",
+      "rdfs:label": "XN"
+    },
+    {
+      "@id": "cim:PhaseCode.XY",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Two unknown non-neutral phases.",
+      "rdfs:label": "XY"
+    },
+    {
+      "@id": "cim:PhaseCode.XYN",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Two unknown non-neutral phases plus neutral.",
+      "rdfs:label": "XYN"
+    },
+    {
+      "@id": "cim:PhaseCode.none",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "No phases specified.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:PhaseCode.s1",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Secondary phase 1.",
+      "rdfs:label": "s1"
+    },
+    {
+      "@id": "cim:PhaseCode.s12",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Secondary phase 1 and 2.",
+      "rdfs:label": "s12"
+    },
+    {
+      "@id": "cim:PhaseCode.s12N",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Secondary phases 1, 2, and neutral.",
+      "rdfs:label": "s12N"
+    },
+    {
+      "@id": "cim:PhaseCode.s1N",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Secondary phase 1 and neutral.",
+      "rdfs:label": "s1N"
+    },
+    {
+      "@id": "cim:PhaseCode.s2",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Secondary phase 2.",
+      "rdfs:label": "s2"
+    },
+    {
+      "@id": "cim:PhaseCode.s2N",
+      "@type": "cim:PhaseCode",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Secondary phase 2 and neutral.",
+      "rdfs:label": "s2N"
+    },
+    {
+      "@id": "cim:PhaseConnectedFaultKind.lineOpen",
+      "@type": "cim:PhaseConnectedFaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The fault is when the conductor path is broken between two terminals. Additional coexisting faults may be required if the broken conductor also causes connections to grounds or other lines or phases.",
+      "rdfs:label": "lineOpen"
+    },
+    {
+      "@id": "cim:PhaseConnectedFaultKind.lineToGround",
+      "@type": "cim:PhaseConnectedFaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The fault connects the indicated phases to ground. The line to line fault impedance is not used and assumed infinite. The full ground impedance is connected between each phase specified in the fault and ground, but not between the phases.",
+      "rdfs:label": "lineToGround"
+    },
+    {
+      "@id": "cim:PhaseConnectedFaultKind.lineToLine",
+      "@type": "cim:PhaseConnectedFaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The fault connects the specified phases together without a connection to ground. The ground impedance of this fault is ignored. The line to line impedance is connected between each of the phases specified in the fault. For example three times for a three phase fault, one time for a two phase fault.  A single phase fault should not be specified.",
+      "rdfs:label": "lineToLine"
+    },
+    {
+      "@id": "cim:PhaseConnectedFaultKind.lineToLineToGround",
+      "@type": "cim:PhaseConnectedFaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The fault connects the indicated phases to ground and to each other. The line to line impedance is connected between each of the phases specified in the fault in a full mesh. For example three times for a three phase fault, one time for a two phase fault. A single phase fault should not be specified. The full ground impedance is connected between each phase specified in the fault and ground.",
+      "rdfs:label": "lineToLineToGround"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "gd:Package_GridDisturbanceProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.Wh",
+      "rdfs:comment": "Real electrical energy.",
+      "rdfs:label": "RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.M",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E6",
+      "rdfs:comment": "Mega 10**6.",
+      "rdfs:label": "M",
+      "skos:exactMatch": "prefix:Mega"
+    },
+    {
+      "@id": "cim:UnitMultiplier.k",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E3",
+      "rdfs:comment": "Kilo 10**3.",
+      "rdfs:label": "k",
+      "skos:exactMatch": "prefix:Kilo"
+    },
+    {
+      "@id": "cim:UnitSymbol.W",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.",
+      "rdfs:label": "W",
+      "skos:exactMatch": "unit:W"
+    },
+    {
+      "@id": "cim:UnitSymbol.Wh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real energy in watt hours.",
+      "rdfs:label": "Wh",
+      "skos:exactMatch": "unit:W-HR"
+    },
+    {
+      "@id": "cim:Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "gd:Package_DocGridDisturbanceProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocGridDisturbanceProfile"
+    },
+    {
+      "@id": "gd:Package_GridDisturbanceProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains the grid disturbance profile.",
+      "rdfs:label": "GridDisturbanceProfile"
+    },
+    {
+      "@id": "nc:AutoReclosingKind.automaticallyAfter2SecondsOrMore",
+      "@type": "nc:AutoReclosingKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the automatic reclosing was successful in 2 seconds or more.\n\nAlso known as \"successful high-speed reclosing\".",
+      "rdfs:label": "automaticallyAfter2SecondsOrMore"
+    },
+    {
+      "@id": "nc:AutoReclosingKind.automaticallyAfterLessThan2Seconds",
+      "@type": "nc:AutoReclosingKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the automatic reclosing was successful in 2 seconds or less.\n\nAlso known as \"successful high-speed reclosing\".",
+      "rdfs:label": "automaticallyAfterLessThan2Seconds"
+    },
+    {
+      "@id": "nc:AutoReclosingKind.manuallyAfterInspection",
+      "@type": "nc:AutoReclosingKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the reclosing was done manually after inspection of the component.",
+      "rdfs:label": "manuallyAfterInspection"
+    },
+    {
+      "@id": "nc:AutoReclosingKind.manuallyAfterRepair",
+      "@type": "nc:AutoReclosingKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the reclosing was done manually after repair.",
+      "rdfs:label": "manuallyAfterRepair"
+    },
+    {
+      "@id": "nc:AutoReclosingKind.manuallyAfterRestructuringOfOperations",
+      "@type": "nc:AutoReclosingKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the reclosing was done manually after restructuring of operations.",
+      "rdfs:label": "manuallyAfterRestructuringOfOperations"
+    },
+    {
+      "@id": "nc:AutoReclosingKind.manuallyWithoutEitherInspectionRepairOrRestructuringOfOperations",
+      "@type": "nc:AutoReclosingKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the reclosing was done manually without any inspections, repairs or restructurings of operations.",
+      "rdfs:label": "manuallyWithoutEitherInspectionRepairOrRestructuringOfOperations"
+    },
+    {
+      "@id": "nc:AutoReclosingKind.other",
+      "@type": "nc:AutoReclosingKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the type of auto-reclosing is not unknown but does not fit the other categories, report it as other.",
+      "rdfs:label": "other"
+    },
+    {
+      "@id": "nc:AutoReclosingKind.unknown",
+      "@type": "nc:AutoReclosingKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the type of auto-reclosing is unknown.",
+      "rdfs:label": "unknown"
+    },
+    {
+      "@id": "nc:CertaintyLevelKind.high",
+      "@type": "nc:CertaintyLevelKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The certainty level is high.",
+      "rdfs:label": "high"
+    },
+    {
+      "@id": "nc:CertaintyLevelKind.low",
+      "@type": "nc:CertaintyLevelKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The certainty level is low.",
+      "rdfs:label": "low"
+    },
+    {
+      "@id": "nc:CertaintyLevelKind.medium",
+      "@type": "nc:CertaintyLevelKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The certainty level is medium.",
+      "rdfs:label": "medium"
+    },
+    {
+      "@id": "nc:CertaintyLevelKind.none",
+      "@type": "nc:CertaintyLevelKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The certainty level is none.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "nc:FaultCategoryKind.operational",
+      "@type": "nc:FaultCategoryKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A fault due to a temporary human error.\n\nNote 1: incorrect operation is considered a fault in a component, or in other words, the incorrect operation is attributed to the unit which has been operated incorrectly.",
+      "rdfs:label": "operational"
+    },
+    {
+      "@id": "nc:FaultCategoryKind.system",
+      "@type": "nc:FaultCategoryKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A fault due to off-nominal parameters, exceeding of regulated norms and standards, or exceeding protection limits.\n\nNote 1: Typical examples of system fault causes are high/low frequency, power oscillations, overload, overvoltage, undervoltage or high harmonic content in voltage or current. Common causes for system faults are significant changes in load or generation and switching of lines or transformers with following change of load flow.",
+      "rdfs:label": "system"
+    },
+    {
+      "@id": "nc:FaultCategoryKind.technical",
+      "@type": "nc:FaultCategoryKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A fault due to a technical error.",
+      "rdfs:label": "technical"
+    },
+    {
+      "@id": "nc:FaultKind.functional",
+      "@type": "nc:FaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The components main function failed to occur.",
+      "rdfs:label": "functional"
+    },
+    {
+      "@id": "nc:FaultKind.lineOpen",
+      "@type": "nc:FaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The fault is when the conductor path is broken between two terminals. Additional coexisting faults may be required if the broken conductor also causes connections to grounds or other lines or phases.",
+      "rdfs:label": "lineOpen"
+    },
+    {
+      "@id": "nc:FaultKind.lineToGround",
+      "@type": "nc:FaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The fault connects the indicated phases to ground. The line to line fault impedance is not used and assumed infinite. The full ground impedance is connected between each phase specified in the fault and ground, but not between the phases.",
+      "rdfs:label": "lineToGround"
+    },
+    {
+      "@id": "nc:FaultKind.lineToLine",
+      "@type": "nc:FaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The fault connects the specified phases together without a connection to ground. The ground impedance of this fault is ignored. The line to line impedance is connected between each of the phases specified in the fault. For example three times for a three phase fault, one time for a two phase fault.  A single phase fault should not be specified.",
+      "rdfs:label": "lineToLine"
+    },
+    {
+      "@id": "nc:FaultKind.lineToLineToGround",
+      "@type": "nc:FaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The fault connects the indicated phases to ground and to each other. The line to line impedance is connected between each of the phases specified in the fault in a full mesh. For example three times for a three phase fault, one time for a two phase fault. A single phase fault should not be specified. The full ground impedance is connected between each phase specified in the fault and ground.",
+      "rdfs:label": "lineToLineToGround"
+    },
+    {
+      "@id": "nc:FaultKind.other",
+      "@type": "nc:FaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "For example, geomagnetic currents, SSR, capacitor bank imbalances, bad contact, overheating.",
+      "rdfs:label": "other"
+    },
+    {
+      "@id": "nc:FaultKind.undesiredFunction",
+      "@type": "nc:FaultKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the component's main function occurred correctly but had an undesired result, that is, the fault.\nIs only stated if the component is a circuit breaker, disconnector or control system.",
+      "rdfs:label": "undesiredFunction"
+    },
+    {
+      "@id": "nc:SystemUnitKind.busbar",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is busbar.",
+      "rdfs:label": "busbar"
+    },
+    {
+      "@id": "nc:SystemUnitKind.cable",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is cable.",
+      "rdfs:label": "cable"
+    },
+    {
+      "@id": "nc:SystemUnitKind.dcCable",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is DCCable.",
+      "rdfs:label": "dcCable"
+    },
+    {
+      "@id": "nc:SystemUnitKind.dcConverter",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is DCConverter.",
+      "rdfs:label": "dcConverter"
+    },
+    {
+      "@id": "nc:SystemUnitKind.facts",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is FACTS.",
+      "rdfs:label": "facts"
+    },
+    {
+      "@id": "nc:SystemUnitKind.other",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If it is of other kind.",
+      "rdfs:label": "other"
+    },
+    {
+      "@id": "nc:SystemUnitKind.overheadLine",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is overhead line.",
+      "rdfs:label": "overheadLine"
+    },
+    {
+      "@id": "nc:SystemUnitKind.powerTransformer",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is power transformer.",
+      "rdfs:label": "powerTransformer"
+    },
+    {
+      "@id": "nc:SystemUnitKind.reactor",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is reactor.",
+      "rdfs:label": "reactor"
+    },
+    {
+      "@id": "nc:SystemUnitKind.seriesCapacitor",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is series capacitor.",
+      "rdfs:label": "seriesCapacitor"
+    },
+    {
+      "@id": "nc:SystemUnitKind.shuntCapacitor",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is shunt capacitor.",
+      "rdfs:label": "shuntCapacitor"
+    },
+    {
+      "@id": "nc:SystemUnitKind.svc",
+      "@type": "nc:SystemUnitKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "If the main function of the system unit is static var compensator (SVC).",
+      "rdfs:label": "svc"
+    },
+    {
+      "@id": "nc:TripKind.automatic",
+      "@type": "nc:TripKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The trip that resulted in the outage was automatic.\n\nIn case of a fault in the reclosing automatics resulting in lack of reclosing, automatic should be chosen as an alternative.",
+      "rdfs:label": "automatic"
+    },
+    {
+      "@id": "nc:TripKind.automaticWithUnsuccessfulAutomaticReclosing",
+      "@type": "nc:TripKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The trip that resulted in an outage was correctly initiated but the automatic reclosing was unsuccessful.\n\nIn case of a fault in the reclosing automatics resulting in lack of reclosing, automatic should be chosen as an alternative.",
+      "rdfs:label": "automaticWithUnsuccessfulAutomaticReclosing"
+    },
+    {
+      "@id": "nc:TripKind.manual",
+      "@type": "nc:TripKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The trip that resulted in the outage was manually cleared.",
+      "rdfs:label": "manual"
+    }
+  ]
+}

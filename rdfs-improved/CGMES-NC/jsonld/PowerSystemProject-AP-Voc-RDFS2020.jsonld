@@ -1,0 +1,744 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "psp:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the power system profile.",
+      "dct:identifier": "urn:uuid:29bfa45c-7d04-42f1-97c1-2e0f70f476a0",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Power System Project Vocabulary",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/PowerSystemProject/2.3",
+      "owl:versionInfo": "2.3.1",
+      "dcat:keyword": "PSP",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "dcat:Resource",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "psp:Package_PowerSystemProjectProfile",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "Resource published or curated by a single agent.",
+      "rdfs:label": "Resource"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "psp:Package_PowerSystemProjectProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A given (un)availability schedule with a given status and cause that include multiple equipment that need to follow the same scheduling periods.",
+      "rdfs:label": "AvailabilitySchedule"
+    },
+    {
+      "@id": "nc:DifferenceModel",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "psp:Package_PowerSystemProjectProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A set of statements describing the changes in the network model. The statement is defined in the difference model.",
+      "rdfs:label": "DifferenceModel",
+      "rdfs:subClassOf": "dcat:Resource"
+    },
+    {
+      "@id": "nc:PowerSystemProject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "psp:Package_PowerSystemProjectProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Knowledge data for the power system project that describe the status and the planned implementation of the changes into the as-built model.",
+      "rdfs:label": "PowerSystemProject",
+      "rdfs:subClassOf": "dcat:Resource"
+    },
+    {
+      "@id": "nc:PowerSystemProjectGroup",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "psp:Package_PowerSystemProjectProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A container with project that are grouped together. Primarily used for navigation and to highlight the phases that an overall project can go though.",
+      "rdfs:label": "PowerSystemProjectGroup"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.PowerSystemProject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The power system project that has this availability schedule.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "PowerSystemProject",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.AvailabilitySchedule"
+    },
+    {
+      "@id": "nc:DifferenceModel.PowerSystemProject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The power system project that is described by this difference model.",
+      "rdfs:domain": "nc:DifferenceModel",
+      "rdfs:label": "PowerSystemProject",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.DifferenceModel"
+    },
+    {
+      "@id": "nc:PowerSystemProject.AlternativeProject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Alternative project. Only one of the projects will be commissioned.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "AlternativeProject",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.PriorityProject"
+    },
+    {
+      "@id": "nc:PowerSystemProject.AvailabilitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The availability schedule associated with this power system project.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "AvailabilitySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.PowerSystemProject"
+    },
+    {
+      "@id": "nc:PowerSystemProject.DependentOnProject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Grouping of projects that are depending on each other. A project can only be linked to one dependent project.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "DependentOnProject",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.Project"
+    },
+    {
+      "@id": "nc:PowerSystemProject.DifferenceModel",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The difference model describing this power system project.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "DifferenceModel",
+      "rdfs:range": "nc:DifferenceModel",
+      "owl:inverseOf": "nc:DifferenceModel.PowerSystemProject"
+    },
+    {
+      "@id": "nc:PowerSystemProject.PriorityProject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The project that has an alternative project.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "PriorityProject",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.AlternativeProject"
+    },
+    {
+      "@id": "nc:PowerSystemProject.Project",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The project that has a dependent on project.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "Project",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.DependentOnProject"
+    },
+    {
+      "@id": "nc:PowerSystemProject.ProjectGroup",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power system project group to which this project belongs.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "ProjectGroup",
+      "rdfs:range": "nc:PowerSystemProjectGroup",
+      "owl:inverseOf": "nc:PowerSystemProjectGroup.Project"
+    },
+    {
+      "@id": "nc:PowerSystemProject.ShadowProject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A shadowing project that includes the same change set, but different timeline.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "ShadowProject",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.SilhouetteProject"
+    },
+    {
+      "@id": "nc:PowerSystemProject.SilhouetteProject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The project that has a shadow project.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "SilhouetteProject",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.ShadowProject"
+    },
+    {
+      "@id": "nc:PowerSystemProjectGroup.Project",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The project included in the power system project group.",
+      "rdfs:domain": "nc:PowerSystemProjectGroup",
+      "rdfs:label": "Project",
+      "rdfs:range": "nc:PowerSystemProject",
+      "owl:inverseOf": "nc:PowerSystemProject.ProjectGroup"
+    },
+    {
+      "@id": "dcat:Resource.hasVersion",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "This resource has a more specific, versioned resource.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "hasVersion",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dcat:Resource.isVersionOf",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A related resource of which the described resource is a version, edition, or adaptation.\nChanges in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of hasVersion.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "isVersionOf",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "dcat:Resource.keyword",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A keyword or tag describing a resource.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "keyword",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dcat:Resource.version",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The version indicator (name or identifier) of a resource.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "version",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dcat:Resource.versionNotes",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "adms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A description of changes between this version and the previous version of the resource.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "versionNotes",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:PowerSystemProjectGroup.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A free-text account of the resource.\nDescription may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.",
+      "rdfs:domain": "nc:PowerSystemProjectGroup",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:PowerSystemProjectGroup.identifier",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A unique identifier of the resource being described or cataloged.\nThe identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.\nThe identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.",
+      "rdfs:domain": "nc:PowerSystemProjectGroup",
+      "rdfs:label": "identifier",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:PowerSystemProjectGroup.title",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A name given to the resource.",
+      "rdfs:domain": "nc:PowerSystemProjectGroup",
+      "rdfs:label": "title",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.accessRights",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Information about who access the resource or an indication of its security status.\nAccess Rights may include information regarding access or restrictions based on privacy, security, or other policies.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "accessRights",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.conformsTo",
+      "@type": "owl:DatatypeProperty",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "An established standard to which the described resource conforms.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "conformsTo",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.creator",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "An entity responsible for making the resource.\nRecommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "creator",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A free-text account of the resource.\nDescription may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.identifier",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A unique identifier of the resource being described or cataloged.\nThe identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.\nThe identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "identifier",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.issued",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Date of formal issuance of the resource.\nRecommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "issued",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "dct:Resource.license",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A legal document under which the resource is made available.\nRecommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "license",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.modified",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Most recent date on which the item was changed, updated or modified.\nRecommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "modified",
+      "rdfs:range": "xsd:date"
+    },
+    {
+      "@id": "dct:Resource.publisher",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "An entity responsible for making the resource available.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "publisher",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.rights",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "rights",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.rightsHolder",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Information about rights held in and over the resource.\nTypically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "rightsHolder",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:Resource.title",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A name given to the resource.",
+      "rdfs:domain": "dcat:Resource",
+      "rdfs:label": "title",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:PowerSystemProject.cancelled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "From this date the project is in cancelled state. No further development will be done to the project or associated change set in this state.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "cancelled",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerSystemProject.commissioned",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "From this date the project is in commissioned state. Any conducting equipment in the change set can be energized from this day. No further changes will be done to the change set.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "commissioned",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerSystemProject.committed",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "From this date the project is in committed state. The change set will from this day be part of the as-build model.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "committed",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerSystemProject.inBuild",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "From this day the project is in build state. Alternative project have been evaluated. Any procurement has started and the change set is being updated to an as-build model.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "inBuild",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerSystemProject.inPlan",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "From this date the project is in planning state. Study or procurement strategy has triggered the start of a project involving changes to one or more models. Alternative projects and change sets are evaluated.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "inPlan",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerSystemProject.officialExpectedCommissioning",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Published official commissioning date.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "officialExpectedCommissioning",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerSystemProject.priority",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Priority between competing project. Use 0 for do not care. Use 1 for highest priority. Use 2 as priority is less than 1 and so on.",
+      "rdfs:domain": "nc:PowerSystemProject",
+      "rdfs:label": "priority",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "psp:Package_PowerSystemProjectProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains power system project profile.",
+      "rdfs:label": "PowerSystemProjectProfile"
+    }
+  ]
+}

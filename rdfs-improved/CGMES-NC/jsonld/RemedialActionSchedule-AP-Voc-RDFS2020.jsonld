@@ -1,0 +1,3423 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "ras:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the remedial action schedule profile.",
+      "dct:identifier": "urn:uuid:6e90c546-3c6c-471b-8040-e05037081c59",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Remedial Action Schedule Vocabulary",
+      "owl:priorVersion": "http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/RemedialActionSchedule/2.3",
+      "owl:versionInfo": "2.3.1",
+      "dcat:keyword": "RAS",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:Contingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "rdfs:comment": "An event threatening system reliability, consisting of one or more contingency elements.",
+      "rdfs:label": "Contingency"
+    },
+    {
+      "@id": "cim:Currency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "Monetary currencies.  ISO 4217 standard including 3-character currency code.",
+      "rdfs:label": "Currency"
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "nc:AvailabilityRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability remedial action is a remedial action that cancels or reschedules an availability schedule.",
+      "rdfs:label": "AvailabilityRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A given (un)availability schedule with a given status and cause that include multiple equipment that need to follow the same scheduling periods.",
+      "rdfs:label": "AvailabilitySchedule",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:BaseIrregularTimeSeries",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series that has irregular points in time.",
+      "rdfs:label": "BaseIrregularTimeSeries",
+      "rdfs:subClassOf": "nc:BaseTimeSeries"
+    },
+    {
+      "@id": "nc:BaseTimeSeries",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series of values at points in time.",
+      "rdfs:label": "BaseTimeSeries",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:CostSettledKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind describing how settled the cost is in regards to changes.",
+      "rdfs:label": "CostSettledKind"
+    },
+    {
+      "@id": "nc:CountertradeScheduleAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Countertrade schedule action is an action to rearrange power schedules based on a Generation and Load Shift Key (GLSK) strategy.",
+      "rdfs:label": "CountertradeScheduleAction",
+      "rdfs:subClassOf": "nc:PowerScheduleAction"
+    },
+    {
+      "@id": "nc:EventSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Time series represent irregular event described by event points in time.",
+      "rdfs:label": "EventSchedule",
+      "rdfs:subClassOf": "nc:BaseIrregularTimeSeries"
+    },
+    {
+      "@id": "nc:EventTimePoint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Event valid for a given point in time.",
+      "rdfs:label": "EventTimePoint"
+    },
+    {
+      "@id": "nc:GenericValueSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series represent irregular generic value at given points in time. The type of value is given by the reference association.",
+      "rdfs:label": "GenericValueSchedule",
+      "rdfs:subClassOf": "nc:BaseIrregularTimeSeries"
+    },
+    {
+      "@id": "nc:GenericValueTimePoint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Generic value for a given point in time.",
+      "rdfs:label": "GenericValueTimePoint"
+    },
+    {
+      "@id": "nc:GridStateAlteration",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case.",
+      "rdfs:label": "GridStateAlteration",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:GridStateIntensitySchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Defines the intensity applied for a given grid state alteration. It is primarily used in exchanges related to the remedial action schedule. The value provided by the schedule replaces the value of the attribute to which the schedule refers to.",
+      "rdfs:label": "GridStateIntensitySchedule",
+      "rdfs:subClassOf": "nc:GenericValueSchedule"
+    },
+    {
+      "@id": "nc:PowerBidSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power bid or offer related to a redispatch or countertrading measures. In the case of market place for economic efficiency of the bids and offers, this is equivalent to BidTimeSeries class in 62325 package.",
+      "rdfs:label": "PowerBidSchedule",
+      "rdfs:subClassOf": "nc:BaseIrregularTimeSeries"
+    },
+    {
+      "@id": "nc:PowerSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Time series represent irregular power, active and reactive, values at given points in time.",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:subClassOf": "nc:BaseIrregularTimeSeries"
+    },
+    {
+      "@id": "nc:PowerScheduleAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule action is an action to rearrange power schedules.",
+      "rdfs:label": "PowerScheduleAction",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:PowerTimePoint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Power, active and reactive, value at a given point in time.",
+      "rdfs:label": "PowerTimePoint"
+    },
+    {
+      "@id": "nc:ProposingRemedialActionScheduleShare",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Proposing entity (System Operator) with a proper cost share for a given remedial action schedule.",
+      "rdfs:label": "ProposingRemedialActionScheduleShare"
+    },
+    {
+      "@id": "nc:RedispatchScheduleAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Redispatch schedule action is an action to rearrange power schedules for a scheduled resource to obtain a feasible and secure operational state of the power electricity system.",
+      "rdfs:label": "RedispatchScheduleAction",
+      "rdfs:subClassOf": "nc:PowerScheduleAction"
+    },
+    {
+      "@id": "nc:Region",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A region where the system operator belongs to.",
+      "rdfs:label": "Region"
+    },
+    {
+      "@id": "nc:RemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly.",
+      "rdfs:label": "RemedialAction",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:RemedialActionCost",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Remedial action cost is the total cost itemised cost by category and type for the remedial action.",
+      "rdfs:label": "RemedialActionCost"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A schedule for a determined remedial action.",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptance",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "It identifies if the remedial action schedule is accepted for a given system operator.",
+      "rdfs:label": "RemedialActionScheduleAcceptance"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptanceKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kind of acceptance for a remedial action schedule.",
+      "rdfs:label": "RemedialActionScheduleAcceptanceKind"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Remedial action schedule dependency is making two remedial action schedules depending on each other.",
+      "rdfs:label": "RemedialActionScheduleDependency"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependencyKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of dependency between remedial action schedules.",
+      "rdfs:label": "RemedialActionScheduleDependencyKind"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleGroup",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Remedial action schedule group collects two or more remedial action schedules together. The remedial action schedule group needs to be set up for the same remedial action or proposing alternative remedial action by including a reference to another remedial action.",
+      "rdfs:label": "RemedialActionScheduleGroup",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Remedial action schedule status kinds.",
+      "rdfs:label": "RemedialActionScheduleStatusKind"
+    },
+    {
+      "@id": "nc:RemedialActionSchemeSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "The schedule for a remedial action scheme.",
+      "rdfs:label": "RemedialActionSchemeSchedule",
+      "rdfs:subClassOf": "nc:BaseIrregularTimeSeries"
+    },
+    {
+      "@id": "nc:ScheduleResource",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A schedule resource is a market-based method for handling participation of small units, particularly located on the lower voltage level that is controlled by a Distributed System Operator (DSO). It is a collection of units that can operate in the market by providing bids, offers and a resulting committed operational schedule for the collection.",
+      "rdfs:label": "ScheduleResource"
+    },
+    {
+      "@id": "nc:SchemeRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Scheme remedial action is remedial action that involves a scheme that can include conditional logic and stages of grid alteration. The primary remedial action is the arming of these schemes, that will then perform curative remedial action when the condition is met. System Integrity Protection Scheme (SIPS) and Special Protection Scheme (SPS) are example of this.",
+      "rdfs:label": "SchemeRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:SecurityCoordinator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A role that coordinates the relevant remedial actions and their optimisation to ensure efficient use to achieve required operational security of the power system.",
+      "rdfs:label": "SecurityCoordinator"
+    },
+    {
+      "@id": "nc:SystemOperator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "System operator.",
+      "rdfs:label": "SystemOperator"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kinds of interpolation of values between two time point.",
+      "rdfs:label": "TimeSeriesInterpolationKind"
+    },
+    {
+      "@id": "nc:ValueOffsetKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kind of the value offset.",
+      "rdfs:label": "ValueOffsetKind"
+    },
+    {
+      "@id": "nc:AvailabilityRemedialAction.AvailabilitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability schedule that is part of the remedial action.",
+      "rdfs:domain": "nc:AvailabilityRemedialAction",
+      "rdfs:label": "AvailabilitySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.RemedialAction"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action that is cancelling this availability schedule.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:AvailabilityRemedialAction",
+      "owl:inverseOf": "nc:AvailabilityRemedialAction.AvailabilitySchedule"
+    },
+    {
+      "@id": "nc:BaseTimeSeries.interpolationKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of interpolation done between time point.",
+      "rdfs:domain": "nc:BaseTimeSeries",
+      "rdfs:label": "interpolationKind",
+      "rdfs:range": "nc:TimeSeriesInterpolationKind"
+    },
+    {
+      "@id": "nc:Contingency.CurativeRemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Curative remedial action schedule linked to this contingency.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "CurativeRemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.Contingency"
+    },
+    {
+      "@id": "nc:EventSchedule.EventTimePoint",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:ofAggregate"
+        }
+      ],
+      "rdfs:comment": "Value for the point in time.",
+      "rdfs:domain": "nc:EventSchedule",
+      "rdfs:label": "EventTimePoint",
+      "rdfs:range": "nc:EventTimePoint",
+      "owl:inverseOf": "nc:EventTimePoint.EventSchedule"
+    },
+    {
+      "@id": "nc:EventSchedule.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "rdfs:comment": "Remedial action schedule is the event that is validity for the given time series.",
+      "rdfs:domain": "nc:EventSchedule",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.EventSchedule"
+    },
+    {
+      "@id": "nc:EventTimePoint.EventSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series the time point values belongs to.",
+      "rdfs:domain": "nc:EventTimePoint",
+      "rdfs:label": "EventSchedule",
+      "rdfs:range": "nc:EventSchedule",
+      "owl:inverseOf": "nc:EventSchedule.EventTimePoint"
+    },
+    {
+      "@id": "nc:GenericValueSchedule.GenericValueTimePoint",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:ofAggregate"
+        }
+      ],
+      "rdfs:comment": "Value for the point in time.",
+      "rdfs:domain": "nc:GenericValueSchedule",
+      "rdfs:label": "GenericValueTimePoint",
+      "rdfs:range": "nc:GenericValueTimePoint",
+      "owl:inverseOf": "nc:GenericValueTimePoint.GenericValueSchedule"
+    },
+    {
+      "@id": "nc:GenericValueSchedule.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action schedule which has generic value schedules.",
+      "rdfs:domain": "nc:GenericValueSchedule",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.GenericValueSchedule"
+    },
+    {
+      "@id": "nc:GenericValueTimePoint.GenericValueSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series the time point values belongs to.",
+      "rdfs:domain": "nc:GenericValueTimePoint",
+      "rdfs:label": "GenericValueSchedule",
+      "rdfs:range": "nc:GenericValueSchedule",
+      "owl:inverseOf": "nc:GenericValueSchedule.GenericValueTimePoint"
+    },
+    {
+      "@id": "nc:GridStateAlteration.GridStateIntensitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The intensity associated with a given GridStateAlterationSchedule.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "GridStateIntensitySchedule",
+      "rdfs:range": "nc:GridStateIntensitySchedule",
+      "owl:inverseOf": "nc:GridStateIntensitySchedule.GridStateAlteration"
+    },
+    {
+      "@id": "nc:GridStateIntensitySchedule.GridStateAlteration",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The grid state alteration which has intensity.",
+      "rdfs:domain": "nc:GridStateIntensitySchedule",
+      "rdfs:label": "GridStateAlteration",
+      "rdfs:range": "nc:GridStateAlteration",
+      "owl:inverseOf": "nc:GridStateAlteration.GridStateIntensitySchedule"
+    },
+    {
+      "@id": "nc:GridStateIntensitySchedule.valueKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The kind of value1 and value2 of the associated IrregularIntervalSchedule.",
+      "rdfs:domain": "nc:GridStateIntensitySchedule",
+      "rdfs:label": "valueKind",
+      "rdfs:range": "nc:ValueOffsetKind"
+    },
+    {
+      "@id": "nc:PowerBidSchedule.PowerSchedulelAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The power schedule action pointed by the power bid schedule.",
+      "rdfs:domain": "nc:PowerBidSchedule",
+      "rdfs:label": "PowerSchedulelAction",
+      "rdfs:range": "nc:PowerScheduleAction",
+      "owl:inverseOf": "nc:PowerScheduleAction.PowerBidSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.PowerScheduleAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule action which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "PowerScheduleAction",
+      "rdfs:range": "nc:PowerScheduleAction",
+      "owl:inverseOf": "nc:PowerScheduleAction.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.PowerTimePoint",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:ofAggregate"
+        }
+      ],
+      "rdfs:comment": "Value for the point in time.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "PowerTimePoint",
+      "rdfs:range": "nc:PowerTimePoint",
+      "owl:inverseOf": "nc:PowerTimePoint.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerScheduleAction.PowerBidSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The power bid schedule which contains the power schedule action.",
+      "rdfs:domain": "nc:PowerScheduleAction",
+      "rdfs:label": "PowerBidSchedule",
+      "rdfs:range": "nc:PowerBidSchedule",
+      "owl:inverseOf": "nc:PowerBidSchedule.PowerSchedulelAction"
+    },
+    {
+      "@id": "nc:PowerScheduleAction.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which contains the power schedule action.",
+      "rdfs:domain": "nc:PowerScheduleAction",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.PowerScheduleAction"
+    },
+    {
+      "@id": "nc:PowerScheduleAction.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action schedule which power schedule actions.",
+      "rdfs:domain": "nc:PowerScheduleAction",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.PowerScheduleAction"
+    },
+    {
+      "@id": "nc:PowerScheduleAction.currency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Currency the energy price is given in.",
+      "rdfs:domain": "nc:PowerScheduleAction",
+      "rdfs:label": "currency",
+      "rdfs:range": "cim:Currency"
+    },
+    {
+      "@id": "nc:PowerTimePoint.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series the time point values belongs to.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.PowerTimePoint"
+    },
+    {
+      "@id": "nc:ProposingRemedialActionScheduleShare.ProposingEntity",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Proposing entity making the proposing remedial action schedule share.",
+      "rdfs:domain": "nc:ProposingRemedialActionScheduleShare",
+      "rdfs:label": "ProposingEntity",
+      "rdfs:range": "nc:SystemOperator",
+      "owl:inverseOf": "nc:SystemOperator.ProposingRemedialActionScheduleShare"
+    },
+    {
+      "@id": "nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action schedule proposed by the proposing entity.",
+      "rdfs:domain": "nc:ProposingRemedialActionScheduleShare",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.ProposingRemedialActionScheduleShare"
+    },
+    {
+      "@id": "nc:RedispatchScheduleAction.ScheduleResource",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The schedule resource that has this redispatch action.",
+      "rdfs:domain": "nc:RedispatchScheduleAction",
+      "rdfs:label": "ScheduleResource",
+      "rdfs:range": "nc:ScheduleResource",
+      "owl:inverseOf": "nc:ScheduleResource.RedispatchAction"
+    },
+    {
+      "@id": "nc:Region.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action schedule relevant for this region.",
+      "rdfs:domain": "nc:Region",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.AssignedRegion"
+    },
+    {
+      "@id": "nc:RemedialAction.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action schedule associated with a remedial action, i.e. the assigning a schedule to a remedial action.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialActionCost.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action schedule for which this remedial action cost relates to.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.RemedialActionCost"
+    },
+    {
+      "@id": "nc:RemedialActionCost.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Remedial action cost category related to the confirmation of the cost in regards to changes.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:CostSettledKind"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.AssignedRegion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The assigned region for this remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "AssignedRegion",
+      "rdfs:range": "nc:Region",
+      "owl:inverseOf": "nc:Region.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.Contingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The contingency for a curative remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "Contingency",
+      "rdfs:range": "cim:Contingency",
+      "owl:inverseOf": "nc:Contingency.CurativeRemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.EventSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "rdfs:comment": "Event schedule that describes the validity of the remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "EventSchedule",
+      "rdfs:range": "nc:EventSchedule",
+      "owl:inverseOf": "nc:EventSchedule.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.GenericValueSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Generic value schedule which belongs to a remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "GenericValueSchedule",
+      "rdfs:range": "nc:GenericValueSchedule",
+      "owl:inverseOf": "nc:GenericValueSchedule.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.PowerScheduleAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule action which belongs to a remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "PowerScheduleAction",
+      "rdfs:range": "nc:PowerScheduleAction",
+      "owl:inverseOf": "nc:PowerScheduleAction.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.ProposedDependency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Dependency for the proposed remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "ProposedDependency",
+      "rdfs:range": "nc:RemedialActionScheduleDependency",
+      "owl:inverseOf": "nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.ProposingEntity",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The security coordinator that is proposing this remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "ProposingEntity",
+      "rdfs:range": "nc:SecurityCoordinator",
+      "owl:inverseOf": "nc:SecurityCoordinator.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.ProposingRemedialActionScheduleShare",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The entity with its associated share that are making the proposal of the remedial action schedule",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "ProposingRemedialActionScheduleShare",
+      "rdfs:range": "nc:ProposingRemedialActionScheduleShare",
+      "owl:inverseOf": "nc:ProposingRemedialActionScheduleShare.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action that has a remedial action schedule associated.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:RemedialAction",
+      "owl:inverseOf": "nc:RemedialAction.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.RemedialActionCost",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action cost related to this remedial schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "RemedialActionCost",
+      "rdfs:range": "nc:RemedialActionCost",
+      "owl:inverseOf": "nc:RemedialActionCost.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.RemedialActionScheduleAcceptance",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The remedial action schedule acceptance related to a remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "RemedialActionScheduleAcceptance",
+      "rdfs:range": "nc:RemedialActionScheduleAcceptance",
+      "owl:inverseOf": "nc:RemedialActionScheduleAcceptance.RemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.ReplacedDependency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Replaced dependency for this remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "ReplacedDependency",
+      "rdfs:range": "nc:RemedialActionScheduleDependency",
+      "owl:inverseOf": "nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.statusKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates the status kind for the remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "statusKind",
+      "rdfs:range": "nc:RemedialActionScheduleStatusKind"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.totalCostCurrency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The currency of the total cost.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "totalCostCurrency",
+      "rdfs:range": "cim:Currency"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptance.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A remedial action schedule for which a remedial action schedule acceptance is reported.",
+      "rdfs:domain": "nc:RemedialActionScheduleAcceptance",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.RemedialActionScheduleAcceptance"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptance.SystemOperator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A system operator for which a remedial action schedule acceptances are reported.",
+      "rdfs:domain": "nc:RemedialActionScheduleAcceptance",
+      "rdfs:label": "SystemOperator",
+      "rdfs:range": "nc:SystemOperator",
+      "owl:inverseOf": "nc:SystemOperator.RemedialActionScheduleAcceptance"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptance.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The kind of the remedial action acceptance.",
+      "rdfs:domain": "nc:RemedialActionScheduleAcceptance",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:RemedialActionScheduleAcceptanceKind"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependency.ProposedRemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Proposed remedial action schedule that has dependency.",
+      "rdfs:domain": "nc:RemedialActionScheduleDependency",
+      "rdfs:label": "ProposedRemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.ProposedDependency"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action schedule group which has remedial action schedule dependency.",
+      "rdfs:domain": "nc:RemedialActionScheduleDependency",
+      "rdfs:label": "RemedialActionScheduleGroup",
+      "rdfs:range": "nc:RemedialActionScheduleGroup",
+      "owl:inverseOf": "nc:RemedialActionScheduleGroup.GroupDependency"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependency.ReplacedRemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action schedule that is replaced by dependent remedial action schedule.",
+      "rdfs:domain": "nc:RemedialActionScheduleDependency",
+      "rdfs:label": "ReplacedRemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.ReplacedDependency"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependency.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Type of dependency between two remedial action schedules.",
+      "rdfs:domain": "nc:RemedialActionScheduleDependency",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:RemedialActionScheduleDependencyKind"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleGroup.GroupDependency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Group dependency for this remedial action schedule group.",
+      "rdfs:domain": "nc:RemedialActionScheduleGroup",
+      "rdfs:label": "GroupDependency",
+      "rdfs:range": "nc:RemedialActionScheduleDependency",
+      "owl:inverseOf": "nc:RemedialActionScheduleDependency.RemedialActionScheduleGroup"
+    },
+    {
+      "@id": "nc:RemedialActionSchemeSchedule.SchemeRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action scheme which has remedial action scheme schedules.",
+      "rdfs:domain": "nc:RemedialActionSchemeSchedule",
+      "rdfs:label": "SchemeRemedialAction",
+      "rdfs:range": "nc:SchemeRemedialAction",
+      "owl:inverseOf": "nc:SchemeRemedialAction.RemedialActionSchemeSchedule"
+    },
+    {
+      "@id": "nc:ScheduleResource.RedispatchAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The redispatch action that relates to this schedule resource.",
+      "rdfs:domain": "nc:ScheduleResource",
+      "rdfs:label": "RedispatchAction",
+      "rdfs:range": "nc:RedispatchScheduleAction",
+      "owl:inverseOf": "nc:RedispatchScheduleAction.ScheduleResource"
+    },
+    {
+      "@id": "nc:SchemeRemedialAction.RemedialActionSchemeSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action scheme schedule associated with a remedial action scheme.",
+      "rdfs:domain": "nc:SchemeRemedialAction",
+      "rdfs:label": "RemedialActionSchemeSchedule",
+      "rdfs:range": "nc:RemedialActionSchemeSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchemeSchedule.SchemeRemedialAction"
+    },
+    {
+      "@id": "nc:SecurityCoordinator.RemedialActionSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action schedule for this security coordinator.",
+      "rdfs:domain": "nc:SecurityCoordinator",
+      "rdfs:label": "RemedialActionSchedule",
+      "rdfs:range": "nc:RemedialActionSchedule",
+      "owl:inverseOf": "nc:RemedialActionSchedule.ProposingEntity"
+    },
+    {
+      "@id": "nc:SystemOperator.ProposingRemedialActionScheduleShare",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Proposing remedial action schedule share which is made by the proposing entity.",
+      "rdfs:domain": "nc:SystemOperator",
+      "rdfs:label": "ProposingRemedialActionScheduleShare",
+      "rdfs:range": "nc:ProposingRemedialActionScheduleShare",
+      "owl:inverseOf": "nc:ProposingRemedialActionScheduleShare.ProposingEntity"
+    },
+    {
+      "@id": "nc:SystemOperator.RemedialActionScheduleAcceptance",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action schedule acceptance related to a system operator.",
+      "rdfs:domain": "nc:SystemOperator",
+      "rdfs:label": "RemedialActionScheduleAcceptance",
+      "rdfs:range": "nc:RemedialActionScheduleAcceptance",
+      "owl:inverseOf": "nc:RemedialActionScheduleAcceptance.SystemOperator"
+    },
+    {
+      "@id": "cim:IdentifiedObject.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The name is any free human readable and possibly non unique text naming the object.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.isCancelled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the cancelling of the availability schedule. True means that is cancelling, False means that it is not cancelling.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "isCancelled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.priority",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Value 0 means ignore priority. 1 means the highest priority, 2 is the second highest priority.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "priority",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:EventTimePoint.atTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time the data is valid for.",
+      "rdfs:domain": "nc:EventTimePoint",
+      "rdfs:label": "atTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:EventTimePoint.isActive",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "True, if the event is occurring (Active) at this time point. Otherwise false.",
+      "rdfs:domain": "nc:EventTimePoint",
+      "rdfs:label": "isActive",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:GenericValueTimePoint.atTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time the data is valid for.",
+      "rdfs:domain": "nc:GenericValueTimePoint",
+      "rdfs:label": "atTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:GenericValueTimePoint.value",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The value at the time. The meaning of the value is defined by the derived type of the associated schedule. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false.",
+      "rdfs:domain": "nc:GenericValueTimePoint",
+      "rdfs:label": "value",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:PowerScheduleAction.energyPrice",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Energy price for the power schedule action.",
+      "rdfs:domain": "nc:PowerScheduleAction",
+      "rdfs:label": "energyPrice",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:PowerTimePoint.activatedP",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power activated as part of redispatch. Negative number means that the value is scheduling down. Positive number means that the value is scheduling up.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "activatedP",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerTimePoint.activatedPrice",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Price for the activated active power per unit e.g. per MW.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "activatedPrice",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:PowerTimePoint.atTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time the data is valid for.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "atTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerTimePoint.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerTimePoint.price",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Price for the scheduled active power per unit of active power. e.g. per MW.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "price",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:PowerTimePoint.q",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "q",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "nc:ProposingRemedialActionScheduleShare.costSharingFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Sharing factor of the cost of the remedial action as a  fraction of the total cost, i.e. system operator's cost = cost x (costSharingFactor / sum of all costSharingFactor).",
+      "rdfs:domain": "nc:ProposingRemedialActionScheduleShare",
+      "rdfs:label": "costSharingFactor",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:ProposingRemedialActionScheduleShare.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:ProposingRemedialActionScheduleShare",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:RemedialActionCost.costAllocationTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Cost allocation time is the time the cost shall be allocated.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "costAllocationTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:RemedialActionCost.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:RemedialActionCost.operationalCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Operational cost is the total cost directly related to operate the unit according to the remedial action, e.g. fuel cost.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "operationalCost",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:RemedialActionCost.opportunityCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Opportunity cost is the total cost of potential earning that is missed due to performing the remedial action.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "opportunityCost",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:RemedialActionCost.otherCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Other cost is the total cost that cannot be directly allocated to any of the other items.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "otherCost",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:RemedialActionCost.processingFee",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Processing fee is the total cost for processing the remedial action.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "processingFee",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:RemedialActionCost.savedFuelCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Saved fuel cost is the total saving due to not consuming the expected fuel as part of the remedial action.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "savedFuelCost",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:RemedialActionCost.shutdownCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Shutdown cost is the total cost for shutting down a unit as part of the remedial action.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "shutdownCost",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:RemedialActionCost.startupCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Start-up cost is the total cost for activating the remedial action, e.g. if a generator needs to be started before it can perform the remedial action.",
+      "rdfs:domain": "nc:RemedialActionCost",
+      "rdfs:label": "startupCost",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:RemedialActionSchedule.statusReason",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Description of reasoning for the status. For instance, in case of rejected remedial action, the reason for this rejection is described here.",
+      "rdfs:domain": "nc:RemedialActionSchedule",
+      "rdfs:label": "statusReason",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptance.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:RemedialActionScheduleAcceptance",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependency.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:RemedialActionScheduleDependency",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.W",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+      "rdfs:label": "ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:Currency.AED",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "United Arab Emirates dirham.",
+      "rdfs:label": "AED"
+    },
+    {
+      "@id": "cim:Currency.AFN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Afghan afghani.",
+      "rdfs:label": "AFN"
+    },
+    {
+      "@id": "cim:Currency.ALL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Albanian lek.",
+      "rdfs:label": "ALL"
+    },
+    {
+      "@id": "cim:Currency.AMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Armenian dram.",
+      "rdfs:label": "AMD"
+    },
+    {
+      "@id": "cim:Currency.ANG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Netherlands Antillean guilder.",
+      "rdfs:label": "ANG"
+    },
+    {
+      "@id": "cim:Currency.AOA",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Angolan kwanza.",
+      "rdfs:label": "AOA"
+    },
+    {
+      "@id": "cim:Currency.ARS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Argentine peso.",
+      "rdfs:label": "ARS"
+    },
+    {
+      "@id": "cim:Currency.AUD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Australian dollar.",
+      "rdfs:label": "AUD"
+    },
+    {
+      "@id": "cim:Currency.AWG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Aruban florin.",
+      "rdfs:label": "AWG"
+    },
+    {
+      "@id": "cim:Currency.AZN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Azerbaijani manat.",
+      "rdfs:label": "AZN"
+    },
+    {
+      "@id": "cim:Currency.BAM",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bosnia and Herzegovina convertible mark.",
+      "rdfs:label": "BAM"
+    },
+    {
+      "@id": "cim:Currency.BBD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Barbados dollar.",
+      "rdfs:label": "BBD"
+    },
+    {
+      "@id": "cim:Currency.BDT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bangladeshi taka.",
+      "rdfs:label": "BDT"
+    },
+    {
+      "@id": "cim:Currency.BGN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bulgarian lev.",
+      "rdfs:label": "BGN"
+    },
+    {
+      "@id": "cim:Currency.BHD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bahraini dinar.",
+      "rdfs:label": "BHD"
+    },
+    {
+      "@id": "cim:Currency.BIF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Burundian franc.",
+      "rdfs:label": "BIF"
+    },
+    {
+      "@id": "cim:Currency.BMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bermudian dollar (customarily known as Bermuda dollar).",
+      "rdfs:label": "BMD"
+    },
+    {
+      "@id": "cim:Currency.BND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Brunei dollar.",
+      "rdfs:label": "BND"
+    },
+    {
+      "@id": "cim:Currency.BOB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Boliviano.",
+      "rdfs:label": "BOB"
+    },
+    {
+      "@id": "cim:Currency.BOV",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bolivian Mvdol (funds code).",
+      "rdfs:label": "BOV"
+    },
+    {
+      "@id": "cim:Currency.BRL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Brazilian real.",
+      "rdfs:label": "BRL"
+    },
+    {
+      "@id": "cim:Currency.BSD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bahamian dollar.",
+      "rdfs:label": "BSD"
+    },
+    {
+      "@id": "cim:Currency.BTN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bhutanese ngultrum.",
+      "rdfs:label": "BTN"
+    },
+    {
+      "@id": "cim:Currency.BWP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Botswana pula.",
+      "rdfs:label": "BWP"
+    },
+    {
+      "@id": "cim:Currency.BYR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Belarusian ruble.",
+      "rdfs:label": "BYR"
+    },
+    {
+      "@id": "cim:Currency.BZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Belize dollar.",
+      "rdfs:label": "BZD"
+    },
+    {
+      "@id": "cim:Currency.CAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Canadian dollar.",
+      "rdfs:label": "CAD"
+    },
+    {
+      "@id": "cim:Currency.CDF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Congolese franc.",
+      "rdfs:label": "CDF"
+    },
+    {
+      "@id": "cim:Currency.CHF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Swiss franc.",
+      "rdfs:label": "CHF"
+    },
+    {
+      "@id": "cim:Currency.CLF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Unidad de Fomento (funds code), Chile.",
+      "rdfs:label": "CLF"
+    },
+    {
+      "@id": "cim:Currency.CLP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Chilean peso.",
+      "rdfs:label": "CLP"
+    },
+    {
+      "@id": "cim:Currency.CNY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Chinese yuan.",
+      "rdfs:label": "CNY"
+    },
+    {
+      "@id": "cim:Currency.COP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Colombian peso.",
+      "rdfs:label": "COP"
+    },
+    {
+      "@id": "cim:Currency.COU",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Unidad de Valor Real.",
+      "rdfs:label": "COU"
+    },
+    {
+      "@id": "cim:Currency.CRC",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Costa Rican colon.",
+      "rdfs:label": "CRC"
+    },
+    {
+      "@id": "cim:Currency.CUC",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cuban convertible peso.",
+      "rdfs:label": "CUC"
+    },
+    {
+      "@id": "cim:Currency.CUP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cuban peso.",
+      "rdfs:label": "CUP"
+    },
+    {
+      "@id": "cim:Currency.CVE",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cape Verde escudo.",
+      "rdfs:label": "CVE"
+    },
+    {
+      "@id": "cim:Currency.CZK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Czech koruna.",
+      "rdfs:label": "CZK"
+    },
+    {
+      "@id": "cim:Currency.DJF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Djiboutian franc.",
+      "rdfs:label": "DJF"
+    },
+    {
+      "@id": "cim:Currency.DKK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Danish krone.",
+      "rdfs:label": "DKK"
+    },
+    {
+      "@id": "cim:Currency.DOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dominican peso.",
+      "rdfs:label": "DOP"
+    },
+    {
+      "@id": "cim:Currency.DZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Algerian dinar.",
+      "rdfs:label": "DZD"
+    },
+    {
+      "@id": "cim:Currency.EEK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Estonian kroon.",
+      "rdfs:label": "EEK"
+    },
+    {
+      "@id": "cim:Currency.EGP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Egyptian pound.",
+      "rdfs:label": "EGP"
+    },
+    {
+      "@id": "cim:Currency.ERN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Eritrean nakfa.",
+      "rdfs:label": "ERN"
+    },
+    {
+      "@id": "cim:Currency.ETB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ethiopian birr.",
+      "rdfs:label": "ETB"
+    },
+    {
+      "@id": "cim:Currency.EUR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Euro.",
+      "rdfs:label": "EUR"
+    },
+    {
+      "@id": "cim:Currency.FJD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Fiji dollar.",
+      "rdfs:label": "FJD"
+    },
+    {
+      "@id": "cim:Currency.FKP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Falkland Islands pound.",
+      "rdfs:label": "FKP"
+    },
+    {
+      "@id": "cim:Currency.GBP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pound sterling.",
+      "rdfs:label": "GBP"
+    },
+    {
+      "@id": "cim:Currency.GEL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Georgian lari.",
+      "rdfs:label": "GEL"
+    },
+    {
+      "@id": "cim:Currency.GHS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ghanaian cedi.",
+      "rdfs:label": "GHS"
+    },
+    {
+      "@id": "cim:Currency.GIP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Gibraltar pound.",
+      "rdfs:label": "GIP"
+    },
+    {
+      "@id": "cim:Currency.GMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Gambian dalasi.",
+      "rdfs:label": "GMD"
+    },
+    {
+      "@id": "cim:Currency.GNF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guinean franc.",
+      "rdfs:label": "GNF"
+    },
+    {
+      "@id": "cim:Currency.GTQ",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guatemalan quetzal.",
+      "rdfs:label": "GTQ"
+    },
+    {
+      "@id": "cim:Currency.GYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guyanese dollar.",
+      "rdfs:label": "GYD"
+    },
+    {
+      "@id": "cim:Currency.HKD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Hong Kong dollar.",
+      "rdfs:label": "HKD"
+    },
+    {
+      "@id": "cim:Currency.HNL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Honduran lempira.",
+      "rdfs:label": "HNL"
+    },
+    {
+      "@id": "cim:Currency.HRK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Croatian kuna.",
+      "rdfs:label": "HRK"
+    },
+    {
+      "@id": "cim:Currency.HTG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Haitian gourde.",
+      "rdfs:label": "HTG"
+    },
+    {
+      "@id": "cim:Currency.HUF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Hungarian forint.",
+      "rdfs:label": "HUF"
+    },
+    {
+      "@id": "cim:Currency.IDR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Indonesian rupiah.",
+      "rdfs:label": "IDR"
+    },
+    {
+      "@id": "cim:Currency.ILS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Israeli new sheqel.",
+      "rdfs:label": "ILS"
+    },
+    {
+      "@id": "cim:Currency.INR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Indian rupee.",
+      "rdfs:label": "INR"
+    },
+    {
+      "@id": "cim:Currency.IQD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Iraqi dinar.",
+      "rdfs:label": "IQD"
+    },
+    {
+      "@id": "cim:Currency.IRR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Iranian rial.",
+      "rdfs:label": "IRR"
+    },
+    {
+      "@id": "cim:Currency.ISK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Icelandic króna.",
+      "rdfs:label": "ISK"
+    },
+    {
+      "@id": "cim:Currency.JMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Jamaican dollar.",
+      "rdfs:label": "JMD"
+    },
+    {
+      "@id": "cim:Currency.JOD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Jordanian dinar.",
+      "rdfs:label": "JOD"
+    },
+    {
+      "@id": "cim:Currency.JPY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Japanese yen.",
+      "rdfs:label": "JPY"
+    },
+    {
+      "@id": "cim:Currency.KES",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kenyan shilling.",
+      "rdfs:label": "KES"
+    },
+    {
+      "@id": "cim:Currency.KGS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kyrgyzstani som.",
+      "rdfs:label": "KGS"
+    },
+    {
+      "@id": "cim:Currency.KHR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cambodian riel.",
+      "rdfs:label": "KHR"
+    },
+    {
+      "@id": "cim:Currency.KMF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Comoro franc.",
+      "rdfs:label": "KMF"
+    },
+    {
+      "@id": "cim:Currency.KPW",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "North Korean won.",
+      "rdfs:label": "KPW"
+    },
+    {
+      "@id": "cim:Currency.KRW",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "South Korean won.",
+      "rdfs:label": "KRW"
+    },
+    {
+      "@id": "cim:Currency.KWD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kuwaiti dinar.",
+      "rdfs:label": "KWD"
+    },
+    {
+      "@id": "cim:Currency.KYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cayman Islands dollar.",
+      "rdfs:label": "KYD"
+    },
+    {
+      "@id": "cim:Currency.KZT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kazakhstani tenge.",
+      "rdfs:label": "KZT"
+    },
+    {
+      "@id": "cim:Currency.LAK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lao kip.",
+      "rdfs:label": "LAK"
+    },
+    {
+      "@id": "cim:Currency.LBP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lebanese pound.",
+      "rdfs:label": "LBP"
+    },
+    {
+      "@id": "cim:Currency.LKR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sri Lanka rupee.",
+      "rdfs:label": "LKR"
+    },
+    {
+      "@id": "cim:Currency.LRD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Liberian dollar.",
+      "rdfs:label": "LRD"
+    },
+    {
+      "@id": "cim:Currency.LSL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lesotho loti.",
+      "rdfs:label": "LSL"
+    },
+    {
+      "@id": "cim:Currency.LTL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lithuanian litas.",
+      "rdfs:label": "LTL"
+    },
+    {
+      "@id": "cim:Currency.LVL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Latvian lats.",
+      "rdfs:label": "LVL"
+    },
+    {
+      "@id": "cim:Currency.LYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Libyan dinar.",
+      "rdfs:label": "LYD"
+    },
+    {
+      "@id": "cim:Currency.MAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moroccan dirham.",
+      "rdfs:label": "MAD"
+    },
+    {
+      "@id": "cim:Currency.MDL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moldovan leu.",
+      "rdfs:label": "MDL"
+    },
+    {
+      "@id": "cim:Currency.MGA",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malagasy ariary.",
+      "rdfs:label": "MGA"
+    },
+    {
+      "@id": "cim:Currency.MKD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Macedonian denar.",
+      "rdfs:label": "MKD"
+    },
+    {
+      "@id": "cim:Currency.MMK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Myanma kyat.",
+      "rdfs:label": "MMK"
+    },
+    {
+      "@id": "cim:Currency.MNT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mongolian tugrik.",
+      "rdfs:label": "MNT"
+    },
+    {
+      "@id": "cim:Currency.MOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Macanese pataca.",
+      "rdfs:label": "MOP"
+    },
+    {
+      "@id": "cim:Currency.MRO",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mauritanian ouguiya.",
+      "rdfs:label": "MRO"
+    },
+    {
+      "@id": "cim:Currency.MUR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mauritian rupee.",
+      "rdfs:label": "MUR"
+    },
+    {
+      "@id": "cim:Currency.MVR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Maldivian rufiyaa.",
+      "rdfs:label": "MVR"
+    },
+    {
+      "@id": "cim:Currency.MWK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malawian kwacha.",
+      "rdfs:label": "MWK"
+    },
+    {
+      "@id": "cim:Currency.MXN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mexican peso.",
+      "rdfs:label": "MXN"
+    },
+    {
+      "@id": "cim:Currency.MYR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malaysian ringgit.",
+      "rdfs:label": "MYR"
+    },
+    {
+      "@id": "cim:Currency.MZN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mozambican metical.",
+      "rdfs:label": "MZN"
+    },
+    {
+      "@id": "cim:Currency.NAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Namibian dollar.",
+      "rdfs:label": "NAD"
+    },
+    {
+      "@id": "cim:Currency.NGN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Nigerian naira.",
+      "rdfs:label": "NGN"
+    },
+    {
+      "@id": "cim:Currency.NIO",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cordoba oro.",
+      "rdfs:label": "NIO"
+    },
+    {
+      "@id": "cim:Currency.NOK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Norwegian krone.",
+      "rdfs:label": "NOK"
+    },
+    {
+      "@id": "cim:Currency.NPR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Nepalese rupee.",
+      "rdfs:label": "NPR"
+    },
+    {
+      "@id": "cim:Currency.NZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "New Zealand dollar.",
+      "rdfs:label": "NZD"
+    },
+    {
+      "@id": "cim:Currency.OMR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Omani rial.",
+      "rdfs:label": "OMR"
+    },
+    {
+      "@id": "cim:Currency.PAB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Panamanian balboa.",
+      "rdfs:label": "PAB"
+    },
+    {
+      "@id": "cim:Currency.PEN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Peruvian nuevo sol.",
+      "rdfs:label": "PEN"
+    },
+    {
+      "@id": "cim:Currency.PGK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Papua New Guinean kina.",
+      "rdfs:label": "PGK"
+    },
+    {
+      "@id": "cim:Currency.PHP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Philippine peso.",
+      "rdfs:label": "PHP"
+    },
+    {
+      "@id": "cim:Currency.PKR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pakistani rupee.",
+      "rdfs:label": "PKR"
+    },
+    {
+      "@id": "cim:Currency.PLN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Polish zloty.",
+      "rdfs:label": "PLN"
+    },
+    {
+      "@id": "cim:Currency.PYG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Paraguayan guaraní.",
+      "rdfs:label": "PYG"
+    },
+    {
+      "@id": "cim:Currency.QAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Qatari rial.",
+      "rdfs:label": "QAR"
+    },
+    {
+      "@id": "cim:Currency.RON",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Romanian new leu.",
+      "rdfs:label": "RON"
+    },
+    {
+      "@id": "cim:Currency.RSD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Serbian dinar.",
+      "rdfs:label": "RSD"
+    },
+    {
+      "@id": "cim:Currency.RUB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Russian rouble.",
+      "rdfs:label": "RUB"
+    },
+    {
+      "@id": "cim:Currency.RWF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Rwandan franc.",
+      "rdfs:label": "RWF"
+    },
+    {
+      "@id": "cim:Currency.SAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Saudi riyal.",
+      "rdfs:label": "SAR"
+    },
+    {
+      "@id": "cim:Currency.SBD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Solomon Islands dollar.",
+      "rdfs:label": "SBD"
+    },
+    {
+      "@id": "cim:Currency.SCR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Seychelles rupee.",
+      "rdfs:label": "SCR"
+    },
+    {
+      "@id": "cim:Currency.SDG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sudanese pound.",
+      "rdfs:label": "SDG"
+    },
+    {
+      "@id": "cim:Currency.SEK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Swedish krona/kronor.",
+      "rdfs:label": "SEK"
+    },
+    {
+      "@id": "cim:Currency.SGD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Singapore dollar.",
+      "rdfs:label": "SGD"
+    },
+    {
+      "@id": "cim:Currency.SHP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Saint Helena pound.",
+      "rdfs:label": "SHP"
+    },
+    {
+      "@id": "cim:Currency.SLL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sierra Leonean leone.",
+      "rdfs:label": "SLL"
+    },
+    {
+      "@id": "cim:Currency.SOS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Somali shilling.",
+      "rdfs:label": "SOS"
+    },
+    {
+      "@id": "cim:Currency.SRD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Surinamese dollar.",
+      "rdfs:label": "SRD"
+    },
+    {
+      "@id": "cim:Currency.STD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "São Tomé and Príncipe dobra.",
+      "rdfs:label": "STD"
+    },
+    {
+      "@id": "cim:Currency.SYP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Syrian pound.",
+      "rdfs:label": "SYP"
+    },
+    {
+      "@id": "cim:Currency.SZL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lilangeni.",
+      "rdfs:label": "SZL"
+    },
+    {
+      "@id": "cim:Currency.THB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Thai baht.",
+      "rdfs:label": "THB"
+    },
+    {
+      "@id": "cim:Currency.TJS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tajikistani somoni.",
+      "rdfs:label": "TJS"
+    },
+    {
+      "@id": "cim:Currency.TMT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Turkmenistani manat.",
+      "rdfs:label": "TMT"
+    },
+    {
+      "@id": "cim:Currency.TND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tunisian dinar.",
+      "rdfs:label": "TND"
+    },
+    {
+      "@id": "cim:Currency.TOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tongan pa'anga.",
+      "rdfs:label": "TOP"
+    },
+    {
+      "@id": "cim:Currency.TRY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Turkish lira.",
+      "rdfs:label": "TRY"
+    },
+    {
+      "@id": "cim:Currency.TTD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Trinidad and Tobago dollar.",
+      "rdfs:label": "TTD"
+    },
+    {
+      "@id": "cim:Currency.TWD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "New Taiwan dollar.",
+      "rdfs:label": "TWD"
+    },
+    {
+      "@id": "cim:Currency.TZS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tanzanian shilling.",
+      "rdfs:label": "TZS"
+    },
+    {
+      "@id": "cim:Currency.UAH",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ukrainian hryvnia.",
+      "rdfs:label": "UAH"
+    },
+    {
+      "@id": "cim:Currency.UGX",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ugandan shilling.",
+      "rdfs:label": "UGX"
+    },
+    {
+      "@id": "cim:Currency.USD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "United States dollar.",
+      "rdfs:label": "USD"
+    },
+    {
+      "@id": "cim:Currency.UYU",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Uruguayan peso.",
+      "rdfs:label": "UYU"
+    },
+    {
+      "@id": "cim:Currency.UZS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Uzbekistan som.",
+      "rdfs:label": "UZS"
+    },
+    {
+      "@id": "cim:Currency.VEF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Venezuelan bolívar fuerte.",
+      "rdfs:label": "VEF"
+    },
+    {
+      "@id": "cim:Currency.VND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Vietnamese Dong.",
+      "rdfs:label": "VND"
+    },
+    {
+      "@id": "cim:Currency.VUV",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Vanuatu vatu.",
+      "rdfs:label": "VUV"
+    },
+    {
+      "@id": "cim:Currency.WST",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Samoan tala.",
+      "rdfs:label": "WST"
+    },
+    {
+      "@id": "cim:Currency.XAF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFA franc BEAC.",
+      "rdfs:label": "XAF"
+    },
+    {
+      "@id": "cim:Currency.XCD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "East Caribbean dollar.",
+      "rdfs:label": "XCD"
+    },
+    {
+      "@id": "cim:Currency.XOF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFA Franc BCEAO.",
+      "rdfs:label": "XOF"
+    },
+    {
+      "@id": "cim:Currency.XPF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFP franc.",
+      "rdfs:label": "XPF"
+    },
+    {
+      "@id": "cim:Currency.YER",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Yemeni rial.",
+      "rdfs:label": "YER"
+    },
+    {
+      "@id": "cim:Currency.ZAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "South African rand.",
+      "rdfs:label": "ZAR"
+    },
+    {
+      "@id": "cim:Currency.ZMK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Zambian kwacha.",
+      "rdfs:label": "ZMK"
+    },
+    {
+      "@id": "cim:Currency.ZWL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Zimbabwe dollar.",
+      "rdfs:label": "ZWL"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.VAr",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the quadrature component of the current.",
+      "rdfs:label": "ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.Wh",
+      "rdfs:comment": "Real electrical energy.",
+      "rdfs:label": "RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ras:Package_RemedialActionScheduleProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.s",
+      "rdfs:comment": "Time, in seconds.",
+      "rdfs:label": "Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.M",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E6",
+      "rdfs:comment": "Mega 10**6.",
+      "rdfs:label": "M",
+      "skos:exactMatch": "prefix:Mega"
+    },
+    {
+      "@id": "cim:UnitMultiplier.none",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E0",
+      "rdfs:comment": "No multiplier or equivalently multiply by 1.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.VAr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:label": "VAr",
+      "skos:exactMatch": "unit:V-A_Reactive"
+    },
+    {
+      "@id": "cim:UnitSymbol.W",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.",
+      "rdfs:label": "W",
+      "skos:exactMatch": "unit:W"
+    },
+    {
+      "@id": "cim:UnitSymbol.Wh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real energy in watt hours.",
+      "rdfs:label": "Wh",
+      "skos:exactMatch": "unit:W-HR"
+    },
+    {
+      "@id": "cim:UnitSymbol.s",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time in seconds.",
+      "rdfs:label": "s",
+      "skos:exactMatch": "unit:SEC"
+    },
+    {
+      "@id": "cim:Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "nc:CostSettledKind.final",
+      "@type": "nc:CostSettledKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Final cost. For instance, the cost is not expected to be changed on a later stage.",
+      "rdfs:label": "final"
+    },
+    {
+      "@id": "nc:CostSettledKind.indicative",
+      "@type": "nc:CostSettledKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Indicative cost.",
+      "rdfs:label": "indicative"
+    },
+    {
+      "@id": "nc:CostSettledKind.provisional",
+      "@type": "nc:CostSettledKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Provisional cost.",
+      "rdfs:label": "provisional"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptanceKind.accepted",
+      "@type": "nc:RemedialActionScheduleAcceptanceKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The acceptance of remedial action schedule is concluded and accepted.",
+      "rdfs:label": "accepted"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptanceKind.refused",
+      "@type": "nc:RemedialActionScheduleAcceptanceKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The acceptance of the remedial action schedule is concluded and refused.",
+      "rdfs:label": "refused"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptanceKind.timeout",
+      "@type": "nc:RemedialActionScheduleAcceptanceKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The acceptance of the remedial action schedule was not completed due to timeout.",
+      "rdfs:label": "timeout"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleAcceptanceKind.waiting",
+      "@type": "nc:RemedialActionScheduleAcceptanceKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The acceptance of the remedial action schedule is waiting (in progress).",
+      "rdfs:label": "waiting"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependencyKind.exclusive",
+      "@type": "nc:RemedialActionScheduleDependencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Remedial action schedules are exclusive depending on each other. e.g. Only one of the remedial action schedules can be selected at the same time.",
+      "rdfs:label": "exclusive"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependencyKind.inclusive",
+      "@type": "nc:RemedialActionScheduleDependencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Remedial action schedules are inclusive depending on each other. e.g. Both remedial action schedules need to be picked if one of them is needed.",
+      "rdfs:label": "inclusive"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleDependencyKind.none",
+      "@type": "nc:RemedialActionScheduleDependencyKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Remedial action schedules are not depending on each other. However, the two remedial action schedules should be evaluated together.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.activated",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Activated remedial action schedule.",
+      "rdfs:label": "activated"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.agreed",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Agreed remedial action schedule.",
+      "rdfs:label": "agreed"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.agreementValidated",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The agreement is validated for the remedial action schedule.",
+      "rdfs:label": "agreementValidated"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.implemented",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "An ordered remedial action is implemented.",
+      "rdfs:label": "implemented"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.notUsed",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Not used remedial action schedule.",
+      "rdfs:label": "notUsed"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.ordered",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ordered remedial action schedule.",
+      "rdfs:label": "ordered"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.previouslyAgreed",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Previously agreed remedial action schedule.",
+      "rdfs:label": "previouslyAgreed"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.proposed",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Proposed remedial action schedule.",
+      "rdfs:label": "proposed"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.rejected",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Rejected remedial action schedule.",
+      "rdfs:label": "rejected"
+    },
+    {
+      "@id": "nc:RemedialActionScheduleStatusKind.rejectionValidated",
+      "@type": "nc:RemedialActionScheduleStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The rejection is validated for the remedial action schedule.",
+      "rdfs:label": "rejectionValidated"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind.next",
+      "@type": "nc:TimeSeriesInterpolationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The value between two time points is set to next value.",
+      "rdfs:label": "next"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind.none",
+      "@type": "nc:TimeSeriesInterpolationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "No interpolation is applied.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "nc:ValueOffsetKind.absolute",
+      "@type": "nc:ValueOffsetKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Value of the range constraint is replacing the attribute value referenced by the PropertyReference in a determined operational scenario.",
+      "rdfs:label": "absolute"
+    },
+    {
+      "@id": "nc:ValueOffsetKind.incremental",
+      "@type": "nc:ValueOffsetKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Value of the range constraint is incrementing the attribute value referenced by the PropertyReference in a determined operational scenario.",
+      "rdfs:label": "incremental"
+    },
+    {
+      "@id": "nc:ValueOffsetKind.incrementalPercentage",
+      "@type": "nc:ValueOffsetKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Value of the range constraint is incrementing in percentage the attribute value referenced by the PropertyReference in a determined operational scenario.",
+      "rdfs:label": "incrementalPercentage"
+    },
+    {
+      "@id": "ras:Package_DocRemedialActionScheduleProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocRemedialActionScheduleProfile"
+    },
+    {
+      "@id": "ras:Package_RemedialActionScheduleProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains remedial action schedule profile.",
+      "rdfs:label": "RemedialActionScheduleProfile"
+    }
+  ]
+}

@@ -6374,7 +6374,7 @@ cim:UnitMultiplier.none a cim:UnitMultiplier ;
   rdfs:label "none" ;
   rdfs:comment "No multiplier or equivalently multiply by 1."@en ;
   cims:stereotype "enum" ;
-  qudt:prefixMultiplier 1.0 .
+  qudt:prefixMultiplier 1E0 .
 
 cim:UnitMultiplier.p a cim:UnitMultiplier ;
   rdfs:label "p" ;

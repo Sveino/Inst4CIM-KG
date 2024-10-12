@@ -21,7 +21,7 @@ dh:Ontology a owl:Ontology ;
   dct:conformsTo <urn:iso:std:iec:61970-401:draft:ed-1>, <urn:iso:std:iec:61970-501:draft:ed-2> ;
   dct:creator "ENTSO-E"@en ;
   dct:identifier "urn:uuid:0693858e-f49d-46c2-805d-1dbb9fd9d90f" ;
-  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   dct:modified "2024-09-07"^^xsd:date ;
   dct:publisher "ENTSO-E" ;
   dct:rightsHolder "ENTSO-E" ;

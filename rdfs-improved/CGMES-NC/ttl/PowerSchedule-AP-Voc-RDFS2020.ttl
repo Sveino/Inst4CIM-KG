@@ -25,7 +25,7 @@ ps:Ontology a owl:Ontology ;
   dct:creator "ENTSO-E CIM WG NC project"@en ;
   dct:identifier "urn:uuid:470c9792-7798-4eb6-b7f2-6e18293c5f7b" ;
   dct:language "en-GB" ;
-  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   dct:modified "2024-09-07"^^xsd:date ;
   dct:publisher "ENTSO-E" ;
   dct:rightsHolder "ENTSO-E" ;

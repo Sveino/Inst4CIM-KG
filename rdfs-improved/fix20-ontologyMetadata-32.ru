@@ -16,9 +16,9 @@ where {
 delete {?x ?p ?old}
 insert {?x ?p ?new}
 where {
-  values ?p {dcat:landingPage dct:conformsTo}
+  values ?p {dcat:landingPage dct:conformsTo dct:license}
   ?x a owl:Ontology; ?p ?old
-  bind(iri(?old) as ?new)
+  bind(iri(str(?old)) as ?new)
 };
 
 delete {?x ?p ?old}

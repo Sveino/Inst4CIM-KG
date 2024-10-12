@@ -5,10 +5,14 @@
 - [Improvements to CIM and CGMES RDFS Representation](#improvements-to-cim-and-cgmes-rdfs-representation)
     - [Source Files](#source-files)
     - [RDF Serializations](#rdf-serializations)
-        - [Turtle Serialization Tools](#turtle-serialization-tools)
+        - [Turtle Serialization](#turtle-serialization)
             - [atextor tools: owl-cli and turtle-formatter](#atextor-tools-owl-cli-and-turtle-formatter)
             - [EDMC Tools for serialization, diff, hygiene checks, publication](#edmc-tools-for-serialization-diff-hygiene-checks-publication)
             - [OBO Robot](#obo-robot)
+        - [JSON-LD Serialization](#json-ld-serialization)
+            - [JSON-LD Context](#json-ld-context)
+            - [Coverting to JSON-LD as a Debugging Tool](#coverting-to-json-ld-as-a-debugging-tool)
+        - [RDF/XML Serialization](#rdfxml-serialization)
 - [Fixes](#fixes)
     - [Use Only One of RDFS2020 and RDFSEd2Beta Style](#use-only-one-of-rdfs2020-and-rdfsed2beta-style)
         - [Namespace Discrepancies in RDFS2020 CGMES vs NC](#namespace-discrepancies-in-rdfs2020-cgmes-vs-nc)
@@ -67,17 +71,20 @@ We start from these RDFS renditions, which are the latest versions of CIM/CGMES 
   Available locally in [source/CGMES-NC/r2.3/ap-voc/rdf](../source/CGMES-NC/r2.3/ap-voc/rdf)
 
 ## RDF Serializations
+
+Originally CIM/CGMES is modeled in UML, from which the ontologies were extracted as RDF/XML.
+- [x] We agreed to adopt Turtle as master format, so we need to produce "good looking" and stable Turtle (see [Turtle Serialization](#turtle-serialization)).
+  In the process of conversion we also apply all ontology [Fixes](#fixes) described below.
+- [x] Then we produce good JSON-LD (see [JSON-LD Serialization](#json-ld-serialization)).
+
 TODO:
 - [ ] Agree folder structure: `rdf` vs `ttl` vs `jsonld`.
   - But given the multitude of subfolders in `source/CGMES/v3.0/SHACL`, where do we make the format subfolders
   - For now I make the latter two but don't copy `rdf`
 - [x] Automate the conversion: I did it with a Makefile
   - Or see [spotless](https://github.com/diffplug/spotless/), which is used to automate file manipulation in a project
-- [ ] Produce good JSON-LD (see GS1 EPCIS tooling)
 
-### Turtle Serialization Tools
-It was agreed to adopt `ttl` as master format.
-
+### Turtle Serialization
 What tool to use to format Turtle? Requirements:
 - Do it in a predictable way
 - The conversion should be stable, i.e. diff-friendly
@@ -166,6 +173,113 @@ https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](h
 - Run SPARQL and capture results
 - Convert Manchester notation
 - Ontology metrics
+
+### JSON-LD Serialization
+https://github.com/Sveino/Inst4CIM-KG/issues/99
+
+To produce good JSON-LD serialization of the ontologies, we use the experience from [GS1 EPCIS](https://github.com/gs1/EPCIS), see [Ontology#conversion-to-jsonld](https://github.com/gs1/EPCIS/tree/master/Ontology#conversion-to-jsonld).
+We have considered several tools, and use the first two:
+- [ttl2jsonld](https://github.com/frogcat/ttl2jsonld). 
+  Install with: `npm install -g @frogcat/ttl2jsonld`
+  - Pro: converts Turtle to JSON-LD, preserves order
+  - Pro (if needed): emits lists in short-hand
+    - eg `"@type":"owl:Class", "owl:unionOf":{"@list":[{"@id":"Class1"}, {"@id":"Class2"}]}}}`
+  - Cons: generates a simple context using only the Turtle prefixes
+  - Cons: can't specify a custom context
+- [jsonld-cli](https://github.com/digitalbazaar/jsonld-cli). 
+  It's the same code that drives the [JSON-LD Playground](https://json-ld.org/playground).  
+  Install with: `npm install -g jsonld-cli`.
+  See [gs1/EPCIS#jsonld-cli](https://github.com/gs1/EPCIS/blob/master/Turtle/README.md#jsonld-cli) for further advice.
+  - Cons: can't convert Turtle to JSON-LD, see [digitalbazaar/jsonld-cli#19](https://github.com/digitalbazaar/jsonld-cli/issues/19)
+  - Pro: can compact JSON-LD properties while preserving compact lists
+  - Pro: can specify custom context
+  - Cons: the context must be a file (or URL), cannot be inline
+    Uses this specific syntax for the filename: `jsonld compact -c file://*.jsonld`
+    - The context cannot be embedded in the output to make the JSONLD self-contained
+    - Emits the same filename as remote context in the output: this relative URL is not ok
+- [Jena riot](https://jena.apache.org/download/index.cgi)
+  Download and install Apache Jena Commands
+  - Pro: can convert Turtle to JSON-LD and back
+  - Cons: doesn't preserve term order
+  - Cons: emits lists as `rdf:List` long-hand using blank nodes and first/rest
+  - Cons: can't specify a custom context
+  - Pro: generates a richer context by examining the values of each property
+    - Eg `{"@context": {"rdfs:range" : {"@type" : "@id"}}}`
+- [jq](https://stedolan.github.io/jq/download/ ) (if needed): for JSON manipulations
+
+#### JSON-LD Context
+To obtain the best possible JSON-LD form, we defined [CIM-ontology-context.jsonld](CIM-ontology-context.jsonld).
+It consists of two sections:
+- First we define the same prefixes as in `prefixes.ttl`:
+```
+{"@context":
+ {"cim":          "https://cim.ucaiug.io/ns#",
+  "nc":           "https://cim4.eu/ns/nc#",
+  "eu":           "https://cim.ucaiug.io/ns/eu#",
+  ...
+```
+- Then we define property characteristics, so the instance data can carry pure values, rather than having to repeat these characteristics.
+  Notes:
+  - `"@type": "@id"` declares an object property
+  - `"@type": "xsd:date"` declares a data property with the specified datatype 
+  - `"@language": "en"` results in a `langString` with that lang tag
+```js
+  "cim:unitMultiplier"          : {"@type": "@id"},
+  "cim:unitSymbol"              : {"@type": "@id"},
+  "cims:belongsToCategory"      : {"@type": "@id"},
+  "cims:multiplicity"           : {"@type": "@id"},
+  "dcat:landingPage"            : {"@type": "@id"},
+  "dct:conformsTo"              : {"@type": "@id"},
+  "dct:creator"                 : {"@language": "en"},
+  "dct:description"             : {"@language": "en"},
+  "dct:issued"                  : {"@type": "xsd:dateTime"},
+  "dct:license"                 : {"@type": "@id"},
+  "dct:modified"                : {"@type": "xsd:date"},
+  "dct:rights"                  : {"@language": "en"},
+  "dct:title"                   : {"@language": "en"},
+  "owl:backwardCompatibleWith"  : {"@type": "@id"},
+  "owl:incompatibleWith"        : {"@type": "@id"},
+  "owl:inverseOf"               : {"@type": "@id"},
+  "owl:priorVersion"            : {"@type": "@id"},
+  "owl:versionIRI"              : {"@type": "@id"},
+  "qudt:applicableUnit"         : {"@type": "@id"},
+  "qudt:hasQuantityKind"        : {"@type": "@id"},
+  "qudt:hasUnit"                : {"@type": "@id"},
+  "qudt:prefixMultiplier"       : {"@type": "xsd:double"},
+  "rdfs:comment"                : {"@language": "en"},
+  "rdfs:domain"                 : {"@type": "@id"},
+  "rdfs:range"                  : {"@type": "@id"},
+  "rdfs:subClassOf"             : {"@type": "@id"},
+  "skos:exactMatch"             : {"@type": "@id"},
+  "skos:narrower"               : {"@type": "@id"}
+```
+
+https://github.com/Sveino/Inst4CIM-KG/issues/110
+It is important to deploy `CIM-ontology-context.jsonld` at a network location.
+TODO
+
+#### Coverting to JSON-LD as a Debugging Tool
+As part of working out the best possible JSON-LD form, we looked for irregularities
+as explained in https://github.com/Sveino/Inst4CIM-KG/issues/99 :
+```
+grep -h '       "@' */*/*.jsonld|perl -pe 's{^ +}{}' |sort|uniq -c
+grep -h '"http' */*/*.jsonld|sort|uniq -c|less
+```
+
+We found and diagnosed a number of issues:
+- https://github.com/Sveino/Inst4CIM-KG/issues/69
+- https://github.com/Sveino/Inst4CIM-KG/issues/104
+- https://github.com/Sveino/Inst4CIM-KG/issues/108
+- https://github.com/Sveino/Inst4CIM-KG/issues/109
+- https://github.com/Sveino/Inst4CIM-KG/issues/110
+- https://github.com/digitalbazaar/jsonld.js/issues/558
+
+This is one of the benefits of using standard RDF serializations:
+by converting between them, one can check that everything is defined properly and as expected.
+
+### RDF/XML Serialization
+
+TODO
 
 # Fixes
 
@@ -319,10 +433,10 @@ From this (only the fields to change are shown):
 ```ttl
 eq:Ontology a owl:Ontology ;
   dcat:landingPage "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
   dcat:theme "vocabulary"@en ;
   dct:conformsTo "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
     "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
-  dct:creator "ENTSO-E CIM EG"@en ;
   dct:publisher "ENTSO-E"@en ;
   dct:rightsHolder "ENTSO-E"@en ;
   owl:versionInfo "3.0.0"@en .
@@ -331,11 +445,11 @@ To this (the lines marked `##` not yet done, pending decision)
 ```ttl
 eq:Ontology a owl:Ontology ;
   dcat:landingPage <https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/> ;
+  dct:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   ## DELETE ## dcat:theme "vocabulary"@en ;
   dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
   dct:conformsTo
     <urn:iso:std:iec:61970-301:ed-7:amd1>, <urn:iso:std:iec:61970-501:draft:ed-2>, <urn:iso:std:iec:61970-600-2:ed-1> ;
-  ## dct:creator "ENTSO-E CIM EG" ;
   dct:publisher "ENTSO-E" ;
   dct:rightsHolder "ENTSO-E" ;
   owl:versionInfo "3.0.0" .
