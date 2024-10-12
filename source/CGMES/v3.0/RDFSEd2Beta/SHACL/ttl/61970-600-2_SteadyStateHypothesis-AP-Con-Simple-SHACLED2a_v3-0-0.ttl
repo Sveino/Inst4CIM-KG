@@ -1,0 +1,1793 @@
+@prefix cim:     <http://iec.ch/TC57/CIM100#> .
+@prefix cims:    <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix eu:      <http://iec.ch/TC57/CIM100-European#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix prof:    <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix profcim: <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix ssh:     <http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/Constraints#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+ssh:ACDCConverter.p-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (p)." ;
+        sh:minCount     1 ;
+        sh:name         "ACDCConverter.p-cardinality" ;
+        sh:order        0 ;
+        sh:path         cim:ACDCConverter.p ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCConverter.p-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the p." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ACDCConverter.p-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        0 ;
+        sh:path         cim:ACDCConverter.p ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCConverter.q-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (q)." ;
+        sh:minCount     1 ;
+        sh:name         "ACDCConverter.q-cardinality" ;
+        sh:order        1 ;
+        sh:path         cim:ACDCConverter.q ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCConverter.q-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the q." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ACDCConverter.q-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        1 ;
+        sh:path         cim:ACDCConverter.q ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCConverter.targetPpcc-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "ACDCConverter.targetPpcc-cardinality" ;
+        sh:order        2 ;
+        sh:path         cim:ACDCConverter.targetPpcc ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCConverter.targetPpcc-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetPpcc." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ACDCConverter.targetPpcc-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        2 ;
+        sh:path         cim:ACDCConverter.targetPpcc ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCConverter.targetUdc-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "ACDCConverter.targetUdc-cardinality" ;
+        sh:order        3 ;
+        sh:path         cim:ACDCConverter.targetUdc ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCConverter.targetUdc-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetUdc." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ACDCConverter.targetUdc-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        3 ;
+        sh:path         cim:ACDCConverter.targetUdc ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCConverterDCTerminal
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:ACDCTerminal.connected-datatype , ssh:ACDCTerminal.connected-cardinality ;
+        sh:targetClass  cim:ACDCConverterDCTerminal .
+
+ssh:ACDCTerminal.connected-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (connected)." ;
+        sh:minCount     1 ;
+        sh:name         "ACDCTerminal.connected-cardinality" ;
+        sh:order        4 ;
+        sh:path         cim:ACDCTerminal.connected ;
+        sh:severity     sh:Violation .
+
+ssh:ACDCTerminal.connected-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the connected." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ACDCTerminal.connected-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        4 ;
+        sh:path         cim:ACDCTerminal.connected ;
+        sh:severity     sh:Violation .
+
+ssh:ActivePowerLimit  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:ActivePowerLimit.value-datatype , ssh:ActivePowerLimit.value-cardinality ;
+        sh:targetClass  cim:ActivePowerLimit .
+
+ssh:ActivePowerLimit.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "ActivePowerLimit.value-cardinality" ;
+        sh:order        5 ;
+        sh:path         cim:ActivePowerLimit.value ;
+        sh:severity     sh:Violation .
+
+ssh:ActivePowerLimit.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ActivePowerLimit.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        5 ;
+        sh:path         cim:ActivePowerLimit.value ;
+        sh:severity     sh:Violation .
+
+ssh:ApparentPowerLimit
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:ApparentPowerLimit.value-datatype , ssh:ApparentPowerLimit.value-cardinality ;
+        sh:targetClass  cim:ApparentPowerLimit .
+
+ssh:ApparentPowerLimit.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "ApparentPowerLimit.value-cardinality" ;
+        sh:order        6 ;
+        sh:path         cim:ApparentPowerLimit.value ;
+        sh:severity     sh:Violation .
+
+ssh:ApparentPowerLimit.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ApparentPowerLimit.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        6 ;
+        sh:path         cim:ApparentPowerLimit.value ;
+        sh:severity     sh:Violation .
+
+ssh:AssociationsGroup
+        rdf:type    sh:PropertyGroup ;
+        rdfs:label  "Associations" ;
+        sh:order    2 .
+
+ssh:AsynchronousMachine
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:Equipment.inService-cardinality , ssh:RegulatingCondEq.controlEnabled-datatype , ssh:RegulatingCondEq.controlEnabled-cardinality , ssh:RotatingMachine.q-datatype , ssh:Equipment.inService-datatype , ssh:AsynchronousMachine.asynchronousMachineType-datatype , ssh:AsynchronousMachine.asynchronousMachineType-cardinality , ssh:RotatingMachine.p-cardinality , ssh:RotatingMachine.q-cardinality , ssh:RotatingMachine.p-datatype , ssh:IdentifiedObject.mRID-cardinality ;
+        sh:targetClass  cim:AsynchronousMachine .
+
+ssh:AsynchronousMachine.asynchronousMachineType-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (asynchronousMachineType)." ;
+        sh:minCount     1 ;
+        sh:name         "AsynchronousMachine.asynchronousMachineType-cardinality" ;
+        sh:order        7 ;
+        sh:path         cim:AsynchronousMachine.asynchronousMachineType ;
+        sh:severity     sh:Violation .
+
+ssh:AsynchronousMachine.asynchronousMachineType-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the asynchronousMachineType." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:in           ( cim:AsynchronousMachineKind.generator cim:AsynchronousMachineKind.motor ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "AsynchronousMachine.asynchronousMachineType-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        7 ;
+        sh:path         cim:AsynchronousMachine.asynchronousMachineType ;
+        sh:severity     sh:Violation .
+
+ssh:BatteryUnit  rdf:type  sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-cardinality , ssh:BatteryUnit.storedE-cardinality , ssh:BatteryUnit.batteryState-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:BatteryUnit.storedE-datatype , ssh:BatteryUnit.batteryState-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype ;
+        sh:targetClass  cim:BatteryUnit .
+
+ssh:BatteryUnit.batteryState-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (batteryState)." ;
+        sh:minCount     1 ;
+        sh:name         "BatteryUnit.batteryState-cardinality" ;
+        sh:order        8 ;
+        sh:path         cim:BatteryUnit.batteryState ;
+        sh:severity     sh:Violation .
+
+ssh:BatteryUnit.batteryState-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the batteryState." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:in           ( cim:BatteryStateKind.discharging cim:BatteryStateKind.full cim:BatteryStateKind.waiting cim:BatteryStateKind.charging cim:BatteryStateKind.empty ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "BatteryUnit.batteryState-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        8 ;
+        sh:path         cim:BatteryUnit.batteryState ;
+        sh:severity     sh:Violation .
+
+ssh:BatteryUnit.storedE-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (storedE)." ;
+        sh:minCount     1 ;
+        sh:name         "BatteryUnit.storedE-cardinality" ;
+        sh:order        9 ;
+        sh:path         cim:BatteryUnit.storedE ;
+        sh:severity     sh:Violation .
+
+ssh:BatteryUnit.storedE-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the storedE." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "BatteryUnit.storedE-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        9 ;
+        sh:path         cim:BatteryUnit.storedE ;
+        sh:severity     sh:Violation .
+
+ssh:Breaker  rdf:type   sh:NodeShape ;
+        sh:property     ssh:Switch.open-cardinality , ssh:Switch.locked-datatype , ssh:IdentifiedObject.mRID-datatype , ssh:Equipment.inService-cardinality , ssh:Switch.open-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Switch.locked-cardinality ;
+        sh:targetClass  cim:Breaker .
+
+ssh:CardinalityGroup  rdf:type  sh:PropertyGroup ;
+        rdfs:label  "Cardinality" ;
+        sh:order    0 .
+
+ssh:ConformLoad  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:EnergyConsumer.q-datatype , ssh:EnergyConsumer.q-cardinality , ssh:Equipment.inService-cardinality , ssh:Equipment.inService-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:EnergyConsumer.p-datatype , ssh:EnergyConsumer.p-cardinality ;
+        sh:targetClass  cim:ConformLoad .
+
+ssh:ControlArea  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:ControlArea.pTolerance-datatype , ssh:ControlArea.pTolerance-cardinality , ssh:ControlArea.netInterchange-datatype , ssh:ControlArea.netInterchange-cardinality ;
+        sh:targetClass  cim:ControlArea .
+
+ssh:ControlArea.netInterchange-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (netInterchange)." ;
+        sh:minCount     1 ;
+        sh:name         "ControlArea.netInterchange-cardinality" ;
+        sh:order        10 ;
+        sh:path         cim:ControlArea.netInterchange ;
+        sh:severity     sh:Violation .
+
+ssh:ControlArea.netInterchange-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the netInterchange." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ControlArea.netInterchange-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        10 ;
+        sh:path         cim:ControlArea.netInterchange ;
+        sh:severity     sh:Violation .
+
+ssh:ControlArea.pTolerance-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "ControlArea.pTolerance-cardinality" ;
+        sh:order        11 ;
+        sh:path         cim:ControlArea.pTolerance ;
+        sh:severity     sh:Violation .
+
+ssh:ControlArea.pTolerance-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the pTolerance." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ControlArea.pTolerance-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        11 ;
+        sh:path         cim:ControlArea.pTolerance ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter  rdf:type  sh:NodeShape ;
+        sh:property     ssh:CsConverter.targetAlpha-cardinality , ssh:ACDCConverter.targetPpcc-cardinality , ssh:CsConverter.operatingMode-cardinality , ssh:CsConverter.operatingMode-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:ACDCConverter.targetUdc-cardinality , ssh:CsConverter.targetGamma-cardinality , ssh:CsConverter.pPccControl-datatype , ssh:ACDCConverter.targetUdc-datatype , ssh:Equipment.inService-cardinality , ssh:CsConverter.targetIdc-cardinality , ssh:CsConverter.targetAlpha-datatype , ssh:CsConverter.targetIdc-datatype , ssh:CsConverter.targetGamma-datatype , ssh:ACDCConverter.q-datatype , ssh:ACDCConverter.targetPpcc-datatype , ssh:CsConverter.pPccControl-cardinality , ssh:ACDCConverter.p-cardinality , ssh:ACDCConverter.q-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:ACDCConverter.p-datatype , ssh:Equipment.inService-datatype ;
+        sh:targetClass  cim:CsConverter .
+
+ssh:CsConverter.operatingMode-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (operatingMode)." ;
+        sh:minCount     1 ;
+        sh:name         "CsConverter.operatingMode-cardinality" ;
+        sh:order        12 ;
+        sh:path         cim:CsConverter.operatingMode ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.operatingMode-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the operatingMode." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:in           ( cim:CsOperatingModeKind.inverter cim:CsOperatingModeKind.rectifier ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "CsConverter.operatingMode-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        12 ;
+        sh:path         cim:CsConverter.operatingMode ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.pPccControl-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (pPccControl)." ;
+        sh:minCount     1 ;
+        sh:name         "CsConverter.pPccControl-cardinality" ;
+        sh:order        13 ;
+        sh:path         cim:CsConverter.pPccControl ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.pPccControl-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the pPccControl." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:in           ( cim:CsPpccControlKind.activePower cim:CsPpccControlKind.dcVoltage cim:CsPpccControlKind.dcCurrent ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "CsConverter.pPccControl-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        13 ;
+        sh:path         cim:CsConverter.pPccControl ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.targetAlpha-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "CsConverter.targetAlpha-cardinality" ;
+        sh:order        14 ;
+        sh:path         cim:CsConverter.targetAlpha ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.targetAlpha-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetAlpha." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "CsConverter.targetAlpha-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        14 ;
+        sh:path         cim:CsConverter.targetAlpha ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.targetGamma-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "CsConverter.targetGamma-cardinality" ;
+        sh:order        15 ;
+        sh:path         cim:CsConverter.targetGamma ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.targetGamma-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetGamma." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "CsConverter.targetGamma-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        15 ;
+        sh:path         cim:CsConverter.targetGamma ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.targetIdc-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "CsConverter.targetIdc-cardinality" ;
+        sh:order        16 ;
+        sh:path         cim:CsConverter.targetIdc ;
+        sh:severity     sh:Violation .
+
+ssh:CsConverter.targetIdc-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetIdc." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "CsConverter.targetIdc-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        16 ;
+        sh:path         cim:CsConverter.targetIdc ;
+        sh:severity     sh:Violation .
+
+ssh:CurrentLimit  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:CurrentLimit.value-datatype , ssh:CurrentLimit.value-cardinality ;
+        sh:targetClass  cim:CurrentLimit .
+
+ssh:CurrentLimit.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "CurrentLimit.value-cardinality" ;
+        sh:order        17 ;
+        sh:path         cim:CurrentLimit.value ;
+        sh:severity     sh:Violation .
+
+ssh:CurrentLimit.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "CurrentLimit.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        17 ;
+        sh:path         cim:CurrentLimit.value ;
+        sh:severity     sh:Violation .
+
+ssh:DCTerminal  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:ACDCTerminal.connected-datatype , ssh:ACDCTerminal.connected-cardinality ;
+        sh:targetClass  cim:DCTerminal .
+
+ssh:DatatypesGroup  rdf:type  sh:PropertyGroup ;
+        rdfs:label  "Datatypes" ;
+        sh:order    1 .
+
+ssh:DisconnectingCircuitBreaker
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-cardinality , ssh:IdentifiedObject.mRID-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:Switch.open-cardinality , ssh:Switch.open-datatype , ssh:Switch.locked-datatype , ssh:Equipment.inService-datatype , ssh:Switch.locked-cardinality ;
+        sh:targetClass  cim:DisconnectingCircuitBreaker .
+
+ssh:Disconnector  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-cardinality , ssh:Switch.locked-cardinality , ssh:Switch.open-datatype , ssh:Equipment.inService-cardinality , ssh:Switch.open-cardinality , ssh:Equipment.inService-datatype , ssh:IdentifiedObject.mRID-datatype , ssh:Switch.locked-datatype ;
+        sh:targetClass  cim:Disconnector .
+
+ssh:EnergyConsumer  rdf:type  sh:NodeShape ;
+        sh:property     ssh:EnergyConsumer.p-datatype , ssh:IdentifiedObject.mRID-datatype , ssh:EnergyConsumer.p-cardinality , ssh:EnergyConsumer.q-cardinality , ssh:Equipment.inService-cardinality , ssh:EnergyConsumer.q-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype ;
+        sh:targetClass  cim:EnergyConsumer .
+
+ssh:EnergyConsumer.p-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (p)." ;
+        sh:minCount     1 ;
+        sh:name         "EnergyConsumer.p-cardinality" ;
+        sh:order        18 ;
+        sh:path         cim:EnergyConsumer.p ;
+        sh:severity     sh:Violation .
+
+ssh:EnergyConsumer.p-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the p." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EnergyConsumer.p-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        18 ;
+        sh:path         cim:EnergyConsumer.p ;
+        sh:severity     sh:Violation .
+
+ssh:EnergyConsumer.q-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (q)." ;
+        sh:minCount     1 ;
+        sh:name         "EnergyConsumer.q-cardinality" ;
+        sh:order        19 ;
+        sh:path         cim:EnergyConsumer.q ;
+        sh:severity     sh:Violation .
+
+ssh:EnergyConsumer.q-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the q." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EnergyConsumer.q-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        19 ;
+        sh:path         cim:EnergyConsumer.q ;
+        sh:severity     sh:Violation .
+
+ssh:EnergySource  rdf:type  sh:NodeShape ;
+        sh:property     ssh:EnergySource.voltageMagnitude-datatype , ssh:EnergySource.activePower-datatype , ssh:EnergySource.voltageAngle-datatype , ssh:EnergySource.voltageMagnitude-cardinality , ssh:Equipment.inService-cardinality , ssh:EnergySource.activePower-cardinality , ssh:Equipment.inService-datatype , ssh:IdentifiedObject.mRID-datatype , ssh:EnergySource.reactivePower-cardinality , ssh:IdentifiedObject.mRID-cardinality , ssh:EnergySource.reactivePower-datatype , ssh:EnergySource.voltageAngle-cardinality ;
+        sh:targetClass  cim:EnergySource .
+
+ssh:EnergySource.activePower-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (activePower)." ;
+        sh:minCount     1 ;
+        sh:name         "EnergySource.activePower-cardinality" ;
+        sh:order        20 ;
+        sh:path         cim:EnergySource.activePower ;
+        sh:severity     sh:Violation .
+
+ssh:EnergySource.activePower-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the activePower." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EnergySource.activePower-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        20 ;
+        sh:path         cim:EnergySource.activePower ;
+        sh:severity     sh:Violation .
+
+ssh:EnergySource.reactivePower-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (reactivePower)." ;
+        sh:minCount     1 ;
+        sh:name         "EnergySource.reactivePower-cardinality" ;
+        sh:order        21 ;
+        sh:path         cim:EnergySource.reactivePower ;
+        sh:severity     sh:Violation .
+
+ssh:EnergySource.reactivePower-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the reactivePower." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EnergySource.reactivePower-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        21 ;
+        sh:path         cim:EnergySource.reactivePower ;
+        sh:severity     sh:Violation .
+
+ssh:EnergySource.voltageAngle-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "EnergySource.voltageAngle-cardinality" ;
+        sh:order        22 ;
+        sh:path         cim:EnergySource.voltageAngle ;
+        sh:severity     sh:Violation .
+
+ssh:EnergySource.voltageAngle-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the voltageAngle." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EnergySource.voltageAngle-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        22 ;
+        sh:path         cim:EnergySource.voltageAngle ;
+        sh:severity     sh:Violation .
+
+ssh:EnergySource.voltageMagnitude-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "EnergySource.voltageMagnitude-cardinality" ;
+        sh:order        23 ;
+        sh:path         cim:EnergySource.voltageMagnitude ;
+        sh:severity     sh:Violation .
+
+ssh:EnergySource.voltageMagnitude-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the voltageMagnitude." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EnergySource.voltageMagnitude-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        23 ;
+        sh:path         cim:EnergySource.voltageMagnitude ;
+        sh:severity     sh:Violation .
+
+ssh:Equipment  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Equipment.inService-cardinality ;
+        sh:targetClass  cim:Equipment .
+
+ssh:Equipment.inService-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (inService)." ;
+        sh:minCount     1 ;
+        sh:name         "Equipment.inService-cardinality" ;
+        sh:order        24 ;
+        sh:path         cim:Equipment.inService ;
+        sh:severity     sh:Violation .
+
+ssh:Equipment.inService-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the inService." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Equipment.inService-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        24 ;
+        sh:path         cim:Equipment.inService ;
+        sh:severity     sh:Violation .
+
+ssh:EquivalentInjection
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:EquivalentInjection.p-cardinality , ssh:EquivalentInjection.regulationTarget-datatype , ssh:EquivalentInjection.regulationTarget-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:EquivalentInjection.regulationStatus-cardinality , ssh:Equipment.inService-cardinality , ssh:EquivalentInjection.q-cardinality , ssh:EquivalentInjection.regulationStatus-datatype , ssh:EquivalentInjection.p-datatype , ssh:Equipment.inService-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:EquivalentInjection.q-datatype ;
+        sh:targetClass  cim:EquivalentInjection .
+
+ssh:EquivalentInjection.p-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (p)." ;
+        sh:minCount     1 ;
+        sh:name         "EquivalentInjection.p-cardinality" ;
+        sh:order        27 ;
+        sh:path         cim:EquivalentInjection.p ;
+        sh:severity     sh:Violation .
+
+ssh:EquivalentInjection.p-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the p." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EquivalentInjection.p-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        27 ;
+        sh:path         cim:EquivalentInjection.p ;
+        sh:severity     sh:Violation .
+
+ssh:EquivalentInjection.q-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (q)." ;
+        sh:minCount     1 ;
+        sh:name         "EquivalentInjection.q-cardinality" ;
+        sh:order        28 ;
+        sh:path         cim:EquivalentInjection.q ;
+        sh:severity     sh:Violation .
+
+ssh:EquivalentInjection.q-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the q." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EquivalentInjection.q-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        28 ;
+        sh:path         cim:EquivalentInjection.q ;
+        sh:severity     sh:Violation .
+
+ssh:EquivalentInjection.regulationStatus-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "EquivalentInjection.regulationStatus-cardinality" ;
+        sh:order        25 ;
+        sh:path         cim:EquivalentInjection.regulationStatus ;
+        sh:severity     sh:Violation .
+
+ssh:EquivalentInjection.regulationStatus-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the regulationStatus." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EquivalentInjection.regulationStatus-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        25 ;
+        sh:path         cim:EquivalentInjection.regulationStatus ;
+        sh:severity     sh:Violation .
+
+ssh:EquivalentInjection.regulationTarget-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "EquivalentInjection.regulationTarget-cardinality" ;
+        sh:order        26 ;
+        sh:path         cim:EquivalentInjection.regulationTarget ;
+        sh:severity     sh:Violation .
+
+ssh:EquivalentInjection.regulationTarget-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the regulationTarget." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "EquivalentInjection.regulationTarget-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        26 ;
+        sh:path         cim:EquivalentInjection.regulationTarget ;
+        sh:severity     sh:Violation .
+
+ssh:ExternalNetworkInjection
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-cardinality , ssh:ExternalNetworkInjection.q-cardinality , ssh:ExternalNetworkInjection.p-cardinality , ssh:RegulatingCondEq.controlEnabled-datatype , ssh:ExternalNetworkInjection.p-datatype , ssh:ExternalNetworkInjection.referencePriority-datatype , ssh:IdentifiedObject.mRID-datatype , ssh:Equipment.inService-cardinality , ssh:Equipment.inService-datatype , ssh:ExternalNetworkInjection.referencePriority-cardinality , ssh:RegulatingCondEq.controlEnabled-cardinality , ssh:ExternalNetworkInjection.q-datatype ;
+        sh:targetClass  cim:ExternalNetworkInjection .
+
+ssh:ExternalNetworkInjection.p-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (p)." ;
+        sh:minCount     1 ;
+        sh:name         "ExternalNetworkInjection.p-cardinality" ;
+        sh:order        30 ;
+        sh:path         cim:ExternalNetworkInjection.p ;
+        sh:severity     sh:Violation .
+
+ssh:ExternalNetworkInjection.p-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the p." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ExternalNetworkInjection.p-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        30 ;
+        sh:path         cim:ExternalNetworkInjection.p ;
+        sh:severity     sh:Violation .
+
+ssh:ExternalNetworkInjection.q-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (q)." ;
+        sh:minCount     1 ;
+        sh:name         "ExternalNetworkInjection.q-cardinality" ;
+        sh:order        31 ;
+        sh:path         cim:ExternalNetworkInjection.q ;
+        sh:severity     sh:Violation .
+
+ssh:ExternalNetworkInjection.q-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the q." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ExternalNetworkInjection.q-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        31 ;
+        sh:path         cim:ExternalNetworkInjection.q ;
+        sh:severity     sh:Violation .
+
+ssh:ExternalNetworkInjection.referencePriority-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (referencePriority)." ;
+        sh:minCount     1 ;
+        sh:name         "ExternalNetworkInjection.referencePriority-cardinality" ;
+        sh:order        29 ;
+        sh:path         cim:ExternalNetworkInjection.referencePriority ;
+        sh:severity     sh:Violation .
+
+ssh:ExternalNetworkInjection.referencePriority-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the referencePriority." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ExternalNetworkInjection.referencePriority-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        29 ;
+        sh:path         cim:ExternalNetworkInjection.referencePriority ;
+        sh:severity     sh:Violation .
+
+ssh:Fuse  rdf:type      sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-datatype , ssh:Switch.open-datatype , ssh:Switch.locked-cardinality , ssh:IdentifiedObject.mRID-cardinality , ssh:Switch.locked-datatype , ssh:Equipment.inService-cardinality , ssh:Switch.open-cardinality , ssh:IdentifiedObject.mRID-datatype ;
+        sh:targetClass  cim:Fuse .
+
+ssh:GeneratingUnit  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Equipment.inService-cardinality , ssh:GeneratingUnit.normalPF-datatype , ssh:GeneratingUnit.normalPF-cardinality ;
+        sh:targetClass  cim:GeneratingUnit .
+
+ssh:GeneratingUnit.normalPF-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (normalPF)." ;
+        sh:minCount     1 ;
+        sh:name         "GeneratingUnit.normalPF-cardinality" ;
+        sh:order        32 ;
+        sh:path         cim:GeneratingUnit.normalPF ;
+        sh:severity     sh:Violation .
+
+ssh:GeneratingUnit.normalPF-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the normalPF." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "GeneratingUnit.normalPF-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        32 ;
+        sh:path         cim:GeneratingUnit.normalPF ;
+        sh:severity     sh:Violation .
+
+ssh:GroundDisconnector
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:Switch.locked-datatype , ssh:Switch.open-cardinality , ssh:Switch.locked-cardinality , ssh:Equipment.inService-cardinality , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Switch.open-datatype ;
+        sh:targetClass  cim:GroundDisconnector .
+
+ssh:HydroGeneratingUnit
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Equipment.inService-cardinality , ssh:GeneratingUnit.normalPF-datatype , ssh:GeneratingUnit.normalPF-cardinality ;
+        sh:targetClass  cim:HydroGeneratingUnit .
+
+ssh:IdentifiedObject.mRID-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (mRID)." ;
+        sh:minCount     1 ;
+        sh:name         "IdentifiedObject.mRID-cardinality" ;
+        sh:order        33 ;
+        sh:path         cim:IdentifiedObject.mRID ;
+        sh:severity     sh:Violation .
+
+ssh:IdentifiedObject.mRID-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the mRID." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.mRID-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        33 ;
+        sh:path         cim:IdentifiedObject.mRID ;
+        sh:severity     sh:Violation .
+
+ssh:Jumper  rdf:type    sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-datatype , ssh:Switch.locked-datatype , ssh:Switch.open-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Switch.open-cardinality , ssh:Switch.locked-cardinality , ssh:Equipment.inService-cardinality , ssh:IdentifiedObject.mRID-datatype ;
+        sh:targetClass  cim:Jumper .
+
+ssh:LinearShuntCompensator
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-cardinality , ssh:ShuntCompensator.sections-datatype , ssh:ShuntCompensator.sections-cardinality , ssh:RegulatingCondEq.controlEnabled-datatype , ssh:RegulatingCondEq.controlEnabled-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:Equipment.inService-datatype , ssh:IdentifiedObject.mRID-cardinality ;
+        sh:targetClass  cim:LinearShuntCompensator .
+
+ssh:LoadBreakSwitch  rdf:type  sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-cardinality , ssh:Switch.locked-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:Switch.open-cardinality , ssh:Equipment.inService-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Switch.locked-datatype , ssh:Switch.open-datatype ;
+        sh:targetClass  cim:LoadBreakSwitch .
+
+ssh:NonConformLoad  rdf:type  sh:NodeShape ;
+        sh:property     ssh:EnergyConsumer.q-cardinality , ssh:EnergyConsumer.p-datatype , ssh:Equipment.inService-cardinality , ssh:EnergyConsumer.p-cardinality , ssh:EnergyConsumer.q-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:Equipment.inService-datatype ;
+        sh:targetClass  cim:NonConformLoad .
+
+ssh:NonlinearShuntCompensator
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:ShuntCompensator.sections-cardinality , ssh:IdentifiedObject.mRID-cardinality , ssh:RegulatingCondEq.controlEnabled-cardinality , ssh:Equipment.inService-cardinality , ssh:RegulatingCondEq.controlEnabled-datatype , ssh:Equipment.inService-datatype , ssh:IdentifiedObject.mRID-datatype , ssh:ShuntCompensator.sections-datatype ;
+        sh:targetClass  cim:NonlinearShuntCompensator .
+
+ssh:NuclearGeneratingUnit
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Equipment.inService-cardinality , ssh:GeneratingUnit.normalPF-datatype , ssh:GeneratingUnit.normalPF-cardinality ;
+        sh:targetClass  cim:NuclearGeneratingUnit .
+
+ssh:Ontology  rdf:type        owl:Ontology ;
+        dct:conformsTo        "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "urn:iso:std:iec:61970-401:draft:ed-1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" ;
+        dct:creator           "ENTSO-E CIM EG"@en ;
+        dct:description       "The constraints for the steady state hypothesis profile from IEC 61970-600-2."@en ;
+        dct:identifier        "urn:uuid:5aabb9bd-8fe3-4f3c-a0fa-f6902e767ce5" ;
+        dct:issued            "2021-01-27T15:23:57Z"^^xsd:dateTime ;
+        dct:language          "en-GB" ;
+        dct:modified          "2020-10-12"^^xsd:date ;
+        dct:publisher         "ENTSO-E"@en ;
+        dct:rights            "Copyright"@en ;
+        dct:rightsHolder      "ENTSO-E"@en ;
+        dct:title             "Steady State Hypothesis Constraints"@en ;
+        owl:incompatibleWith  <http://entsoe.eu/2009/profile1> ;
+        owl:priorVersion      <http://entsoe.eu/CIM/SteadyStateHypothesis/1/1> ;
+        owl:versionIRI        <http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU/Constraints/3.0> ;
+        owl:versionInfo       "3.0.0"@en ;
+        dcat:keyword          "SSH" ;
+        dcat:theme            "constraints"@en .
+
+ssh:PhaseTapChangerAsymmetrical
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:TapChanger.step-datatype , ssh:TapChanger.step-cardinality , ssh:TapChanger.controlEnabled-datatype , ssh:TapChanger.controlEnabled-cardinality ;
+        sh:targetClass  cim:PhaseTapChangerAsymmetrical .
+
+ssh:PhaseTapChangerLinear
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:TapChanger.step-datatype , ssh:TapChanger.step-cardinality , ssh:TapChanger.controlEnabled-datatype , ssh:TapChanger.controlEnabled-cardinality ;
+        sh:targetClass  cim:PhaseTapChangerLinear .
+
+ssh:PhaseTapChangerSymmetrical
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:TapChanger.step-datatype , ssh:TapChanger.step-cardinality , ssh:TapChanger.controlEnabled-datatype , ssh:TapChanger.controlEnabled-cardinality ;
+        sh:targetClass  cim:PhaseTapChangerSymmetrical .
+
+ssh:PhaseTapChangerTabular
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:TapChanger.step-datatype , ssh:TapChanger.step-cardinality , ssh:TapChanger.controlEnabled-datatype , ssh:TapChanger.controlEnabled-cardinality ;
+        sh:targetClass  cim:PhaseTapChangerTabular .
+
+ssh:PowerElectronicsConnection
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-datatype , ssh:PowerElectronicsConnection.p-cardinality , ssh:RegulatingCondEq.controlEnabled-datatype , ssh:PowerElectronicsConnection.p-datatype , ssh:PowerElectronicsConnection.q-cardinality , ssh:Equipment.inService-cardinality , ssh:RegulatingCondEq.controlEnabled-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:PowerElectronicsConnection.q-datatype , ssh:IdentifiedObject.mRID-cardinality ;
+        sh:targetClass  cim:PowerElectronicsConnection .
+
+ssh:PowerElectronicsConnection.p-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (p)." ;
+        sh:minCount     1 ;
+        sh:name         "PowerElectronicsConnection.p-cardinality" ;
+        sh:order        34 ;
+        sh:path         cim:PowerElectronicsConnection.p ;
+        sh:severity     sh:Violation .
+
+ssh:PowerElectronicsConnection.p-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the p." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "PowerElectronicsConnection.p-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        34 ;
+        sh:path         cim:PowerElectronicsConnection.p ;
+        sh:severity     sh:Violation .
+
+ssh:PowerElectronicsConnection.q-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (q)." ;
+        sh:minCount     1 ;
+        sh:name         "PowerElectronicsConnection.q-cardinality" ;
+        sh:order        35 ;
+        sh:path         cim:PowerElectronicsConnection.q ;
+        sh:severity     sh:Violation .
+
+ssh:PowerElectronicsConnection.q-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the q." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "PowerElectronicsConnection.q-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        35 ;
+        sh:path         cim:PowerElectronicsConnection.q ;
+        sh:severity     sh:Violation .
+
+ssh:RatioTapChanger  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:TapChanger.step-datatype , ssh:TapChanger.step-cardinality , ssh:TapChanger.controlEnabled-datatype , ssh:TapChanger.controlEnabled-cardinality ;
+        sh:targetClass  cim:RatioTapChanger .
+
+ssh:RegulatingCondEq.controlEnabled-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (controlEnabled)." ;
+        sh:minCount     1 ;
+        sh:name         "RegulatingCondEq.controlEnabled-cardinality" ;
+        sh:order        36 ;
+        sh:path         cim:RegulatingCondEq.controlEnabled ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingCondEq.controlEnabled-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the controlEnabled." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RegulatingCondEq.controlEnabled-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        36 ;
+        sh:path         cim:RegulatingCondEq.controlEnabled ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:RegulatingControl.targetValue-cardinality , ssh:RegulatingControl.targetValueUnitMultiplier-cardinality , ssh:RegulatingControl.maxAllowedTargetValue-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:RegulatingControl.enabled-cardinality , ssh:RegulatingControl.targetDeadband-cardinality , ssh:RegulatingControl.targetValueUnitMultiplier-datatype , ssh:RegulatingControl.discrete-cardinality , ssh:RegulatingControl.minAllowedTargetValue-cardinality , ssh:RegulatingControl.targetValue-datatype , ssh:RegulatingControl.minAllowedTargetValue-datatype , ssh:RegulatingControl.targetDeadband-datatype , ssh:RegulatingControl.discrete-datatype , ssh:RegulatingControl.maxAllowedTargetValue-cardinality , ssh:RegulatingControl.enabled-datatype ;
+        sh:targetClass  cim:RegulatingControl .
+
+ssh:RegulatingControl.discrete-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (discrete)." ;
+        sh:minCount     1 ;
+        sh:name         "RegulatingControl.discrete-cardinality" ;
+        sh:order        37 ;
+        sh:path         cim:RegulatingControl.discrete ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.discrete-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the discrete." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RegulatingControl.discrete-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        37 ;
+        sh:path         cim:RegulatingControl.discrete ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.enabled-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (enabled)." ;
+        sh:minCount     1 ;
+        sh:name         "RegulatingControl.enabled-cardinality" ;
+        sh:order        38 ;
+        sh:path         cim:RegulatingControl.enabled ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.enabled-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the enabled." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RegulatingControl.enabled-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        38 ;
+        sh:path         cim:RegulatingControl.enabled ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.maxAllowedTargetValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "RegulatingControl.maxAllowedTargetValue-cardinality" ;
+        sh:order        42 ;
+        sh:path         cim:RegulatingControl.maxAllowedTargetValue ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.maxAllowedTargetValue-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the maxAllowedTargetValue." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RegulatingControl.maxAllowedTargetValue-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        42 ;
+        sh:path         cim:RegulatingControl.maxAllowedTargetValue ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.minAllowedTargetValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "RegulatingControl.minAllowedTargetValue-cardinality" ;
+        sh:order        43 ;
+        sh:path         cim:RegulatingControl.minAllowedTargetValue ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.minAllowedTargetValue-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the minAllowedTargetValue." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RegulatingControl.minAllowedTargetValue-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        43 ;
+        sh:path         cim:RegulatingControl.minAllowedTargetValue ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.targetDeadband-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "RegulatingControl.targetDeadband-cardinality" ;
+        sh:order        39 ;
+        sh:path         cim:RegulatingControl.targetDeadband ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.targetDeadband-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetDeadband." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RegulatingControl.targetDeadband-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        39 ;
+        sh:path         cim:RegulatingControl.targetDeadband ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.targetValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (targetValue)." ;
+        sh:minCount     1 ;
+        sh:name         "RegulatingControl.targetValue-cardinality" ;
+        sh:order        40 ;
+        sh:path         cim:RegulatingControl.targetValue ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.targetValue-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetValue." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RegulatingControl.targetValue-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        40 ;
+        sh:path         cim:RegulatingControl.targetValue ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.targetValueUnitMultiplier-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (targetValueUnitMultiplier)." ;
+        sh:minCount     1 ;
+        sh:name         "RegulatingControl.targetValueUnitMultiplier-cardinality" ;
+        sh:order        41 ;
+        sh:path         cim:RegulatingControl.targetValueUnitMultiplier ;
+        sh:severity     sh:Violation .
+
+ssh:RegulatingControl.targetValueUnitMultiplier-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the targetValueUnitMultiplier." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:in           ( cim:UnitMultiplier.y cim:UnitMultiplier.z cim:UnitMultiplier.a cim:UnitMultiplier.f cim:UnitMultiplier.p cim:UnitMultiplier.n cim:UnitMultiplier.micro cim:UnitMultiplier.m cim:UnitMultiplier.c cim:UnitMultiplier.d cim:UnitMultiplier.none cim:UnitMultiplier.da cim:UnitMultiplier.h cim:UnitMultiplier.k cim:UnitMultiplier.M cim:UnitMultiplier.G cim:UnitMultiplier.T cim:UnitMultiplier.P cim:UnitMultiplier.E cim:UnitMultiplier.Z cim:UnitMultiplier.Y ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "RegulatingControl.targetValueUnitMultiplier-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        41 ;
+        sh:path         cim:RegulatingControl.targetValueUnitMultiplier ;
+        sh:severity     sh:Violation .
+
+ssh:RotatingMachine.p-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (p)." ;
+        sh:minCount     1 ;
+        sh:name         "RotatingMachine.p-cardinality" ;
+        sh:order        44 ;
+        sh:path         cim:RotatingMachine.p ;
+        sh:severity     sh:Violation .
+
+ssh:RotatingMachine.p-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the p." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RotatingMachine.p-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        44 ;
+        sh:path         cim:RotatingMachine.p ;
+        sh:severity     sh:Violation .
+
+ssh:RotatingMachine.q-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (q)." ;
+        sh:minCount     1 ;
+        sh:name         "RotatingMachine.q-cardinality" ;
+        sh:order        45 ;
+        sh:path         cim:RotatingMachine.q ;
+        sh:severity     sh:Violation .
+
+ssh:RotatingMachine.q-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the q." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "RotatingMachine.q-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        45 ;
+        sh:path         cim:RotatingMachine.q ;
+        sh:severity     sh:Violation .
+
+ssh:ShuntCompensator.sections-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (sections)." ;
+        sh:minCount     1 ;
+        sh:name         "ShuntCompensator.sections-cardinality" ;
+        sh:order        46 ;
+        sh:path         cim:ShuntCompensator.sections ;
+        sh:severity     sh:Violation .
+
+ssh:ShuntCompensator.sections-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the sections." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ShuntCompensator.sections-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        46 ;
+        sh:path         cim:ShuntCompensator.sections ;
+        sh:severity     sh:Violation .
+
+ssh:SolarGeneratingUnit
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Equipment.inService-cardinality , ssh:GeneratingUnit.normalPF-datatype , ssh:GeneratingUnit.normalPF-cardinality ;
+        sh:targetClass  cim:SolarGeneratingUnit .
+
+ssh:StaticVarCompensator
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-cardinality , ssh:IdentifiedObject.mRID-cardinality , ssh:StaticVarCompensator.q-cardinality , ssh:StaticVarCompensator.q-datatype , ssh:RegulatingCondEq.controlEnabled-datatype , ssh:IdentifiedObject.mRID-datatype , ssh:RegulatingCondEq.controlEnabled-cardinality , ssh:Equipment.inService-datatype ;
+        sh:targetClass  cim:StaticVarCompensator .
+
+ssh:StaticVarCompensator.q-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (q)." ;
+        sh:minCount     1 ;
+        sh:name         "StaticVarCompensator.q-cardinality" ;
+        sh:order        47 ;
+        sh:path         cim:StaticVarCompensator.q ;
+        sh:severity     sh:Violation .
+
+ssh:StaticVarCompensator.q-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the q." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StaticVarCompensator.q-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        47 ;
+        sh:path         cim:StaticVarCompensator.q ;
+        sh:severity     sh:Violation .
+
+ssh:StationSupply  rdf:type  sh:NodeShape ;
+        sh:property     ssh:EnergyConsumer.p-cardinality , ssh:Equipment.inService-datatype , ssh:EnergyConsumer.q-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:EnergyConsumer.q-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:EnergyConsumer.p-datatype , ssh:Equipment.inService-cardinality ;
+        sh:targetClass  cim:StationSupply .
+
+ssh:Switch  rdf:type    sh:NodeShape ;
+        sh:property     ssh:Switch.locked-datatype , ssh:Switch.open-cardinality , ssh:Switch.open-datatype , ssh:Equipment.inService-cardinality , ssh:IdentifiedObject.mRID-cardinality , ssh:Switch.locked-cardinality , ssh:Equipment.inService-datatype , ssh:IdentifiedObject.mRID-datatype ;
+        sh:targetClass  cim:Switch .
+
+ssh:Switch.locked-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (locked)." ;
+        sh:minCount     1 ;
+        sh:name         "Switch.locked-cardinality" ;
+        sh:order        49 ;
+        sh:path         cim:Switch.locked ;
+        sh:severity     sh:Violation .
+
+ssh:Switch.locked-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the locked." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Switch.locked-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        49 ;
+        sh:path         cim:Switch.locked ;
+        sh:severity     sh:Violation .
+
+ssh:Switch.open-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (open)." ;
+        sh:minCount     1 ;
+        sh:name         "Switch.open-cardinality" ;
+        sh:order        48 ;
+        sh:path         cim:Switch.open ;
+        sh:severity     sh:Violation .
+
+ssh:Switch.open-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the open." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Switch.open-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        48 ;
+        sh:path         cim:Switch.open ;
+        sh:severity     sh:Violation .
+
+ssh:SynchronousMachine
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:Equipment.inService-datatype , ssh:RotatingMachine.p-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:Equipment.inService-cardinality , ssh:SynchronousMachine.referencePriority-datatype , ssh:SynchronousMachine.operatingMode-cardinality , ssh:RegulatingCondEq.controlEnabled-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:RegulatingCondEq.controlEnabled-cardinality , ssh:SynchronousMachine.operatingMode-datatype , ssh:RotatingMachine.p-datatype , ssh:SynchronousMachine.referencePriority-cardinality , ssh:RotatingMachine.q-cardinality , ssh:RotatingMachine.q-datatype ;
+        sh:targetClass  cim:SynchronousMachine .
+
+ssh:SynchronousMachine.operatingMode-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (operatingMode)." ;
+        sh:minCount     1 ;
+        sh:name         "SynchronousMachine.operatingMode-cardinality" ;
+        sh:order        50 ;
+        sh:path         cim:SynchronousMachine.operatingMode ;
+        sh:severity     sh:Violation .
+
+ssh:SynchronousMachine.operatingMode-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the operatingMode." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:in           ( cim:SynchronousMachineOperatingMode.generator cim:SynchronousMachineOperatingMode.condenser cim:SynchronousMachineOperatingMode.motor ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "SynchronousMachine.operatingMode-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        50 ;
+        sh:path         cim:SynchronousMachine.operatingMode ;
+        sh:severity     sh:Violation .
+
+ssh:SynchronousMachine.referencePriority-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (referencePriority)." ;
+        sh:minCount     1 ;
+        sh:name         "SynchronousMachine.referencePriority-cardinality" ;
+        sh:order        51 ;
+        sh:path         cim:SynchronousMachine.referencePriority ;
+        sh:severity     sh:Violation .
+
+ssh:SynchronousMachine.referencePriority-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the referencePriority." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "SynchronousMachine.referencePriority-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        51 ;
+        sh:path         cim:SynchronousMachine.referencePriority ;
+        sh:severity     sh:Violation .
+
+ssh:TapChanger.controlEnabled-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (controlEnabled)." ;
+        sh:minCount     1 ;
+        sh:name         "TapChanger.controlEnabled-cardinality" ;
+        sh:order        52 ;
+        sh:path         cim:TapChanger.controlEnabled ;
+        sh:severity     sh:Violation .
+
+ssh:TapChanger.controlEnabled-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the controlEnabled." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "TapChanger.controlEnabled-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        52 ;
+        sh:path         cim:TapChanger.controlEnabled ;
+        sh:severity     sh:Violation .
+
+ssh:TapChanger.step-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (step)." ;
+        sh:minCount     1 ;
+        sh:name         "TapChanger.step-cardinality" ;
+        sh:order        53 ;
+        sh:path         cim:TapChanger.step ;
+        sh:severity     sh:Violation .
+
+ssh:TapChanger.step-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the step." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "TapChanger.step-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        53 ;
+        sh:path         cim:TapChanger.step ;
+        sh:severity     sh:Violation .
+
+ssh:TapChangerControl
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:RegulatingControl.targetValueUnitMultiplier-datatype , ssh:RegulatingControl.targetValue-datatype , ssh:RegulatingControl.targetDeadband-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:RegulatingControl.minAllowedTargetValue-datatype , ssh:RegulatingControl.maxAllowedTargetValue-cardinality , ssh:RegulatingControl.enabled-cardinality , ssh:RegulatingControl.discrete-cardinality , ssh:RegulatingControl.targetDeadband-cardinality , ssh:RegulatingControl.enabled-datatype , ssh:RegulatingControl.maxAllowedTargetValue-datatype , ssh:RegulatingControl.targetValueUnitMultiplier-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:RegulatingControl.minAllowedTargetValue-cardinality , ssh:RegulatingControl.discrete-datatype , ssh:RegulatingControl.targetValue-cardinality ;
+        sh:targetClass  cim:TapChangerControl .
+
+ssh:Terminal  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:ACDCTerminal.connected-datatype , ssh:ACDCTerminal.connected-cardinality ;
+        sh:targetClass  cim:Terminal .
+
+ssh:ThermalGeneratingUnit
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Equipment.inService-cardinality , ssh:GeneratingUnit.normalPF-datatype , ssh:GeneratingUnit.normalPF-cardinality ;
+        sh:targetClass  cim:ThermalGeneratingUnit .
+
+ssh:VoltageLimit  rdf:type  sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:VoltageLimit.value-datatype , ssh:VoltageLimit.value-cardinality ;
+        sh:targetClass  cim:VoltageLimit .
+
+ssh:VoltageLimit.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "VoltageLimit.value-cardinality" ;
+        sh:order        54 ;
+        sh:path         cim:VoltageLimit.value ;
+        sh:severity     sh:Violation .
+
+ssh:VoltageLimit.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VoltageLimit.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        54 ;
+        sh:path         cim:VoltageLimit.value ;
+        sh:severity     sh:Violation .
+ssh:VsConverter  rdf:type  sh:NodeShape ;
+        sh:property     ssh:VsConverter.targetPWMfactor-cardinality , ssh:VsConverter.qShare-datatype , ssh:VsConverter.droop-datatype , ssh:ACDCConverter.targetPpcc-datatype , ssh:VsConverter.pPccControl-datatype , ssh:VsConverter.targetQpcc-datatype , ssh:VsConverter.qPccControl-cardinality , ssh:VsConverter.pPccControl-cardinality , ssh:VsConverter.droop-cardinality , ssh:VsConverter.qPccControl-datatype , ssh:ACDCConverter.p-cardinality , ssh:VsConverter.targetUpcc-datatype , ssh:VsConverter.targetPowerFactorPcc-cardinality , ssh:ACDCConverter.q-cardinality , ssh:VsConverter.targetPhasePcc-datatype , ssh:VsConverter.droopCompensation-datatype , ssh:ACDCConverter.targetUdc-datatype , ssh:VsConverter.targetUpcc-cardinality , ssh:ACDCConverter.p-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:VsConverter.targetPhasePcc-cardinality , ssh:ACDCConverter.targetPpcc-cardinality , ssh:VsConverter.qShare-cardinality , ssh:Equipment.inService-datatype , ssh:ACDCConverter.targetUdc-cardinality , ssh:IdentifiedObject.mRID-datatype , ssh:Equipment.inService-cardinality , ssh:VsConverter.droopCompensation-cardinality , ssh:VsConverter.targetPowerFactorPcc-datatype , ssh:ACDCConverter.q-datatype , ssh:VsConverter.targetQpcc-cardinality , ssh:VsConverter.targetPWMfactor-datatype ;
+        sh:targetClass  cim:VsConverter .
+
+ssh:VsConverter.droop-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "VsConverter.droop-cardinality" ;
+        sh:order        55 ;
+        sh:path         cim:VsConverter.droop ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.droop-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the droop." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VsConverter.droop-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        55 ;
+        sh:path         cim:VsConverter.droop ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.droopCompensation-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "VsConverter.droopCompensation-cardinality" ;
+        sh:order        56 ;
+        sh:path         cim:VsConverter.droopCompensation ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.droopCompensation-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the droopCompensation." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VsConverter.droopCompensation-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        56 ;
+        sh:path         cim:VsConverter.droopCompensation ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.pPccControl-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (pPccControl)." ;
+        sh:minCount     1 ;
+        sh:name         "VsConverter.pPccControl-cardinality" ;
+        sh:order        57 ;
+        sh:path         cim:VsConverter.pPccControl ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.pPccControl-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the pPccControl." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:in           ( cim:VsPpccControlKind.pPcc cim:VsPpccControlKind.udc cim:VsPpccControlKind.pPccAndUdcDroop cim:VsPpccControlKind.pPccAndUdcDroopWithCompensation cim:VsPpccControlKind.pPccAndUdcDroopPilot cim:VsPpccControlKind.phasePcc ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "VsConverter.pPccControl-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        57 ;
+        sh:path         cim:VsConverter.pPccControl ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.qPccControl-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (qPccControl)." ;
+        sh:minCount     1 ;
+        sh:name         "VsConverter.qPccControl-cardinality" ;
+        sh:order        58 ;
+        sh:path         cim:VsConverter.qPccControl ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.qPccControl-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the qPccControl." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:in           ( cim:VsQpccControlKind.reactivePcc cim:VsQpccControlKind.voltagePcc cim:VsQpccControlKind.powerFactorPcc cim:VsQpccControlKind.pulseWidthModulation ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "VsConverter.qPccControl-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        58 ;
+        sh:path         cim:VsConverter.qPccControl ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.qShare-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "VsConverter.qShare-cardinality" ;
+        sh:order        59 ;
+        sh:path         cim:VsConverter.qShare ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.qShare-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the qShare." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VsConverter.qShare-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        59 ;
+        sh:path         cim:VsConverter.qShare ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetPWMfactor-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "VsConverter.targetPWMfactor-cardinality" ;
+        sh:order        64 ;
+        sh:path         cim:VsConverter.targetPWMfactor ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetPWMfactor-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetPWMfactor." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VsConverter.targetPWMfactor-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        64 ;
+        sh:path         cim:VsConverter.targetPWMfactor ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetPhasePcc-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "VsConverter.targetPhasePcc-cardinality" ;
+        sh:order        63 ;
+        sh:path         cim:VsConverter.targetPhasePcc ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetPhasePcc-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetPhasePcc." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VsConverter.targetPhasePcc-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        63 ;
+        sh:path         cim:VsConverter.targetPhasePcc ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetPowerFactorPcc-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "VsConverter.targetPowerFactorPcc-cardinality" ;
+        sh:order        62 ;
+        sh:path         cim:VsConverter.targetPowerFactorPcc ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetPowerFactorPcc-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetPowerFactorPcc." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VsConverter.targetPowerFactorPcc-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        62 ;
+        sh:path         cim:VsConverter.targetPowerFactorPcc ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetQpcc-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "VsConverter.targetQpcc-cardinality" ;
+        sh:order        60 ;
+        sh:path         cim:VsConverter.targetQpcc ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetQpcc-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetQpcc." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VsConverter.targetQpcc-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        60 ;
+        sh:path         cim:VsConverter.targetQpcc ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetUpcc-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        ssh:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "VsConverter.targetUpcc-cardinality" ;
+        sh:order        61 ;
+        sh:path         cim:VsConverter.targetUpcc ;
+        sh:severity     sh:Violation .
+
+ssh:VsConverter.targetUpcc-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the targetUpcc." ;
+        sh:group        ssh:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "VsConverter.targetUpcc-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        61 ;
+        sh:path         cim:VsConverter.targetUpcc ;
+        sh:severity     sh:Violation .
+
+ssh:WindGeneratingUnit
+        rdf:type        sh:NodeShape ;
+        sh:property     ssh:IdentifiedObject.mRID-datatype , ssh:IdentifiedObject.mRID-cardinality , ssh:Equipment.inService-datatype , ssh:Equipment.inService-cardinality , ssh:GeneratingUnit.normalPF-datatype , ssh:GeneratingUnit.normalPF-cardinality ;
+        sh:targetClass  cim:WindGeneratingUnit .
+
