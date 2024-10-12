@@ -43,6 +43,7 @@
 
 @prefix adms:         <http://www.w3.org/ns/adms#> .
 @prefix dcat:         <http://www.w3.org/ns/dcat#> .
+@prefix dc:           <http://purl.org/dc/elements/1.1/> .
 @prefix dct:          <http://purl.org/dc/terms/> .
 @prefix euvoc:        <http://publications.europa.eu/ontology/euvoc#> .
 @prefix owl:          <http://www.w3.org/2002/07/owl#> .

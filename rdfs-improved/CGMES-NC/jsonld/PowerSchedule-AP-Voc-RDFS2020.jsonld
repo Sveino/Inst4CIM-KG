@@ -1,0 +1,1497 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "ps:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the object registry profile.",
+      "dct:identifier": "urn:uuid:470c9792-7798-4eb6-b7f2-6e18293c5f7b",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Power schedule vocabulary",
+      "owl:priorVersion": "http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/PowerSchedule/2.3",
+      "owl:versionInfo": "2.3.1",
+      "dcat:keyword": "PS",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:EnergyConnection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "rdfs:comment": "A connection of energy generation or consumption on the power system model.",
+      "rdfs:label": "EnergyConnection"
+    },
+    {
+      "@id": "cim:EquivalentInjection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "rdfs:comment": "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection.",
+      "rdfs:label": "EquivalentInjection"
+    },
+    {
+      "@id": "cim:GeneratingUnit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "rdfs:comment": "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set.",
+      "rdfs:label": "GeneratingUnit"
+    },
+    {
+      "@id": "cim:HydroPump",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "rdfs:comment": "A synchronous motor-driven pump, typically associated with a pumped storage plant.",
+      "rdfs:label": "HydroPump"
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:PowerElectronicsUnit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "rdfs:comment": "A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines.",
+      "rdfs:label": "PowerElectronicsUnit"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "nc:AreaDispatchableUnit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Allocates a given producing or consuming unit, including direct current corridor and collection of units, to a given control area (through the scheduling area) for supporting the control of the given area through dispatch instruction.",
+      "rdfs:label": "AreaDispatchableUnit"
+    },
+    {
+      "@id": "nc:BaseIrregularTimeSeries",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series that has irregular points in time.",
+      "rdfs:label": "BaseIrregularTimeSeries",
+      "rdfs:subClassOf": "nc:BaseTimeSeries"
+    },
+    {
+      "@id": "nc:BaseTimeSeries",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series of values at points in time.",
+      "rdfs:label": "BaseTimeSeries",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:BaseTimeSeriesKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of time series.",
+      "rdfs:label": "BaseTimeSeriesKind"
+    },
+    {
+      "@id": "nc:BiddingZone",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A bidding zone is a market-based method for handling power transmission congestion. It consists of scheduling areas that include the relevant production (supply) and consumption (demand) to form an electrical area with the same market price without capacity allocation.",
+      "rdfs:label": "BiddingZone"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Defines the aggregated connection capacity between two Bidding Zones.",
+      "rdfs:label": "BiddingZoneBorder"
+    },
+    {
+      "@id": "nc:DCPole",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The direct current (DC) system pole (IEC 60633) is part of a DC system consisting of all the equipment in the DC substations and the interconnecting transmission lines, if any, which during normal operation exhibit a common direct voltage polarity with respect to earth.",
+      "rdfs:label": "DCPole"
+    },
+    {
+      "@id": "nc:DCTieCorridor",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A collection of one or more direct current poles that connect two different control areas.",
+      "rdfs:label": "DCTieCorridor"
+    },
+    {
+      "@id": "nc:EnergyGroup",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "An energy group is an aggregation of energy components which have the same energy characteristic, e.g. fuel type and technology. It can be used to allocate energy.",
+      "rdfs:label": "EnergyGroup"
+    },
+    {
+      "@id": "nc:MustRunSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Time series represent irregular must-run instruction values at given points in time. This could be instruction to a reliability must-run (RMR) generation facility that is necessary to run to meet certain operating conditions in order to maintain the security of power systems in a competitive environment.",
+      "rdfs:label": "MustRunSchedule",
+      "rdfs:subClassOf": "nc:BaseIrregularTimeSeries"
+    },
+    {
+      "@id": "nc:MustRunTimePoint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Must-run instruction value at a given point in time.",
+      "rdfs:label": "MustRunTimePoint"
+    },
+    {
+      "@id": "nc:PowerRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Energy remedial action describes actions to rearrange power schedules.",
+      "rdfs:label": "PowerRemedialAction"
+    },
+    {
+      "@id": "nc:PowerSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Time series represent irregular power, active and reactive, values at given points in time.",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:subClassOf": "nc:BaseIrregularTimeSeries"
+    },
+    {
+      "@id": "nc:PowerScheduleKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of power schedule.",
+      "rdfs:label": "PowerScheduleKind"
+    },
+    {
+      "@id": "nc:PowerTimePoint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Power, active and reactive, value at a given point in time.",
+      "rdfs:label": "PowerTimePoint"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of direction for the changes.",
+      "rdfs:label": "RelativeDirectionKind"
+    },
+    {
+      "@id": "nc:SchedulingArea",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "An area where production and/or consumption of energy can be forecasted, scheduled and measured. The area is operated by only one system operator, typically a Transmission System Operator (TSO). The area can consist of a sub area, which has the same definition as the main area, but it can be operated by another system operator (typically Distributed System Operator (DSO) or a Closed Distributed System Operator (CDSO)). This includes microgrid concept. A substation is the smallest grouping that can be included in the area. The area size should be considered in terms of the possibility of accumulated reading (settlement metering) and the capability of operating as an island.",
+      "rdfs:label": "SchedulingArea"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kinds of interpolation of values between two time point.",
+      "rdfs:label": "TimeSeriesInterpolationKind"
+    },
+    {
+      "@id": "nc:AreaDispatchableUnit.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which has area dispatchable units.",
+      "rdfs:domain": "nc:AreaDispatchableUnit",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.AreaDispatchableUnit"
+    },
+    {
+      "@id": "nc:BaseTimeSeries.interpolationKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of interpolation done between time point.",
+      "rdfs:domain": "nc:BaseTimeSeries",
+      "rdfs:label": "interpolationKind",
+      "rdfs:range": "nc:TimeSeriesInterpolationKind"
+    },
+    {
+      "@id": "nc:BaseTimeSeries.timeSeriesKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of base time series.",
+      "rdfs:domain": "nc:BaseTimeSeries",
+      "rdfs:label": "timeSeriesKind",
+      "rdfs:range": "nc:BaseTimeSeriesKind"
+    },
+    {
+      "@id": "nc:BiddingZone.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which belongs to the power bidding zone.",
+      "rdfs:domain": "nc:BiddingZone",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.BiddingZone"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which has bidding zone border.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.BiddingZoneBorder"
+    },
+    {
+      "@id": "nc:DCPole.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which has DC poles.",
+      "rdfs:domain": "nc:DCPole",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.DCPole"
+    },
+    {
+      "@id": "nc:DCTieCorridor.MustRunSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Must run schedule which has DC tie corridors.",
+      "rdfs:domain": "nc:DCTieCorridor",
+      "rdfs:label": "MustRunSchedule",
+      "rdfs:range": "nc:MustRunSchedule",
+      "owl:inverseOf": "nc:MustRunSchedule.DCTieCorridor"
+    },
+    {
+      "@id": "nc:DCTieCorridor.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which has DC tie corridors.",
+      "rdfs:domain": "nc:DCTieCorridor",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.DCTieCorridor"
+    },
+    {
+      "@id": "nc:EnergyConnection.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The power schedule for this energy connection.",
+      "rdfs:domain": "cim:EnergyConnection",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.EnergyConnection"
+    },
+    {
+      "@id": "nc:EnergyGroup.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which is associated with an energy group.",
+      "rdfs:domain": "nc:EnergyGroup",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.EnergyGroup"
+    },
+    {
+      "@id": "nc:EquivalentInjection.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which has equivalent injection.",
+      "rdfs:domain": "cim:EquivalentInjection",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.EquivalentInjection"
+    },
+    {
+      "@id": "nc:GeneratingUnit.MustRunSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Must run schedule which has generating units.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "MustRunSchedule",
+      "rdfs:range": "nc:MustRunSchedule",
+      "owl:inverseOf": "nc:MustRunSchedule.GeneratingUnit"
+    },
+    {
+      "@id": "nc:GeneratingUnit.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which has generating unit.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.GeneratingUnit"
+    },
+    {
+      "@id": "nc:HydroPump.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which has hydro pump.",
+      "rdfs:domain": "cim:HydroPump",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.HydroPump"
+    },
+    {
+      "@id": "nc:MustRunSchedule.DCTieCorridor",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Hydro pump which belongs to the power schedule.",
+      "rdfs:domain": "nc:MustRunSchedule",
+      "rdfs:label": "DCTieCorridor",
+      "rdfs:range": "nc:DCTieCorridor",
+      "owl:inverseOf": "nc:DCTieCorridor.MustRunSchedule"
+    },
+    {
+      "@id": "nc:MustRunSchedule.GeneratingUnit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Generating unit which belongs to the must run schedule.",
+      "rdfs:domain": "nc:MustRunSchedule",
+      "rdfs:label": "GeneratingUnit",
+      "rdfs:range": "cim:GeneratingUnit",
+      "owl:inverseOf": "nc:GeneratingUnit.MustRunSchedule"
+    },
+    {
+      "@id": "nc:MustRunSchedule.MustRunTimePoint",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:ofAggregate"
+        }
+      ],
+      "rdfs:comment": "Value for the point in time.",
+      "rdfs:domain": "nc:MustRunSchedule",
+      "rdfs:label": "MustRunTimePoint",
+      "rdfs:range": "nc:MustRunTimePoint",
+      "owl:inverseOf": "nc:MustRunTimePoint.MustRunSchedule"
+    },
+    {
+      "@id": "nc:MustRunTimePoint.MustRunSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series the time point values belongs to.",
+      "rdfs:domain": "nc:MustRunTimePoint",
+      "rdfs:label": "MustRunSchedule",
+      "rdfs:range": "nc:MustRunSchedule",
+      "owl:inverseOf": "nc:MustRunSchedule.MustRunTimePoint"
+    },
+    {
+      "@id": "nc:PowerElectronicsUnit.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which has power electronics unit.",
+      "rdfs:domain": "cim:PowerElectronicsUnit",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.PowerElectronicsUnit"
+    },
+    {
+      "@id": "nc:PowerRemedialAction.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power schedule which contains the power remedial action.",
+      "rdfs:domain": "nc:PowerRemedialAction",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.PowerRemedialAction"
+    },
+    {
+      "@id": "nc:PowerSchedule.AreaDispatchableUnit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Area disptachable unit which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "AreaDispatchableUnit",
+      "rdfs:range": "nc:AreaDispatchableUnit",
+      "owl:inverseOf": "nc:AreaDispatchableUnit.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.BiddingZone",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Bidding zone which has power schedules.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "BiddingZone",
+      "rdfs:range": "nc:BiddingZone",
+      "owl:inverseOf": "nc:BiddingZone.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.BiddingZoneBorder",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Bidding zone border which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "BiddingZoneBorder",
+      "rdfs:range": "nc:BiddingZoneBorder",
+      "owl:inverseOf": "nc:BiddingZoneBorder.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.DCPole",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "DC pole which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "DCPole",
+      "rdfs:range": "nc:DCPole",
+      "owl:inverseOf": "nc:DCPole.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.DCTieCorridor",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "DC tie corridor which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "DCTieCorridor",
+      "rdfs:range": "nc:DCTieCorridor",
+      "owl:inverseOf": "nc:DCTieCorridor.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.EnergyConnection",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The energy connection that has a power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "EnergyConnection",
+      "rdfs:range": "cim:EnergyConnection",
+      "owl:inverseOf": "nc:EnergyConnection.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.EnergyGroup",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Energy group which belongs to a power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "EnergyGroup",
+      "rdfs:range": "nc:EnergyGroup",
+      "owl:inverseOf": "nc:EnergyGroup.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.EquivalentInjection",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Equivalent injection which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "EquivalentInjection",
+      "rdfs:range": "cim:EquivalentInjection",
+      "owl:inverseOf": "nc:EquivalentInjection.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.GeneratingUnit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Generating unit which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "GeneratingUnit",
+      "rdfs:range": "cim:GeneratingUnit",
+      "owl:inverseOf": "nc:GeneratingUnit.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.HydroPump",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Hydro pump which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "HydroPump",
+      "rdfs:range": "cim:HydroPump",
+      "owl:inverseOf": "nc:HydroPump.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.PowerElectronicsUnit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power electronics unit which belongs to the power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "PowerElectronicsUnit",
+      "rdfs:range": "cim:PowerElectronicsUnit",
+      "owl:inverseOf": "nc:PowerElectronicsUnit.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.PowerRemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Power remedial action which belongs to the Remedial Action Schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "PowerRemedialAction",
+      "rdfs:range": "nc:PowerRemedialAction",
+      "owl:inverseOf": "nc:PowerRemedialAction.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.PowerTimePoint",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:ofAggregate"
+        }
+      ],
+      "rdfs:comment": "Value for the point in time.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "PowerTimePoint",
+      "rdfs:range": "nc:PowerTimePoint",
+      "owl:inverseOf": "nc:PowerTimePoint.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.SchedulingArea",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "rdfs:comment": "Scheduling area which has power schedules.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "SchedulingArea",
+      "rdfs:range": "nc:SchedulingArea",
+      "owl:inverseOf": "nc:SchedulingArea.PowerSchedule"
+    },
+    {
+      "@id": "nc:PowerSchedule.direction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of direction.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "direction",
+      "rdfs:range": "nc:RelativeDirectionKind"
+    },
+    {
+      "@id": "nc:PowerSchedule.powerScheduleKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of power schedule.",
+      "rdfs:domain": "nc:PowerSchedule",
+      "rdfs:label": "powerScheduleKind",
+      "rdfs:range": "nc:PowerScheduleKind"
+    },
+    {
+      "@id": "nc:PowerTimePoint.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series the time point values belongs to.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.PowerTimePoint"
+    },
+    {
+      "@id": "nc:SchedulingArea.PowerSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "rdfs:comment": "Power schedule which belongs to the scheduling area.",
+      "rdfs:domain": "nc:SchedulingArea",
+      "rdfs:label": "PowerSchedule",
+      "rdfs:range": "nc:PowerSchedule",
+      "owl:inverseOf": "nc:PowerSchedule.SchedulingArea"
+    },
+    {
+      "@id": "cim:IdentifiedObject.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The name is any free human readable and possibly non unique text naming the object.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:BaseTimeSeries.actionMethod",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Action method used to create the value. This is used for identification in the case where there is multiple time series for the same validity period and kind.",
+      "rdfs:domain": "nc:BaseTimeSeries",
+      "rdfs:label": "actionMethod",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:BaseTimeSeries.generatedAtTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time this time series (entity) come to existents and available for use.",
+      "rdfs:domain": "nc:BaseTimeSeries",
+      "rdfs:label": "generatedAtTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:BaseTimeSeries.percentile",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The percentile is a number where a certain percentage of scores/ranking/values of a sample fall below that number. This is a way for expressing uncertainty in the number provided.",
+      "rdfs:domain": "nc:BaseTimeSeries",
+      "rdfs:label": "percentile",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:MustRunTimePoint.atTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time the data is valid for.",
+      "rdfs:domain": "nc:MustRunTimePoint",
+      "rdfs:label": "atTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:MustRunTimePoint.mustRun",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "True, if the must-run instruction is active this time point. Otherwise false.",
+      "rdfs:domain": "nc:MustRunTimePoint",
+      "rdfs:label": "mustRun",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:MustRunTimePoint.mustRunP",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Minimum active power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:MustRunTimePoint",
+      "rdfs:label": "mustRunP",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:MustRunTimePoint.mustRunQ",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:MustRunTimePoint",
+      "rdfs:label": "mustRunQ",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "nc:PowerTimePoint.activatedP",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power activated as part of redispatch. Negative number means that the value is scheduling down. Positive number means that the value is scheduling up.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "activatedP",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerTimePoint.activatedPrice",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Price for the activated active power per unit e.g. per MW.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "activatedPrice",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:PowerTimePoint.activatedQ",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Reactive power activated as part of redispatch. Negative number means that the value is scheduling down. Positive number means that the value is scheduling up.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "activatedQ",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "nc:PowerTimePoint.atTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time the data is valid for.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "atTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:PowerTimePoint.meritOrder",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Ranking the energy blocks. Ranking can be based on historical values or other sources. It is required if power schedule is kind merit order.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "meritOrder",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:PowerTimePoint.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerTimePoint.price",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Price for the scheduled active power per unit of active power. e.g. per MW.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "price",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:PowerTimePoint.q",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:PowerTimePoint",
+      "rdfs:label": "q",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.W",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+      "rdfs:label": "ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ps:Package_PowerScheduleProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.VAr",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the quadrature component of the current.",
+      "rdfs:label": "ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.M",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E6",
+      "rdfs:comment": "Mega 10**6.",
+      "rdfs:label": "M",
+      "skos:exactMatch": "prefix:Mega"
+    },
+    {
+      "@id": "cim:UnitSymbol.VAr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:label": "VAr",
+      "skos:exactMatch": "unit:V-A_Reactive"
+    },
+    {
+      "@id": "cim:UnitSymbol.W",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.",
+      "rdfs:label": "W",
+      "skos:exactMatch": "unit:W"
+    },
+    {
+      "@id": "cim:Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "nc:BaseTimeSeriesKind.actual",
+      "@type": "nc:BaseTimeSeriesKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time series is actual data. The values represent measured or calculated values that represent the actual behaviour.",
+      "rdfs:label": "actual"
+    },
+    {
+      "@id": "nc:BaseTimeSeriesKind.forecast",
+      "@type": "nc:BaseTimeSeriesKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time series is forecast data. The values represent the result of scientific predictions based on historical time stamped data.",
+      "rdfs:label": "forecast"
+    },
+    {
+      "@id": "nc:BaseTimeSeriesKind.hindcast",
+      "@type": "nc:BaseTimeSeriesKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time series is hindcast data. The value represent probable past (historic) condition given by calculation done using actual values. For instance, determine the among of wind based on the energy produced by wind. However, hindcast is typical the result of a simulated forecasts for historical periods.",
+      "rdfs:label": "hindcast"
+    },
+    {
+      "@id": "nc:BaseTimeSeriesKind.schedule",
+      "@type": "nc:BaseTimeSeriesKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time series is schedule data. The values represent the result of a committed and plan forecast data that has been through a quality control and could incur penalty when not followed.",
+      "rdfs:label": "schedule"
+    },
+    {
+      "@id": "nc:PowerScheduleKind.meritOrder",
+      "@type": "nc:PowerScheduleKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power schedule is a merit order that includes ranking of the power block. Power block provides the maximum power allocation possible.",
+      "rdfs:label": "meritOrder"
+    },
+    {
+      "@id": "nc:PowerScheduleKind.mustRun",
+      "@type": "nc:PowerScheduleKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power schedule is a must run schedule that identifies the unit that must run for a given time point.",
+      "rdfs:label": "mustRun"
+    },
+    {
+      "@id": "nc:PowerScheduleKind.power",
+      "@type": "nc:PowerScheduleKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power schedule that has no additional meaning than allocating power to unit for a given time point.",
+      "rdfs:label": "power"
+    },
+    {
+      "@id": "nc:PowerScheduleKind.price",
+      "@type": "nc:PowerScheduleKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power schedule includes prices for a given a power per time point.",
+      "rdfs:label": "price"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind.down",
+      "@type": "nc:RelativeDirectionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Down signifies that the changes are decreasing from the current status.",
+      "rdfs:label": "down"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind.none",
+      "@type": "nc:RelativeDirectionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "There is no direction on the changes.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind.up",
+      "@type": "nc:RelativeDirectionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Up signifies that the changes are increasing from the current status.",
+      "rdfs:label": "up"
+    },
+    {
+      "@id": "nc:RelativeDirectionKind.upAndDown",
+      "@type": "nc:RelativeDirectionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Up and down signifies that both up and down values are equal.",
+      "rdfs:label": "upAndDown"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind.linear",
+      "@type": "nc:TimeSeriesInterpolationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Linear interpolation is applied for values between two time points.",
+      "rdfs:label": "linear"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind.next",
+      "@type": "nc:TimeSeriesInterpolationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The value between two time points is set to next value.",
+      "rdfs:label": "next"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind.none",
+      "@type": "nc:TimeSeriesInterpolationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "No interpolation is applied.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind.previous",
+      "@type": "nc:TimeSeriesInterpolationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The value between two time points is set to previous value.",
+      "rdfs:label": "previous"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind.zero",
+      "@type": "nc:TimeSeriesInterpolationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The value between two time points is set to zero.",
+      "rdfs:label": "zero"
+    },
+    {
+      "@id": "ps:Package_DocPowerScheduleProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocPowerScheduleProfile"
+    },
+    {
+      "@id": "ps:Package_PowerScheduleProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains the power schedule profile.",
+      "rdfs:label": "PowerScheduleProfile"
+    }
+  ]
+}

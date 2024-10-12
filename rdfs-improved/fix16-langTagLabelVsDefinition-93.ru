@@ -11,3 +11,4 @@ where {
   bind(str(?oldLabel) as ?newLabel)
   bind(strlang(?oldComment,"en") as ?newComment)
 };
+

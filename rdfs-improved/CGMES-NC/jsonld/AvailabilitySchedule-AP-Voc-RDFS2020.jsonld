@@ -1,0 +1,1349 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "as:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the availability schedule profile.",
+      "dct:identifier": "urn:uuid:8d128e35-86c7-4d67-b2dd-93229bf1005a",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Availability schedule vocabulary",
+      "owl:priorVersion": "http://entsoe.eu/ns/CIM/AvailabilitySchedule-EU/2.2",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/AvailabilitySchedule/2.3",
+      "owl:versionInfo": "2.3.1",
+      "dcat:keyword": "AS",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:Equipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "rdfs:comment": "The parts of a power system that are physical devices, electronic or mechanical.",
+      "rdfs:label": "Equipment"
+    },
+    {
+      "@id": "cim:EquipmentContainer",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "rdfs:comment": "A modelling construct to provide a root class for containing equipment.",
+      "rdfs:label": "EquipmentContainer"
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:OperationalLimit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "rdfs:comment": "A value and normal value associated with a specific kind of limit. \nThe sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \nIf a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.",
+      "rdfs:label": "OperationalLimit"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "nc:AssessedElement",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.\nThe measurements and limits are as defined in the steady state hypothesis.",
+      "rdfs:label": "AssessedElement"
+    },
+    {
+      "@id": "nc:AvailabilityContainer",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Availability container serves for associating an equipment container with an availability schedule. For instance, putting in or out of service all the equipment inside a Line or a Bay in combination with other availability functions with the same availability schedule.",
+      "rdfs:label": "AvailabilityContainer",
+      "rdfs:subClassOf": "nc:AvailabilityPowerSystemFunction"
+    },
+    {
+      "@id": "nc:AvailabilityEnabled",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Availability enabled is enabling or disabling grid state alteration (e.g. tap position action) or assessed element that is related to the availability schedule. For instance, the cancellation of availability schedule can lead to changes in the  assessed element. This is done by enabling one assessment and disabling another.",
+      "rdfs:label": "AvailabilityEnabled",
+      "rdfs:subClassOf": "nc:AvailabilityPowerSystemFunction"
+    },
+    {
+      "@id": "nc:AvailabilityEquipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Availability equipment serves for associating an equipment with an availability schedule. For instance, putting in or out of service an ACLineSegment in combination with other availability functions with the same availability schedule.",
+      "rdfs:label": "AvailabilityEquipment",
+      "rdfs:subClassOf": "nc:AvailabilityPowerSystemFunction"
+    },
+    {
+      "@id": "nc:AvailabilityExceptionalLimit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Availability exceptional limit serves for associating an operational limit restriction with an availability schedule. For instance, enabling or disabling the current limit on ACLineSegment terminal in combination with other availability functions with the same availability schedule or de-rating due to fault.",
+      "rdfs:label": "AvailabilityExceptionalLimit",
+      "rdfs:subClassOf": "nc:AvailabilityPowerSystemFunction"
+    },
+    {
+      "@id": "nc:AvailabilityFunctionKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of availability that is affecting the function.",
+      "rdfs:label": "AvailabilityFunctionKind"
+    },
+    {
+      "@id": "nc:AvailabilityGroup",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Container to link relevant equipment that is affected by (un)availability schedule across availability coordinator (e.g. TSO-TSO, TSO-DSO or DSO-DSO).",
+      "rdfs:label": "AvailabilityGroup",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:AvailabilityPowerSystemFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability power system function describes the power system function that has a non-normal availability in the associated availability schedule. The availability of the function is needed as part of a power flow solution. This function is the cause and not the effect of the availability, if the effect can be calculated through power flow. For instance if only the step-up transformer for a generator is not available, the power flow will calculate that the generator is de-energized (outage). If both are tagged as not available it will not be possible to investigate remedial action for connecting the generator. It is expected that the power flow function is able to perform simple topology changes affected by a function taken out of service, e.g. open switches on both end of a ACLineSegment when the ACLineSegment is taken out of service. More complex changes, like change regulation set point, must be described in the linked GridStateAlterationCollection.",
+      "rdfs:label": "AvailabilityPowerSystemFunction",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:AvailabilityRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability remedial action is a remedial action that cancels or reschedules an availability schedule.",
+      "rdfs:label": "AvailabilityRemedialAction"
+    },
+    {
+      "@id": "nc:AvailabilityRemedialActionScheme",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Availability remedial action scheme serves for associating a remedial action scheme with an availability schedule. For instance, taking in or out of service a SIPS / SPS due to communication issue, in combination with other availability functions with the same availability schedule.",
+      "rdfs:label": "AvailabilityRemedialActionScheme",
+      "rdfs:subClassOf": "nc:AvailabilityPowerSystemFunction"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A given (un)availability schedule with a given status and cause that include multiple equipment that need to follow the same scheduling periods.",
+      "rdfs:label": "AvailabilitySchedule",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "The kinds of cause of the (un)availability schedule.",
+      "rdfs:label": "AvailabilityScheduleCauseKind"
+    },
+    {
+      "@id": "nc:BaseIrregularTimeSeries",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series that has irregular points in time.",
+      "rdfs:label": "BaseIrregularTimeSeries",
+      "rdfs:subClassOf": "nc:BaseTimeSeries"
+    },
+    {
+      "@id": "nc:BaseTimeSeries",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series of values at points in time.",
+      "rdfs:label": "BaseTimeSeries",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "nc:BaseTimeSeriesKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of time series.",
+      "rdfs:label": "BaseTimeSeriesKind"
+    },
+    {
+      "@id": "nc:EventSchedule",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Time series represent irregular event described by event points in time.",
+      "rdfs:label": "EventSchedule",
+      "rdfs:subClassOf": "nc:BaseIrregularTimeSeries"
+    },
+    {
+      "@id": "nc:EventTimePoint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Event valid for a given point in time.",
+      "rdfs:label": "EventTimePoint"
+    },
+    {
+      "@id": "nc:GridStateAlteration",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case.",
+      "rdfs:label": "GridStateAlteration"
+    },
+    {
+      "@id": "nc:GridStateAlterationCollection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "A collection of grid state alterations.",
+      "rdfs:label": "GridStateAlterationCollection"
+    },
+    {
+      "@id": "nc:RemedialActionScheme",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).\nA Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action.",
+      "rdfs:label": "RemedialActionScheme"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kinds of interpolation of values between two time point.",
+      "rdfs:label": "TimeSeriesInterpolationKind"
+    },
+    {
+      "@id": "nc:AssessedElement.AvailabilityEnabled",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability enabled describes the enabling or disabling of this assessed element.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "AvailabilityEnabled",
+      "rdfs:range": "nc:AvailabilityEnabled",
+      "owl:inverseOf": "nc:AvailabilityEnabled.AssessedElement"
+    },
+    {
+      "@id": "nc:AvailabilityContainer.EquipmentContainer",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Equipment container that is affected by the availability given by this availability container.",
+      "rdfs:domain": "nc:AvailabilityContainer",
+      "rdfs:label": "EquipmentContainer",
+      "rdfs:range": "cim:EquipmentContainer",
+      "owl:inverseOf": "nc:EquipmentContainer.AvailabilityContainer"
+    },
+    {
+      "@id": "nc:AvailabilityEnabled.AssessedElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Assessed element that is affected by the availability given by this availability enabling.",
+      "rdfs:domain": "nc:AvailabilityEnabled",
+      "rdfs:label": "AssessedElement",
+      "rdfs:range": "nc:AssessedElement",
+      "owl:inverseOf": "nc:AssessedElement.AvailabilityEnabled"
+    },
+    {
+      "@id": "nc:AvailabilityEnabled.GridStateAlteration",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Grid state alteration that is affected by the availability given by this availability enabling.",
+      "rdfs:domain": "nc:AvailabilityEnabled",
+      "rdfs:label": "GridStateAlteration",
+      "rdfs:range": "nc:GridStateAlteration",
+      "owl:inverseOf": "nc:GridStateAlteration.AvailabilityEnabled"
+    },
+    {
+      "@id": "nc:AvailabilityEquipment.Equipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Equipment that is affected by the availability given by this availability equipment.",
+      "rdfs:domain": "nc:AvailabilityEquipment",
+      "rdfs:label": "Equipment",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "nc:Equipment.AvailabilityEquipment"
+    },
+    {
+      "@id": "nc:AvailabilityExceptionalLimit.OperationalLimit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Operational limit that is constrained by this availability exceptional limit.",
+      "rdfs:domain": "nc:AvailabilityExceptionalLimit",
+      "rdfs:label": "OperationalLimit",
+      "rdfs:range": "cim:OperationalLimit",
+      "owl:inverseOf": "nc:OperationalLimit.AvailabilityExceptionalLimit"
+    },
+    {
+      "@id": "nc:AvailabilityGroup.AvailabilityPowerSystemFunction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "All availability power system functions linked through mutual dependency with other availability power system functions controlled by other system operators.",
+      "rdfs:domain": "nc:AvailabilityGroup",
+      "rdfs:label": "AvailabilityPowerSystemFunction",
+      "rdfs:range": "nc:AvailabilityPowerSystemFunction",
+      "owl:inverseOf": "nc:AvailabilityPowerSystemFunction.AvailabilityGroup"
+    },
+    {
+      "@id": "nc:AvailabilityPowerSystemFunction.AvailabilityGroup",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Grouping for all availability power system functions (controlled by all relevant system operators) that have the same availability schedule.",
+      "rdfs:domain": "nc:AvailabilityPowerSystemFunction",
+      "rdfs:label": "AvailabilityGroup",
+      "rdfs:range": "nc:AvailabilityGroup",
+      "owl:inverseOf": "nc:AvailabilityGroup.AvailabilityPowerSystemFunction"
+    },
+    {
+      "@id": "nc:AvailabilityPowerSystemFunction.AvailabilitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability schedule for this availability power system function.",
+      "rdfs:domain": "nc:AvailabilityPowerSystemFunction",
+      "rdfs:label": "AvailabilitySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.AvailabilityPowerSystemFunction"
+    },
+    {
+      "@id": "nc:AvailabilityPowerSystemFunction.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of availability that affect the power system function.",
+      "rdfs:domain": "nc:AvailabilityPowerSystemFunction",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:AvailabilityFunctionKind"
+    },
+    {
+      "@id": "nc:AvailabilityRemedialAction.AvailabilitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability schedule that is part of the remedial action.",
+      "rdfs:domain": "nc:AvailabilityRemedialAction",
+      "rdfs:label": "AvailabilitySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.RemedialAction"
+    },
+    {
+      "@id": "nc:AvailabilityRemedialActionScheme.RemedialActionScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action scheme that is affected by the availability given by this availability remedial action scheme.",
+      "rdfs:domain": "nc:AvailabilityRemedialActionScheme",
+      "rdfs:label": "RemedialActionScheme",
+      "rdfs:range": "nc:RemedialActionScheme",
+      "owl:inverseOf": "nc:RemedialActionScheme.AvailabilityRemedialActionScheme"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.ActualSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Actual schedule that relates to this availability schedule; used for ex-post reporting and analysis (e.g., to compare planned vs. actual).",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "ActualSchedule",
+      "rdfs:range": "nc:EventSchedule",
+      "owl:inverseOf": "nc:EventSchedule.ActualAvailabilitySchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.AlternativeSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Alternative schedule. The priority in regards to multiple alternatives is given by the priority attribute. This schedule is only relevant if all the alternatives with higher priority are cancelled.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "AlternativeSchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.PrioritySchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.AvailabilityPowerSystemFunction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "All the couplings that associate one concrete function (e.g., equipment or container, SIPS/SPSs, grid state alteration, exceptional operational limits) with the same availability schedule.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "AvailabilityPowerSystemFunction",
+      "rdfs:range": "nc:AvailabilityPowerSystemFunction",
+      "owl:inverseOf": "nc:AvailabilityPowerSystemFunction.AvailabilitySchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.AvailabilitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability schedule that has a dependent availability schedule.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "AvailabilitySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.DependentOnSchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.DependentOnSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "(Un)availability schedule requested by one operator may require another operator to request their (un)availability schedule. This association is linking the schedules so that the dependency is clear.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "DependentOnSchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.AvailabilitySchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.GridStateAlterationCollection",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The grid state alteration collection that has this availability schedule.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "GridStateAlterationCollection",
+      "rdfs:range": "nc:GridStateAlterationCollection",
+      "owl:inverseOf": "nc:GridStateAlterationCollection.AvailabilitySchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.PlannedSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Planned schedule that relates to this availability schedule used for planning availability (e.g., to compare planned vs. actual).",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "PlannedSchedule",
+      "rdfs:range": "nc:EventSchedule",
+      "owl:inverseOf": "nc:EventSchedule.PlannedAvailabilitySchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.PrioritySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Priority schedule. This is the schedule that has the highest priority and the only valid if not cancelled.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "PrioritySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.AlternativeSchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.RemedialAction",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action that is cancelling this availability schedule.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "RemedialAction",
+      "rdfs:range": "nc:AvailabilityRemedialAction",
+      "owl:inverseOf": "nc:AvailabilityRemedialAction.AvailabilitySchedule"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.causeKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of cause for the availability schedule.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "causeKind",
+      "rdfs:range": "nc:AvailabilityScheduleCauseKind"
+    },
+    {
+      "@id": "nc:BaseTimeSeries.interpolationKind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of interpolation done between time point.",
+      "rdfs:domain": "nc:BaseTimeSeries",
+      "rdfs:label": "interpolationKind",
+      "rdfs:range": "nc:TimeSeriesInterpolationKind"
+    },
+    {
+      "@id": "nc:BaseTimeSeries.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Kind of base time series.",
+      "rdfs:domain": "nc:BaseTimeSeries",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:BaseTimeSeriesKind"
+    },
+    {
+      "@id": "nc:Equipment.AvailabilityEquipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability equipment describe the availabilty that affect this equipment.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "AvailabilityEquipment",
+      "rdfs:range": "nc:AvailabilityEquipment",
+      "owl:inverseOf": "nc:AvailabilityEquipment.Equipment"
+    },
+    {
+      "@id": "nc:EquipmentContainer.AvailabilityContainer",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability container describe the availabiltiy that affect this equipment container.",
+      "rdfs:domain": "cim:EquipmentContainer",
+      "rdfs:label": "AvailabilityContainer",
+      "rdfs:range": "nc:AvailabilityContainer",
+      "owl:inverseOf": "nc:AvailabilityContainer.EquipmentContainer"
+    },
+    {
+      "@id": "nc:EventSchedule.ActualAvailabilitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Actual availability schedule that has this irregular interval schedule.",
+      "rdfs:domain": "nc:EventSchedule",
+      "rdfs:label": "ActualAvailabilitySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.ActualSchedule"
+    },
+    {
+      "@id": "nc:EventSchedule.EventTimePoint",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:ofAggregate"
+        }
+      ],
+      "rdfs:comment": "Value for the point in time.",
+      "rdfs:domain": "nc:EventSchedule",
+      "rdfs:label": "EventTimePoint",
+      "rdfs:range": "nc:EventTimePoint",
+      "owl:inverseOf": "nc:EventTimePoint.EventSchedule"
+    },
+    {
+      "@id": "nc:EventSchedule.PlannedAvailabilitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Planned availability schedule that has this irregular interval schedule.",
+      "rdfs:domain": "nc:EventSchedule",
+      "rdfs:label": "PlannedAvailabilitySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.PlannedSchedule"
+    },
+    {
+      "@id": "nc:EventTimePoint.EventSchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Time series the time point values belongs to.",
+      "rdfs:domain": "nc:EventTimePoint",
+      "rdfs:label": "EventSchedule",
+      "rdfs:range": "nc:EventSchedule",
+      "owl:inverseOf": "nc:EventSchedule.EventTimePoint"
+    },
+    {
+      "@id": "nc:GridStateAlteration.AvailabilityEnabled",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability enabled describes the enabling or disabling of this grid state alteration.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "AvailabilityEnabled",
+      "rdfs:range": "nc:AvailabilityEnabled",
+      "owl:inverseOf": "nc:AvailabilityEnabled.GridStateAlteration"
+    },
+    {
+      "@id": "nc:GridStateAlterationCollection.AvailabilitySchedule",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability schedule that require the a collection of grid state alteration to provide a valid power flow solution. For instance, a set of switching plans.",
+      "rdfs:domain": "nc:GridStateAlterationCollection",
+      "rdfs:label": "AvailabilitySchedule",
+      "rdfs:range": "nc:AvailabilitySchedule",
+      "owl:inverseOf": "nc:AvailabilitySchedule.GridStateAlterationCollection"
+    },
+    {
+      "@id": "nc:OperationalLimit.AvailabilityExceptionalLimit",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability exceptional limit that constrain this operational limit.",
+      "rdfs:domain": "cim:OperationalLimit",
+      "rdfs:label": "AvailabilityExceptionalLimit",
+      "rdfs:range": "nc:AvailabilityExceptionalLimit",
+      "owl:inverseOf": "nc:AvailabilityExceptionalLimit.OperationalLimit"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.AvailabilityRemedialActionScheme",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Availability remedial action scheme describe the availabiltiy that affect this remedial action scheme.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "AvailabilityRemedialActionScheme",
+      "rdfs:range": "nc:AvailabilityRemedialActionScheme",
+      "owl:inverseOf": "nc:AvailabilityRemedialActionScheme.RemedialActionScheme"
+    },
+    {
+      "@id": "cim:IdentifiedObject.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The name is any free human readable and possibly non unique text naming the object.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AvailabilityEnabled.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Instruction to enable or disable alteration and assessment.",
+      "rdfs:domain": "nc:AvailabilityEnabled",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AvailabilityExceptionalLimit.value",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Value for the referred operational limit.",
+      "rdfs:domain": "nc:AvailabilityExceptionalLimit",
+      "rdfs:label": "value",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.cancelledDateTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The date and time the (un)availability schedule were cancelled .",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "cancelledDateTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.causeDescription",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A cause description for a cause kind. In case of CauseKind equals other, description or a reference of the cause of the (un)availability schedule.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "causeDescription",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.daytimeRestitutionDuration",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time required to take the out-of-service equipment back into service during daytime. This includes the start-up time for generating units.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "daytimeRestitutionDuration",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.eveningRestitutionDuration",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time required to take the out-of-service equipment back into service after office hours. This includes the start-up time for generating units.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "eveningRestitutionDuration",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.maxRestitutionDuration",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The maximum time required to take the out-of-service equipment back into service. This includes the start-up time for generating units.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "maxRestitutionDuration",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.priority",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Value 0 means ignore priority. 1 means the highest priority, 2 is the second highest priority.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "priority",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:AvailabilitySchedule.weekendRestitutionDuration",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time required to take the out-of-service equipment back into service in the weekend or during bank holidays. This includes the start-up time for generating units.",
+      "rdfs:domain": "nc:AvailabilitySchedule",
+      "rdfs:label": "weekendRestitutionDuration",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "nc:EventTimePoint.atTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The time the data is valid for.",
+      "rdfs:domain": "nc:EventTimePoint",
+      "rdfs:label": "atTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:EventTimePoint.isActive",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "True, if the event is occurring (Active) at this time point. Otherwise false.",
+      "rdfs:domain": "nc:EventTimePoint",
+      "rdfs:label": "isActive",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "as:Package_AvailabilityScheduleProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains the availability schedule profile.",
+      "rdfs:label": "AvailabilityScheduleProfile"
+    },
+    {
+      "@id": "as:Package_DocAvailabilityScheduleProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocAvailabilityScheduleProfile"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "as:Package_AvailabilityScheduleProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.s",
+      "rdfs:comment": "Time, in seconds.",
+      "rdfs:label": "Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.none",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E0",
+      "rdfs:comment": "No multiplier or equivalently multiply by 1.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.s",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time in seconds.",
+      "rdfs:label": "s",
+      "skos:exactMatch": "unit:SEC"
+    },
+    {
+      "@id": "cim:Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "nc:AvailabilityFunctionKind.inService",
+      "@type": "nc:AvailabilityFunctionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Function is in service.",
+      "rdfs:label": "inService"
+    },
+    {
+      "@id": "nc:AvailabilityFunctionKind.outOfService",
+      "@type": "nc:AvailabilityFunctionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Function is out-of-service.",
+      "rdfs:label": "outOfService"
+    },
+    {
+      "@id": "nc:AvailabilityFunctionKind.underTesting",
+      "@type": "nc:AvailabilityFunctionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Function is under testing and need to expect unscheduled availability.",
+      "rdfs:label": "underTesting"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind.commissioning",
+      "@type": "nc:AvailabilityScheduleCauseKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The cause is due to a commissioning.",
+      "rdfs:label": "commissioning"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind.decommissioning",
+      "@type": "nc:AvailabilityScheduleCauseKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The cause is due to a decommissioning.",
+      "rdfs:label": "decommissioning"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind.environmentalCondition",
+      "@type": "nc:AvailabilityScheduleCauseKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The cause is due to an environmental condition. This can lead to exceptional margin and limits.",
+      "rdfs:label": "environmentalCondition"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind.functionalControl",
+      "@type": "nc:AvailabilityScheduleCauseKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The cause is due to a functional control (in &amp; out).",
+      "rdfs:label": "functionalControl"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind.maintenance",
+      "@type": "nc:AvailabilityScheduleCauseKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The cause is due to a maintenance.",
+      "rdfs:label": "maintenance"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind.other",
+      "@type": "nc:AvailabilityScheduleCauseKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The cause is of other kind.",
+      "rdfs:label": "other"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind.refurbishment",
+      "@type": "nc:AvailabilityScheduleCauseKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The cause is due to a refurbishment, either upgrade or downgrade.",
+      "rdfs:label": "refurbishment"
+    },
+    {
+      "@id": "nc:AvailabilityScheduleCauseKind.worksInProximity",
+      "@type": "nc:AvailabilityScheduleCauseKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The cause is due to a works in proximity.",
+      "rdfs:label": "worksInProximity"
+    },
+    {
+      "@id": "nc:BaseTimeSeriesKind.actual",
+      "@type": "nc:BaseTimeSeriesKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time series is actual data. The values represent measured or calculated values that represent the actual behaviour.",
+      "rdfs:label": "actual"
+    },
+    {
+      "@id": "nc:BaseTimeSeriesKind.schedule",
+      "@type": "nc:BaseTimeSeriesKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time series is schedule data. The values represent the result of a committed and plan forecast data that has been through a quality control and could incur penalty when not followed.",
+      "rdfs:label": "schedule"
+    },
+    {
+      "@id": "nc:TimeSeriesInterpolationKind.previous",
+      "@type": "nc:TimeSeriesInterpolationKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The value between two time points is set to previous value.",
+      "rdfs:label": "previous"
+    }
+  ]
+}

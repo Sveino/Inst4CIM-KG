@@ -19,7 +19,7 @@ psp:Ontology a owl:Ontology ;
   dct:creator "ENTSO-E CIM WG NC project"@en ;
   dct:identifier "urn:uuid:29bfa45c-7d04-42f1-97c1-2e0f70f476a0" ;
   dct:language "en-GB" ;
-  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   dct:modified "2024-09-07"^^xsd:date ;
   dct:publisher "ENTSO-E" ;
   dct:rightsHolder "ENTSO-E" ;

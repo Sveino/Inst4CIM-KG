@@ -1,0 +1,553 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "or:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the object registry profile.",
+      "dct:identifier": "urn:uuid:14166b65-abaa-4611-b466-34975c15c27d",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Object Registry vocabulary",
+      "owl:priorVersion": "http://entsoe.eu/ns/CIM/ObjectRegistry-EU/2.1",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/ObjectRegistry/2.2",
+      "owl:versionInfo": "2.2.3",
+      "dcat:keyword": "OR",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "or:Package_ObjectRegistryProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:Name",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "or:Package_ObjectRegistryProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "The Name class provides the means to define any number of human readable  names for an object. A name is <b>not</b> to be used for defining inter-object relationships. For inter-object relationships instead use the object identification 'mRID'.",
+      "rdfs:label": "Name"
+    },
+    {
+      "@id": "cim:NameType",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "or:Package_ObjectRegistryProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "Type of name. Possible values for attribute 'name' are implementation dependent but standard profiles may specify types. An enterprise may have multiple IT systems each having its own local name for the same object, e.g. a planning system may have different names from an EMS. An object may also have different names within the same IT system, e.g. localName as defined in CIM version 14. The definition from CIM14 is:\nThe localName is a human readable name of the object. It is a free text name local to a node in a naming hierarchy similar to a file directory structure. A power system related naming hierarchy may be: Substation, VoltageLevel, Equipment etc. Children of the same parent in such a hierarchy have names that typically are unique among them.",
+      "rdfs:label": "NameType"
+    },
+    {
+      "@id": "nc:NamingAuthority",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "or:Package_ObjectRegistryProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Authority responsible for creation and management of names of a given name type and/or name; typically an organization or an enterprise system.",
+      "rdfs:label": "NamingAuthority"
+    },
+    {
+      "@id": "nc:ObjectType",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "or:Package_ObjectRegistryProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Identifies the specialised type of an object when the instance object is serialised using a generalised class. It may be useful when the object type is not otherwise included in the exchange. For example, a Meter may be serialised as an EndDevice in message exchanges and need to have the ObjectType.type be specified as 'Meter' to provide context to the message receiver.",
+      "rdfs:label": "ObjectType"
+    },
+    {
+      "@id": "nc:IdentifiedObject.AlternativeIdentifier",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "All alternative identifiers of this identified object. No two identified objects can have the same alternative identifier.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "AlternativeIdentifier",
+      "rdfs:range": "cim:Name",
+      "owl:inverseOf": "nc:Name.UniqueIdentifiedObject"
+    },
+    {
+      "@id": "nc:IdentifiedObject.Name",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "All names of this identified object. Names may be but are not guaranteed to be unique.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "Name",
+      "rdfs:range": "cim:Name",
+      "owl:inverseOf": "nc:Name.IdentifiedObject"
+    },
+    {
+      "@id": "nc:IdentifiedObject.ObjectType",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The object type of the IdentifiedObject.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "ObjectType",
+      "rdfs:range": "nc:ObjectType",
+      "owl:inverseOf": "nc:ObjectType.IdentifiedObject"
+    },
+    {
+      "@id": "nc:Name.IdentifiedObject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Identified object that this name designates.",
+      "rdfs:domain": "cim:Name",
+      "rdfs:label": "IdentifiedObject",
+      "rdfs:range": "cim:IdentifiedObject",
+      "owl:inverseOf": "nc:IdentifiedObject.Name"
+    },
+    {
+      "@id": "nc:Name.NameType",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Type of this name.",
+      "rdfs:domain": "cim:Name",
+      "rdfs:label": "NameType",
+      "rdfs:range": "cim:NameType",
+      "owl:inverseOf": "nc:NameType.Name"
+    },
+    {
+      "@id": "nc:Name.NamingAuthority",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Authority responsible for managing this name.",
+      "rdfs:domain": "cim:Name",
+      "rdfs:label": "NamingAuthority",
+      "rdfs:range": "nc:NamingAuthority",
+      "owl:inverseOf": "nc:NamingAuthority.Name"
+    },
+    {
+      "@id": "nc:Name.UniqueIdentifiedObject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Identified object that this alternative identifier designates.",
+      "rdfs:domain": "cim:Name",
+      "rdfs:label": "UniqueIdentifiedObject",
+      "rdfs:range": "cim:IdentifiedObject",
+      "owl:inverseOf": "nc:IdentifiedObject.AlternativeIdentifier"
+    },
+    {
+      "@id": "nc:NameType.Name",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "All names of this type.",
+      "rdfs:domain": "cim:NameType",
+      "rdfs:label": "Name",
+      "rdfs:range": "cim:Name",
+      "owl:inverseOf": "nc:Name.NameType"
+    },
+    {
+      "@id": "nc:NameType.NamingAuthority",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Authority responsible for managing this name type.",
+      "rdfs:domain": "cim:NameType",
+      "rdfs:label": "NamingAuthority",
+      "rdfs:range": "nc:NamingAuthority",
+      "owl:inverseOf": "nc:NamingAuthority.NameType"
+    },
+    {
+      "@id": "nc:NamingAuthority.Name",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "All names managed by this authority.",
+      "rdfs:domain": "nc:NamingAuthority",
+      "rdfs:label": "Name",
+      "rdfs:range": "cim:Name",
+      "owl:inverseOf": "nc:Name.NamingAuthority"
+    },
+    {
+      "@id": "nc:NamingAuthority.NameType",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "All name types managed by this authority.",
+      "rdfs:domain": "nc:NamingAuthority",
+      "rdfs:label": "NameType",
+      "rdfs:range": "cim:NameType",
+      "owl:inverseOf": "nc:NameType.NamingAuthority"
+    },
+    {
+      "@id": "nc:ObjectType.IdentifiedObject",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "The IdentifiedObject whose type is identified by ObjectType.",
+      "rdfs:domain": "nc:ObjectType",
+      "rdfs:label": "IdentifiedObject",
+      "rdfs:range": "cim:IdentifiedObject",
+      "owl:inverseOf": "nc:IdentifiedObject.ObjectType"
+    },
+    {
+      "@id": "cim:IdentifiedObject.aliasName",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.\nThe attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "aliasName",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The name is any free human readable and possibly non unique text naming the object.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:Name.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Any free text that used as a name or alternative identifier of the object.",
+      "rdfs:domain": "cim:Name",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:NameType.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Description of the name type.",
+      "rdfs:domain": "cim:NameType",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:NameType.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Name of the name type.",
+      "rdfs:domain": "cim:NameType",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "eu:IdentifiedObject.energyIdentCodeEic",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "European",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code. For details on EIC scheme please refer to ENTSO-E web site.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "energyIdentCodeEic",
+      "rdfs:range": "xsd:string",
+      "owl:deprecated": true
+    },
+    {
+      "@id": "eu:IdentifiedObject.shortName",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "European",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "shortName",
+      "rdfs:range": "xsd:string",
+      "owl:deprecated": true
+    },
+    {
+      "@id": "nc:Name.language",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Shall be specified as an IETF BCP 47 language tag (e.g. en-US).  Applies to the Name.name attribute. \nIETF language tags combine subtags from other standards such as ISO 639, ISO 15924, ISO 3166-1, and UN M.49. The tag structure has been standardized by the IETF in Best Current Practice (BCP) 47; the subtags are maintained by the IANA Language Subtag Registry.",
+      "rdfs:domain": "cim:Name",
+      "rdfs:label": "language",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:Name.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:Name",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:NameType.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:NameType",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:NamingAuthority.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Description of the name authority.",
+      "rdfs:domain": "nc:NamingAuthority",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:NamingAuthority.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "nc:NamingAuthority",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:NamingAuthority.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Name of the name authority.",
+      "rdfs:domain": "nc:NamingAuthority",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:ObjectType.type",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The specialised type of an object when the instance object is serialised using a generalised class. For example, a Meter being serialised as an EndDevice in a message exchange should have the type attribute specified as 'Meter'.",
+      "rdfs:domain": "nc:ObjectType",
+      "rdfs:label": "type",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "or:Package_DocObjectRegistryProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocObjectRegistryProfile"
+    },
+    {
+      "@id": "or:Package_ObjectRegistryProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains the equipment object registry profile.",
+      "rdfs:label": "ObjectRegistryProfile"
+    }
+  ]
+}

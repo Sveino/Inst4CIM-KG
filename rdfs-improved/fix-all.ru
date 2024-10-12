@@ -204,7 +204,7 @@ where {
 insert {?multiplier qudt:prefixMultiplier ?prefixMultiplier; skos:exactMatch ?exactMatch}
 where {
   values (?multiplier             ?prefixMultiplier ?exactMatch ) {
-         (cim:UnitMultiplier.none 1.0               UNDEF       )
+         (cim:UnitMultiplier.none 1.0E0             UNDEF       )
          (cim:UnitMultiplier.k    1.0E3             prefix:Kilo )
          (cim:UnitMultiplier.M    1.0E6             prefix:Mega )
   }
@@ -380,6 +380,7 @@ where {
   bind(str(?oldLabel) as ?newLabel)
   bind(strlang(?oldComment,"en") as ?newComment)
 };
+
 # https://github.com/Sveino/Inst4CIM-KG/issues/32
 
 prefix owl:  <http://www.w3.org/2002/07/owl#>
@@ -398,9 +399,9 @@ where {
 delete {?x ?p ?old}
 insert {?x ?p ?new}
 where {
-  values ?p {dcat:landingPage dct:conformsTo}
+  values ?p {dcat:landingPage dct:conformsTo dct:license}
   ?x a owl:Ontology; ?p ?old
-  bind(iri(?old) as ?new)
+  bind(iri(str(?old)) as ?new)
 };
 
 delete {?x ?p ?old}

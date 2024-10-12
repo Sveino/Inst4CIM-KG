@@ -1,0 +1,893 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "https://ap-voc.cim4.eu/DatasetMetadata#Ontology",
+      "@type": "owl:Ontology",
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2"
+      ],
+      "dct:creator": "ENTSO-E",
+      "dct:description": "This vocabulary is describing the dataset metadata profile.",
+      "dct:identifier": "urn:uuid:f7bb07f7-8614-4ff5-88da-2b4824b143f1",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Dataset metadata vocabulary",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/DatasetMetadata/2.4",
+      "owl:versionInfo": "2.4.0",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "dcat:Dataset",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A collection of data, published or curated by a single source, and available for access or download in one or more representations.",
+      "rdfs:label": "Dataset"
+    },
+    {
+      "@id": "dcat-cim:alternativeVersionOf",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat-cim",
+      "rdfs:comment": "This resource is an alternative version of a non-versioned or abstract resource.\nThis property is intended for relating a versioned resource to a non-versioned or abstract resource at the same time express that multiple versions exist.\ndcat-cim:alternativeVersionOf is a specialisation of dcat:isVersionOf with the restriction that the resource shall have a preferred version (dcat-cim:preferredVersion) so that the preferred dataset can be used when there is no need to access all alternative versions.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "alternativeVersionOf",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat-cim:hasAlternativeVersion"
+    },
+    {
+      "@id": "dcat-cim:hasAlternativeVersion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcat-cim",
+      "rdfs:comment": "This resource has a more specific, versioned alternative resource.\nThis property is intended for relating a non-versioned or abstract resource to several versioned alternative resources, e.g. snapshots.\n\ndcat-cim:hasAlternativeVersion is a specialisation of dcat:hasVersion with the restriction that the resource shall have a preferred version (dcat-cim:preferredVersion) so that the preferred dataset can be used when there is no need to access all alternative versions.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "hasAlternativeVersion",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat-cim:alternativeVersionOf"
+    },
+    {
+      "@id": "dcat-cim:hasPreferredVersion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcat-cim",
+      "rdfs:comment": "The resource that has a preferred version.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "hasPreferredVersion",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat-cim:preferredVersion"
+    },
+    {
+      "@id": "dcat-cim:preferredVersion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat-cim",
+      "rdfs:comment": "The preferred version of a resource in a lineage of alternative versions.\nThis property is used to specify a specific version to be the preference in a chain of alternatives, consisting of snapshots of a resource.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "preferredVersion",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat-cim:hasPreferredVersion"
+    },
+    {
+      "@id": "dcat:Dataset.publisher",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "An entity responsible for making the resource available.\n[CIM context: \nThe agent that is publishing the dataset on the given platform.]",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "publisher",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:Dataset.Resource11"
+    },
+    {
+      "@id": "dcat:Resource7",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "The resoource of a previous version that has this next version.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource7",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:previousVersion"
+    },
+    {
+      "@id": "dcat:Resource8",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "The resource that has this next version.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource8",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:nextVersion"
+    },
+    {
+      "@id": "dcat:Resource9",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "The resource that has this current version.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource9",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:hasCurrentVersion"
+    },
+    {
+      "@id": "dcat:hasCurrentVersion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "This resource has a more specific, versioned resource with equivalent content.\nThis property is intended for relating a non-versioned or abstract resource to a single snapshot that can be used as a permalink to indicate the current version of the content.\n\nThe notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "hasCurrentVersion",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:Resource9"
+    },
+    {
+      "@id": "dcat:hasVersion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "This resource is a version of a non-versioned or abstract resource.\nThis property is intended for relating a versioned resource to a non-versioned or abstract resource.\n\nThe notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dct:isVersionOf, which makes use of a broader notion of version, including editions and adaptations.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "hasVersion",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:isVersionOf"
+    },
+    {
+      "@id": "dcat:inSeries",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "A dataset series of which the dataset is part.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "inSeries",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:seriesMember"
+    },
+    {
+      "@id": "dcat:isVersionOf",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "This resource has a more specific, versioned resource. This property is intended for relating a non-versioned or abstract resource to several versioned resources, e.g., snapshots.\n\nThe notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. Therefore, its semantics is more specific than its super-property dct:hasVersion, which makes use of a broader notion of version, including editions and adaptations.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "isVersionOf",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:hasVersion"
+    },
+    {
+      "@id": "dcat:nextVersion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "The next version for the resource.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "nextVersion",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:Resource8"
+    },
+    {
+      "@id": "dcat:previousVersion",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "The previous version of a resource in a lineage.\nThis property is meant to be used to specify a version chain, consisting of snapshots of a resource.\n\nThe notion of version used by this property is limited to versions resulting from revisions occurring to a resource as part of its life-cycle. One of the typical cases here is representing the history of the versions of a dataset that have been released over time.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "previousVersion",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:Resource7"
+    },
+    {
+      "@id": "dcat:seriesMember",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcat",
+      "rdfs:comment": "A dataset that is member of this series.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "seriesMember",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dcat:inSeries"
+    },
+    {
+      "@id": "dct:HasPart",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The dataset which is part of another dataset.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "HasPart",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:IsPartOf"
+    },
+    {
+      "@id": "dct:IsPartOf",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The dataset which this datatset is part of.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "IsPartOf",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:HasPart"
+    },
+    {
+      "@id": "dct:Resource1",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that has these access rights.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource1",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:accessRights"
+    },
+    {
+      "@id": "dct:Resource10",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that has this spatial location.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource10",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:spatial"
+    },
+    {
+      "@id": "dct:Resource11",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that is made available.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource11",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:publisher"
+    },
+    {
+      "@id": "dct:Resource12",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that replaces the referenced resource.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource12",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:replaces"
+    },
+    {
+      "@id": "dct:Resource13",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that has these recerences.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource13",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:references"
+    },
+    {
+      "@id": "dct:Resource2",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that conforms to.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource2",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:conformsTo"
+    },
+    {
+      "@id": "dct:Resource3",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that has this license.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource3",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:license"
+    },
+    {
+      "@id": "dct:Resource4",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that has this type.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource4",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:type"
+    },
+    {
+      "@id": "dct:Resource5",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that has this periodicity.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource5",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:accrualPeriodicity"
+    },
+    {
+      "@id": "dct:Resource6",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The resource that has this source.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Resource6",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:source"
+    },
+    {
+      "@id": "dct:accessRights",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "Information about who access the resource or an indication of its security status. Access Rights may include information regarding access or restrictions based on privacy, security, or other policies.\n[CIM context:\nReference to the confidentiality level that shall be applied when handling this model.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "accessRights",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource1"
+    },
+    {
+      "@id": "dct:accrualPeriodicity",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The frequency with which items are added to a collection.\n[CIM context:\nReference to the time frame.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "accrualPeriodicity",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource5"
+    },
+    {
+      "@id": "dct:conformsTo",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "An established standard to which the described resource conforms.\n[CIM context:\nAn IRI describing the profile that governs this model. It uniquely identifies the profile and its version. Multiple instances of the property describe all standards or specifications to which the model and the document representing this model conform to.\nA document would normally conform to profile definitions, the constraints that relate to the profile and/or the set of business specific constrains. A reference to a machine- readable constraints or specification indicates that the document was tested against these constraints and it conforms to them.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "conformsTo",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource2"
+    },
+    {
+      "@id": "dct:license",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "A legal document giving official permission to do something with the resource. Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.\n[CIM context:\nReference to the license under which the data is made available. If no license holder is defined, then the original data provider holds the license.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "license",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource3"
+    },
+    {
+      "@id": "dct:references",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "A related resource that is referenced, cited, or otherwise pointed to by the described resource[.\n[CIM context: \nThe referenced resource that is being complemented in this dataset, e.g. SSH is referencing EQ.]",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "references",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource13"
+    },
+    {
+      "@id": "dct:replaces",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "A related resource that is supplanted, displaced, or superseded by the described resource\n[CIM context: \nThe referenced dataset is being replaced by this dataset.]",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "replaces",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource12"
+    },
+    {
+      "@id": "dct:source",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "A related resource from which the described resource is derived.\nThis property is intended to be used with non-literal values. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "source",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource6"
+    },
+    {
+      "@id": "dct:spatial",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The geographical area covered by the dataset.\n[CIM context: \nThe responsibility area that multiple model can describe, also referred to frame.]",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "spatial",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource10"
+    },
+    {
+      "@id": "dct:type",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "dcterms",
+      "rdfs:comment": "The nature or genre of the resource. Recommended practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMI-TYPE]. To describe the file format, physical medium, or dimensions of the resource, use the property Format.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "type",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "dct:Resource4"
+    },
+    {
+      "@id": "eumd:Model1",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "eumd",
+      "rdfs:comment": "The model taht uses these settings.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Model1",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "eumd:usedSettings"
+    },
+    {
+      "@id": "eumd:Model2",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "eumd",
+      "rdfs:comment": "The model for this process type.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Model2",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "eumd:processType"
+    },
+    {
+      "@id": "eumd:processType",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "eumd",
+      "rdfs:comment": "The exact business nature. Reference to Business Process configurations.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "processType",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "eumd:Model2"
+    },
+    {
+      "@id": "eumd:usedSettings",
+      "@type": "owl:ObjectProperty",
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "eumd",
+      "rdfs:comment": "Reference to a set of parameters describing used settings (e.g. power flow settings, process settings, etc.) applied to the model prior its serialisation.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "usedSettings",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "eumd:Model1"
+    },
+    {
+      "@id": "prov:Entity",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "prov",
+      "rdfs:comment": "The entity that generated by this activity.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "Entity",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "prov:wasGeneratedBy"
+    },
+    {
+      "@id": "prov:wasGeneratedBy",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "prov",
+      "rdfs:comment": "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.\n[CIM context:\nReference to an activity or the exact business nature (process, configuration) which produced or uses the model.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "wasGeneratedBy",
+      "rdfs:range": "dcat:Dataset",
+      "owl:inverseOf": "prov:Entity"
+    },
+    {
+      "@id": "adms:versionNotes",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "adms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A description of changes between this version and the previous version of the resource.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "versionNotes",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dcat:endDate",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "This property contains the end of the period.\n[CIM context:\nThe end date and time of the validity period of the model that it is serialized in the document where the header is located. It is only used in relation to the startDate property which indicates the beginning of the validity period of the model.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "endDate",
+      "rdfs:range": "xsd:dateTimeStamp"
+    },
+    {
+      "@id": "dcat:keyword",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A keyword or tag describing a resource.\n[CIM context:\nThe intended content type of the model, usually the profile keyword. Used to identify what profiles and content is expected in the document, e.g., Equipment, Boundary, SSH, AE, etc. The same keyword is used for different versions of same profile. It can be also used to identify different content based on the same profile.\nFor instance, as the equipment profile can be used for both boundary data and equipment not related to boundary, the keyword is different to indicate that boundary data is exchanged. In order to avoid ambiguity the property is not exchanged in cases where the document contains multiple profiles referenced by dct:conformsTo.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "keyword",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dcat:startDate",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "This property contains the start of the period.\n[CIM context:\nThe date and time that this model represents, i.e. for which the model is (or was) valid. It indicates the beginning of the validity period. It is indicating either an instant (in cases where the model is only valid for a point in time) or the start time of a period. If not provided the model is considered valid for any time stamp. The format is an extended format according to the ISO 8601-2005. European exchanges shall refer to UTC.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "startDate",
+      "rdfs:range": "xsd:dateTimeStamp"
+    },
+    {
+      "@id": "dcat:temporalResolution",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Minimum time period resolvable in a dataset.\n[CIM context: \nDescribes the Market Time Unit (MTU), e.g. hourly, 15 min., etc.]",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "temporalResolution",
+      "rdfs:range": "xsd:duration"
+    },
+    {
+      "@id": "dcat:version",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcat",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The version indicator (name or identifier) of a resource.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "version",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A free-text account of the resource.\nDescription may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:identifier",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A unique identifier of the resource being described or cataloged.\nThe identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.\nThe identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.\n[CIM context:\nA unique identifier of the model which is serialised in the document where the header is located. The identifier is persistent for a given version of the model and shall change when the model changes.\nIf a model is serialized as complete (full) model or as difference model exchange the identifier shall be the same. The identifier shall not be used as an identifier of the document which can be different for a given version of a model.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "identifier",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:issued",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Date of formal issuance of the resource.\nRecommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.\n[CIM context:\nReference to the date that the complete data set was made valid/available.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "issued",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "dct:rights",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "rights",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:rightsHolder",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Information about rights held in and over the resource.\nTypically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "rightsHolder",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "dct:title",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "dcterms",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "A name given to the resource.\n[CIM context: \nThe human readable name of the dataset that can form the instance file name.]",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "title",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "prov:generatedAtTime",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        {
+          "@id": "uml:attribute"
+        },
+        "prov"
+      ],
+      "rdfs:comment": "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.\n[CIM context:\nThe date and time when the model was serialized in the document where the header is located. The format is an extended format according to the ISO 8601-2005. European exchanges shall refer to UTC.].",
+      "rdfs:domain": "dcat:Dataset",
+      "rdfs:label": "generatedAtTime",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "dcat:Dataset.Resource11",
+      "@type": "owl:InverseFunctionalProperty"
+    },
+    {
+      "@id": "https://ap-voc.cim4.eu/DatasetMetadata#Package_DatasetMetadataProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "The package describes the profile of metadata for dataset and distribution.",
+      "rdfs:label": "DatasetMetadataProfile"
+    },
+    {
+      "@id": "https://ap-voc.cim4.eu/DatasetMetadata#Package_DocDatasetMetadataProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS metadata.",
+      "rdfs:label": "DocDatasetMetadataProfile"
+    }
+  ]
+}

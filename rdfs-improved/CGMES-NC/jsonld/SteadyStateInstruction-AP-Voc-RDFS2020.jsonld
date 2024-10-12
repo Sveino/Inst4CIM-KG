@@ -1,0 +1,5372 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "ssi:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the steady state instruction profile.",
+      "dct:identifier": "urn:uuid:6d01969f-38fd-460d-b260-b839a8123319",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Steady state instruction Vocabulary",
+      "owl:priorVersion": "http://entsoe.eu/ns/CIM/SteadyStateInstruction-EU/2.2",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/SteadyStateInstruction/2.3",
+      "owl:versionInfo": "2.3.1",
+      "dcat:keyword": "SSI",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:Contingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": "Description",
+      "rdfs:comment": "An event threatening system reliability, consisting of one or more contingency elements.",
+      "rdfs:label": "Contingency"
+    },
+    {
+      "@id": "cim:Currency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "Monetary currencies.  ISO 4217 standard including 3-character currency code.",
+      "rdfs:label": "Currency"
+    },
+    {
+      "@id": "cim:EnergyConsumer",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Generic user of energy - a  point of consumption on the power system model.\nEnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False.",
+      "rdfs:label": "EnergyConsumer"
+    },
+    {
+      "@id": "cim:Equipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": "Description",
+      "rdfs:comment": "The parts of a power system that are physical devices, electronic or mechanical.",
+      "rdfs:label": "Equipment"
+    },
+    {
+      "@id": "cim:GeneratingUnit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set.",
+      "rdfs:label": "GeneratingUnit"
+    },
+    {
+      "@id": "cim:HydroPump",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A synchronous motor-driven pump, typically associated with a pumped storage plant.",
+      "rdfs:label": "HydroPump"
+    },
+    {
+      "@id": "cim:PowerElectronicsUnit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines.",
+      "rdfs:label": "PowerElectronicsUnit"
+    },
+    {
+      "@id": "cim:RegulatingCondEq",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "rdfs:comment": "A type of conducting equipment that can regulate a quantity (i.e. voltage or flow) at a specific point in the network.",
+      "rdfs:label": "RegulatingCondEq"
+    },
+    {
+      "@id": "cim:Reservoir",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A water storage facility within a hydro system, including: ponds, lakes, lagoons, and rivers. The storage is usually behind some type of dam.",
+      "rdfs:label": "Reservoir"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "nc:ACEmulationControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "The AC emulation control function is used when AC emulation model is activated for a DC system. It consists in computing the active power set point of the DC system as a function of the voltage angle difference between both points of common coupling with the AC network in order to mimic the behavior of an AC transmission line. This control mode enables the automatic adjustment of the active power reference following variations of the AC system operational point. \nThe setpoint of the DC system is calculated by Psetpoint=Pref+Kdc*(angle1-angle2), where\n- Pref is the existing active power setpoint; \n- Kdc is the control system gain and  \n- angle1 and angle2 are the phase angle measurement (measured at points of common coupling with the AC network) respectively at the side 1 and 2 of the DC system.",
+      "rdfs:label": "ACEmulationControlFunction"
+    },
+    {
+      "@id": "nc:ActivePowerControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Active power control function is a function block that calculates operating point of the controlled equipment to achieve the target active power.",
+      "rdfs:label": "ActivePowerControlFunction"
+    },
+    {
+      "@id": "nc:AreaDispatchableUnit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Allocates a given producing or consuming unit, including direct current corridor and collection of units, to a given control area (through the scheduling area) for supporting the control of the given area through dispatch instruction.",
+      "rdfs:label": "AreaDispatchableUnit"
+    },
+    {
+      "@id": "nc:AssessedElement",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.\nThe measurements and limits are as defined in the steady state hypothesis.",
+      "rdfs:label": "AssessedElement"
+    },
+    {
+      "@id": "nc:AssessedElementWithContingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Combination of an assessed element and a contingency.",
+      "rdfs:label": "AssessedElementWithContingency"
+    },
+    {
+      "@id": "nc:AssessedElementWithRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Combination of an assessed element and a remedial action",
+      "rdfs:label": "AssessedElementWithRemedialAction"
+    },
+    {
+      "@id": "nc:AutomationFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC"
+      ],
+      "rdfs:comment": "Automation function is a collection of functional block or other automation function that can be executed as a work cycle program as part of an automated system.",
+      "rdfs:label": "AutomationFunction"
+    },
+    {
+      "@id": "nc:AvailabilityRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Availability remedial action is a remedial action that cancels or reschedules an availability schedule.",
+      "rdfs:label": "AvailabilityRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:BiddingZone",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A bidding zone is a market-based method for handling power transmission congestion. It consists of scheduling areas that include the relevant production (supply) and consumption (demand) to form an electrical area with the same market price without capacity allocation.",
+      "rdfs:label": "BiddingZone"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Defines the aggregated connection capacity between two Bidding Zones.",
+      "rdfs:label": "BiddingZoneBorder"
+    },
+    {
+      "@id": "nc:CircuitShare",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Defines the share of the circuit which is part of an associated power transfer corridor.",
+      "rdfs:label": "CircuitShare"
+    },
+    {
+      "@id": "nc:CompensatorControlModeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of compensator controller mode.",
+      "rdfs:label": "CompensatorControlModeKind"
+    },
+    {
+      "@id": "nc:CompensatorController",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Compensator controller is controlling the equipment to optimize the use of the compensators.",
+      "rdfs:label": "CompensatorController"
+    },
+    {
+      "@id": "nc:ContingencyWithRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Combination of a contingency and a remedial action. ContingencyWithRemedialAction shall not be instantiated for preventive RemedialAction (RemedialAction.kind equals RemedialActionKind.preventive).",
+      "rdfs:label": "ContingencyWithRemedialAction"
+    },
+    {
+      "@id": "nc:CountertradeRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Countertrade is a remedial action to relieve physical congestions where the location of activated resources within the bidding zone is not known.",
+      "rdfs:label": "CountertradeRemedialAction",
+      "rdfs:subClassOf": "nc:PowerRemedialAction"
+    },
+    {
+      "@id": "nc:CrossBorderRelevance",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Combination of an assessed element and one or more bidding zone border that are affected by the assessment.",
+      "rdfs:label": "CrossBorderRelevance"
+    },
+    {
+      "@id": "nc:CurrentControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Current control function is a function block that calculates the operating point of the controlled equipment  to achieve the target current.",
+      "rdfs:label": "CurrentControlFunction"
+    },
+    {
+      "@id": "nc:CurrentDroopControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Current droop control function is a function block that calculates the operating point of the controlled equipment to achieve the target current.",
+      "rdfs:label": "CurrentDroopControlFunction"
+    },
+    {
+      "@id": "nc:CurrentDroopOverride",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Current droop override uses the following logic:\n- When the current exceeds a threshold the device executes the following transitions: 1) When injecting an inductive voltage or in monitoring mode the device tends to inject a voltage proportional to the difference between the line current and the aforementioned threshold. 2) When injecting a capacitive voltage the device transitions to monitoring mode. \n- If the aforementioned proportional voltage is lower than the initial one, the voltage injection remains unchanged. \nCurrent droop override is not applied when the device operates in currentDroop mode.",
+      "rdfs:label": "CurrentDroopOverride"
+    },
+    {
+      "@id": "nc:DCControlModeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of DC control mode.",
+      "rdfs:label": "DCControlModeKind"
+    },
+    {
+      "@id": "nc:DCCurrentControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "DC current control function is a function block that calculates the operating point of the controlled equipment  to achieve the target current.",
+      "rdfs:label": "DCCurrentControlFunction"
+    },
+    {
+      "@id": "nc:DCPole",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "The direct current (DC) system pole (IEC 60633) is part of a DC system consisting of all the equipment in the DC substations and the interconnecting transmission lines, if any, which during normal operation exhibit a common direct voltage polarity with respect to earth.",
+      "rdfs:label": "DCPole"
+    },
+    {
+      "@id": "nc:DCSwitch",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A switch within the DC system.",
+      "rdfs:label": "DCSwitch"
+    },
+    {
+      "@id": "nc:DCTieCorridor",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A collection of one or more direct current poles that connect two different control areas.",
+      "rdfs:label": "DCTieCorridor"
+    },
+    {
+      "@id": "nc:DCVoltageControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "DC voltage control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage.",
+      "rdfs:label": "DCVoltageControlFunction"
+    },
+    {
+      "@id": "nc:DirectCurrentEquipmentController",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Direct current equipment controller used to control different parts of the hierarchical structure of the DC control system defined by IEC 60633.",
+      "rdfs:label": "DirectCurrentEquipmentController"
+    },
+    {
+      "@id": "nc:EnergyBlockOrder",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "The energy block order is a block (an amount) of energy that forms the sequence of orders that are going to be distributed to an energy block component.",
+      "rdfs:label": "EnergyBlockOrder"
+    },
+    {
+      "@id": "nc:EnergyGroup",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "An energy group is an aggregation of energy components which have the same energy characteristic, e.g. fuel type and technology. It can be used to allocate energy.",
+      "rdfs:label": "EnergyGroup"
+    },
+    {
+      "@id": "nc:FACTSEquipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Flexible Alternating Current Transmission System regulating equipment.",
+      "rdfs:label": "FACTSEquipment",
+      "rdfs:subClassOf": "cim:RegulatingCondEq"
+    },
+    {
+      "@id": "nc:FrequencyControlFuntion",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Frequency control function is a function block that calculate the operating point of the controlled equipment to achieve the target frequency.",
+      "rdfs:label": "FrequencyControlFuntion"
+    },
+    {
+      "@id": "nc:FuelStorage",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Fuel storage. e.g. pile of coal that can be shared between multiple thermal generating units.",
+      "rdfs:label": "FuelStorage"
+    },
+    {
+      "@id": "nc:FunctionBlock",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC"
+      ],
+      "rdfs:comment": "Function block is a function described as a set of elementary blocks. The blocks describe the function between input variables and output variables.",
+      "rdfs:label": "FunctionBlock"
+    },
+    {
+      "@id": "nc:GridStateAlteration",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC"
+      ],
+      "rdfs:comment": "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case.",
+      "rdfs:label": "GridStateAlteration"
+    },
+    {
+      "@id": "nc:GridStateAlterationRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Grid state alteration remedial action describes one or many grid state alterations applied to a grid model state or a particular scenario in order to resolve one or more identified constraints.",
+      "rdfs:label": "GridStateAlterationRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:ImpedanceControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Impedance control function is a function block that calculates the operating point of the controlled equipment to achieve the target impedance.",
+      "rdfs:label": "ImpedanceControlFunction"
+    },
+    {
+      "@id": "nc:InfeedLimit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Infeed limit set constraints fed in to the network by two or more terminals.",
+      "rdfs:label": "InfeedLimit"
+    },
+    {
+      "@id": "nc:InjectionControlModeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of injection controller mode.",
+      "rdfs:label": "InjectionControlModeKind"
+    },
+    {
+      "@id": "nc:InjectionController",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Injection controller is controlling the equipment which represents an injection or an external network.",
+      "rdfs:label": "InjectionController"
+    },
+    {
+      "@id": "nc:ModularStaticSynchronousSeriesCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Modular static synchronous series compensator (MSSSC) is a type of flexible AC transmission system regulating equipment which consists of solid-state voltage source inverter connected in series with a transmission line. This is similar to static synchronous series compensator (SSSC), but without injection transformer. This enables the MSSSC to be truly modular with the ability to simply install a number of equipment in series to provide a desired maximum level of impedance. MSSSC can be dispersed into multiple location in a circuit working collectively under the same controller scheme.",
+      "rdfs:label": "ModularStaticSynchronousSeriesCompensator",
+      "rdfs:subClassOf": "nc:FACTSEquipment"
+    },
+    {
+      "@id": "nc:PTCActivePowerSupport",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Defines the active power capability (support) of the scheme in relation to a PowerTransferCorridor.",
+      "rdfs:label": "PTCActivePowerSupport"
+    },
+    {
+      "@id": "nc:PhaseControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Phase control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage.",
+      "rdfs:label": "PhaseControlFunction"
+    },
+    {
+      "@id": "nc:PowerCapacity",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Power capacity defines the capacity in regard to generation, consumption and transmission (import and export) for a relevant power system resource, e.g. bidding zone, including maximum and minimum electrical power capacity and any capacity allocation.",
+      "rdfs:label": "PowerCapacity"
+    },
+    {
+      "@id": "nc:PowerFactorControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Power factor control function is a function block that calculates the operating point of the controlled equipment to achieve the target power factor.",
+      "rdfs:label": "PowerFactorControlFunction"
+    },
+    {
+      "@id": "nc:PowerRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Energy remedial action describes actions to rearrange power schedules.",
+      "rdfs:label": "PowerRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:PowerShiftKeyStrategy",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Strategy of the power shift key.",
+      "rdfs:label": "PowerShiftKeyStrategy"
+    },
+    {
+      "@id": "nc:PowerTransferCorridor",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A power transfer corridor is defined as a set of circuits (transmission lines or transformers) separating two portions of the power system, or a subset of circuits exposed to a substantial portion of the transmission exchange between two parts of the system.",
+      "rdfs:label": "PowerTransferCorridor"
+    },
+    {
+      "@id": "nc:RangeConstraint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC"
+      ],
+      "rdfs:comment": "Defines the rage constraint.",
+      "rdfs:label": "RangeConstraint"
+    },
+    {
+      "@id": "nc:ReactivePowerControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Reactive power control function is a function block that calculate the operating point of the controlled equipment to achieve the target reactive power.",
+      "rdfs:label": "ReactivePowerControlFunction"
+    },
+    {
+      "@id": "nc:RedispatchRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Redispatch remedial action is a remedial action that through rearranging power schedules is eliminating breaches of constraints.",
+      "rdfs:label": "RedispatchRemedialAction",
+      "rdfs:subClassOf": "nc:PowerRemedialAction"
+    },
+    {
+      "@id": "nc:RemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly.",
+      "rdfs:label": "RemedialAction"
+    },
+    {
+      "@id": "nc:RemedialActionDependency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.\n<ul>\n\t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>\n\t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>\n\t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>\n</ul>",
+      "rdfs:label": "RemedialActionDependency"
+    },
+    {
+      "@id": "nc:RemedialActionGroup",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Grouping of remedial actions that can be operated together.",
+      "rdfs:label": "RemedialActionGroup"
+    },
+    {
+      "@id": "nc:RemedialActionScheme",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).\nA Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action.",
+      "rdfs:label": "RemedialActionScheme"
+    },
+    {
+      "@id": "nc:RotatingMachineControlModeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of rotating machine controller mode.",
+      "rdfs:label": "RotatingMachineControlModeKind"
+    },
+    {
+      "@id": "nc:RotatingMachineController",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Rotating machine controller is controlling the equipment which may be used as a generator or motor.",
+      "rdfs:label": "RotatingMachineController"
+    },
+    {
+      "@id": "nc:SSSCControlModeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Control modes of the Static Synchronous Series Compensator (SSSC).",
+      "rdfs:label": "SSSCControlModeKind"
+    },
+    {
+      "@id": "nc:SSSCController",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "The controller of a Static synchronous series compensator (SSSC).",
+      "rdfs:label": "SSSCController"
+    },
+    {
+      "@id": "nc:ScheduleResource",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A schedule resource is a market-based method for handling participation of small units, particularly located on the lower voltage level that is controlled by a Distributed System Operator (DSO). It is a collection of units that can operate in the market by providing bids, offers and a resulting committed operational schedule for the collection.",
+      "rdfs:label": "ScheduleResource"
+    },
+    {
+      "@id": "nc:SchedulingArea",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "An area where production and/or consumption of energy can be forecasted, scheduled and measured. The area is operated by only one system operator, typically a Transmission System Operator (TSO). The area can consist of a sub area, which has the same definition as the main area, but it can be operated by another system operator (typically Distributed System Operator (DSO) or a Closed Distributed System Operator (CDSO)). This includes microgrid concept. A substation is the smallest grouping that can be included in the area. The area size should be considered in terms of the possibility of accumulated reading (settlement metering) and the capability of operating as an island.",
+      "rdfs:label": "SchedulingArea"
+    },
+    {
+      "@id": "nc:SchemeRemedialAction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Scheme remedial action is remedial action that involves a scheme that can include conditional logic and stages of grid alteration. The primary remedial action is the arming of these schemes, that will then perform curative remedial action when the condition is met. System Integrity Protection Scheme (SIPS) and Special Protection Scheme (SPS) are example of this.",
+      "rdfs:label": "SchemeRemedialAction",
+      "rdfs:subClassOf": "nc:RemedialAction"
+    },
+    {
+      "@id": "nc:StageTrigger",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Stage that is triggered either by TriggerCondition or by gate condition within a stage.",
+      "rdfs:label": "StageTrigger"
+    },
+    {
+      "@id": "nc:StaticSynchronousCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Static synchronous compensator (STATCOM), also known as a static synchronous condenser (STATCON), is a type of flexible AC transmission system regulating equipment used on alternating current electricity transmission networks. It is based on a power electronics voltage-source converter and can act as either a source or sink of reactive AC power to an electricity network. If connected to a source of power it can also provide active AC power.",
+      "rdfs:label": "StaticSynchronousCompensator",
+      "rdfs:subClassOf": "nc:FACTSEquipment"
+    },
+    {
+      "@id": "nc:StaticSynchronousSeriesCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Static synchronous series compensator (SSSC) is a type of flexible AC transmission system which consists of a solid-state voltage source inverter coupled with a transformer that is connected in series with a transmission line. This device can inject an almost sinusoidal voltage in series with the line. This injected voltage could be considered as an inductive or capacitive reactance, which is connected in series with the transmission line. This feature can provide controllable voltage compensation. In addition, SSSC is able to reverse the power flow by injecting a sufficiently large series reactive compensating voltage. Moreover it can inject a voltage proportional to the difference between the line current and the pre-configured current threshold.<font color=\"#636671\"> </font>It shall have two Terminal-s associated with it.",
+      "rdfs:label": "StaticSynchronousSeriesCompensator",
+      "rdfs:subClassOf": "nc:FACTSEquipment"
+    },
+    {
+      "@id": "nc:StaticVarCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\n\nThe SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.",
+      "rdfs:label": "StaticVarCompensator",
+      "rdfs:subClassOf": "nc:FACTSEquipment"
+    },
+    {
+      "@id": "nc:SubstationController",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Substation controller is controlling the equipment to optimize the use of the controlling equipment within a substation.",
+      "rdfs:label": "SubstationController"
+    },
+    {
+      "@id": "nc:SubstationControllerModeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of substation controller mode.",
+      "rdfs:label": "SubstationControllerModeKind"
+    },
+    {
+      "@id": "nc:TCSCControlModeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kind of TCSC control mode.",
+      "rdfs:label": "TCSCControlModeKind"
+    },
+    {
+      "@id": "nc:TCSCController",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "TCSC controller is controlling the equipment to optimize the performance of the TCSC.",
+      "rdfs:label": "TCSCController"
+    },
+    {
+      "@id": "nc:ThyristorControlledSeriesCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Thyristor-controlled series capacitors (TCSC) is a type of flexible AC transmission system regulating equipment that is configured with controlled reactors in parallel with sections of a capacitor bank. This combination allows smooth control of the fundamental frequency capacitive reactance over a wide range. The thyristor valve contains a string of series connected high power thyristors. TCSC can control power flows in order to achieve eliminating of line overloads, reducing loop flows and minimising system losses.",
+      "rdfs:label": "ThyristorControlledSeriesCompensator",
+      "rdfs:subClassOf": "nc:FACTSEquipment"
+    },
+    {
+      "@id": "nc:VoltageAngleLimit",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Voltage angle limit between two terminals. The association end OperationalLimitSet.Terminal defines one end and the host of the limit. The association end VoltageAngleLimit.AngleReferenceTerminal defines the reference terminal.",
+      "rdfs:label": "VoltageAngleLimit"
+    },
+    {
+      "@id": "nc:VoltageControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Voltage control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage.",
+      "rdfs:label": "VoltageControlFunction"
+    },
+    {
+      "@id": "nc:VoltageInjectionControlFunction",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "cims:stereotype": [
+        "Description",
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Voltage injection control function is a function block that calculates the operating point of the controlled equipment to achieve the target voltage injection. The controlled point is the Terminal with sequenceNumber =1.",
+      "rdfs:label": "VoltageInjectionControlFunction"
+    },
+    {
+      "@id": "cim:GeneratingUnit.startupCost",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:dataType": {
+        "@id": "cim:Money"
+      },
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The initial startup cost incurred for each start of the GeneratingUnit.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "startupCost"
+    },
+    {
+      "@id": "nc:CompensatorController.mode",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Mode of the compensator controller.",
+      "rdfs:domain": "nc:CompensatorController",
+      "rdfs:label": "mode",
+      "rdfs:range": "nc:CompensatorControlModeKind"
+    },
+    {
+      "@id": "nc:DirectCurrentEquipmentController.mode",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Mode of the dc controller.",
+      "rdfs:domain": "nc:DirectCurrentEquipmentController",
+      "rdfs:label": "mode",
+      "rdfs:range": "nc:DCControlModeKind"
+    },
+    {
+      "@id": "nc:FrequencyControlFuntion.targetValue",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:dataType": {
+        "@id": "cim:Frequency"
+      },
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Target value for the frequency that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:FrequencyControlFuntion",
+      "rdfs:label": "targetValue"
+    },
+    {
+      "@id": "nc:GeneratingUnit.warmStartupCost",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:dataType": {
+        "@id": "cim:Money"
+      },
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The warm startup cost incurred for each start of the GeneratingUnit.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "warmStartupCost"
+    },
+    {
+      "@id": "nc:InjectionController.mode",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Mode of the injection controller.",
+      "rdfs:domain": "nc:InjectionController",
+      "rdfs:label": "mode",
+      "rdfs:range": "nc:InjectionControlModeKind"
+    },
+    {
+      "@id": "nc:RotatingMachineController.mode",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Mode of the rotating machine controller.",
+      "rdfs:domain": "nc:RotatingMachineController",
+      "rdfs:label": "mode",
+      "rdfs:range": "nc:RotatingMachineControlModeKind"
+    },
+    {
+      "@id": "nc:SSSCController.mode",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Mode of the Static Synchronous Series compensator controller.",
+      "rdfs:domain": "nc:SSSCController",
+      "rdfs:label": "mode",
+      "rdfs:range": "nc:SSSCControlModeKind"
+    },
+    {
+      "@id": "nc:SubstationController.mode",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Mode of the substation controller.",
+      "rdfs:domain": "nc:SubstationController",
+      "rdfs:label": "mode",
+      "rdfs:range": "nc:SubstationControllerModeKind"
+    },
+    {
+      "@id": "nc:TCSCController.mode",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Mode of the TCSC controller.",
+      "rdfs:domain": "nc:TCSCController",
+      "rdfs:label": "mode",
+      "rdfs:range": "nc:TCSCControlModeKind"
+    },
+    {
+      "@id": "cim:Contingency.mustStudy",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Set true if must study this contingency.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "mustStudy",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:Equipment.inService",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "inService",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:Equipment.networkAnalysisEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The equipment is enabled to participate in network analysis.  If unspecified, the value is assumed to be true.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "networkAnalysisEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:RegulatingCondEq.controlEnabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Specifies the regulation status of the equipment.  True is regulating, false is not regulating.",
+      "rdfs:domain": "cim:RegulatingCondEq",
+      "rdfs:label": "controlEnabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:ACEmulationControlFunction.gain",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Control system gain in AC transmission emulation control measured in MW/deg. It plays the role of an admittance of the equivalent AC transmission line that the control is emulating the higher is the gain the higher is the active power transfer at steady state.",
+      "rdfs:domain": "nc:ACEmulationControlFunction",
+      "rdfs:label": "gain",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:ACEmulationControlFunction.referenceP",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Existing active power setpoint used to calculate the active power setpoint of the AC emulation control.",
+      "rdfs:domain": "nc:ACEmulationControlFunction",
+      "rdfs:label": "referenceP",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:ACEmulationControlFunction.timeConstant",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Seconds",
+      "qudt:hasUnit": "unit:SEC",
+      "rdfs:comment": "Control system time constant in AC transmission emulation control. It affects the time needed to \nreach a new steady state equilibrium point after a network perturbation extremely important to guarantee N-1 relief related to an interconnection. The higher is time constant the slower is the DC system dynamic.",
+      "rdfs:domain": "nc:ACEmulationControlFunction",
+      "rdfs:label": "timeConstant",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.s"
+    },
+    {
+      "@id": "nc:ActivePowerControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Target value for the active power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:ActivePowerControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AreaDispatchableUnit.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Identifies if the unit is enabled to accept a dispatch instruction. If true, the unit is enabled to accept a dispatch instruction. If false, the unit has the capability, but it is not enabled to receive a dispatch instruction.",
+      "rdfs:domain": "nc:AreaDispatchableUnit",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AreaDispatchableUnit.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:AreaDispatchableUnit",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.appointedMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "The percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit under normal operating conditions. The maximum percentage shall by default be 10% of the remaining margin.\nIt is only used when an assessed element is considered conservative for a region.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "appointedMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.coordinatedValidationAdjustment",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Positive value calculated and provided by the Coordinated Capacity Calculator (CCC) for the reduction of Remaining Available Margin (RAM) in order to ensure grid security.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "coordinatedValidationAdjustment",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.coordinatedValidationAdjustmentJustification",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Free text description provided by the coordinated capacity calculator (CCC) for justifying the reduction of Remaining Available Margin (RAM) by means of Coordinated Validation Adjustment (CVA). This justification is not intended for any application processing purpose, it should only be used for reporting.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "coordinatedValidationAdjustmentJustification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElement.criticalElementContingencyJustification",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Free text describing the justification  of critical element contingency categorization (e.g. the use of the kind). This justification is not intended for any application processing purpose, it should only be used for reporting.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "criticalElementContingencyJustification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElement.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the assessed element is enabled, otherwise it is disabled.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AssessedElement.individualValidationAdjustment",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Positive value calculated and provided by System Operators from their individual validation process for the reduction of Remaining Available Margin (RAM) in order to ensure grid security.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "individualValidationAdjustment",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.individualValidationAdjustmentJustification",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Free text description provided by System Operators for justifying the reduction of Remaining Available Margin (RAM) by means of Individual Validation Adjustment (IVA). This justification is not intended for any application processing purpose, it should only be used for reporting.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "individualValidationAdjustmentJustification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElement.individualValidationAdjustmentShare",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Positive value expressed calculated by the Coordinated Capacity Calculator (CCC) based on the provided Individual Validation Adjustment (IVA) by System Operators in order to show the actual reduction of Remaining Available Margin (RAM). Individual Validation Adjustment Share is a positive non-zero value. It is equal or less than the Individual Validation Adjustment value.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "individualValidationAdjustmentShare",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.maxFlow",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum flow on a conducting equipment or a collection of conducting equipment forming a power transfer corridor. For assessed element that becomes critical due to contingency, this value represents the maximum flow with remedial action taken into consideration.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "maxFlow",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:AssessedElement.maxMarginAdjustment",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Maximum adjustment, relative to maximum flow allowed for exceeding the maximum flow of this assessed element.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "maxMarginAdjustment",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.positiveVirtualMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "A positive margin that defines the overload allowed in a solution for the assessed element for the current situation. The margin represents influences that can be solved by the System Operators using available remedial action which is not cross-border relevant remedial action.\nAll relevant operational limits (e.g. PATL, TATL, etc) are modified by this margin value. The attribute represents the increase.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "positiveVirtualMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.scannedThresholdMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "scannedThresholdMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:AssessedElement.targetRemainingAvailableMarginJustification",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Free text describing the justification for the target Remaining Available Margin (RAM). This justification is not intended for any application processing purpose, it should only be used for reporting.",
+      "rdfs:domain": "nc:AssessedElement",
+      "rdfs:label": "targetRemainingAvailableMarginJustification",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:AssessedElementWithContingency.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the assessed element with contingency is enabled, otherwise it is disabled.",
+      "rdfs:domain": "nc:AssessedElementWithContingency",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AssessedElementWithRemedialAction.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the assessed element with remedial action is enabled, otherwise it is disabled.",
+      "rdfs:domain": "nc:AssessedElementWithRemedialAction",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:AutomationFunction.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "True, if the automation function is enabled (active). Otherwise false.",
+      "rdfs:domain": "nc:AutomationFunction",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:BiddingZone.netPosition",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Net position is the netted sum of electricity exports and imports for each market time unit for a bidding zone.",
+      "rdfs:domain": "nc:BiddingZone",
+      "rdfs:label": "netPosition",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.alreadyAllocatedCapacity",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Already Allocated Capacity (AAC) means the total amount of allocated transmission rights i.e. transmission capacity reserved by virtue of historical long-term contracts and the previously held transmission capacity reservation auctions.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "alreadyAllocatedCapacity",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.alreadyAllocatedFlow",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "The maximum allowed flow on the collection of interconnection between two bidding zones.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "alreadyAllocatedFlow",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.availableTransferCapacity",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Available Transfer Capacity (ATC) means the transmission capacity that remains available, after allocation procedure, to be used under the physical conditions of the transmission system. ATC value is defined as: ATC = NTC - AAC.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "availableTransferCapacity",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.netTransferCapacity",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Net Transfer Capacity (NTC) is defined as NTC = TTC – TRM and corresponds to the maximum exchange between two areas compatible with operational security limits applicable in both areas and taking into account the technical uncertainties on future network conditions.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "netTransferCapacity",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.totalTransferCapacity",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Total Transfer Capacity (TTC) is the maximum exchange program between two areas compatible with operational security standards applicable at each system if future network conditions, generation and load patterns were perfectly known in advance.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "totalTransferCapacity",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:BiddingZoneBorder.transmissionReliabilityMargin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Transmission Reliability Margin (TRM) is the minimum reserve that system operators must have available at their connections so that they can help other countries to which their system is directly or indirectly connected, if necessary.",
+      "rdfs:domain": "nc:BiddingZoneBorder",
+      "rdfs:label": "transmissionReliabilityMargin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:CircuitShare.contributionFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Contribution factor for the circuit which is part of a power transfer corridor.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "nc:CircuitShare",
+      "rdfs:label": "contributionFactor",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:Contingency.probability",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "The forecasted probability of the occurrence of the contingency based on the given operational condition, status of the equipment and the forecasted environment condition.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "probability",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:ContingencyWithRemedialAction.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the contingency with remedial action is enabled, otherwise it is disabled.",
+      "rdfs:domain": "nc:ContingencyWithRemedialAction",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:CrossBorderRelevance.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the cross border relevance is enabled, otherwise it is disabled.",
+      "rdfs:domain": "nc:CrossBorderRelevance",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:CurrentControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Target value for the current that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:CurrentControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "nc:CurrentDroopControlFunction.targetValueCapacitive",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Setpoint when control is active in capacitive region.",
+      "rdfs:domain": "nc:CurrentDroopControlFunction",
+      "rdfs:label": "targetValueCapacitive",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "nc:CurrentDroopControlFunction.targetValueInductive",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Setpoint when control is active in inductive region.",
+      "rdfs:domain": "nc:CurrentDroopControlFunction",
+      "rdfs:label": "targetValueInductive",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "nc:CurrentDroopOverride.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "True, if the current droop override is enabled (active). Otherwise false.",
+      "rdfs:domain": "nc:CurrentDroopOverride",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:CurrentDroopOverride.targetValueCapacitiveI",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Setpoint when control is active in capacitive region.",
+      "rdfs:domain": "nc:CurrentDroopOverride",
+      "rdfs:label": "targetValueCapacitiveI",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "nc:CurrentDroopOverride.targetValueInductiveI",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Setpoint when control is active in inductive region.",
+      "rdfs:domain": "nc:CurrentDroopOverride",
+      "rdfs:label": "targetValueInductiveI",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "nc:DCCurrentControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Target value for the current that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:DCCurrentControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "nc:DCPole.maxEconomicP",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum high economic active power limit, that should not exceed the maximum operating active power limit.",
+      "rdfs:domain": "nc:DCPole",
+      "rdfs:label": "maxEconomicP",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:DCPole.minEconomicP",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Low economic active power limit that shall be greater than or equal to the minimum operating active power limit.",
+      "rdfs:domain": "nc:DCPole",
+      "rdfs:label": "minEconomicP",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:DCPole.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:DCPole",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:DCPole.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\nIn the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \nIn the case of priority strategy, the item with the lowest number gets allocated energy first.",
+      "rdfs:domain": "nc:DCPole",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:DCSwitch.locked",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "If true, the switch is locked. The resulting switch state is a combination of locked and DCSwitch.open attributes as follows:\n<ul>\n\t<li>locked=true and DCSwitch.open=true. The resulting state is open and locked;</li>\n\t<li>locked=false and DCSwitch.open=true. The resulting state is open;</li>\n\t<li>locked=false and DCSwitch.open=false. The resulting state is closed.</li>\n</ul>",
+      "rdfs:domain": "nc:DCSwitch",
+      "rdfs:label": "locked",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:DCSwitch.open",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The attribute tells if the switch is considered open when used as input to topology processing.",
+      "rdfs:domain": "nc:DCSwitch",
+      "rdfs:label": "open",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:DCTieCorridor.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+      "rdfs:domain": "nc:DCTieCorridor",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:DCTieCorridor.q",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+      "rdfs:domain": "nc:DCTieCorridor",
+      "rdfs:label": "q",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "nc:DCVoltageControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Voltage",
+      "qudt:hasUnit": "unit:KiloV",
+      "rdfs:comment": "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:DCVoltageControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.V"
+    },
+    {
+      "@id": "nc:EnergyBlockOrder.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "The maximum active power that can be applied as part of this block order.",
+      "rdfs:domain": "nc:EnergyBlockOrder",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:EnergyBlockOrder.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor.",
+      "rdfs:domain": "nc:EnergyBlockOrder",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:EnergyBlockOrder.sequence",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Sequence needs to be ordered by the scheduling area. It has to be unique by the scheduling area.",
+      "rdfs:domain": "nc:EnergyBlockOrder",
+      "rdfs:label": "sequence",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:EnergyConsumer.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\nIn the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \nIn the case of priority strategy, the item with the lowest number gets allocated energy first.",
+      "rdfs:domain": "cim:EnergyConsumer",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:EnergyGroup.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power for the energy group representing a particular energy type. e.g. WInd Power",
+      "rdfs:domain": "nc:EnergyGroup",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:EnergyGroup.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor for the power group in relation to scheduling area. Must be a positive value.",
+      "rdfs:domain": "nc:EnergyGroup",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:FACTSEquipment.q",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+      "rdfs:domain": "nc:FACTSEquipment",
+      "rdfs:label": "q",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "nc:FrequencyControlFuntion.frequencyBias",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Target value for the active power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:FrequencyControlFuntion",
+      "rdfs:label": "frequencyBias",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:FuelStorage.energyStorage",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:RealEnergy",
+      "qudt:hasUnit": "unit:MegaW-HR",
+      "rdfs:comment": "Amount of energy available in the storage.",
+      "rdfs:domain": "nc:FuelStorage",
+      "rdfs:label": "energyStorage",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.Wh"
+    },
+    {
+      "@id": "nc:FunctionBlock.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "True, if the function block is enabled (active). Otherwise false.",
+      "rdfs:domain": "nc:FunctionBlock",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:GeneratingUnit.mustRun",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Identifies if the generating unit is a must-run unit. This means that it cannot be instructed to shutdown due to other obligation. e.g. Providing heat. If true, the generating unit is must-run. If false, it is not.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "mustRun",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:GeneratingUnit.mustRunP",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Minimum active power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "mustRunP",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:GeneratingUnit.mustRunQ",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "mustRunQ",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "nc:GeneratingUnit.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\nIn the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \nIn the case of priority strategy, the item with the lowest number gets allocated energy first.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:GridStateAlteration.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The status of the GridStateAlteration set by an operation or by a signal resulting from a control action.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:GridStateAlteration.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\nIn the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \nIn the case of priority strategy, the item with the lowest number gets allocated energy first.\ne.g. If 0 this grid alteration does not participate. The sum of all participation factors for all grid state alterations associated with same remedial action shall be equal to 100%.",
+      "rdfs:domain": "nc:GridStateAlteration",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "nc:HydroPump.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\nIn the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \nIn the case of priority strategy, the item with the lowest number gets allocated energy first.",
+      "rdfs:domain": "cim:HydroPump",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:ImpedanceControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Impedance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Target value for the impedance that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:ImpedanceControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "nc:InfeedLimit.valueA",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Value of current limit. The attribute shall be a positive value or zero.",
+      "rdfs:domain": "nc:InfeedLimit",
+      "rdfs:label": "valueA",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "nc:InfeedLimit.valueW",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Value of active power limit. The attribute shall be a positive value or zero.",
+      "rdfs:domain": "nc:InfeedLimit",
+      "rdfs:label": "valueW",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PTCActivePowerSupport.value",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "The support that a System Integrity Protection Scheme (SIPS) gives to a Power Transfer Corridor (PTC).",
+      "rdfs:domain": "nc:PTCActivePowerSupport",
+      "rdfs:label": "value",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PhaseControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:AngleDegrees",
+      "qudt:hasUnit": "unit:DEG",
+      "rdfs:comment": "Target value for the phase that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:PhaseControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.deg"
+    },
+    {
+      "@id": "nc:PowerCapacity.maxInterchange",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum total active power (AC and DC)  that the net position for the bidding zone can have to maintain operational security. Positive sign means flow into the bidding zone.",
+      "rdfs:domain": "nc:PowerCapacity",
+      "rdfs:label": "maxInterchange",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerCapacity.minImportP",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Minimum imported active power requirement.",
+      "rdfs:domain": "nc:PowerCapacity",
+      "rdfs:label": "minImportP",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerCapacity.minInterchange",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Minimum total active power (AC and DC)  that the net position for the bidding zone can have to maintain operational security. Negative sign means flow out of the bidding zone.",
+      "rdfs:domain": "nc:PowerCapacity",
+      "rdfs:label": "minInterchange",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerCapacity.netACInterchange",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "The netted aggregation of all AC external schedules of an area. Positive sign means flow into the area (Import).",
+      "rdfs:domain": "nc:PowerCapacity",
+      "rdfs:label": "netACInterchange",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerCapacity.netACInterchangeTolerance",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The area AC Net Position tolerance.",
+      "rdfs:domain": "nc:PowerCapacity",
+      "rdfs:label": "netACInterchangeTolerance",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:PowerCapacity.netDCInterchange",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "The netted aggregation of all DC external schedules of an area. Positive sign means flow into the area.",
+      "rdfs:domain": "nc:PowerCapacity",
+      "rdfs:label": "netDCInterchange",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerCapacity.regulatingDownAllocation",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "The balancing capacity allocated for regulating down, by decreasing the production, increasing the direct current export, decreasing direct current import or increasing the consumption of energy in the bidding zone. This must be a positive number.",
+      "rdfs:domain": "nc:PowerCapacity",
+      "rdfs:label": "regulatingDownAllocation",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerCapacity.regulatingUpAllocation",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "The balancing capacity allocated for regulating up, by increasing the production, decreasing the direct current export, increasing direct current import or reducing the consumption of energy in the bidding zone. This must be a positive number.",
+      "rdfs:domain": "nc:PowerCapacity",
+      "rdfs:label": "regulatingUpAllocation",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerElectronicsUnit.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+      "rdfs:domain": "cim:PowerElectronicsUnit",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerElectronicsUnit.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\nIn the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \nIn the case of priority strategy, the item with the lowest number gets allocated energy first.",
+      "rdfs:domain": "cim:PowerElectronicsUnit",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:PowerFactorControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Target value for the power factor that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:PowerFactorControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:PowerRemedialAction.maxRegulatingDown",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum net amount of active power that the remedial action can regulate down.",
+      "rdfs:domain": "nc:PowerRemedialAction",
+      "rdfs:label": "maxRegulatingDown",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerRemedialAction.maxRegulatingUp",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum net amount of active power that the remedial action can regulate up.",
+      "rdfs:domain": "nc:PowerRemedialAction",
+      "rdfs:label": "maxRegulatingUp",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:PowerShiftKeyStrategy.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the assessed element is enabled, otherwise it is disabled.",
+      "rdfs:domain": "nc:PowerShiftKeyStrategy",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:PowerShiftKeyStrategy.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor describing the entities part of the power shift strategy. Must be a positive value.",
+      "rdfs:domain": "nc:PowerShiftKeyStrategy",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:PowerTransferCorridor.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "It enables/disables the monitoring/assessment of a power transfer corridor. True means that the monitoring of the power transfer corridor is assessed. False means the power transfer corridor is not assessed.",
+      "rdfs:domain": "nc:PowerTransferCorridor",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:RangeConstraint.value",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The value at the time. The meaning of the value is defined by the attribute referenced by the PropertyReference. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false. \nIf the valueKind is incremental or incrementalPercentage, then the value shall be positive (greater than zero).\nIf the valueKind is incrementalPercentage, then the value shall be in the range [0, 100].",
+      "rdfs:domain": "nc:RangeConstraint",
+      "rdfs:label": "value",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:ReactivePowerControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "qudt:hasUnit": "unit:MegaV-A_Reactive",
+      "rdfs:comment": "Target value for the reactive power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:ReactivePowerControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
+      "@id": "nc:RemedialAction.available",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Identifies if the remedial action is available to be proposed. True means available, False means unavailable.",
+      "rdfs:domain": "nc:RemedialAction",
+      "rdfs:label": "available",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:RemedialActionDependency.enabled",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "If true, the remedial action dependency is enabled, otherwise it is disabled.",
+      "rdfs:domain": "nc:RemedialActionDependency",
+      "rdfs:label": "enabled",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:RemedialActionGroup.maxRegulatingDown",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum net amount of active power that the group of remedial actions can regulate down.",
+      "rdfs:domain": "nc:RemedialActionGroup",
+      "rdfs:label": "maxRegulatingDown",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:RemedialActionGroup.maxRegulatingUp",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Maximum net amount of active power that the group of remedial actions can regulate up.",
+      "rdfs:domain": "nc:RemedialActionGroup",
+      "rdfs:label": "maxRegulatingUp",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.armed",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the arming status of the remedial action scheme. It is set by operation or by signal.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "armed",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:RemedialActionScheme.inService",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Specifies the availability of the Remedial Action Scheme (RAS). If true, the RAS is available for contingency processing. If false, the RAS is treated by contingency processing as if it is not in the model.",
+      "rdfs:domain": "nc:RemedialActionScheme",
+      "rdfs:label": "inService",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:Reservoir.energyStorage",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:RealEnergy",
+      "qudt:hasUnit": "unit:MegaW-HR",
+      "rdfs:comment": "Amount of energy available in the storage.",
+      "rdfs:domain": "cim:Reservoir",
+      "rdfs:label": "energyStorage",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.Wh"
+    },
+    {
+      "@id": "nc:ScheduleResource.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "nc:ScheduleResource",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:ScheduleResource.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\nIn the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \nIn the case of priority strategy, the item with the lowest number gets allocated energy first.",
+      "rdfs:domain": "nc:ScheduleResource",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:SchedulingArea.p",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Netted active power representing production, consumption and import/export for the scheduling area.",
+      "rdfs:domain": "nc:SchedulingArea",
+      "rdfs:label": "p",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "nc:SchedulingArea.participationFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\nIn the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \nIn the case of priority strategy, the item with the lowest number gets allocated energy first.",
+      "rdfs:domain": "nc:SchedulingArea",
+      "rdfs:label": "participationFactor",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:StageTrigger.armed",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The status of the class set by operation or by signal. Optional field that will override other status fields.",
+      "rdfs:domain": "nc:StageTrigger",
+      "rdfs:label": "armed",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:StageTrigger.inService",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Indicates if the stage trigger is in service.",
+      "rdfs:domain": "nc:StageTrigger",
+      "rdfs:label": "inService",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:ThyristorControlledSeriesCompensator.compensationZ",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Impedance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "The actual compensation impedance provided by the compensator. The attribute value shall be positive if compensation is in the capacitive range. The attribute value shall be negative if compensation is in the inductive rating.",
+      "rdfs:domain": "nc:ThyristorControlledSeriesCompensator",
+      "rdfs:label": "compensationZ",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "nc:ThyristorControlledSeriesCompensator.currentSection",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "The current section on which the TCSC is operating.",
+      "rdfs:domain": "nc:ThyristorControlledSeriesCompensator",
+      "rdfs:label": "currentSection",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "nc:VoltageAngleLimit.value",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:AngleDegrees",
+      "qudt:hasUnit": "unit:DEG",
+      "rdfs:comment": "The difference in angle degrees between referenced by the association end OperationalLimitSet.Terminal and the Terminal referenced by the association end VoltageAngleLimit.AngleReferenceTerminal. The value shall be positive (greater than zero).",
+      "rdfs:domain": "nc:VoltageAngleLimit",
+      "rdfs:label": "value",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.deg"
+    },
+    {
+      "@id": "nc:VoltageControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Voltage",
+      "qudt:hasUnit": "unit:KiloV",
+      "rdfs:comment": "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:VoltageControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.V"
+    },
+    {
+      "@id": "nc:VoltageInjectionControlFunction.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Voltage",
+      "qudt:hasUnit": "unit:KiloV",
+      "rdfs:comment": "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:VoltageInjectionControlFunction",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.V"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.W",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+      "rdfs:label": "ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.deg",
+      "rdfs:comment": "Measurement of angle in degrees.",
+      "rdfs:label": "AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:Currency.AED",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "United Arab Emirates dirham.",
+      "rdfs:label": "AED"
+    },
+    {
+      "@id": "cim:Currency.AFN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Afghan afghani.",
+      "rdfs:label": "AFN"
+    },
+    {
+      "@id": "cim:Currency.ALL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Albanian lek.",
+      "rdfs:label": "ALL"
+    },
+    {
+      "@id": "cim:Currency.AMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Armenian dram.",
+      "rdfs:label": "AMD"
+    },
+    {
+      "@id": "cim:Currency.ANG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Netherlands Antillean guilder.",
+      "rdfs:label": "ANG"
+    },
+    {
+      "@id": "cim:Currency.AOA",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Angolan kwanza.",
+      "rdfs:label": "AOA"
+    },
+    {
+      "@id": "cim:Currency.ARS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Argentine peso.",
+      "rdfs:label": "ARS"
+    },
+    {
+      "@id": "cim:Currency.AUD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Australian dollar.",
+      "rdfs:label": "AUD"
+    },
+    {
+      "@id": "cim:Currency.AWG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Aruban florin.",
+      "rdfs:label": "AWG"
+    },
+    {
+      "@id": "cim:Currency.AZN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Azerbaijani manat.",
+      "rdfs:label": "AZN"
+    },
+    {
+      "@id": "cim:Currency.BAM",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bosnia and Herzegovina convertible mark.",
+      "rdfs:label": "BAM"
+    },
+    {
+      "@id": "cim:Currency.BBD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Barbados dollar.",
+      "rdfs:label": "BBD"
+    },
+    {
+      "@id": "cim:Currency.BDT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bangladeshi taka.",
+      "rdfs:label": "BDT"
+    },
+    {
+      "@id": "cim:Currency.BGN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bulgarian lev.",
+      "rdfs:label": "BGN"
+    },
+    {
+      "@id": "cim:Currency.BHD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bahraini dinar.",
+      "rdfs:label": "BHD"
+    },
+    {
+      "@id": "cim:Currency.BIF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Burundian franc.",
+      "rdfs:label": "BIF"
+    },
+    {
+      "@id": "cim:Currency.BMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bermudian dollar (customarily known as Bermuda dollar).",
+      "rdfs:label": "BMD"
+    },
+    {
+      "@id": "cim:Currency.BND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Brunei dollar.",
+      "rdfs:label": "BND"
+    },
+    {
+      "@id": "cim:Currency.BOB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Boliviano.",
+      "rdfs:label": "BOB"
+    },
+    {
+      "@id": "cim:Currency.BOV",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bolivian Mvdol (funds code).",
+      "rdfs:label": "BOV"
+    },
+    {
+      "@id": "cim:Currency.BRL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Brazilian real.",
+      "rdfs:label": "BRL"
+    },
+    {
+      "@id": "cim:Currency.BSD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bahamian dollar.",
+      "rdfs:label": "BSD"
+    },
+    {
+      "@id": "cim:Currency.BTN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Bhutanese ngultrum.",
+      "rdfs:label": "BTN"
+    },
+    {
+      "@id": "cim:Currency.BWP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Botswana pula.",
+      "rdfs:label": "BWP"
+    },
+    {
+      "@id": "cim:Currency.BYR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Belarusian ruble.",
+      "rdfs:label": "BYR"
+    },
+    {
+      "@id": "cim:Currency.BZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Belize dollar.",
+      "rdfs:label": "BZD"
+    },
+    {
+      "@id": "cim:Currency.CAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Canadian dollar.",
+      "rdfs:label": "CAD"
+    },
+    {
+      "@id": "cim:Currency.CDF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Congolese franc.",
+      "rdfs:label": "CDF"
+    },
+    {
+      "@id": "cim:Currency.CHF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Swiss franc.",
+      "rdfs:label": "CHF"
+    },
+    {
+      "@id": "cim:Currency.CLF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Unidad de Fomento (funds code), Chile.",
+      "rdfs:label": "CLF"
+    },
+    {
+      "@id": "cim:Currency.CLP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Chilean peso.",
+      "rdfs:label": "CLP"
+    },
+    {
+      "@id": "cim:Currency.CNY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Chinese yuan.",
+      "rdfs:label": "CNY"
+    },
+    {
+      "@id": "cim:Currency.COP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Colombian peso.",
+      "rdfs:label": "COP"
+    },
+    {
+      "@id": "cim:Currency.COU",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Unidad de Valor Real.",
+      "rdfs:label": "COU"
+    },
+    {
+      "@id": "cim:Currency.CRC",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Costa Rican colon.",
+      "rdfs:label": "CRC"
+    },
+    {
+      "@id": "cim:Currency.CUC",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cuban convertible peso.",
+      "rdfs:label": "CUC"
+    },
+    {
+      "@id": "cim:Currency.CUP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cuban peso.",
+      "rdfs:label": "CUP"
+    },
+    {
+      "@id": "cim:Currency.CVE",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cape Verde escudo.",
+      "rdfs:label": "CVE"
+    },
+    {
+      "@id": "cim:Currency.CZK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Czech koruna.",
+      "rdfs:label": "CZK"
+    },
+    {
+      "@id": "cim:Currency.DJF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Djiboutian franc.",
+      "rdfs:label": "DJF"
+    },
+    {
+      "@id": "cim:Currency.DKK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Danish krone.",
+      "rdfs:label": "DKK"
+    },
+    {
+      "@id": "cim:Currency.DOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dominican peso.",
+      "rdfs:label": "DOP"
+    },
+    {
+      "@id": "cim:Currency.DZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Algerian dinar.",
+      "rdfs:label": "DZD"
+    },
+    {
+      "@id": "cim:Currency.EEK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Estonian kroon.",
+      "rdfs:label": "EEK"
+    },
+    {
+      "@id": "cim:Currency.EGP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Egyptian pound.",
+      "rdfs:label": "EGP"
+    },
+    {
+      "@id": "cim:Currency.ERN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Eritrean nakfa.",
+      "rdfs:label": "ERN"
+    },
+    {
+      "@id": "cim:Currency.ETB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ethiopian birr.",
+      "rdfs:label": "ETB"
+    },
+    {
+      "@id": "cim:Currency.EUR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Euro.",
+      "rdfs:label": "EUR"
+    },
+    {
+      "@id": "cim:Currency.FJD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Fiji dollar.",
+      "rdfs:label": "FJD"
+    },
+    {
+      "@id": "cim:Currency.FKP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Falkland Islands pound.",
+      "rdfs:label": "FKP"
+    },
+    {
+      "@id": "cim:Currency.GBP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pound sterling.",
+      "rdfs:label": "GBP"
+    },
+    {
+      "@id": "cim:Currency.GEL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Georgian lari.",
+      "rdfs:label": "GEL"
+    },
+    {
+      "@id": "cim:Currency.GHS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ghanaian cedi.",
+      "rdfs:label": "GHS"
+    },
+    {
+      "@id": "cim:Currency.GIP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Gibraltar pound.",
+      "rdfs:label": "GIP"
+    },
+    {
+      "@id": "cim:Currency.GMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Gambian dalasi.",
+      "rdfs:label": "GMD"
+    },
+    {
+      "@id": "cim:Currency.GNF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guinean franc.",
+      "rdfs:label": "GNF"
+    },
+    {
+      "@id": "cim:Currency.GTQ",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guatemalan quetzal.",
+      "rdfs:label": "GTQ"
+    },
+    {
+      "@id": "cim:Currency.GYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Guyanese dollar.",
+      "rdfs:label": "GYD"
+    },
+    {
+      "@id": "cim:Currency.HKD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Hong Kong dollar.",
+      "rdfs:label": "HKD"
+    },
+    {
+      "@id": "cim:Currency.HNL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Honduran lempira.",
+      "rdfs:label": "HNL"
+    },
+    {
+      "@id": "cim:Currency.HRK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Croatian kuna.",
+      "rdfs:label": "HRK"
+    },
+    {
+      "@id": "cim:Currency.HTG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Haitian gourde.",
+      "rdfs:label": "HTG"
+    },
+    {
+      "@id": "cim:Currency.HUF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Hungarian forint.",
+      "rdfs:label": "HUF"
+    },
+    {
+      "@id": "cim:Currency.IDR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Indonesian rupiah.",
+      "rdfs:label": "IDR"
+    },
+    {
+      "@id": "cim:Currency.ILS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Israeli new sheqel.",
+      "rdfs:label": "ILS"
+    },
+    {
+      "@id": "cim:Currency.INR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Indian rupee.",
+      "rdfs:label": "INR"
+    },
+    {
+      "@id": "cim:Currency.IQD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Iraqi dinar.",
+      "rdfs:label": "IQD"
+    },
+    {
+      "@id": "cim:Currency.IRR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Iranian rial.",
+      "rdfs:label": "IRR"
+    },
+    {
+      "@id": "cim:Currency.ISK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Icelandic króna.",
+      "rdfs:label": "ISK"
+    },
+    {
+      "@id": "cim:Currency.JMD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Jamaican dollar.",
+      "rdfs:label": "JMD"
+    },
+    {
+      "@id": "cim:Currency.JOD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Jordanian dinar.",
+      "rdfs:label": "JOD"
+    },
+    {
+      "@id": "cim:Currency.JPY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Japanese yen.",
+      "rdfs:label": "JPY"
+    },
+    {
+      "@id": "cim:Currency.KES",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kenyan shilling.",
+      "rdfs:label": "KES"
+    },
+    {
+      "@id": "cim:Currency.KGS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kyrgyzstani som.",
+      "rdfs:label": "KGS"
+    },
+    {
+      "@id": "cim:Currency.KHR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cambodian riel.",
+      "rdfs:label": "KHR"
+    },
+    {
+      "@id": "cim:Currency.KMF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Comoro franc.",
+      "rdfs:label": "KMF"
+    },
+    {
+      "@id": "cim:Currency.KPW",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "North Korean won.",
+      "rdfs:label": "KPW"
+    },
+    {
+      "@id": "cim:Currency.KRW",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "South Korean won.",
+      "rdfs:label": "KRW"
+    },
+    {
+      "@id": "cim:Currency.KWD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kuwaiti dinar.",
+      "rdfs:label": "KWD"
+    },
+    {
+      "@id": "cim:Currency.KYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cayman Islands dollar.",
+      "rdfs:label": "KYD"
+    },
+    {
+      "@id": "cim:Currency.KZT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Kazakhstani tenge.",
+      "rdfs:label": "KZT"
+    },
+    {
+      "@id": "cim:Currency.LAK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lao kip.",
+      "rdfs:label": "LAK"
+    },
+    {
+      "@id": "cim:Currency.LBP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lebanese pound.",
+      "rdfs:label": "LBP"
+    },
+    {
+      "@id": "cim:Currency.LKR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sri Lanka rupee.",
+      "rdfs:label": "LKR"
+    },
+    {
+      "@id": "cim:Currency.LRD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Liberian dollar.",
+      "rdfs:label": "LRD"
+    },
+    {
+      "@id": "cim:Currency.LSL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lesotho loti.",
+      "rdfs:label": "LSL"
+    },
+    {
+      "@id": "cim:Currency.LTL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lithuanian litas.",
+      "rdfs:label": "LTL"
+    },
+    {
+      "@id": "cim:Currency.LVL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Latvian lats.",
+      "rdfs:label": "LVL"
+    },
+    {
+      "@id": "cim:Currency.LYD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Libyan dinar.",
+      "rdfs:label": "LYD"
+    },
+    {
+      "@id": "cim:Currency.MAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moroccan dirham.",
+      "rdfs:label": "MAD"
+    },
+    {
+      "@id": "cim:Currency.MDL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moldovan leu.",
+      "rdfs:label": "MDL"
+    },
+    {
+      "@id": "cim:Currency.MGA",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malagasy ariary.",
+      "rdfs:label": "MGA"
+    },
+    {
+      "@id": "cim:Currency.MKD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Macedonian denar.",
+      "rdfs:label": "MKD"
+    },
+    {
+      "@id": "cim:Currency.MMK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Myanma kyat.",
+      "rdfs:label": "MMK"
+    },
+    {
+      "@id": "cim:Currency.MNT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mongolian tugrik.",
+      "rdfs:label": "MNT"
+    },
+    {
+      "@id": "cim:Currency.MOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Macanese pataca.",
+      "rdfs:label": "MOP"
+    },
+    {
+      "@id": "cim:Currency.MRO",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mauritanian ouguiya.",
+      "rdfs:label": "MRO"
+    },
+    {
+      "@id": "cim:Currency.MUR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mauritian rupee.",
+      "rdfs:label": "MUR"
+    },
+    {
+      "@id": "cim:Currency.MVR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Maldivian rufiyaa.",
+      "rdfs:label": "MVR"
+    },
+    {
+      "@id": "cim:Currency.MWK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malawian kwacha.",
+      "rdfs:label": "MWK"
+    },
+    {
+      "@id": "cim:Currency.MXN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mexican peso.",
+      "rdfs:label": "MXN"
+    },
+    {
+      "@id": "cim:Currency.MYR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Malaysian ringgit.",
+      "rdfs:label": "MYR"
+    },
+    {
+      "@id": "cim:Currency.MZN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mozambican metical.",
+      "rdfs:label": "MZN"
+    },
+    {
+      "@id": "cim:Currency.NAD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Namibian dollar.",
+      "rdfs:label": "NAD"
+    },
+    {
+      "@id": "cim:Currency.NGN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Nigerian naira.",
+      "rdfs:label": "NGN"
+    },
+    {
+      "@id": "cim:Currency.NIO",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Cordoba oro.",
+      "rdfs:label": "NIO"
+    },
+    {
+      "@id": "cim:Currency.NOK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Norwegian krone.",
+      "rdfs:label": "NOK"
+    },
+    {
+      "@id": "cim:Currency.NPR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Nepalese rupee.",
+      "rdfs:label": "NPR"
+    },
+    {
+      "@id": "cim:Currency.NZD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "New Zealand dollar.",
+      "rdfs:label": "NZD"
+    },
+    {
+      "@id": "cim:Currency.OMR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Omani rial.",
+      "rdfs:label": "OMR"
+    },
+    {
+      "@id": "cim:Currency.PAB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Panamanian balboa.",
+      "rdfs:label": "PAB"
+    },
+    {
+      "@id": "cim:Currency.PEN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Peruvian nuevo sol.",
+      "rdfs:label": "PEN"
+    },
+    {
+      "@id": "cim:Currency.PGK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Papua New Guinean kina.",
+      "rdfs:label": "PGK"
+    },
+    {
+      "@id": "cim:Currency.PHP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Philippine peso.",
+      "rdfs:label": "PHP"
+    },
+    {
+      "@id": "cim:Currency.PKR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pakistani rupee.",
+      "rdfs:label": "PKR"
+    },
+    {
+      "@id": "cim:Currency.PLN",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Polish zloty.",
+      "rdfs:label": "PLN"
+    },
+    {
+      "@id": "cim:Currency.PYG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Paraguayan guaraní.",
+      "rdfs:label": "PYG"
+    },
+    {
+      "@id": "cim:Currency.QAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Qatari rial.",
+      "rdfs:label": "QAR"
+    },
+    {
+      "@id": "cim:Currency.RON",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Romanian new leu.",
+      "rdfs:label": "RON"
+    },
+    {
+      "@id": "cim:Currency.RSD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Serbian dinar.",
+      "rdfs:label": "RSD"
+    },
+    {
+      "@id": "cim:Currency.RUB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Russian rouble.",
+      "rdfs:label": "RUB"
+    },
+    {
+      "@id": "cim:Currency.RWF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Rwandan franc.",
+      "rdfs:label": "RWF"
+    },
+    {
+      "@id": "cim:Currency.SAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Saudi riyal.",
+      "rdfs:label": "SAR"
+    },
+    {
+      "@id": "cim:Currency.SBD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Solomon Islands dollar.",
+      "rdfs:label": "SBD"
+    },
+    {
+      "@id": "cim:Currency.SCR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Seychelles rupee.",
+      "rdfs:label": "SCR"
+    },
+    {
+      "@id": "cim:Currency.SDG",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sudanese pound.",
+      "rdfs:label": "SDG"
+    },
+    {
+      "@id": "cim:Currency.SEK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Swedish krona/kronor.",
+      "rdfs:label": "SEK"
+    },
+    {
+      "@id": "cim:Currency.SGD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Singapore dollar.",
+      "rdfs:label": "SGD"
+    },
+    {
+      "@id": "cim:Currency.SHP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Saint Helena pound.",
+      "rdfs:label": "SHP"
+    },
+    {
+      "@id": "cim:Currency.SLL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sierra Leonean leone.",
+      "rdfs:label": "SLL"
+    },
+    {
+      "@id": "cim:Currency.SOS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Somali shilling.",
+      "rdfs:label": "SOS"
+    },
+    {
+      "@id": "cim:Currency.SRD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Surinamese dollar.",
+      "rdfs:label": "SRD"
+    },
+    {
+      "@id": "cim:Currency.STD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "São Tomé and Príncipe dobra.",
+      "rdfs:label": "STD"
+    },
+    {
+      "@id": "cim:Currency.SYP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Syrian pound.",
+      "rdfs:label": "SYP"
+    },
+    {
+      "@id": "cim:Currency.SZL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Lilangeni.",
+      "rdfs:label": "SZL"
+    },
+    {
+      "@id": "cim:Currency.THB",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Thai baht.",
+      "rdfs:label": "THB"
+    },
+    {
+      "@id": "cim:Currency.TJS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tajikistani somoni.",
+      "rdfs:label": "TJS"
+    },
+    {
+      "@id": "cim:Currency.TMT",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Turkmenistani manat.",
+      "rdfs:label": "TMT"
+    },
+    {
+      "@id": "cim:Currency.TND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tunisian dinar.",
+      "rdfs:label": "TND"
+    },
+    {
+      "@id": "cim:Currency.TOP",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tongan pa'anga.",
+      "rdfs:label": "TOP"
+    },
+    {
+      "@id": "cim:Currency.TRY",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Turkish lira.",
+      "rdfs:label": "TRY"
+    },
+    {
+      "@id": "cim:Currency.TTD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Trinidad and Tobago dollar.",
+      "rdfs:label": "TTD"
+    },
+    {
+      "@id": "cim:Currency.TWD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "New Taiwan dollar.",
+      "rdfs:label": "TWD"
+    },
+    {
+      "@id": "cim:Currency.TZS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tanzanian shilling.",
+      "rdfs:label": "TZS"
+    },
+    {
+      "@id": "cim:Currency.UAH",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ukrainian hryvnia.",
+      "rdfs:label": "UAH"
+    },
+    {
+      "@id": "cim:Currency.UGX",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ugandan shilling.",
+      "rdfs:label": "UGX"
+    },
+    {
+      "@id": "cim:Currency.USD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "United States dollar.",
+      "rdfs:label": "USD"
+    },
+    {
+      "@id": "cim:Currency.UYU",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Uruguayan peso.",
+      "rdfs:label": "UYU"
+    },
+    {
+      "@id": "cim:Currency.UZS",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Uzbekistan som.",
+      "rdfs:label": "UZS"
+    },
+    {
+      "@id": "cim:Currency.VEF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Venezuelan bolívar fuerte.",
+      "rdfs:label": "VEF"
+    },
+    {
+      "@id": "cim:Currency.VND",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Vietnamese Dong.",
+      "rdfs:label": "VND"
+    },
+    {
+      "@id": "cim:Currency.VUV",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Vanuatu vatu.",
+      "rdfs:label": "VUV"
+    },
+    {
+      "@id": "cim:Currency.WST",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Samoan tala.",
+      "rdfs:label": "WST"
+    },
+    {
+      "@id": "cim:Currency.XAF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFA franc BEAC.",
+      "rdfs:label": "XAF"
+    },
+    {
+      "@id": "cim:Currency.XCD",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "East Caribbean dollar.",
+      "rdfs:label": "XCD"
+    },
+    {
+      "@id": "cim:Currency.XOF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFA Franc BCEAO.",
+      "rdfs:label": "XOF"
+    },
+    {
+      "@id": "cim:Currency.XPF",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "CFP franc.",
+      "rdfs:label": "XPF"
+    },
+    {
+      "@id": "cim:Currency.YER",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Yemeni rial.",
+      "rdfs:label": "YER"
+    },
+    {
+      "@id": "cim:Currency.ZAR",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "South African rand.",
+      "rdfs:label": "ZAR"
+    },
+    {
+      "@id": "cim:Currency.ZMK",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Zambian kwacha.",
+      "rdfs:label": "ZMK"
+    },
+    {
+      "@id": "cim:Currency.ZWL",
+      "@type": "cim:Currency",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Zimbabwe dollar.",
+      "rdfs:label": "ZWL"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.A",
+      "rdfs:comment": "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.",
+      "rdfs:label": "CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.Hz",
+      "rdfs:comment": "Cycles per second.",
+      "rdfs:label": "Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.ohm",
+      "rdfs:comment": "Ratio of voltage to current.",
+      "rdfs:label": "Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": [
+        "cim:Currency.AED",
+        "cim:Currency.AFN",
+        "cim:Currency.ALL",
+        "cim:Currency.AMD",
+        "cim:Currency.ANG",
+        "cim:Currency.AOA",
+        "cim:Currency.ARS",
+        "cim:Currency.AUD",
+        "cim:Currency.AWG",
+        "cim:Currency.AZN",
+        "cim:Currency.BAM",
+        "cim:Currency.BBD",
+        "cim:Currency.BDT",
+        "cim:Currency.BGN",
+        "cim:Currency.BHD",
+        "cim:Currency.BIF",
+        "cim:Currency.BMD",
+        "cim:Currency.BND",
+        "cim:Currency.BOB",
+        "cim:Currency.BOV",
+        "cim:Currency.BRL",
+        "cim:Currency.BSD",
+        "cim:Currency.BTN",
+        "cim:Currency.BWP",
+        "cim:Currency.BYR",
+        "cim:Currency.BZD",
+        "cim:Currency.CAD",
+        "cim:Currency.CDF",
+        "cim:Currency.CHF",
+        "cim:Currency.CLF",
+        "cim:Currency.CLP",
+        "cim:Currency.CNY",
+        "cim:Currency.COP",
+        "cim:Currency.COU",
+        "cim:Currency.CRC",
+        "cim:Currency.CUC",
+        "cim:Currency.CUP",
+        "cim:Currency.CVE",
+        "cim:Currency.CZK",
+        "cim:Currency.DJF",
+        "cim:Currency.DKK",
+        "cim:Currency.DOP",
+        "cim:Currency.DZD",
+        "cim:Currency.EEK",
+        "cim:Currency.EGP",
+        "cim:Currency.ERN",
+        "cim:Currency.ETB",
+        "cim:Currency.EUR",
+        "cim:Currency.FJD",
+        "cim:Currency.FKP",
+        "cim:Currency.GBP",
+        "cim:Currency.GEL",
+        "cim:Currency.GHS",
+        "cim:Currency.GIP",
+        "cim:Currency.GMD",
+        "cim:Currency.GNF",
+        "cim:Currency.GTQ",
+        "cim:Currency.GYD",
+        "cim:Currency.HKD",
+        "cim:Currency.HNL",
+        "cim:Currency.HRK",
+        "cim:Currency.HTG",
+        "cim:Currency.HUF",
+        "cim:Currency.IDR",
+        "cim:Currency.ILS",
+        "cim:Currency.INR",
+        "cim:Currency.IQD",
+        "cim:Currency.IRR",
+        "cim:Currency.ISK",
+        "cim:Currency.JMD",
+        "cim:Currency.JOD",
+        "cim:Currency.JPY",
+        "cim:Currency.KES",
+        "cim:Currency.KGS",
+        "cim:Currency.KHR",
+        "cim:Currency.KMF",
+        "cim:Currency.KPW",
+        "cim:Currency.KRW",
+        "cim:Currency.KWD",
+        "cim:Currency.KYD",
+        "cim:Currency.KZT",
+        "cim:Currency.LAK",
+        "cim:Currency.LBP",
+        "cim:Currency.LKR",
+        "cim:Currency.LRD",
+        "cim:Currency.LSL",
+        "cim:Currency.LTL",
+        "cim:Currency.LVL",
+        "cim:Currency.LYD",
+        "cim:Currency.MAD",
+        "cim:Currency.MDL",
+        "cim:Currency.MGA",
+        "cim:Currency.MKD",
+        "cim:Currency.MMK",
+        "cim:Currency.MNT",
+        "cim:Currency.MOP",
+        "cim:Currency.MRO",
+        "cim:Currency.MUR",
+        "cim:Currency.MVR",
+        "cim:Currency.MWK",
+        "cim:Currency.MXN",
+        "cim:Currency.MYR",
+        "cim:Currency.MZN",
+        "cim:Currency.NAD",
+        "cim:Currency.NGN",
+        "cim:Currency.NIO",
+        "cim:Currency.NOK",
+        "cim:Currency.NPR",
+        "cim:Currency.NZD",
+        "cim:Currency.OMR",
+        "cim:Currency.PAB",
+        "cim:Currency.PEN",
+        "cim:Currency.PGK",
+        "cim:Currency.PHP",
+        "cim:Currency.PKR",
+        "cim:Currency.PLN",
+        "cim:Currency.PYG",
+        "cim:Currency.QAR",
+        "cim:Currency.RON",
+        "cim:Currency.RSD",
+        "cim:Currency.RUB",
+        "cim:Currency.RWF",
+        "cim:Currency.SAR",
+        "cim:Currency.SBD",
+        "cim:Currency.SCR",
+        "cim:Currency.SDG",
+        "cim:Currency.SEK",
+        "cim:Currency.SGD",
+        "cim:Currency.SHP",
+        "cim:Currency.SLL",
+        "cim:Currency.SOS",
+        "cim:Currency.SRD",
+        "cim:Currency.STD",
+        "cim:Currency.SYP",
+        "cim:Currency.SZL",
+        "cim:Currency.THB",
+        "cim:Currency.TJS",
+        "cim:Currency.TMT",
+        "cim:Currency.TND",
+        "cim:Currency.TOP",
+        "cim:Currency.TRY",
+        "cim:Currency.TTD",
+        "cim:Currency.TWD",
+        "cim:Currency.TZS",
+        "cim:Currency.UAH",
+        "cim:Currency.UGX",
+        "cim:Currency.USD",
+        "cim:Currency.UYU",
+        "cim:Currency.UZS",
+        "cim:Currency.VEF",
+        "cim:Currency.VND",
+        "cim:Currency.VUV",
+        "cim:Currency.WST",
+        "cim:Currency.XAF",
+        "cim:Currency.XCD",
+        "cim:Currency.XOF",
+        "cim:Currency.XPF",
+        "cim:Currency.YER",
+        "cim:Currency.ZAR",
+        "cim:Currency.ZMK",
+        "cim:Currency.ZWL"
+      ],
+      "rdfs:comment": "Amount of money.",
+      "rdfs:label": "Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.none",
+      "rdfs:comment": "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.",
+      "rdfs:label": "PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.VAr",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the quadrature component of the current.",
+      "rdfs:label": "ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.Wh",
+      "rdfs:comment": "Real electrical energy.",
+      "rdfs:label": "RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.s",
+      "rdfs:comment": "Time, in seconds.",
+      "rdfs:label": "Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.M",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E6",
+      "rdfs:comment": "Mega 10**6.",
+      "rdfs:label": "M",
+      "skos:exactMatch": "prefix:Mega"
+    },
+    {
+      "@id": "cim:UnitMultiplier.k",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E3",
+      "rdfs:comment": "Kilo 10**3.",
+      "rdfs:label": "k",
+      "skos:exactMatch": "prefix:Kilo"
+    },
+    {
+      "@id": "cim:UnitMultiplier.none",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E0",
+      "rdfs:comment": "No multiplier or equivalently multiply by 1.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.A",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Current in amperes.",
+      "rdfs:label": "A",
+      "skos:exactMatch": "unit:A"
+    },
+    {
+      "@id": "cim:UnitSymbol.V",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric potential in volts (W/A).",
+      "rdfs:label": "V",
+      "skos:exactMatch": "unit:V"
+    },
+    {
+      "@id": "cim:UnitSymbol.VAr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:label": "VAr",
+      "skos:exactMatch": "unit:V-A_Reactive"
+    },
+    {
+      "@id": "cim:UnitSymbol.W",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.",
+      "rdfs:label": "W",
+      "skos:exactMatch": "unit:W"
+    },
+    {
+      "@id": "cim:UnitSymbol.Wh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real energy in watt hours.",
+      "rdfs:label": "Wh",
+      "skos:exactMatch": "unit:W-HR"
+    },
+    {
+      "@id": "cim:UnitSymbol.deg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Plane angle in degrees.",
+      "rdfs:label": "deg",
+      "skos:exactMatch": "unit:DEG"
+    },
+    {
+      "@id": "cim:UnitSymbol.none",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dimension less quantity, e.g. count, per unit, etc.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.ohm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric resistance in ohms (V/A).",
+      "rdfs:label": "ohm",
+      "skos:exactMatch": "unit:OHM"
+    },
+    {
+      "@id": "cim:Voltage",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "ssi:Package_SteadyStateInstructionProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.V",
+      "rdfs:comment": "Electrical voltage, can be both AC and DC.",
+      "rdfs:label": "Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "nc:CompensatorControlModeKind.reactivePower",
+      "@type": "nc:CompensatorControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power control.",
+      "rdfs:label": "reactivePower"
+    },
+    {
+      "@id": "nc:CompensatorControlModeKind.voltage",
+      "@type": "nc:CompensatorControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Voltage control.",
+      "rdfs:label": "voltage"
+    },
+    {
+      "@id": "nc:DCControlModeKind.acEmulation",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "An AC emulation control aims to reproduce the behaviour of an AC line by means of a function of the difference between angles in both converter stations in DC links embedded within a single synchronous AC grid. For changes in the phase angle on either station, the response of this control is to ‘emulate the behaviour of an AC line’ in both steady and transient states. \nThe AC emulation control needs measurement signals for the angles at both ends of the DC system (at the AC points of common coupling of the DC system). In practice, the angle difference is measured by built-in devices in the converters and the synchronization of angle measurements on both stations is done by means of GPS.\nACEmulationControlFunction is used by this control. The control can only be applied by a controller that have access to the two AC points of common coupling of the DC system. Therefore it cannot be applied for a ACDCConverterController.",
+      "rdfs:label": "acEmulation"
+    },
+    {
+      "@id": "nc:DCControlModeKind.acVoltage",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "AC voltage control mode (IEC 60633) is a control of the AC voltage of the AC network connected to a DC substation.",
+      "rdfs:label": "acVoltage"
+    },
+    {
+      "@id": "nc:DCControlModeKind.activePower",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is active power control at AC side, at point of common coupling. According to IEC 60633 the active power control mode is control of the active power flow exchanged between a DC substation and the connected AC network.",
+      "rdfs:label": "activePower"
+    },
+    {
+      "@id": "nc:DCControlModeKind.damping",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Damping control mode (IEC 60633) is supplementary control mode providing the damping of power oscillations in one or more connected AC networks.",
+      "rdfs:label": "damping"
+    },
+    {
+      "@id": "nc:DCControlModeKind.dcCurrent",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is DC current in a DC system (IEC 60633).",
+      "rdfs:label": "dcCurrent"
+    },
+    {
+      "@id": "nc:DCControlModeKind.dcVoltage",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is DC voltage in a DC substation (IEC 60633).",
+      "rdfs:label": "dcVoltage"
+    },
+    {
+      "@id": "nc:DCControlModeKind.frequency",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Frequency control mode (IEC 60633) is a control of the frequency of the connected AC network by varying the active power exchanged between a DC substation and the connected AC network.",
+      "rdfs:label": "frequency"
+    },
+    {
+      "@id": "nc:DCControlModeKind.islanded",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Islanded network operation mode (IEC 60633) is a control mode in which the DC substation is connected to an islanded AC network.",
+      "rdfs:label": "islanded"
+    },
+    {
+      "@id": "nc:DCControlModeKind.pPccAndUdcDroop",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is active power at point of common coupling and local DC voltage, with the droop.",
+      "rdfs:label": "pPccAndUdcDroop"
+    },
+    {
+      "@id": "nc:DCControlModeKind.pPccAndUdcDroopPilot",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is active power at point of common coupling and the pilot DC voltage, with the droop. The mode is used for Multi Terminal High Voltage DC (MTDC) systems where multiple DC Substations are connected to the DC transmission lines. The pilot voltage is then used to coordinate the control the DC voltage across the DC substations.",
+      "rdfs:label": "pPccAndUdcDroopPilot"
+    },
+    {
+      "@id": "nc:DCControlModeKind.pPccAndUdcDroopWithCompensation",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is active power at point of common coupling and compensated DC voltage, with the droop. Compensation factor is the resistance, as an approximation of the DC voltage of a common (real or virtual) node in the DC network.",
+      "rdfs:label": "pPccAndUdcDroopWithCompensation"
+    },
+    {
+      "@id": "nc:DCControlModeKind.phasePcc",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is phase at point of common coupling.",
+      "rdfs:label": "phasePcc"
+    },
+    {
+      "@id": "nc:DCControlModeKind.powerFactorPcc",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is power factor at point of common coupling.",
+      "rdfs:label": "powerFactorPcc"
+    },
+    {
+      "@id": "nc:DCControlModeKind.pulseWidthModulation",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "No explicit control. Pulse-modulation factor is directly set in magnitude and phase.",
+      "rdfs:label": "pulseWidthModulation"
+    },
+    {
+      "@id": "nc:DCControlModeKind.reactivePower",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is reactive power control at AC side, at point of common coupling. According to IEC 60633 reactive power control mode is a control of the reactive power exchanged between a converter unit, or DC substation and the connected AC network.",
+      "rdfs:label": "reactivePower"
+    },
+    {
+      "@id": "nc:DCControlModeKind.sstiDamping",
+      "@type": "nc:DCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sub-synchronous torsional interaction (SSTI) damping control mode (IEC 60633) is a supplementary control mode providing the damping of critical frequencies of an (electrical) nearby generator.",
+      "rdfs:label": "sstiDamping"
+    },
+    {
+      "@id": "nc:InjectionControlModeKind.activePower",
+      "@type": "nc:InjectionControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Active power is specified.",
+      "rdfs:label": "activePower"
+    },
+    {
+      "@id": "nc:InjectionControlModeKind.powerFactor",
+      "@type": "nc:InjectionControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power factor is specified.",
+      "rdfs:label": "powerFactor"
+    },
+    {
+      "@id": "nc:InjectionControlModeKind.reactivePower",
+      "@type": "nc:InjectionControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power control.",
+      "rdfs:label": "reactivePower"
+    },
+    {
+      "@id": "nc:InjectionControlModeKind.voltage",
+      "@type": "nc:InjectionControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Voltage control.",
+      "rdfs:label": "voltage"
+    },
+    {
+      "@id": "nc:RotatingMachineControlModeKind.activePower",
+      "@type": "nc:RotatingMachineControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Active power is specified.",
+      "rdfs:label": "activePower"
+    },
+    {
+      "@id": "nc:RotatingMachineControlModeKind.powerFactor",
+      "@type": "nc:RotatingMachineControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power factor is specified.",
+      "rdfs:label": "powerFactor"
+    },
+    {
+      "@id": "nc:RotatingMachineControlModeKind.reactivePower",
+      "@type": "nc:RotatingMachineControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power control.",
+      "rdfs:label": "reactivePower"
+    },
+    {
+      "@id": "nc:RotatingMachineControlModeKind.voltage",
+      "@type": "nc:RotatingMachineControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Voltage control.",
+      "rdfs:label": "voltage"
+    },
+    {
+      "@id": "nc:SSSCControlModeKind.currentDroop",
+      "@type": "nc:SSSCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "<font color=\"#636671\">The device injects a voltage proportional to the difference between the line current and the target value of the CurrentDroopControlFunction. There are capacitive and inductive operational regions.</font>",
+      "rdfs:label": "currentDroop"
+    },
+    {
+      "@id": "nc:SSSCControlModeKind.effectiveReactance",
+      "@type": "nc:SSSCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "<font color=\"#636671\">The device injects a voltage proportional to the line current to achieve the specified target value defined by the ImpedanceControlFunction. The voltage will vary according to the line current level.</font>",
+      "rdfs:label": "effectiveReactance"
+    },
+    {
+      "@id": "nc:SSSCControlModeKind.monitoring",
+      "@type": "nc:SSSCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "<font color=\"#636671\">The device bypasses and a voltage injection is close to zero. In monitoring mode current is monitored.</font>",
+      "rdfs:label": "monitoring"
+    },
+    {
+      "@id": "nc:SSSCControlModeKind.voltageInjection",
+      "@type": "nc:SSSCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "<font color=\"#636671\">The device injects a fixed voltage that is either inductive or capacitive according to the specified target value of the VoltageInjectionControlFunction. The effective reactance varies according to the flow of the line current.</font>",
+      "rdfs:label": "voltageInjection"
+    },
+    {
+      "@id": "nc:SubstationControllerModeKind.activePower",
+      "@type": "nc:SubstationControllerModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Active power control is the primary control of the substation..",
+      "rdfs:label": "activePower"
+    },
+    {
+      "@id": "nc:SubstationControllerModeKind.reactivePower",
+      "@type": "nc:SubstationControllerModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power control is the primary control of the substation.",
+      "rdfs:label": "reactivePower"
+    },
+    {
+      "@id": "nc:SubstationControllerModeKind.voltage",
+      "@type": "nc:SubstationControllerModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Voltage control is the primary control of the substation.",
+      "rdfs:label": "voltage"
+    },
+    {
+      "@id": "nc:TCSCControlModeKind.activePower",
+      "@type": "nc:TCSCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is active power.",
+      "rdfs:label": "activePower"
+    },
+    {
+      "@id": "nc:TCSCControlModeKind.current",
+      "@type": "nc:TCSCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is current.",
+      "rdfs:label": "current"
+    },
+    {
+      "@id": "nc:TCSCControlModeKind.impedance",
+      "@type": "nc:TCSCControlModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Control is impedance.",
+      "rdfs:label": "impedance"
+    },
+    {
+      "@id": "ssi:Package_DocSteadyStateInstructionProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocSteadyStateInstructionProfile"
+    },
+    {
+      "@id": "ssi:Package_SteadyStateInstructionProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains steady state instruction profile.",
+      "rdfs:label": "SteadyStateInstructionProfile"
+    }
+  ]
+}

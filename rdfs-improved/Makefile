@@ -15,7 +15,8 @@ CGMES_JSONLD    = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/jso
 CGMES_NC_JSONLD = $(patsubst ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf, CGMES-NC/jsonld/%.jsonld, $(CGMES_NC_RDF))
 
 ONE_RDF      = ../source/CGMES/v3.0/RDFS2020/61970-600-2_Equipment-AP-Voc-RDFS2020_v3-0-0.rdf
-ONE_TTL      = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/ttl/%.ttl,    $(ONE_RDF))
+ONE_TTL      = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/ttl/%.ttl,       $(ONE_RDF))
+ONE_JSONLD   = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/jsonld/%.jsonld, $(ONE_RDF))
 
 # https://atextor.de/owl-cli/main/snapshot/usage.html#write-command
 # Prefix sorting: CIM/CGMES/NC/model/header/meta, CGMES profiles, NC profiles, other (standard prefixes).
@@ -108,7 +109,7 @@ define TTL2TTL
 endef
 
 define TTL2JSONLD
-  $(RIOT) --formatted=jsonld $(1)  > $(2)
+  ttl2jsonld $(1) | jsonld compact -c file://CIM-ontology-context.jsonld > $(2)
 endef
 
 define RDF2FIXTTL
@@ -127,6 +128,10 @@ fix-all.ru: $(FIX-ALL)
 ttl1::
 	$(call RDF2FIXTTL,$(ONE_RDF),one.ttl)
 	TortoiseGitMerge $(ONE_TTL) one.ttl &
+
+jsonld1::
+	$(call TTL2JSONLD,$(ONE_TTL),one.jsonld)
+	#TortoiseGitMerge $(ONE_JSONLD) one.jsonld &
 
 ttl: rm-ttl $(CGMES_TTL) $(CGMES_NC_TTL)
 

@@ -24,7 +24,7 @@ as:Ontology a owl:Ontology ;
   dct:creator "ENTSO-E CIM WG NC project"@en ;
   dct:identifier "urn:uuid:8d128e35-86c7-4d67-b2dd-93229bf1005a" ;
   dct:language "en-GB" ;
-  dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
+  dct:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   dct:modified "2024-09-07"^^xsd:date ;
   dct:publisher "ENTSO-E" ;
   dct:rightsHolder "ENTSO-E" ;
@@ -728,7 +728,7 @@ cim:UnitMultiplier.none a cim:UnitMultiplier ;
   rdfs:label "none" ;
   rdfs:comment "No multiplier or equivalently multiply by 1."@en ;
   cims:stereotype "enum" ;
-  qudt:prefixMultiplier 1.0 .
+  qudt:prefixMultiplier 1E0 .
 
 cim:UnitSymbol.s a cim:UnitSymbol ;
   rdfs:label "s" ;

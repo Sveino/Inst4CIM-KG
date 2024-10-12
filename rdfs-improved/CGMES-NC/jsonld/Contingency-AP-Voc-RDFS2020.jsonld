@@ -1,0 +1,613 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "co:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": [
+        "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap",
+        "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+      ],
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-401:draft:ed-1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM WG NC project",
+      "dct:description": "This vocabulary is describing the contingency profile.",
+      "dct:identifier": "urn:uuid:8947de1c-6e53-4f1f-82c3-99ef118db9eb",
+      "dct:language": "en-GB",
+      "dct:license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "dct:modified": "2024-09-07",
+      "dct:publisher": "ENTSO-E",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Contingency Vocabulary",
+      "owl:priorVersion": "http://entsoe.eu/ns/CIM/Contingency-EU/2.2",
+      "owl:versionIRI": "https://ap-voc.cim4.eu/Contingency/2.3",
+      "owl:versionInfo": "2.3.1",
+      "dcat:keyword": "CO",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:Contingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "rdfs:comment": "An event threatening system reliability, consisting of one or more contingency elements.",
+      "rdfs:label": "Contingency",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:ContingencyElement",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "rdfs:comment": "An element of a system event to be studied by contingency analysis, representing a change in status of a single piece of equipment.",
+      "rdfs:label": "ContingencyElement",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:ContingencyEquipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "Equipment whose in service status is to change, such as a power transformer or AC line segment.",
+      "rdfs:label": "ContingencyEquipment",
+      "rdfs:subClassOf": "cim:ContingencyElement"
+    },
+    {
+      "@id": "cim:ContingencyEquipmentStatusKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "Indicates the state which the contingency equipment is to be in when the contingency is applied.",
+      "rdfs:label": "ContingencyEquipmentStatusKind"
+    },
+    {
+      "@id": "cim:Equipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "rdfs:comment": "The parts of a power system that are physical devices, electronic or mechanical.",
+      "rdfs:label": "Equipment"
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:SimulationEvents",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "rdfs:comment": "A configuration or a set of events executed during a simulation.",
+      "rdfs:label": "SimulationEvents"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "nc:ContingencyConditionKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:enumeration"
+        }
+      ],
+      "rdfs:comment": "Kinds of occurrence criteria of application.",
+      "rdfs:label": "ContingencyConditionKind"
+    },
+    {
+      "@id": "nc:ExceptionalContingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Exceptional contingency means the simultaneous occurrence of multiple contingencies with a common cause.",
+      "rdfs:label": "ExceptionalContingency",
+      "rdfs:subClassOf": "cim:Contingency"
+    },
+    {
+      "@id": "nc:OrdinaryContingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Ordinary contingency means the occurrence of a contingency of a single branch or injection.",
+      "rdfs:label": "OrdinaryContingency",
+      "rdfs:subClassOf": "cim:Contingency"
+    },
+    {
+      "@id": "nc:OutOfRangeContingency",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "Out of range means the simultaneous occurrence of multiple contingencies without a common cause, or a loss of power generating modules with a total loss of generation capacity exceeding the reference incident.",
+      "rdfs:label": "OutOfRangeContingency",
+      "rdfs:subClassOf": "cim:Contingency"
+    },
+    {
+      "@id": "nc:SystemOperator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "System operator.",
+      "rdfs:label": "SystemOperator"
+    },
+    {
+      "@id": "cim:Contingency.ContingencyElement",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:1..n",
+      "cims:stereotype": {
+        "@id": "uml:ofAggregate"
+      },
+      "rdfs:comment": "A contingency can have any number of contingency elements.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "ContingencyElement",
+      "rdfs:range": "cim:ContingencyElement",
+      "owl:inverseOf": "cim:ContingencyElement.Contingency"
+    },
+    {
+      "@id": "cim:Contingency.SimulationEvents",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Simulation event for a contingency.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "SimulationEvents",
+      "rdfs:range": "cim:SimulationEvents",
+      "owl:inverseOf": "cim:SimulationEvents.Contingency"
+    },
+    {
+      "@id": "cim:ContingencyElement.Contingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "A contingency element belongs to one contingency.",
+      "rdfs:domain": "cim:ContingencyElement",
+      "rdfs:label": "Contingency",
+      "rdfs:range": "cim:Contingency",
+      "owl:inverseOf": "cim:Contingency.ContingencyElement"
+    },
+    {
+      "@id": "cim:ContingencyEquipment.Equipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "The single piece of equipment to which to apply the contingency.",
+      "rdfs:domain": "cim:ContingencyEquipment",
+      "rdfs:label": "Equipment",
+      "rdfs:range": "cim:Equipment",
+      "owl:inverseOf": "cim:Equipment.ContingencyEquipment"
+    },
+    {
+      "@id": "cim:ContingencyEquipment.contingentStatus",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The status for the associated equipment when in the contingency state.   This status is independent of the case to which the contingency is originally applied, but defines the equipment status when the contingency is applied.",
+      "rdfs:domain": "cim:ContingencyEquipment",
+      "rdfs:label": "contingentStatus",
+      "rdfs:range": "cim:ContingencyEquipmentStatusKind"
+    },
+    {
+      "@id": "cim:Equipment.ContingencyEquipment",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "rdfs:comment": "The contingency equipments in which this equipment participates.",
+      "rdfs:domain": "cim:Equipment",
+      "rdfs:label": "ContingencyEquipment",
+      "rdfs:range": "cim:ContingencyEquipment",
+      "owl:inverseOf": "cim:ContingencyEquipment.Equipment"
+    },
+    {
+      "@id": "cim:SimulationEvents.Contingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Contingency which has simulation events.",
+      "rdfs:domain": "cim:SimulationEvents",
+      "rdfs:label": "Contingency",
+      "rdfs:range": "cim:Contingency",
+      "owl:inverseOf": "cim:Contingency.SimulationEvents"
+    },
+    {
+      "@id": "nc:Contingency.EquipmentOperator",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "System operator that is operating the equipment that is being run a contingency on.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "EquipmentOperator",
+      "rdfs:range": "nc:SystemOperator",
+      "owl:inverseOf": "nc:SystemOperator.Contingency"
+    },
+    {
+      "@id": "nc:ExceptionalContingency.kind",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Defines the kind of relevance and criteria of application of the exceptional contingency.",
+      "rdfs:domain": "nc:ExceptionalContingency",
+      "rdfs:label": "kind",
+      "rdfs:range": "nc:ContingencyConditionKind"
+    },
+    {
+      "@id": "nc:SystemOperator.Contingency",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "cims:stereotype": "NC",
+      "rdfs:comment": "Contingency for the equipment that is operated by the system operator.",
+      "rdfs:domain": "nc:SystemOperator",
+      "rdfs:label": "Contingency",
+      "rdfs:range": "cim:Contingency",
+      "owl:inverseOf": "nc:Contingency.EquipmentOperator"
+    },
+    {
+      "@id": "cim:IdentifiedObject.description",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "description",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:IdentifiedObject.name",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The name is any free human readable and possibly non unique text naming the object.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "name",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "nc:Contingency.normalMustStudy",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "rdfs:comment": "Specifies the requirement of study the contingency under normal operating conditions. True means the contingency must be study in a normal scenario. False means that the contingency does not need to be included in the scenario. This is the default value if mustStudy is missing.",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "normalMustStudy",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "nc:Contingency.normalProbability",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Normal probability of the occurrence of the contingency based on normal operational condition. The value is used as the default if the probability is missing.\nThe allowed value range is [0,100].",
+      "rdfs:domain": "cim:Contingency",
+      "rdfs:label": "normalProbability",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:ContingencyEquipmentStatusKind.inService",
+      "@type": "cim:ContingencyEquipmentStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The equipment is to be put into service.",
+      "rdfs:label": "inService"
+    },
+    {
+      "@id": "cim:ContingencyEquipmentStatusKind.outOfService",
+      "@type": "cim:ContingencyEquipmentStatusKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "The equipment is to be taken out of service.",
+      "rdfs:label": "outOfService"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "co:Package_ContingencyProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.none",
+      "rdfs:comment": "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.",
+      "rdfs:label": "PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.none",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E0",
+      "rdfs:comment": "No multiplier or equivalently multiply by 1.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.none",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dimension less quantity, e.g. count, per unit, etc.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "co:Package_ContingencyProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains contingency profile.",
+      "rdfs:label": "ContingencyProfile"
+    },
+    {
+      "@id": "co:Package_DocContingencyProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This package contains datatypes used only in the RDFS header.",
+      "rdfs:label": "DocContingencyProfile"
+    },
+    {
+      "@id": "nc:ContingencyConditionKind.design",
+      "@type": "nc:ContingencyConditionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Permanent occurrence factor which is design condition.",
+      "rdfs:label": "design"
+    },
+    {
+      "@id": "nc:ContingencyConditionKind.environmental",
+      "@type": "nc:ContingencyConditionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Temporary occurrence factor which is weather or environmental condition (e.g. storm).",
+      "rdfs:label": "environmental"
+    },
+    {
+      "@id": "nc:ContingencyConditionKind.geographicalLocation",
+      "@type": "nc:ContingencyConditionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Permanent occurrence factor which is specific geographical location.",
+      "rdfs:label": "geographicalLocation"
+    },
+    {
+      "@id": "nc:ContingencyConditionKind.malfunction",
+      "@type": "nc:ContingencyConditionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Temporary occurrence factor which is life time or generic malfunction affecting the risk of failure condition.",
+      "rdfs:label": "malfunction"
+    },
+    {
+      "@id": "nc:ContingencyConditionKind.operational",
+      "@type": "nc:ContingencyConditionKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Temporary occurrence factor which is operational condition.",
+      "rdfs:label": "operational"
+    }
+  ]
+}

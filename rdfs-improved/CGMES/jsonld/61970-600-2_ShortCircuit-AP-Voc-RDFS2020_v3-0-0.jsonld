@@ -1,0 +1,3727 @@
+{
+  "@context": "file://CIM-ontology-context.jsonld",
+  "@graph": [
+    {
+      "@id": "sc:Ontology",
+      "@type": "owl:Ontology",
+      "dc:source": "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
+      "dct:conformsTo": [
+        "urn:iso:std:iec:61970-301:ed-7:amd1",
+        "urn:iso:std:iec:61970-501:draft:ed-2",
+        "urn:iso:std:iec:61970-600-2:ed-1"
+      ],
+      "dct:creator": "ENTSO-E CIM EG",
+      "dct:description": "This vocabulary is describing the short circuit profile from IEC 61970-600-2.",
+      "dct:identifier": "urn:uuid:97938d45-bb5f-4424-b64d-219c1f76ab31",
+      "dct:issued": "2021-01-27T12:17:39Z",
+      "dct:language": "en-GB",
+      "dct:modified": "2020-10-12",
+      "dct:publisher": "ENTSO-E",
+      "dct:rights": "Copyright",
+      "dct:rightsHolder": "ENTSO-E",
+      "dct:title": "Short Circuit Vocabulary",
+      "owl:incompatibleWith": "http://entsoe.eu/2009/profile1",
+      "owl:priorVersion": "http://entsoe.eu/CIM/EquipmentShortCircuit/3/1",
+      "owl:versionIRI": "http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0",
+      "owl:versionInfo": "3.0.0",
+      "dcat:keyword": "SC",
+      "dcat:landingPage": "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/",
+      "dcat:theme": {
+        "@language": "en",
+        "@value": "vocabulary"
+      }
+    },
+    {
+      "@id": "cim:ACDCTerminal",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.",
+      "rdfs:label": "ACDCTerminal",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:ACLineSegment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.\nFor symmetrical, transposed three phase lines, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.\nThe BaseVoltage at the two ends of ACLineSegments in a Line shall have the same BaseVoltage.nominalVoltage. However, boundary lines may have slightly different BaseVoltage.nominalVoltages and variation is allowed. Larger voltage difference in general requires use of an equivalent branch.",
+      "rdfs:label": "ACLineSegment",
+      "rdfs:subClassOf": "cim:Conductor"
+    },
+    {
+      "@id": "cim:AsynchronousMachine",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g. squirrel-cage induction machine.",
+      "rdfs:label": "AsynchronousMachine",
+      "rdfs:subClassOf": "cim:RotatingMachine"
+    },
+    {
+      "@id": "cim:BusbarSection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation. \nVoltage measurements are typically obtained from voltage transformers that are connected to busbar sections. A bus bar section may have many physical terminals but for analysis is modelled with exactly one logical terminal.",
+      "rdfs:label": "BusbarSection",
+      "rdfs:subClassOf": "cim:Connector"
+    },
+    {
+      "@id": "cim:ConductingEquipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "The parts of the AC power system that are designed to carry current or that are conductively connected through terminals.",
+      "rdfs:label": "ConductingEquipment",
+      "rdfs:subClassOf": "cim:Equipment"
+    },
+    {
+      "@id": "cim:Conductor",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "Combination of conducting material with consistent electrical characteristics, building a single electrical system, used to carry current between points in the power system.",
+      "rdfs:label": "Conductor",
+      "rdfs:subClassOf": "cim:ConductingEquipment"
+    },
+    {
+      "@id": "cim:Connector",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation and are modelled with a single logical terminal.",
+      "rdfs:label": "Connector",
+      "rdfs:subClassOf": "cim:ConductingEquipment"
+    },
+    {
+      "@id": "cim:EarthFaultCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "A conducting equipment used to represent a connection to ground which is typically used to compensate earth faults.   An earth fault compensator device modelled with a single terminal implies a second terminal solidly connected to ground.  If two terminals are modelled, the ground is not assumed and normal connection rules apply.",
+      "rdfs:label": "EarthFaultCompensator",
+      "rdfs:subClassOf": "cim:ConductingEquipment"
+    },
+    {
+      "@id": "cim:EnergyConnection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "A connection of energy generation or consumption on the power system model.",
+      "rdfs:label": "EnergyConnection",
+      "rdfs:subClassOf": "cim:ConductingEquipment"
+    },
+    {
+      "@id": "cim:EnergySource",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A generic equivalent for an energy supplier on a transmission or distribution voltage level.",
+      "rdfs:label": "EnergySource",
+      "rdfs:subClassOf": "cim:EnergyConnection"
+    },
+    {
+      "@id": "cim:Equipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "The parts of a power system that are physical devices, electronic or mechanical.",
+      "rdfs:label": "Equipment",
+      "rdfs:subClassOf": "cim:PowerSystemResource"
+    },
+    {
+      "@id": "cim:EquivalentBranch",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "The class represents equivalent branches. In cases where a transformer phase shift is modelled and the EquivalentBranch is spanning the same nodes, the impedance quantities for the EquivalentBranch shall consider the needed phase shift.",
+      "rdfs:label": "EquivalentBranch",
+      "rdfs:subClassOf": "cim:EquivalentEquipment"
+    },
+    {
+      "@id": "cim:EquivalentEquipment",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "The class represents equivalent objects that are the result of a network reduction. The class is the base for equivalent objects of different types.",
+      "rdfs:label": "EquivalentEquipment",
+      "rdfs:subClassOf": "cim:ConductingEquipment"
+    },
+    {
+      "@id": "cim:EquivalentInjection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection.",
+      "rdfs:label": "EquivalentInjection",
+      "rdfs:subClassOf": "cim:EquivalentEquipment"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "This class represents the external network and it is used for IEC 60909 calculations.",
+      "rdfs:label": "ExternalNetworkInjection",
+      "rdfs:subClassOf": "cim:RegulatingCondEq"
+    },
+    {
+      "@id": "cim:GroundingImpedance",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A fixed impedance device used for grounding.",
+      "rdfs:label": "GroundingImpedance",
+      "rdfs:subClassOf": "cim:EarthFaultCompensator"
+    },
+    {
+      "@id": "cim:IdentifiedObject",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "This is a root class to provide common identification for all classes needing identification and naming attributes.",
+      "rdfs:label": "IdentifiedObject"
+    },
+    {
+      "@id": "cim:LinearShuntCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A linear shunt compensator has banks or sections with equal admittance values.",
+      "rdfs:label": "LinearShuntCompensator",
+      "rdfs:subClassOf": "cim:ShuntCompensator"
+    },
+    {
+      "@id": "cim:MutualCoupling",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": {
+        "@id": "uml:concrete"
+      },
+      "rdfs:comment": "This class represents the zero sequence line mutual coupling.",
+      "rdfs:label": "MutualCoupling",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:NonlinearShuntCompensatorPoint",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A non linear shunt compensator bank or section admittance value. The number of NonlinearShuntCompenstorPoint instances associated with a NonlinearShuntCompensator shall be equal to ShuntCompensator.maximumSections. ShuntCompensator.sections shall only be set to one of the NonlinearShuntCompenstorPoint.sectionNumber. There is no interpolation between NonlinearShuntCompenstorPoint-s.",
+      "rdfs:label": "NonlinearShuntCompensatorPoint"
+    },
+    {
+      "@id": "cim:PetersenCoil",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A variable impedance device normally used to offset line charging during single line faults in an ungrounded section of network.",
+      "rdfs:label": "PetersenCoil",
+      "rdfs:subClassOf": "cim:EarthFaultCompensator"
+    },
+    {
+      "@id": "cim:PetersenCoilModeKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The mode of operation for a Petersen coil.",
+      "rdfs:label": "PetersenCoilModeKind"
+    },
+    {
+      "@id": "cim:PowerSystemResource",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "A power system resource (PSR) can be an item of equipment such as a switch, an equipment container containing many individual items of equipment such as a substation, or an organisational entity such as sub-control area. Power system resources can have measurements associated.",
+      "rdfs:label": "PowerSystemResource",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:PowerTransformer",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).\nA power transformer may be composed of separate transformer tanks that need not be identical.\nA power transformer can be modelled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.\nThe inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.",
+      "rdfs:label": "PowerTransformer",
+      "rdfs:subClassOf": "cim:ConductingEquipment"
+    },
+    {
+      "@id": "cim:PowerTransformerEnd",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.\nThe impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows.\n1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.\n2) for a three Terminal PowerTransformer the three PowerTransformerEnds represent a star equivalent with each leg in the star represented by r, r0, x, and x0 values.\n3) For a three Terminal transformer each PowerTransformerEnd shall have g, g0, b and b0 values corresponding to the no load losses distributed on the three PowerTransformerEnds. The total no load loss shunt impedances may also be placed at one of the PowerTransformerEnds, preferably the end numbered 1, having the shunt values on end 1.  This is the preferred way.\n4) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.\nEach PowerTransformerEnd must be contained by a PowerTransformer. Because a PowerTransformerEnd (or any other object) can not be contained by more than one parent, a PowerTransformerEnd can not have an association to an EquipmentContainer (Substation, VoltageLevel, etc).",
+      "rdfs:label": "PowerTransformerEnd",
+      "rdfs:subClassOf": "cim:TransformerEnd"
+    },
+    {
+      "@id": "cim:RegulatingCondEq",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "A type of conducting equipment that can regulate a quantity (i.e. voltage or flow) at a specific point in the network.",
+      "rdfs:label": "RegulatingCondEq",
+      "rdfs:subClassOf": "cim:EnergyConnection"
+    },
+    {
+      "@id": "cim:RotatingMachine",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "A rotating machine which may be used as a generator or motor.",
+      "rdfs:label": "RotatingMachine",
+      "rdfs:subClassOf": "cim:RegulatingCondEq"
+    },
+    {
+      "@id": "cim:SeriesCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "A Series Compensator is a series capacitor or reactor or an AC transmission line without charging susceptance.  It is a two terminal device.",
+      "rdfs:label": "SeriesCompensator",
+      "rdfs:subClassOf": "cim:ConductingEquipment"
+    },
+    {
+      "@id": "cim:ShortCircuitRotorKind",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "Type of rotor, used by short circuit applications.",
+      "rdfs:label": "ShortCircuitRotorKind"
+    },
+    {
+      "@id": "cim:ShuntCompensator",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "A shunt capacitor or reactor or switchable bank of shunt capacitors or reactors. A section of a shunt compensator is an individual capacitor or reactor. A negative value for bPerSection indicates that the compensator is a reactor. ShuntCompensator is a single terminal device.  Ground is implied.",
+      "rdfs:label": "ShuntCompensator",
+      "rdfs:subClassOf": "cim:RegulatingCondEq"
+    },
+    {
+      "@id": "cim:SynchronousMachine",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": [
+        "Description",
+        {
+          "@id": "uml:concrete"
+        }
+      ],
+      "rdfs:comment": "An electromechanical device that operates with shaft rotating synchronously with the network. It is a single machine operating either as a generator or synchronous condenser or pump.",
+      "rdfs:label": "SynchronousMachine",
+      "rdfs:subClassOf": "cim:RotatingMachine"
+    },
+    {
+      "@id": "cim:Terminal",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "An AC electrical connection point to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes.",
+      "rdfs:label": "Terminal",
+      "rdfs:subClassOf": "cim:ACDCTerminal"
+    },
+    {
+      "@id": "cim:TransformerEnd",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "rdfs:comment": "A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment.",
+      "rdfs:label": "TransformerEnd",
+      "rdfs:subClassOf": "cim:IdentifiedObject"
+    },
+    {
+      "@id": "cim:UnitMultiplier",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:label": "UnitMultiplier"
+    },
+    {
+      "@id": "cim:UnitSymbol",
+      "@type": "owl:Class",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "cims:stereotype": {
+        "@id": "uml:enumeration"
+      },
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:label": "UnitSymbol"
+    },
+    {
+      "@id": "cim:MutualCoupling.First_Terminal",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "The starting terminal for the calculation of distances along the first branch of the mutual coupling.  Normally MutualCoupling would only be used for terminals of AC line segments.  The first and second terminals of a mutual coupling should point to different AC line segments.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "First_Terminal",
+      "rdfs:range": "cim:Terminal",
+      "owl:inverseOf": "cim:Terminal.HasFirstMutualCoupling"
+    },
+    {
+      "@id": "cim:MutualCoupling.Second_Terminal",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:AssociationUsed": "Yes",
+      "cims:multiplicity": "cims:M:1..1",
+      "rdfs:comment": "The starting terminal for the calculation of distances along the second branch of the mutual coupling.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "Second_Terminal",
+      "rdfs:range": "cim:Terminal",
+      "owl:inverseOf": "cim:Terminal.HasSecondMutualCoupling"
+    },
+    {
+      "@id": "cim:PetersenCoil.mode",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "The mode of operation of the Petersen coil.",
+      "rdfs:domain": "cim:PetersenCoil",
+      "rdfs:label": "mode",
+      "rdfs:range": "cim:PetersenCoilModeKind"
+    },
+    {
+      "@id": "cim:SynchronousMachine.shortCircuitRotorType",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Type of rotor, used by short circuit applications, only for single fed short circuit according to IEC 60909.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "shortCircuitRotorType",
+      "rdfs:range": "cim:ShortCircuitRotorKind"
+    },
+    {
+      "@id": "cim:Terminal.HasFirstMutualCoupling",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "rdfs:comment": "Mutual couplings associated with the branch as the first branch.",
+      "rdfs:domain": "cim:Terminal",
+      "rdfs:label": "HasFirstMutualCoupling",
+      "rdfs:range": "cim:MutualCoupling",
+      "owl:inverseOf": "cim:MutualCoupling.First_Terminal"
+    },
+    {
+      "@id": "cim:Terminal.HasSecondMutualCoupling",
+      "@type": [
+        "owl:ObjectProperty",
+        "owl:InverseFunctionalProperty"
+      ],
+      "cims:AssociationUsed": "No",
+      "cims:multiplicity": "cims:M:0..n",
+      "rdfs:comment": "Mutual couplings with the branch associated as the first branch.",
+      "rdfs:domain": "cim:Terminal",
+      "rdfs:label": "HasSecondMutualCoupling",
+      "rdfs:range": "cim:MutualCoupling",
+      "owl:inverseOf": "cim:MutualCoupling.Second_Terminal"
+    },
+    {
+      "@id": "cim:ACLineSegment.b0ch",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Susceptance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence shunt (charging) susceptance, uniformly distributed, of the entire line section.",
+      "rdfs:domain": "cim:ACLineSegment",
+      "rdfs:label": "b0ch",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:ACLineSegment.g0ch",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Conductance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence shunt (charging) conductance, uniformly distributed, of the entire line section.",
+      "rdfs:domain": "cim:ACLineSegment",
+      "rdfs:label": "g0ch",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:ACLineSegment.r0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence series resistance of the entire line section.",
+      "rdfs:domain": "cim:ACLineSegment",
+      "rdfs:label": "r0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:ACLineSegment.shortCircuitEndTemperature",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Temperature",
+      "qudt:hasUnit": "unit:DEG_C",
+      "rdfs:comment": "Maximum permitted temperature at the end of SC for the calculation of minimum short-circuit currents. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:ACLineSegment",
+      "rdfs:label": "shortCircuitEndTemperature",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.degC"
+    },
+    {
+      "@id": "cim:ACLineSegment.x0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence series reactance of the entire line section.",
+      "rdfs:domain": "cim:ACLineSegment",
+      "rdfs:label": "x0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:AsynchronousMachine.converterFedDrive",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Indicates whether the machine is a converter fed drive. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:AsynchronousMachine",
+      "rdfs:label": "converterFedDrive",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:AsynchronousMachine.efficiency",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Efficiency of the asynchronous machine at nominal operation as a percentage. Indicator for converter drive motors. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:AsynchronousMachine",
+      "rdfs:label": "efficiency",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "cim:AsynchronousMachine.iaIrRatio",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Ratio of locked-rotor current to the rated current of the motor (Ia/Ir). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:AsynchronousMachine",
+      "rdfs:label": "iaIrRatio",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:AsynchronousMachine.polePairNumber",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Number of pole pairs of stator. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:AsynchronousMachine",
+      "rdfs:label": "polePairNumber",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "cim:AsynchronousMachine.ratedMechanicalPower",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:ActivePower",
+      "qudt:hasUnit": "unit:MegaW",
+      "rdfs:comment": "Rated mechanical power (Pr in IEC 60909-0). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:AsynchronousMachine",
+      "rdfs:label": "ratedMechanicalPower",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.M",
+      "cim:unitSymbol": "cim:UnitSymbol.W"
+    },
+    {
+      "@id": "cim:AsynchronousMachine.reversible",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Indicates for converter drive motors if the power can be reversible. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:AsynchronousMachine",
+      "rdfs:label": "reversible",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:AsynchronousMachine.rxLockedRotorRatio",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Locked rotor ratio (R/X). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:AsynchronousMachine",
+      "rdfs:label": "rxLockedRotorRatio",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:BusbarSection.ipMax",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Maximum allowable peak short-circuit current of busbar (Ipmax in IEC 60909-0). \nMechanical limit of the busbar in the substation itself. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:BusbarSection",
+      "rdfs:label": "ipMax",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "cim:EarthFaultCompensator.r",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Nominal resistance of device.",
+      "rdfs:domain": "cim:EarthFaultCompensator",
+      "rdfs:label": "r",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EnergySource.r",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Positive sequence Thevenin resistance.",
+      "rdfs:domain": "cim:EnergySource",
+      "rdfs:label": "r",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EnergySource.r0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence Thevenin resistance.",
+      "rdfs:domain": "cim:EnergySource",
+      "rdfs:label": "r0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EnergySource.rn",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence Thevenin resistance.",
+      "rdfs:domain": "cim:EnergySource",
+      "rdfs:label": "rn",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EnergySource.x",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Positive sequence Thevenin reactance.",
+      "rdfs:domain": "cim:EnergySource",
+      "rdfs:label": "x",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EnergySource.x0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence Thevenin reactance.",
+      "rdfs:domain": "cim:EnergySource",
+      "rdfs:label": "x0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EnergySource.xn",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence Thevenin reactance.",
+      "rdfs:domain": "cim:EnergySource",
+      "rdfs:label": "xn",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.negativeR12",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "negativeR12",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.negativeR21",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "negativeR21",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.negativeX12",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "negativeX12",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.negativeX21",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage: EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "negativeX21",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.positiveR12",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Positive sequence series resistance from terminal sequence  1 to terminal sequence 2 . Used for short circuit data exchange according to IEC 60909. \nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "positiveR12",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.positiveR21",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Positive sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "positiveR21",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.positiveX12",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Positive sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "positiveX12",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.positiveX21",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Positive sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "positiveX21",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.zeroR12",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "zeroR12",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.zeroR21",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence series resistance from terminal sequence  2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "zeroR21",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.zeroX12",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "zeroX12",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentBranch.zeroX21",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentBranch",
+      "rdfs:label": "zeroX21",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentInjection.r",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Positive sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentInjection",
+      "rdfs:label": "r",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentInjection.r0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentInjection",
+      "rdfs:label": "r0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentInjection.r2",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentInjection",
+      "rdfs:label": "r2",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentInjection.x",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Positive sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentInjection",
+      "rdfs:label": "x",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentInjection.x0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentInjection",
+      "rdfs:label": "x0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:EquivalentInjection.x2",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:domain": "cim:EquivalentInjection",
+      "rdfs:label": "x2",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.ikSecond",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik\").  Used only if short circuit calculations are done according to superposition method.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "ikSecond",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.maxInitialSymShCCurrent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Maximum initial symmetrical short-circuit currents (Ik\" max) in A (Ik\" = Sk\"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "maxInitialSymShCCurrent",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.maxR0ToX0Ratio",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Maximum ratio of zero sequence resistance of Network Feeder to its zero sequence reactance (R(0)/X(0) max). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "maxR0ToX0Ratio",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.maxR1ToX1Ratio",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Maximum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) max). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "maxR1ToX1Ratio",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.maxZ0ToZ1Ratio",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Maximum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) max). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "maxZ0ToZ1Ratio",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.minInitialSymShCCurrent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Minimum initial symmetrical short-circuit currents (Ik\" min) in A (Ik\" = Sk\"/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "minInitialSymShCCurrent",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.minR0ToX0Ratio",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik\"). Used for short circuit data exchange according to IEC 6090.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "minR0ToX0Ratio",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.minR1ToX1Ratio",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Minimum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) min). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "minR1ToX1Ratio",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.minZ0ToZ1Ratio",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Minimum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) min). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "minZ0ToZ1Ratio",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:ExternalNetworkInjection.voltageFactor",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:PU",
+      "rdfs:comment": "Voltage factor in pu, which was used to calculate short-circuit current Ik\" and power Sk\".  Used only if short circuit calculations are done according to superposition method.",
+      "rdfs:domain": "cim:ExternalNetworkInjection",
+      "rdfs:label": "voltageFactor",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "cim:GroundingImpedance.x",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Reactance of device.",
+      "rdfs:domain": "cim:GroundingImpedance",
+      "rdfs:label": "x",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:IdentifiedObject.mRID",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:domain": "cim:IdentifiedObject",
+      "rdfs:label": "mRID",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "cim:LinearShuntCompensator.b0PerSection",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Susceptance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence shunt (charging) susceptance per section.",
+      "rdfs:domain": "cim:LinearShuntCompensator",
+      "rdfs:label": "b0PerSection",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:LinearShuntCompensator.g0PerSection",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Conductance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence shunt (charging) conductance per section.",
+      "rdfs:domain": "cim:LinearShuntCompensator",
+      "rdfs:label": "g0PerSection",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:MutualCoupling.b0ch",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Susceptance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence mutual coupling shunt (charging) susceptance, uniformly distributed, of the entire line section.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "b0ch",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:MutualCoupling.distance11",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Length",
+      "qudt:hasUnit": "unit:KiloM",
+      "rdfs:comment": "Distance to the start of the coupled region from the first line's terminal having sequence number equal to 1.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "distance11",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.m"
+    },
+    {
+      "@id": "cim:MutualCoupling.distance12",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Length",
+      "qudt:hasUnit": "unit:KiloM",
+      "rdfs:comment": "Distance to the end of the coupled region from the first line's terminal with sequence number equal to 1.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "distance12",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.m"
+    },
+    {
+      "@id": "cim:MutualCoupling.distance21",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Length",
+      "qudt:hasUnit": "unit:KiloM",
+      "rdfs:comment": "Distance to the start of coupled region from the second line's terminal with sequence number equal to 1.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "distance21",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.m"
+    },
+    {
+      "@id": "cim:MutualCoupling.distance22",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Length",
+      "qudt:hasUnit": "unit:KiloM",
+      "rdfs:comment": "Distance to the end of coupled region from the second line's terminal with sequence number equal to 1.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "distance22",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.m"
+    },
+    {
+      "@id": "cim:MutualCoupling.g0ch",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Conductance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence mutual coupling shunt (charging) conductance, uniformly distributed, of the entire line section.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "g0ch",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:MutualCoupling.r0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence branch-to-branch mutual impedance coupling, resistance.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "r0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:MutualCoupling.x0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence branch-to-branch mutual impedance coupling, reactance.",
+      "rdfs:domain": "cim:MutualCoupling",
+      "rdfs:label": "x0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:NonlinearShuntCompensatorPoint.b0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Susceptance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence shunt (charging) susceptance per section.",
+      "rdfs:domain": "cim:NonlinearShuntCompensatorPoint",
+      "rdfs:label": "b0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:NonlinearShuntCompensatorPoint.g0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Conductance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence shunt (charging) conductance per section.",
+      "rdfs:domain": "cim:NonlinearShuntCompensatorPoint",
+      "rdfs:label": "g0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:PetersenCoil.nominalU",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Voltage",
+      "qudt:hasUnit": "unit:KiloV",
+      "rdfs:comment": "The nominal voltage for which the coil is designed.",
+      "rdfs:domain": "cim:PetersenCoil",
+      "rdfs:label": "nominalU",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.V"
+    },
+    {
+      "@id": "cim:PetersenCoil.offsetCurrent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "The offset current that the Petersen coil controller is operating from the resonant point.  This is normally a fixed amount for which the controller is configured and could be positive or negative.  Typically 0 to 60 A depending on voltage and resonance conditions.",
+      "rdfs:domain": "cim:PetersenCoil",
+      "rdfs:label": "offsetCurrent",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "cim:PetersenCoil.positionCurrent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "The control current used to control the Petersen coil also known as the position current.  Typically in the range of 20 mA to 200 mA.",
+      "rdfs:domain": "cim:PetersenCoil",
+      "rdfs:label": "positionCurrent",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "cim:PetersenCoil.xGroundMax",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "The maximum reactance.",
+      "rdfs:domain": "cim:PetersenCoil",
+      "rdfs:label": "xGroundMax",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:PetersenCoil.xGroundMin",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "The minimum reactance.",
+      "rdfs:domain": "cim:PetersenCoil",
+      "rdfs:label": "xGroundMin",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:PetersenCoil.xGroundNominal",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "The nominal reactance.  This is the operating point (normally over compensation) that is defined based on the resonance point in the healthy network condition.  The impedance is calculated based on nominal voltage divided by position current.",
+      "rdfs:domain": "cim:PetersenCoil",
+      "rdfs:label": "xGroundNominal",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:PowerTransformer.beforeShCircuitHighestOperatingCurrent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "The highest operating current (Ib in IEC 60909-0) before short circuit (depends on network configuration and relevant reliability philosophy). It is used for calculation of the impedance correction factor KT defined in IEC 60909-0.",
+      "rdfs:domain": "cim:PowerTransformer",
+      "rdfs:label": "beforeShCircuitHighestOperatingCurrent",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "cim:PowerTransformer.beforeShCircuitHighestOperatingVoltage",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Voltage",
+      "qudt:hasUnit": "unit:KiloV",
+      "rdfs:comment": "The highest operating voltage (Ub in IEC 60909-0) before short circuit. It is used for calculation of the impedance correction factor KT defined in IEC 60909-0. This is worst case voltage on the low side winding (3.7.1 of IEC 60909:2001). Used to define operating conditions.",
+      "rdfs:domain": "cim:PowerTransformer",
+      "rdfs:label": "beforeShCircuitHighestOperatingVoltage",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.V"
+    },
+    {
+      "@id": "cim:PowerTransformer.beforeShortCircuitAnglePf",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:AngleDegrees",
+      "qudt:hasUnit": "unit:DEG",
+      "rdfs:comment": "The angle of power factor before short circuit (phib in IEC 60909-0). It is used for calculation of the impedance correction factor KT defined in IEC 60909-0. This is the worst case power factor. Used to define operating conditions.",
+      "rdfs:domain": "cim:PowerTransformer",
+      "rdfs:label": "beforeShortCircuitAnglePf",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.deg"
+    },
+    {
+      "@id": "cim:PowerTransformer.highSideMinOperatingU",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Voltage",
+      "qudt:hasUnit": "unit:KiloV",
+      "rdfs:comment": "The minimum operating voltage (uQmin in IEC 60909-0) at the high voltage side (Q side) of the unit transformer of the power station unit. A value well established from long-term operating experience of the system. It is used for calculation of the impedance correction factor KG defined in IEC 60909-0.",
+      "rdfs:domain": "cim:PowerTransformer",
+      "rdfs:label": "highSideMinOperatingU",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.V"
+    },
+    {
+      "@id": "cim:PowerTransformer.isPartOfGeneratorUnit",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Indicates whether the machine is part of a power station unit. Used for short circuit data exchange according to IEC 60909.  It has an impact on how the correction factors are calculated for transformers, since the transformer is not necessarily part of a synchronous machine and generating unit. It is not always possible to derive this information from the model. This is why the attribute is necessary.",
+      "rdfs:domain": "cim:PowerTransformer",
+      "rdfs:label": "isPartOfGeneratorUnit",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:PowerTransformer.operationalValuesConsidered",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "It is used to define if the data (other attributes related to short circuit data exchange) defines long term operational conditions or not. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:PowerTransformer",
+      "rdfs:label": "operationalValuesConsidered",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:PowerTransformerEnd.b0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Susceptance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence magnetizing branch susceptance.",
+      "rdfs:domain": "cim:PowerTransformerEnd",
+      "rdfs:label": "b0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:PowerTransformerEnd.g0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Conductance",
+      "qudt:hasUnit": "unit:S",
+      "rdfs:comment": "Zero sequence magnetizing branch conductance (star-model).",
+      "rdfs:domain": "cim:PowerTransformerEnd",
+      "rdfs:label": "g0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.S"
+    },
+    {
+      "@id": "cim:PowerTransformerEnd.phaseAngleClock",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Terminal voltage phase angle displacement where 360 degrees are represented with clock hours. The valid values are 0 to 11. For example, for the secondary side end of a transformer with vector group code of 'Dyn11', specify the connection kind as wye with neutral and specify the phase angle of the clock as 11.  The clock value of the transformer end number specified as 1, is assumed to be zero.  Note the transformer end number is not assumed to be the same as the terminal sequence number.",
+      "rdfs:domain": "cim:PowerTransformerEnd",
+      "rdfs:label": "phaseAngleClock",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "cim:PowerTransformerEnd.r0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence series resistance (star-model) of the transformer end.",
+      "rdfs:domain": "cim:PowerTransformerEnd",
+      "rdfs:label": "r0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:PowerTransformerEnd.x0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence series reactance of the transformer end.",
+      "rdfs:domain": "cim:PowerTransformerEnd",
+      "rdfs:label": "x0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SeriesCompensator.r0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence resistance.",
+      "rdfs:domain": "cim:SeriesCompensator",
+      "rdfs:label": "r0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SeriesCompensator.varistorPresent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Describe if a metal oxide varistor (mov) for over voltage protection is configured in parallel with the series compensator. It is used for short circuit calculations.",
+      "rdfs:domain": "cim:SeriesCompensator",
+      "rdfs:label": "varistorPresent",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:SeriesCompensator.varistorRatedCurrent",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "The maximum current the varistor is designed to handle at specified duration. It is used for short circuit calculations and exchanged only if SeriesCompensator.varistorPresent is true.\nThe attribute shall be a positive value.",
+      "rdfs:domain": "cim:SeriesCompensator",
+      "rdfs:label": "varistorRatedCurrent",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "cim:SeriesCompensator.varistorVoltageThreshold",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Voltage",
+      "qudt:hasUnit": "unit:KiloV",
+      "rdfs:comment": "The dc voltage at which the varistor starts conducting. It is used for short circuit calculations and exchanged only if SeriesCompensator.varistorPresent is true.",
+      "rdfs:domain": "cim:SeriesCompensator",
+      "rdfs:label": "varistorVoltageThreshold",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.k",
+      "cim:unitSymbol": "cim:UnitSymbol.V"
+    },
+    {
+      "@id": "cim:SeriesCompensator.x0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence reactance.",
+      "rdfs:domain": "cim:SeriesCompensator",
+      "rdfs:label": "x0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SynchronousMachine.earthing",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Indicates whether or not the generator is earthed. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "earthing",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:SynchronousMachine.earthingStarPointR",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Generator star point earthing resistance (Re). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "earthingStarPointR",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SynchronousMachine.earthingStarPointX",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Generator star point earthing reactance (Xe). Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "earthingStarPointX",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SynchronousMachine.ikk",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "qudt:hasUnit": "unit:A",
+      "rdfs:comment": "Steady-state short-circuit current (in A for the profile) of generator with compound excitation during 3-phase short circuit.\n- Ikk=0: Generator with no compound excitation.\n- Ikk&lt;&gt;0: Generator with compound excitation.\nIkk is used to calculate the minimum steady-state short-circuit current for generators with compound excitation.\n(4.6.1.2 in IEC 60909-0:2001).\nUsed only for single fed short circuit on a generator. (4.3.4.2. in IEC 60909-0:2001).",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "ikk",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
+      "@id": "cim:SynchronousMachine.mu",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "Factor to calculate the breaking current (Section 4.5.2.1 in IEC 60909-0).\nUsed only for single fed short circuit on a generator (Section 4.3.4.2. in IEC 60909-0).",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "mu",
+      "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "cim:SynchronousMachine.r",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Equivalent resistance (RG) of generator. RG is considered for the calculation of all currents, except for the calculation of the peak current ip. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "r",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SynchronousMachine.r0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence resistance of the synchronous machine.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "r0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SynchronousMachine.r2",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence resistance.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "r2",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SynchronousMachine.satDirectSubtransX",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:PU",
+      "rdfs:comment": "Direct-axis subtransient reactance saturated, also known as Xd\"sat.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "satDirectSubtransX",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "cim:SynchronousMachine.satDirectSyncX",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:PU",
+      "rdfs:comment": "Direct-axes saturated synchronous reactance (xdsat); reciprocal of short-circuit ration. Used for short circuit data exchange, only for single fed short circuit on a generator. (4.3.4.2. in IEC 60909-0:2001).",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "satDirectSyncX",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "cim:SynchronousMachine.satDirectTransX",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:PU",
+      "rdfs:comment": "Saturated Direct-axis transient reactance. The attribute is primarily used for short circuit calculations according to ANSI.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "satDirectTransX",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "cim:SynchronousMachine.voltageRegulationRange",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:PerCent",
+      "qudt:hasUnit": "unit:PERCENT",
+      "rdfs:comment": "Range of generator voltage regulation (PG in IEC 60909-0) used for calculation of the impedance correction factor KG defined in IEC 60909-0.\nThis attribute is used to describe the operating voltage of the generating unit.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "voltageRegulationRange",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.none"
+    },
+    {
+      "@id": "cim:SynchronousMachine.x0",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Zero sequence reactance of the synchronous machine.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "x0",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:SynchronousMachine.x2",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "Negative sequence reactance.",
+      "rdfs:domain": "cim:SynchronousMachine",
+      "rdfs:label": "x2",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:TransformerEnd.grounded",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "rdfs:comment": "(for Yn and Zn connections) True if the neutral is solidly grounded.",
+      "rdfs:domain": "cim:TransformerEnd",
+      "rdfs:label": "grounded",
+      "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:TransformerEnd.rground",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Resistance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "(for Yn and Zn connections) Resistance part of neutral impedance where 'grounded' is true.",
+      "rdfs:domain": "cim:TransformerEnd",
+      "rdfs:label": "rground",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:TransformerEnd.xground",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Reactance",
+      "qudt:hasUnit": "unit:OHM",
+      "rdfs:comment": "(for Yn and Zn connections) Reactive part of neutral impedance where 'grounded' is true.",
+      "rdfs:domain": "cim:TransformerEnd",
+      "rdfs:label": "xground",
+      "rdfs:range": "xsd:float",
+      "cim:unitMultiplier": "cim:UnitMultiplier.none",
+      "cim:unitSymbol": "cim:UnitSymbol.ohm"
+    },
+    {
+      "@id": "cim:ActivePower",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.W",
+      "rdfs:comment": "Product of RMS value of the voltage and the RMS value of the in-phase component of the current.",
+      "rdfs:label": "ActivePower",
+      "skos:exactMatch": "quantitykind:ActivePower"
+    },
+    {
+      "@id": "cim:ActivePowerChangeRate",
+      "skos:exactMatch": "quantitykind:ActivePowerChangeRate"
+    },
+    {
+      "@id": "cim:ActivePowerPerCurrentFlow",
+      "skos:exactMatch": "quantitykind:ActivePowerPerCurrentFlow"
+    },
+    {
+      "@id": "cim:ActivePowerPerFrequency",
+      "skos:exactMatch": "quantitykind:ActivePowerPerFrequency"
+    },
+    {
+      "@id": "cim:AngleDegrees",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.deg",
+      "rdfs:comment": "Measurement of angle in degrees.",
+      "rdfs:label": "AngleDegrees",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:AngleRadians",
+      "skos:exactMatch": "quantitykind:Angle"
+    },
+    {
+      "@id": "cim:ApparentPower",
+      "skos:exactMatch": "quantitykind:ApparentPower"
+    },
+    {
+      "@id": "cim:Area",
+      "skos:exactMatch": "quantitykind:Area"
+    },
+    {
+      "@id": "cim:Capacitance",
+      "skos:exactMatch": "quantitykind:Capacitance"
+    },
+    {
+      "@id": "cim:Conductance",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.S",
+      "rdfs:comment": "Factor by which voltage must be multiplied to give corresponding power lost from a circuit. Real part of admittance.",
+      "rdfs:label": "Conductance",
+      "skos:exactMatch": "quantitykind:Conductance"
+    },
+    {
+      "@id": "cim:CurrentFlow",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.A",
+      "rdfs:comment": "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC.",
+      "rdfs:label": "CurrentFlow",
+      "skos:exactMatch": "quantitykind:ElectricCurrent"
+    },
+    {
+      "@id": "cim:Frequency",
+      "skos:exactMatch": "quantitykind:Frequency"
+    },
+    {
+      "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Inductance"
+    },
+    {
+      "@id": "cim:Length",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.m",
+      "rdfs:comment": "Unit of length. It shall be a positive value or zero.",
+      "rdfs:label": "Length",
+      "skos:exactMatch": "quantitykind:Length"
+    },
+    {
+      "@id": "cim:Money",
+      "skos:exactMatch": "quantitykind:Currency"
+    },
+    {
+      "@id": "cim:PU",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.none",
+      "rdfs:comment": "Per Unit - a positive or negative value referred to a defined base. Values typically range from -10 to +10.",
+      "rdfs:label": "PU",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PerCent",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.none",
+      "rdfs:comment": "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.",
+      "rdfs:label": "PerCent",
+      "skos:exactMatch": "quantitykind:DimensionlessRatio"
+    },
+    {
+      "@id": "cim:PetersenCoilModeKind.automaticPositioning",
+      "@type": "cim:PetersenCoilModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Automatic positioning.",
+      "rdfs:label": "automaticPositioning"
+    },
+    {
+      "@id": "cim:PetersenCoilModeKind.fixed",
+      "@type": "cim:PetersenCoilModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Fixed position.",
+      "rdfs:label": "fixed"
+    },
+    {
+      "@id": "cim:PetersenCoilModeKind.manual",
+      "@type": "cim:PetersenCoilModeKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Manual positioning.",
+      "rdfs:label": "manual"
+    },
+    {
+      "@id": "cim:Pressure",
+      "skos:exactMatch": "quantitykind:Pressure"
+    },
+    {
+      "@id": "cim:Reactance",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.ohm",
+      "rdfs:comment": "Reactance (imaginary part of impedance), at rated frequency.",
+      "rdfs:label": "Reactance",
+      "skos:exactMatch": "quantitykind:Reactance"
+    },
+    {
+      "@id": "cim:ReactivePower",
+      "skos:exactMatch": "quantitykind:ReactivePower"
+    },
+    {
+      "@id": "cim:RealEnergy",
+      "skos:exactMatch": "quantitykind:Energy"
+    },
+    {
+      "@id": "cim:Resistance",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.ohm",
+      "rdfs:comment": "Resistance (real part of impedance).",
+      "rdfs:label": "Resistance",
+      "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:RotationSpeed",
+      "skos:exactMatch": "quantitykind:AngularVelocity"
+    },
+    {
+      "@id": "cim:Seconds",
+      "skos:exactMatch": "quantitykind:Time"
+    },
+    {
+      "@id": "cim:ShortCircuitRotorKind.salientPole1",
+      "@type": "cim:ShortCircuitRotorKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Salient pole 1 in IEC 60909.",
+      "rdfs:label": "salientPole1"
+    },
+    {
+      "@id": "cim:ShortCircuitRotorKind.salientPole2",
+      "@type": "cim:ShortCircuitRotorKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Salient pole 2 in IEC 60909.",
+      "rdfs:label": "salientPole2"
+    },
+    {
+      "@id": "cim:ShortCircuitRotorKind.turboSeries1",
+      "@type": "cim:ShortCircuitRotorKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Turbo Series 1 in IEC 60909.",
+      "rdfs:label": "turboSeries1"
+    },
+    {
+      "@id": "cim:ShortCircuitRotorKind.turboSeries2",
+      "@type": "cim:ShortCircuitRotorKind",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Turbo series 2 in IEC 60909.",
+      "rdfs:label": "turboSeries2"
+    },
+    {
+      "@id": "cim:Susceptance",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.S",
+      "rdfs:comment": "Imaginary part of admittance.",
+      "rdfs:label": "Susceptance",
+      "skos:exactMatch": "quantitykind:Susceptance"
+    },
+    {
+      "@id": "cim:Temperature",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.degC",
+      "rdfs:comment": "Value of temperature in degrees Celsius.",
+      "rdfs:label": "Temperature",
+      "skos:exactMatch": "quantitykind:Temperature"
+    },
+    {
+      "@id": "cim:UnitMultiplier.E",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Exa 10**18.",
+      "rdfs:label": "E"
+    },
+    {
+      "@id": "cim:UnitMultiplier.G",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Giga 10**9.",
+      "rdfs:label": "G"
+    },
+    {
+      "@id": "cim:UnitMultiplier.M",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E6",
+      "rdfs:comment": "Mega 10**6.",
+      "rdfs:label": "M",
+      "skos:exactMatch": "prefix:Mega"
+    },
+    {
+      "@id": "cim:UnitMultiplier.P",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Peta 10**15.",
+      "rdfs:label": "P"
+    },
+    {
+      "@id": "cim:UnitMultiplier.T",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Tera 10**12.",
+      "rdfs:label": "T"
+    },
+    {
+      "@id": "cim:UnitMultiplier.Y",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Yotta 10**24.",
+      "rdfs:label": "Y"
+    },
+    {
+      "@id": "cim:UnitMultiplier.Z",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Zetta 10**21.",
+      "rdfs:label": "Z"
+    },
+    {
+      "@id": "cim:UnitMultiplier.a",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Atto 10**-18.",
+      "rdfs:label": "a"
+    },
+    {
+      "@id": "cim:UnitMultiplier.c",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Centi 10**-2.",
+      "rdfs:label": "c"
+    },
+    {
+      "@id": "cim:UnitMultiplier.d",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Deci 10**-1.",
+      "rdfs:label": "d"
+    },
+    {
+      "@id": "cim:UnitMultiplier.da",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Deca 10**1.",
+      "rdfs:label": "da"
+    },
+    {
+      "@id": "cim:UnitMultiplier.f",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Femto 10**-15.",
+      "rdfs:label": "f"
+    },
+    {
+      "@id": "cim:UnitMultiplier.h",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Hecto 10**2.",
+      "rdfs:label": "h"
+    },
+    {
+      "@id": "cim:UnitMultiplier.k",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E3",
+      "rdfs:comment": "Kilo 10**3.",
+      "rdfs:label": "k",
+      "skos:exactMatch": "prefix:Kilo"
+    },
+    {
+      "@id": "cim:UnitMultiplier.m",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Milli 10**-3.",
+      "rdfs:label": "m"
+    },
+    {
+      "@id": "cim:UnitMultiplier.micro",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Micro 10**-6.",
+      "rdfs:label": "micro"
+    },
+    {
+      "@id": "cim:UnitMultiplier.n",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Nano 10**-9.",
+      "rdfs:label": "n"
+    },
+    {
+      "@id": "cim:UnitMultiplier.none",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "qudt:prefixMultiplier": "1E0",
+      "rdfs:comment": "No multiplier or equivalently multiply by 1.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitMultiplier.p",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pico 10**-12.",
+      "rdfs:label": "p"
+    },
+    {
+      "@id": "cim:UnitMultiplier.y",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Yocto 10**-24.",
+      "rdfs:label": "y"
+    },
+    {
+      "@id": "cim:UnitMultiplier.z",
+      "@type": "cim:UnitMultiplier",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Zepto 10**-21.",
+      "rdfs:label": "z"
+    },
+    {
+      "@id": "cim:UnitSymbol.A",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Current in amperes.",
+      "rdfs:label": "A",
+      "skos:exactMatch": "unit:A"
+    },
+    {
+      "@id": "cim:UnitSymbol.A2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Amperes squared (A²).",
+      "rdfs:label": "A2"
+    },
+    {
+      "@id": "cim:UnitSymbol.A2h",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ampere-squared hour, ampere-squared hour.",
+      "rdfs:label": "A2h"
+    },
+    {
+      "@id": "cim:UnitSymbol.A2s",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ampere squared time in square amperes (A²s).",
+      "rdfs:label": "A2s"
+    },
+    {
+      "@id": "cim:UnitSymbol.APerA",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’.",
+      "rdfs:label": "APerA"
+    },
+    {
+      "@id": "cim:UnitSymbol.APerm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "A/m, magnetic field strength, amperes per metre.",
+      "rdfs:label": "APerm"
+    },
+    {
+      "@id": "cim:UnitSymbol.Ah",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ampere-hours, ampere-hours.",
+      "rdfs:label": "Ah"
+    },
+    {
+      "@id": "cim:UnitSymbol.As",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ampere seconds (A·s).",
+      "rdfs:label": "As"
+    },
+    {
+      "@id": "cim:UnitSymbol.Bq",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Radioactivity in becquerels (1/s).",
+      "rdfs:label": "Bq"
+    },
+    {
+      "@id": "cim:UnitSymbol.Btu",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Energy, British Thermal Units.",
+      "rdfs:label": "Btu"
+    },
+    {
+      "@id": "cim:UnitSymbol.C",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric charge in coulombs (A·s).",
+      "rdfs:label": "C"
+    },
+    {
+      "@id": "cim:UnitSymbol.CPerkg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Exposure (x rays), coulombs per kilogram.",
+      "rdfs:label": "CPerkg"
+    },
+    {
+      "@id": "cim:UnitSymbol.CPerm2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Surface charge density, coulombs per square metre.",
+      "rdfs:label": "CPerm2"
+    },
+    {
+      "@id": "cim:UnitSymbol.CPerm3",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric charge density, coulombs per cubic metre.",
+      "rdfs:label": "CPerm3"
+    },
+    {
+      "@id": "cim:UnitSymbol.F",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric capacitance in farads (C/V).",
+      "rdfs:label": "F",
+      "skos:exactMatch": "unit:FARAD"
+    },
+    {
+      "@id": "cim:UnitSymbol.FPerm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Permittivity, farads per metre.",
+      "rdfs:label": "FPerm"
+    },
+    {
+      "@id": "cim:UnitSymbol.G",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Magnetic flux density, gausses (1 G = 10-4 T).",
+      "rdfs:label": "G"
+    },
+    {
+      "@id": "cim:UnitSymbol.Gy",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Absorbed dose in grays (J/kg).",
+      "rdfs:label": "Gy"
+    },
+    {
+      "@id": "cim:UnitSymbol.GyPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Absorbed dose rate, grays per second.",
+      "rdfs:label": "GyPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.H",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric inductance in henrys (Wb/A).",
+      "rdfs:label": "H"
+    },
+    {
+      "@id": "cim:UnitSymbol.HPerm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Permeability, henrys per metre.",
+      "rdfs:label": "HPerm"
+    },
+    {
+      "@id": "cim:UnitSymbol.Hz",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Frequency in hertz (1/s).",
+      "rdfs:label": "Hz",
+      "skos:exactMatch": "unit:HZ",
+      "skos:narrower": "unit:REV-PER-SEC"
+    },
+    {
+      "@id": "cim:UnitSymbol.HzPerHz",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Frequency, rate of frequency change.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mHz/Hz’.",
+      "rdfs:label": "HzPerHz"
+    },
+    {
+      "@id": "cim:UnitSymbol.HzPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Rate of change of frequency in hertz per second.",
+      "rdfs:label": "HzPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.J",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Energy in joules (N·m = C·V = W·s).",
+      "rdfs:label": "J"
+    },
+    {
+      "@id": "cim:UnitSymbol.JPerK",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Heat capacity in joules/kelvin.",
+      "rdfs:label": "JPerK"
+    },
+    {
+      "@id": "cim:UnitSymbol.JPerkg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Specific energy, Joules / kg.",
+      "rdfs:label": "JPerkg"
+    },
+    {
+      "@id": "cim:UnitSymbol.JPerkgK",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Specific heat capacity, specific entropy, joules per kilogram Kelvin.",
+      "rdfs:label": "JPerkgK"
+    },
+    {
+      "@id": "cim:UnitSymbol.JPerm2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Insulation energy density, joules per square metre or watt second per square metre.",
+      "rdfs:label": "JPerm2"
+    },
+    {
+      "@id": "cim:UnitSymbol.JPerm3",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Energy density, joules per cubic metre.",
+      "rdfs:label": "JPerm3"
+    },
+    {
+      "@id": "cim:UnitSymbol.JPermol",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Molar energy, joules per mole.",
+      "rdfs:label": "JPermol"
+    },
+    {
+      "@id": "cim:UnitSymbol.JPermolK",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Molar entropy, molar heat capacity, joules per mole kelvin.",
+      "rdfs:label": "JPermolK"
+    },
+    {
+      "@id": "cim:UnitSymbol.JPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Energy rate in joules per second (J/s).",
+      "rdfs:label": "JPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.K",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Temperature in kelvins.",
+      "rdfs:label": "K"
+    },
+    {
+      "@id": "cim:UnitSymbol.KPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Temperature change rate in kelvins per second.",
+      "rdfs:label": "KPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.M",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Length, nautical miles (1 M = 1852 m).",
+      "rdfs:label": "M"
+    },
+    {
+      "@id": "cim:UnitSymbol.Mx",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Magnetic flux, maxwells (1 Mx = 10-8 Wb).",
+      "rdfs:label": "Mx"
+    },
+    {
+      "@id": "cim:UnitSymbol.N",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Force in newtons (kg·m/s²).",
+      "rdfs:label": "N"
+    },
+    {
+      "@id": "cim:UnitSymbol.NPerm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Surface tension, newton per metre.",
+      "rdfs:label": "NPerm"
+    },
+    {
+      "@id": "cim:UnitSymbol.Nm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moment of force, newton metres.",
+      "rdfs:label": "Nm"
+    },
+    {
+      "@id": "cim:UnitSymbol.Oe",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Magnetic field in oersteds, (1 Oe = (103/4p) A/m).",
+      "rdfs:label": "Oe"
+    },
+    {
+      "@id": "cim:UnitSymbol.Pa",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms.",
+      "rdfs:label": "Pa",
+      "skos:exactMatch": "unit:PA"
+    },
+    {
+      "@id": "cim:UnitSymbol.PaPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pressure change rate in pascals per second.",
+      "rdfs:label": "PaPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.Pas",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dynamic viscosity, pascal seconds.",
+      "rdfs:label": "Pas"
+    },
+    {
+      "@id": "cim:UnitSymbol.Q",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Quantity power, Q.",
+      "rdfs:label": "Q"
+    },
+    {
+      "@id": "cim:UnitSymbol.Qh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Quantity energy, Qh.",
+      "rdfs:label": "Qh"
+    },
+    {
+      "@id": "cim:UnitSymbol.S",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Conductance in siemens.",
+      "rdfs:label": "S",
+      "skos:exactMatch": "unit:S"
+    },
+    {
+      "@id": "cim:UnitSymbol.SPerm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Conductance per length (F/m).",
+      "rdfs:label": "SPerm"
+    },
+    {
+      "@id": "cim:UnitSymbol.Sv",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dose equivalent in sieverts (J/kg).",
+      "rdfs:label": "Sv"
+    },
+    {
+      "@id": "cim:UnitSymbol.T",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Magnetic flux density in teslas (Wb/m2).",
+      "rdfs:label": "T"
+    },
+    {
+      "@id": "cim:UnitSymbol.V",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric potential in volts (W/A).",
+      "rdfs:label": "V",
+      "skos:exactMatch": "unit:V"
+    },
+    {
+      "@id": "cim:UnitSymbol.V2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volt squared (W²/A²).",
+      "rdfs:label": "V2"
+    },
+    {
+      "@id": "cim:UnitSymbol.V2h",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volt-squared hour, volt-squared-hours.",
+      "rdfs:label": "V2h"
+    },
+    {
+      "@id": "cim:UnitSymbol.VA",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Apparent power in volt amperes. See also real power and reactive power.",
+      "rdfs:label": "VA",
+      "skos:exactMatch": "unit:V-A"
+    },
+    {
+      "@id": "cim:UnitSymbol.VAh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Apparent energy in volt ampere hours.",
+      "rdfs:label": "VAh"
+    },
+    {
+      "@id": "cim:UnitSymbol.VAr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:label": "VAr",
+      "skos:exactMatch": "unit:V-A_Reactive"
+    },
+    {
+      "@id": "cim:UnitSymbol.VArh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reactive energy in volt ampere reactive hours.",
+      "rdfs:label": "VArh"
+    },
+    {
+      "@id": "cim:UnitSymbol.VPerHz",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Magnetic flux in volt per hertz.",
+      "rdfs:label": "VPerHz"
+    },
+    {
+      "@id": "cim:UnitSymbol.VPerV",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Voltage, ratio of voltages.  Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’.",
+      "rdfs:label": "VPerV"
+    },
+    {
+      "@id": "cim:UnitSymbol.VPerVA",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility.",
+      "rdfs:label": "VPerVA"
+    },
+    {
+      "@id": "cim:UnitSymbol.VPerVAr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility.",
+      "rdfs:label": "VPerVAr",
+      "skos:exactMatch": "unit:V-PER-V-A_Reactive"
+    },
+    {
+      "@id": "cim:UnitSymbol.VPerm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric field strength, volts per metre.",
+      "rdfs:label": "VPerm"
+    },
+    {
+      "@id": "cim:UnitSymbol.Vh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volt-hour, Volt hours.",
+      "rdfs:label": "Vh"
+    },
+    {
+      "@id": "cim:UnitSymbol.Vs",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volt seconds (Ws/A).",
+      "rdfs:label": "Vs"
+    },
+    {
+      "@id": "cim:UnitSymbol.W",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.",
+      "rdfs:label": "W",
+      "skos:exactMatch": "unit:W"
+    },
+    {
+      "@id": "cim:UnitSymbol.WPerA",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Active power per current flow, watts per Ampere.",
+      "rdfs:label": "WPerA",
+      "skos:exactMatch": "unit:W-PER-A"
+    },
+    {
+      "@id": "cim:UnitSymbol.WPerW",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Signal Strength, ratio of power.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mW/W’.",
+      "rdfs:label": "WPerW"
+    },
+    {
+      "@id": "cim:UnitSymbol.WPerm2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Heat flux density, irradiance, watts per square metre.",
+      "rdfs:label": "WPerm2"
+    },
+    {
+      "@id": "cim:UnitSymbol.WPerm2sr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Radiance, watts per square metre steradian.",
+      "rdfs:label": "WPerm2sr"
+    },
+    {
+      "@id": "cim:UnitSymbol.WPermK",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Thermal conductivity in watt/metres kelvin.",
+      "rdfs:label": "WPermK"
+    },
+    {
+      "@id": "cim:UnitSymbol.WPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Ramp rate in watts per second.",
+      "rdfs:label": "WPers",
+      "skos:exactMatch": "unit:W-PER-SEC"
+    },
+    {
+      "@id": "cim:UnitSymbol.WPersr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Radiant intensity, watts per steradian.",
+      "rdfs:label": "WPersr"
+    },
+    {
+      "@id": "cim:UnitSymbol.Wb",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Magnetic flux in webers (V·s).",
+      "rdfs:label": "Wb"
+    },
+    {
+      "@id": "cim:UnitSymbol.Wh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Real energy in watt hours.",
+      "rdfs:label": "Wh",
+      "skos:exactMatch": "unit:W-HR"
+    },
+    {
+      "@id": "cim:UnitSymbol.anglemin",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Plane angle, minutes.",
+      "rdfs:label": "anglemin"
+    },
+    {
+      "@id": "cim:UnitSymbol.anglesec",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Plane angle, seconds.",
+      "rdfs:label": "anglesec"
+    },
+    {
+      "@id": "cim:UnitSymbol.bar",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pressure in bars, (1 bar = 100 kPa).",
+      "rdfs:label": "bar"
+    },
+    {
+      "@id": "cim:UnitSymbol.cd",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Luminous intensity in candelas.",
+      "rdfs:label": "cd"
+    },
+    {
+      "@id": "cim:UnitSymbol.charPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Data rate (baud) in characters per second.",
+      "rdfs:label": "charPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.character",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Number of characters.",
+      "rdfs:label": "character"
+    },
+    {
+      "@id": "cim:UnitSymbol.cosPhi",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power factor, dimensionless.\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
+      "rdfs:label": "cosPhi"
+    },
+    {
+      "@id": "cim:UnitSymbol.count",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Amount of substance, Counter value.",
+      "rdfs:label": "count"
+    },
+    {
+      "@id": "cim:UnitSymbol.d",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time in days, day = 24 h = 86400 s.",
+      "rdfs:label": "d"
+    },
+    {
+      "@id": "cim:UnitSymbol.dB",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Sound pressure level in decibels. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3.",
+      "rdfs:label": "dB"
+    },
+    {
+      "@id": "cim:UnitSymbol.dBm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1mW. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3.",
+      "rdfs:label": "dBm"
+    },
+    {
+      "@id": "cim:UnitSymbol.deg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Plane angle in degrees.",
+      "rdfs:label": "deg",
+      "skos:exactMatch": "unit:DEG"
+    },
+    {
+      "@id": "cim:UnitSymbol.degC",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Relative temperature in degrees Celsius.\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
+      "rdfs:label": "degC",
+      "skos:exactMatch": "unit:DEG_C"
+    },
+    {
+      "@id": "cim:UnitSymbol.ft3",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volume, cubic feet.",
+      "rdfs:label": "ft3"
+    },
+    {
+      "@id": "cim:UnitSymbol.gPerg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Concentration, The ratio of the mass of a solute divided by the mass of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µg/g’.",
+      "rdfs:label": "gPerg"
+    },
+    {
+      "@id": "cim:UnitSymbol.gal",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volume in gallons, US gallon (1 gal = 231 in3 = 128 fl ounce).",
+      "rdfs:label": "gal"
+    },
+    {
+      "@id": "cim:UnitSymbol.h",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time in hours, hour = 60 min = 3600 s.",
+      "rdfs:label": "h"
+    },
+    {
+      "@id": "cim:UnitSymbol.ha",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Area, hectares.",
+      "rdfs:label": "ha"
+    },
+    {
+      "@id": "cim:UnitSymbol.kat",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Catalytic activity, katal = mol / s.",
+      "rdfs:label": "kat"
+    },
+    {
+      "@id": "cim:UnitSymbol.katPerm3",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Catalytic activity concentration, katals per cubic metre.",
+      "rdfs:label": "katPerm3"
+    },
+    {
+      "@id": "cim:UnitSymbol.kg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mass in kilograms.  Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.",
+      "rdfs:label": "kg"
+    },
+    {
+      "@id": "cim:UnitSymbol.kgPerJ",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Weight per energy in kilograms per joule (kg/J). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.",
+      "rdfs:label": "kgPerJ"
+    },
+    {
+      "@id": "cim:UnitSymbol.kgPerm3",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Density in kilogram/cubic metres (kg/m³). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.",
+      "rdfs:label": "kgPerm3"
+    },
+    {
+      "@id": "cim:UnitSymbol.kgm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moment of mass in kilogram metres (kg·m) (first moment of mass). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.",
+      "rdfs:label": "kgm"
+    },
+    {
+      "@id": "cim:UnitSymbol.kgm2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Moment of mass in kilogram square metres (kg·m²) (Second moment of mass, commonly called the moment of inertia). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.",
+      "rdfs:label": "kgm2"
+    },
+    {
+      "@id": "cim:UnitSymbol.kn",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Speed, knots (1 kn = 1852/3600) m/s.",
+      "rdfs:label": "kn"
+    },
+    {
+      "@id": "cim:UnitSymbol.l",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volume in litres, litre = dm3 = m3/1000.",
+      "rdfs:label": "l"
+    },
+    {
+      "@id": "cim:UnitSymbol.lPerh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volumetric flow rate, litres per hour.",
+      "rdfs:label": "lPerh"
+    },
+    {
+      "@id": "cim:UnitSymbol.lPerl",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Concentration, The ratio of the volume of a solute divided by the volume of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µL/L’.",
+      "rdfs:label": "lPerl"
+    },
+    {
+      "@id": "cim:UnitSymbol.lPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volumetric flow rate in litres per second.",
+      "rdfs:label": "lPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.lm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Luminous flux in lumens (cd·sr).",
+      "rdfs:label": "lm"
+    },
+    {
+      "@id": "cim:UnitSymbol.lx",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Illuminance in lux (lm/m²).",
+      "rdfs:label": "lx"
+    },
+    {
+      "@id": "cim:UnitSymbol.m",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Length in metres.",
+      "rdfs:label": "m",
+      "skos:exactMatch": "unit:M"
+    },
+    {
+      "@id": "cim:UnitSymbol.m2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Area in square metres (m²).",
+      "rdfs:label": "m2",
+      "skos:exactMatch": "unit:M2"
+    },
+    {
+      "@id": "cim:UnitSymbol.m2Pers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Viscosity in square metres / second (m²/s).",
+      "rdfs:label": "m2Pers"
+    },
+    {
+      "@id": "cim:UnitSymbol.m3",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volume in cubic metres (m³).",
+      "rdfs:label": "m3"
+    },
+    {
+      "@id": "cim:UnitSymbol.m3Compensated",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volume, cubic metres, with the value compensated for weather effects.",
+      "rdfs:label": "m3Compensated"
+    },
+    {
+      "@id": "cim:UnitSymbol.m3Perh",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volumetric flow rate, cubic metres per hour.",
+      "rdfs:label": "m3Perh"
+    },
+    {
+      "@id": "cim:UnitSymbol.m3Perkg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Specific volume, cubic metres per kilogram, v.",
+      "rdfs:label": "m3Perkg"
+    },
+    {
+      "@id": "cim:UnitSymbol.m3Pers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volumetric flow rate in cubic metres per second (m³/s).",
+      "rdfs:label": "m3Pers",
+      "skos:exactMatch": "unit:M3-PER-SEC"
+    },
+    {
+      "@id": "cim:UnitSymbol.m3Uncompensated",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Volume, cubic metres, with the value uncompensated for weather effects.",
+      "rdfs:label": "m3Uncompensated"
+    },
+    {
+      "@id": "cim:UnitSymbol.mPerm3",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Fuel efficiency in metres per cubic metres (m/m³).",
+      "rdfs:label": "mPerm3"
+    },
+    {
+      "@id": "cim:UnitSymbol.mPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Velocity in metres per second (m/s).",
+      "rdfs:label": "mPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.mPers2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Acceleration in metres per second squared (m/s²).",
+      "rdfs:label": "mPers2"
+    },
+    {
+      "@id": "cim:UnitSymbol.min",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time in minutes, minute  = 60 s.",
+      "rdfs:label": "min"
+    },
+    {
+      "@id": "cim:UnitSymbol.mmHg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa).",
+      "rdfs:label": "mmHg"
+    },
+    {
+      "@id": "cim:UnitSymbol.mol",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Amount of substance in moles.",
+      "rdfs:label": "mol"
+    },
+    {
+      "@id": "cim:UnitSymbol.molPerkg",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms.",
+      "rdfs:label": "molPerkg"
+    },
+    {
+      "@id": "cim:UnitSymbol.molPerm3",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in m³.",
+      "rdfs:label": "molPerm3"
+    },
+    {
+      "@id": "cim:UnitSymbol.molPermol",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution.",
+      "rdfs:label": "molPermol"
+    },
+    {
+      "@id": "cim:UnitSymbol.none",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Dimension less quantity, e.g. count, per unit, etc.",
+      "rdfs:label": "none"
+    },
+    {
+      "@id": "cim:UnitSymbol.ohm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric resistance in ohms (V/A).",
+      "rdfs:label": "ohm",
+      "skos:exactMatch": "unit:OHM"
+    },
+    {
+      "@id": "cim:UnitSymbol.ohmPerm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Electric resistance per length in ohms per metre ((V/A)/m).",
+      "rdfs:label": "ohmPerm"
+    },
+    {
+      "@id": "cim:UnitSymbol.ohmm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Resistivity, ohm metres, (rho).",
+      "rdfs:label": "ohmm"
+    },
+    {
+      "@id": "cim:UnitSymbol.onePerHz",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Reciprocal of frequency (1/Hz).",
+      "rdfs:label": "onePerHz"
+    },
+    {
+      "@id": "cim:UnitSymbol.onePerm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Wavenumber, reciprocal metres,  (1/m).",
+      "rdfs:label": "onePerm"
+    },
+    {
+      "@id": "cim:UnitSymbol.ppm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Concentration in parts per million.",
+      "rdfs:label": "ppm"
+    },
+    {
+      "@id": "cim:UnitSymbol.rad",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Plane angle in radians (m/m).",
+      "rdfs:label": "rad",
+      "skos:exactMatch": "unit:RAD"
+    },
+    {
+      "@id": "cim:UnitSymbol.radPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Angular velocity in radians per second (rad/s).",
+      "rdfs:label": "radPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.radPers2",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Angular acceleration, radians per second squared.",
+      "rdfs:label": "radPers2"
+    },
+    {
+      "@id": "cim:UnitSymbol.rev",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Amount of rotation, revolutions.",
+      "rdfs:label": "rev"
+    },
+    {
+      "@id": "cim:UnitSymbol.rotPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Rotations per second (1/s). See also Hz (1/s).",
+      "rdfs:label": "rotPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.s",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time in seconds.",
+      "rdfs:label": "s",
+      "skos:exactMatch": "unit:SEC"
+    },
+    {
+      "@id": "cim:UnitSymbol.sPers",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&#181;’ to show rates such as ‘&#181;s/s’.",
+      "rdfs:label": "sPers"
+    },
+    {
+      "@id": "cim:UnitSymbol.sr",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Solid angle in steradians (m2/m2).",
+      "rdfs:label": "sr"
+    },
+    {
+      "@id": "cim:UnitSymbol.therm",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Energy, therms.",
+      "rdfs:label": "therm"
+    },
+    {
+      "@id": "cim:UnitSymbol.tonne",
+      "@type": "cim:UnitSymbol",
+      "cims:stereotype": "enum",
+      "rdfs:comment": "Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg).",
+      "rdfs:label": "tonne"
+    },
+    {
+      "@id": "cim:Voltage",
+      "@type": "qudt:QuantityKind",
+      "cims:belongsToCategory": "sc:Package_ShortCircuitProfile",
+      "qudt:applicableUnit": "cim:UnitSymbol.V",
+      "rdfs:comment": "Electrical voltage, can be both AC and DC.",
+      "rdfs:label": "Voltage",
+      "skos:exactMatch": "quantitykind:Voltage"
+    },
+    {
+      "@id": "cim:VoltagePerReactivePower",
+      "skos:exactMatch": "quantitykind:VoltagePerReactivePower"
+    },
+    {
+      "@id": "cim:VolumeFlowRate",
+      "skos:exactMatch": "quantitykind:VolumeFlowRate"
+    },
+    {
+      "@id": "sc:Package_ShortCircuitProfile",
+      "@type": "cims:ClassCategory",
+      "rdfs:comment": "This is the IEC 61970-452 short circuit profile.",
+      "rdfs:label": "ShortCircuitProfile"
+    }
+  ]
+}
