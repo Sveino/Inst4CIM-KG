@@ -203,8 +203,11 @@ We have considered several tools, and use the first two:
   - Cons: doesn't preserve term order
   - Cons: emits lists as `rdf:List` long-hand using blank nodes and first/rest
   - Cons: can't specify a custom context
-  - Pro: generates a richer context by examining the values of each property
+  - Pro: generates a richer context by examining the values of each property and defining prop characteristics
     - Eg `{"@context": {"rdfs:range" : {"@type" : "@id"}}}`
+    - So that's a good "first cut" context to start from
+  - Cons: puts the context last, so it doesn't support **Streaming JSON-LD**
+  - Cons: JSON-LD to Turtle doesn't use the prefixes from the context
 - [jq](https://stedolan.github.io/jq/download/ ) (if needed): for JSON manipulations
 
 #### JSON-LD Context
@@ -218,45 +221,39 @@ It consists of two sections:
   "eu":           "https://cim.ucaiug.io/ns/eu#",
   ...
 ```
-- Then we define property characteristics, so the instance data can carry pure values, rather than having to repeat these characteristics.
-  Notes:
+- Then we define property characteristics, so the instance data can carry pure values, rather than having to repeat these characteristics. Notes:
+  - We have shown only one example per namespace per characteristic. See the full file for all props.
   - `"@type": "@id"` declares an object property
   - `"@type": "xsd:date"` declares a data property with the specified datatype 
   - `"@language": "en"` results in a `langString` with that lang tag
 ```js
   "cim:unitMultiplier"          : {"@type": "@id"},
-  "cim:unitSymbol"              : {"@type": "@id"},
   "cims:belongsToCategory"      : {"@type": "@id"},
-  "cims:multiplicity"           : {"@type": "@id"},
   "dcat:landingPage"            : {"@type": "@id"},
-  "dct:conformsTo"              : {"@type": "@id"},
   "dct:creator"                 : {"@language": "en"},
-  "dct:description"             : {"@language": "en"},
   "dct:issued"                  : {"@type": "xsd:dateTime"},
-  "dct:license"                 : {"@type": "@id"},
   "dct:modified"                : {"@type": "xsd:date"},
-  "dct:rights"                  : {"@language": "en"},
-  "dct:title"                   : {"@language": "en"},
   "owl:backwardCompatibleWith"  : {"@type": "@id"},
-  "owl:incompatibleWith"        : {"@type": "@id"},
-  "owl:inverseOf"               : {"@type": "@id"},
-  "owl:priorVersion"            : {"@type": "@id"},
-  "owl:versionIRI"              : {"@type": "@id"},
-  "qudt:applicableUnit"         : {"@type": "@id"},
-  "qudt:hasQuantityKind"        : {"@type": "@id"},
   "qudt:hasUnit"                : {"@type": "@id"},
   "qudt:prefixMultiplier"       : {"@type": "xsd:double"},
   "rdfs:comment"                : {"@language": "en"},
   "rdfs:domain"                 : {"@type": "@id"},
-  "rdfs:range"                  : {"@type": "@id"},
-  "rdfs:subClassOf"             : {"@type": "@id"},
-  "skos:exactMatch"             : {"@type": "@id"},
   "skos:narrower"               : {"@type": "@id"}
 ```
 
 https://github.com/Sveino/Inst4CIM-KG/issues/110
 It is important to deploy `CIM-ontology-context.jsonld` at a network location.
-TODO
+- The first cut was done with a local file file://CIM-ontology-context.jsonld .
+  The output includes the same relative URL, which is not good.
+- We cannot use github directly 
+  (https://github.com/Sveino/Inst4CIM-KG/raw/refs/heads/develop/rdfs-improved/CIM-ontology-context.jsonld)
+  because it doesn't serve the appropriate content type
+- So we currently use rawgit2 (https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld),
+  which serves the file with `content-type: application/ld+json`.
+  This works, but it's not a permanent location, so we need to look for a better location.
+
+For the ontologies, we could embed the context by using techniques described at GS1 EPCIS.
+But for instance data we definitely need a network context, so we better find a solution.
 
 #### Coverting to JSON-LD as a Debugging Tool
 As part of working out the best possible JSON-LD form, we looked for irregularities
