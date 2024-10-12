@@ -13,6 +13,8 @@
     - [Use Only One of RDFS2020 and RDFSEd2Beta Style](#use-only-one-of-rdfs2020-and-rdfsed2beta-style)
         - [Namespace Discrepancies in RDFS2020 CGMES vs NC](#namespace-discrepancies-in-rdfs2020-cgmes-vs-nc)
     - [Merge and Fix DatasetMetadata, Header, FileHeader](#merge-and-fix-datasetmetadata-header-fileheader)
+    - [Fixes to Ontology Metadata](#fixes-to-ontology-metadata)
+    - [Add rdfs:isDefinedBy](#add-rdfsisdefinedby)
     - [Duplication Between Ontologies](#duplication-between-ontologies)
         - [Duplicated Definitions](#duplicated-definitions)
         - [Duplicated Terms](#duplicated-terms)
@@ -30,6 +32,7 @@
     - [Mis-declared Packages](#mis-declared-packages)
     - [Whitespace in Definitions](#whitespace-in-definitions)
     - [Datatype XMLLiteral in Definitions](#datatype-xmlliteral-in-definitions)
+    - [LangTag in Label vs Definition](#langtag-in-label-vs-definition)
     - [Whitespace and Lang Tags in Key Values](#whitespace-and-lang-tags-in-key-values)
     - [HTML Tags and Escaped Entities in Definitions](#html-tags-and-escaped-entities-in-definitions)
     - [Use Standard Datatypes](#use-standard-datatypes)
@@ -307,6 +310,47 @@ CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
 In addition:
 - `eumd:DateTimeStamp` is wrong
 - `eumd:Model1, eumd:Model2` are junk prop names
+
+## Fixes to Ontology Metadata
+https://github.com/Sveino/Inst4CIM-KG/issues/32
+
+Some fixes are needed to the format of ontology metadata.
+From this (only the fields to change are shown):
+```ttl
+eq:Ontology a owl:Ontology ;
+  dcat:landingPage "https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/" ;
+  dcat:theme "vocabulary"@en ;
+  dct:conformsTo "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
+    "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:creator "ENTSO-E CIM EG"@en ;
+  dct:publisher "ENTSO-E"@en ;
+  dct:rightsHolder "ENTSO-E"@en ;
+  owl:versionInfo "3.0.0"@en .
+```
+To this (the lines marked `##` not yet done, pending decision)
+```ttl
+eq:Ontology a owl:Ontology ;
+  dcat:landingPage <https://www.entsoe.eu/digital/cim/cim-for-grid-models-exchange/> ;
+  ## DELETE ## dcat:theme "vocabulary"@en ;
+  dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap";
+  dct:conformsTo
+    <urn:iso:std:iec:61970-301:ed-7:amd1>, <urn:iso:std:iec:61970-501:draft:ed-2>, <urn:iso:std:iec:61970-600-2:ed-1> ;
+  ## dct:creator "ENTSO-E CIM EG" ;
+  dct:publisher "ENTSO-E" ;
+  dct:rightsHolder "ENTSO-E" ;
+  owl:versionInfo "3.0.0" .
+```
+
+## Add rdfs:isDefinedBy
+
+https://github.com/Sveino/Inst4CIM-KG/issues/103
+Each ontology term should have rdfs:isDefinedBy to the ontology node.
+This allows semantic web crawlers that stumble upon a CIM term, to discover the whole CIM ontology.
+
+https://github.com/Sveino/Inst4CIM-KG/issues/5 is a soft blocker for this:
+- We could add multiple values for each term
+- But this is untypical usage
+- It may lead to a crawler fetching the same ontology multiple times, but I think the risk is low since the crawler should keep a queue of ontologies to be fetched (or already fetched) in any case.
 
 ## Duplication Between Ontologies
 https://github.com/Sveino/Inst4CIM-KG/issues/5
@@ -902,6 +946,20 @@ select * where {
 It turns out that 25 definitions are marked as `rdf:XMLLiteral`.
 But they don't include any XML markup, so we should use the simpler datatype `xsd:string`.
 
+## LangTag in Label vs Definition
+https://github.com/Sveino/Inst4CIM-KG/issues/93
+
+CIM terms are defined like this:
+```ttl
+cim:AsynchronousMachineUserDefined a owl:Class ;
+  rdfs:label "AsynchronousMachineUserDefined"@en ;
+  rdfs:comment "Asynchronous machine whose dynamic behaviour is described by a user-defined model." ;
+```
+The label has langTag, the comment doesn't. But it should be the other way around:
+- `label` equals the local name of the term's URL, and that won't be translated.
+  - Note: if it was written as a phrase "Asynchronous Machine User Defined", then it should have a lang tag.
+- `comment` is an English sentence, so it should have a langTag
+
 ## Whitespace and Lang Tags in Key Values
 
 Key values must be spelled with ultimate care because... well, they are key.
@@ -939,18 +997,16 @@ select * {
   filter(lang(?y)="en")
 } order by ?x
 ```
+- Examination shows that the following consist entirely of codes:
+  `cim:Currency cim:IfdBaseKind cim:PhaseCode cim:StaticLoadModelKind cim:UnitMultiplier cim:UnitSymbol cim:WindingConnection`
+- Eg `eu:LimitKind` includes mostly codes (`tatl, tc, tct` etc).
+  It also includes an English phrase: `"warningVoltage"@en`, but it's not likely that code will be translated, so we strip the langTag.
 
-Examination shows that the following consist entirely of codes, so we'll remove the lang tag:
-`cim:Currency cim:IfdBaseKind cim:PhaseCode cim:StaticLoadModelKind cim:UnitMultiplier cim:UnitSymbol cim:WindingConnection`
-
-We don't change eg `eu:LimitKind` although it includes mostly codes (`tatl, tc, tct` etc).
-But it also includes an English phrase: `"warningVoltage"@en`
-
-TODO: `rdfs:comment` does not include lang tag but should, eg:
+Also: `rdfs:comment` does not include lang tag but should, eg it should be:
 ```ttl
 eu:LimitKind.operationalVoltageLimit a eu:LimitKind ;
-  rdfs:label "operationalVoltageLimit"@en ;
-  rdfs:comment "Operational voltage limit." ;
+  rdfs:label "operationalVoltageLimit" ;
+  rdfs:comment "Operational voltage limit."@en.
 ```
 
 ## HTML Tags and Escaped Entities in Definitions
@@ -1798,7 +1854,7 @@ We also track status with the tag "DONE" and by adding a link to the fix.
 cim:ActivePowerChangeRate skos:exactMatch quantitykind:ActivePowerChangeRate .
 ```
 - 10 Change Class and Property Kinds from RDFS to OWL #75
-  - DONE [fix10-classPropKind.ru](fix10-classPropKind.ru)
+  - DONE [fix10-classPropKind-75.ru](fix10-classPropKind-75.ru)
 - 11 `cims:inverseRoleName -> owl:inverseOf` #26
   - DONE [fix11-inverseOf-26.ru](fix11-inverseOf-26.ru)
 - 12 [Express Multiplicity in OWL](#express-multiplicity-in-owl) #30
@@ -1811,3 +1867,7 @@ cim:ActivePowerChangeRate skos:exactMatch quantitykind:ActivePowerChangeRate .
   - DONE [fix14-langTagInCodes-47.ru](fix14-langTagInCodes-47.ru)
 - 15 [Deprecated Properties](#deprecated-properties) #24
   - DONE [fix15-deprecated-24.ru](fix15-deprecated-24.ru)
+- 16 [LangTag in Label vs Definition](#langtag-in-label-vs-definition) #93
+  - DONE [fix16-langTagLabelVsDefinition-93.ru](fix16-langTagLabelVsDefinition-93.ru)
+- 20 [Fixes to Ontology Metadata](#fixes-to-ontology-metadata) #32
+  - DONE [fix20-ontologyMetadata-32.ru](fix20-ontologyMetadata-32.ru)

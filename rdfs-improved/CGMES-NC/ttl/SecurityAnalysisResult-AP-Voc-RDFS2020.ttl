@@ -13,109 +13,111 @@
 @prefix         skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix         unit: <http://qudt.org/vocab/unit/> .
 @prefix          xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix           dc: <http://purl.org/dc/elements/1.1/> .
 @prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
 
 sar:Ontology a owl:Ontology ;
   dct:description "This vocabulary is describing the security analysis result profile."@en ;
+  dc:source "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
   dcat:keyword "SAR" ;
   dcat:theme "vocabulary"@en ;
-  dct:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:conformsTo <urn:iso:std:iec:61970-301:ed-7:amd1>, <urn:iso:std:iec:61970-401:draft:ed-1>, <urn:iso:std:iec:61970-501:draft:ed-2>, <urn:iso:std:iec:61970-600-2:ed-1> ;
   dct:creator "ENTSO-E CIM WG NC project"@en ;
   dct:identifier "urn:uuid:7d53a1b2-0dcc-4556-b868-6ed099bd9ac9" ;
   dct:language "en-GB" ;
   dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
   dct:modified "2024-09-07"^^xsd:date ;
-  dct:publisher "ENTSO-E"@en ;
-  dct:rightsHolder "ENTSO-E"@en ;
+  dct:publisher "ENTSO-E" ;
+  dct:rightsHolder "ENTSO-E" ;
   dct:title "Security Analysis Result Vocabulary"@en ;
   owl:priorVersion <https://ap-voc.cim4.eu/SecurityAnalysisResult/2.3> ;
   owl:versionIRI <https://ap-voc.cim4.eu/SecurityAnalysisResult/2.4> ;
-  owl:versionInfo "2.4"@en .
+  owl:versionInfo "2.4" .
 
 cim:ACDCTerminal a owl:Class ;
-  rdfs:label "ACDCTerminal"@en ;
-  rdfs:comment "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes." ;
+  rdfs:label "ACDCTerminal" ;
+  rdfs:comment "An electrical connection point (AC or DC) to a piece of conducting equipment. Terminals are connected at physical connection points called connectivity nodes."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile .
 
 cim:Contingency a owl:Class ;
-  rdfs:label "Contingency"@en ;
-  rdfs:comment "An event threatening system reliability, consisting of one or more contingency elements." ;
+  rdfs:label "Contingency" ;
+  rdfs:comment "An event threatening system reliability, consisting of one or more contingency elements."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile .
 
 cim:OperationalLimit a owl:Class ;
-  rdfs:label "OperationalLimit"@en ;
+  rdfs:label "OperationalLimit" ;
   rdfs:comment """A value and normal value associated with a specific kind of limit. 
 The sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  
-If a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.""" ;
+If a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration."""@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile .
 
 cim:UnitMultiplier a owl:Class ;
-  rdfs:label "UnitMultiplier"@en ;
+  rdfs:label "UnitMultiplier" ;
   rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
 
 For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
 
-For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg"."""@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype uml:enumeration .
 
 cim:UnitSymbol a owl:Class ;
-  rdfs:label "UnitSymbol"@en ;
+  rdfs:label "UnitSymbol" ;
   rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
 Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
 To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
 Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
-The integer values are used for harmonization with IEC 61850.""" ;
+The integer values are used for harmonization with IEC 61850."""@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype uml:enumeration .
 
 nc:BaseCasePowerFlowResult a owl:Class ;
-  rdfs:label "BaseCasePowerFlowResult"@en ;
-  rdfs:comment "Base case power flow result for a given terminal." ;
+  rdfs:label "BaseCasePowerFlowResult" ;
+  rdfs:comment "Base case power flow result for a given terminal."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype "NC", uml:concrete ;
   rdfs:subClassOf nc:PowerFlowResult .
 
 nc:ContingencyPowerFlowResult a owl:Class ;
-  rdfs:label "ContingencyPowerFlowResult"@en ;
-  rdfs:comment "Contingency power flow result on a given terminal for a given contingency." ;
+  rdfs:label "ContingencyPowerFlowResult" ;
+  rdfs:comment "Contingency power flow result on a given terminal for a given contingency."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype "NC", uml:concrete ;
   rdfs:subClassOf nc:PowerFlowResult .
 
 nc:PowerFlowResult a owl:Class ;
-  rdfs:label "PowerFlowResult"@en ;
-  rdfs:comment "Power flow result including any operational limit violation." ;
+  rdfs:label "PowerFlowResult" ;
+  rdfs:comment "Power flow result including any operational limit violation."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype "NC" .
 
 nc:Region a owl:Class ;
-  rdfs:label "Region"@en ;
-  rdfs:comment "A region where the system operator belongs to." ;
+  rdfs:label "Region" ;
+  rdfs:comment "A region where the system operator belongs to."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype "NC" .
 
 nc:RemedialAction a owl:Class ;
-  rdfs:label "RemedialAction"@en ;
-  rdfs:comment "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly." ;
+  rdfs:label "RemedialAction" ;
+  rdfs:comment "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype "NC" .
 
 nc:RemedialActionApplied a owl:Class ;
-  rdfs:label "RemedialActionApplied"@en ;
-  rdfs:comment "Remedial Action or Remedial Action Stage that has been applied to the power flow case which has the associated power flow result." ;
+  rdfs:label "RemedialActionApplied" ;
+  rdfs:comment "Remedial Action or Remedial Action Stage that has been applied to the power flow case which has the associated power flow result."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype "NC", uml:concrete .
 
 nc:Stage a owl:Class ;
-  rdfs:label "Stage"@en ;
-  rdfs:comment "Stage of a remedial action scheme." ;
+  rdfs:label "Stage" ;
+  rdfs:comment "Stage of a remedial action scheme."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   cims:stereotype "NC", uml:concrete .
 
 nc:ACDCTerminal.PowerFlowResult a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "PowerFlowResult"@en ;
-  rdfs:comment "Power result associated with the ACDC terminal." ;
+  rdfs:label "PowerFlowResult" ;
+  rdfs:comment "Power result associated with the ACDC terminal."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   owl:inverseOf nc:PowerFlowResult.ACDCTerminal ;
@@ -123,8 +125,8 @@ nc:ACDCTerminal.PowerFlowResult a owl:ObjectProperty, owl:InverseFunctionalPrope
   rdfs:range nc:PowerFlowResult .
 
 nc:Contingency.ContingencyPowerFlowResult a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "ContingencyPowerFlowResult"@en ;
-  rdfs:comment "The power flow result that is associated with a contingency." ;
+  rdfs:label "ContingencyPowerFlowResult" ;
+  rdfs:comment "The power flow result that is associated with a contingency."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -133,8 +135,8 @@ nc:Contingency.ContingencyPowerFlowResult a owl:ObjectProperty, owl:InverseFunct
   rdfs:range nc:ContingencyPowerFlowResult .
 
 nc:ContingencyPowerFlowResult.Contingency a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "Contingency"@en ;
-  rdfs:comment "The contingency that has this power flow result." ;
+  rdfs:label "Contingency" ;
+  rdfs:comment "The contingency that has this power flow result."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
@@ -143,8 +145,8 @@ nc:ContingencyPowerFlowResult.Contingency a owl:ObjectProperty, owl:FunctionalPr
   rdfs:range cim:Contingency .
 
 nc:OperationalLimit.PowerFlowResult a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "PowerFlowResult"@en ;
-  rdfs:comment "The limit violation associated with an operational limit." ;
+  rdfs:label "PowerFlowResult" ;
+  rdfs:comment "The limit violation associated with an operational limit."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -153,8 +155,8 @@ nc:OperationalLimit.PowerFlowResult a owl:ObjectProperty, owl:InverseFunctionalP
   rdfs:range nc:PowerFlowResult .
 
 nc:PowerFlowResult.ACDCTerminal a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "ACDCTerminal"@en ;
-  rdfs:comment "ACDC terminal where the powerflow result is located." ;
+  rdfs:label "ACDCTerminal" ;
+  rdfs:comment "ACDC terminal where the powerflow result is located."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:1..1 ;
   owl:inverseOf nc:ACDCTerminal.PowerFlowResult ;
@@ -162,8 +164,8 @@ nc:PowerFlowResult.ACDCTerminal a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:range cim:ACDCTerminal .
 
 nc:PowerFlowResult.OperationalLimit a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "OperationalLimit"@en ;
-  rdfs:comment "The operational limit that has this limit violation." ;
+  rdfs:label "OperationalLimit" ;
+  rdfs:comment "The operational limit that has this limit violation."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -172,8 +174,8 @@ nc:PowerFlowResult.OperationalLimit a owl:ObjectProperty, owl:FunctionalProperty
   rdfs:range cim:OperationalLimit .
 
 nc:PowerFlowResult.RemedialActionApplied a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "RemedialActionApplied"@en ;
-  rdfs:comment "Remedial action that is applied when the power flow result is calculated." ;
+  rdfs:label "RemedialActionApplied" ;
+  rdfs:comment "Remedial action that is applied when the power flow result is calculated."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -182,8 +184,8 @@ nc:PowerFlowResult.RemedialActionApplied a owl:ObjectProperty, owl:InverseFuncti
   rdfs:range nc:RemedialActionApplied .
 
 nc:PowerFlowResult.ReportedByRegion a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "ReportedByRegion"@en ;
-  rdfs:comment "The region which reports this limit violation." ;
+  rdfs:label "ReportedByRegion" ;
+  rdfs:comment "The region which reports this limit violation."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -192,8 +194,8 @@ nc:PowerFlowResult.ReportedByRegion a owl:ObjectProperty, owl:FunctionalProperty
   rdfs:range nc:Region .
 
 nc:Region.LimitViolation a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "LimitViolation"@en ;
-  rdfs:comment "The limit violation reported by a region." ;
+  rdfs:label "LimitViolation" ;
+  rdfs:comment "The limit violation reported by a region."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -202,8 +204,8 @@ nc:Region.LimitViolation a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:range nc:PowerFlowResult .
 
 nc:RemedialAction.RemedialActionApplied a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "RemedialActionApplied"@en ;
-  rdfs:comment "The relationship of the applied remedial action and power flow result." ;
+  rdfs:label "RemedialActionApplied" ;
+  rdfs:comment "The relationship of the applied remedial action and power flow result."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -212,8 +214,8 @@ nc:RemedialAction.RemedialActionApplied a owl:ObjectProperty, owl:InverseFunctio
   rdfs:range nc:RemedialActionApplied .
 
 nc:RemedialActionApplied.PowerFlowResult a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "PowerFlowResult"@en ;
-  rdfs:comment "Power flow result that is obtained when the remedial action is applied." ;
+  rdfs:label "PowerFlowResult" ;
+  rdfs:comment "Power flow result that is obtained when the remedial action is applied."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
@@ -222,8 +224,8 @@ nc:RemedialActionApplied.PowerFlowResult a owl:ObjectProperty, owl:FunctionalPro
   rdfs:range nc:PowerFlowResult .
 
 nc:RemedialActionApplied.RemedialAction a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "RemedialAction"@en ;
-  rdfs:comment "Remedial action that is applied." ;
+  rdfs:label "RemedialAction" ;
+  rdfs:comment "Remedial action that is applied."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC" ;
@@ -232,8 +234,8 @@ nc:RemedialActionApplied.RemedialAction a owl:ObjectProperty, owl:FunctionalProp
   rdfs:range nc:RemedialAction .
 
 nc:RemedialActionApplied.StageForRemedialActionScheme a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "StageForRemedialActionScheme"@en ;
-  rdfs:comment "The stage of the remedial action scheme that is applied." ;
+  rdfs:label "StageForRemedialActionScheme" ;
+  rdfs:comment "The stage of the remedial action scheme that is applied."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -242,8 +244,8 @@ nc:RemedialActionApplied.StageForRemedialActionScheme a owl:ObjectProperty, owl:
   rdfs:range nc:Stage .
 
 nc:Stage.RemedialActionApplied a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "RemedialActionApplied"@en ;
-  rdfs:comment "The applied relationship between remedial action and a power flow result." ;
+  rdfs:label "RemedialActionApplied" ;
+  rdfs:comment "The applied relationship between remedial action and a power flow result."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -252,32 +254,32 @@ nc:Stage.RemedialActionApplied a owl:ObjectProperty, owl:InverseFunctionalProper
   rdfs:range nc:RemedialActionApplied .
 
 nc:PowerFlowResult.absoluteValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "absoluteValue"@en ;
-  rdfs:comment "Absolute value from a power flow calculation on a given terminal related to a given operational limit. For instance, if the operational limit is 1000 A and the current flow is 1100 A the absoluteValue is reported as 1100 A." ;
+  rdfs:label "absoluteValue" ;
+  rdfs:comment "Absolute value from a power flow calculation on a given terminal related to a given operational limit. For instance, if the operational limit is 1000 A and the current flow is 1100 A the absoluteValue is reported as 1100 A."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerFlowResult ;
   rdfs:range xsd:float .
 
 nc:PowerFlowResult.atTime a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "atTime"@en ;
-  rdfs:comment "The date and time of the scenario time that was studied and at which the limit violation occurred." ;
+  rdfs:label "atTime" ;
+  rdfs:comment "The date and time of the scenario time that was studied and at which the limit violation occurred."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerFlowResult ;
   rdfs:range xsd:dateTime .
 
 nc:PowerFlowResult.isViolation a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "isViolation"@en ;
-  rdfs:comment "True if the power flow result is violating the associated operational limit. False if it is not violating the associated operational limits." ;
+  rdfs:label "isViolation" ;
+  rdfs:comment "True if the power flow result is violating the associated operational limit. False if it is not violating the associated operational limits."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerFlowResult ;
   rdfs:range xsd:boolean .
 
 nc:PowerFlowResult.value a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "value"@en ;
-  rdfs:comment "The value of the limit violation in percent related to the value of the operational limit that is violated. For instance, if the operational limit is 1000 A and the current flow is 1100 A the value is reported as 110 %." ;
+  rdfs:label "value" ;
+  rdfs:comment "The value of the limit violation in percent related to the value of the operational limit that is violated. For instance, if the operational limit is 1000 A and the current flow is 1100 A the value is reported as 110 %."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
   cims:multiplicity cims:M:0..1 ;
@@ -288,8 +290,8 @@ nc:PowerFlowResult.value a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PowerFlowResult.valueA a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "valueA"@en ;
-  rdfs:comment "Current from a power flow calculation on a given terminal. The value shall be a positive value or zero." ;
+  rdfs:label "valueA" ;
+  rdfs:comment "Current from a power flow calculation on a given terminal. The value shall be a positive value or zero."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
   cims:multiplicity cims:M:0..1 ;
@@ -300,8 +302,8 @@ nc:PowerFlowResult.valueA a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PowerFlowResult.valueAngle a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "valueAngle"@en ;
-  rdfs:comment "Voltage angle value from a power flow calculation on a given terminal." ;
+  rdfs:label "valueAngle" ;
+  rdfs:comment "Voltage angle value from a power flow calculation on a given terminal."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.deg ;
   cims:multiplicity cims:M:0..1 ;
@@ -312,8 +314,8 @@ nc:PowerFlowResult.valueAngle a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PowerFlowResult.valueV a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "valueV"@en ;
-  rdfs:comment "Voltage value from a power flow calculation on a given terminal. The attribute shall be a positive value." ;
+  rdfs:label "valueV" ;
+  rdfs:comment "Voltage value from a power flow calculation on a given terminal. The attribute shall be a positive value."@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
   cims:multiplicity cims:M:0..1 ;
@@ -324,8 +326,8 @@ nc:PowerFlowResult.valueV a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PowerFlowResult.valueVA a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "valueVA"@en ;
-  rdfs:comment "Apparent power value from a power flow calculation on a given terminal." ;
+  rdfs:label "valueVA" ;
+  rdfs:comment "Apparent power value from a power flow calculation on a given terminal."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VA ;
   cims:multiplicity cims:M:0..1 ;
@@ -336,9 +338,9 @@ nc:PowerFlowResult.valueVA a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PowerFlowResult.valueVAR a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "valueVAR"@en ;
+  rdfs:label "valueVAR" ;
   rdfs:comment """Reactive power value from a power flow calculation on a given terminal.
-Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.""" ;
+Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VAr ;
   cims:multiplicity cims:M:0..1 ;
@@ -349,9 +351,9 @@ Load sign convention is used, i.e. positive sign means flow out from a Topologic
   rdfs:range xsd:float .
 
 nc:PowerFlowResult.valueW a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "valueW"@en ;
+  rdfs:label "valueW" ;
   rdfs:comment """Active power value from a power flow calculation on a given terminal. 
-Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.""" ;
+Load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -362,17 +364,17 @@ Load sign convention is used, i.e. positive sign means flow out from a Topologic
   rdfs:range xsd:float .
 
 nc:RemedialActionApplied.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "mRID"@en ;
+  rdfs:label "mRID" ;
   rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
-For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:RemedialActionApplied ;
   rdfs:range xsd:string .
 
 cim:ActivePower a qudt:QuantityKind ;
-  rdfs:label "ActivePower"@en ;
-  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current." ;
+  rdfs:label "ActivePower" ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   qudt:applicableUnit cim:UnitSymbol.W ;
   skos:exactMatch quantitykind:ActivePower .
@@ -384,8 +386,8 @@ cim:ActivePowerPerCurrentFlow skos:exactMatch quantitykind:ActivePowerPerCurrent
 cim:ActivePowerPerFrequency skos:exactMatch quantitykind:ActivePowerPerFrequency .
 
 cim:AngleDegrees a qudt:QuantityKind ;
-  rdfs:label "AngleDegrees"@en ;
-  rdfs:comment "Measurement of angle in degrees." ;
+  rdfs:label "AngleDegrees" ;
+  rdfs:comment "Measurement of angle in degrees."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   qudt:applicableUnit cim:UnitSymbol.deg ;
   skos:exactMatch quantitykind:Angle .
@@ -393,8 +395,8 @@ cim:AngleDegrees a qudt:QuantityKind ;
 cim:AngleRadians skos:exactMatch quantitykind:Angle .
 
 cim:ApparentPower a qudt:QuantityKind ;
-  rdfs:label "ApparentPower"@en ;
-  rdfs:comment "Product of the RMS value of the voltage and the RMS value of the current." ;
+  rdfs:label "ApparentPower" ;
+  rdfs:comment "Product of the RMS value of the voltage and the RMS value of the current."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   qudt:applicableUnit cim:UnitSymbol.VA ;
   skos:exactMatch quantitykind:ApparentPower .
@@ -406,8 +408,8 @@ cim:Capacitance skos:exactMatch quantitykind:Capacitance .
 cim:Conductance skos:exactMatch quantitykind:Conductance .
 
 cim:CurrentFlow a qudt:QuantityKind ;
-  rdfs:label "CurrentFlow"@en ;
-  rdfs:comment "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC." ;
+  rdfs:label "CurrentFlow" ;
+  rdfs:comment "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   qudt:applicableUnit cim:UnitSymbol.A ;
   skos:exactMatch quantitykind:ElectricCurrent .
@@ -423,8 +425,8 @@ cim:Money skos:exactMatch quantitykind:Currency .
 cim:PU skos:exactMatch quantitykind:DimensionlessRatio .
 
 cim:PerCent a qudt:QuantityKind ;
-  rdfs:label "PerCent"@en ;
-  rdfs:comment "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base." ;
+  rdfs:label "PerCent" ;
+  rdfs:comment "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   qudt:applicableUnit cim:UnitSymbol.none ;
   skos:exactMatch quantitykind:DimensionlessRatio .
@@ -434,8 +436,8 @@ cim:Pressure skos:exactMatch quantitykind:Pressure .
 cim:Reactance skos:exactMatch quantitykind:Reactance .
 
 cim:ReactivePower a qudt:QuantityKind ;
-  rdfs:label "ReactivePower"@en ;
-  rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current." ;
+  rdfs:label "ReactivePower" ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   qudt:applicableUnit cim:UnitSymbol.VAr ;
   skos:exactMatch quantitykind:ReactivePower .
@@ -454,69 +456,69 @@ cim:Temperature skos:exactMatch quantitykind:Temperature .
 
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
   rdfs:label "M" ;
-  rdfs:comment "Mega 10**6." ;
+  rdfs:comment "Mega 10**6."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E6 ;
   skos:exactMatch prefix:Mega .
 
 cim:UnitMultiplier.k a cim:UnitMultiplier ;
   rdfs:label "k" ;
-  rdfs:comment "Kilo 10**3." ;
+  rdfs:comment "Kilo 10**3."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E3 ;
   skos:exactMatch prefix:Kilo .
 
 cim:UnitMultiplier.none a cim:UnitMultiplier ;
   rdfs:label "none" ;
-  rdfs:comment "No multiplier or equivalently multiply by 1." ;
+  rdfs:comment "No multiplier or equivalently multiply by 1."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1.0 .
 
 cim:UnitSymbol.A a cim:UnitSymbol ;
   rdfs:label "A" ;
-  rdfs:comment "Current in amperes." ;
+  rdfs:comment "Current in amperes."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:A .
 
 cim:UnitSymbol.V a cim:UnitSymbol ;
   rdfs:label "V" ;
-  rdfs:comment "Electric potential in volts (W/A)." ;
+  rdfs:comment "Electric potential in volts (W/A)."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:V .
 
 cim:UnitSymbol.VA a cim:UnitSymbol ;
   rdfs:label "VA" ;
-  rdfs:comment "Apparent power in volt amperes. See also real power and reactive power." ;
+  rdfs:comment "Apparent power in volt amperes. See also real power and reactive power."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:V-A .
 
 cim:UnitSymbol.VAr a cim:UnitSymbol ;
   rdfs:label "VAr" ;
   rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
-Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.""" ;
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."""@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:V-A_Reactive .
 
 cim:UnitSymbol.W a cim:UnitSymbol ;
   rdfs:label "W" ;
-  rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power." ;
+  rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:W .
 
 cim:UnitSymbol.deg a cim:UnitSymbol ;
   rdfs:label "deg" ;
-  rdfs:comment "Plane angle in degrees." ;
+  rdfs:comment "Plane angle in degrees."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:DEG .
 
 cim:UnitSymbol.none a cim:UnitSymbol ;
   rdfs:label "none" ;
-  rdfs:comment "Dimension less quantity, e.g. count, per unit, etc." ;
+  rdfs:comment "Dimension less quantity, e.g. count, per unit, etc."@en ;
   cims:stereotype "enum" .
 
 cim:Voltage a qudt:QuantityKind ;
-  rdfs:label "Voltage"@en ;
-  rdfs:comment "Electrical voltage, can be both AC and DC." ;
+  rdfs:label "Voltage" ;
+  rdfs:comment "Electrical voltage, can be both AC and DC."@en ;
   cims:belongsToCategory sar:Package_SecurityAnalysisResultProfile ;
   qudt:applicableUnit cim:UnitSymbol.V ;
   skos:exactMatch quantitykind:Voltage .
@@ -526,14 +528,14 @@ cim:VoltagePerReactivePower skos:exactMatch quantitykind:VoltagePerReactivePower
 cim:VolumeFlowRate skos:exactMatch quantitykind:VolumeFlowRate .
 
 sar:Package_DocSecurityAnalysisResultProfile a cims:ClassCategory ;
-  rdfs:label "DocSecurityAnalysisResultProfile"@en ;
-  rdfs:comment "This package contains datatypes used only in the RDFS header." .
+  rdfs:label "DocSecurityAnalysisResultProfile" ;
+  rdfs:comment "This package contains datatypes used only in the RDFS header."@en .
 
 sar:Package_SecurityAnalysisResultProfile a cims:ClassCategory ;
-  rdfs:label "SecurityAnalysisResultProfile"@en ;
+  rdfs:label "SecurityAnalysisResultProfile" ;
   rdfs:comment """This package contains the security analysis result profile.
 This profile is not intended to replace the Topology (TP) and State Variables (SV) profiles. Its intention is to exchange power flow result that is relevant for security optimization, either through violation or through a loading threshold. Systems should not use this profile for dumping a full database. The modeling is optimized to have the minimum size in addition to a well defined value definition (e.g. active power, apparent power,etc.).
 Recommendation: If the terminals are connected with zero impedance, it is recommended to export only one terminal with a voltage (e.g. the terminal of a BusbarSection).
-The connection between Contingency and Remedial Action is given by the Remedial Action Profile. The connection between AssessedElement and PowerFlowResult is given by the OperationalLimit.""" .
+The connection between Contingency and Remedial Action is given by the Remedial Action Profile. The connection between AssessedElement and PowerFlowResult is given by the OperationalLimit."""@en .
 
 
