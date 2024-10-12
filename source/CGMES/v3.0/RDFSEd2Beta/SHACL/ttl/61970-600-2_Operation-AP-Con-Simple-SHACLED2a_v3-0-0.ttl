@@ -1,0 +1,1501 @@
+@prefix cim:     <http://iec.ch/TC57/CIM100#> .
+@prefix cims:    <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix eu:      <http://iec.ch/TC57/CIM100-European#> .
+@prefix op:      <http://iec.ch/TC57/ns/CIM/Operation-EU/Constraints#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix prof:    <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix profcim: <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+op:Accumulator  rdf:type  sh:NodeShape ;
+        sh:property     op:IdentifiedObject.name-cardinality , op:Measurement.unitMultiplier-datatype , op:Measurement.unitSymbol-datatype , op:IdentifiedObject.description-cardinality , op:Measurement.phases-cardinality , op:IdentifiedObject.mRID-datatype , op:Measurement.PowerSystemResource-valueType , op:Measurement.measurementType-cardinality , op:IdentifiedObject.mRID-cardinality , op:IdentifiedObject.name-datatype , op:Measurement.Terminal-valueType , op:Measurement.measurementType-datatype , op:Measurement.Terminal-cardinality , op:Measurement.unitMultiplier-cardinality , op:Measurement.phases-datatype , op:IdentifiedObject.description-datatype , op:Measurement.unitSymbol-cardinality , op:Measurement.PowerSystemResource-cardinality ;
+        sh:targetClass  cim:Accumulator .
+
+op:AccumulatorLimit  rdf:type  sh:NodeShape ;
+        sh:property     op:AccumulatorLimit.value-datatype , op:AccumulatorLimit.LimitSet-cardinality , op:IdentifiedObject.description-cardinality , op:IdentifiedObject.name-datatype , op:IdentifiedObject.description-datatype , op:IdentifiedObject.mRID-cardinality , op:IdentifiedObject.name-cardinality , op:IdentifiedObject.mRID-datatype , op:AccumulatorLimit.LimitSet-valueType , op:AccumulatorLimit.value-cardinality ;
+        sh:targetClass  cim:AccumulatorLimit .
+
+op:AccumulatorLimit.LimitSet-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "AccumulatorLimit.LimitSet-cardinality" ;
+        sh:order        37 ;
+        sh:path         cim:AccumulatorLimit.LimitSet ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorLimit.LimitSet-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:AccumulatorLimitSet ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:AccumulatorLimitSet." ;
+        sh:name         "AccumulatorLimit.LimitSet-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        0 ;
+        sh:path         cim:AccumulatorLimit.LimitSet ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorLimit.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "AccumulatorLimit.value-cardinality" ;
+        sh:order        0 ;
+        sh:path         cim:AccumulatorLimit.value ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorLimit.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "AccumulatorLimit.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        0 ;
+        sh:path         cim:AccumulatorLimit.value ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorLimitSet
+        rdf:type        sh:NodeShape ;
+        sh:property     op:LimitSet.isPercentageLimits-cardinality , op:IdentifiedObject.description-cardinality , op:IdentifiedObject.name-cardinality , op:LimitSet.isPercentageLimits-datatype , op:IdentifiedObject.mRID-datatype , op:AccumulatorLimitSet.Measurements-cardinality , op:IdentifiedObject.description-datatype , op:IdentifiedObject.name-datatype , op:AccumulatorLimitSet.Measurements-valueType , op:IdentifiedObject.mRID-cardinality ;
+        sh:targetClass  cim:AccumulatorLimitSet .
+
+op:AccumulatorLimitSet.Measurements-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:message      "Cardinality violation. Missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "AccumulatorLimitSet.Measurements-cardinality" ;
+        sh:order        38 ;
+        sh:path         cim:AccumulatorLimitSet.Measurements ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorLimitSet.Measurements-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:Accumulator ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:Accumulator." ;
+        sh:name         "AccumulatorLimitSet.Measurements-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        1 ;
+        sh:path         cim:AccumulatorLimitSet.Measurements ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorReset  rdf:type  sh:NodeShape ;
+        sh:property     op:IdentifiedObject.description-cardinality , op:AccumulatorReset.AccumulatorValue-valueType , op:Control.unitMultiplier-cardinality , op:Control.unitMultiplier-datatype , op:Control.operationInProgress-cardinality , op:AccumulatorReset.AccumulatorValue-cardinality , op:Control.unitSymbol-cardinality , op:Control.timeStamp-cardinality , op:Control.PowerSystemResource-cardinality , op:Control.controlType-cardinality , op:Control.PowerSystemResource-valueType , op:Control.unitSymbol-datatype , op:IdentifiedObject.name-datatype , op:IdentifiedObject.mRID-cardinality , op:IdentifiedObject.description-datatype , op:IdentifiedObject.name-cardinality , op:Control.controlType-datatype , op:Control.operationInProgress-datatype , op:Control.timeStamp-datatype , op:IdentifiedObject.mRID-datatype ;
+        sh:targetClass  cim:AccumulatorReset .
+
+op:AccumulatorReset.AccumulatorValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "AccumulatorReset.AccumulatorValue-cardinality" ;
+        sh:order        39 ;
+        sh:path         cim:AccumulatorReset.AccumulatorValue ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorReset.AccumulatorValue-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:AccumulatorValue ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:AccumulatorValue." ;
+        sh:name         "AccumulatorReset.AccumulatorValue-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        2 ;
+        sh:path         cim:AccumulatorReset.AccumulatorValue ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorValue  rdf:type  sh:NodeShape ;
+        sh:property     op:AccumulatorValue.Accumulator-cardinality , op:IdentifiedObject.mRID-datatype , op:IdentifiedObject.description-cardinality , op:MeasurementValue.MeasurementValueSource-valueType , op:MeasurementValue.MeasurementValueSource-cardinality , op:IdentifiedObject.name-cardinality , op:MeasurementValue.timeStamp-cardinality , op:IdentifiedObject.description-datatype , op:AccumulatorValue.Accumulator-valueType , op:MeasurementValue.sensorAccuracy-cardinality , op:IdentifiedObject.mRID-cardinality , op:MeasurementValue.sensorAccuracy-datatype , op:MeasurementValue.timeStamp-datatype , op:IdentifiedObject.name-datatype ;
+        sh:targetClass  cim:AccumulatorValue .
+
+op:AccumulatorValue.Accumulator-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "AccumulatorValue.Accumulator-cardinality" ;
+        sh:order        40 ;
+        sh:path         cim:AccumulatorValue.Accumulator ;
+        sh:severity     sh:Violation .
+
+op:AccumulatorValue.Accumulator-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:Accumulator ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:Accumulator." ;
+        sh:name         "AccumulatorValue.Accumulator-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        3 ;
+        sh:path         cim:AccumulatorValue.Accumulator ;
+        sh:severity     sh:Violation .
+
+op:Analog  rdf:type     sh:NodeShape ;
+        sh:property     op:Measurement.Terminal-valueType , op:IdentifiedObject.name-datatype , op:Measurement.phases-cardinality , op:Measurement.phases-datatype , op:Measurement.PowerSystemResource-cardinality , op:Measurement.PowerSystemResource-valueType , op:Measurement.measurementType-cardinality , op:Measurement.unitSymbol-datatype , op:IdentifiedObject.name-cardinality , op:IdentifiedObject.mRID-cardinality , op:Analog.positiveFlowIn-datatype , op:Measurement.measurementType-datatype , op:Measurement.Terminal-cardinality , op:IdentifiedObject.description-datatype , op:Analog.positiveFlowIn-cardinality , op:IdentifiedObject.description-cardinality , op:Measurement.unitMultiplier-datatype , op:Measurement.unitMultiplier-cardinality , op:Measurement.unitSymbol-cardinality , op:IdentifiedObject.mRID-datatype ;
+        sh:targetClass  cim:Analog .
+
+op:Analog.positiveFlowIn-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Analog.positiveFlowIn-cardinality" ;
+        sh:order        1 ;
+        sh:path         cim:Analog.positiveFlowIn ;
+        sh:severity     sh:Violation .
+
+op:Analog.positiveFlowIn-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the positiveFlowIn." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Analog.positiveFlowIn-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        1 ;
+        sh:path         cim:Analog.positiveFlowIn ;
+        sh:severity     sh:Violation .
+
+op:AnalogControl.AnalogValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "AnalogControl.AnalogValue-cardinality" ;
+        sh:order        41 ;
+        sh:path         cim:AnalogControl.AnalogValue ;
+        sh:severity     sh:Violation .
+
+op:AnalogControl.AnalogValue-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:AnalogValue ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:AnalogValue." ;
+        sh:name         "AnalogControl.AnalogValue-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        4 ;
+        sh:path         cim:AnalogControl.AnalogValue ;
+        sh:severity     sh:Violation .
+
+op:AnalogControl.maxValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (maxValue)." ;
+        sh:minCount     1 ;
+        sh:name         "AnalogControl.maxValue-cardinality" ;
+        sh:order        2 ;
+        sh:path         cim:AnalogControl.maxValue ;
+        sh:severity     sh:Violation .
+
+op:AnalogControl.maxValue-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the maxValue." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "AnalogControl.maxValue-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        2 ;
+        sh:path         cim:AnalogControl.maxValue ;
+        sh:severity     sh:Violation .
+
+op:AnalogControl.minValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (minValue)." ;
+        sh:minCount     1 ;
+        sh:name         "AnalogControl.minValue-cardinality" ;
+        sh:order        3 ;
+        sh:path         cim:AnalogControl.minValue ;
+        sh:severity     sh:Violation .
+
+op:AnalogControl.minValue-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the minValue." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "AnalogControl.minValue-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        3 ;
+        sh:path         cim:AnalogControl.minValue ;
+        sh:severity     sh:Violation .
+
+op:AnalogLimit  rdf:type  sh:NodeShape ;
+        sh:property     op:AnalogLimit.value-cardinality , op:IdentifiedObject.mRID-cardinality , op:IdentifiedObject.name-datatype , op:IdentifiedObject.name-cardinality , op:IdentifiedObject.description-datatype , op:AnalogLimit.LimitSet-cardinality , op:AnalogLimit.LimitSet-valueType , op:IdentifiedObject.mRID-datatype , op:AnalogLimit.value-datatype , op:IdentifiedObject.description-cardinality ;
+        sh:targetClass  cim:AnalogLimit .
+
+op:AnalogLimit.LimitSet-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "AnalogLimit.LimitSet-cardinality" ;
+        sh:order        42 ;
+        sh:path         cim:AnalogLimit.LimitSet ;
+        sh:severity     sh:Violation .
+
+op:AnalogLimit.LimitSet-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:AnalogLimitSet ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:AnalogLimitSet." ;
+        sh:name         "AnalogLimit.LimitSet-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        5 ;
+        sh:path         cim:AnalogLimit.LimitSet ;
+        sh:severity     sh:Violation .
+
+op:AnalogLimit.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "AnalogLimit.value-cardinality" ;
+        sh:order        4 ;
+        sh:path         cim:AnalogLimit.value ;
+        sh:severity     sh:Violation .
+
+op:AnalogLimit.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "AnalogLimit.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        4 ;
+        sh:path         cim:AnalogLimit.value ;
+        sh:severity     sh:Violation .
+
+op:AnalogLimitSet  rdf:type  sh:NodeShape ;
+        sh:property     op:IdentifiedObject.description-datatype , op:AnalogLimitSet.Measurements-valueType , op:IdentifiedObject.name-datatype , op:IdentifiedObject.description-cardinality , op:IdentifiedObject.name-cardinality , op:LimitSet.isPercentageLimits-cardinality , op:IdentifiedObject.mRID-datatype , op:LimitSet.isPercentageLimits-datatype , op:AnalogLimitSet.Measurements-cardinality , op:IdentifiedObject.mRID-cardinality ;
+        sh:targetClass  cim:AnalogLimitSet .
+
+op:AnalogLimitSet.Measurements-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:message      "Cardinality violation. Missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "AnalogLimitSet.Measurements-cardinality" ;
+        sh:order        43 ;
+        sh:path         cim:AnalogLimitSet.Measurements ;
+        sh:severity     sh:Violation .
+
+op:AnalogLimitSet.Measurements-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:Analog ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:Analog." ;
+        sh:name         "AnalogLimitSet.Measurements-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        6 ;
+        sh:path         cim:AnalogLimitSet.Measurements ;
+        sh:severity     sh:Violation .
+
+op:AnalogValue  rdf:type  sh:NodeShape ;
+        sh:property     op:MeasurementValue.sensorAccuracy-cardinality , op:IdentifiedObject.description-cardinality , op:IdentifiedObject.name-cardinality , op:MeasurementValue.MeasurementValueSource-valueType , op:IdentifiedObject.description-datatype , op:MeasurementValue.timeStamp-cardinality , op:MeasurementValue.timeStamp-datatype , op:IdentifiedObject.mRID-cardinality , op:MeasurementValue.sensorAccuracy-datatype , op:AnalogValue.Analog-cardinality , op:MeasurementValue.MeasurementValueSource-cardinality , op:IdentifiedObject.name-datatype , op:AnalogValue.Analog-valueType , op:IdentifiedObject.mRID-datatype ;
+        sh:targetClass  cim:AnalogValue .
+
+op:AnalogValue.Analog-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "AnalogValue.Analog-cardinality" ;
+        sh:order        44 ;
+        sh:path         cim:AnalogValue.Analog ;
+        sh:severity     sh:Violation .
+
+op:AnalogValue.Analog-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:Analog ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:Analog." ;
+        sh:name         "AnalogValue.Analog-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        7 ;
+        sh:path         cim:AnalogValue.Analog ;
+        sh:severity     sh:Violation .
+
+op:AssociationsGroup  rdf:type  sh:PropertyGroup ;
+        rdfs:label  "Associations" ;
+        sh:order    2 .
+
+op:CardinalityGroup  rdf:type  sh:PropertyGroup ;
+        rdfs:label  "Cardinality" ;
+        sh:order    0 .
+
+op:Command  rdf:type    sh:NodeShape ;
+        sh:property     op:Control.controlType-datatype , op:Control.unitSymbol-datatype , op:Control.PowerSystemResource-valueType , op:Command.normalValue-datatype , op:IdentifiedObject.mRID-datatype , op:Command.value-datatype , op:Control.PowerSystemResource-cardinality , op:Control.operationInProgress-cardinality , op:Control.timeStamp-datatype , op:Control.controlType-cardinality , op:IdentifiedObject.name-datatype , op:Control.timeStamp-cardinality , op:Command.ValueAliasSet-valueType , op:Control.operationInProgress-datatype , op:Control.unitMultiplier-cardinality , op:IdentifiedObject.mRID-cardinality , op:Command.ValueAliasSet-cardinality , op:IdentifiedObject.description-datatype , op:Control.unitSymbol-cardinality , op:Command.normalValue-cardinality , op:IdentifiedObject.name-cardinality , op:IdentifiedObject.description-cardinality , op:Command.DiscreteValue-valueType , op:Command.DiscreteValue-cardinality , op:Control.unitMultiplier-datatype , op:Command.value-cardinality ;
+        sh:targetClass  cim:Command .
+
+op:Command.DiscreteValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "Command.DiscreteValue-cardinality" ;
+        sh:order        46 ;
+        sh:path         cim:Command.DiscreteValue ;
+        sh:severity     sh:Violation .
+
+op:Command.DiscreteValue-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:DiscreteValue ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:DiscreteValue." ;
+        sh:name         "Command.DiscreteValue-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        9 ;
+        sh:path         cim:Command.DiscreteValue ;
+        sh:severity     sh:Violation .
+
+op:Command.ValueAliasSet-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Command.ValueAliasSet-cardinality" ;
+        sh:order        45 ;
+        sh:path         cim:Command.ValueAliasSet ;
+        sh:severity     sh:Violation .
+
+op:Command.ValueAliasSet-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:ValueAliasSet ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:ValueAliasSet." ;
+        sh:name         "Command.ValueAliasSet-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        8 ;
+        sh:path         cim:Command.ValueAliasSet ;
+        sh:severity     sh:Violation .
+
+op:Command.normalValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (normalValue)." ;
+        sh:minCount     1 ;
+        sh:name         "Command.normalValue-cardinality" ;
+        sh:order        5 ;
+        sh:path         cim:Command.normalValue ;
+        sh:severity     sh:Violation .
+
+op:Command.normalValue-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the normalValue." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Command.normalValue-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        5 ;
+        sh:path         cim:Command.normalValue ;
+        sh:severity     sh:Violation .
+
+op:Command.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "Command.value-cardinality" ;
+        sh:order        6 ;
+        sh:path         cim:Command.value ;
+        sh:severity     sh:Violation .
+
+op:Command.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Command.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        6 ;
+        sh:path         cim:Command.value ;
+        sh:severity     sh:Violation .
+
+op:Control.PowerSystemResource-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Control.PowerSystemResource-cardinality" ;
+        sh:order        47 ;
+        sh:path         cim:Control.PowerSystemResource ;
+        sh:severity     sh:Violation .
+
+op:Control.PowerSystemResource-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:PowerSystemResource ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:PowerSystemResource." ;
+        sh:name         "Control.PowerSystemResource-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        10 ;
+        sh:path         cim:Control.PowerSystemResource ;
+        sh:severity     sh:Violation .
+op:Control.controlType-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (controlType)." ;
+        sh:minCount     1 ;
+        sh:name         "Control.controlType-cardinality" ;
+        sh:order        7 ;
+        sh:path         cim:Control.controlType ;
+        sh:severity     sh:Violation .
+
+op:Control.controlType-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the controlType." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Control.controlType-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        7 ;
+        sh:path         cim:Control.controlType ;
+        sh:severity     sh:Violation .
+
+op:Control.operationInProgress-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Control.operationInProgress-cardinality" ;
+        sh:order        8 ;
+        sh:path         cim:Control.operationInProgress ;
+        sh:severity     sh:Violation .
+
+op:Control.operationInProgress-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the operationInProgress." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Control.operationInProgress-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        8 ;
+        sh:path         cim:Control.operationInProgress ;
+        sh:severity     sh:Violation .
+
+op:Control.timeStamp-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Control.timeStamp-cardinality" ;
+        sh:order        9 ;
+        sh:path         cim:Control.timeStamp ;
+        sh:severity     sh:Violation .
+
+op:Control.timeStamp-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:datetime ;
+        sh:description  "This constraint validates the datatype of the timeStamp." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Control.timeStamp-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        9 ;
+        sh:path         cim:Control.timeStamp ;
+        sh:severity     sh:Violation .
+
+op:Control.unitMultiplier-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Control.unitMultiplier-cardinality" ;
+        sh:order        10 ;
+        sh:path         cim:Control.unitMultiplier ;
+        sh:severity     sh:Violation .
+
+op:Control.unitMultiplier-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the unitMultiplier." ;
+        sh:group        op:DatatypesGroup ;
+        sh:in           ( cim:UnitMultiplier.y cim:UnitMultiplier.z cim:UnitMultiplier.a cim:UnitMultiplier.f cim:UnitMultiplier.p cim:UnitMultiplier.n cim:UnitMultiplier.micro cim:UnitMultiplier.m cim:UnitMultiplier.c cim:UnitMultiplier.d cim:UnitMultiplier.none cim:UnitMultiplier.da cim:UnitMultiplier.h cim:UnitMultiplier.k cim:UnitMultiplier.M cim:UnitMultiplier.G cim:UnitMultiplier.T cim:UnitMultiplier.P cim:UnitMultiplier.E cim:UnitMultiplier.Z cim:UnitMultiplier.Y ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "Control.unitMultiplier-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        10 ;
+        sh:path         cim:Control.unitMultiplier ;
+        sh:severity     sh:Violation .
+
+op:Control.unitSymbol-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Control.unitSymbol-cardinality" ;
+        sh:order        11 ;
+        sh:path         cim:Control.unitSymbol ;
+        sh:severity     sh:Violation .
+
+op:Control.unitSymbol-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the unitSymbol." ;
+        sh:group        op:DatatypesGroup ;
+        sh:in           ( cim:UnitSymbol.none cim:UnitSymbol.m cim:UnitSymbol.kg cim:UnitSymbol.s cim:UnitSymbol.A cim:UnitSymbol.K cim:UnitSymbol.mol cim:UnitSymbol.cd cim:UnitSymbol.deg cim:UnitSymbol.rad cim:UnitSymbol.sr cim:UnitSymbol.Gy cim:UnitSymbol.Bq cim:UnitSymbol.degC cim:UnitSymbol.Sv cim:UnitSymbol.F cim:UnitSymbol.C cim:UnitSymbol.S cim:UnitSymbol.H cim:UnitSymbol.V cim:UnitSymbol.ohm cim:UnitSymbol.J cim:UnitSymbol.N cim:UnitSymbol.Hz cim:UnitSymbol.lx cim:UnitSymbol.lm cim:UnitSymbol.Wb cim:UnitSymbol.T cim:UnitSymbol.W cim:UnitSymbol.Pa cim:UnitSymbol.m2 cim:UnitSymbol.m3 cim:UnitSymbol.mPers cim:UnitSymbol.mPers2 cim:UnitSymbol.m3Pers cim:UnitSymbol.mPerm3 cim:UnitSymbol.kgm cim:UnitSymbol.kgPerm3 cim:UnitSymbol.m2Pers cim:UnitSymbol.WPermK cim:UnitSymbol.JPerK cim:UnitSymbol.ppm cim:UnitSymbol.rotPers cim:UnitSymbol.radPers cim:UnitSymbol.WPerm2 cim:UnitSymbol.JPerm2 cim:UnitSymbol.SPerm cim:UnitSymbol.KPers cim:UnitSymbol.PaPers cim:UnitSymbol.JPerkgK cim:UnitSymbol.VA cim:UnitSymbol.VAr cim:UnitSymbol.cosPhi cim:UnitSymbol.Vs cim:UnitSymbol.V2 cim:UnitSymbol.As cim:UnitSymbol.A2 cim:UnitSymbol.A2s cim:UnitSymbol.VAh cim:UnitSymbol.Wh cim:UnitSymbol.VArh cim:UnitSymbol.VPerHz cim:UnitSymbol.HzPers cim:UnitSymbol.character cim:UnitSymbol.charPers cim:UnitSymbol.kgm2 cim:UnitSymbol.dB cim:UnitSymbol.WPers cim:UnitSymbol.lPers cim:UnitSymbol.dBm cim:UnitSymbol.h cim:UnitSymbol.min cim:UnitSymbol.Q cim:UnitSymbol.Qh cim:UnitSymbol.ohmm cim:UnitSymbol.APerm cim:UnitSymbol.V2h cim:UnitSymbol.A2h cim:UnitSymbol.Ah cim:UnitSymbol.count cim:UnitSymbol.ft3 cim:UnitSymbol.m3Perh cim:UnitSymbol.gal cim:UnitSymbol.Btu cim:UnitSymbol.l cim:UnitSymbol.lPerh cim:UnitSymbol.lPerl cim:UnitSymbol.gPerg cim:UnitSymbol.molPerm3 cim:UnitSymbol.molPermol cim:UnitSymbol.molPerkg cim:UnitSymbol.sPers cim:UnitSymbol.HzPerHz cim:UnitSymbol.VPerV cim:UnitSymbol.APerA cim:UnitSymbol.VPerVA cim:UnitSymbol.rev cim:UnitSymbol.kat cim:UnitSymbol.JPerkg cim:UnitSymbol.m3Uncompensated cim:UnitSymbol.m3Compensated cim:UnitSymbol.WPerW cim:UnitSymbol.therm cim:UnitSymbol.onePerm cim:UnitSymbol.m3Perkg cim:UnitSymbol.Pas cim:UnitSymbol.Nm cim:UnitSymbol.NPerm cim:UnitSymbol.radPers2 cim:UnitSymbol.JPerm3 cim:UnitSymbol.VPerm cim:UnitSymbol.CPerm3 cim:UnitSymbol.CPerm2 cim:UnitSymbol.FPerm cim:UnitSymbol.HPerm cim:UnitSymbol.JPermol cim:UnitSymbol.JPermolK cim:UnitSymbol.CPerkg cim:UnitSymbol.GyPers cim:UnitSymbol.WPersr cim:UnitSymbol.WPerm2sr cim:UnitSymbol.katPerm3 cim:UnitSymbol.d cim:UnitSymbol.anglemin cim:UnitSymbol.anglesec cim:UnitSymbol.ha cim:UnitSymbol.tonne cim:UnitSymbol.bar cim:UnitSymbol.mmHg cim:UnitSymbol.M cim:UnitSymbol.kn cim:UnitSymbol.Mx cim:UnitSymbol.G cim:UnitSymbol.Oe cim:UnitSymbol.Vh cim:UnitSymbol.WPerA cim:UnitSymbol.onePerHz cim:UnitSymbol.VPerVAr cim:UnitSymbol.ohmPerm cim:UnitSymbol.kgPerJ cim:UnitSymbol.JPers ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "Control.unitSymbol-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        11 ;
+        sh:path         cim:Control.unitSymbol ;
+        sh:severity     sh:Violation .
+
+op:DatatypesGroup  rdf:type  sh:PropertyGroup ;
+        rdfs:label  "Datatypes" ;
+        sh:order    1 .
+
+op:Discrete  rdf:type   sh:NodeShape ;
+        sh:property     op:Measurement.unitSymbol-datatype , op:IdentifiedObject.mRID-datatype , op:Measurement.unitSymbol-cardinality , op:Measurement.phases-cardinality , op:Discrete.ValueAliasSet-valueType , op:IdentifiedObject.name-cardinality , op:Measurement.PowerSystemResource-valueType , op:Measurement.Terminal-valueType , op:IdentifiedObject.description-datatype , op:Measurement.unitMultiplier-cardinality , op:Measurement.measurementType-datatype , op:IdentifiedObject.description-cardinality , op:Measurement.phases-datatype , op:Measurement.Terminal-cardinality , op:Discrete.ValueAliasSet-cardinality , op:Measurement.PowerSystemResource-cardinality , op:Measurement.measurementType-cardinality , op:Measurement.unitMultiplier-datatype , op:IdentifiedObject.mRID-cardinality , op:IdentifiedObject.name-datatype ;
+        sh:targetClass  cim:Discrete .
+
+op:Discrete.ValueAliasSet-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Discrete.ValueAliasSet-cardinality" ;
+        sh:order        48 ;
+        sh:path         cim:Discrete.ValueAliasSet ;
+        sh:severity     sh:Violation .
+
+op:Discrete.ValueAliasSet-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:ValueAliasSet ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:ValueAliasSet." ;
+        sh:name         "Discrete.ValueAliasSet-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        11 ;
+        sh:path         cim:Discrete.ValueAliasSet ;
+        sh:severity     sh:Violation .
+
+op:DiscreteValue  rdf:type  sh:NodeShape ;
+        sh:property     op:MeasurementValue.sensorAccuracy-cardinality , op:DiscreteValue.Discrete-cardinality , op:IdentifiedObject.mRID-cardinality , op:MeasurementValue.timeStamp-datatype , op:MeasurementValue.MeasurementValueSource-valueType , op:IdentifiedObject.description-datatype , op:MeasurementValue.MeasurementValueSource-cardinality , op:IdentifiedObject.name-datatype , op:IdentifiedObject.name-cardinality , op:MeasurementValue.sensorAccuracy-datatype , op:DiscreteValue.Discrete-valueType , op:MeasurementValue.timeStamp-cardinality , op:IdentifiedObject.description-cardinality , op:IdentifiedObject.mRID-datatype ;
+        sh:targetClass  cim:DiscreteValue .
+
+op:DiscreteValue.Discrete-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "DiscreteValue.Discrete-cardinality" ;
+        sh:order        49 ;
+        sh:path         cim:DiscreteValue.Discrete ;
+        sh:severity     sh:Violation .
+
+op:DiscreteValue.Discrete-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:Discrete ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:Discrete." ;
+        sh:name         "DiscreteValue.Discrete-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        12 ;
+        sh:path         cim:DiscreteValue.Discrete ;
+        sh:severity     sh:Violation .
+
+op:IdentifiedObject.description-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "IdentifiedObject.description-cardinality" ;
+        sh:order        12 ;
+        sh:path         cim:IdentifiedObject.description ;
+        sh:severity     sh:Violation .
+
+op:IdentifiedObject.description-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the description." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.description-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        12 ;
+        sh:path         cim:IdentifiedObject.description ;
+        sh:severity     sh:Violation .
+
+op:IdentifiedObject.mRID-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (mRID)." ;
+        sh:minCount     1 ;
+        sh:name         "IdentifiedObject.mRID-cardinality" ;
+        sh:order        13 ;
+        sh:path         cim:IdentifiedObject.mRID ;
+        sh:severity     sh:Violation .
+
+op:IdentifiedObject.mRID-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the mRID." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.mRID-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        13 ;
+        sh:path         cim:IdentifiedObject.mRID ;
+        sh:severity     sh:Violation .
+
+op:IdentifiedObject.name-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (name)." ;
+        sh:minCount     1 ;
+        sh:name         "IdentifiedObject.name-cardinality" ;
+        sh:order        14 ;
+        sh:path         cim:IdentifiedObject.name ;
+        sh:severity     sh:Violation .
+
+op:IdentifiedObject.name-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the name." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.name-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        14 ;
+        sh:path         cim:IdentifiedObject.name ;
+        sh:severity     sh:Violation .
+
+op:LimitSet.isPercentageLimits-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "LimitSet.isPercentageLimits-cardinality" ;
+        sh:order        15 ;
+        sh:path         cim:LimitSet.isPercentageLimits ;
+        sh:severity     sh:Violation .
+
+op:LimitSet.isPercentageLimits-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the isPercentageLimits." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "LimitSet.isPercentageLimits-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        15 ;
+        sh:path         cim:LimitSet.isPercentageLimits ;
+        sh:severity     sh:Violation .
+
+op:Measurement.PowerSystemResource-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "Measurement.PowerSystemResource-cardinality" ;
+        sh:order        50 ;
+        sh:path         cim:Measurement.PowerSystemResource ;
+        sh:severity     sh:Violation .
+
+op:Measurement.PowerSystemResource-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:PowerSystemResource ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:PowerSystemResource." ;
+        sh:name         "Measurement.PowerSystemResource-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        13 ;
+        sh:path         cim:Measurement.PowerSystemResource ;
+        sh:severity     sh:Violation .
+
+op:Measurement.Terminal-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Measurement.Terminal-cardinality" ;
+        sh:order        51 ;
+        sh:path         cim:Measurement.Terminal ;
+        sh:severity     sh:Violation .
+
+op:Measurement.Terminal-valueType
+        rdf:type  sh:NodeShape ;
+        sh:or     () .
+
+op:Measurement.measurementType-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (measurementType)." ;
+        sh:minCount     1 ;
+        sh:name         "Measurement.measurementType-cardinality" ;
+        sh:order        16 ;
+        sh:path         cim:Measurement.measurementType ;
+        sh:severity     sh:Violation .
+
+op:Measurement.measurementType-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the measurementType." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Measurement.measurementType-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        16 ;
+        sh:path         cim:Measurement.measurementType ;
+        sh:severity     sh:Violation .
+
+op:Measurement.phases-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Measurement.phases-cardinality" ;
+        sh:order        17 ;
+        sh:path         cim:Measurement.phases ;
+        sh:severity     sh:Violation .
+
+op:Measurement.phases-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the phases." ;
+        sh:group        op:DatatypesGroup ;
+        sh:in           ( cim:PhaseCode.ABCN cim:PhaseCode.ABC cim:PhaseCode.ABN cim:PhaseCode.ACN cim:PhaseCode.BCN cim:PhaseCode.AB cim:PhaseCode.AC cim:PhaseCode.BC cim:PhaseCode.AN cim:PhaseCode.BN cim:PhaseCode.CN cim:PhaseCode.A cim:PhaseCode.B cim:PhaseCode.C cim:PhaseCode.N cim:PhaseCode.s1N cim:PhaseCode.s2N cim:PhaseCode.s12N cim:PhaseCode.s1 cim:PhaseCode.s2 cim:PhaseCode.s12 cim:PhaseCode.none cim:PhaseCode.X cim:PhaseCode.XY cim:PhaseCode.XN cim:PhaseCode.XYN ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "Measurement.phases-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        17 ;
+        sh:path         cim:Measurement.phases ;
+        sh:severity     sh:Violation .
+
+op:Measurement.unitMultiplier-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (unitMultiplier)." ;
+        sh:minCount     1 ;
+        sh:name         "Measurement.unitMultiplier-cardinality" ;
+        sh:order        18 ;
+        sh:path         cim:Measurement.unitMultiplier ;
+        sh:severity     sh:Violation .
+
+op:Measurement.unitMultiplier-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the unitMultiplier." ;
+        sh:group        op:DatatypesGroup ;
+        sh:in           ( cim:UnitMultiplier.y cim:UnitMultiplier.z cim:UnitMultiplier.a cim:UnitMultiplier.f cim:UnitMultiplier.p cim:UnitMultiplier.n cim:UnitMultiplier.micro cim:UnitMultiplier.m cim:UnitMultiplier.c cim:UnitMultiplier.d cim:UnitMultiplier.none cim:UnitMultiplier.da cim:UnitMultiplier.h cim:UnitMultiplier.k cim:UnitMultiplier.M cim:UnitMultiplier.G cim:UnitMultiplier.T cim:UnitMultiplier.P cim:UnitMultiplier.E cim:UnitMultiplier.Z cim:UnitMultiplier.Y ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "Measurement.unitMultiplier-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        18 ;
+        sh:path         cim:Measurement.unitMultiplier ;
+        sh:severity     sh:Violation .
+
+op:Measurement.unitSymbol-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (unitSymbol)." ;
+        sh:minCount     1 ;
+        sh:name         "Measurement.unitSymbol-cardinality" ;
+        sh:order        19 ;
+        sh:path         cim:Measurement.unitSymbol ;
+        sh:severity     sh:Violation .
+
+op:Measurement.unitSymbol-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the unitSymbol." ;
+        sh:group        op:DatatypesGroup ;
+        sh:in           ( cim:UnitSymbol.none cim:UnitSymbol.m cim:UnitSymbol.kg cim:UnitSymbol.s cim:UnitSymbol.A cim:UnitSymbol.K cim:UnitSymbol.mol cim:UnitSymbol.cd cim:UnitSymbol.deg cim:UnitSymbol.rad cim:UnitSymbol.sr cim:UnitSymbol.Gy cim:UnitSymbol.Bq cim:UnitSymbol.degC cim:UnitSymbol.Sv cim:UnitSymbol.F cim:UnitSymbol.C cim:UnitSymbol.S cim:UnitSymbol.H cim:UnitSymbol.V cim:UnitSymbol.ohm cim:UnitSymbol.J cim:UnitSymbol.N cim:UnitSymbol.Hz cim:UnitSymbol.lx cim:UnitSymbol.lm cim:UnitSymbol.Wb cim:UnitSymbol.T cim:UnitSymbol.W cim:UnitSymbol.Pa cim:UnitSymbol.m2 cim:UnitSymbol.m3 cim:UnitSymbol.mPers cim:UnitSymbol.mPers2 cim:UnitSymbol.m3Pers cim:UnitSymbol.mPerm3 cim:UnitSymbol.kgm cim:UnitSymbol.kgPerm3 cim:UnitSymbol.m2Pers cim:UnitSymbol.WPermK cim:UnitSymbol.JPerK cim:UnitSymbol.ppm cim:UnitSymbol.rotPers cim:UnitSymbol.radPers cim:UnitSymbol.WPerm2 cim:UnitSymbol.JPerm2 cim:UnitSymbol.SPerm cim:UnitSymbol.KPers cim:UnitSymbol.PaPers cim:UnitSymbol.JPerkgK cim:UnitSymbol.VA cim:UnitSymbol.VAr cim:UnitSymbol.cosPhi cim:UnitSymbol.Vs cim:UnitSymbol.V2 cim:UnitSymbol.As cim:UnitSymbol.A2 cim:UnitSymbol.A2s cim:UnitSymbol.VAh cim:UnitSymbol.Wh cim:UnitSymbol.VArh cim:UnitSymbol.VPerHz cim:UnitSymbol.HzPers cim:UnitSymbol.character cim:UnitSymbol.charPers cim:UnitSymbol.kgm2 cim:UnitSymbol.dB cim:UnitSymbol.WPers cim:UnitSymbol.lPers cim:UnitSymbol.dBm cim:UnitSymbol.h cim:UnitSymbol.min cim:UnitSymbol.Q cim:UnitSymbol.Qh cim:UnitSymbol.ohmm cim:UnitSymbol.APerm cim:UnitSymbol.V2h cim:UnitSymbol.A2h cim:UnitSymbol.Ah cim:UnitSymbol.count cim:UnitSymbol.ft3 cim:UnitSymbol.m3Perh cim:UnitSymbol.gal cim:UnitSymbol.Btu cim:UnitSymbol.l cim:UnitSymbol.lPerh cim:UnitSymbol.lPerl cim:UnitSymbol.gPerg cim:UnitSymbol.molPerm3 cim:UnitSymbol.molPermol cim:UnitSymbol.molPerkg cim:UnitSymbol.sPers cim:UnitSymbol.HzPerHz cim:UnitSymbol.VPerV cim:UnitSymbol.APerA cim:UnitSymbol.VPerVA cim:UnitSymbol.rev cim:UnitSymbol.kat cim:UnitSymbol.JPerkg cim:UnitSymbol.m3Uncompensated cim:UnitSymbol.m3Compensated cim:UnitSymbol.WPerW cim:UnitSymbol.therm cim:UnitSymbol.onePerm cim:UnitSymbol.m3Perkg cim:UnitSymbol.Pas cim:UnitSymbol.Nm cim:UnitSymbol.NPerm cim:UnitSymbol.radPers2 cim:UnitSymbol.JPerm3 cim:UnitSymbol.VPerm cim:UnitSymbol.CPerm3 cim:UnitSymbol.CPerm2 cim:UnitSymbol.FPerm cim:UnitSymbol.HPerm cim:UnitSymbol.JPermol cim:UnitSymbol.JPermolK cim:UnitSymbol.CPerkg cim:UnitSymbol.GyPers cim:UnitSymbol.WPersr cim:UnitSymbol.WPerm2sr cim:UnitSymbol.katPerm3 cim:UnitSymbol.d cim:UnitSymbol.anglemin cim:UnitSymbol.anglesec cim:UnitSymbol.ha cim:UnitSymbol.tonne cim:UnitSymbol.bar cim:UnitSymbol.mmHg cim:UnitSymbol.M cim:UnitSymbol.kn cim:UnitSymbol.Mx cim:UnitSymbol.G cim:UnitSymbol.Oe cim:UnitSymbol.Vh cim:UnitSymbol.WPerA cim:UnitSymbol.onePerHz cim:UnitSymbol.VPerVAr cim:UnitSymbol.ohmPerm cim:UnitSymbol.kgPerJ cim:UnitSymbol.JPers ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "Measurement.unitSymbol-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        19 ;
+        sh:path         cim:Measurement.unitSymbol ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValue.MeasurementValueSource-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "MeasurementValue.MeasurementValueSource-cardinality" ;
+        sh:order        52 ;
+        sh:path         cim:MeasurementValue.MeasurementValueSource ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValue.MeasurementValueSource-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:MeasurementValueSource ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:MeasurementValueSource." ;
+        sh:name         "MeasurementValue.MeasurementValueSource-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        14 ;
+        sh:path         cim:MeasurementValue.MeasurementValueSource ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValue.sensorAccuracy-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "MeasurementValue.sensorAccuracy-cardinality" ;
+        sh:order        21 ;
+        sh:path         cim:MeasurementValue.sensorAccuracy ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValue.sensorAccuracy-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the sensorAccuracy." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "MeasurementValue.sensorAccuracy-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        21 ;
+        sh:path         cim:MeasurementValue.sensorAccuracy ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValue.timeStamp-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "MeasurementValue.timeStamp-cardinality" ;
+        sh:order        20 ;
+        sh:path         cim:MeasurementValue.timeStamp ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValue.timeStamp-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:datetime ;
+        sh:description  "This constraint validates the datatype of the timeStamp." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "MeasurementValue.timeStamp-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        20 ;
+        sh:path         cim:MeasurementValue.timeStamp ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValueQuality
+        rdf:type        sh:NodeShape ;
+        sh:property     op:Quality61850.validity-cardinality , op:Quality61850.test-cardinality , op:Quality61850.suspect-cardinality , op:Quality61850.oldData-datatype , op:Quality61850.operatorBlocked-cardinality , op:Quality61850.oscillatory-cardinality , op:Quality61850.source-datatype , op:Quality61850.badReference-datatype , op:Quality61850.suspect-datatype , op:Quality61850.operatorBlocked-datatype , op:Quality61850.badReference-cardinality , op:Quality61850.validity-datatype , op:Quality61850.oldData-cardinality , op:Quality61850.failure-cardinality , op:MeasurementValueQuality.MeasurementValue-cardinality , op:Quality61850.oscillatory-datatype , op:Quality61850.test-datatype , op:Quality61850.estimatorReplaced-datatype , op:Quality61850.failure-datatype , op:Quality61850.estimatorReplaced-cardinality , op:Quality61850.overFlow-datatype , op:Quality61850.outOfRange-datatype , op:Quality61850.outOfRange-cardinality , op:Quality61850.source-cardinality , op:Quality61850.overFlow-cardinality ;
+        sh:targetClass  cim:MeasurementValueQuality .
+
+op:MeasurementValueQuality.MeasurementValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "MeasurementValueQuality.MeasurementValue-cardinality" ;
+        sh:order        53 ;
+        sh:path         cim:MeasurementValueQuality.MeasurementValue ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValueQuality.MeasurementValue-valueType
+        rdf:type  sh:NodeShape ;
+        sh:or     ( op:MeasurementValueQuality.MeasurementValueStringMeasurementValue-valueType op:MeasurementValueQuality.MeasurementValueDiscreteValue-valueType op:MeasurementValueQuality.MeasurementValueAnalogValue-valueType op:MeasurementValueQuality.MeasurementValueAccumulatorValue-valueType ) .
+
+op:MeasurementValueQuality.MeasurementValueAccumulatorValue-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:AccumulatorValue ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:AccumulatorValue." ;
+        sh:name         "MeasurementValueQuality.MeasurementValueAccumulatorValue-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        18 ;
+        sh:path         cim:MeasurementValueQuality.MeasurementValue ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValueQuality.MeasurementValueAnalogValue-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:AnalogValue ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:AnalogValue." ;
+        sh:name         "MeasurementValueQuality.MeasurementValueAnalogValue-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        17 ;
+        sh:path         cim:MeasurementValueQuality.MeasurementValue ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValueQuality.MeasurementValueDiscreteValue-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:DiscreteValue ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:DiscreteValue." ;
+        sh:name         "MeasurementValueQuality.MeasurementValueDiscreteValue-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        16 ;
+        sh:path         cim:MeasurementValueQuality.MeasurementValue ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValueQuality.MeasurementValueStringMeasurementValue-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:StringMeasurementValue ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:StringMeasurementValue." ;
+        sh:name         "MeasurementValueQuality.MeasurementValueStringMeasurementValue-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        15 ;
+        sh:path         cim:MeasurementValueQuality.MeasurementValue ;
+        sh:severity     sh:Violation .
+
+op:MeasurementValueSource
+        rdf:type        sh:NodeShape ;
+        sh:property     op:IdentifiedObject.name-datatype , op:IdentifiedObject.name-cardinality , op:IdentifiedObject.mRID-datatype , op:IdentifiedObject.mRID-cardinality , op:IdentifiedObject.description-datatype , op:IdentifiedObject.description-cardinality ;
+        sh:targetClass  cim:MeasurementValueSource .
+
+op:Ontology  rdf:type         owl:Ontology ;
+        dct:conformsTo        "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" , "urn:iso:std:iec:61970-301:ed-7:amd1" ;
+        dct:creator           "ENTSO-E CIM EG"@en ;
+        dct:description       "The constraints for the operation profile from IEC 61970-600-2."@en ;
+        dct:identifier        "urn:uuid:b603c770-6469-45da-a569-551394116c97" ;
+        dct:issued            "2021-01-27T13:46:24Z"^^xsd:dateTime ;
+        dct:language          "en-GB" ;
+        dct:modified          "2020-10-12"^^xsd:date ;
+        dct:publisher         "ENTSO-E"@en ;
+        dct:rights            "Copyright"@en ;
+        dct:rightsHolder      "ENTSO-E"@en ;
+        dct:title             "Operation Constraints"@en ;
+        owl:incompatibleWith  <http://entsoe.eu/2009/profile1> ;
+        owl:priorVersion      <http://entsoe.eu/CIM/EquipmentOperation/3/1> ;
+        owl:versionIRI        <http://iec.ch/TC57/ns/CIM/Operation-EU/Constraints/3.0> ;
+        owl:versionInfo       "3.0.0"@en ;
+        dcat:keyword          "OP" ;
+        dcat:theme            "constraints"@en .
+
+op:Quality61850.badReference-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.badReference-cardinality" ;
+        sh:order        22 ;
+        sh:path         cim:Quality61850.badReference ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.badReference-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the badReference." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.badReference-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        22 ;
+        sh:path         cim:Quality61850.badReference ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.estimatorReplaced-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.estimatorReplaced-cardinality" ;
+        sh:order        23 ;
+        sh:path         cim:Quality61850.estimatorReplaced ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.estimatorReplaced-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the estimatorReplaced." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.estimatorReplaced-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        23 ;
+        sh:path         cim:Quality61850.estimatorReplaced ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.failure-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.failure-cardinality" ;
+        sh:order        24 ;
+        sh:path         cim:Quality61850.failure ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.failure-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the failure." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.failure-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        24 ;
+        sh:path         cim:Quality61850.failure ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.oldData-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.oldData-cardinality" ;
+        sh:order        25 ;
+        sh:path         cim:Quality61850.oldData ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.oldData-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the oldData." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.oldData-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        25 ;
+        sh:path         cim:Quality61850.oldData ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.operatorBlocked-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.operatorBlocked-cardinality" ;
+        sh:order        26 ;
+        sh:path         cim:Quality61850.operatorBlocked ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.operatorBlocked-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the operatorBlocked." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.operatorBlocked-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        26 ;
+        sh:path         cim:Quality61850.operatorBlocked ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.oscillatory-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.oscillatory-cardinality" ;
+        sh:order        27 ;
+        sh:path         cim:Quality61850.oscillatory ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.oscillatory-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the oscillatory." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.oscillatory-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        27 ;
+        sh:path         cim:Quality61850.oscillatory ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.outOfRange-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.outOfRange-cardinality" ;
+        sh:order        28 ;
+        sh:path         cim:Quality61850.outOfRange ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.outOfRange-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the outOfRange." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.outOfRange-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        28 ;
+        sh:path         cim:Quality61850.outOfRange ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.overFlow-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.overFlow-cardinality" ;
+        sh:order        29 ;
+        sh:path         cim:Quality61850.overFlow ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.overFlow-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the overFlow." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.overFlow-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        29 ;
+        sh:path         cim:Quality61850.overFlow ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.source-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.source-cardinality" ;
+        sh:order        30 ;
+        sh:path         cim:Quality61850.source ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.source-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the source." ;
+        sh:group        op:DatatypesGroup ;
+        sh:in           ( cim:Source.PROCESS cim:Source.DEFAULTED cim:Source.SUBSTITUTED ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "Quality61850.source-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        30 ;
+        sh:path         cim:Quality61850.source ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.suspect-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.suspect-cardinality" ;
+        sh:order        31 ;
+        sh:path         cim:Quality61850.suspect ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.suspect-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the suspect." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.suspect-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        31 ;
+        sh:path         cim:Quality61850.suspect ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.test-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.test-cardinality" ;
+        sh:order        32 ;
+        sh:path         cim:Quality61850.test ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.test-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "This constraint validates the datatype of the test." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Quality61850.test-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        32 ;
+        sh:path         cim:Quality61850.test ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.validity-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Quality61850.validity-cardinality" ;
+        sh:order        33 ;
+        sh:path         cim:Quality61850.validity ;
+        sh:severity     sh:Violation .
+
+op:Quality61850.validity-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the datatype of the validity." ;
+        sh:group        op:DatatypesGroup ;
+        sh:in           ( cim:Validity.GOOD cim:Validity.QUESTIONABLE cim:Validity.INVALID ) ;
+        sh:message      "The datatype is not IRI (Internationalized Resource Identifier) or it is an enumerated value which is not part of the enumeration." ;
+        sh:name         "Quality61850.validity-datatype" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        33 ;
+        sh:path         cim:Quality61850.validity ;
+        sh:severity     sh:Violation .
+
+op:RaiseLowerCommand  rdf:type  sh:NodeShape ;
+        sh:property     op:IdentifiedObject.name-datatype , op:RaiseLowerCommand.ValueAliasSet-cardinality , op:AnalogControl.minValue-cardinality , op:AnalogControl.AnalogValue-cardinality , op:Control.operationInProgress-datatype , op:AnalogControl.maxValue-datatype , op:Control.operationInProgress-cardinality , op:Control.controlType-cardinality , op:Control.timeStamp-datatype , op:Control.PowerSystemResource-valueType , op:AnalogControl.AnalogValue-valueType , op:IdentifiedObject.description-cardinality , op:AnalogControl.maxValue-cardinality , op:Control.timeStamp-cardinality , op:RaiseLowerCommand.ValueAliasSet-valueType , op:IdentifiedObject.description-datatype , op:Control.controlType-datatype , op:Control.PowerSystemResource-cardinality , op:Control.unitMultiplier-datatype , op:Control.unitMultiplier-cardinality , op:AnalogControl.minValue-datatype , op:Control.unitSymbol-cardinality , op:IdentifiedObject.mRID-datatype , op:IdentifiedObject.name-cardinality , op:Control.unitSymbol-datatype , op:IdentifiedObject.mRID-cardinality ;
+        sh:targetClass  cim:RaiseLowerCommand .
+
+op:RaiseLowerCommand.ValueAliasSet-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "RaiseLowerCommand.ValueAliasSet-cardinality" ;
+        sh:order        54 ;
+        sh:path         cim:RaiseLowerCommand.ValueAliasSet ;
+        sh:severity     sh:Violation .
+
+op:RaiseLowerCommand.ValueAliasSet-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:ValueAliasSet ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:ValueAliasSet." ;
+        sh:name         "RaiseLowerCommand.ValueAliasSet-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        19 ;
+        sh:path         cim:RaiseLowerCommand.ValueAliasSet ;
+        sh:severity     sh:Violation .
+
+op:SetPoint  rdf:type   sh:NodeShape ;
+        sh:property     op:Control.unitSymbol-cardinality , op:Control.controlType-cardinality , op:Control.operationInProgress-datatype , op:AnalogControl.minValue-datatype , op:AnalogControl.minValue-cardinality , op:Control.unitSymbol-datatype , op:AnalogControl.maxValue-datatype , op:Control.PowerSystemResource-valueType , op:Control.operationInProgress-cardinality , op:Control.timeStamp-datatype , op:IdentifiedObject.name-cardinality , op:IdentifiedObject.description-datatype , op:Control.unitMultiplier-cardinality , op:SetPoint.value-cardinality , op:Control.timeStamp-cardinality , op:SetPoint.normalValue-datatype , op:Control.PowerSystemResource-cardinality , op:AnalogControl.AnalogValue-cardinality , op:SetPoint.value-datatype , op:IdentifiedObject.name-datatype , op:IdentifiedObject.mRID-datatype , op:SetPoint.normalValue-cardinality , op:Control.unitMultiplier-datatype , op:Control.controlType-datatype , op:IdentifiedObject.description-cardinality , op:AnalogControl.maxValue-cardinality , op:IdentifiedObject.mRID-cardinality , op:AnalogControl.AnalogValue-valueType ;
+        sh:targetClass  cim:SetPoint .
+
+op:SetPoint.normalValue-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (normalValue)." ;
+        sh:minCount     1 ;
+        sh:name         "SetPoint.normalValue-cardinality" ;
+        sh:order        34 ;
+        sh:path         cim:SetPoint.normalValue ;
+        sh:severity     sh:Violation .
+
+op:SetPoint.normalValue-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the normalValue." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "SetPoint.normalValue-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        34 ;
+        sh:path         cim:SetPoint.normalValue ;
+        sh:severity     sh:Violation .
+
+op:SetPoint.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "SetPoint.value-cardinality" ;
+        sh:order        35 ;
+        sh:path         cim:SetPoint.value ;
+        sh:severity     sh:Violation .
+
+op:SetPoint.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:float ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "SetPoint.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        35 ;
+        sh:path         cim:SetPoint.value ;
+        sh:severity     sh:Violation .
+
+op:StringMeasurement  rdf:type  sh:NodeShape ;
+        sh:property     op:IdentifiedObject.mRID-cardinality , op:Measurement.PowerSystemResource-valueType , op:IdentifiedObject.description-cardinality , op:Measurement.measurementType-cardinality , op:Measurement.PowerSystemResource-cardinality , op:Measurement.Terminal-cardinality , op:Measurement.Terminal-valueType , op:IdentifiedObject.mRID-datatype , op:Measurement.phases-cardinality , op:Measurement.unitMultiplier-datatype , op:Measurement.unitMultiplier-cardinality , op:IdentifiedObject.name-cardinality , op:Measurement.measurementType-datatype , op:Measurement.phases-datatype , op:IdentifiedObject.name-datatype , op:Measurement.unitSymbol-cardinality , op:Measurement.unitSymbol-datatype , op:IdentifiedObject.description-datatype ;
+        sh:targetClass  cim:StringMeasurement .
+
+op:StringMeasurementValue
+        rdf:type        sh:NodeShape ;
+        sh:property     op:StringMeasurementValue.StringMeasurement-cardinality , op:MeasurementValue.timeStamp-datatype , op:IdentifiedObject.name-cardinality , op:IdentifiedObject.description-datatype , op:StringMeasurementValue.StringMeasurement-valueType , op:MeasurementValue.timeStamp-cardinality , op:MeasurementValue.MeasurementValueSource-cardinality , op:MeasurementValue.sensorAccuracy-cardinality , op:MeasurementValue.sensorAccuracy-datatype , op:IdentifiedObject.description-cardinality , op:IdentifiedObject.mRID-datatype , op:MeasurementValue.MeasurementValueSource-valueType , op:IdentifiedObject.mRID-cardinality , op:IdentifiedObject.name-datatype ;
+        sh:targetClass  cim:StringMeasurementValue .
+
+op:StringMeasurementValue.StringMeasurement-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "StringMeasurementValue.StringMeasurement-cardinality" ;
+        sh:order        55 ;
+        sh:path         cim:StringMeasurementValue.StringMeasurement ;
+        sh:severity     sh:Violation .
+
+op:StringMeasurementValue.StringMeasurement-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:StringMeasurement ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:StringMeasurement." ;
+        sh:name         "StringMeasurementValue.StringMeasurement-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        20 ;
+        sh:path         cim:StringMeasurementValue.StringMeasurement ;
+        sh:severity     sh:Violation .
+
+op:ValueAliasSet  rdf:type  sh:NodeShape ;
+        sh:property     op:IdentifiedObject.name-datatype , op:IdentifiedObject.name-cardinality , op:IdentifiedObject.mRID-datatype , op:IdentifiedObject.mRID-cardinality , op:IdentifiedObject.description-datatype , op:IdentifiedObject.description-cardinality ;
+        sh:targetClass  cim:ValueAliasSet .
+
+op:ValueToAlias  rdf:type  sh:NodeShape ;
+        sh:property     op:IdentifiedObject.mRID-cardinality , op:ValueToAlias.ValueAliasSet-cardinality , op:ValueToAlias.ValueAliasSet-valueType , op:IdentifiedObject.description-datatype , op:IdentifiedObject.name-cardinality , op:ValueToAlias.value-cardinality , op:ValueToAlias.value-datatype , op:IdentifiedObject.name-datatype , op:IdentifiedObject.mRID-datatype , op:IdentifiedObject.description-cardinality ;
+        sh:targetClass  cim:ValueToAlias .
+
+op:ValueToAlias.ValueAliasSet-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "ValueToAlias.ValueAliasSet-cardinality" ;
+        sh:order        56 ;
+        sh:path         cim:ValueToAlias.ValueAliasSet ;
+        sh:severity     sh:Violation .
+
+op:ValueToAlias.ValueAliasSet-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:ValueAliasSet ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        op:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:ValueAliasSet." ;
+        sh:name         "ValueToAlias.ValueAliasSet-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        21 ;
+        sh:path         cim:ValueToAlias.ValueAliasSet ;
+        sh:severity     sh:Violation .
+
+op:ValueToAlias.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        op:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (value)." ;
+        sh:minCount     1 ;
+        sh:name         "ValueToAlias.value-cardinality" ;
+        sh:order        36 ;
+        sh:path         cim:ValueToAlias.value ;
+        sh:severity     sh:Violation .
+
+op:ValueToAlias.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        op:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "ValueToAlias.value-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        36 ;
+        sh:path         cim:ValueToAlias.value ;
+        sh:severity     sh:Violation .
+

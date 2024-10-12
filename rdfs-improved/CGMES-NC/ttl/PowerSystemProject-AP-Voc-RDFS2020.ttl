@@ -7,59 +7,61 @@
 @prefix          rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix         rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix          xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix           dc: <http://purl.org/dc/elements/1.1/> .
 @prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
 
 psp:Ontology a owl:Ontology ;
   dct:description "This vocabulary is describing the power system profile."@en ;
+  dc:source "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
   dcat:keyword "PSP" ;
   dcat:theme "vocabulary"@en ;
-  dct:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:conformsTo <urn:iso:std:iec:61970-301:ed-7:amd1>, <urn:iso:std:iec:61970-401:draft:ed-1>, <urn:iso:std:iec:61970-501:draft:ed-2>, <urn:iso:std:iec:61970-600-2:ed-1> ;
   dct:creator "ENTSO-E CIM WG NC project"@en ;
   dct:identifier "urn:uuid:29bfa45c-7d04-42f1-97c1-2e0f70f476a0" ;
   dct:language "en-GB" ;
   dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
   dct:modified "2024-09-07"^^xsd:date ;
-  dct:publisher "ENTSO-E"@en ;
-  dct:rightsHolder "ENTSO-E"@en ;
+  dct:publisher "ENTSO-E" ;
+  dct:rightsHolder "ENTSO-E" ;
   dct:title "Power System Project Vocabulary"@en ;
   owl:versionIRI <https://ap-voc.cim4.eu/PowerSystemProject/2.3> ;
-  owl:versionInfo "2.3.1"@en .
+  owl:versionInfo "2.3.1" .
 
 dcat:Resource a owl:Class ;
-  rdfs:label "Resource"@en ;
-  rdfs:comment "Resource published or curated by a single agent." ;
+  rdfs:label "Resource" ;
+  rdfs:comment "Resource published or curated by a single agent."@en ;
   cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
   cims:stereotype "dcat" .
 
 nc:AvailabilitySchedule a owl:Class ;
-  rdfs:label "AvailabilitySchedule"@en ;
-  rdfs:comment "A given (un)availability schedule with a given status and cause that include multiple equipment that need to follow the same scheduling periods." ;
+  rdfs:label "AvailabilitySchedule" ;
+  rdfs:comment "A given (un)availability schedule with a given status and cause that include multiple equipment that need to follow the same scheduling periods."@en ;
   cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
   cims:stereotype "NC" .
 
 nc:DifferenceModel a owl:Class ;
-  rdfs:label "DifferenceModel"@en ;
-  rdfs:comment "A set of statements describing the changes in the network model. The statement is defined in the difference model." ;
+  rdfs:label "DifferenceModel" ;
+  rdfs:comment "A set of statements describing the changes in the network model. The statement is defined in the difference model."@en ;
   cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
   cims:stereotype "NC", uml:concrete ;
   rdfs:subClassOf dcat:Resource .
 
 nc:PowerSystemProject a owl:Class ;
-  rdfs:label "PowerSystemProject"@en ;
-  rdfs:comment "Knowledge data for the power system project that describe the status and the planned implementation of the changes into the as-built model." ;
+  rdfs:label "PowerSystemProject" ;
+  rdfs:comment "Knowledge data for the power system project that describe the status and the planned implementation of the changes into the as-built model."@en ;
   cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
   cims:stereotype "NC", uml:concrete ;
   rdfs:subClassOf dcat:Resource .
 
 nc:PowerSystemProjectGroup a owl:Class ;
-  rdfs:label "PowerSystemProjectGroup"@en ;
-  rdfs:comment "A container with project that are grouped together. Primarily used for navigation and to highlight the phases that an overall project can go though." ;
+  rdfs:label "PowerSystemProjectGroup" ;
+  rdfs:comment "A container with project that are grouped together. Primarily used for navigation and to highlight the phases that an overall project can go though."@en ;
   cims:belongsToCategory psp:Package_PowerSystemProjectProfile ;
   cims:stereotype "NC", uml:concrete .
 
 nc:AvailabilitySchedule.PowerSystemProject a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "PowerSystemProject"@en ;
-  rdfs:comment "The power system project that has this availability schedule." ;
+  rdfs:label "PowerSystemProject" ;
+  rdfs:comment "The power system project that has this availability schedule."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -68,8 +70,8 @@ nc:AvailabilitySchedule.PowerSystemProject a owl:ObjectProperty, owl:FunctionalP
   rdfs:range nc:PowerSystemProject .
 
 nc:DifferenceModel.PowerSystemProject a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "PowerSystemProject"@en ;
-  rdfs:comment "The power system project that is described by this difference model." ;
+  rdfs:label "PowerSystemProject" ;
+  rdfs:comment "The power system project that is described by this difference model."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -78,8 +80,8 @@ nc:DifferenceModel.PowerSystemProject a owl:ObjectProperty, owl:FunctionalProper
   rdfs:range nc:PowerSystemProject .
 
 nc:PowerSystemProject.AlternativeProject a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "AlternativeProject"@en ;
-  rdfs:comment "Alternative project. Only one of the projects will be commissioned." ;
+  rdfs:label "AlternativeProject" ;
+  rdfs:comment "Alternative project. Only one of the projects will be commissioned."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -88,8 +90,8 @@ nc:PowerSystemProject.AlternativeProject a owl:ObjectProperty, owl:InverseFuncti
   rdfs:range nc:PowerSystemProject .
 
 nc:PowerSystemProject.AvailabilitySchedule a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "AvailabilitySchedule"@en ;
-  rdfs:comment "The availability schedule associated with this power system project." ;
+  rdfs:label "AvailabilitySchedule" ;
+  rdfs:comment "The availability schedule associated with this power system project."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -98,8 +100,8 @@ nc:PowerSystemProject.AvailabilitySchedule a owl:ObjectProperty, owl:FunctionalP
   rdfs:range nc:AvailabilitySchedule .
 
 nc:PowerSystemProject.DependentOnProject a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "DependentOnProject"@en ;
-  rdfs:comment "Grouping of projects that are depending on each other. A project can only be linked to one dependent project." ;
+  rdfs:label "DependentOnProject" ;
+  rdfs:comment "Grouping of projects that are depending on each other. A project can only be linked to one dependent project."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -108,8 +110,8 @@ nc:PowerSystemProject.DependentOnProject a owl:ObjectProperty, owl:FunctionalPro
   rdfs:range nc:PowerSystemProject .
 
 nc:PowerSystemProject.DifferenceModel a owl:ObjectProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "DifferenceModel"@en ;
-  rdfs:comment "The difference model describing this power system project." ;
+  rdfs:label "DifferenceModel" ;
+  rdfs:comment "The difference model describing this power system project."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -118,8 +120,8 @@ nc:PowerSystemProject.DifferenceModel a owl:ObjectProperty, owl:FunctionalProper
   rdfs:range nc:DifferenceModel .
 
 nc:PowerSystemProject.PriorityProject a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "PriorityProject"@en ;
-  rdfs:comment "The project that has an alternative project." ;
+  rdfs:label "PriorityProject" ;
+  rdfs:comment "The project that has an alternative project."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -128,8 +130,8 @@ nc:PowerSystemProject.PriorityProject a owl:ObjectProperty, owl:FunctionalProper
   rdfs:range nc:PowerSystemProject .
 
 nc:PowerSystemProject.Project a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "Project"@en ;
-  rdfs:comment "The project that has a dependent on project." ;
+  rdfs:label "Project" ;
+  rdfs:comment "The project that has a dependent on project."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -138,8 +140,8 @@ nc:PowerSystemProject.Project a owl:ObjectProperty, owl:InverseFunctionalPropert
   rdfs:range nc:PowerSystemProject .
 
 nc:PowerSystemProject.ProjectGroup a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "ProjectGroup"@en ;
-  rdfs:comment "Power system project group to which this project belongs." ;
+  rdfs:label "ProjectGroup" ;
+  rdfs:comment "Power system project group to which this project belongs."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -148,8 +150,8 @@ nc:PowerSystemProject.ProjectGroup a owl:ObjectProperty, owl:FunctionalProperty 
   rdfs:range nc:PowerSystemProjectGroup .
 
 nc:PowerSystemProject.ShadowProject a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "ShadowProject"@en ;
-  rdfs:comment "A shadowing project that includes the same change set, but different timeline." ;
+  rdfs:label "ShadowProject" ;
+  rdfs:comment "A shadowing project that includes the same change set, but different timeline."@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC" ;
@@ -158,8 +160,8 @@ nc:PowerSystemProject.ShadowProject a owl:ObjectProperty, owl:FunctionalProperty
   rdfs:range nc:PowerSystemProject .
 
 nc:PowerSystemProject.SilhouetteProject a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "SilhouetteProject"@en ;
-  rdfs:comment "The project that has a shadow project." ;
+  rdfs:label "SilhouetteProject" ;
+  rdfs:comment "The project that has a shadow project."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -168,8 +170,8 @@ nc:PowerSystemProject.SilhouetteProject a owl:ObjectProperty, owl:InverseFunctio
   rdfs:range nc:PowerSystemProject .
 
 nc:PowerSystemProjectGroup.Project a owl:ObjectProperty, owl:InverseFunctionalProperty ;
-  rdfs:label "Project"@en ;
-  rdfs:comment "The project included in the power system project group." ;
+  rdfs:label "Project" ;
+  rdfs:comment "The project included in the power system project group."@en ;
   cims:AssociationUsed "No" ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "NC" ;
@@ -178,236 +180,236 @@ nc:PowerSystemProjectGroup.Project a owl:ObjectProperty, owl:InverseFunctionalPr
   rdfs:range nc:PowerSystemProject .
 
 dcat:Resource.hasVersion a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "hasVersion"@en ;
-  rdfs:comment "This resource has a more specific, versioned resource." ;
+  rdfs:label "hasVersion" ;
+  rdfs:comment "This resource has a more specific, versioned resource."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcat", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:anyURI .
 
 dcat:Resource.isVersionOf a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "isVersionOf"@en ;
+  rdfs:label "isVersionOf" ;
   rdfs:comment """A related resource of which the described resource is a version, edition, or adaptation.
-Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of hasVersion.""" ;
+Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of hasVersion."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "dcat", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:anyURI .
 
 dcat:Resource.keyword a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "keyword"@en ;
-  rdfs:comment "A keyword or tag describing a resource." ;
+  rdfs:label "keyword" ;
+  rdfs:comment "A keyword or tag describing a resource."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcat", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dcat:Resource.version a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "version"@en ;
-  rdfs:comment "The version indicator (name or identifier) of a resource." ;
+  rdfs:label "version" ;
+  rdfs:comment "The version indicator (name or identifier) of a resource."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcat", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dcat:Resource.versionNotes a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "versionNotes"@en ;
-  rdfs:comment "A description of changes between this version and the previous version of the resource." ;
+  rdfs:label "versionNotes" ;
+  rdfs:comment "A description of changes between this version and the previous version of the resource."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "adms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:PowerSystemProjectGroup.description a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "description"@en ;
+  rdfs:label "description" ;
   rdfs:comment """A free-text account of the resource.
-Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""" ;
+Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain nc:PowerSystemProjectGroup ;
   rdfs:range xsd:string .
 
 dct:PowerSystemProjectGroup.identifier a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "identifier"@en ;
+  rdfs:label "identifier" ;
   rdfs:comment """A unique identifier of the resource being described or cataloged.
 The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
-The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.""" ;
+The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain nc:PowerSystemProjectGroup ;
   rdfs:range xsd:string .
 
 dct:PowerSystemProjectGroup.title a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "title"@en ;
-  rdfs:comment "A name given to the resource." ;
+  rdfs:label "title" ;
+  rdfs:comment "A name given to the resource."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain nc:PowerSystemProjectGroup ;
   rdfs:range xsd:string .
 
 dct:Resource.accessRights a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "accessRights"@en ;
+  rdfs:label "accessRights" ;
   rdfs:comment """Information about who access the resource or an indication of its security status.
-Access Rights may include information regarding access or restrictions based on privacy, security, or other policies.""" ;
+Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.conformsTo a owl:DatatypeProperty ;
-  rdfs:label "conformsTo"@en ;
-  rdfs:comment "An established standard to which the described resource conforms." ;
+  rdfs:label "conformsTo" ;
+  rdfs:comment "An established standard to which the described resource conforms."@en ;
   cims:multiplicity cims:M:0..n ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.creator a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "creator"@en ;
+  rdfs:label "creator" ;
   rdfs:comment """An entity responsible for making the resource.
-Recommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided.""" ;
+Recommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.description a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "description"@en ;
+  rdfs:label "description" ;
   rdfs:comment """A free-text account of the resource.
-Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.""" ;
+Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.identifier a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "identifier"@en ;
+  rdfs:label "identifier" ;
   rdfs:comment """A unique identifier of the resource being described or cataloged.
 The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
-The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.""" ;
+The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.issued a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "issued"@en ;
+  rdfs:label "issued" ;
   rdfs:comment """Date of formal issuance of the resource.
-Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.""" ;
+Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:dateTime .
 
 dct:Resource.license a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "license"@en ;
+  rdfs:label "license" ;
   rdfs:comment """A legal document under which the resource is made available.
-Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided.""" ;
+Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.modified a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "modified"@en ;
+  rdfs:label "modified" ;
   rdfs:comment """Most recent date on which the item was changed, updated or modified.
-Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty.""" ;
+Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:date .
 
 dct:Resource.publisher a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "publisher"@en ;
-  rdfs:comment "An entity responsible for making the resource available." ;
+  rdfs:label "publisher" ;
+  rdfs:comment "An entity responsible for making the resource available."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.rights a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "rights"@en ;
-  rdfs:comment "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements." ;
+  rdfs:label "rights" ;
+  rdfs:comment "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.rightsHolder a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "rightsHolder"@en ;
+  rdfs:label "rightsHolder" ;
   rdfs:comment """Information about rights held in and over the resource.
-Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.""" ;
+Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 dct:Resource.title a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "title"@en ;
-  rdfs:comment "A name given to the resource." ;
+  rdfs:label "title" ;
+  rdfs:comment "A name given to the resource."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
   rdfs:range xsd:string .
 
 nc:PowerSystemProject.cancelled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "cancelled"@en ;
-  rdfs:comment "From this date the project is in cancelled state. No further development will be done to the project or associated change set in this state." ;
+  rdfs:label "cancelled" ;
+  rdfs:comment "From this date the project is in cancelled state. No further development will be done to the project or associated change set in this state."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:PowerSystemProject ;
   rdfs:range xsd:dateTime .
 
 nc:PowerSystemProject.commissioned a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "commissioned"@en ;
-  rdfs:comment "From this date the project is in commissioned state. Any conducting equipment in the change set can be energized from this day. No further changes will be done to the change set." ;
+  rdfs:label "commissioned" ;
+  rdfs:comment "From this date the project is in commissioned state. Any conducting equipment in the change set can be energized from this day. No further changes will be done to the change set."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:PowerSystemProject ;
   rdfs:range xsd:dateTime .
 
 nc:PowerSystemProject.committed a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "committed"@en ;
-  rdfs:comment "From this date the project is in committed state. The change set will from this day be part of the as-build model." ;
+  rdfs:label "committed" ;
+  rdfs:comment "From this date the project is in committed state. The change set will from this day be part of the as-build model."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:PowerSystemProject ;
   rdfs:range xsd:dateTime .
 
 nc:PowerSystemProject.inBuild a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "inBuild"@en ;
-  rdfs:comment "From this day the project is in build state. Alternative project have been evaluated. Any procurement has started and the change set is being updated to an as-build model." ;
+  rdfs:label "inBuild" ;
+  rdfs:comment "From this day the project is in build state. Alternative project have been evaluated. Any procurement has started and the change set is being updated to an as-build model."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:PowerSystemProject ;
   rdfs:range xsd:dateTime .
 
 nc:PowerSystemProject.inPlan a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "inPlan"@en ;
-  rdfs:comment "From this date the project is in planning state. Study or procurement strategy has triggered the start of a project involving changes to one or more models. Alternative projects and change sets are evaluated." ;
+  rdfs:label "inPlan" ;
+  rdfs:comment "From this date the project is in planning state. Study or procurement strategy has triggered the start of a project involving changes to one or more models. Alternative projects and change sets are evaluated."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:PowerSystemProject ;
   rdfs:range xsd:dateTime .
 
 nc:PowerSystemProject.officialExpectedCommissioning a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "officialExpectedCommissioning"@en ;
-  rdfs:comment "Published official commissioning date." ;
+  rdfs:label "officialExpectedCommissioning" ;
+  rdfs:comment "Published official commissioning date."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:PowerSystemProject ;
   rdfs:range xsd:dateTime .
 
 nc:PowerSystemProject.priority a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "priority"@en ;
-  rdfs:comment "Priority between competing project. Use 0 for do not care. Use 1 for highest priority. Use 2 as priority is less than 1 and so on." ;
+  rdfs:label "priority" ;
+  rdfs:comment "Priority between competing project. Use 0 for do not care. Use 1 for highest priority. Use 2 as priority is less than 1 and so on."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:PowerSystemProject ;
   rdfs:range xsd:integer .
 
 psp:Package_PowerSystemProjectProfile a cims:ClassCategory ;
-  rdfs:label "PowerSystemProjectProfile"@en ;
-  rdfs:comment "This package contains power system project profile." .
+  rdfs:label "PowerSystemProjectProfile" ;
+  rdfs:comment "This package contains power system project profile."@en .
 
 

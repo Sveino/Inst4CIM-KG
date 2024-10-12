@@ -1,0 +1,1097 @@
+@prefix cim:     <http://iec.ch/TC57/CIM100#> .
+@prefix cims:    <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix eu:      <http://iec.ch/TC57/CIM100-European#> .
+@prefix gl:      <http://iec.ch/TC57/ns/CIM/GeographicalLocation-EU/Constraints#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix prof:    <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix profcim: <http://iec.ch/TC57/ns/CIM/prof-cim#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+gl:AssociationsGroup  rdf:type  sh:PropertyGroup ;
+        rdfs:label  "Associations" ;
+        sh:order    2 .
+
+gl:CardinalityGroup  rdf:type  sh:PropertyGroup ;
+        rdfs:label  "Cardinality" ;
+        sh:order    0 .
+
+gl:CoordinateSystem  rdf:type  sh:NodeShape ;
+        sh:property     gl:IdentifiedObject.name-datatype , gl:IdentifiedObject.name-cardinality , gl:IdentifiedObject.mRID-datatype , gl:IdentifiedObject.mRID-cardinality , gl:CoordinateSystem.crsUrn-datatype , gl:CoordinateSystem.crsUrn-cardinality ;
+        sh:targetClass  cim:CoordinateSystem .
+
+gl:CoordinateSystem.crsUrn-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (crsUrn)." ;
+        sh:minCount     1 ;
+        sh:name         "CoordinateSystem.crsUrn-cardinality" ;
+        sh:order        2 ;
+        sh:path         cim:CoordinateSystem.crsUrn ;
+        sh:severity     sh:Violation .
+
+gl:CoordinateSystem.crsUrn-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the crsUrn." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "CoordinateSystem.crsUrn-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        2 ;
+        sh:path         cim:CoordinateSystem.crsUrn ;
+        sh:severity     sh:Violation .
+
+gl:DatatypesGroup  rdf:type  sh:PropertyGroup ;
+        rdfs:label  "Datatypes" ;
+        sh:order    1 .
+
+gl:IdentifiedObject.mRID-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (mRID)." ;
+        sh:minCount     1 ;
+        sh:name         "IdentifiedObject.mRID-cardinality" ;
+        sh:order        0 ;
+        sh:path         cim:IdentifiedObject.mRID ;
+        sh:severity     sh:Violation .
+
+gl:IdentifiedObject.mRID-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the mRID." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.mRID-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        0 ;
+        sh:path         cim:IdentifiedObject.mRID ;
+        sh:severity     sh:Violation .
+
+gl:IdentifiedObject.name-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "IdentifiedObject.name-cardinality" ;
+        sh:order        1 ;
+        sh:path         cim:IdentifiedObject.name ;
+        sh:severity     sh:Violation .
+
+gl:IdentifiedObject.name-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the name." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "IdentifiedObject.name-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        1 ;
+        sh:path         cim:IdentifiedObject.name ;
+        sh:severity     sh:Violation .
+
+gl:Location  rdf:type   sh:NodeShape ;
+        sh:property     gl:Status.value-cardinality , gl:TownDetail.country-datatype , gl:StreetAddress.streetDetail-cardinality , gl:StreetDetail.addressGeneral3-cardinality , gl:TownDetail.code-datatype , gl:StreetDetail.name-cardinality , gl:StreetDetail.addressGeneral-datatype , gl:Location.CoordinateSystem-valueType , gl:StreetDetail.type-cardinality , gl:IdentifiedObject.name-datatype , gl:StreetAddress.poBox-cardinality , gl:StreetDetail.addressGeneral2-datatype , gl:Status.dateTime-cardinality , gl:StreetAddress.townDetail-datatype , gl:StreetDetail.addressGeneral-cardinality , gl:Status.remark-cardinality , gl:Location.mainAddress-cardinality , gl:IdentifiedObject.name-cardinality , gl:TownDetail.name-cardinality , gl:TownDetail.section-cardinality , gl:Location.PowerSystemResources-valueType , gl:StreetDetail.prefix-datatype , gl:StreetDetail.suffix-datatype , gl:TownDetail.stateOrProvince-cardinality , gl:StreetDetail.code-cardinality , gl:IdentifiedObject.mRID-cardinality , gl:StreetDetail.number-cardinality , gl:StreetAddress.status-datatype , gl:Status.dateTime-datatype , gl:StreetAddress.language-cardinality , gl:Location.mainAddress-datatype , gl:StreetDetail.suffix-cardinality , gl:Location.PowerSystemResources-cardinality , gl:StreetDetail.suiteNumber-cardinality , gl:StreetDetail.code-datatype , gl:StreetAddress.streetDetail-datatype , gl:TownDetail.section-datatype , gl:StreetDetail.addressGeneral3-datatype , gl:Status.value-datatype , gl:StreetAddress.postalCode-cardinality , gl:StreetDetail.floorIdentification-cardinality , gl:IdentifiedObject.mRID-datatype , gl:StreetAddress.status-cardinality , gl:Status.remark-datatype , gl:TownDetail.country-cardinality , gl:TownDetail.code-cardinality , gl:TownDetail.stateOrProvince-datatype , gl:StreetDetail.number-datatype , gl:Status.reason-cardinality , gl:StreetAddress.townDetail-cardinality , gl:StreetDetail.suiteNumber-datatype , gl:StreetAddress.language-datatype , gl:StreetDetail.withinTownLimits-datatype , gl:Status.reason-datatype , gl:StreetDetail.buildingName-datatype , gl:StreetDetail.addressGeneral2-cardinality , gl:StreetAddress.postalCode-datatype , gl:TownDetail.name-datatype , gl:StreetDetail.withinTownLimits-cardinality , gl:StreetDetail.floorIdentification-datatype , gl:StreetDetail.type-datatype , gl:Location.CoordinateSystem-cardinality , gl:StreetDetail.buildingName-cardinality , gl:StreetDetail.prefix-cardinality , gl:StreetDetail.name-datatype , gl:StreetAddress.poBox-datatype ;
+        sh:targetClass  cim:Location .
+
+gl:Location.CoordinateSystem-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "Location.CoordinateSystem-cardinality" ;
+        sh:order        37 ;
+        sh:path         cim:Location.CoordinateSystem ;
+        sh:severity     sh:Violation .
+
+gl:Location.CoordinateSystem-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:CoordinateSystem ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        gl:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:CoordinateSystem." ;
+        sh:name         "Location.CoordinateSystem-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        1 ;
+        sh:path         cim:Location.CoordinateSystem ;
+        sh:severity     sh:Violation .
+
+gl:Location.PowerSystemResources-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "Location.PowerSystemResources-cardinality" ;
+        sh:order        36 ;
+        sh:path         cim:Location.PowerSystemResources ;
+        sh:severity     sh:Violation .
+
+gl:Location.PowerSystemResources-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:PowerSystemResource ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        gl:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:PowerSystemResource." ;
+        sh:name         "Location.PowerSystemResources-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        0 ;
+        sh:path         cim:Location.PowerSystemResources ;
+        sh:severity     sh:Violation .
+
+gl:Location.mainAddress-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Location.mainAddress-cardinality" ;
+        sh:order        3 ;
+        sh:path         cim:Location.mainAddress ;
+        sh:severity     sh:Violation .
+
+gl:Location.mainAddress-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:StreetAddress ;
+        sh:description  "This constraint validates the datatype of the mainAddress." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "Blanknode (compound StreetAddress) violation. Either it is not a BlankNode (nested structure, compound StreetAddress) or it is not the right class." ;
+        sh:name         "Location.mainAddress-datatype" ;
+        sh:nodeKind     sh:BlankNode ;
+        sh:order        3 ;
+        sh:path         cim:Location.mainAddress ;
+        sh:severity     sh:Violation .
+
+gl:Ontology  rdf:type         owl:Ontology ;
+        dct:conformsTo        "urn:iso:std:iec:61970-401:draft:ed-1" , "urn:iso:std:iec:61970-501:draft:ed-2" , "urn:iso:std:iec:61970-301:ed-7:amd1" , "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" , "urn:iso:std:iec:61970-600-2:ed-1" ;
+        dct:creator           "ENTSO-E CIM EG"@en ;
+        dct:description       "The constraints for the geographical location profile from IEC 61970-600-2."@en ;
+        dct:identifier        "urn:uuid:862c1230-be19-4a01-bd6f-1a6c03d213ff" ;
+        dct:issued            "2021-01-27T15:33:53Z"^^xsd:dateTime ;
+        dct:language          "en-GB" ;
+        dct:modified          "2020-10-12"^^xsd:date ;
+        dct:publisher         "ENTSO-E"@en ;
+        dct:rights            "Copyright"@en ;
+        dct:rightsHolder      "ENTSO-E"@en ;
+        dct:title             "Geographical Location Constraints"@en ;
+        owl:incompatibleWith  <http://entsoe.eu/2009/profile1> ;
+        owl:priorVersion      <http://entsoe.eu/CIM/GeographicalLocation/2/1> ;
+        owl:versionIRI        <http://iec.ch/TC57/ns/CIM/GeographicalLocation-EU/Constraints/3.0> ;
+        owl:versionInfo       "3.0.0"@en ;
+        dcat:keyword          "GL" ;
+        dcat:theme            "constraints"@en .
+
+gl:PositionPoint  rdf:type  sh:NodeShape ;
+        sh:property     gl:PositionPoint.sequenceNumber-datatype , gl:PositionPoint.zPosition-datatype , gl:PositionPoint.Location-cardinality , gl:PositionPoint.sequenceNumber-cardinality , gl:PositionPoint.zPosition-cardinality , gl:PositionPoint.xPosition-cardinality , gl:PositionPoint.yPosition-datatype , gl:PositionPoint.xPosition-datatype , gl:PositionPoint.yPosition-cardinality ;
+        sh:targetClass  cim:PositionPoint .
+
+gl:PositionPoint.Location-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the association at the used direction." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required association." ;
+        sh:minCount     1 ;
+        sh:name         "PositionPoint.Location-cardinality" ;
+        sh:order        38 ;
+        sh:path         cim:PositionPoint.Location ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.Location-valueType
+        rdf:type  sh:NodeShape ;
+        sh:or     ( gl:PositionPoint.LocationServiceLocation-valueType gl:PositionPoint.LocationLocation-valueType ) .
+
+gl:PositionPoint.LocationLocation-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:Location ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        gl:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:Location." ;
+        sh:name         "PositionPoint.LocationLocation-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        3 ;
+        sh:path         cim:PositionPoint.Location ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.LocationServiceLocation-valueType
+        rdf:type        sh:PropertyShape ;
+        sh:class        cim:ServiceLocation ;
+        sh:description  "This constraint validates the value type of the  association at the used direction." ;
+        sh:group        gl:AssociationGroup ;
+        sh:message      "One of the following does not conform: 1) The value type shall be IRI; 2) The value type shall be an instance of the class: cim:ServiceLocation." ;
+        sh:name         "PositionPoint.LocationServiceLocation-valueType" ;
+        sh:nodeKind     sh:IRI ;
+        sh:order        2 ;
+        sh:path         cim:PositionPoint.Location ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.sequenceNumber-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "PositionPoint.sequenceNumber-cardinality" ;
+        sh:order        32 ;
+        sh:path         cim:PositionPoint.sequenceNumber ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.sequenceNumber-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:integer ;
+        sh:description  "This constraint validates the datatype of the sequenceNumber." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "PositionPoint.sequenceNumber-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        32 ;
+        sh:path         cim:PositionPoint.sequenceNumber ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.xPosition-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (xPosition)." ;
+        sh:minCount     1 ;
+        sh:name         "PositionPoint.xPosition-cardinality" ;
+        sh:order        33 ;
+        sh:path         cim:PositionPoint.xPosition ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.xPosition-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the xPosition." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "PositionPoint.xPosition-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        33 ;
+        sh:path         cim:PositionPoint.xPosition ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.yPosition-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1 or missing required property (yPosition)." ;
+        sh:minCount     1 ;
+        sh:name         "PositionPoint.yPosition-cardinality" ;
+        sh:order        34 ;
+        sh:path         cim:PositionPoint.yPosition ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.yPosition-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the yPosition." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "PositionPoint.yPosition-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        34 ;
+        sh:path         cim:PositionPoint.yPosition ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.zPosition-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:maxCount     1 ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "PositionPoint.zPosition-cardinality" ;
+        sh:order        35 ;
+        sh:path         cim:PositionPoint.zPosition ;
+        sh:severity     sh:Violation .
+
+gl:PositionPoint.zPosition-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:datatype     xsd:string ;
+        sh:description  "This constraint validates the datatype of the zPosition." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "PositionPoint.zPosition-datatype" ;
+        sh:nodeKind     sh:Literal ;
+        sh:order        35 ;
+        sh:path         cim:PositionPoint.zPosition ;
+        sh:severity     sh:Violation .
+
+gl:ServiceLocation  rdf:type  sh:NodeShape ;
+        sh:property     gl:Location.mainAddress-cardinality , gl:Status.reason-datatype , gl:StreetDetail.code-cardinality , gl:TownDetail.stateOrProvince-datatype , gl:TownDetail.stateOrProvince-cardinality , gl:TownDetail.name-datatype , gl:Location.CoordinateSystem-valueType , gl:StreetDetail.withinTownLimits-cardinality , gl:StreetDetail.withinTownLimits-datatype , gl:StreetDetail.number-datatype , gl:StreetDetail.addressGeneral2-datatype , gl:Location.PowerSystemResources-cardinality , gl:StreetAddress.status-cardinality , gl:StreetDetail.code-datatype , gl:StreetDetail.suiteNumber-cardinality , gl:StreetDetail.addressGeneral-cardinality , gl:TownDetail.section-datatype , gl:StreetDetail.type-datatype , gl:StreetDetail.buildingName-cardinality , gl:StreetAddress.streetDetail-cardinality , gl:Status.value-cardinality , gl:StreetDetail.suiteNumber-datatype , gl:StreetAddress.language-datatype , gl:Status.reason-cardinality , gl:StreetAddress.language-cardinality , gl:Status.value-datatype , gl:StreetAddress.poBox-datatype , gl:StreetDetail.prefix-cardinality , gl:Status.dateTime-cardinality , gl:StreetDetail.buildingName-datatype , gl:StreetAddress.townDetail-cardinality , gl:StreetDetail.suffix-datatype , gl:TownDetail.country-datatype , gl:Status.remark-datatype , gl:StreetAddress.townDetail-datatype , gl:StreetAddress.postalCode-cardinality , gl:StreetDetail.type-cardinality , gl:StreetDetail.addressGeneral3-datatype , gl:StreetDetail.name-cardinality , gl:StreetDetail.addressGeneral3-cardinality , gl:StreetDetail.prefix-datatype , gl:Status.remark-cardinality , gl:StreetAddress.streetDetail-datatype , gl:IdentifiedObject.name-cardinality , gl:Location.mainAddress-datatype , gl:StreetDetail.addressGeneral-datatype , gl:TownDetail.code-datatype , gl:StreetDetail.addressGeneral2-cardinality , gl:StreetDetail.floorIdentification-cardinality , gl:Location.PowerSystemResources-valueType , gl:TownDetail.code-cardinality , gl:StreetDetail.suffix-cardinality , gl:IdentifiedObject.mRID-cardinality , gl:Location.CoordinateSystem-cardinality , gl:TownDetail.section-cardinality , gl:Status.dateTime-datatype , gl:StreetDetail.floorIdentification-datatype , gl:TownDetail.name-cardinality , gl:IdentifiedObject.mRID-datatype , gl:TownDetail.country-cardinality , gl:IdentifiedObject.name-datatype , gl:StreetDetail.name-datatype , gl:StreetAddress.poBox-cardinality , gl:StreetAddress.postalCode-datatype , gl:StreetAddress.status-datatype , gl:StreetDetail.number-cardinality ;
+        sh:targetClass  cim:ServiceLocation .
+
+gl:Status.dateTime-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status cim:Status.dateTime )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Status.dateTime-cardinality" ;
+        sh:order        26 ;
+        sh:severity     sh:Violation .
+
+gl:Status.dateTime-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:datetime ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status cim:Status.dateTime )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the dateTime." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Status.dateTime-datatype" ;
+        sh:order        26 ;
+        sh:severity     sh:Violation .
+
+gl:Status.reason-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status cim:Status.reason )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Status.reason-cardinality" ;
+        sh:order        28 ;
+        sh:severity     sh:Violation .
+
+gl:Status.reason-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status cim:Status.reason )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the reason." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Status.reason-datatype" ;
+        sh:order        28 ;
+        sh:severity     sh:Violation .
+
+gl:Status.remark-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status cim:Status.remark )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Status.remark-cardinality" ;
+        sh:order        27 ;
+        sh:severity     sh:Violation .
+
+gl:Status.remark-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status cim:Status.remark )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the remark." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Status.remark-datatype" ;
+        sh:order        27 ;
+        sh:severity     sh:Violation .
+
+gl:Status.value-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status cim:Status.value )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "Status.value-cardinality" ;
+        sh:order        25 ;
+        sh:severity     sh:Violation .
+
+gl:Status.value-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status cim:Status.value )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the value." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "Status.value-datatype" ;
+        sh:order        25 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.language-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.language )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetAddress.language-cardinality" ;
+        sh:order        31 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.language-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.language )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the language." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetAddress.language-datatype" ;
+        sh:order        31 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.poBox-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.poBox )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetAddress.poBox-cardinality" ;
+        sh:order        30 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.poBox-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.poBox )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the poBox." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetAddress.poBox-datatype" ;
+        sh:order        30 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.postalCode-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.postalCode )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetAddress.postalCode-cardinality" ;
+        sh:order        29 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.postalCode-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.postalCode )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the postalCode." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetAddress.postalCode-datatype" ;
+        sh:order        29 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.status-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:nodeKind  sh:BlankNode ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetAddress.status-cardinality" ;
+        sh:order        24 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.status-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:class     cim:Status ;
+                            sh:nodeKind  sh:BlankNode ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.status )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the status." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "Blanknode (compound Status) violation. Either it is not a BlankNode (nested structure, compound Status) or it is not the right class." ;
+        sh:name         "StreetAddress.status-datatype" ;
+        sh:order        24 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.streetDetail-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:nodeKind  sh:BlankNode ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetAddress.streetDetail-cardinality" ;
+        sh:order        4 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.streetDetail-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:class     cim:StreetDetail ;
+                            sh:nodeKind  sh:BlankNode ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the streetDetail." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "Blanknode (compound StreetDetail) violation. Either it is not a BlankNode (nested structure, compound StreetDetail) or it is not the right class." ;
+        sh:name         "StreetAddress.streetDetail-datatype" ;
+        sh:order        4 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.townDetail-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:nodeKind  sh:BlankNode ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetAddress.townDetail-cardinality" ;
+        sh:order        18 ;
+        sh:severity     sh:Violation .
+
+gl:StreetAddress.townDetail-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:class     cim:TownDetail ;
+                            sh:nodeKind  sh:BlankNode ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the townDetail." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "Blanknode (compound TownDetail) violation. Either it is not a BlankNode (nested structure, compound TownDetail) or it is not the right class." ;
+        sh:name         "StreetAddress.townDetail-datatype" ;
+        sh:order        18 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.addressGeneral-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.addressGeneral )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.addressGeneral-cardinality" ;
+        sh:order        13 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.addressGeneral-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.addressGeneral )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the addressGeneral." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.addressGeneral-datatype" ;
+        sh:order        13 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.addressGeneral2-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.addressGeneral2 )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.addressGeneral2-cardinality" ;
+        sh:order        14 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.addressGeneral2-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.addressGeneral2 )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the addressGeneral2." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.addressGeneral2-datatype" ;
+        sh:order        14 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.addressGeneral3-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.addressGeneral3 )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.addressGeneral3-cardinality" ;
+        sh:order        15 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.addressGeneral3-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.addressGeneral3 )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the addressGeneral3." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.addressGeneral3-datatype" ;
+        sh:order        15 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.buildingName-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.buildingName )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.buildingName-cardinality" ;
+        sh:order        11 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.buildingName-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.buildingName )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the buildingName." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.buildingName-datatype" ;
+        sh:order        11 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.code-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.code )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.code-cardinality" ;
+        sh:order        10 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.code-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.code )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the code." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.code-datatype" ;
+        sh:order        10 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.floorIdentification-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.floorIdentification )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.floorIdentification-cardinality" ;
+        sh:order        17 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.floorIdentification-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.floorIdentification )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the floorIdentification." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.floorIdentification-datatype" ;
+        sh:order        17 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.name-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.name )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.name-cardinality" ;
+        sh:order        6 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.name-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.name )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the name." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.name-datatype" ;
+        sh:order        6 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.number-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.number )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.number-cardinality" ;
+        sh:order        5 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.number-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.number )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the number." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.number-datatype" ;
+        sh:order        5 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.prefix-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.prefix )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.prefix-cardinality" ;
+        sh:order        8 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.prefix-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.prefix )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the prefix." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.prefix-datatype" ;
+        sh:order        8 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.suffix-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.suffix )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.suffix-cardinality" ;
+        sh:order        7 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.suffix-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.suffix )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the suffix." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.suffix-datatype" ;
+        sh:order        7 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.suiteNumber-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.suiteNumber )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.suiteNumber-cardinality" ;
+        sh:order        12 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.suiteNumber-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.suiteNumber )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the suiteNumber." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.suiteNumber-datatype" ;
+        sh:order        12 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.type-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.type )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.type-cardinality" ;
+        sh:order        9 ;
+        sh:severity     sh:Violation .
+gl:StreetDetail.type-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.type )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the type." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.type-datatype" ;
+        sh:order        9 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.withinTownLimits-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.withinTownLimits )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "StreetDetail.withinTownLimits-cardinality" ;
+        sh:order        16 ;
+        sh:severity     sh:Violation .
+
+gl:StreetDetail.withinTownLimits-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:boolean ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.withinTownLimits )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the withinTownLimits." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "StreetDetail.withinTownLimits-datatype" ;
+        sh:order        16 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.code-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.code )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "TownDetail.code-cardinality" ;
+        sh:order        19 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.code-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.code )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the code." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "TownDetail.code-datatype" ;
+        sh:order        19 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.country-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.country )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "TownDetail.country-cardinality" ;
+        sh:order        23 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.country-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.country )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the country." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "TownDetail.country-datatype" ;
+        sh:order        23 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.name-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.name )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "TownDetail.name-cardinality" ;
+        sh:order        21 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.name-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.name )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the name." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "TownDetail.name-datatype" ;
+        sh:order        21 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.section-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.section )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "TownDetail.section-cardinality" ;
+        sh:order        20 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.section-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.section )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the section." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "TownDetail.section-datatype" ;
+        sh:order        20 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.stateOrProvince-cardinality
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:maxCount  1 ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.stateOrProvince )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the cardinality of the property (attribute)." ;
+        sh:group        gl:CardinalityGroup ;
+        sh:message      "Cardinality violation. Upper bound shall be 1." ;
+        sh:name         "TownDetail.stateOrProvince-cardinality" ;
+        sh:order        22 ;
+        sh:severity     sh:Violation .
+
+gl:TownDetail.stateOrProvince-datatype
+        rdf:type        sh:PropertyShape ;
+        sh:and          ( [ sh:datatype  xsd:string ;
+                            sh:nodeKind  sh:Literal ;
+                            sh:path      ( cim:Location.mainAddress cim:StreetAddress.townDetail cim:TownDetail.stateOrProvince )
+                          ]
+                        ) ;
+        sh:description  "This constraint validates the datatype of the stateOrProvince." ;
+        sh:group        gl:DatatypesGroup ;
+        sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+        sh:name         "TownDetail.stateOrProvince-datatype" ;
+        sh:order        22 ;
+        sh:severity     sh:Violation .
+

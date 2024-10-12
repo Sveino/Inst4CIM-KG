@@ -13,682 +13,684 @@
 @prefix         skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix         unit: <http://qudt.org/vocab/unit/> .
 @prefix          xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix           dc: <http://purl.org/dc/elements/1.1/> .
 @prefix          uml: <http://iec.ch/TC57/NonStandard/UML#> .
 
 ssi:Ontology a owl:Ontology ;
   dct:description "This vocabulary is describing the steady state instruction profile."@en ;
+  dc:source "CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
   dcat:keyword "SSI" ;
   dcat:theme "vocabulary"@en ;
-  dct:conformsTo "file://CIM100_CGMES31v01_501-20v02_NC23v62_MM10v01.eap", "file://iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap", "urn:iso:std:iec:61970-301:ed-7:amd1", "urn:iso:std:iec:61970-401:draft:ed-1", "urn:iso:std:iec:61970-501:draft:ed-2", "urn:iso:std:iec:61970-600-2:ed-1" ;
+  dct:conformsTo <urn:iso:std:iec:61970-301:ed-7:amd1>, <urn:iso:std:iec:61970-401:draft:ed-1>, <urn:iso:std:iec:61970-501:draft:ed-2>, <urn:iso:std:iec:61970-600-2:ed-1> ;
   dct:creator "ENTSO-E CIM WG NC project"@en ;
   dct:identifier "urn:uuid:6d01969f-38fd-460d-b260-b839a8123319" ;
   dct:language "en-GB" ;
   dct:license "https://www.apache.org/licenses/LICENSE-2.0"@en ;
   dct:modified "2024-09-07"^^xsd:date ;
-  dct:publisher "ENTSO-E"@en ;
-  dct:rightsHolder "ENTSO-E"@en ;
+  dct:publisher "ENTSO-E" ;
+  dct:rightsHolder "ENTSO-E" ;
   dct:title "Steady state instruction Vocabulary"@en ;
   owl:priorVersion <http://entsoe.eu/ns/CIM/SteadyStateInstruction-EU/2.2> ;
   owl:versionIRI <https://ap-voc.cim4.eu/SteadyStateInstruction/2.3> ;
-  owl:versionInfo "2.3.1"@en .
+  owl:versionInfo "2.3.1" .
 
 cim:Contingency a owl:Class ;
-  rdfs:label "Contingency"@en ;
-  rdfs:comment "An event threatening system reliability, consisting of one or more contingency elements." ;
+  rdfs:label "Contingency" ;
+  rdfs:comment "An event threatening system reliability, consisting of one or more contingency elements."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description" .
 
 cim:Currency a owl:Class ;
-  rdfs:label "Currency"@en ;
-  rdfs:comment "Monetary currencies.  ISO 4217 standard including 3-character currency code." ;
+  rdfs:label "Currency" ;
+  rdfs:comment "Monetary currencies.  ISO 4217 standard including 3-character currency code."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype uml:enumeration .
 
 cim:EnergyConsumer a owl:Class ;
-  rdfs:label "EnergyConsumer"@en ;
+  rdfs:label "EnergyConsumer" ;
   rdfs:comment """Generic user of energy - a  point of consumption on the power system model.
-EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False.""" ;
+EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", uml:concrete .
 
 cim:Equipment a owl:Class ;
-  rdfs:label "Equipment"@en ;
-  rdfs:comment "The parts of a power system that are physical devices, electronic or mechanical." ;
+  rdfs:label "Equipment" ;
+  rdfs:comment "The parts of a power system that are physical devices, electronic or mechanical."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description" .
 
 cim:GeneratingUnit a owl:Class ;
-  rdfs:label "GeneratingUnit"@en ;
-  rdfs:comment "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set." ;
+  rdfs:label "GeneratingUnit" ;
+  rdfs:comment "A single or set of synchronous machines for converting mechanical power into alternating-current power. For example, individual machines within a set may be defined for scheduling purposes while a single control signal is derived for the set. In this case there would be a GeneratingUnit for each member of the set and an additional GeneratingUnit corresponding to the set."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", uml:concrete .
 
 cim:HydroPump a owl:Class ;
-  rdfs:label "HydroPump"@en ;
-  rdfs:comment "A synchronous motor-driven pump, typically associated with a pumped storage plant." ;
+  rdfs:label "HydroPump" ;
+  rdfs:comment "A synchronous motor-driven pump, typically associated with a pumped storage plant."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", uml:concrete .
 
 cim:PowerElectronicsUnit a owl:Class ;
-  rdfs:label "PowerElectronicsUnit"@en ;
-  rdfs:comment "A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines." ;
+  rdfs:label "PowerElectronicsUnit" ;
+  rdfs:comment "A generating unit or battery or aggregation that connects to the AC network using power electronics rather than rotating machines."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", uml:concrete .
 
 cim:RegulatingCondEq a owl:Class ;
-  rdfs:label "RegulatingCondEq"@en ;
-  rdfs:comment "A type of conducting equipment that can regulate a quantity (i.e. voltage or flow) at a specific point in the network." ;
+  rdfs:label "RegulatingCondEq" ;
+  rdfs:comment "A type of conducting equipment that can regulate a quantity (i.e. voltage or flow) at a specific point in the network."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile .
 
 cim:Reservoir a owl:Class ;
-  rdfs:label "Reservoir"@en ;
-  rdfs:comment "A water storage facility within a hydro system, including: ponds, lakes, lagoons, and rivers. The storage is usually behind some type of dam." ;
+  rdfs:label "Reservoir" ;
+  rdfs:comment "A water storage facility within a hydro system, including: ponds, lakes, lagoons, and rivers. The storage is usually behind some type of dam."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", uml:concrete .
 
 cim:UnitMultiplier a owl:Class ;
-  rdfs:label "UnitMultiplier"@en ;
+  rdfs:label "UnitMultiplier" ;
   rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
 
 For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
 
-For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".""" ;
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg"."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype uml:enumeration .
 
 cim:UnitSymbol a owl:Class ;
-  rdfs:label "UnitSymbol"@en ;
+  rdfs:label "UnitSymbol" ;
   rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
 Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
 To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
 Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
-The integer values are used for harmonization with IEC 61850.""" ;
+The integer values are used for harmonization with IEC 61850."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype uml:enumeration .
 
 nc:ACEmulationControlFunction a owl:Class ;
-  rdfs:label "ACEmulationControlFunction"@en ;
+  rdfs:label "ACEmulationControlFunction" ;
   rdfs:comment """The AC emulation control function is used when AC emulation model is activated for a DC system. It consists in computing the active power set point of the DC system as a function of the voltage angle difference between both points of common coupling with the AC network in order to mimic the behavior of an AC transmission line. This control mode enables the automatic adjustment of the active power reference following variations of the AC system operational point. 
 The setpoint of the DC system is calculated by Psetpoint=Pref+Kdc*(angle1-angle2), where
 - Pref is the existing active power setpoint; 
 - Kdc is the control system gain and  
-- angle1 and angle2 are the phase angle measurement (measured at points of common coupling with the AC network) respectively at the side 1 and 2 of the DC system.""" ;
+- angle1 and angle2 are the phase angle measurement (measured at points of common coupling with the AC network) respectively at the side 1 and 2 of the DC system."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:ActivePowerControlFunction a owl:Class ;
-  rdfs:label "ActivePowerControlFunction"@en ;
-  rdfs:comment "Active power control function is a function block that calculates operating point of the controlled equipment to achieve the target active power." ;
+  rdfs:label "ActivePowerControlFunction" ;
+  rdfs:comment "Active power control function is a function block that calculates operating point of the controlled equipment to achieve the target active power."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:AreaDispatchableUnit a owl:Class ;
-  rdfs:label "AreaDispatchableUnit"@en ;
-  rdfs:comment "Allocates a given producing or consuming unit, including direct current corridor and collection of units, to a given control area (through the scheduling area) for supporting the control of the given area through dispatch instruction." ;
+  rdfs:label "AreaDispatchableUnit" ;
+  rdfs:comment "Allocates a given producing or consuming unit, including direct current corridor and collection of units, to a given control area (through the scheduling area) for supporting the control of the given area through dispatch instruction."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:AssessedElement a owl:Class ;
-  rdfs:label "AssessedElement"@en ;
+  rdfs:label "AssessedElement" ;
   rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.
-The measurements and limits are as defined in the steady state hypothesis.""" ;
+The measurements and limits are as defined in the steady state hypothesis."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:AssessedElementWithContingency a owl:Class ;
-  rdfs:label "AssessedElementWithContingency"@en ;
-  rdfs:comment "Combination of an assessed element and a contingency." ;
+  rdfs:label "AssessedElementWithContingency" ;
+  rdfs:comment "Combination of an assessed element and a contingency."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:AssessedElementWithRemedialAction a owl:Class ;
-  rdfs:label "AssessedElementWithRemedialAction"@en ;
-  rdfs:comment "Combination of an assessed element and a remedial action" ;
+  rdfs:label "AssessedElementWithRemedialAction" ;
+  rdfs:comment "Combination of an assessed element and a remedial action"@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:AutomationFunction a owl:Class ;
-  rdfs:label "AutomationFunction"@en ;
-  rdfs:comment "Automation function is a collection of functional block or other automation function that can be executed as a work cycle program as part of an automated system." ;
+  rdfs:label "AutomationFunction" ;
+  rdfs:comment "Automation function is a collection of functional block or other automation function that can be executed as a work cycle program as part of an automated system."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC" .
 
 nc:AvailabilityRemedialAction a owl:Class ;
-  rdfs:label "AvailabilityRemedialAction"@en ;
-  rdfs:comment "Availability remedial action is a remedial action that cancels or reschedules an availability schedule." ;
+  rdfs:label "AvailabilityRemedialAction" ;
+  rdfs:comment "Availability remedial action is a remedial action that cancels or reschedules an availability schedule."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:RemedialAction .
 
 nc:BiddingZone a owl:Class ;
-  rdfs:label "BiddingZone"@en ;
-  rdfs:comment "A bidding zone is a market-based method for handling power transmission congestion. It consists of scheduling areas that include the relevant production (supply) and consumption (demand) to form an electrical area with the same market price without capacity allocation." ;
+  rdfs:label "BiddingZone" ;
+  rdfs:comment "A bidding zone is a market-based method for handling power transmission congestion. It consists of scheduling areas that include the relevant production (supply) and consumption (demand) to form an electrical area with the same market price without capacity allocation."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:BiddingZoneBorder a owl:Class ;
-  rdfs:label "BiddingZoneBorder"@en ;
-  rdfs:comment "Defines the aggregated connection capacity between two Bidding Zones." ;
+  rdfs:label "BiddingZoneBorder" ;
+  rdfs:comment "Defines the aggregated connection capacity between two Bidding Zones."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:CircuitShare a owl:Class ;
-  rdfs:label "CircuitShare"@en ;
-  rdfs:comment "Defines the share of the circuit which is part of an associated power transfer corridor." ;
+  rdfs:label "CircuitShare" ;
+  rdfs:comment "Defines the share of the circuit which is part of an associated power transfer corridor."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:CompensatorControlModeKind a owl:Class ;
-  rdfs:label "CompensatorControlModeKind"@en ;
-  rdfs:comment "Kind of compensator controller mode." ;
+  rdfs:label "CompensatorControlModeKind" ;
+  rdfs:comment "Kind of compensator controller mode."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC", uml:enumeration .
 
 nc:CompensatorController a owl:Class ;
-  rdfs:label "CompensatorController"@en ;
-  rdfs:comment "Compensator controller is controlling the equipment to optimize the use of the compensators." ;
+  rdfs:label "CompensatorController" ;
+  rdfs:comment "Compensator controller is controlling the equipment to optimize the use of the compensators."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:ContingencyWithRemedialAction a owl:Class ;
-  rdfs:label "ContingencyWithRemedialAction"@en ;
-  rdfs:comment "Combination of a contingency and a remedial action. ContingencyWithRemedialAction shall not be instantiated for preventive RemedialAction (RemedialAction.kind equals RemedialActionKind.preventive)." ;
+  rdfs:label "ContingencyWithRemedialAction" ;
+  rdfs:comment "Combination of a contingency and a remedial action. ContingencyWithRemedialAction shall not be instantiated for preventive RemedialAction (RemedialAction.kind equals RemedialActionKind.preventive)."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:CountertradeRemedialAction a owl:Class ;
-  rdfs:label "CountertradeRemedialAction"@en ;
-  rdfs:comment "Countertrade is a remedial action to relieve physical congestions where the location of activated resources within the bidding zone is not known." ;
+  rdfs:label "CountertradeRemedialAction" ;
+  rdfs:comment "Countertrade is a remedial action to relieve physical congestions where the location of activated resources within the bidding zone is not known."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:PowerRemedialAction .
 
 nc:CrossBorderRelevance a owl:Class ;
-  rdfs:label "CrossBorderRelevance"@en ;
-  rdfs:comment "Combination of an assessed element and one or more bidding zone border that are affected by the assessment." ;
+  rdfs:label "CrossBorderRelevance" ;
+  rdfs:comment "Combination of an assessed element and one or more bidding zone border that are affected by the assessment."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:CurrentControlFunction a owl:Class ;
-  rdfs:label "CurrentControlFunction"@en ;
-  rdfs:comment "Current control function is a function block that calculates the operating point of the controlled equipment  to achieve the target current." ;
+  rdfs:label "CurrentControlFunction" ;
+  rdfs:comment "Current control function is a function block that calculates the operating point of the controlled equipment  to achieve the target current."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:CurrentDroopControlFunction a owl:Class ;
-  rdfs:label "CurrentDroopControlFunction"@en ;
-  rdfs:comment "Current droop control function is a function block that calculates the operating point of the controlled equipment to achieve the target current." ;
+  rdfs:label "CurrentDroopControlFunction" ;
+  rdfs:comment "Current droop control function is a function block that calculates the operating point of the controlled equipment to achieve the target current."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:CurrentDroopOverride a owl:Class ;
-  rdfs:label "CurrentDroopOverride"@en ;
+  rdfs:label "CurrentDroopOverride" ;
   rdfs:comment """Current droop override uses the following logic:
 - When the current exceeds a threshold the device executes the following transitions: 1) When injecting an inductive voltage or in monitoring mode the device tends to inject a voltage proportional to the difference between the line current and the aforementioned threshold. 2) When injecting a capacitive voltage the device transitions to monitoring mode. 
 - If the aforementioned proportional voltage is lower than the initial one, the voltage injection remains unchanged. 
-Current droop override is not applied when the device operates in currentDroop mode.""" ;
+Current droop override is not applied when the device operates in currentDroop mode."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:DCControlModeKind a owl:Class ;
-  rdfs:label "DCControlModeKind"@en ;
-  rdfs:comment "Kind of DC control mode." ;
+  rdfs:label "DCControlModeKind" ;
+  rdfs:comment "Kind of DC control mode."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC", uml:enumeration .
 
 nc:DCCurrentControlFunction a owl:Class ;
-  rdfs:label "DCCurrentControlFunction"@en ;
-  rdfs:comment "DC current control function is a function block that calculates the operating point of the controlled equipment  to achieve the target current." ;
+  rdfs:label "DCCurrentControlFunction" ;
+  rdfs:comment "DC current control function is a function block that calculates the operating point of the controlled equipment  to achieve the target current."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:DCPole a owl:Class ;
-  rdfs:label "DCPole"@en ;
-  rdfs:comment "The direct current (DC) system pole (IEC 60633) is part of a DC system consisting of all the equipment in the DC substations and the interconnecting transmission lines, if any, which during normal operation exhibit a common direct voltage polarity with respect to earth." ;
+  rdfs:label "DCPole" ;
+  rdfs:comment "The direct current (DC) system pole (IEC 60633) is part of a DC system consisting of all the equipment in the DC substations and the interconnecting transmission lines, if any, which during normal operation exhibit a common direct voltage polarity with respect to earth."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:DCSwitch a owl:Class ;
-  rdfs:label "DCSwitch"@en ;
-  rdfs:comment "A switch within the DC system." ;
+  rdfs:label "DCSwitch" ;
+  rdfs:comment "A switch within the DC system."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:DCTieCorridor a owl:Class ;
-  rdfs:label "DCTieCorridor"@en ;
-  rdfs:comment "A collection of one or more direct current poles that connect two different control areas." ;
+  rdfs:label "DCTieCorridor" ;
+  rdfs:comment "A collection of one or more direct current poles that connect two different control areas."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:DCVoltageControlFunction a owl:Class ;
-  rdfs:label "DCVoltageControlFunction"@en ;
-  rdfs:comment "DC voltage control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage." ;
+  rdfs:label "DCVoltageControlFunction" ;
+  rdfs:comment "DC voltage control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:DirectCurrentEquipmentController a owl:Class ;
-  rdfs:label "DirectCurrentEquipmentController"@en ;
-  rdfs:comment "Direct current equipment controller used to control different parts of the hierarchical structure of the DC control system defined by IEC 60633." ;
+  rdfs:label "DirectCurrentEquipmentController" ;
+  rdfs:comment "Direct current equipment controller used to control different parts of the hierarchical structure of the DC control system defined by IEC 60633."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC", uml:concrete .
 
 nc:EnergyBlockOrder a owl:Class ;
-  rdfs:label "EnergyBlockOrder"@en ;
-  rdfs:comment "The energy block order is a block (an amount) of energy that forms the sequence of orders that are going to be distributed to an energy block component." ;
+  rdfs:label "EnergyBlockOrder" ;
+  rdfs:comment "The energy block order is a block (an amount) of energy that forms the sequence of orders that are going to be distributed to an energy block component."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:EnergyGroup a owl:Class ;
-  rdfs:label "EnergyGroup"@en ;
-  rdfs:comment "An energy group is an aggregation of energy components which have the same energy characteristic, e.g. fuel type and technology. It can be used to allocate energy." ;
+  rdfs:label "EnergyGroup" ;
+  rdfs:comment "An energy group is an aggregation of energy components which have the same energy characteristic, e.g. fuel type and technology. It can be used to allocate energy."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:FACTSEquipment a owl:Class ;
-  rdfs:label "FACTSEquipment"@en ;
-  rdfs:comment "Flexible Alternating Current Transmission System regulating equipment." ;
+  rdfs:label "FACTSEquipment" ;
+  rdfs:comment "Flexible Alternating Current Transmission System regulating equipment."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC" ;
   rdfs:subClassOf cim:RegulatingCondEq .
 
 nc:FrequencyControlFuntion a owl:Class ;
-  rdfs:label "FrequencyControlFuntion"@en ;
-  rdfs:comment "Frequency control function is a function block that calculate the operating point of the controlled equipment to achieve the target frequency." ;
+  rdfs:label "FrequencyControlFuntion" ;
+  rdfs:comment "Frequency control function is a function block that calculate the operating point of the controlled equipment to achieve the target frequency."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:FuelStorage a owl:Class ;
-  rdfs:label "FuelStorage"@en ;
-  rdfs:comment "Fuel storage. e.g. pile of coal that can be shared between multiple thermal generating units." ;
+  rdfs:label "FuelStorage" ;
+  rdfs:comment "Fuel storage. e.g. pile of coal that can be shared between multiple thermal generating units."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:FunctionBlock a owl:Class ;
-  rdfs:label "FunctionBlock"@en ;
-  rdfs:comment "Function block is a function described as a set of elementary blocks. The blocks describe the function between input variables and output variables." ;
+  rdfs:label "FunctionBlock" ;
+  rdfs:comment "Function block is a function described as a set of elementary blocks. The blocks describe the function between input variables and output variables."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC" .
 
 nc:GridStateAlteration a owl:Class ;
-  rdfs:label "GridStateAlteration"@en ;
-  rdfs:comment "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case." ;
+  rdfs:label "GridStateAlteration" ;
+  rdfs:comment "Grid state alteration is a change of values describing state (operating point) of one element in the grid model compared to the base case."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC" .
 
 nc:GridStateAlterationRemedialAction a owl:Class ;
-  rdfs:label "GridStateAlterationRemedialAction"@en ;
-  rdfs:comment "Grid state alteration remedial action describes one or many grid state alterations applied to a grid model state or a particular scenario in order to resolve one or more identified constraints." ;
+  rdfs:label "GridStateAlterationRemedialAction" ;
+  rdfs:comment "Grid state alteration remedial action describes one or many grid state alterations applied to a grid model state or a particular scenario in order to resolve one or more identified constraints."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:RemedialAction .
 
 nc:ImpedanceControlFunction a owl:Class ;
-  rdfs:label "ImpedanceControlFunction"@en ;
-  rdfs:comment "Impedance control function is a function block that calculates the operating point of the controlled equipment to achieve the target impedance." ;
+  rdfs:label "ImpedanceControlFunction" ;
+  rdfs:comment "Impedance control function is a function block that calculates the operating point of the controlled equipment to achieve the target impedance."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:InfeedLimit a owl:Class ;
-  rdfs:label "InfeedLimit"@en ;
-  rdfs:comment "Infeed limit set constraints fed in to the network by two or more terminals." ;
+  rdfs:label "InfeedLimit" ;
+  rdfs:comment "Infeed limit set constraints fed in to the network by two or more terminals."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:InjectionControlModeKind a owl:Class ;
-  rdfs:label "InjectionControlModeKind"@en ;
-  rdfs:comment "Kind of injection controller mode." ;
+  rdfs:label "InjectionControlModeKind" ;
+  rdfs:comment "Kind of injection controller mode."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC", uml:enumeration .
 
 nc:InjectionController a owl:Class ;
-  rdfs:label "InjectionController"@en ;
-  rdfs:comment "Injection controller is controlling the equipment which represents an injection or an external network." ;
+  rdfs:label "InjectionController" ;
+  rdfs:comment "Injection controller is controlling the equipment which represents an injection or an external network."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:ModularStaticSynchronousSeriesCompensator a owl:Class ;
-  rdfs:label "ModularStaticSynchronousSeriesCompensator"@en ;
-  rdfs:comment "Modular static synchronous series compensator (MSSSC) is a type of flexible AC transmission system regulating equipment which consists of solid-state voltage source inverter connected in series with a transmission line. This is similar to static synchronous series compensator (SSSC), but without injection transformer. This enables the MSSSC to be truly modular with the ability to simply install a number of equipment in series to provide a desired maximum level of impedance. MSSSC can be dispersed into multiple location in a circuit working collectively under the same controller scheme." ;
+  rdfs:label "ModularStaticSynchronousSeriesCompensator" ;
+  rdfs:comment "Modular static synchronous series compensator (MSSSC) is a type of flexible AC transmission system regulating equipment which consists of solid-state voltage source inverter connected in series with a transmission line. This is similar to static synchronous series compensator (SSSC), but without injection transformer. This enables the MSSSC to be truly modular with the ability to simply install a number of equipment in series to provide a desired maximum level of impedance. MSSSC can be dispersed into multiple location in a circuit working collectively under the same controller scheme."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:FACTSEquipment .
 
 nc:PTCActivePowerSupport a owl:Class ;
-  rdfs:label "PTCActivePowerSupport"@en ;
-  rdfs:comment "Defines the active power capability (support) of the scheme in relation to a PowerTransferCorridor." ;
+  rdfs:label "PTCActivePowerSupport" ;
+  rdfs:comment "Defines the active power capability (support) of the scheme in relation to a PowerTransferCorridor."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:PhaseControlFunction a owl:Class ;
-  rdfs:label "PhaseControlFunction"@en ;
-  rdfs:comment "Phase control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage." ;
+  rdfs:label "PhaseControlFunction" ;
+  rdfs:comment "Phase control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:PowerCapacity a owl:Class ;
-  rdfs:label "PowerCapacity"@en ;
-  rdfs:comment "Power capacity defines the capacity in regard to generation, consumption and transmission (import and export) for a relevant power system resource, e.g. bidding zone, including maximum and minimum electrical power capacity and any capacity allocation." ;
+  rdfs:label "PowerCapacity" ;
+  rdfs:comment "Power capacity defines the capacity in regard to generation, consumption and transmission (import and export) for a relevant power system resource, e.g. bidding zone, including maximum and minimum electrical power capacity and any capacity allocation."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:PowerFactorControlFunction a owl:Class ;
-  rdfs:label "PowerFactorControlFunction"@en ;
-  rdfs:comment "Power factor control function is a function block that calculates the operating point of the controlled equipment to achieve the target power factor." ;
+  rdfs:label "PowerFactorControlFunction" ;
+  rdfs:comment "Power factor control function is a function block that calculates the operating point of the controlled equipment to achieve the target power factor."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:PowerRemedialAction a owl:Class ;
-  rdfs:label "PowerRemedialAction"@en ;
-  rdfs:comment "Energy remedial action describes actions to rearrange power schedules." ;
+  rdfs:label "PowerRemedialAction" ;
+  rdfs:comment "Energy remedial action describes actions to rearrange power schedules."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC" ;
   rdfs:subClassOf nc:RemedialAction .
 
 nc:PowerShiftKeyStrategy a owl:Class ;
-  rdfs:label "PowerShiftKeyStrategy"@en ;
-  rdfs:comment "Strategy of the power shift key." ;
+  rdfs:label "PowerShiftKeyStrategy" ;
+  rdfs:comment "Strategy of the power shift key."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:PowerTransferCorridor a owl:Class ;
-  rdfs:label "PowerTransferCorridor"@en ;
-  rdfs:comment "A power transfer corridor is defined as a set of circuits (transmission lines or transformers) separating two portions of the power system, or a subset of circuits exposed to a substantial portion of the transmission exchange between two parts of the system." ;
+  rdfs:label "PowerTransferCorridor" ;
+  rdfs:comment "A power transfer corridor is defined as a set of circuits (transmission lines or transformers) separating two portions of the power system, or a subset of circuits exposed to a substantial portion of the transmission exchange between two parts of the system."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:RangeConstraint a owl:Class ;
-  rdfs:label "RangeConstraint"@en ;
-  rdfs:comment "Defines the rage constraint." ;
+  rdfs:label "RangeConstraint" ;
+  rdfs:comment "Defines the rage constraint."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC" .
 
 nc:ReactivePowerControlFunction a owl:Class ;
-  rdfs:label "ReactivePowerControlFunction"@en ;
-  rdfs:comment "Reactive power control function is a function block that calculate the operating point of the controlled equipment to achieve the target reactive power." ;
+  rdfs:label "ReactivePowerControlFunction" ;
+  rdfs:comment "Reactive power control function is a function block that calculate the operating point of the controlled equipment to achieve the target reactive power."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:RedispatchRemedialAction a owl:Class ;
-  rdfs:label "RedispatchRemedialAction"@en ;
-  rdfs:comment "Redispatch remedial action is a remedial action that through rearranging power schedules is eliminating breaches of constraints." ;
+  rdfs:label "RedispatchRemedialAction" ;
+  rdfs:comment "Redispatch remedial action is a remedial action that through rearranging power schedules is eliminating breaches of constraints."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:PowerRemedialAction .
 
 nc:RemedialAction a owl:Class ;
-  rdfs:label "RemedialAction"@en ;
-  rdfs:comment "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly." ;
+  rdfs:label "RemedialAction" ;
+  rdfs:comment "Remedial action describes one or more actions that can be performed on a given power system model situation to eliminate one or more identified breaches of constraints. The remedial action can be costly, and have a cost characteristic, or non costly."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC" .
 
 nc:RemedialActionDependency a owl:Class ;
-  rdfs:label "RemedialActionDependency"@en ;
+  rdfs:label "RemedialActionDependency" ;
   rdfs:comment """Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.
 <ul>
 \t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>
 \t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>
 \t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>
-</ul>""" ;
+</ul>"""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:RemedialActionGroup a owl:Class ;
-  rdfs:label "RemedialActionGroup"@en ;
-  rdfs:comment "Grouping of remedial actions that can be operated together." ;
+  rdfs:label "RemedialActionGroup" ;
+  rdfs:comment "Grouping of remedial actions that can be operated together."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:RemedialActionScheme a owl:Class ;
-  rdfs:label "RemedialActionScheme"@en ;
+  rdfs:label "RemedialActionScheme" ;
   rdfs:comment """Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).
-A Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action.""" ;
+A Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:RotatingMachineControlModeKind a owl:Class ;
-  rdfs:label "RotatingMachineControlModeKind"@en ;
-  rdfs:comment "Kind of rotating machine controller mode." ;
+  rdfs:label "RotatingMachineControlModeKind" ;
+  rdfs:comment "Kind of rotating machine controller mode."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC", uml:enumeration .
 
 nc:RotatingMachineController a owl:Class ;
-  rdfs:label "RotatingMachineController"@en ;
-  rdfs:comment "Rotating machine controller is controlling the equipment which may be used as a generator or motor." ;
+  rdfs:label "RotatingMachineController" ;
+  rdfs:comment "Rotating machine controller is controlling the equipment which may be used as a generator or motor."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:SSSCControlModeKind a owl:Class ;
-  rdfs:label "SSSCControlModeKind"@en ;
-  rdfs:comment "Control modes of the Static Synchronous Series Compensator (SSSC)." ;
+  rdfs:label "SSSCControlModeKind" ;
+  rdfs:comment "Control modes of the Static Synchronous Series Compensator (SSSC)."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC", uml:enumeration .
 
 nc:SSSCController a owl:Class ;
-  rdfs:label "SSSCController"@en ;
-  rdfs:comment "The controller of a Static synchronous series compensator (SSSC)." ;
+  rdfs:label "SSSCController" ;
+  rdfs:comment "The controller of a Static synchronous series compensator (SSSC)."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:ScheduleResource a owl:Class ;
-  rdfs:label "ScheduleResource"@en ;
-  rdfs:comment "A schedule resource is a market-based method for handling participation of small units, particularly located on the lower voltage level that is controlled by a Distributed System Operator (DSO). It is a collection of units that can operate in the market by providing bids, offers and a resulting committed operational schedule for the collection." ;
+  rdfs:label "ScheduleResource" ;
+  rdfs:comment "A schedule resource is a market-based method for handling participation of small units, particularly located on the lower voltage level that is controlled by a Distributed System Operator (DSO). It is a collection of units that can operate in the market by providing bids, offers and a resulting committed operational schedule for the collection."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:SchedulingArea a owl:Class ;
-  rdfs:label "SchedulingArea"@en ;
-  rdfs:comment "An area where production and/or consumption of energy can be forecasted, scheduled and measured. The area is operated by only one system operator, typically a Transmission System Operator (TSO). The area can consist of a sub area, which has the same definition as the main area, but it can be operated by another system operator (typically Distributed System Operator (DSO) or a Closed Distributed System Operator (CDSO)). This includes microgrid concept. A substation is the smallest grouping that can be included in the area. The area size should be considered in terms of the possibility of accumulated reading (settlement metering) and the capability of operating as an island." ;
+  rdfs:label "SchedulingArea" ;
+  rdfs:comment "An area where production and/or consumption of energy can be forecasted, scheduled and measured. The area is operated by only one system operator, typically a Transmission System Operator (TSO). The area can consist of a sub area, which has the same definition as the main area, but it can be operated by another system operator (typically Distributed System Operator (DSO) or a Closed Distributed System Operator (CDSO)). This includes microgrid concept. A substation is the smallest grouping that can be included in the area. The area size should be considered in terms of the possibility of accumulated reading (settlement metering) and the capability of operating as an island."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:SchemeRemedialAction a owl:Class ;
-  rdfs:label "SchemeRemedialAction"@en ;
-  rdfs:comment "Scheme remedial action is remedial action that involves a scheme that can include conditional logic and stages of grid alteration. The primary remedial action is the arming of these schemes, that will then perform curative remedial action when the condition is met. System Integrity Protection Scheme (SIPS) and Special Protection Scheme (SPS) are example of this." ;
+  rdfs:label "SchemeRemedialAction" ;
+  rdfs:comment "Scheme remedial action is remedial action that involves a scheme that can include conditional logic and stages of grid alteration. The primary remedial action is the arming of these schemes, that will then perform curative remedial action when the condition is met. System Integrity Protection Scheme (SIPS) and Special Protection Scheme (SPS) are example of this."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:RemedialAction .
 
 nc:StageTrigger a owl:Class ;
-  rdfs:label "StageTrigger"@en ;
-  rdfs:comment "Stage that is triggered either by TriggerCondition or by gate condition within a stage." ;
+  rdfs:label "StageTrigger" ;
+  rdfs:comment "Stage that is triggered either by TriggerCondition or by gate condition within a stage."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:StaticSynchronousCompensator a owl:Class ;
-  rdfs:label "StaticSynchronousCompensator"@en ;
-  rdfs:comment "Static synchronous compensator (STATCOM), also known as a static synchronous condenser (STATCON), is a type of flexible AC transmission system regulating equipment used on alternating current electricity transmission networks. It is based on a power electronics voltage-source converter and can act as either a source or sink of reactive AC power to an electricity network. If connected to a source of power it can also provide active AC power." ;
+  rdfs:label "StaticSynchronousCompensator" ;
+  rdfs:comment "Static synchronous compensator (STATCOM), also known as a static synchronous condenser (STATCON), is a type of flexible AC transmission system regulating equipment used on alternating current electricity transmission networks. It is based on a power electronics voltage-source converter and can act as either a source or sink of reactive AC power to an electricity network. If connected to a source of power it can also provide active AC power."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:FACTSEquipment .
 
 nc:StaticSynchronousSeriesCompensator a owl:Class ;
-  rdfs:label "StaticSynchronousSeriesCompensator"@en ;
-  rdfs:comment "Static synchronous series compensator (SSSC) is a type of flexible AC transmission system which consists of a solid-state voltage source inverter coupled with a transformer that is connected in series with a transmission line. This device can inject an almost sinusoidal voltage in series with the line. This injected voltage could be considered as an inductive or capacitive reactance, which is connected in series with the transmission line. This feature can provide controllable voltage compensation. In addition, SSSC is able to reverse the power flow by injecting a sufficiently large series reactive compensating voltage. Moreover it can inject a voltage proportional to the difference between the line current and the pre-configured current threshold.<font color=\"#636671\"> </font>It shall have two Terminal-s associated with it." ;
+  rdfs:label "StaticSynchronousSeriesCompensator" ;
+  rdfs:comment "Static synchronous series compensator (SSSC) is a type of flexible AC transmission system which consists of a solid-state voltage source inverter coupled with a transformer that is connected in series with a transmission line. This device can inject an almost sinusoidal voltage in series with the line. This injected voltage could be considered as an inductive or capacitive reactance, which is connected in series with the transmission line. This feature can provide controllable voltage compensation. In addition, SSSC is able to reverse the power flow by injecting a sufficiently large series reactive compensating voltage. Moreover it can inject a voltage proportional to the difference between the line current and the pre-configured current threshold.<font color=\"#636671\"> </font>It shall have two Terminal-s associated with it."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:FACTSEquipment .
 
 nc:StaticVarCompensator a owl:Class ;
-  rdfs:label "StaticVarCompensator"@en ;
+  rdfs:label "StaticVarCompensator" ;
   rdfs:comment """A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.
 
-The SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.""" ;
+The SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:FACTSEquipment .
 
 nc:SubstationController a owl:Class ;
-  rdfs:label "SubstationController"@en ;
-  rdfs:comment "Substation controller is controlling the equipment to optimize the use of the controlling equipment within a substation." ;
+  rdfs:label "SubstationController" ;
+  rdfs:comment "Substation controller is controlling the equipment to optimize the use of the controlling equipment within a substation."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:SubstationControllerModeKind a owl:Class ;
-  rdfs:label "SubstationControllerModeKind"@en ;
-  rdfs:comment "Kind of substation controller mode." ;
+  rdfs:label "SubstationControllerModeKind" ;
+  rdfs:comment "Kind of substation controller mode."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC", uml:enumeration .
 
 nc:TCSCControlModeKind a owl:Class ;
-  rdfs:label "TCSCControlModeKind"@en ;
-  rdfs:comment "Kind of TCSC control mode." ;
+  rdfs:label "TCSCControlModeKind" ;
+  rdfs:comment "Kind of TCSC control mode."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "NC", uml:enumeration .
 
 nc:TCSCController a owl:Class ;
-  rdfs:label "TCSCController"@en ;
-  rdfs:comment "TCSC controller is controlling the equipment to optimize the performance of the TCSC." ;
+  rdfs:label "TCSCController" ;
+  rdfs:comment "TCSC controller is controlling the equipment to optimize the performance of the TCSC."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:ThyristorControlledSeriesCompensator a owl:Class ;
-  rdfs:label "ThyristorControlledSeriesCompensator"@en ;
-  rdfs:comment "Thyristor-controlled series capacitors (TCSC) is a type of flexible AC transmission system regulating equipment that is configured with controlled reactors in parallel with sections of a capacitor bank. This combination allows smooth control of the fundamental frequency capacitive reactance over a wide range. The thyristor valve contains a string of series connected high power thyristors. TCSC can control power flows in order to achieve eliminating of line overloads, reducing loop flows and minimising system losses." ;
+  rdfs:label "ThyristorControlledSeriesCompensator" ;
+  rdfs:comment "Thyristor-controlled series capacitors (TCSC) is a type of flexible AC transmission system regulating equipment that is configured with controlled reactors in parallel with sections of a capacitor bank. This combination allows smooth control of the fundamental frequency capacitive reactance over a wide range. The thyristor valve contains a string of series connected high power thyristors. TCSC can control power flows in order to achieve eliminating of line overloads, reducing loop flows and minimising system losses."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
   rdfs:subClassOf nc:FACTSEquipment .
 
 nc:VoltageAngleLimit a owl:Class ;
-  rdfs:label "VoltageAngleLimit"@en ;
-  rdfs:comment "Voltage angle limit between two terminals. The association end OperationalLimitSet.Terminal defines one end and the host of the limit. The association end VoltageAngleLimit.AngleReferenceTerminal defines the reference terminal." ;
+  rdfs:label "VoltageAngleLimit" ;
+  rdfs:comment "Voltage angle limit between two terminals. The association end OperationalLimitSet.Terminal defines one end and the host of the limit. The association end VoltageAngleLimit.AngleReferenceTerminal defines the reference terminal."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:VoltageControlFunction a owl:Class ;
-  rdfs:label "VoltageControlFunction"@en ;
-  rdfs:comment "Voltage control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage." ;
+  rdfs:label "VoltageControlFunction" ;
+  rdfs:comment "Voltage control function is a function block that calculate the operating point of the controlled equipment to achieve the target voltage."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 nc:VoltageInjectionControlFunction a owl:Class ;
-  rdfs:label "VoltageInjectionControlFunction"@en ;
-  rdfs:comment "Voltage injection control function is a function block that calculates the operating point of the controlled equipment to achieve the target voltage injection. The controlled point is the Terminal with sequenceNumber =1." ;
+  rdfs:label "VoltageInjectionControlFunction" ;
+  rdfs:comment "Voltage injection control function is a function block that calculates the operating point of the controlled equipment to achieve the target voltage injection. The controlled point is the Terminal with sequenceNumber =1."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
 cim:GeneratingUnit.startupCost a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "startupCost"@en ;
-  rdfs:comment "The initial startup cost incurred for each start of the GeneratingUnit." ;
+  rdfs:label "startupCost" ;
+  rdfs:comment "The initial startup cost incurred for each start of the GeneratingUnit."@en ;
   cims:dataType cim:Money ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:GeneratingUnit .
 
 nc:CompensatorController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mode"@en ;
-  rdfs:comment "Mode of the compensator controller." ;
+  rdfs:label "mode" ;
+  rdfs:comment "Mode of the compensator controller."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:CompensatorController ;
   rdfs:range nc:CompensatorControlModeKind .
 
 nc:DirectCurrentEquipmentController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mode"@en ;
-  rdfs:comment "Mode of the dc controller." ;
+  rdfs:label "mode" ;
+  rdfs:comment "Mode of the dc controller."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:DirectCurrentEquipmentController ;
   rdfs:range nc:DCControlModeKind .
 
 nc:FrequencyControlFuntion.targetValue a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the frequency that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the frequency that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cims:dataType cim:Frequency ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:FrequencyControlFuntion .
 
 nc:GeneratingUnit.warmStartupCost a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "warmStartupCost"@en ;
-  rdfs:comment "The warm startup cost incurred for each start of the GeneratingUnit." ;
+  rdfs:label "warmStartupCost" ;
+  rdfs:comment "The warm startup cost incurred for each start of the GeneratingUnit."@en ;
   cims:dataType cim:Money ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain cim:GeneratingUnit .
 
 nc:InjectionController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mode"@en ;
-  rdfs:comment "Mode of the injection controller." ;
+  rdfs:label "mode" ;
+  rdfs:comment "Mode of the injection controller."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:InjectionController ;
   rdfs:range nc:InjectionControlModeKind .
 
 nc:RotatingMachineController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mode"@en ;
-  rdfs:comment "Mode of the rotating machine controller." ;
+  rdfs:label "mode" ;
+  rdfs:comment "Mode of the rotating machine controller."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:RotatingMachineController ;
   rdfs:range nc:RotatingMachineControlModeKind .
 
 nc:SSSCController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mode"@en ;
-  rdfs:comment "Mode of the Static Synchronous Series compensator controller." ;
+  rdfs:label "mode" ;
+  rdfs:comment "Mode of the Static Synchronous Series compensator controller."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:SSSCController ;
   rdfs:range nc:SSSCControlModeKind .
 
 nc:SubstationController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mode"@en ;
-  rdfs:comment "Mode of the substation controller." ;
+  rdfs:label "mode" ;
+  rdfs:comment "Mode of the substation controller."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:SubstationController ;
   rdfs:range nc:SubstationControllerModeKind .
 
 nc:TCSCController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "mode"@en ;
-  rdfs:comment "Mode of the TCSC controller." ;
+  rdfs:label "mode" ;
+  rdfs:comment "Mode of the TCSC controller."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:TCSCController ;
   rdfs:range nc:TCSCControlModeKind .
 
 cim:Contingency.mustStudy a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "mustStudy"@en ;
-  rdfs:comment "Set true if must study this contingency." ;
+  rdfs:label "mustStudy" ;
+  rdfs:comment "Set true if must study this contingency."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:Contingency ;
   rdfs:range xsd:boolean .
 
 cim:Equipment.inService a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "inService"@en ;
-  rdfs:comment "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model." ;
+  rdfs:label "inService" ;
+  rdfs:comment "Specifies the availability of the equipment. True means the equipment is available for topology processing, which determines if the equipment is energized or not. False means that the equipment is treated by network applications as if it is not in the model."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:Equipment ;
   rdfs:range xsd:boolean .
 
 cim:Equipment.networkAnalysisEnabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "networkAnalysisEnabled"@en ;
-  rdfs:comment "The equipment is enabled to participate in network analysis.  If unspecified, the value is assumed to be true." ;
+  rdfs:label "networkAnalysisEnabled" ;
+  rdfs:comment "The equipment is enabled to participate in network analysis.  If unspecified, the value is assumed to be true."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:Equipment ;
   rdfs:range xsd:boolean .
 
 cim:RegulatingCondEq.controlEnabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "controlEnabled"@en ;
-  rdfs:comment "Specifies the regulation status of the equipment.  True is regulating, false is not regulating." ;
+  rdfs:label "controlEnabled" ;
+  rdfs:comment "Specifies the regulation status of the equipment.  True is regulating, false is not regulating."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain cim:RegulatingCondEq ;
   rdfs:range xsd:boolean .
 
 nc:ACEmulationControlFunction.gain a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "gain"@en ;
-  rdfs:comment "Control system gain in AC transmission emulation control measured in MW/deg. It plays the role of an admittance of the equivalent AC transmission line that the control is emulating the higher is the gain the higher is the active power transfer at steady state." ;
+  rdfs:label "gain" ;
+  rdfs:comment "Control system gain in AC transmission emulation control measured in MW/deg. It plays the role of an admittance of the equivalent AC transmission line that the control is emulating the higher is the gain the higher is the active power transfer at steady state."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:ACEmulationControlFunction ;
   rdfs:range xsd:float .
 
 nc:ACEmulationControlFunction.referenceP a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "referenceP"@en ;
-  rdfs:comment "Existing active power setpoint used to calculate the active power setpoint of the AC emulation control." ;
+  rdfs:label "referenceP" ;
+  rdfs:comment "Existing active power setpoint used to calculate the active power setpoint of the AC emulation control."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:1..1 ;
@@ -699,9 +701,9 @@ nc:ACEmulationControlFunction.referenceP a owl:DatatypeProperty, owl:FunctionalP
   rdfs:range xsd:float .
 
 nc:ACEmulationControlFunction.timeConstant a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "timeConstant"@en ;
+  rdfs:label "timeConstant" ;
   rdfs:comment """Control system time constant in AC transmission emulation control. It affects the time needed to 
-reach a new steady state equilibrium point after a network perturbation extremely important to guarantee N-1 relief related to an interconnection. The higher is time constant the slower is the DC system dynamic.""" ;
+reach a new steady state equilibrium point after a network perturbation extremely important to guarantee N-1 relief related to an interconnection. The higher is time constant the slower is the DC system dynamic."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.s ;
   cims:multiplicity cims:M:1..1 ;
@@ -712,8 +714,8 @@ reach a new steady state equilibrium point after a network perturbation extremel
   rdfs:range xsd:float .
 
 nc:ActivePowerControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the active power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the active power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:1..1 ;
@@ -724,16 +726,16 @@ nc:ActivePowerControlFunction.targetValue a owl:DatatypeProperty, owl:Functional
   rdfs:range xsd:float .
 
 nc:AreaDispatchableUnit.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "Identifies if the unit is enabled to accept a dispatch instruction. If true, the unit is enabled to accept a dispatch instruction. If false, the unit has the capability, but it is not enabled to receive a dispatch instruction." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "Identifies if the unit is enabled to accept a dispatch instruction. If true, the unit is enabled to accept a dispatch instruction. If false, the unit has the capability, but it is not enabled to receive a dispatch instruction."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AreaDispatchableUnit ;
   rdfs:range xsd:boolean .
 
 nc:AreaDispatchableUnit.p a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "p"@en ;
-  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  rdfs:label "p" ;
+  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -744,10 +746,10 @@ nc:AreaDispatchableUnit.p a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:AssessedElement.appointedMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "appointedMargin"@en ;
+  rdfs:label "appointedMargin" ;
   rdfs:comment """The percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit under normal operating conditions. The maximum percentage shall by default be 10% of the remaining margin.
 It is only used when an assessed element is considered conservative for a region.
-The allowed value range is [0,100].""" ;
+The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
   cims:multiplicity cims:M:0..1 ;
@@ -758,8 +760,8 @@ The allowed value range is [0,100].""" ;
   rdfs:range xsd:float .
 
 nc:AssessedElement.coordinatedValidationAdjustment a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "coordinatedValidationAdjustment"@en ;
-  rdfs:comment "Positive value calculated and provided by the Coordinated Capacity Calculator (CCC) for the reduction of Remaining Available Margin (RAM) in order to ensure grid security." ;
+  rdfs:label "coordinatedValidationAdjustment" ;
+  rdfs:comment "Positive value calculated and provided by the Coordinated Capacity Calculator (CCC) for the reduction of Remaining Available Margin (RAM) in order to ensure grid security."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -770,32 +772,32 @@ nc:AssessedElement.coordinatedValidationAdjustment a owl:DatatypeProperty, owl:F
   rdfs:range xsd:float .
 
 nc:AssessedElement.coordinatedValidationAdjustmentJustification a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "coordinatedValidationAdjustmentJustification"@en ;
-  rdfs:comment "Free text description provided by the coordinated capacity calculator (CCC) for justifying the reduction of Remaining Available Margin (RAM) by means of Coordinated Validation Adjustment (CVA). This justification is not intended for any application processing purpose, it should only be used for reporting." ;
+  rdfs:label "coordinatedValidationAdjustmentJustification" ;
+  rdfs:comment "Free text description provided by the coordinated capacity calculator (CCC) for justifying the reduction of Remaining Available Margin (RAM) by means of Coordinated Validation Adjustment (CVA). This justification is not intended for any application processing purpose, it should only be used for reporting."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AssessedElement ;
   rdfs:range xsd:string .
 
 nc:AssessedElement.criticalElementContingencyJustification a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "criticalElementContingencyJustification"@en ;
-  rdfs:comment "Free text describing the justification  of critical element contingency categorization (e.g. the use of the kind). This justification is not intended for any application processing purpose, it should only be used for reporting." ;
+  rdfs:label "criticalElementContingencyJustification" ;
+  rdfs:comment "Free text describing the justification  of critical element contingency categorization (e.g. the use of the kind). This justification is not intended for any application processing purpose, it should only be used for reporting."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AssessedElement ;
   rdfs:range xsd:string .
 
 nc:AssessedElement.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "If true, the assessed element is enabled, otherwise it is disabled." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "If true, the assessed element is enabled, otherwise it is disabled."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AssessedElement ;
   rdfs:range xsd:boolean .
 
 nc:AssessedElement.individualValidationAdjustment a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "individualValidationAdjustment"@en ;
-  rdfs:comment "Positive value calculated and provided by System Operators from their individual validation process for the reduction of Remaining Available Margin (RAM) in order to ensure grid security." ;
+  rdfs:label "individualValidationAdjustment" ;
+  rdfs:comment "Positive value calculated and provided by System Operators from their individual validation process for the reduction of Remaining Available Margin (RAM) in order to ensure grid security."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -806,16 +808,16 @@ nc:AssessedElement.individualValidationAdjustment a owl:DatatypeProperty, owl:Fu
   rdfs:range xsd:float .
 
 nc:AssessedElement.individualValidationAdjustmentJustification a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "individualValidationAdjustmentJustification"@en ;
-  rdfs:comment "Free text description provided by System Operators for justifying the reduction of Remaining Available Margin (RAM) by means of Individual Validation Adjustment (IVA). This justification is not intended for any application processing purpose, it should only be used for reporting." ;
+  rdfs:label "individualValidationAdjustmentJustification" ;
+  rdfs:comment "Free text description provided by System Operators for justifying the reduction of Remaining Available Margin (RAM) by means of Individual Validation Adjustment (IVA). This justification is not intended for any application processing purpose, it should only be used for reporting."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AssessedElement ;
   rdfs:range xsd:string .
 
 nc:AssessedElement.individualValidationAdjustmentShare a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "individualValidationAdjustmentShare"@en ;
-  rdfs:comment "Positive value expressed calculated by the Coordinated Capacity Calculator (CCC) based on the provided Individual Validation Adjustment (IVA) by System Operators in order to show the actual reduction of Remaining Available Margin (RAM). Individual Validation Adjustment Share is a positive non-zero value. It is equal or less than the Individual Validation Adjustment value." ;
+  rdfs:label "individualValidationAdjustmentShare" ;
+  rdfs:comment "Positive value expressed calculated by the Coordinated Capacity Calculator (CCC) based on the provided Individual Validation Adjustment (IVA) by System Operators in order to show the actual reduction of Remaining Available Margin (RAM). Individual Validation Adjustment Share is a positive non-zero value. It is equal or less than the Individual Validation Adjustment value."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -826,8 +828,8 @@ nc:AssessedElement.individualValidationAdjustmentShare a owl:DatatypeProperty, o
   rdfs:range xsd:float .
 
 nc:AssessedElement.maxFlow a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "maxFlow"@en ;
-  rdfs:comment "Maximum flow on a conducting equipment or a collection of conducting equipment forming a power transfer corridor. For assessed element that becomes critical due to contingency, this value represents the maximum flow with remedial action taken into consideration." ;
+  rdfs:label "maxFlow" ;
+  rdfs:comment "Maximum flow on a conducting equipment or a collection of conducting equipment forming a power transfer corridor. For assessed element that becomes critical due to contingency, this value represents the maximum flow with remedial action taken into consideration."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -838,9 +840,9 @@ nc:AssessedElement.maxFlow a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:AssessedElement.maxMarginAdjustment a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "maxMarginAdjustment"@en ;
+  rdfs:label "maxMarginAdjustment" ;
   rdfs:comment """Maximum adjustment, relative to maximum flow allowed for exceeding the maximum flow of this assessed element.
-The allowed value range is [0,100].""" ;
+The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
   cims:multiplicity cims:M:0..1 ;
@@ -851,10 +853,10 @@ The allowed value range is [0,100].""" ;
   rdfs:range xsd:float .
 
 nc:AssessedElement.positiveVirtualMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "positiveVirtualMargin"@en ;
+  rdfs:label "positiveVirtualMargin" ;
   rdfs:comment """A positive margin that defines the overload allowed in a solution for the assessed element for the current situation. The margin represents influences that can be solved by the System Operators using available remedial action which is not cross-border relevant remedial action.
 All relevant operational limits (e.g. PATL, TATL, etc) are modified by this margin value. The attribute represents the increase.
-The allowed value range is [0,100].""" ;
+The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
   cims:multiplicity cims:M:0..1 ;
@@ -865,9 +867,9 @@ The allowed value range is [0,100].""" ;
   rdfs:range xsd:float .
 
 nc:AssessedElement.scannedThresholdMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "scannedThresholdMargin"@en ;
+  rdfs:label "scannedThresholdMargin" ;
   rdfs:comment """Threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).
-The allowed value range is [0,100].""" ;
+The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
   cims:multiplicity cims:M:0..1 ;
@@ -878,40 +880,40 @@ The allowed value range is [0,100].""" ;
   rdfs:range xsd:float .
 
 nc:AssessedElement.targetRemainingAvailableMarginJustification a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetRemainingAvailableMarginJustification"@en ;
-  rdfs:comment "Free text describing the justification for the target Remaining Available Margin (RAM). This justification is not intended for any application processing purpose, it should only be used for reporting." ;
+  rdfs:label "targetRemainingAvailableMarginJustification" ;
+  rdfs:comment "Free text describing the justification for the target Remaining Available Margin (RAM). This justification is not intended for any application processing purpose, it should only be used for reporting."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AssessedElement ;
   rdfs:range xsd:string .
 
 nc:AssessedElementWithContingency.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "If true, the assessed element with contingency is enabled, otherwise it is disabled." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "If true, the assessed element with contingency is enabled, otherwise it is disabled."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AssessedElementWithContingency ;
   rdfs:range xsd:boolean .
 
 nc:AssessedElementWithRemedialAction.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "If true, the assessed element with remedial action is enabled, otherwise it is disabled." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "If true, the assessed element with remedial action is enabled, otherwise it is disabled."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AssessedElementWithRemedialAction ;
   rdfs:range xsd:boolean .
 
 nc:AutomationFunction.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "True, if the automation function is enabled (active). Otherwise false." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "True, if the automation function is enabled (active). Otherwise false."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:AutomationFunction ;
   rdfs:range xsd:boolean .
 
 nc:BiddingZone.netPosition a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "netPosition"@en ;
-  rdfs:comment "Net position is the netted sum of electricity exports and imports for each market time unit for a bidding zone." ;
+  rdfs:label "netPosition" ;
+  rdfs:comment "Net position is the netted sum of electricity exports and imports for each market time unit for a bidding zone."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -922,8 +924,8 @@ nc:BiddingZone.netPosition a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:BiddingZoneBorder.alreadyAllocatedCapacity a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "alreadyAllocatedCapacity"@en ;
-  rdfs:comment "Already Allocated Capacity (AAC) means the total amount of allocated transmission rights i.e. transmission capacity reserved by virtue of historical long-term contracts and the previously held transmission capacity reservation auctions." ;
+  rdfs:label "alreadyAllocatedCapacity" ;
+  rdfs:comment "Already Allocated Capacity (AAC) means the total amount of allocated transmission rights i.e. transmission capacity reserved by virtue of historical long-term contracts and the previously held transmission capacity reservation auctions."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -934,8 +936,8 @@ nc:BiddingZoneBorder.alreadyAllocatedCapacity a owl:DatatypeProperty, owl:Functi
   rdfs:range xsd:float .
 
 nc:BiddingZoneBorder.alreadyAllocatedFlow a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "alreadyAllocatedFlow"@en ;
-  rdfs:comment "The maximum allowed flow on the collection of interconnection between two bidding zones." ;
+  rdfs:label "alreadyAllocatedFlow" ;
+  rdfs:comment "The maximum allowed flow on the collection of interconnection between two bidding zones."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -946,8 +948,8 @@ nc:BiddingZoneBorder.alreadyAllocatedFlow a owl:DatatypeProperty, owl:Functional
   rdfs:range xsd:float .
 
 nc:BiddingZoneBorder.availableTransferCapacity a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "availableTransferCapacity"@en ;
-  rdfs:comment "Available Transfer Capacity (ATC) means the transmission capacity that remains available, after allocation procedure, to be used under the physical conditions of the transmission system. ATC value is defined as: ATC = NTC - AAC." ;
+  rdfs:label "availableTransferCapacity" ;
+  rdfs:comment "Available Transfer Capacity (ATC) means the transmission capacity that remains available, after allocation procedure, to be used under the physical conditions of the transmission system. ATC value is defined as: ATC = NTC - AAC."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -958,8 +960,8 @@ nc:BiddingZoneBorder.availableTransferCapacity a owl:DatatypeProperty, owl:Funct
   rdfs:range xsd:float .
 
 nc:BiddingZoneBorder.netTransferCapacity a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "netTransferCapacity"@en ;
-  rdfs:comment "Net Transfer Capacity (NTC) is defined as NTC = TTC – TRM and corresponds to the maximum exchange between two areas compatible with operational security limits applicable in both areas and taking into account the technical uncertainties on future network conditions." ;
+  rdfs:label "netTransferCapacity" ;
+  rdfs:comment "Net Transfer Capacity (NTC) is defined as NTC = TTC – TRM and corresponds to the maximum exchange between two areas compatible with operational security limits applicable in both areas and taking into account the technical uncertainties on future network conditions."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -970,8 +972,8 @@ nc:BiddingZoneBorder.netTransferCapacity a owl:DatatypeProperty, owl:FunctionalP
   rdfs:range xsd:float .
 
 nc:BiddingZoneBorder.totalTransferCapacity a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "totalTransferCapacity"@en ;
-  rdfs:comment "Total Transfer Capacity (TTC) is the maximum exchange program between two areas compatible with operational security standards applicable at each system if future network conditions, generation and load patterns were perfectly known in advance." ;
+  rdfs:label "totalTransferCapacity" ;
+  rdfs:comment "Total Transfer Capacity (TTC) is the maximum exchange program between two areas compatible with operational security standards applicable at each system if future network conditions, generation and load patterns were perfectly known in advance."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -982,8 +984,8 @@ nc:BiddingZoneBorder.totalTransferCapacity a owl:DatatypeProperty, owl:Functiona
   rdfs:range xsd:float .
 
 nc:BiddingZoneBorder.transmissionReliabilityMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "transmissionReliabilityMargin"@en ;
-  rdfs:comment "Transmission Reliability Margin (TRM) is the minimum reserve that system operators must have available at their connections so that they can help other countries to which their system is directly or indirectly connected, if necessary." ;
+  rdfs:label "transmissionReliabilityMargin" ;
+  rdfs:comment "Transmission Reliability Margin (TRM) is the minimum reserve that system operators must have available at their connections so that they can help other countries to which their system is directly or indirectly connected, if necessary."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -994,9 +996,9 @@ nc:BiddingZoneBorder.transmissionReliabilityMargin a owl:DatatypeProperty, owl:F
   rdfs:range xsd:float .
 
 nc:CircuitShare.contributionFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "contributionFactor"@en ;
+  rdfs:label "contributionFactor" ;
   rdfs:comment """Contribution factor for the circuit which is part of a power transfer corridor.
-The allowed value range is [0,100].""" ;
+The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
   cims:multiplicity cims:M:1..1 ;
@@ -1007,9 +1009,9 @@ The allowed value range is [0,100].""" ;
   rdfs:range xsd:float .
 
 nc:Contingency.probability a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "probability"@en ;
+  rdfs:label "probability" ;
   rdfs:comment """The forecasted probability of the occurrence of the contingency based on the given operational condition, status of the equipment and the forecasted environment condition.
-The allowed value range is [0,100].""" ;
+The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
   cims:multiplicity cims:M:0..1 ;
@@ -1020,24 +1022,24 @@ The allowed value range is [0,100].""" ;
   rdfs:range xsd:float .
 
 nc:ContingencyWithRemedialAction.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "If true, the contingency with remedial action is enabled, otherwise it is disabled." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "If true, the contingency with remedial action is enabled, otherwise it is disabled."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:ContingencyWithRemedialAction ;
   rdfs:range xsd:boolean .
 
 nc:CrossBorderRelevance.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "If true, the cross border relevance is enabled, otherwise it is disabled." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "If true, the cross border relevance is enabled, otherwise it is disabled."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:CrossBorderRelevance ;
   rdfs:range xsd:boolean .
 
 nc:CurrentControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the current that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the current that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
   cims:multiplicity cims:M:1..1 ;
@@ -1048,8 +1050,8 @@ nc:CurrentControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProp
   rdfs:range xsd:float .
 
 nc:CurrentDroopControlFunction.targetValueCapacitive a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValueCapacitive"@en ;
-  rdfs:comment "Setpoint when control is active in capacitive region." ;
+  rdfs:label "targetValueCapacitive" ;
+  rdfs:comment "Setpoint when control is active in capacitive region."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
   cims:multiplicity cims:M:1..1 ;
@@ -1060,8 +1062,8 @@ nc:CurrentDroopControlFunction.targetValueCapacitive a owl:DatatypeProperty, owl
   rdfs:range xsd:float .
 
 nc:CurrentDroopControlFunction.targetValueInductive a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValueInductive"@en ;
-  rdfs:comment "Setpoint when control is active in inductive region." ;
+  rdfs:label "targetValueInductive" ;
+  rdfs:comment "Setpoint when control is active in inductive region."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
   cims:multiplicity cims:M:1..1 ;
@@ -1072,16 +1074,16 @@ nc:CurrentDroopControlFunction.targetValueInductive a owl:DatatypeProperty, owl:
   rdfs:range xsd:float .
 
 nc:CurrentDroopOverride.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "True, if the current droop override is enabled (active). Otherwise false." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "True, if the current droop override is enabled (active). Otherwise false."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:CurrentDroopOverride ;
   rdfs:range xsd:boolean .
 
 nc:CurrentDroopOverride.targetValueCapacitiveI a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValueCapacitiveI"@en ;
-  rdfs:comment "Setpoint when control is active in capacitive region." ;
+  rdfs:label "targetValueCapacitiveI" ;
+  rdfs:comment "Setpoint when control is active in capacitive region."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
   cims:multiplicity cims:M:1..1 ;
@@ -1092,8 +1094,8 @@ nc:CurrentDroopOverride.targetValueCapacitiveI a owl:DatatypeProperty, owl:Funct
   rdfs:range xsd:float .
 
 nc:CurrentDroopOverride.targetValueInductiveI a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValueInductiveI"@en ;
-  rdfs:comment "Setpoint when control is active in inductive region." ;
+  rdfs:label "targetValueInductiveI" ;
+  rdfs:comment "Setpoint when control is active in inductive region."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
   cims:multiplicity cims:M:1..1 ;
@@ -1104,8 +1106,8 @@ nc:CurrentDroopOverride.targetValueInductiveI a owl:DatatypeProperty, owl:Functi
   rdfs:range xsd:float .
 
 nc:DCCurrentControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the current that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the current that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
   cims:multiplicity cims:M:1..1 ;
@@ -1116,8 +1118,8 @@ nc:DCCurrentControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalPr
   rdfs:range xsd:float .
 
 nc:DCPole.maxEconomicP a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "maxEconomicP"@en ;
-  rdfs:comment "Maximum high economic active power limit, that should not exceed the maximum operating active power limit." ;
+  rdfs:label "maxEconomicP" ;
+  rdfs:comment "Maximum high economic active power limit, that should not exceed the maximum operating active power limit."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1128,8 +1130,8 @@ nc:DCPole.maxEconomicP a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:DCPole.minEconomicP a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "minEconomicP"@en ;
-  rdfs:comment "Low economic active power limit that shall be greater than or equal to the minimum operating active power limit." ;
+  rdfs:label "minEconomicP" ;
+  rdfs:comment "Low economic active power limit that shall be greater than or equal to the minimum operating active power limit."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1140,8 +1142,8 @@ nc:DCPole.minEconomicP a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:DCPole.p a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "p"@en ;
-  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  rdfs:label "p" ;
+  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1152,40 +1154,40 @@ nc:DCPole.p a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:DCPole.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
+  rdfs:label "participationFactor" ;
   rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
 In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.""" ;
+In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:DCPole ;
   rdfs:range xsd:float .
 
 nc:DCSwitch.locked a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "locked"@en ;
+  rdfs:label "locked" ;
   rdfs:comment """If true, the switch is locked. The resulting switch state is a combination of locked and DCSwitch.open attributes as follows:
 <ul>
 \t<li>locked=true and DCSwitch.open=true. The resulting state is open and locked;</li>
 \t<li>locked=false and DCSwitch.open=true. The resulting state is open;</li>
 \t<li>locked=false and DCSwitch.open=false. The resulting state is closed.</li>
-</ul>""" ;
+</ul>"""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:DCSwitch ;
   rdfs:range xsd:boolean .
 
 nc:DCSwitch.open a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "open"@en ;
-  rdfs:comment "The attribute tells if the switch is considered open when used as input to topology processing." ;
+  rdfs:label "open" ;
+  rdfs:comment "The attribute tells if the switch is considered open when used as input to topology processing."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
   rdfs:domain nc:DCSwitch ;
   rdfs:range xsd:boolean .
 
 nc:DCTieCorridor.p a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "p"@en ;
+  rdfs:label "p" ;
   rdfs:comment """Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.
-Starting value for a steady state solution in the case a simplified power flow model is used.""" ;
+Starting value for a steady state solution in the case a simplified power flow model is used."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:1..1 ;
@@ -1196,9 +1198,9 @@ Starting value for a steady state solution in the case a simplified power flow m
   rdfs:range xsd:float .
 
 nc:DCTieCorridor.q a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "q"@en ;
+  rdfs:label "q" ;
   rdfs:comment """Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.
-Starting value for a steady state solution in the case a simplified power flow model is used.""" ;
+Starting value for a steady state solution in the case a simplified power flow model is used."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VAr ;
   cims:multiplicity cims:M:0..1 ;
@@ -1209,8 +1211,8 @@ Starting value for a steady state solution in the case a simplified power flow m
   rdfs:range xsd:float .
 
 nc:DCVoltageControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
   cims:multiplicity cims:M:1..1 ;
@@ -1221,8 +1223,8 @@ nc:DCVoltageControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalPr
   rdfs:range xsd:float .
 
 nc:EnergyBlockOrder.p a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "p"@en ;
-  rdfs:comment "The maximum active power that can be applied as part of this block order." ;
+  rdfs:label "p" ;
+  rdfs:comment "The maximum active power that can be applied as part of this block order."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1233,34 +1235,34 @@ nc:EnergyBlockOrder.p a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:EnergyBlockOrder.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
-  rdfs:comment "Participation factor." ;
+  rdfs:label "participationFactor" ;
+  rdfs:comment "Participation factor."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:EnergyBlockOrder ;
   rdfs:range xsd:float .
 
 nc:EnergyBlockOrder.sequence a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "sequence"@en ;
-  rdfs:comment "Sequence needs to be ordered by the scheduling area. It has to be unique by the scheduling area." ;
+  rdfs:label "sequence" ;
+  rdfs:comment "Sequence needs to be ordered by the scheduling area. It has to be unique by the scheduling area."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:EnergyBlockOrder ;
   rdfs:range xsd:integer .
 
 nc:EnergyConsumer.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
+  rdfs:label "participationFactor" ;
   rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
 In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.""" ;
+In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain cim:EnergyConsumer ;
   rdfs:range xsd:float .
 
 nc:EnergyGroup.p a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "p"@en ;
-  rdfs:comment "Active power for the energy group representing a particular energy type. e.g. WInd Power" ;
+  rdfs:label "p" ;
+  rdfs:comment "Active power for the energy group representing a particular energy type. e.g. WInd Power"@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1271,17 +1273,17 @@ nc:EnergyGroup.p a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:EnergyGroup.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
-  rdfs:comment "Participation factor for the power group in relation to scheduling area. Must be a positive value." ;
+  rdfs:label "participationFactor" ;
+  rdfs:comment "Participation factor for the power group in relation to scheduling area. Must be a positive value."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:EnergyGroup ;
   rdfs:range xsd:float .
 
 nc:FACTSEquipment.q a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "q"@en ;
+  rdfs:label "q" ;
   rdfs:comment """Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
-Starting value for a steady state solution.""" ;
+Starting value for a steady state solution."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VAr ;
   cims:multiplicity cims:M:1..1 ;
@@ -1292,16 +1294,16 @@ Starting value for a steady state solution.""" ;
   rdfs:range xsd:float .
 
 nc:FrequencyControlFuntion.frequencyBias a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "frequencyBias"@en ;
-  rdfs:comment "Target value for the active power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "frequencyBias" ;
+  rdfs:comment "Target value for the active power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:FrequencyControlFuntion ;
   rdfs:range xsd:float .
 
 nc:FuelStorage.energyStorage a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "energyStorage"@en ;
-  rdfs:comment "Amount of energy available in the storage." ;
+  rdfs:label "energyStorage" ;
+  rdfs:comment "Amount of energy available in the storage."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.Wh ;
   cims:multiplicity cims:M:1..1 ;
@@ -1312,24 +1314,24 @@ nc:FuelStorage.energyStorage a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:FunctionBlock.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "True, if the function block is enabled (active). Otherwise false." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "True, if the function block is enabled (active). Otherwise false."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:FunctionBlock ;
   rdfs:range xsd:boolean .
 
 nc:GeneratingUnit.mustRun a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "mustRun"@en ;
-  rdfs:comment "Identifies if the generating unit is a must-run unit. This means that it cannot be instructed to shutdown due to other obligation. e.g. Providing heat. If true, the generating unit is must-run. If false, it is not." ;
+  rdfs:label "mustRun" ;
+  rdfs:comment "Identifies if the generating unit is a must-run unit. This means that it cannot be instructed to shutdown due to other obligation. e.g. Providing heat. If true, the generating unit is must-run. If false, it is not."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain cim:GeneratingUnit ;
   rdfs:range xsd:boolean .
 
 nc:GeneratingUnit.mustRunP a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "mustRunP"@en ;
-  rdfs:comment "Minimum active power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  rdfs:label "mustRunP" ;
+  rdfs:comment "Minimum active power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1340,8 +1342,8 @@ nc:GeneratingUnit.mustRunP a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:GeneratingUnit.mustRunQ a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "mustRunQ"@en ;
-  rdfs:comment "Minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  rdfs:label "mustRunQ" ;
+  rdfs:comment "Minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VAr ;
   cims:multiplicity cims:M:0..1 ;
@@ -1352,29 +1354,29 @@ nc:GeneratingUnit.mustRunQ a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:GeneratingUnit.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
+  rdfs:label "participationFactor" ;
   rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
 In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.""" ;
+In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain cim:GeneratingUnit ;
   rdfs:range xsd:float .
 
 nc:GridStateAlteration.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "The status of the GridStateAlteration set by an operation or by a signal resulting from a control action." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "The status of the GridStateAlteration set by an operation or by a signal resulting from a control action."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:GridStateAlteration ;
   rdfs:range xsd:boolean .
 
 nc:GridStateAlteration.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
+  rdfs:label "participationFactor" ;
   rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
 In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
 In the case of priority strategy, the item with the lowest number gets allocated energy first.
-e.g. If 0 this grid alteration does not participate. The sum of all participation factors for all grid state alterations associated with same remedial action shall be equal to 100%.""" ;
+e.g. If 0 this grid alteration does not participate. The sum of all participation factors for all grid state alterations associated with same remedial action shall be equal to 100%."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
   cims:multiplicity cims:M:0..1 ;
@@ -1385,18 +1387,18 @@ e.g. If 0 this grid alteration does not participate. The sum of all participatio
   rdfs:range xsd:float .
 
 nc:HydroPump.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
+  rdfs:label "participationFactor" ;
   rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
 In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.""" ;
+In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain cim:HydroPump ;
   rdfs:range xsd:float .
 
 nc:ImpedanceControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the impedance that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the impedance that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.ohm ;
   cims:multiplicity cims:M:1..1 ;
@@ -1407,8 +1409,8 @@ nc:ImpedanceControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalPr
   rdfs:range xsd:float .
 
 nc:InfeedLimit.valueA a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "valueA"@en ;
-  rdfs:comment "Value of current limit. The attribute shall be a positive value or zero." ;
+  rdfs:label "valueA" ;
+  rdfs:comment "Value of current limit. The attribute shall be a positive value or zero."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
   cims:multiplicity cims:M:0..1 ;
@@ -1419,8 +1421,8 @@ nc:InfeedLimit.valueA a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:InfeedLimit.valueW a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "valueW"@en ;
-  rdfs:comment "Value of active power limit. The attribute shall be a positive value or zero." ;
+  rdfs:label "valueW" ;
+  rdfs:comment "Value of active power limit. The attribute shall be a positive value or zero."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1431,8 +1433,8 @@ nc:InfeedLimit.valueW a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PTCActivePowerSupport.value a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "value"@en ;
-  rdfs:comment "The support that a System Integrity Protection Scheme (SIPS) gives to a Power Transfer Corridor (PTC)." ;
+  rdfs:label "value" ;
+  rdfs:comment "The support that a System Integrity Protection Scheme (SIPS) gives to a Power Transfer Corridor (PTC)."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:1..1 ;
@@ -1443,8 +1445,8 @@ nc:PTCActivePowerSupport.value a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PhaseControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the phase that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the phase that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.deg ;
   cims:multiplicity cims:M:1..1 ;
@@ -1455,8 +1457,8 @@ nc:PhaseControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProper
   rdfs:range xsd:float .
 
 nc:PowerCapacity.maxInterchange a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "maxInterchange"@en ;
-  rdfs:comment "Maximum total active power (AC and DC)  that the net position for the bidding zone can have to maintain operational security. Positive sign means flow into the bidding zone." ;
+  rdfs:label "maxInterchange" ;
+  rdfs:comment "Maximum total active power (AC and DC)  that the net position for the bidding zone can have to maintain operational security. Positive sign means flow into the bidding zone."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1467,8 +1469,8 @@ nc:PowerCapacity.maxInterchange a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PowerCapacity.minImportP a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "minImportP"@en ;
-  rdfs:comment "Minimum imported active power requirement." ;
+  rdfs:label "minImportP" ;
+  rdfs:comment "Minimum imported active power requirement."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1479,8 +1481,8 @@ nc:PowerCapacity.minImportP a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PowerCapacity.minInterchange a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "minInterchange"@en ;
-  rdfs:comment "Minimum total active power (AC and DC)  that the net position for the bidding zone can have to maintain operational security. Negative sign means flow out of the bidding zone." ;
+  rdfs:label "minInterchange" ;
+  rdfs:comment "Minimum total active power (AC and DC)  that the net position for the bidding zone can have to maintain operational security. Negative sign means flow out of the bidding zone."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1491,8 +1493,8 @@ nc:PowerCapacity.minInterchange a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:PowerCapacity.netACInterchange a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "netACInterchange"@en ;
-  rdfs:comment "The netted aggregation of all AC external schedules of an area. Positive sign means flow into the area (Import)." ;
+  rdfs:label "netACInterchange" ;
+  rdfs:comment "The netted aggregation of all AC external schedules of an area. Positive sign means flow into the area (Import)."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1503,16 +1505,16 @@ nc:PowerCapacity.netACInterchange a owl:DatatypeProperty, owl:FunctionalProperty
   rdfs:range xsd:float .
 
 nc:PowerCapacity.netACInterchangeTolerance a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "netACInterchangeTolerance"@en ;
-  rdfs:comment "The area AC Net Position tolerance." ;
+  rdfs:label "netACInterchangeTolerance" ;
+  rdfs:comment "The area AC Net Position tolerance."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerCapacity ;
   rdfs:range xsd:float .
 
 nc:PowerCapacity.netDCInterchange a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "netDCInterchange"@en ;
-  rdfs:comment "The netted aggregation of all DC external schedules of an area. Positive sign means flow into the area." ;
+  rdfs:label "netDCInterchange" ;
+  rdfs:comment "The netted aggregation of all DC external schedules of an area. Positive sign means flow into the area."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1523,8 +1525,8 @@ nc:PowerCapacity.netDCInterchange a owl:DatatypeProperty, owl:FunctionalProperty
   rdfs:range xsd:float .
 
 nc:PowerCapacity.regulatingDownAllocation a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "regulatingDownAllocation"@en ;
-  rdfs:comment "The balancing capacity allocated for regulating down, by decreasing the production, increasing the direct current export, decreasing direct current import or increasing the consumption of energy in the bidding zone. This must be a positive number." ;
+  rdfs:label "regulatingDownAllocation" ;
+  rdfs:comment "The balancing capacity allocated for regulating down, by decreasing the production, increasing the direct current export, decreasing direct current import or increasing the consumption of energy in the bidding zone. This must be a positive number."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1535,8 +1537,8 @@ nc:PowerCapacity.regulatingDownAllocation a owl:DatatypeProperty, owl:Functional
   rdfs:range xsd:float .
 
 nc:PowerCapacity.regulatingUpAllocation a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "regulatingUpAllocation"@en ;
-  rdfs:comment "The balancing capacity allocated for regulating up, by increasing the production, decreasing the direct current export, increasing direct current import or reducing the consumption of energy in the bidding zone. This must be a positive number." ;
+  rdfs:label "regulatingUpAllocation" ;
+  rdfs:comment "The balancing capacity allocated for regulating up, by increasing the production, decreasing the direct current export, increasing direct current import or reducing the consumption of energy in the bidding zone. This must be a positive number."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1547,9 +1549,9 @@ nc:PowerCapacity.regulatingUpAllocation a owl:DatatypeProperty, owl:FunctionalPr
   rdfs:range xsd:float .
 
 nc:PowerElectronicsUnit.p a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "p"@en ;
+  rdfs:label "p" ;
   rdfs:comment """Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
-Starting value for a steady state solution.""" ;
+Starting value for a steady state solution."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1560,26 +1562,26 @@ Starting value for a steady state solution.""" ;
   rdfs:range xsd:float .
 
 nc:PowerElectronicsUnit.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
+  rdfs:label "participationFactor" ;
   rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
 In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.""" ;
+In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain cim:PowerElectronicsUnit ;
   rdfs:range xsd:float .
 
 nc:PowerFactorControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the power factor that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the power factor that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerFactorControlFunction ;
   rdfs:range xsd:float .
 
 nc:PowerRemedialAction.maxRegulatingDown a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "maxRegulatingDown"@en ;
-  rdfs:comment "Maximum net amount of active power that the remedial action can regulate down." ;
+  rdfs:label "maxRegulatingDown" ;
+  rdfs:comment "Maximum net amount of active power that the remedial action can regulate down."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1590,8 +1592,8 @@ nc:PowerRemedialAction.maxRegulatingDown a owl:DatatypeProperty, owl:FunctionalP
   rdfs:range xsd:float .
 
 nc:PowerRemedialAction.maxRegulatingUp a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "maxRegulatingUp"@en ;
-  rdfs:comment "Maximum net amount of active power that the remedial action can regulate up." ;
+  rdfs:label "maxRegulatingUp" ;
+  rdfs:comment "Maximum net amount of active power that the remedial action can regulate up."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1602,42 +1604,42 @@ nc:PowerRemedialAction.maxRegulatingUp a owl:DatatypeProperty, owl:FunctionalPro
   rdfs:range xsd:float .
 
 nc:PowerShiftKeyStrategy.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "If true, the assessed element is enabled, otherwise it is disabled." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "If true, the assessed element is enabled, otherwise it is disabled."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerShiftKeyStrategy ;
   rdfs:range xsd:boolean .
 
 nc:PowerShiftKeyStrategy.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
-  rdfs:comment "Participation factor describing the entities part of the power shift strategy. Must be a positive value." ;
+  rdfs:label "participationFactor" ;
+  rdfs:comment "Participation factor describing the entities part of the power shift strategy. Must be a positive value."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerShiftKeyStrategy ;
   rdfs:range xsd:float .
 
 nc:PowerTransferCorridor.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "It enables/disables the monitoring/assessment of a power transfer corridor. True means that the monitoring of the power transfer corridor is assessed. False means the power transfer corridor is not assessed." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "It enables/disables the monitoring/assessment of a power transfer corridor. True means that the monitoring of the power transfer corridor is assessed. False means the power transfer corridor is not assessed."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:PowerTransferCorridor ;
   rdfs:range xsd:boolean .
 
 nc:RangeConstraint.value a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "value"@en ;
+  rdfs:label "value" ;
   rdfs:comment """The value at the time. The meaning of the value is defined by the attribute referenced by the PropertyReference. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false. 
 If the valueKind is incremental or incrementalPercentage, then the value shall be positive (greater than zero).
-If the valueKind is incrementalPercentage, then the value shall be in the range [0, 100].""" ;
+If the valueKind is incrementalPercentage, then the value shall be in the range [0, 100]."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:RangeConstraint ;
   rdfs:range xsd:float .
 
 nc:ReactivePowerControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the reactive power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the reactive power that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VAr ;
   cims:multiplicity cims:M:1..1 ;
@@ -1648,24 +1650,24 @@ nc:ReactivePowerControlFunction.targetValue a owl:DatatypeProperty, owl:Function
   rdfs:range xsd:float .
 
 nc:RemedialAction.available a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "available"@en ;
-  rdfs:comment "Identifies if the remedial action is available to be proposed. True means available, False means unavailable." ;
+  rdfs:label "available" ;
+  rdfs:comment "Identifies if the remedial action is available to be proposed. True means available, False means unavailable."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:RemedialAction ;
   rdfs:range xsd:boolean .
 
 nc:RemedialActionDependency.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "enabled"@en ;
-  rdfs:comment "If true, the remedial action dependency is enabled, otherwise it is disabled." ;
+  rdfs:label "enabled" ;
+  rdfs:comment "If true, the remedial action dependency is enabled, otherwise it is disabled."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:RemedialActionDependency ;
   rdfs:range xsd:boolean .
 
 nc:RemedialActionGroup.maxRegulatingDown a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "maxRegulatingDown"@en ;
-  rdfs:comment "Maximum net amount of active power that the group of remedial actions can regulate down." ;
+  rdfs:label "maxRegulatingDown" ;
+  rdfs:comment "Maximum net amount of active power that the group of remedial actions can regulate down."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1676,8 +1678,8 @@ nc:RemedialActionGroup.maxRegulatingDown a owl:DatatypeProperty, owl:FunctionalP
   rdfs:range xsd:float .
 
 nc:RemedialActionGroup.maxRegulatingUp a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "maxRegulatingUp"@en ;
-  rdfs:comment "Maximum net amount of active power that the group of remedial actions can regulate up." ;
+  rdfs:label "maxRegulatingUp" ;
+  rdfs:comment "Maximum net amount of active power that the group of remedial actions can regulate up."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1688,24 +1690,24 @@ nc:RemedialActionGroup.maxRegulatingUp a owl:DatatypeProperty, owl:FunctionalPro
   rdfs:range xsd:float .
 
 nc:RemedialActionScheme.armed a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "armed"@en ;
-  rdfs:comment "Defines the arming status of the remedial action scheme. It is set by operation or by signal." ;
+  rdfs:label "armed" ;
+  rdfs:comment "Defines the arming status of the remedial action scheme. It is set by operation or by signal."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:RemedialActionScheme ;
   rdfs:range xsd:boolean .
 
 nc:RemedialActionScheme.inService a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "inService"@en ;
-  rdfs:comment "Specifies the availability of the Remedial Action Scheme (RAS). If true, the RAS is available for contingency processing. If false, the RAS is treated by contingency processing as if it is not in the model." ;
+  rdfs:label "inService" ;
+  rdfs:comment "Specifies the availability of the Remedial Action Scheme (RAS). If true, the RAS is available for contingency processing. If false, the RAS is treated by contingency processing as if it is not in the model."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:RemedialActionScheme ;
   rdfs:range xsd:boolean .
 
 nc:Reservoir.energyStorage a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "energyStorage"@en ;
-  rdfs:comment "Amount of energy available in the storage." ;
+  rdfs:label "energyStorage" ;
+  rdfs:comment "Amount of energy available in the storage."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.Wh ;
   cims:multiplicity cims:M:1..1 ;
@@ -1716,8 +1718,8 @@ nc:Reservoir.energyStorage a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:ScheduleResource.p a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "p"@en ;
-  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node." ;
+  rdfs:label "p" ;
+  rdfs:comment "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1728,18 +1730,18 @@ nc:ScheduleResource.p a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:ScheduleResource.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
+  rdfs:label "participationFactor" ;
   rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
 In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.""" ;
+In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:ScheduleResource ;
   rdfs:range xsd:float .
 
 nc:SchedulingArea.p a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "p"@en ;
-  rdfs:comment "Netted active power representing production, consumption and import/export for the scheduling area." ;
+  rdfs:label "p" ;
+  rdfs:comment "Netted active power representing production, consumption and import/export for the scheduling area."@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
   cims:multiplicity cims:M:0..1 ;
@@ -1750,34 +1752,34 @@ nc:SchedulingArea.p a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:SchedulingArea.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "participationFactor"@en ;
+  rdfs:label "participationFactor" ;
   rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
 In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.""" ;
+In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:SchedulingArea ;
   rdfs:range xsd:float .
 
 nc:StageTrigger.armed a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "armed"@en ;
-  rdfs:comment "The status of the class set by operation or by signal. Optional field that will override other status fields." ;
+  rdfs:label "armed" ;
+  rdfs:comment "The status of the class set by operation or by signal. Optional field that will override other status fields."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:StageTrigger ;
   rdfs:range xsd:boolean .
 
 nc:StageTrigger.inService a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "inService"@en ;
-  rdfs:comment "Indicates if the stage trigger is in service." ;
+  rdfs:label "inService" ;
+  rdfs:comment "Indicates if the stage trigger is in service."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:StageTrigger ;
   rdfs:range xsd:boolean .
 
 nc:ThyristorControlledSeriesCompensator.compensationZ a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "compensationZ"@en ;
-  rdfs:comment "The actual compensation impedance provided by the compensator. The attribute value shall be positive if compensation is in the capacitive range. The attribute value shall be negative if compensation is in the inductive rating." ;
+  rdfs:label "compensationZ" ;
+  rdfs:comment "The actual compensation impedance provided by the compensator. The attribute value shall be positive if compensation is in the capacitive range. The attribute value shall be negative if compensation is in the inductive rating."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.ohm ;
   cims:multiplicity cims:M:1..1 ;
@@ -1788,16 +1790,16 @@ nc:ThyristorControlledSeriesCompensator.compensationZ a owl:DatatypeProperty, ow
   rdfs:range xsd:float .
 
 nc:ThyristorControlledSeriesCompensator.currentSection a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "currentSection"@en ;
-  rdfs:comment "The current section on which the TCSC is operating." ;
+  rdfs:label "currentSection" ;
+  rdfs:comment "The current section on which the TCSC is operating."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:ThyristorControlledSeriesCompensator ;
   rdfs:range xsd:integer .
 
 nc:VoltageAngleLimit.value a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "value"@en ;
-  rdfs:comment "The difference in angle degrees between referenced by the association end OperationalLimitSet.Terminal and the Terminal referenced by the association end VoltageAngleLimit.AngleReferenceTerminal. The value shall be positive (greater than zero)." ;
+  rdfs:label "value" ;
+  rdfs:comment "The difference in angle degrees between referenced by the association end OperationalLimitSet.Terminal and the Terminal referenced by the association end VoltageAngleLimit.AngleReferenceTerminal. The value shall be positive (greater than zero)."@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.deg ;
   cims:multiplicity cims:M:1..1 ;
@@ -1808,8 +1810,8 @@ nc:VoltageAngleLimit.value a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:range xsd:float .
 
 nc:VoltageControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
   cims:multiplicity cims:M:1..1 ;
@@ -1820,8 +1822,8 @@ nc:VoltageControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProp
   rdfs:range xsd:float .
 
 nc:VoltageInjectionControlFunction.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue"@en ;
-  rdfs:comment "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment." ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the voltage that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
   cims:multiplicity cims:M:1..1 ;
@@ -1832,8 +1834,8 @@ nc:VoltageInjectionControlFunction.targetValue a owl:DatatypeProperty, owl:Funct
   rdfs:range xsd:float .
 
 cim:ActivePower a qudt:QuantityKind ;
-  rdfs:label "ActivePower"@en ;
-  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current." ;
+  rdfs:label "ActivePower" ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the in-phase component of the current."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.W ;
   skos:exactMatch quantitykind:ActivePower .
@@ -1845,8 +1847,8 @@ cim:ActivePowerPerCurrentFlow skos:exactMatch quantitykind:ActivePowerPerCurrent
 cim:ActivePowerPerFrequency skos:exactMatch quantitykind:ActivePowerPerFrequency .
 
 cim:AngleDegrees a qudt:QuantityKind ;
-  rdfs:label "AngleDegrees"@en ;
-  rdfs:comment "Measurement of angle in degrees." ;
+  rdfs:label "AngleDegrees" ;
+  rdfs:comment "Measurement of angle in degrees."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.deg ;
   skos:exactMatch quantitykind:Angle .
@@ -1863,826 +1865,826 @@ cim:Conductance skos:exactMatch quantitykind:Conductance .
 
 cim:Currency.AED a cim:Currency ;
   rdfs:label "AED" ;
-  rdfs:comment "United Arab Emirates dirham." ;
+  rdfs:comment "United Arab Emirates dirham."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.AFN a cim:Currency ;
   rdfs:label "AFN" ;
-  rdfs:comment "Afghan afghani." ;
+  rdfs:comment "Afghan afghani."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ALL a cim:Currency ;
   rdfs:label "ALL" ;
-  rdfs:comment "Albanian lek." ;
+  rdfs:comment "Albanian lek."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.AMD a cim:Currency ;
   rdfs:label "AMD" ;
-  rdfs:comment "Armenian dram." ;
+  rdfs:comment "Armenian dram."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ANG a cim:Currency ;
   rdfs:label "ANG" ;
-  rdfs:comment "Netherlands Antillean guilder." ;
+  rdfs:comment "Netherlands Antillean guilder."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.AOA a cim:Currency ;
   rdfs:label "AOA" ;
-  rdfs:comment "Angolan kwanza." ;
+  rdfs:comment "Angolan kwanza."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ARS a cim:Currency ;
   rdfs:label "ARS" ;
-  rdfs:comment "Argentine peso." ;
+  rdfs:comment "Argentine peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.AUD a cim:Currency ;
   rdfs:label "AUD" ;
-  rdfs:comment "Australian dollar." ;
+  rdfs:comment "Australian dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.AWG a cim:Currency ;
   rdfs:label "AWG" ;
-  rdfs:comment "Aruban florin." ;
+  rdfs:comment "Aruban florin."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.AZN a cim:Currency ;
   rdfs:label "AZN" ;
-  rdfs:comment "Azerbaijani manat." ;
+  rdfs:comment "Azerbaijani manat."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BAM a cim:Currency ;
   rdfs:label "BAM" ;
-  rdfs:comment "Bosnia and Herzegovina convertible mark." ;
+  rdfs:comment "Bosnia and Herzegovina convertible mark."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BBD a cim:Currency ;
   rdfs:label "BBD" ;
-  rdfs:comment "Barbados dollar." ;
+  rdfs:comment "Barbados dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BDT a cim:Currency ;
   rdfs:label "BDT" ;
-  rdfs:comment "Bangladeshi taka." ;
+  rdfs:comment "Bangladeshi taka."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BGN a cim:Currency ;
   rdfs:label "BGN" ;
-  rdfs:comment "Bulgarian lev." ;
+  rdfs:comment "Bulgarian lev."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BHD a cim:Currency ;
   rdfs:label "BHD" ;
-  rdfs:comment "Bahraini dinar." ;
+  rdfs:comment "Bahraini dinar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BIF a cim:Currency ;
   rdfs:label "BIF" ;
-  rdfs:comment "Burundian franc." ;
+  rdfs:comment "Burundian franc."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BMD a cim:Currency ;
   rdfs:label "BMD" ;
-  rdfs:comment "Bermudian dollar (customarily known as Bermuda dollar)." ;
+  rdfs:comment "Bermudian dollar (customarily known as Bermuda dollar)."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BND a cim:Currency ;
   rdfs:label "BND" ;
-  rdfs:comment "Brunei dollar." ;
+  rdfs:comment "Brunei dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BOB a cim:Currency ;
   rdfs:label "BOB" ;
-  rdfs:comment "Boliviano." ;
+  rdfs:comment "Boliviano."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BOV a cim:Currency ;
   rdfs:label "BOV" ;
-  rdfs:comment "Bolivian Mvdol (funds code)." ;
+  rdfs:comment "Bolivian Mvdol (funds code)."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BRL a cim:Currency ;
   rdfs:label "BRL" ;
-  rdfs:comment "Brazilian real." ;
+  rdfs:comment "Brazilian real."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BSD a cim:Currency ;
   rdfs:label "BSD" ;
-  rdfs:comment "Bahamian dollar." ;
+  rdfs:comment "Bahamian dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BTN a cim:Currency ;
   rdfs:label "BTN" ;
-  rdfs:comment "Bhutanese ngultrum." ;
+  rdfs:comment "Bhutanese ngultrum."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BWP a cim:Currency ;
   rdfs:label "BWP" ;
-  rdfs:comment "Botswana pula." ;
+  rdfs:comment "Botswana pula."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BYR a cim:Currency ;
   rdfs:label "BYR" ;
-  rdfs:comment "Belarusian ruble." ;
+  rdfs:comment "Belarusian ruble."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.BZD a cim:Currency ;
   rdfs:label "BZD" ;
-  rdfs:comment "Belize dollar." ;
+  rdfs:comment "Belize dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CAD a cim:Currency ;
   rdfs:label "CAD" ;
-  rdfs:comment "Canadian dollar." ;
+  rdfs:comment "Canadian dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CDF a cim:Currency ;
   rdfs:label "CDF" ;
-  rdfs:comment "Congolese franc." ;
+  rdfs:comment "Congolese franc."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CHF a cim:Currency ;
   rdfs:label "CHF" ;
-  rdfs:comment "Swiss franc." ;
+  rdfs:comment "Swiss franc."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CLF a cim:Currency ;
   rdfs:label "CLF" ;
-  rdfs:comment "Unidad de Fomento (funds code), Chile." ;
+  rdfs:comment "Unidad de Fomento (funds code), Chile."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CLP a cim:Currency ;
   rdfs:label "CLP" ;
-  rdfs:comment "Chilean peso." ;
+  rdfs:comment "Chilean peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CNY a cim:Currency ;
   rdfs:label "CNY" ;
-  rdfs:comment "Chinese yuan." ;
+  rdfs:comment "Chinese yuan."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.COP a cim:Currency ;
   rdfs:label "COP" ;
-  rdfs:comment "Colombian peso." ;
+  rdfs:comment "Colombian peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.COU a cim:Currency ;
   rdfs:label "COU" ;
-  rdfs:comment "Unidad de Valor Real." ;
+  rdfs:comment "Unidad de Valor Real."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CRC a cim:Currency ;
   rdfs:label "CRC" ;
-  rdfs:comment "Costa Rican colon." ;
+  rdfs:comment "Costa Rican colon."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CUC a cim:Currency ;
   rdfs:label "CUC" ;
-  rdfs:comment "Cuban convertible peso." ;
+  rdfs:comment "Cuban convertible peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CUP a cim:Currency ;
   rdfs:label "CUP" ;
-  rdfs:comment "Cuban peso." ;
+  rdfs:comment "Cuban peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CVE a cim:Currency ;
   rdfs:label "CVE" ;
-  rdfs:comment "Cape Verde escudo." ;
+  rdfs:comment "Cape Verde escudo."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.CZK a cim:Currency ;
   rdfs:label "CZK" ;
-  rdfs:comment "Czech koruna." ;
+  rdfs:comment "Czech koruna."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.DJF a cim:Currency ;
   rdfs:label "DJF" ;
-  rdfs:comment "Djiboutian franc." ;
+  rdfs:comment "Djiboutian franc."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.DKK a cim:Currency ;
   rdfs:label "DKK" ;
-  rdfs:comment "Danish krone." ;
+  rdfs:comment "Danish krone."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.DOP a cim:Currency ;
   rdfs:label "DOP" ;
-  rdfs:comment "Dominican peso." ;
+  rdfs:comment "Dominican peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.DZD a cim:Currency ;
   rdfs:label "DZD" ;
-  rdfs:comment "Algerian dinar." ;
+  rdfs:comment "Algerian dinar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.EEK a cim:Currency ;
   rdfs:label "EEK" ;
-  rdfs:comment "Estonian kroon." ;
+  rdfs:comment "Estonian kroon."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.EGP a cim:Currency ;
   rdfs:label "EGP" ;
-  rdfs:comment "Egyptian pound." ;
+  rdfs:comment "Egyptian pound."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ERN a cim:Currency ;
   rdfs:label "ERN" ;
-  rdfs:comment "Eritrean nakfa." ;
+  rdfs:comment "Eritrean nakfa."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ETB a cim:Currency ;
   rdfs:label "ETB" ;
-  rdfs:comment "Ethiopian birr." ;
+  rdfs:comment "Ethiopian birr."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.EUR a cim:Currency ;
   rdfs:label "EUR" ;
-  rdfs:comment "Euro." ;
+  rdfs:comment "Euro."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.FJD a cim:Currency ;
   rdfs:label "FJD" ;
-  rdfs:comment "Fiji dollar." ;
+  rdfs:comment "Fiji dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.FKP a cim:Currency ;
   rdfs:label "FKP" ;
-  rdfs:comment "Falkland Islands pound." ;
+  rdfs:comment "Falkland Islands pound."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.GBP a cim:Currency ;
   rdfs:label "GBP" ;
-  rdfs:comment "Pound sterling." ;
+  rdfs:comment "Pound sterling."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.GEL a cim:Currency ;
   rdfs:label "GEL" ;
-  rdfs:comment "Georgian lari." ;
+  rdfs:comment "Georgian lari."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.GHS a cim:Currency ;
   rdfs:label "GHS" ;
-  rdfs:comment "Ghanaian cedi." ;
+  rdfs:comment "Ghanaian cedi."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.GIP a cim:Currency ;
   rdfs:label "GIP" ;
-  rdfs:comment "Gibraltar pound." ;
+  rdfs:comment "Gibraltar pound."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.GMD a cim:Currency ;
   rdfs:label "GMD" ;
-  rdfs:comment "Gambian dalasi." ;
+  rdfs:comment "Gambian dalasi."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.GNF a cim:Currency ;
   rdfs:label "GNF" ;
-  rdfs:comment "Guinean franc." ;
+  rdfs:comment "Guinean franc."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.GTQ a cim:Currency ;
   rdfs:label "GTQ" ;
-  rdfs:comment "Guatemalan quetzal." ;
+  rdfs:comment "Guatemalan quetzal."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.GYD a cim:Currency ;
   rdfs:label "GYD" ;
-  rdfs:comment "Guyanese dollar." ;
+  rdfs:comment "Guyanese dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.HKD a cim:Currency ;
   rdfs:label "HKD" ;
-  rdfs:comment "Hong Kong dollar." ;
+  rdfs:comment "Hong Kong dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.HNL a cim:Currency ;
   rdfs:label "HNL" ;
-  rdfs:comment "Honduran lempira." ;
+  rdfs:comment "Honduran lempira."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.HRK a cim:Currency ;
   rdfs:label "HRK" ;
-  rdfs:comment "Croatian kuna." ;
+  rdfs:comment "Croatian kuna."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.HTG a cim:Currency ;
   rdfs:label "HTG" ;
-  rdfs:comment "Haitian gourde." ;
+  rdfs:comment "Haitian gourde."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.HUF a cim:Currency ;
   rdfs:label "HUF" ;
-  rdfs:comment "Hungarian forint." ;
+  rdfs:comment "Hungarian forint."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.IDR a cim:Currency ;
   rdfs:label "IDR" ;
-  rdfs:comment "Indonesian rupiah." ;
+  rdfs:comment "Indonesian rupiah."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ILS a cim:Currency ;
   rdfs:label "ILS" ;
-  rdfs:comment "Israeli new sheqel." ;
+  rdfs:comment "Israeli new sheqel."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.INR a cim:Currency ;
   rdfs:label "INR" ;
-  rdfs:comment "Indian rupee." ;
+  rdfs:comment "Indian rupee."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.IQD a cim:Currency ;
   rdfs:label "IQD" ;
-  rdfs:comment "Iraqi dinar." ;
+  rdfs:comment "Iraqi dinar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.IRR a cim:Currency ;
   rdfs:label "IRR" ;
-  rdfs:comment "Iranian rial." ;
+  rdfs:comment "Iranian rial."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ISK a cim:Currency ;
   rdfs:label "ISK" ;
-  rdfs:comment "Icelandic króna." ;
+  rdfs:comment "Icelandic króna."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.JMD a cim:Currency ;
   rdfs:label "JMD" ;
-  rdfs:comment "Jamaican dollar." ;
+  rdfs:comment "Jamaican dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.JOD a cim:Currency ;
   rdfs:label "JOD" ;
-  rdfs:comment "Jordanian dinar." ;
+  rdfs:comment "Jordanian dinar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.JPY a cim:Currency ;
   rdfs:label "JPY" ;
-  rdfs:comment "Japanese yen." ;
+  rdfs:comment "Japanese yen."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KES a cim:Currency ;
   rdfs:label "KES" ;
-  rdfs:comment "Kenyan shilling." ;
+  rdfs:comment "Kenyan shilling."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KGS a cim:Currency ;
   rdfs:label "KGS" ;
-  rdfs:comment "Kyrgyzstani som." ;
+  rdfs:comment "Kyrgyzstani som."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KHR a cim:Currency ;
   rdfs:label "KHR" ;
-  rdfs:comment "Cambodian riel." ;
+  rdfs:comment "Cambodian riel."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KMF a cim:Currency ;
   rdfs:label "KMF" ;
-  rdfs:comment "Comoro franc." ;
+  rdfs:comment "Comoro franc."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KPW a cim:Currency ;
   rdfs:label "KPW" ;
-  rdfs:comment "North Korean won." ;
+  rdfs:comment "North Korean won."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KRW a cim:Currency ;
   rdfs:label "KRW" ;
-  rdfs:comment "South Korean won." ;
+  rdfs:comment "South Korean won."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KWD a cim:Currency ;
   rdfs:label "KWD" ;
-  rdfs:comment "Kuwaiti dinar." ;
+  rdfs:comment "Kuwaiti dinar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KYD a cim:Currency ;
   rdfs:label "KYD" ;
-  rdfs:comment "Cayman Islands dollar." ;
+  rdfs:comment "Cayman Islands dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.KZT a cim:Currency ;
   rdfs:label "KZT" ;
-  rdfs:comment "Kazakhstani tenge." ;
+  rdfs:comment "Kazakhstani tenge."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.LAK a cim:Currency ;
   rdfs:label "LAK" ;
-  rdfs:comment "Lao kip." ;
+  rdfs:comment "Lao kip."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.LBP a cim:Currency ;
   rdfs:label "LBP" ;
-  rdfs:comment "Lebanese pound." ;
+  rdfs:comment "Lebanese pound."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.LKR a cim:Currency ;
   rdfs:label "LKR" ;
-  rdfs:comment "Sri Lanka rupee." ;
+  rdfs:comment "Sri Lanka rupee."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.LRD a cim:Currency ;
   rdfs:label "LRD" ;
-  rdfs:comment "Liberian dollar." ;
+  rdfs:comment "Liberian dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.LSL a cim:Currency ;
   rdfs:label "LSL" ;
-  rdfs:comment "Lesotho loti." ;
+  rdfs:comment "Lesotho loti."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.LTL a cim:Currency ;
   rdfs:label "LTL" ;
-  rdfs:comment "Lithuanian litas." ;
+  rdfs:comment "Lithuanian litas."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.LVL a cim:Currency ;
   rdfs:label "LVL" ;
-  rdfs:comment "Latvian lats." ;
+  rdfs:comment "Latvian lats."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.LYD a cim:Currency ;
   rdfs:label "LYD" ;
-  rdfs:comment "Libyan dinar." ;
+  rdfs:comment "Libyan dinar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MAD a cim:Currency ;
   rdfs:label "MAD" ;
-  rdfs:comment "Moroccan dirham." ;
+  rdfs:comment "Moroccan dirham."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MDL a cim:Currency ;
   rdfs:label "MDL" ;
-  rdfs:comment "Moldovan leu." ;
+  rdfs:comment "Moldovan leu."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MGA a cim:Currency ;
   rdfs:label "MGA" ;
-  rdfs:comment "Malagasy ariary." ;
+  rdfs:comment "Malagasy ariary."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MKD a cim:Currency ;
   rdfs:label "MKD" ;
-  rdfs:comment "Macedonian denar." ;
+  rdfs:comment "Macedonian denar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MMK a cim:Currency ;
   rdfs:label "MMK" ;
-  rdfs:comment "Myanma kyat." ;
+  rdfs:comment "Myanma kyat."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MNT a cim:Currency ;
   rdfs:label "MNT" ;
-  rdfs:comment "Mongolian tugrik." ;
+  rdfs:comment "Mongolian tugrik."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MOP a cim:Currency ;
   rdfs:label "MOP" ;
-  rdfs:comment "Macanese pataca." ;
+  rdfs:comment "Macanese pataca."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MRO a cim:Currency ;
   rdfs:label "MRO" ;
-  rdfs:comment "Mauritanian ouguiya." ;
+  rdfs:comment "Mauritanian ouguiya."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MUR a cim:Currency ;
   rdfs:label "MUR" ;
-  rdfs:comment "Mauritian rupee." ;
+  rdfs:comment "Mauritian rupee."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MVR a cim:Currency ;
   rdfs:label "MVR" ;
-  rdfs:comment "Maldivian rufiyaa." ;
+  rdfs:comment "Maldivian rufiyaa."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MWK a cim:Currency ;
   rdfs:label "MWK" ;
-  rdfs:comment "Malawian kwacha." ;
+  rdfs:comment "Malawian kwacha."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MXN a cim:Currency ;
   rdfs:label "MXN" ;
-  rdfs:comment "Mexican peso." ;
+  rdfs:comment "Mexican peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MYR a cim:Currency ;
   rdfs:label "MYR" ;
-  rdfs:comment "Malaysian ringgit." ;
+  rdfs:comment "Malaysian ringgit."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.MZN a cim:Currency ;
   rdfs:label "MZN" ;
-  rdfs:comment "Mozambican metical." ;
+  rdfs:comment "Mozambican metical."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.NAD a cim:Currency ;
   rdfs:label "NAD" ;
-  rdfs:comment "Namibian dollar." ;
+  rdfs:comment "Namibian dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.NGN a cim:Currency ;
   rdfs:label "NGN" ;
-  rdfs:comment "Nigerian naira." ;
+  rdfs:comment "Nigerian naira."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.NIO a cim:Currency ;
   rdfs:label "NIO" ;
-  rdfs:comment "Cordoba oro." ;
+  rdfs:comment "Cordoba oro."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.NOK a cim:Currency ;
   rdfs:label "NOK" ;
-  rdfs:comment "Norwegian krone." ;
+  rdfs:comment "Norwegian krone."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.NPR a cim:Currency ;
   rdfs:label "NPR" ;
-  rdfs:comment "Nepalese rupee." ;
+  rdfs:comment "Nepalese rupee."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.NZD a cim:Currency ;
   rdfs:label "NZD" ;
-  rdfs:comment "New Zealand dollar." ;
+  rdfs:comment "New Zealand dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.OMR a cim:Currency ;
   rdfs:label "OMR" ;
-  rdfs:comment "Omani rial." ;
+  rdfs:comment "Omani rial."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.PAB a cim:Currency ;
   rdfs:label "PAB" ;
-  rdfs:comment "Panamanian balboa." ;
+  rdfs:comment "Panamanian balboa."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.PEN a cim:Currency ;
   rdfs:label "PEN" ;
-  rdfs:comment "Peruvian nuevo sol." ;
+  rdfs:comment "Peruvian nuevo sol."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.PGK a cim:Currency ;
   rdfs:label "PGK" ;
-  rdfs:comment "Papua New Guinean kina." ;
+  rdfs:comment "Papua New Guinean kina."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.PHP a cim:Currency ;
   rdfs:label "PHP" ;
-  rdfs:comment "Philippine peso." ;
+  rdfs:comment "Philippine peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.PKR a cim:Currency ;
   rdfs:label "PKR" ;
-  rdfs:comment "Pakistani rupee." ;
+  rdfs:comment "Pakistani rupee."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.PLN a cim:Currency ;
   rdfs:label "PLN" ;
-  rdfs:comment "Polish zloty." ;
+  rdfs:comment "Polish zloty."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.PYG a cim:Currency ;
   rdfs:label "PYG" ;
-  rdfs:comment "Paraguayan guaraní." ;
+  rdfs:comment "Paraguayan guaraní."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.QAR a cim:Currency ;
   rdfs:label "QAR" ;
-  rdfs:comment "Qatari rial." ;
+  rdfs:comment "Qatari rial."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.RON a cim:Currency ;
   rdfs:label "RON" ;
-  rdfs:comment "Romanian new leu." ;
+  rdfs:comment "Romanian new leu."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.RSD a cim:Currency ;
   rdfs:label "RSD" ;
-  rdfs:comment "Serbian dinar." ;
+  rdfs:comment "Serbian dinar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.RUB a cim:Currency ;
   rdfs:label "RUB" ;
-  rdfs:comment "Russian rouble." ;
+  rdfs:comment "Russian rouble."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.RWF a cim:Currency ;
   rdfs:label "RWF" ;
-  rdfs:comment "Rwandan franc." ;
+  rdfs:comment "Rwandan franc."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SAR a cim:Currency ;
   rdfs:label "SAR" ;
-  rdfs:comment "Saudi riyal." ;
+  rdfs:comment "Saudi riyal."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SBD a cim:Currency ;
   rdfs:label "SBD" ;
-  rdfs:comment "Solomon Islands dollar." ;
+  rdfs:comment "Solomon Islands dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SCR a cim:Currency ;
   rdfs:label "SCR" ;
-  rdfs:comment "Seychelles rupee." ;
+  rdfs:comment "Seychelles rupee."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SDG a cim:Currency ;
   rdfs:label "SDG" ;
-  rdfs:comment "Sudanese pound." ;
+  rdfs:comment "Sudanese pound."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SEK a cim:Currency ;
   rdfs:label "SEK" ;
-  rdfs:comment "Swedish krona/kronor." ;
+  rdfs:comment "Swedish krona/kronor."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SGD a cim:Currency ;
   rdfs:label "SGD" ;
-  rdfs:comment "Singapore dollar." ;
+  rdfs:comment "Singapore dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SHP a cim:Currency ;
   rdfs:label "SHP" ;
-  rdfs:comment "Saint Helena pound." ;
+  rdfs:comment "Saint Helena pound."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SLL a cim:Currency ;
   rdfs:label "SLL" ;
-  rdfs:comment "Sierra Leonean leone." ;
+  rdfs:comment "Sierra Leonean leone."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SOS a cim:Currency ;
   rdfs:label "SOS" ;
-  rdfs:comment "Somali shilling." ;
+  rdfs:comment "Somali shilling."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SRD a cim:Currency ;
   rdfs:label "SRD" ;
-  rdfs:comment "Surinamese dollar." ;
+  rdfs:comment "Surinamese dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.STD a cim:Currency ;
   rdfs:label "STD" ;
-  rdfs:comment "São Tomé and Príncipe dobra." ;
+  rdfs:comment "São Tomé and Príncipe dobra."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SYP a cim:Currency ;
   rdfs:label "SYP" ;
-  rdfs:comment "Syrian pound." ;
+  rdfs:comment "Syrian pound."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.SZL a cim:Currency ;
   rdfs:label "SZL" ;
-  rdfs:comment "Lilangeni." ;
+  rdfs:comment "Lilangeni."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.THB a cim:Currency ;
   rdfs:label "THB" ;
-  rdfs:comment "Thai baht." ;
+  rdfs:comment "Thai baht."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.TJS a cim:Currency ;
   rdfs:label "TJS" ;
-  rdfs:comment "Tajikistani somoni." ;
+  rdfs:comment "Tajikistani somoni."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.TMT a cim:Currency ;
   rdfs:label "TMT" ;
-  rdfs:comment "Turkmenistani manat." ;
+  rdfs:comment "Turkmenistani manat."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.TND a cim:Currency ;
   rdfs:label "TND" ;
-  rdfs:comment "Tunisian dinar." ;
+  rdfs:comment "Tunisian dinar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.TOP a cim:Currency ;
   rdfs:label "TOP" ;
-  rdfs:comment "Tongan pa'anga." ;
+  rdfs:comment "Tongan pa'anga."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.TRY a cim:Currency ;
   rdfs:label "TRY" ;
-  rdfs:comment "Turkish lira." ;
+  rdfs:comment "Turkish lira."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.TTD a cim:Currency ;
   rdfs:label "TTD" ;
-  rdfs:comment "Trinidad and Tobago dollar." ;
+  rdfs:comment "Trinidad and Tobago dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.TWD a cim:Currency ;
   rdfs:label "TWD" ;
-  rdfs:comment "New Taiwan dollar." ;
+  rdfs:comment "New Taiwan dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.TZS a cim:Currency ;
   rdfs:label "TZS" ;
-  rdfs:comment "Tanzanian shilling." ;
+  rdfs:comment "Tanzanian shilling."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.UAH a cim:Currency ;
   rdfs:label "UAH" ;
-  rdfs:comment "Ukrainian hryvnia." ;
+  rdfs:comment "Ukrainian hryvnia."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.UGX a cim:Currency ;
   rdfs:label "UGX" ;
-  rdfs:comment "Ugandan shilling." ;
+  rdfs:comment "Ugandan shilling."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.USD a cim:Currency ;
   rdfs:label "USD" ;
-  rdfs:comment "United States dollar." ;
+  rdfs:comment "United States dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.UYU a cim:Currency ;
   rdfs:label "UYU" ;
-  rdfs:comment "Uruguayan peso." ;
+  rdfs:comment "Uruguayan peso."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.UZS a cim:Currency ;
   rdfs:label "UZS" ;
-  rdfs:comment "Uzbekistan som." ;
+  rdfs:comment "Uzbekistan som."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.VEF a cim:Currency ;
   rdfs:label "VEF" ;
-  rdfs:comment "Venezuelan bolívar fuerte." ;
+  rdfs:comment "Venezuelan bolívar fuerte."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.VND a cim:Currency ;
   rdfs:label "VND" ;
-  rdfs:comment "Vietnamese Dong." ;
+  rdfs:comment "Vietnamese Dong."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.VUV a cim:Currency ;
   rdfs:label "VUV" ;
-  rdfs:comment "Vanuatu vatu." ;
+  rdfs:comment "Vanuatu vatu."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.WST a cim:Currency ;
   rdfs:label "WST" ;
-  rdfs:comment "Samoan tala." ;
+  rdfs:comment "Samoan tala."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.XAF a cim:Currency ;
   rdfs:label "XAF" ;
-  rdfs:comment "CFA franc BEAC." ;
+  rdfs:comment "CFA franc BEAC."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.XCD a cim:Currency ;
   rdfs:label "XCD" ;
-  rdfs:comment "East Caribbean dollar." ;
+  rdfs:comment "East Caribbean dollar."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.XOF a cim:Currency ;
   rdfs:label "XOF" ;
-  rdfs:comment "CFA Franc BCEAO." ;
+  rdfs:comment "CFA Franc BCEAO."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.XPF a cim:Currency ;
   rdfs:label "XPF" ;
-  rdfs:comment "CFP franc." ;
+  rdfs:comment "CFP franc."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.YER a cim:Currency ;
   rdfs:label "YER" ;
-  rdfs:comment "Yemeni rial." ;
+  rdfs:comment "Yemeni rial."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ZAR a cim:Currency ;
   rdfs:label "ZAR" ;
-  rdfs:comment "South African rand." ;
+  rdfs:comment "South African rand."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ZMK a cim:Currency ;
   rdfs:label "ZMK" ;
-  rdfs:comment "Zambian kwacha." ;
+  rdfs:comment "Zambian kwacha."@en ;
   cims:stereotype "enum" .
 
 cim:Currency.ZWL a cim:Currency ;
   rdfs:label "ZWL" ;
-  rdfs:comment "Zimbabwe dollar." ;
+  rdfs:comment "Zimbabwe dollar."@en ;
   cims:stereotype "enum" .
 
 cim:CurrentFlow a qudt:QuantityKind ;
-  rdfs:label "CurrentFlow"@en ;
-  rdfs:comment "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC." ;
+  rdfs:label "CurrentFlow" ;
+  rdfs:comment "Electrical current with sign convention: positive flow is out of the conducting equipment into the connectivity node. Can be both AC and DC."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.A ;
   skos:exactMatch quantitykind:ElectricCurrent .
 
 cim:Frequency a qudt:QuantityKind ;
-  rdfs:label "Frequency"@en ;
-  rdfs:comment "Cycles per second." ;
+  rdfs:label "Frequency" ;
+  rdfs:comment "Cycles per second."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.Hz ;
   skos:exactMatch quantitykind:Frequency .
 
 cim:Impedance a qudt:QuantityKind ;
-  rdfs:label "Impedance"@en ;
-  rdfs:comment "Ratio of voltage to current." ;
+  rdfs:label "Impedance" ;
+  rdfs:comment "Ratio of voltage to current."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.ohm ;
   skos:exactMatch quantitykind:Inductance .
@@ -2690,8 +2692,8 @@ cim:Impedance a qudt:QuantityKind ;
 cim:Length skos:exactMatch quantitykind:Length .
 
 cim:Money a qudt:QuantityKind ;
-  rdfs:label "Money"@en ;
-  rdfs:comment "Amount of money." ;
+  rdfs:label "Money" ;
+  rdfs:comment "Amount of money."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:Currency.AED, cim:Currency.AFN, cim:Currency.ALL, cim:Currency.AMD, cim:Currency.ANG, cim:Currency.AOA, cim:Currency.ARS, cim:Currency.AUD, cim:Currency.AWG, cim:Currency.AZN, cim:Currency.BAM, cim:Currency.BBD, cim:Currency.BDT, cim:Currency.BGN, cim:Currency.BHD, cim:Currency.BIF, cim:Currency.BMD, cim:Currency.BND, cim:Currency.BOB, cim:Currency.BOV, cim:Currency.BRL, cim:Currency.BSD, cim:Currency.BTN, cim:Currency.BWP, cim:Currency.BYR, cim:Currency.BZD, cim:Currency.CAD, cim:Currency.CDF, cim:Currency.CHF, cim:Currency.CLF, cim:Currency.CLP, cim:Currency.CNY, cim:Currency.COP, cim:Currency.COU, cim:Currency.CRC, cim:Currency.CUC, cim:Currency.CUP, cim:Currency.CVE, cim:Currency.CZK, cim:Currency.DJF, cim:Currency.DKK, cim:Currency.DOP, cim:Currency.DZD, cim:Currency.EEK, cim:Currency.EGP, cim:Currency.ERN, cim:Currency.ETB, cim:Currency.EUR, cim:Currency.FJD, cim:Currency.FKP, cim:Currency.GBP, cim:Currency.GEL, cim:Currency.GHS, cim:Currency.GIP, cim:Currency.GMD, cim:Currency.GNF, cim:Currency.GTQ, cim:Currency.GYD, cim:Currency.HKD, cim:Currency.HNL, cim:Currency.HRK, cim:Currency.HTG, cim:Currency.HUF, cim:Currency.IDR, cim:Currency.ILS, cim:Currency.INR, cim:Currency.IQD, cim:Currency.IRR, cim:Currency.ISK, cim:Currency.JMD, cim:Currency.JOD, cim:Currency.JPY, cim:Currency.KES, cim:Currency.KGS, cim:Currency.KHR, cim:Currency.KMF, cim:Currency.KPW, cim:Currency.KRW, cim:Currency.KWD, cim:Currency.KYD, cim:Currency.KZT, cim:Currency.LAK, cim:Currency.LBP, cim:Currency.LKR, cim:Currency.LRD, cim:Currency.LSL, cim:Currency.LTL, cim:Currency.LVL, cim:Currency.LYD, cim:Currency.MAD, cim:Currency.MDL, cim:Currency.MGA, cim:Currency.MKD, cim:Currency.MMK, cim:Currency.MNT, cim:Currency.MOP, cim:Currency.MRO, cim:Currency.MUR, cim:Currency.MVR, cim:Currency.MWK, cim:Currency.MXN, cim:Currency.MYR, cim:Currency.MZN, cim:Currency.NAD, cim:Currency.NGN, cim:Currency.NIO, cim:Currency.NOK, cim:Currency.NPR, cim:Currency.NZD, cim:Currency.OMR, cim:Currency.PAB, cim:Currency.PEN, cim:Currency.PGK, cim:Currency.PHP, cim:Currency.PKR, cim:Currency.PLN, cim:Currency.PYG, cim:Currency.QAR, cim:Currency.RON, cim:Currency.RSD, cim:Currency.RUB, cim:Currency.RWF, cim:Currency.SAR, cim:Currency.SBD, cim:Currency.SCR, cim:Currency.SDG, cim:Currency.SEK, cim:Currency.SGD, cim:Currency.SHP, cim:Currency.SLL, cim:Currency.SOS, cim:Currency.SRD, cim:Currency.STD, cim:Currency.SYP, cim:Currency.SZL, cim:Currency.THB, cim:Currency.TJS, cim:Currency.TMT, cim:Currency.TND, cim:Currency.TOP, cim:Currency.TRY, cim:Currency.TTD, cim:Currency.TWD, cim:Currency.TZS, cim:Currency.UAH, cim:Currency.UGX, cim:Currency.USD, cim:Currency.UYU, cim:Currency.UZS, cim:Currency.VEF, cim:Currency.VND, cim:Currency.VUV, cim:Currency.WST, cim:Currency.XAF, cim:Currency.XCD, cim:Currency.XOF, cim:Currency.XPF, cim:Currency.YER, cim:Currency.ZAR, cim:Currency.ZMK, cim:Currency.ZWL ;
   skos:exactMatch quantitykind:Currency .
@@ -2699,8 +2701,8 @@ cim:Money a qudt:QuantityKind ;
 cim:PU skos:exactMatch quantitykind:DimensionlessRatio .
 
 cim:PerCent a qudt:QuantityKind ;
-  rdfs:label "PerCent"@en ;
-  rdfs:comment "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base." ;
+  rdfs:label "PerCent" ;
+  rdfs:comment "Percentage on a defined base.   For example, specify as 100 to indicate at the defined base."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.none ;
   skos:exactMatch quantitykind:DimensionlessRatio .
@@ -2710,15 +2712,15 @@ cim:Pressure skos:exactMatch quantitykind:Pressure .
 cim:Reactance skos:exactMatch quantitykind:Reactance .
 
 cim:ReactivePower a qudt:QuantityKind ;
-  rdfs:label "ReactivePower"@en ;
-  rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current." ;
+  rdfs:label "ReactivePower" ;
+  rdfs:comment "Product of RMS value of the voltage and the RMS value of the quadrature component of the current."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.VAr ;
   skos:exactMatch quantitykind:ReactivePower .
 
 cim:RealEnergy a qudt:QuantityKind ;
-  rdfs:label "RealEnergy"@en ;
-  rdfs:comment "Real electrical energy." ;
+  rdfs:label "RealEnergy" ;
+  rdfs:comment "Real electrical energy."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.Wh ;
   skos:exactMatch quantitykind:Energy .
@@ -2728,8 +2730,8 @@ cim:Resistance skos:exactMatch quantitykind:Resistance .
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 
 cim:Seconds a qudt:QuantityKind ;
-  rdfs:label "Seconds"@en ;
-  rdfs:comment "Time, in seconds." ;
+  rdfs:label "Seconds" ;
+  rdfs:comment "Time, in seconds."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.s ;
   skos:exactMatch quantitykind:Time .
@@ -2740,75 +2742,75 @@ cim:Temperature skos:exactMatch quantitykind:Temperature .
 
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
   rdfs:label "M" ;
-  rdfs:comment "Mega 10**6." ;
+  rdfs:comment "Mega 10**6."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E6 ;
   skos:exactMatch prefix:Mega .
 
 cim:UnitMultiplier.k a cim:UnitMultiplier ;
   rdfs:label "k" ;
-  rdfs:comment "Kilo 10**3." ;
+  rdfs:comment "Kilo 10**3."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E3 ;
   skos:exactMatch prefix:Kilo .
 
 cim:UnitMultiplier.none a cim:UnitMultiplier ;
   rdfs:label "none" ;
-  rdfs:comment "No multiplier or equivalently multiply by 1." ;
+  rdfs:comment "No multiplier or equivalently multiply by 1."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1.0 .
 
 cim:UnitSymbol.A a cim:UnitSymbol ;
   rdfs:label "A" ;
-  rdfs:comment "Current in amperes." ;
+  rdfs:comment "Current in amperes."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:A .
 
 cim:UnitSymbol.V a cim:UnitSymbol ;
   rdfs:label "V" ;
-  rdfs:comment "Electric potential in volts (W/A)." ;
+  rdfs:comment "Electric potential in volts (W/A)."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:V .
 
 cim:UnitSymbol.VAr a cim:UnitSymbol ;
   rdfs:label "VAr" ;
   rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
-Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.""" ;
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."""@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:V-A_Reactive .
 
 cim:UnitSymbol.W a cim:UnitSymbol ;
   rdfs:label "W" ;
-  rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power." ;
+  rdfs:comment "Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:W .
 
 cim:UnitSymbol.Wh a cim:UnitSymbol ;
   rdfs:label "Wh" ;
-  rdfs:comment "Real energy in watt hours." ;
+  rdfs:comment "Real energy in watt hours."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:W-HR .
 
 cim:UnitSymbol.deg a cim:UnitSymbol ;
   rdfs:label "deg" ;
-  rdfs:comment "Plane angle in degrees." ;
+  rdfs:comment "Plane angle in degrees."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:DEG .
 
 cim:UnitSymbol.none a cim:UnitSymbol ;
   rdfs:label "none" ;
-  rdfs:comment "Dimension less quantity, e.g. count, per unit, etc." ;
+  rdfs:comment "Dimension less quantity, e.g. count, per unit, etc."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.ohm a cim:UnitSymbol ;
   rdfs:label "ohm" ;
-  rdfs:comment "Electric resistance in ohms (V/A)." ;
+  rdfs:comment "Electric resistance in ohms (V/A)."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:OHM .
 
 cim:Voltage a qudt:QuantityKind ;
-  rdfs:label "Voltage"@en ;
-  rdfs:comment "Electrical voltage, can be both AC and DC." ;
+  rdfs:label "Voltage" ;
+  rdfs:comment "Electrical voltage, can be both AC and DC."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.V ;
   skos:exactMatch quantitykind:Voltage .
@@ -2818,193 +2820,193 @@ cim:VoltagePerReactivePower skos:exactMatch quantitykind:VoltagePerReactivePower
 cim:VolumeFlowRate skos:exactMatch quantitykind:VolumeFlowRate .
 
 nc:CompensatorControlModeKind.reactivePower a nc:CompensatorControlModeKind ;
-  rdfs:label "reactivePower"@en ;
-  rdfs:comment "Reactive power control." ;
+  rdfs:label "reactivePower" ;
+  rdfs:comment "Reactive power control."@en ;
   cims:stereotype "enum" .
 
 nc:CompensatorControlModeKind.voltage a nc:CompensatorControlModeKind ;
-  rdfs:label "voltage"@en ;
-  rdfs:comment "Voltage control." ;
+  rdfs:label "voltage" ;
+  rdfs:comment "Voltage control."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.acEmulation a nc:DCControlModeKind ;
-  rdfs:label "acEmulation"@en ;
+  rdfs:label "acEmulation" ;
   rdfs:comment """An AC emulation control aims to reproduce the behaviour of an AC line by means of a function of the difference between angles in both converter stations in DC links embedded within a single synchronous AC grid. For changes in the phase angle on either station, the response of this control is to ‘emulate the behaviour of an AC line’ in both steady and transient states. 
 The AC emulation control needs measurement signals for the angles at both ends of the DC system (at the AC points of common coupling of the DC system). In practice, the angle difference is measured by built-in devices in the converters and the synchronization of angle measurements on both stations is done by means of GPS.
-ACEmulationControlFunction is used by this control. The control can only be applied by a controller that have access to the two AC points of common coupling of the DC system. Therefore it cannot be applied for a ACDCConverterController.""" ;
+ACEmulationControlFunction is used by this control. The control can only be applied by a controller that have access to the two AC points of common coupling of the DC system. Therefore it cannot be applied for a ACDCConverterController."""@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.acVoltage a nc:DCControlModeKind ;
-  rdfs:label "acVoltage"@en ;
-  rdfs:comment "AC voltage control mode (IEC 60633) is a control of the AC voltage of the AC network connected to a DC substation." ;
+  rdfs:label "acVoltage" ;
+  rdfs:comment "AC voltage control mode (IEC 60633) is a control of the AC voltage of the AC network connected to a DC substation."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.activePower a nc:DCControlModeKind ;
-  rdfs:label "activePower"@en ;
-  rdfs:comment "Control is active power control at AC side, at point of common coupling. According to IEC 60633 the active power control mode is control of the active power flow exchanged between a DC substation and the connected AC network." ;
+  rdfs:label "activePower" ;
+  rdfs:comment "Control is active power control at AC side, at point of common coupling. According to IEC 60633 the active power control mode is control of the active power flow exchanged between a DC substation and the connected AC network."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.damping a nc:DCControlModeKind ;
-  rdfs:label "damping"@en ;
-  rdfs:comment "Damping control mode (IEC 60633) is supplementary control mode providing the damping of power oscillations in one or more connected AC networks." ;
+  rdfs:label "damping" ;
+  rdfs:comment "Damping control mode (IEC 60633) is supplementary control mode providing the damping of power oscillations in one or more connected AC networks."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.dcCurrent a nc:DCControlModeKind ;
-  rdfs:label "dcCurrent"@en ;
-  rdfs:comment "Control is DC current in a DC system (IEC 60633)." ;
+  rdfs:label "dcCurrent" ;
+  rdfs:comment "Control is DC current in a DC system (IEC 60633)."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.dcVoltage a nc:DCControlModeKind ;
-  rdfs:label "dcVoltage"@en ;
-  rdfs:comment "Control is DC voltage in a DC substation (IEC 60633)." ;
+  rdfs:label "dcVoltage" ;
+  rdfs:comment "Control is DC voltage in a DC substation (IEC 60633)."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.frequency a nc:DCControlModeKind ;
-  rdfs:label "frequency"@en ;
-  rdfs:comment "Frequency control mode (IEC 60633) is a control of the frequency of the connected AC network by varying the active power exchanged between a DC substation and the connected AC network." ;
+  rdfs:label "frequency" ;
+  rdfs:comment "Frequency control mode (IEC 60633) is a control of the frequency of the connected AC network by varying the active power exchanged between a DC substation and the connected AC network."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.islanded a nc:DCControlModeKind ;
-  rdfs:label "islanded"@en ;
-  rdfs:comment "Islanded network operation mode (IEC 60633) is a control mode in which the DC substation is connected to an islanded AC network." ;
+  rdfs:label "islanded" ;
+  rdfs:comment "Islanded network operation mode (IEC 60633) is a control mode in which the DC substation is connected to an islanded AC network."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.pPccAndUdcDroop a nc:DCControlModeKind ;
-  rdfs:label "pPccAndUdcDroop"@en ;
-  rdfs:comment "Control is active power at point of common coupling and local DC voltage, with the droop." ;
+  rdfs:label "pPccAndUdcDroop" ;
+  rdfs:comment "Control is active power at point of common coupling and local DC voltage, with the droop."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.pPccAndUdcDroopPilot a nc:DCControlModeKind ;
-  rdfs:label "pPccAndUdcDroopPilot"@en ;
-  rdfs:comment "Control is active power at point of common coupling and the pilot DC voltage, with the droop. The mode is used for Multi Terminal High Voltage DC (MTDC) systems where multiple DC Substations are connected to the DC transmission lines. The pilot voltage is then used to coordinate the control the DC voltage across the DC substations." ;
+  rdfs:label "pPccAndUdcDroopPilot" ;
+  rdfs:comment "Control is active power at point of common coupling and the pilot DC voltage, with the droop. The mode is used for Multi Terminal High Voltage DC (MTDC) systems where multiple DC Substations are connected to the DC transmission lines. The pilot voltage is then used to coordinate the control the DC voltage across the DC substations."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.pPccAndUdcDroopWithCompensation a nc:DCControlModeKind ;
-  rdfs:label "pPccAndUdcDroopWithCompensation"@en ;
-  rdfs:comment "Control is active power at point of common coupling and compensated DC voltage, with the droop. Compensation factor is the resistance, as an approximation of the DC voltage of a common (real or virtual) node in the DC network." ;
+  rdfs:label "pPccAndUdcDroopWithCompensation" ;
+  rdfs:comment "Control is active power at point of common coupling and compensated DC voltage, with the droop. Compensation factor is the resistance, as an approximation of the DC voltage of a common (real or virtual) node in the DC network."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.phasePcc a nc:DCControlModeKind ;
-  rdfs:label "phasePcc"@en ;
-  rdfs:comment "Control is phase at point of common coupling." ;
+  rdfs:label "phasePcc" ;
+  rdfs:comment "Control is phase at point of common coupling."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.powerFactorPcc a nc:DCControlModeKind ;
-  rdfs:label "powerFactorPcc"@en ;
-  rdfs:comment "Control is power factor at point of common coupling." ;
+  rdfs:label "powerFactorPcc" ;
+  rdfs:comment "Control is power factor at point of common coupling."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.pulseWidthModulation a nc:DCControlModeKind ;
-  rdfs:label "pulseWidthModulation"@en ;
-  rdfs:comment "No explicit control. Pulse-modulation factor is directly set in magnitude and phase." ;
+  rdfs:label "pulseWidthModulation" ;
+  rdfs:comment "No explicit control. Pulse-modulation factor is directly set in magnitude and phase."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.reactivePower a nc:DCControlModeKind ;
-  rdfs:label "reactivePower"@en ;
-  rdfs:comment "Control is reactive power control at AC side, at point of common coupling. According to IEC 60633 reactive power control mode is a control of the reactive power exchanged between a converter unit, or DC substation and the connected AC network." ;
+  rdfs:label "reactivePower" ;
+  rdfs:comment "Control is reactive power control at AC side, at point of common coupling. According to IEC 60633 reactive power control mode is a control of the reactive power exchanged between a converter unit, or DC substation and the connected AC network."@en ;
   cims:stereotype "enum" .
 
 nc:DCControlModeKind.sstiDamping a nc:DCControlModeKind ;
-  rdfs:label "sstiDamping"@en ;
-  rdfs:comment "Sub-synchronous torsional interaction (SSTI) damping control mode (IEC 60633) is a supplementary control mode providing the damping of critical frequencies of an (electrical) nearby generator." ;
+  rdfs:label "sstiDamping" ;
+  rdfs:comment "Sub-synchronous torsional interaction (SSTI) damping control mode (IEC 60633) is a supplementary control mode providing the damping of critical frequencies of an (electrical) nearby generator."@en ;
   cims:stereotype "enum" .
 
 nc:InjectionControlModeKind.activePower a nc:InjectionControlModeKind ;
-  rdfs:label "activePower"@en ;
-  rdfs:comment "Active power is specified." ;
+  rdfs:label "activePower" ;
+  rdfs:comment "Active power is specified."@en ;
   cims:stereotype "enum" .
 
 nc:InjectionControlModeKind.powerFactor a nc:InjectionControlModeKind ;
-  rdfs:label "powerFactor"@en ;
-  rdfs:comment "Power factor is specified." ;
+  rdfs:label "powerFactor" ;
+  rdfs:comment "Power factor is specified."@en ;
   cims:stereotype "enum" .
 
 nc:InjectionControlModeKind.reactivePower a nc:InjectionControlModeKind ;
-  rdfs:label "reactivePower"@en ;
-  rdfs:comment "Reactive power control." ;
+  rdfs:label "reactivePower" ;
+  rdfs:comment "Reactive power control."@en ;
   cims:stereotype "enum" .
 
 nc:InjectionControlModeKind.voltage a nc:InjectionControlModeKind ;
-  rdfs:label "voltage"@en ;
-  rdfs:comment "Voltage control." ;
+  rdfs:label "voltage" ;
+  rdfs:comment "Voltage control."@en ;
   cims:stereotype "enum" .
 
 nc:RotatingMachineControlModeKind.activePower a nc:RotatingMachineControlModeKind ;
-  rdfs:label "activePower"@en ;
-  rdfs:comment "Active power is specified." ;
+  rdfs:label "activePower" ;
+  rdfs:comment "Active power is specified."@en ;
   cims:stereotype "enum" .
 
 nc:RotatingMachineControlModeKind.powerFactor a nc:RotatingMachineControlModeKind ;
-  rdfs:label "powerFactor"@en ;
-  rdfs:comment "Power factor is specified." ;
+  rdfs:label "powerFactor" ;
+  rdfs:comment "Power factor is specified."@en ;
   cims:stereotype "enum" .
 
 nc:RotatingMachineControlModeKind.reactivePower a nc:RotatingMachineControlModeKind ;
-  rdfs:label "reactivePower"@en ;
-  rdfs:comment "Reactive power control." ;
+  rdfs:label "reactivePower" ;
+  rdfs:comment "Reactive power control."@en ;
   cims:stereotype "enum" .
 
 nc:RotatingMachineControlModeKind.voltage a nc:RotatingMachineControlModeKind ;
-  rdfs:label "voltage"@en ;
-  rdfs:comment "Voltage control." ;
+  rdfs:label "voltage" ;
+  rdfs:comment "Voltage control."@en ;
   cims:stereotype "enum" .
 
 nc:SSSCControlModeKind.currentDroop a nc:SSSCControlModeKind ;
-  rdfs:label "currentDroop"@en ;
-  rdfs:comment "<font color=\"#636671\">The device injects a voltage proportional to the difference between the line current and the target value of the CurrentDroopControlFunction. There are capacitive and inductive operational regions.</font>" ;
+  rdfs:label "currentDroop" ;
+  rdfs:comment "<font color=\"#636671\">The device injects a voltage proportional to the difference between the line current and the target value of the CurrentDroopControlFunction. There are capacitive and inductive operational regions.</font>"@en ;
   cims:stereotype "enum" .
 
 nc:SSSCControlModeKind.effectiveReactance a nc:SSSCControlModeKind ;
-  rdfs:label "effectiveReactance"@en ;
-  rdfs:comment "<font color=\"#636671\">The device injects a voltage proportional to the line current to achieve the specified target value defined by the ImpedanceControlFunction. The voltage will vary according to the line current level.</font>" ;
+  rdfs:label "effectiveReactance" ;
+  rdfs:comment "<font color=\"#636671\">The device injects a voltage proportional to the line current to achieve the specified target value defined by the ImpedanceControlFunction. The voltage will vary according to the line current level.</font>"@en ;
   cims:stereotype "enum" .
 
 nc:SSSCControlModeKind.monitoring a nc:SSSCControlModeKind ;
-  rdfs:label "monitoring"@en ;
-  rdfs:comment "<font color=\"#636671\">The device bypasses and a voltage injection is close to zero. In monitoring mode current is monitored.</font>" ;
+  rdfs:label "monitoring" ;
+  rdfs:comment "<font color=\"#636671\">The device bypasses and a voltage injection is close to zero. In monitoring mode current is monitored.</font>"@en ;
   cims:stereotype "enum" .
 
 nc:SSSCControlModeKind.voltageInjection a nc:SSSCControlModeKind ;
-  rdfs:label "voltageInjection"@en ;
-  rdfs:comment "<font color=\"#636671\">The device injects a fixed voltage that is either inductive or capacitive according to the specified target value of the VoltageInjectionControlFunction. The effective reactance varies according to the flow of the line current.</font>" ;
+  rdfs:label "voltageInjection" ;
+  rdfs:comment "<font color=\"#636671\">The device injects a fixed voltage that is either inductive or capacitive according to the specified target value of the VoltageInjectionControlFunction. The effective reactance varies according to the flow of the line current.</font>"@en ;
   cims:stereotype "enum" .
 
 nc:SubstationControllerModeKind.activePower a nc:SubstationControllerModeKind ;
-  rdfs:label "activePower"@en ;
-  rdfs:comment "Active power control is the primary control of the substation.." ;
+  rdfs:label "activePower" ;
+  rdfs:comment "Active power control is the primary control of the substation.."@en ;
   cims:stereotype "enum" .
 
 nc:SubstationControllerModeKind.reactivePower a nc:SubstationControllerModeKind ;
-  rdfs:label "reactivePower"@en ;
-  rdfs:comment "Reactive power control is the primary control of the substation." ;
+  rdfs:label "reactivePower" ;
+  rdfs:comment "Reactive power control is the primary control of the substation."@en ;
   cims:stereotype "enum" .
 
 nc:SubstationControllerModeKind.voltage a nc:SubstationControllerModeKind ;
-  rdfs:label "voltage"@en ;
-  rdfs:comment "Voltage control is the primary control of the substation." ;
+  rdfs:label "voltage" ;
+  rdfs:comment "Voltage control is the primary control of the substation."@en ;
   cims:stereotype "enum" .
 
 nc:TCSCControlModeKind.activePower a nc:TCSCControlModeKind ;
-  rdfs:label "activePower"@en ;
-  rdfs:comment "Control is active power." ;
+  rdfs:label "activePower" ;
+  rdfs:comment "Control is active power."@en ;
   cims:stereotype "enum" .
 
 nc:TCSCControlModeKind.current a nc:TCSCControlModeKind ;
-  rdfs:label "current"@en ;
-  rdfs:comment "Control is current." ;
+  rdfs:label "current" ;
+  rdfs:comment "Control is current."@en ;
   cims:stereotype "enum" .
 
 nc:TCSCControlModeKind.impedance a nc:TCSCControlModeKind ;
-  rdfs:label "impedance"@en ;
-  rdfs:comment "Control is impedance." ;
+  rdfs:label "impedance" ;
+  rdfs:comment "Control is impedance."@en ;
   cims:stereotype "enum" .
 
 ssi:Package_DocSteadyStateInstructionProfile a cims:ClassCategory ;
-  rdfs:label "DocSteadyStateInstructionProfile"@en ;
-  rdfs:comment "This package contains datatypes used only in the RDFS header." .
+  rdfs:label "DocSteadyStateInstructionProfile" ;
+  rdfs:comment "This package contains datatypes used only in the RDFS header."@en .
 
 ssi:Package_SteadyStateInstructionProfile a cims:ClassCategory ;
-  rdfs:label "SteadyStateInstructionProfile"@en ;
-  rdfs:comment "This package contains steady state instruction profile." .
+  rdfs:label "SteadyStateInstructionProfile" ;
+  rdfs:comment "This package contains steady state instruction profile."@en .
 
 

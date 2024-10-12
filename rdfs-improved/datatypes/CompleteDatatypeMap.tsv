@@ -2672,8 +2672,8 @@ cim:RotatingMachineDynamics.saturationFactor120	xsd:float
 cim:RotatingMachineDynamics.statorLeakageReactance	xsd:float
 cim:RotatingMachineDynamics.statorResistance	xsd:float
 cim:SVCUserDefined.proprietary	xsd:boolean
-cim:Season.endDate	xsd:gMonthDay]
-cim:Season.startDate	xsd:gMonthDay]
+cim:Season.endDate	xsd:gMonthDay
+cim:Season.startDate	xsd:gMonthDay
 cim:SeriesCompensator.r	xsd:float
 cim:SeriesCompensator.r0	xsd:float
 cim:SeriesCompensator.varistorPresent	xsd:boolean

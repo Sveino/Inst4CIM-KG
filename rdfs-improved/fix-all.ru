@@ -348,15 +348,15 @@ where {
 };
 
 # https://github.com/Sveino/Inst4CIM-KG/issues/47
-
-delete {?x rdfs:label ?old}
-insert {?x rdfs:label ?new}
-where {
-  values ?enumOfCodes {cim:Currency cim:IfdBaseKind cim:PhaseCode cim:StaticLoadModelKind cim:UnitMultiplier cim:UnitSymbol cim:WindingConnection}
-  ?x a ?enumOfCodes; rdfs:label ?old
-  filter(lang(?old) != "")
-  bind(str(?old) as ?new)
-};
+# This is now subsumed by fix16-langTagLabelVsDefinition.ru (https://github.com/Sveino/Inst4CIM-KG/issues/93)
+#delete {?x rdfs:label ?old}
+#insert {?x rdfs:label ?new}
+#where {
+#  values ?enumOfCodes {cim:Currency cim:IfdBaseKind cim:PhaseCode cim:StaticLoadModelKind cim:UnitMultiplier cim:UnitSymbol cim:WindingConnection}
+#  ?x a ?enumOfCodes; rdfs:label ?old
+#  filter(lang(?old) != "")
+#  bind(str(?old) as ?new)
+#};
 
 # https://github.com/Sveino/Inst4CIM-KG/issues/24
 
@@ -366,4 +366,48 @@ prefix owl:          <http://www.w3.org/2002/07/owl#>
 delete {?p cims:stereotype "deprecated"}
 insert {?p owl:deprecated true}
 where  {?p cims:stereotype "deprecated"};
+
+# https://github.com/Sveino/Inst4CIM-KG/issues/93
+
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+delete {?x rdfs:label ?oldLabel; rdfs:comment ?oldComment}
+insert {?x rdfs:label ?newLabel; rdfs:comment ?newComment}
+where {
+  ?x rdfs:label ?oldLabel; rdfs:comment ?oldComment
+  bind(lang(?oldLabel) as ?lang)
+  filter(?lang="" || ?lang="en")  # safeguard in case multiple langs are added: that would get mixed up
+  bind(str(?oldLabel) as ?newLabel)
+  bind(strlang(?oldComment,"en") as ?newComment)
+};
+# https://github.com/Sveino/Inst4CIM-KG/issues/32
+
+prefix owl:  <http://www.w3.org/2002/07/owl#>
+prefix dcat: <http://www.w3.org/ns/dcat#>
+prefix dct:  <http://purl.org/dc/terms/>
+prefix dc:   <http://purl.org/dc/elements/1.1/>
+
+delete {?x dct:conformsTo ?old}
+insert {?x dc:source ?new}
+where {
+  ?x a owl:Ontology; dct:conformsTo ?old
+  filter(strstarts(?old,"file://"))
+  bind(strafter(?old,"file://") as ?new)
+};
+
+delete {?x ?p ?old}
+insert {?x ?p ?new}
+where {
+  values ?p {dcat:landingPage dct:conformsTo}
+  ?x a owl:Ontology; ?p ?old
+  bind(iri(?old) as ?new)
+};
+
+delete {?x ?p ?old}
+insert {?x ?p ?new}
+where {
+  values ?p {dct:publisher dct:rightsHolder owl:versionInfo}
+  ?x a owl:Ontology; ?p ?old
+  bind(str(?old) as ?new)
+};
 

@@ -1,7 +1,7 @@
 .PHONY: all dirs ttl1 ttl rm-ttl clean fix-all
 
 all::
-	 @echo "targets: dirs, clean (zero files), fix-all (concat fix*.ru), ttl1 (for testing), ttl, rm-ttl"
+	 @echo "targets: dirs, clean (zero files), fix-all (concat fix*.ru), ttl1 (for testing), ttl, rm-ttl, jsonld, rm-jsonld"
 
 FIX-ALL = $(wildcard fix[0-9]*)
 
@@ -10,6 +10,9 @@ CGMES_NC_RDF = $(wildcard ../source/CGMES-NC/r2.3/ap-voc/rdf/*)
 
 CGMES_TTL    = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/ttl/%.ttl,    $(CGMES_RDF))
 CGMES_NC_TTL = $(patsubst ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf, CGMES-NC/ttl/%.ttl, $(CGMES_NC_RDF))
+
+CGMES_JSONLD    = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/jsonld/%.jsonld,    $(CGMES_RDF))
+CGMES_NC_JSONLD = $(patsubst ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf, CGMES-NC/jsonld/%.jsonld, $(CGMES_NC_RDF))
 
 ONE_RDF      = ../source/CGMES/v3.0/RDFS2020/61970-600-2_Equipment-AP-Voc-RDFS2020_v3-0-0.rdf
 ONE_TTL      = $(patsubst ../source/CGMES/v3.0/RDFS2020/%.rdf,      CGMES/ttl/%.ttl,    $(ONE_RDF))
@@ -90,6 +93,8 @@ OWL_WRITE = owl.bat write --prefixAlign=right --useCommaByDefault \
 #  --subjectOrder owl:AnnotationProperty					\
 #  --subjectOrder owl:NamedIndividual
 
+RIOT = riot.bat
+
 # use riot or OWL_WRITE?
 define RDF2TTL
   $(OWL_WRITE) --input=rdfxml $(1) temp1.ttl
@@ -101,7 +106,10 @@ endef
 define TTL2TTL
   $(OWL_WRITE) $(1) $(2)
 endef
-#  riot.bat --formatted=ttl $(1)  > $(2)
+
+define TTL2JSONLD
+  $(RIOT) --formatted=jsonld $(1)  > $(2)
+endef
 
 define RDF2FIXTTL
   $(call RDF2TTL,$(1),temp2.ttl)
@@ -134,5 +142,16 @@ CGMES/ttl/%.ttl: ../source/CGMES/v3.0/RDFS2020/%.rdf
 CGMES-NC/ttl/%.ttl: ../source/CGMES-NC/r2.3/ap-voc/rdf/%.rdf
 	$(call RDF2FIXTTL,$^,$@)
 
+CGMES/jsonld/%.jsonld: CGMES/ttl/%.ttl
+	$(call TTL2JSONLD,$^,$@)
+
+CGMES-NC/jsonld/%.jsonld: CGMES-NC/ttl/%.ttl
+	$(call TTL2JSONLD,$^,$@)
+
+jsonld: rm-jsonld $(CGMES_JSONLD) $(CGMES_NC_JSONLD)
+
+rm-jsonld::
+	rm -f $(CGMES_JSONLD) $(CGMES_NC_JSONLD)
+
 dirs::
-	mkdir CGMES CGMES/ttl CGMES-NC CGMES-NC/ttl
+	mkdir CGMES CGMES/ttl CGMES CGMES/jsonld CGMES-NC CGMES-NC/ttl CGMES-NC/jsonld
