@@ -109,7 +109,7 @@ define TTL2TTL
 endef
 
 define TTL2JSONLD
-  ttl2jsonld $(1) | jsonld compact -c file://CIM-ontology-context.jsonld > $(2)
+  ttl2jsonld $(1) | jsonld compact -c https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld > $(2)
 endef
 
 define RDF2FIXTTL

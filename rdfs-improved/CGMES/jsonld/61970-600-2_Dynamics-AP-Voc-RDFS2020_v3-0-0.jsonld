@@ -1,5 +1,5 @@
 {
-  "@context": "file://CIM-ontology-context.jsonld",
+  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "dy:Ontology",
