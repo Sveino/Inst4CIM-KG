@@ -42,13 +42,13 @@
     - [QuantityKinds and Units of Measure](#quantitykinds-and-units-of-measure)
         - [Fixed Units Representation](#fixed-units-representation)
         - [Fixed Multipliers Representation](#fixed-multipliers-representation)
-        - [CompleteDatatypeMap](#completedatatypemap)
+        - [Property Datatype Maps](#property-datatype-maps)
         - [Actual QuantityKinds](#actual-quantitykinds)
         - [Actual Multipliers and Units](#actual-multipliers-and-units)
         - [Mapping QuantityKinds and Units](#mapping-quantitykinds-and-units)
         - [Mapping Unit Multipliers](#mapping-unit-multipliers)
         - [All QuantityKinds, Units and Multipliers](#all-quantitykinds-units-and-multipliers)
-    - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
+    - [Represent Models as Named Graphs](#represent-models-as-named-graphs)
 - [Fix Technical Notes](#fix-technical-notes)
     - [Fix Structure](#fix-structure)
     - [Fix Debugging](#fix-debugging)
@@ -113,16 +113,17 @@ Features of `turtle-formatter` (`owl-cli`) that we use:
 - Don't align predicates and objects since that leaves too much whitespace (a matter of preference)
 
 We'll watch closely its development and fixes.
-I posted a large number of issues. As of 17-Sep-2024:
-- https://github.com/atextor/turtle-formatter/issues/created_by/vladimiralexiev (9). The important ones are:
-  - #22 section sorting: 
+I posted a large number of issues. As of 26-Sep-2024:
+- https://github.com/atextor/turtle-formatter/issues/created_by/vladimiralexiev (10). The important ones are:
+  - #22 section sorting:
     I want to sort all props alphabetically, but currently it is not possible (`ObjectProperty` first, `DatatypeProperty` next)
-  - #27 prefixes trouble when using `--subjectOrder`: 
+  - #27 prefixes trouble when using `--subjectOrder`:
     rdfs:Class comes before `owl:Ontology`
   - #32 `prefixAlign=left` makes invalid turtle:
     So we use  `prefixAlign=right`
   - #33 `--useCommaByDefault` not respected on source build of owl-cli:
     So multiple values of eg `dct:conformsTo` are printed on separate lines, with the property repeated
+  - #38 Use `base` in Turtle (when present in the RDF/XML)
 - https://github.com/atextor/owl-cli/issues/created_by/vladimiralexiev (8).  The important ones are:
   - #21 make frequent binary releases:
     Until automated, we need to build ourselves to pick up the latest features.
@@ -141,7 +142,7 @@ Elisa Kendall (one of the main FIBO ontologists):
 
 There is an open-source tool available from the EDM Council for converting between RDF/XML, Turtle, and JSON-LD and for consistent serialization of any of these representations of RDF and OWL. The GitHub site for it is https://github.com/edmcouncil/rdf-toolkit. It is actively maintained, freely available, and addresses a number of issues mentioned on the thread, among other things. It also allows users to turn any of its features on/off as desired. It runs on the command line, or can be invoked automatically through GitHub commit hooks, for example.
 
-For collaborative work across development teams for large ontology projects, consistent serialization for comparison purposes was one of our first and relatively important issues. It enables visual comparison in GitHub (and likely other source code management systems), so that anyone reviewing the changes can see exactly what changed, down to the single character level. 
+For collaborative work across development teams for large ontology projects, consistent serialization for comparison purposes was one of our first and relatively important issues. It enables visual comparison in GitHub (and likely other source code management systems), so that anyone reviewing the changes can see exactly what changed, down to the single character level.
 
 We also have a pipeline that looks for a myriad of issues in ontologies, performs regression testing using examples and reference data, and includes an html-based publication process that itself has a comparison feature, enabling comparison of any pull request or prior release with another version or with the latest version. The code for this is also open source, available from the EDM Council GitHub repository, though support is required for hosting and customization.
 
@@ -152,10 +153,10 @@ We also have a pipeline that looks for a myriad of issues in ontologies, perform
   Formal Ontology in Information Systems, DOI 10.3233/FAIA210375
 
 #### OBO Robot
-https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](https://github.com/ontodev/robot/releases) page 
+https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](https://github.com/ontodev/robot/releases) page
 - By the OBO Foundry
 - Used by EDM Council. Elisa: I don’t know how well it works on RDF alone, mainly because I haven’t attempted to use it for that, but it works well as a companion tool to the RDF Toolkit
-- Used in the [Emacs Literate Ontology Tool](https://github.com/johanwk/elot/) by Johan Wolter Kluwer (DNV) and Vladimir Alexiev (Ontotext). 
+- Used in the [Emacs Literate Ontology Tool](https://github.com/johanwk/elot/) by Johan Wolter Kluwer (DNV) and Vladimir Alexiev (Ontotext).
   This tool is used in the development of the Industrial Data Ontology.
 - Axiomatic diff
 - Output Turtle
@@ -220,7 +221,7 @@ select ?qk (count(*) as ?c) {
 ```
 We can see that most properties are shown twice in two different namespaces, eg:
 - 100 https://cim.ucaiug.io/ns#ActivePower
-- 73 http://iec.ch/TC57/CIM100#ActivePower 
+- 73 http://iec.ch/TC57/CIM100#ActivePower
 
 We can confirm this by looking at the files (I've deleted namespaces that are the same):
 ```
@@ -710,7 +711,7 @@ cim:AsynchronousMachineKind.generator a owl:NamedIndividual, owl:Thing ;
   rdfs:domain cim:AsynchronousMachineKind ;
   skos:definition "The Asynchronous Machine is a generator."@en ;
   ssh:isenum "True" .
-``` 
+```
 Problems:
 - `owl:NamedIndividual, owl:Thing` are useless since they are too generic, you'd never query by these classes
 - `rdfs:domain cim:AsynchronousMachineKind` is wrong, should be `rdf:type`
@@ -927,7 +928,7 @@ cim:Temperature.multiplier
 The last one is worst: some profiles map `isFixed` to a value with space, others without a space.
 
 In addition, the "en" lang tag is not appropriate for code values.
-Eg "VA" and "M" are SI unit and multiplier respectively. 
+Eg "VA" and "M" are SI unit and multiplier respectively.
 SI is the international system of units, so these codes cannot have lang tags.
 
 This query finds 842 enumerations whose label is marked `@en`:
@@ -965,7 +966,7 @@ select * {
 Saved as [literals-html.tsv](literals-html.tsv).
 
 It includes:
-- False hits like `e.g. <tool_name>-<major_version>.<minor_version>.<patch>` 
+- False hits like `e.g. <tool_name>-<major_version>.<minor_version>.<patch>`
   (these are not HTML tags, but "meta-variables")
 - Unicode entities like `&#178;` (GraphDB workbench displays it as the unicode char ² but maybe that's a misfeature)
 - HTML entities like `&lt;md:Model.created&gt;2014-05-15T17:48:31.474Z&lt;/md:Model.created&gt;`
@@ -977,8 +978,8 @@ Some lists use a mix of HTML and markdown, eg `cim:AsynchronousMachineTimeConsta
 ```
 Parameter details:
 <ol>
-	<li>If <i>X'' </i>=<i> X'</i>, a single cage (one equivalent rotor winding per axis) is modelled.</li>
-	<li>The “<i>p</i>” in the attribute names is a substitution for a “prime” in the usual parameter notation, e.g. <i>tpo</i> refers to <i>T'o</i>.</li>
+    <li>If <i>X'' </i>=<i> X'</i>, a single cage (one equivalent rotor winding per axis) is modelled.</li>
+    <li>The “<i>p</i>” in the attribute names is a substitution for a “prime” in the usual parameter notation, e.g. <i>tpo</i> refers to <i>T'o</i>.</li>
 </ol>
 The parameters used for models expressed in time constant reactance form include:
 - RotatingMachine.ratedS (<i>MVAbase</i>);
@@ -989,7 +990,7 @@ Note: the code block may show "block" chars. These are actually smart quotes:
 > The “p” in the attribute names
 
 The problem is that HTML is not interpreted in RDF strings.
-- We could use the `^^rdf:HTML` datatype, but that's more complex, 
+- We could use the `^^rdf:HTML` datatype, but that's more complex,
   and no guarantee that tools will interpret it in fields like `rdfs:comment`
 - It was decided not to use this datatype
 
@@ -999,13 +1000,13 @@ This is a large data cleaning task because all occurrences need to be analyzed, 
   - RDF tags in examples like `<md:Model.created>...</md:Model.created>` should be removed
     because they are syntax specific to RDF/XML, and we don't need to repeat the prop name in the comment
   - "Meta-variables" like `&lt;tool_name&gt;` should be retained
-- Replace HTML constructs with Markdown. It is ok because people can read it easily 
+- Replace HTML constructs with Markdown. It is ok because people can read it easily
   (assuming newlines are rendered as newlines not `\n`: `owl-cli` does that using `"""` for string quotes)
   - Lists: `<ul><li>` to `- `
   - Emphasis: `<i>` and `<em>` to `*`, `<b>` and `<strong>` to `**`
 
 ## Use Standard Datatypes
-https://github.com/Sveino/Inst4CIM-KG/issues/74 
+https://github.com/Sveino/Inst4CIM-KG/issues/74
 https://github.com/Sveino/Inst4CIM-KG/issues/28
 https://github.com/Sveino/Inst4CIM-KG/issues/61
 
@@ -1055,7 +1056,7 @@ Notes:
   i.e. values that can be "string or IRI" (though its description mentions only IRI).
   But when we are unsure, we must go with the "lowest common denominator" which is `string`
 - Potentially mapping `cim:String` to `rdf:PlainLiteral` is considered in the next two sections
- 
+
 ### Multilinguality in CIM?
 
 This section was provoked by pondering the difference between `cim:String` and `profcim:StringFixedLanguage`.
@@ -1077,10 +1078,10 @@ ido:IdentifiedObject.name-cardinality
         sh:path         cim:IdentifiedObject.name;
         sh:severity     sh:Violation .
 ```
-I think it would be better to allow multiple values 
+I think it would be better to allow multiple values
 but impose a `sh:uniqueLang` constraint (`skos:prefLabel` has the same restriction).
 In that way CIM data could accommodate multilinguality.
-Eg looking at some random properties: 
+Eg looking at some random properties:
 - `cim:IdentifiedObject.mRID`: always `string`
 - `cim:IdentifiedObject.description`: `string` or `langString`
 - `cim:IdentifiedObject.name`: `string` or `langString`
@@ -1140,7 +1141,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/75
 The new style changes class and property kinds as follows:
 - `rdfs:Class` -> `owl:Class`
 - `rdf:Property` -> `owl:DatatypeProperty` (if range is `xsd:*`), `owl:ObjectProperty` otherwise
- 
+
 It doesn't mean that we need full OWL reasoning much beyond RDFS.
 We are just being more specific about the nature of properties.
 
@@ -1159,7 +1160,7 @@ CIM properties have rich multiplicity (cardinality) information:
 PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
 select ?mult (count(*) as ?c) {
   ?x cims:multiplicity ?mult
-} group by ?mult order by ?mult 
+} group by ?mult order by ?mult
 ```
 
 | mult        |    c |
@@ -1190,7 +1191,7 @@ CGMES datatype properties are defined like this (`# new` shows the new style`):
 
 ```ttl
 cim:ACDCConverter.baseS a rdf:Property;       # new: owl:FunctionalProperty , owl:DatatypeProperty ;
-  rdfs:domain cim:ACDCConverter ; 
+  rdfs:domain cim:ACDCConverter ;
   cims:dataType cim:ApparentPower.            # new: rdfs:range
 
 cim:ApparentPower a owl:Class ;
@@ -1201,13 +1202,13 @@ cim:ApparentPower a owl:Class ;
     "Product of the RMS value of the voltage and the RMS value of the current.".
 
 cim:ApparentPower.multiplier a rdf:Property;  # new: owl:FunctionalProperty , owl:DatatypeProperty ;
-  cims:isFixed "M" ;                          # new: rdf:value "M"; xx:isFixed "True " 
+  cims:isFixed "M" ;                          # new: rdf:value "M"; xx:isFixed "True "
   rdfs:domain cim:ApparentPower ;
   rdfs:label "multiplier"@en ;
   rdfs:range cim:UnitMultiplier.
 
 cim:ApparentPower.unit a rdf:Property;        # new: owl:FunctionalProperty , owl:DatatypeProperty ;
-  cims:isFixed "VA";                          # new: rdf:value "VA"; xx:isFixed "True " 
+  cims:isFixed "VA";                          # new: rdf:value "VA"; xx:isFixed "True "
   rdfs:domain cim:ApparentPower ;
   rdfs:label "unit"@en ;
   rdfs:range cim:UnitSymbol .
@@ -1261,7 +1262,7 @@ cim:UnitMultiplier.M a a cim:UnitMultiplier;                         # new: owl:
 We want to fix the representation as follows, and also connect to QUDT (see https://github.com/qudt/qudt-public-repo/issues/969) .
 To be clear, this below is just a blueprint, which parts of it will be implemented and where is still for discussion.
 
-First we correct the property: give a numeric range, 
+First we correct the property: give a numeric range,
 but also specify `hasQuantityKind` and `hasUnit` using `qudt` props.
 We link to a global QUDT unit, but also give the multiplier and unitSymbol separately, using `cims` props:
 ```ttl
@@ -1291,7 +1292,7 @@ cim:ApparentPower a qudt:QuantityKind ;
   rdfs:comment        "Product of the RMS value of the voltage and the RMS value of the current." .
 ```
 
-We delete `cim:ApparentPower.multiplier, cim:ApparentPower.unit` 
+We delete `cim:ApparentPower.multiplier, cim:ApparentPower.unit`
 because they are replaced by universal props `cim:multiplier, cim:unitSymbol` respectively.
 
 We delete `cim:ApparentPower.value` because the actual DatatypeProperty `cim:ACDCConverter.baseS`
@@ -1335,7 +1336,7 @@ We correct CIM multipliers, add a numeric `prefixMultiplier` and relate them to 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier"@en ;
   skos:exactMatch qudt:DecimalPrefix.
-  
+
 cim:UnitMultiplier.M a cim:UnitMultiplier;
   rdfs:label "M" ;
   cims:stereotype "enum" ;
@@ -1359,28 +1360,76 @@ cim:UnitMultiplier.none a cim:UnitMultiplier ;
 - But we'll follow CIM and use the `cim:UnitMultiplier.none` as given
 
 
-### CompleteDatatypeMap
-The previous section defines how we want to correct units, but how can we do it?
-There is a resource that may help us:
+### Property Datatype Maps
+The previous section defines how we want to correct units, but where can we find the datatypes to use?
+There are several approaches/resources that may help us:
+- CGMES has [CompleteDatatypeMap.properties](../source/CGMES/v3.0/SHACL/DatatypeMapping/CompleteDatatypeMap.properties) that maps data props to datatypes and is used by some Java process.
+  We extracted a table from it and used prefixes: [CompleteDatatypeMap.tsv](datatypes/CompleteDatatypeMap.tsv).
+  But it has some shortcomings:
+  - Last updated Nov 09 2020, but perhaps there are new props added since then?
+  - Doesn't cover NC
+- The "ModShape" project has [DatatypeMapping/RDFdatatypes.rdf](https://github.com/griddigit-ci/ModShape/blob/master/CGMES_v3_0_constraints/DatatypeMapping/RDFdatatypes.rdf).
+  We converted it to turtle, fixed https://github.com/griddigit-ci/ModShape/issues/3
+  and saved as [RDFdatatypes.tsv](datatypes/RDFdatatypes.tsv).
+  - It maps 3101 properties and is identical to the above one.
+- After mapping CIM datatypes (https://github.com/Sveino/Inst4CIM-KG/issues/74 )
+  and fixing the representation of data props with units (https://github.com/Sveino/Inst4CIM-KG/issues/38 )
+  we extract [datatypes-actual.tsv](datatypes/datatypes-actual.tsv) with this query. 
+  It includes NC and maps 3704 props (was 3712 in an older version):
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select * where {
+  ?p a owl:DatatypeProperty; rdfs:range ?datatype
+} order by ?p
+```
 
-CGMES has [CompleteDatatypeMap.properties](../source/CGMES/v3.0/SHACL/DatatypeMapping/CompleteDatatypeMap.properties) that maps data props to datatypes and is used by some Java process.
-We extracted a table from it and used prefixes: [CompleteDatatypeMap.tsv](CompleteDatatypeMap.tsv).
-But it has some shortcomings:
-- Last updated Nov 09 2020, but perhaps there are new props added since then?
-- Doesn't cover NC
-- Mis-defines terms
-  - `rdf:Statements.object rdf:Statements.predicate rdf:Statements.subject`
-    (the correct terms are `rdf:Statement` and `rdf:object rdf:predicate rdf:subject`
-  - In a hijacked namespace
-  - With wrong type `xsd:string` (should be `rdf:Resource`)
+Now let's analyze the differences:
+```
+comm -23 RDFdatatypes.tsv datatypes-actual.tsv|wc -l
+0
 
-Although this is not an ontology file, a similar problem is present in `Header-AP-Voc-RDFS2020`:
-https://github.com/Sveino/Inst4CIM-KG/issues/22
+comm -13 RDFdatatypes.tsv datatypes-actual.tsv|wc -l
+611
+```
+The new file has all the old props, and 611 more.
+Breakdown per namespace:
+```
+comm -13 RDFdatatypes.tsv datatypes-actual.tsv > datatypes-new.tsv
+cut -d: -f1 datatypes-new.tsv | uniq -c | sort -rn
+    548 nc
+     21 dct
+     16 cim
+     10 dcat
+      3 rdf
+      1 prov
+      1 md
+      1 euvoc
+      1 eumd
+      1 adms
+```
+These fall into the following categories:
+- NC props
+- New CIM props (eg `cim:IdentifiedObject.aliasName`) and even whole classes with their props (`cim:Name`
+- Hijacked namespaces `dcat, rdf, prov, euvoc, adms`: https://github.com/Sveino/Inst4CIM-KG/issues/8
+
+- New datatype for `md:Model.version`: `xsd:string` (the older is `xsd:integer`).
+  We can confirm that only one prop is defined with two datatypes (inconsistent):
+```
+cut -f1 datatypes-actual.tsv |uniq -d
+md:Model.version
+```
+
+Mis-defined terms from `Header-AP-Voc-RDFS2020` (https://github.com/Sveino/Inst4CIM-KG/issues/22 ):
+- `rdf:Statements.object rdf:Statements.predicate rdf:Statements.subject`
+  (the correct terms are `rdf:Statement` and `rdf:object rdf:predicate rdf:subject`
+- In a hijacked namespace
+- With wrong type `xsd:string` (should be `rdf:Resource`)
 
 ### Actual QuantityKinds
 Let's find all CIM datatypes (called QuantityKinds in QUDT).
 
-In CGMES 3.0 they are represented as `isCIMDatatype "True"` 
+In CGMES 3.0 they are represented as `isCIMDatatype "True"`
 - We need to use a bunch of namespaces because of https://github.com/Sveino/Inst4CIM-KG/issues/10
 ```sparql
 select distinct ?qk {
@@ -1514,10 +1563,10 @@ We need to submit a MR to QUDT for these new QuantityKinds and Units (https://gi
 | VoltagePerReactivePower   | V-PER-V-A_Reactive | KiloV-PER-V-A_Reactive |
 
 After we add the above kinds, all `QuantityKinds` will be mapped as `skos:exactMatch`.
-- `skos:broader`: no such cases, I thought `ApparentPower` is a sub-concept of `ComplexPower` but QUDT has `ApparentPower`: https://github.com/Sveino/Inst4CIM-KG/issues/43 
+- `skos:broader`: no such cases, I thought `ApparentPower` is a sub-concept of `ComplexPower` but QUDT has `ApparentPower`: https://github.com/Sveino/Inst4CIM-KG/issues/43
 
 Almost all `Units` are mapped as `skos:exactMatch` except one:
-- `skos:narrower`: "Hz" is a super-concept of `REV-PER-SEC`: https://github.com/Sveino/Inst4CIM-KG/issues/42 
+- `skos:narrower`: "Hz" is a super-concept of `REV-PER-SEC`: https://github.com/Sveino/Inst4CIM-KG/issues/42
 
 This is also reflected eg in this property:
 ```ttl
@@ -1533,7 +1582,7 @@ cim:AsynchronousMachine.nominalSpeed a owl:DatatypeProperty, owl:FunctionalPrope
   rdfs:domain cim:AsynchronousMachine ;
   rdfs:range xsd:float .
 ```
-- `cim:unitSymbol` is `Hz` (1/s), 
+- `cim:unitSymbol` is `Hz` (1/s),
   which is a bit imprecise for `cim:RotationSpeed`
 - `qudt:hasUnit` is unit:REV-PER-SEC, which is more specific (rotations/s)
 
@@ -1574,37 +1623,13 @@ But a very small number of them are in actual use in CGMES ontologies (see last 
 We should fix all units and multipliers as shown in [Fixed Units Representation](#fixed-units-representation),
 but will map to QUDT only the ones that are in use: this is shown in the previous two sections.
 
-## Add Datatypes To Instance Data
-https://github.com/Sveino/Inst4CIM-KG/issues/49
-
-In CGMES instance data, all literals are string, but should be marked with the appropriate datatype.
-- E.g. `cim:ACDCConverter.baseS` should be marked `^^xsd:float`
-- Otherwise sort won't work and range queries will be slower.
-- This pertains to `boolean, dateTme, float, gMonthDay, integer` as `string` is the default datatype
-
-This query counts props by XSD datatype:
-```sparql
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-select ?range (count(*) as ?c) {
-   ?x rdfs:range ?range
-    filter(strstarts(str(?range), str(xsd:)))
-} group by ?range order by ?range
-```
-
-Here are the current results, but it should be rerun after fixes to ontology: see col "comment"
-| range         |   c | comment                                                                             |
-|---------------|-----|-------------------------------------------------------------------------------------|
-| xsd:boolean   | 218 | Inflated because meta-data props are duplicated, and many are boolean               |
-| xsd:dateTime  |   5 |                                                                                     |
-| xsd:decimal   |   1 |                                                                                     |
-| xsd:float     | 310 | Deflated because eg `cim:ActivePower.value` may be used by hundreds of "real" props |
-| xsd:gMonthDay |   2 |                                                                                     |
-| xsd:integer   |  36 |                                                                                     |
-| xsd:string    |  51 |                                                                                     |
-
-I have a tentative SPARQL Update, but need to revise it.
+## Represent Models as Named Graphs
+- https://github.com/Sveino/Inst4CIM-KG/issues/53
+- https://github.com/3lbits/CIM4NoUtility/discussions/321 is a relevant discussion
+  - See my examples there
+  - TODO: blank nodes will cause huge problems
+- [CGMES-TC/FullGrid_SC_diff.xml](https://github.com/Sveino/CGMES-TC/blob/develop/v3.0/FullGrid/FullGrid_SC_diff/FullGrid_SC_diff.xml) is an example difference model
+- [NC/PowerSystemProject.rdf](https://github.com/Sveino/Inst4CIM-KG/blob/develop/source/CGMES-NC/r2.3/ap-voc/rdf/PowerSystemProject-AP-Voc-RDFS2020.rdf) is a profile that addresses the difference model with some meta-data.
 
 # Fix Technical Notes
 The actual fixing can be done in two ways:
@@ -1637,7 +1662,7 @@ We write one Update per issue, using a strict structure to allow comprehension a
 prefix ...
 delete {?x ?p ?old}
 insert {?x ?p ?new}
-where { 
+where {
   ...
 }
 ```
@@ -1685,7 +1710,7 @@ where {
   filter(!bound(?new))
 }
 ```
-Nothing returned. 
+Nothing returned.
 
 Then let's count `?old` and `?new` (should be the same because `count` discards nulls, but to make sure):
 ```sparql
@@ -1714,7 +1739,7 @@ where {
 Here it is: the count is reduced by 3.
 
 But how to catch these duplicate instances?
-It takes some doing. 
+It takes some doing.
 - It turns out the duplication is due to trailing whitespace added in some ontologies but not others.
 - If you grok this below, then your SPARQL force is strong indeed, Luke!
 ```sparql
@@ -1732,7 +1757,7 @@ where {
   bind(if(lang(?old1)!="",strlang(?newStr1,lang(?old1)),?newStr1) as ?new1)
   bind(replace(replace(?oldStr2,"^\\s+",""),"\\s+$","") as ?newStr2)
   bind(if(lang(?old2)!="",strlang(?newStr2,lang(?old2)),?newStr2) as ?new2)
-  
+
   filter(?new1 = ?new2)
 }
 ```
@@ -1767,7 +1792,7 @@ We also track status with the tag "DONE" and by adding a link to the fix.
 - 09 [Mapping QuantityKinds and Units](#mapping-quantitykinds-and-units), [Mapping Unit Multipliers](#mapping-unit-multipliers) #38
   - DONE [fix09-map-qkUnitsMultipliers-38.ru](fix09-map-qkUnitsMultipliers-38.ru)
   - TODO: It inserts "standalone" `exactMatch`, even if that CIM quantityKind isn't used in a particular file.
-    I am not sure why this happens, but it's harmless (another file has the full definition of that quantityKind), 
+    I am not sure why this happens, but it's harmless (another file has the full definition of that quantityKind),
     so I'll leave it in.
 ```
 cim:ActivePowerChangeRate skos:exactMatch quantitykind:ActivePowerChangeRate .
