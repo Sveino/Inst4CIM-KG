@@ -5,9 +5,10 @@
 @prefix eu: <http://iec.ch/TC57/CIM100-European#> .
 @prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 
+<urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61> { # model metadata
 <urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61> a dm:DifferenceModel ;
-  dm:forwardDifferences <urn:uri:6e53d9e3-3ace-4500-a26a-ee172a1f7cf3> ;
-  dm:reverseDifferences <urn:uri:80629ca8-4048-480f-9439-a6f674a01be6> ;
+  dm:forwardDifferences <urn:uri:9f4ad374-e271-4212-b1a8-b210f0822c8b> ;
+  dm:reverseDifferences <urn:uri:69128127-4fc8-4ef6-8db8-6b9786ca9d11> ;
   md:Model.DependentOn <urn:uuid:095c6b30-255d-40d5-85fe-2c9fe6c9846d> ;
   md:Model.Supersedes <urn:uuid:8e91166f-12ce-4a20-b0bf-7be301171d0b> ;
   md:Model.created "2021-11-19T23:16:27Z" ;
@@ -18,12 +19,13 @@
   md:Model.version "002" .
 
 
+}
 
-<urn:uri:80629ca8-4048-480f-9439-a6f674a01be6> { # reverseDifferences
+<urn:uri:69128127-4fc8-4ef6-8db8-6b9786ca9d11> { # reverseDifferences
 <http://elia.be/CGMES#f7d4412c-6567-4759-aa48-4c881dd79902> cim:ExcIEEEAC4A.ka "200" .
 }
 
-<urn:uri:6e53d9e3-3ace-4500-a26a-ee172a1f7cf3> { # forwardDifferences
+<urn:uri:9f4ad374-e271-4212-b1a8-b210f0822c8b> { # forwardDifferences
 <http://elia.be/CGMES#f7d4412c-6567-4759-aa48-4c881dd79902> cim:ExcIEEEAC4A.ka "300" ;
   cim:IdentifiedObject.description "Modified parameter Ka" .
 }

@@ -5,9 +5,10 @@
 @prefix eu: <http://iec.ch/TC57/CIM100-European#> .
 @prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 
+<urn:uuid:ef977d27-4cc9-4e54-a780-8ca224ac0dd7> { # model metadata
 <urn:uuid:ef977d27-4cc9-4e54-a780-8ca224ac0dd7> a dm:DifferenceModel ;
-  dm:forwardDifferences <urn:uri:6705e88d-733b-4cc8-9f0e-a98dc10de24c> ;
-  dm:reverseDifferences <urn:uri:0aec9a6b-8022-49b7-af28-3f460da157ba> ;
+  dm:forwardDifferences <urn:uri:63504931-6b28-45f1-bfb2-10e90e26268c> ;
+  dm:reverseDifferences <urn:uri:86e3d64a-fd54-4a99-bef0-23e01f0d5e5d> ;
   md:Model.DependentOn <urn:uuid:095c6b30-255d-40d5-85fe-2c9fe6c9846d> ;
   md:Model.DependentOn <urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61> ;
   md:Model.Supersedes <urn:uuid:8336a39a-071e-41a5-9787-b26d99ca9177> ;
@@ -19,8 +20,9 @@
   md:Model.version "001" .
 
 
+}
 
-<urn:uri:0aec9a6b-8022-49b7-af28-3f460da157ba> { # reverseDifferences
+<urn:uri:86e3d64a-fd54-4a99-bef0-23e01f0d5e5d> { # reverseDifferences
 <http://tennet.nl/CGMES#_002eccf8-92d5-b530-09de-39fb7da2af86> a cim:DiagramObjectPoint ;
   cim:DiagramObjectPoint.DiagramObject <http://tennet.nl/CGMES#51fa4360-9e0a-f493-e002-39fb7da2af86> ;
   cim:DiagramObjectPoint.sequenceNumber "3" ;
@@ -1905,7 +1907,7 @@
   cim:DiagramObjectPoint.yPosition "116" .
 }
 
-<urn:uri:6705e88d-733b-4cc8-9f0e-a98dc10de24c> { # forwardDifferences
+<urn:uri:63504931-6b28-45f1-bfb2-10e90e26268c> { # forwardDifferences
 <http://tennet.nl/CGMES#_0008e6dd-5444-3871-bef9-39fc10f99da7> a cim:DiagramObjectPoint ;
   cim:DiagramObjectPoint.DiagramObject <http://tennet.nl/CGMES#b61815ba-643d-2907-a7e4-39fc10f99da7> ;
   cim:DiagramObjectPoint.sequenceNumber "1" ;

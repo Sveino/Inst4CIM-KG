@@ -5,9 +5,10 @@
 @prefix eu: <http://iec.ch/TC57/CIM100-European#> .
 @prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 
+<urn:uuid:9adc1c2c-deb0-4e3b-ac80-1d131f9cb8b8> { # model metadata
 <urn:uuid:9adc1c2c-deb0-4e3b-ac80-1d131f9cb8b8> a dm:DifferenceModel ;
-  dm:forwardDifferences <urn:uri:ded10168-b4bc-4a84-a6aa-ded23ba5bf5e> ;
-  dm:reverseDifferences <urn:uri:847e229c-b623-4cf1-ad7a-50fa632c5da3> ;
+  dm:forwardDifferences <urn:uri:b4f9f80f-c1e5-4768-8f48-68a938ca06dd> ;
+  dm:reverseDifferences <urn:uri:77d6e0db-c8bd-4aa9-8d27-aba38c00aa30> ;
   md:Model.DependentOn <urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7> ;
   md:Model.Supersedes <urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61> ;
   md:Model.created "2021-11-19T23:16:27Z" ;
@@ -19,8 +20,9 @@
   md:Model.version "001" .
 
 
+}
 
-<urn:uri:847e229c-b623-4cf1-ad7a-50fa632c5da3> { # reverseDifferences
+<urn:uri:77d6e0db-c8bd-4aa9-8d27-aba38c00aa30> { # reverseDifferences
 <http://tennet.nl/CGMES#03c0a363-bbb1-4353-a4a6-f78ef8d8cc84> cim:RatioTapChangerTablePoint.RatioTapChangerTable <http://tennet.nl/CGMES#24533a0f-3c24-4253-863a-5b1449e5b2de> ;
   cim:TapChangerTablePoint.x "5.68125" .
 
@@ -536,7 +538,7 @@
   cim:PhaseTapChangerTablePoint.angle "-0.05142054" .
 }
 
-<urn:uri:ded10168-b4bc-4a84-a6aa-ded23ba5bf5e> { # forwardDifferences
+<urn:uri:b4f9f80f-c1e5-4768-8f48-68a938ca06dd> { # forwardDifferences
 <http://tennet.nl/CGMES#03c0a363-bbb1-4353-a4a6-f78ef8d8cc84> cim:RatioTapChangerTablePoint.RatioTapChangerTable <http://tennet.nl/CGMES#868ba067-8413-45d5-9d06-d75bc913800e> ;
   cim:TapChangerTablePoint.x "5.650056" .
 

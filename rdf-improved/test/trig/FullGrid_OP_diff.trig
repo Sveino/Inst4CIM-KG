@@ -5,9 +5,10 @@
 @prefix eu: <http://iec.ch/TC57/CIM100-European#> .
 @prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 
+<urn:uuid:05edbf91-231f-4386-97c0-d4cb498d0afc> { # model metadata
 <urn:uuid:05edbf91-231f-4386-97c0-d4cb498d0afc> a dm:DifferenceModel ;
-  dm:forwardDifferences <urn:uri:f9b1c2aa-b6d3-41cd-977d-1fdcb91c74c6> ;
-  dm:reverseDifferences <urn:uri:dd75b60f-5024-4dd5-ae5a-e581ee3ea24d> ;
+  dm:forwardDifferences <urn:uri:63528ef9-48ff-469b-a58e-ba274f2a10bb> ;
+  dm:reverseDifferences <urn:uri:27c8a164-c656-4712-994a-0ab7cec4fd34> ;
   md:Model.DependentOn <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3> ;
   md:Model.Supersedes <urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7> ;
   md:Model.created "2021-11-19T23:16:27Z" ;
@@ -18,14 +19,15 @@
   md:Model.version "001" .
 
 
+}
 
-<urn:uri:dd75b60f-5024-4dd5-ae5a-e581ee3ea24d> { # reverseDifferences
+<urn:uri:27c8a164-c656-4712-994a-0ab7cec4fd34> { # reverseDifferences
 <http://fullgrid.eu/CGMES/3.0#87478acb-cd1f-40a6-b4a7-59ec99f8b063> cim:IdentifiedObject.description "SET_PNT_1" .
 
 <http://fullgrid.eu/CGMES/3.0#fc908c16-468f-4a64-ba74-6f57175e0005> cim:AnalogLimit.value "99" .
 }
 
-<urn:uri:f9b1c2aa-b6d3-41cd-977d-1fdcb91c74c6> { # forwardDifferences
+<urn:uri:63528ef9-48ff-469b-a58e-ba274f2a10bb> { # forwardDifferences
 <http://fullgrid.eu/CGMES/3.0#87478acb-cd1f-40a6-b4a7-59ec99f8b063> cim:IdentifiedObject.description "SET_PNT_1 test" .
 
 <http://fullgrid.eu/CGMES/3.0#fc908c16-468f-4a64-ba74-6f57175e0005> cim:AnalogLimit.value "100" .

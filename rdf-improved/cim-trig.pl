@@ -1,5 +1,5 @@
 #!perl -w
-# Convert CIM xml file to trig (turtle with graphs).
+# Converts CIM XML file to Trig (Turtle with graphs).
 
 # Assumptions:
 # - Relies on a repeatable CIM XML layout as lines (uses simple string manipulation).
@@ -8,7 +8,7 @@
 # - A file has exactly one model: md:FullModel or dm:DifferenceModel
 # - dm:DifferenceModel has exactly two sections dm:reverseDifferences and dm:forwardDifferences in this order
 # - Uses "owl write" (non-streaming) for nicer formatting
-# - Or jena riot in --formatted mode (non-streaming). For very large files, we should switch to --output
+# - For very large files, use Jena riot in  --output mode (streaming)
 
 use warnings;
 use autodie;
@@ -27,19 +27,19 @@ my $xml = <STDIN>;
 # remove parasitic underscore from start of relative URLs
 $xml =~ s{(rdf:(about|resource)=\"#)_+}{$1}g;
 
-# break it up
+# Add base
 my ($rdf_open, $body, $rdf_close) =
   $xml =~ m{(.*?<rdf:RDF.*?>)(.*?)(</rdf:RDF>)}s
   or die "Can't find rdf:RDF element\n";
-my ($model, $model_type, $model_uri, $rest) =
-  $body =~ m{(<(md:FullModel|dm:DifferenceModel) rdf:about="(.*?)".*?</\2>)(.*)}s
-  or die "Can't find md:FullModel or dm:DifferenceModel\n";
-
-# Add base
 my ($base) =
-  $model =~ m{<md:Model.modelingAuthoritySet>(.*?)<}
+  $body =~ m{<md:Model.modelingAuthoritySet>(.*?)<}
   or die "Can't find md:Model.modelingAuthoritySet\n";
 $rdf_open =~ s{<rdf:RDF}{<rdf:RDF xml:base="$base"};
+
+# extract Model element and its attributes
+my ($model, $model_type, $model_uri) =
+  $body =~ m{(<(md:FullModel|dm:DifferenceModel) rdf:about="(.*?)".*?</\2>)}s
+  or die "Can't find md:FullModel or dm:DifferenceModel\n";
 
 if ($model_type eq "dm:DifferenceModel") {
   my ($model_open, $reverse, $forward, $model_close) =
@@ -52,11 +52,14 @@ if ($model_type eq "dm:DifferenceModel") {
   my $forward_uri = "urn:uri:" . uuid4();
   my $reverse_ref = qq{<dm:reverseDifferences rdf:resource="$reverse_uri"/>};
   my $forward_ref = qq{<dm:forwardDifferences rdf:resource="$forward_uri"/>};
-  $model = ttl("$rdf_open$model_open$reverse_ref$forward_ref$model_close$rdf_close");
+  $model = ttl_insert_after_prefixes
+    ("$rdf_open$model_open$reverse_ref$forward_ref$model_close$rdf_close",
+    "<$model_uri> { # model metadata\n");
   $reverse = ttl_no_prefixes("$rdf_open$reverse$rdf_close");
   $forward = ttl_no_prefixes("$rdf_open$forward$rdf_close");
   $output = qq{
-$model
+$model\}
+
 <$reverse_uri> { # reverseDifferences
 $reverse
 }
@@ -64,15 +67,11 @@ $reverse
 <$forward_uri> { # forwardDifferences
 $forward
 }}} else {
-  $model = ttl("$rdf_open$model$rdf_close");
-  $rest = ttl_no_prefixes("$rdf_open$rest$rdf_close");
-  $output = qq{
-$model
-
-<$model_uri> { # model content
-
-$rest
-}}};
+  $model = ttl_insert_after_prefixes
+    ("$rdf_open$body$rdf_close",
+     "<$model_uri> { # model graph\n\n");
+  $output = "$model}";
+};
 
 open(STDOUT,">$out");
 print $output;
@@ -86,7 +85,7 @@ sub ttl {
   print $fh $input;
   close $fh;
   system("owl.bat write --keepUnusedPrefixes -i rdfxml $tmp.rdf $tmp.ttl");
-  ## riot.bat --syntax=rdfxml --formatted=ttl $infile > $outfile
+  ## riot.bat --syntax=rdfxml --output=ttl $infile > $outfile
   open ($fh, "$tmp.ttl");
   my $output = <$fh>; # $/ is undef, so it slurps
   close $fh;
@@ -100,5 +99,12 @@ sub ttl_no_prefixes {
   $x =~ s{\@prefix.*}{}g;
   $x =~ s{^\n+}{}g;
   $x =~ s{\n+$}{}g;
+  $x
+}
+
+sub ttl_insert_after_prefixes {
+  my $x = ttl(shift);
+  my $insert = shift;
+  $x =~ s{(\@prefix.*\n\n)}{$1$insert};
   $x
 }

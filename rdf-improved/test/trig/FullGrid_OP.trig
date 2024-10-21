@@ -1,22 +1,9 @@
-
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix cim: <http://iec.ch/TC57/CIM100#> .
 @prefix eu: <http://iec.ch/TC57/CIM100-European#> .
 @prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 
-<urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7> a md:FullModel ;
-  md:Model.DependentOn <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3> ;
-  md:Model.created "2020-12-10T00:21:43Z" ;
-  md:Model.description "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model." ;
-  md:Model.modelingAuthoritySet "http://fullgrid.eu/CGMES/3.0" ;
-  md:Model.profile "http://iec.ch/TC57/ns/CIM/Operation-EU/3.0" ;
-  md:Model.scenarioTime "2021-02-09T19:30:00Z" ;
-  md:Model.version "1" .
-
-
-
-
-<urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7> { # model content
+<urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7> { # model graph
 
 <http://fullgrid.eu/CGMES/3.0#_13dacabf-aa4c-4a78-806e-c7c4c6949718> a cim:Discrete ;
   cim:Discrete.ValueAliasSet <http://fullgrid.eu/CGMES/3.0#1a457323-2094-440f-8d30-dc93adf0cdb3> ;
@@ -225,4 +212,15 @@
   cim:IdentifiedObject.description "ANA_LIM_1" ;
   cim:IdentifiedObject.mRID "fc908c16-468f-4a64-ba74-6f57175e0005" ;
   cim:IdentifiedObject.name "ANA_LIM_1" .
+
+<urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7> a md:FullModel ;
+  md:Model.DependentOn <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3> ;
+  md:Model.created "2020-12-10T00:21:43Z" ;
+  md:Model.description "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model." ;
+  md:Model.modelingAuthoritySet "http://fullgrid.eu/CGMES/3.0" ;
+  md:Model.profile "http://iec.ch/TC57/ns/CIM/Operation-EU/3.0" ;
+  md:Model.scenarioTime "2021-02-09T19:30:00Z" ;
+  md:Model.version "1" .
+
+
 }

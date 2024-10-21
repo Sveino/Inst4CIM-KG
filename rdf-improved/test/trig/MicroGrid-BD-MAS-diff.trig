@@ -5,9 +5,10 @@
 @prefix eu: <http://iec.ch/TC57/CIM100-European#> .
 @prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 
+<urn:uuid:52014a99-7471-4361-9cad-4353f08a0efa> { # model metadata
 <urn:uuid:52014a99-7471-4361-9cad-4353f08a0efa> a dm:DifferenceModel ;
-  dm:forwardDifferences <urn:uri:7ef1e45d-6f1b-4b0b-99e3-3bd214ab0a69> ;
-  dm:reverseDifferences <urn:uri:d96721f8-0be0-406e-88ce-d72bc723c0f7> ;
+  dm:forwardDifferences <urn:uri:c69c6dcf-7fd3-46cb-97af-db927aff1cd5> ;
+  dm:reverseDifferences <urn:uri:fea71e9a-b20b-429c-b490-6c69ccf05042> ;
   md:Model.Supersedes <urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7> ;
   md:Model.created "2021-11-19T23:16:27Z" ;
   md:Model.description "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model." ;
@@ -17,12 +18,13 @@
   md:Model.version "006" .
 
 
+}
 
-<urn:uri:d96721f8-0be0-406e-88ce-d72bc723c0f7> { # reverseDifferences
+<urn:uri:fea71e9a-b20b-429c-b490-6c69ccf05042> { # reverseDifferences
 
 }
 
-<urn:uri:7ef1e45d-6f1b-4b0b-99e3-3bd214ab0a69> { # forwardDifferences
+<urn:uri:c69c6dcf-7fd3-46cb-97af-db927aff1cd5> { # forwardDifferences
 <http://entsoe.eu/boundary#_1c4a9e9c-ef00-42c9-9845-f64f9ca1e57a> a cim:ConnectivityNode ;
   cim:ConnectivityNode.ConnectivityNodeContainer <http://entsoe.eu/boundary#2e08aa26-2719-4b3e-a0eb-a9bd0ddbcae2> ;
   cim:IdentifiedObject.description "HVDC-AC; 220 kV; OHL" ;

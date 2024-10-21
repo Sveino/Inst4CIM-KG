@@ -1,8 +1,11 @@
-# Improvements to CIM and CGMES RDFS Representation
+# Improvements to CIM and CGMES RDFS Representation 
+
+This document describes proposed inprovements to the representation of CIM/CGMES ontologies.
+
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-- [Improvements to CIM and CGMES RDFS Representation](#improvements-to-cim-and-cgmes-rdfs-representation)
+- [Improvements to CIM and CGMES RDFS Representation ](#improvements-to-cim-and-cgmes-rdfs-representation)
     - [Source Files](#source-files)
     - [RDF Serializations](#rdf-serializations)
         - [Turtle Serialization](#turtle-serialization)

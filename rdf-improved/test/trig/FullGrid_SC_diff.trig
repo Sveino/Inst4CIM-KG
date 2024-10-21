@@ -5,9 +5,10 @@
 @prefix eu: <http://iec.ch/TC57/CIM100-European#> .
 @prefix md: <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
 
+<urn:uuid:39d8d8fd-325d-4e29-9659-d7a1cca0615d> { # model metadata
 <urn:uuid:39d8d8fd-325d-4e29-9659-d7a1cca0615d> a dm:DifferenceModel ;
-  dm:forwardDifferences <urn:uri:e2c3bcde-1ef3-4e89-b4da-e43b23d6202a> ;
-  dm:reverseDifferences <urn:uri:89243272-32e3-4fe8-a669-cb3e6b104ba9> ;
+  dm:forwardDifferences <urn:uri:8c950551-9acb-4502-8a41-d376c2888eea> ;
+  dm:reverseDifferences <urn:uri:fd8d50b2-ff44-4950-b885-d2f7eb06e1f4> ;
   md:Model.DependentOn <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3> ;
   md:Model.Supersedes <urn:uuid:dd907125-7088-43fd-830d-5b0df36f4c71> ;
   md:Model.created "2021-11-19T23:16:27Z" ;
@@ -18,14 +19,15 @@
   md:Model.version "001" .
 
 
+}
 
-<urn:uri:89243272-32e3-4fe8-a669-cb3e6b104ba9> { # reverseDifferences
+<urn:uri:fd8d50b2-ff44-4950-b885-d2f7eb06e1f4> { # reverseDifferences
 <http://fullgrid.eu/CGMES/3.0#09cc4e0a-336f-43ee-b29a-43049904cea9> cim:EarthFaultCompensator.r "9.99" .
 
 <http://fullgrid.eu/CGMES/3.0#62a4d7b2-acca-4726-8d47-a85afbcf0642> cim:SynchronousMachine.earthing "true" .
 }
 
-<urn:uri:e2c3bcde-1ef3-4e89-b4da-e43b23d6202a> { # forwardDifferences
+<urn:uri:8c950551-9acb-4502-8a41-d376c2888eea> { # forwardDifferences
 <http://fullgrid.eu/CGMES/3.0#09cc4e0a-336f-43ee-b29a-43049904cea9> cim:EarthFaultCompensator.r "10" .
 
 <http://fullgrid.eu/CGMES/3.0#62a4d7b2-acca-4726-8d47-a85afbcf0642> cim:SynchronousMachine.earthing "false" .
