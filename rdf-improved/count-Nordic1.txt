@@ -1,0 +1,19 @@
+19	./CDPSM_2_0/Nordic44_02_OPA-OPB_ElectricalProperties.xml
+111	./CDPSM_2_0/Nordic44_03_Asset.xml
+107	./CDPSM_2_0/Nordic44_03_Common_ElectricalProperties.xml
+16:46:06 WARN  riot            :: [line: 22, col: 57] Encountered rdf:parseType='Statements'. Treated as rdf:parseType='Literal'
+16:46:06 WARN  riot            :: [line: 29, col: 57] Encountered rdf:parseType='Statements'. Treated as rdf:parseType='Literal'
+3	./CDPSM_2_0/Nordic44_03_inc.xml
+30	./CDPSM_2_0/Nordic44_03_OPA_ElectricalProperties.xml
+120	./CDPSM_2_0/Nordic44_03_OPB_ElectricalProperties.xml
+162	./CDPSM_2_0/Nordic44_07_AssetCatalogue.xml
+45	./CDPSM_2_0/Nordic44_CPSM_01_MF.xml
+2410	./CGMES_2_4/Nordic44_CGM_36d_SSH.xml
+9849	./CGMES_2_4/Nordic44_CGM_36e_DL.xml
+1268	./CGMES_2_4/Nordic44_CGM_36f_GL.xml
+243	./CGMES_2_4/Nordic44_CGM_36f_MF.xml
+2356	./CGMES_2_4/Nordic44_CGM_36g_SV.xml
+1316	./CGMES_2_4/Nordic44_CGM_36g_TP.xml
+17420	./CGMES_2_4/Nordic44_CGM_37a_EQ.xml
+22	./CGMES_2_4/Nordic44_CGM_38_CO.xml
+35481

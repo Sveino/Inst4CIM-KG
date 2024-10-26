@@ -8,7 +8,7 @@
 # - A file has exactly one model: md:FullModel or dm:DifferenceModel
 # - dm:DifferenceModel has exactly two sections dm:reverseDifferences and dm:forwardDifferences in this order
 # - Uses "owl write" (non-streaming) for nicer formatting
-# - For very large files, use Jena riot in  --output mode (streaming)
+# - For very large files, use Jena riot in --stream mode (streaming)
 
 use warnings;
 use autodie;
@@ -91,7 +91,7 @@ sub ttl {
   open ($fh,">$tmp.rdf");
   print $fh $input;
   close $fh;
-  system ($opt_r ? "riot.bat --syntax=rdfxml --output=ttl $infile > $outfile":
+  system ($opt_r ? "riot.bat --syntax=rdfxml --stream=ttl $tmp.rdf > $tmp.ttl":
           "owl.bat write --keepUnusedPrefixes -i rdfxml $tmp.rdf $tmp.ttl");
   open ($fh, "$tmp.ttl");
   my $output = <$fh>; # $/ is undef, so it slurps
