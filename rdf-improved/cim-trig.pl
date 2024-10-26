@@ -8,24 +8,31 @@
 # - A file has exactly one model: md:FullModel or dm:DifferenceModel
 # - dm:DifferenceModel has exactly two sections dm:reverseDifferences and dm:forwardDifferences in this order
 # - Uses "owl write" (non-streaming) for nicer formatting
-# - For very large files, use Jena riot in  --output mode (streaming)
+# - For very large files, use Jena riot in --stream mode (streaming)
 
 use warnings;
 use autodie;
 use UUID qw(uuid4); # https://metacpan.org/pod/UUID
   # CIM UUIDs are version 4: https://github.com/Sveino/Spec4CIM-KG/issues/10
+use GetOpt::Std;
+my $opt_r;
+getopts("r");
 
 # owl.bat prints some junk on STDERR that I can't suppress on Cygwin, so we need to use explicit in/out filenames
 my $in = shift;
-my $out = shift or die "Usage: $0 in.rdf out.trig\n";
+my $out = shift or die <<"EOF";
+Usage: $0 -r in.rdf out.trig
+      By default uses "owl write" for prettier output
+  -r: Use riot in streaming mode for bigger output
+EOF
 open(STDIN,$in);
 
 # slurp STDIN
 $/ = undef;
 my $xml = <STDIN>;
 
-# remove parasitic underscore from start of relative URLs
-$xml =~ s{(rdf:(about|resource)=\"#)_+}{$1}g;
+## remove parasitic underscore from start of relative URLs
+# $xml =~ s{(rdf:(about|resource)=\"#)_+}{$1}g;
 
 # Add base
 my ($rdf_open, $body, $rdf_close) =
@@ -84,8 +91,8 @@ sub ttl {
   open ($fh,">$tmp.rdf");
   print $fh $input;
   close $fh;
-  system("owl.bat write --keepUnusedPrefixes -i rdfxml $tmp.rdf $tmp.ttl");
-  ## riot.bat --syntax=rdfxml --output=ttl $infile > $outfile
+  system ($opt_r ? "riot.bat --syntax=rdfxml --stream=ttl $tmp.rdf > $tmp.ttl":
+          "owl.bat write --keepUnusedPrefixes -i rdfxml $tmp.rdf $tmp.ttl");
   open ($fh, "$tmp.ttl");
   my $output = <$fh>; # $/ is undef, so it slurps
   close $fh;

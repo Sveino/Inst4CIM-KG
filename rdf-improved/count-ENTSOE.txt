@@ -1,0 +1,704 @@
+16:21:12 INFO  riot            :: File: ./FullGrid/FullGrid-Merged/FullGrid_EQ.xml
+./FullGrid/FullGrid-Merged/FullGrid_EQ.xml : Triples = 7,368
+16:21:13 INFO  riot            :: File: ./FullGrid/FullGrid-Merged/FullGrid_EQBD.xml
+./FullGrid/FullGrid-Merged/FullGrid_EQBD.xml : Triples = 216
+16:21:13 INFO  riot            :: File: ./FullGrid/FullGrid-Merged/FullGrid_OP.xml
+./FullGrid/FullGrid-Merged/FullGrid_OP.xml : Triples = 195
+16:21:13 INFO  riot            :: File: ./FullGrid/FullGrid-Merged/FullGrid_SC.xml
+./FullGrid/FullGrid-Merged/FullGrid_SC.xml : Triples = 684
+16:21:13 INFO  riot            :: File: ./FullGrid/FullGrid-Merged/FullGrid_SSH.xml
+./FullGrid/FullGrid-Merged/FullGrid_SSH.xml : Triples = 1,728
+16:21:13 INFO  riot            :: File: ./FullGrid/FullGrid-Merged/FullGrid_SV.xml
+./FullGrid/FullGrid-Merged/FullGrid_SV.xml : Triples = 750
+16:21:13 INFO  riot            :: File: ./FullGrid/FullGrid-Merged/FullGrid_TP.xml
+./FullGrid/FullGrid-Merged/FullGrid_TP.xml : Triples = 898
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20171002T0930Z_ENTSO-E_EQ_BD_2.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20171002T0930Z_ENTSO-E_EQ_BD_2.xml : Triples = 215
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_ASSEMBLED_DL_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_ASSEMBLED_DL_001.xml : Triples = 1,595
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_ASSEMBLED_TP_001.xml : Triples = 282
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_BE_EQ_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_BE_EQ_001.xml : Triples = 1,599
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_BE_GL_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_BE_GL_001.xml : Triples = 182
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_NL_EQ_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_NL_EQ_001.xml : Triples = 1,673
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_NL_GL_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_NL_GL_001.xml : Triples = 132
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210325T1530Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210420T1730Z_1D_BE_DY_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210420T1730Z_1D_BE_DY_001.xml : Triples = 164
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210420T1730Z_1D_NL_DY_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BaseCase-Merged/20210420T1730Z_1D_NL_DY_001.xml : Triples = 350
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BD-MAS/20171002T0930Z_ENTSO-E_EQ_BD_2.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BD-MAS/20171002T0930Z_ENTSO-E_EQ_BD_2.xml : Triples = 215
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_DL_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_DL_001.xml : Triples = 1,003
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_EQ_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_EQ_001.xml : Triples = 1,599
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_GL_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_GL_001.xml : Triples = 182
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_SV_001.xml : Triples = 307
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210325T1530Z_1D_BE_TP_001.xml : Triples = 131
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210420T1730Z_1D_BE_DY_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-BE-MAS/20210420T1730Z_1D_BE_DY_001.xml : Triples = 164
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_DL_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_DL_001.xml : Triples = 713
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_EQ_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_EQ_001.xml : Triples = 1,673
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_GL_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_GL_001.xml : Triples = 132
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_SV_001.xml : Triples = 217
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210325T1530Z_1D_NL_TP_001.xml : Triples = 73
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210420T1730Z_1D_NL_DY_001.xml
+./MicroGrid/MicroGid-BaseCase/MicroGrid-NL-MAS/20210420T1730Z_1D_NL_DY_001.xml : Triples = 350
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-BD-MAS/20171002T0930Z_ENTSO-E_EQ_BD_2.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-BD-MAS/20171002T0930Z_ENTSO-E_EQ_BD_2.xml : Triples = 215
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_DL_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_DL_1.xml : Triples = 1,671
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_EQ_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_EQ_1.xml : Triples = 2,018
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_GL_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_GL_1.xml : Triples = 182
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_SSH_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_SSH_1.xml : Triples = 448
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_SV_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_SV_1.xml : Triples = 409
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_TP_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210323T1730Z_1D_BE_TP_1.xml : Triples = 229
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210420T1730Z_1D_BE_DY_001.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-BE-MAS/20210420T1730Z_1D_BE_DY_001.xml : Triples = 164
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20171002T0930Z_ENTSO-E_EQ_BD_2.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20171002T0930Z_ENTSO-E_EQ_BD_2.xml : Triples = 215
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_ASSEMBLED_DL_001.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_ASSEMBLED_DL_001.xml : Triples = 5,956
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_ASSEMBLED_SV_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_ASSEMBLED_SV_1.xml : Triples = 729
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_ASSEMBLED_TP_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_ASSEMBLED_TP_1.xml : Triples = 462
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_BE_EQ_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_BE_EQ_1.xml : Triples = 2,018
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_BE_GL_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_BE_GL_1.xml : Triples = 182
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_BE_SSH_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_BE_SSH_1.xml : Triples = 448
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_NL_EQ_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_NL_EQ_1.xml : Triples = 1,989
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_NL_GL_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_NL_GL_1.xml : Triples = 132
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_NL_SSH_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210323T1730Z_1D_NL_SSH_1.xml : Triples = 335
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210420T1730Z_1D_BE_DY_001.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210420T1730Z_1D_BE_DY_001.xml : Triples = 164
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210420T1730Z_1D_NL_DY_001.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-Merged/20210420T1730Z_1D_NL_DY_001.xml : Triples = 350
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_DL_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_DL_1.xml : Triples = 1,207
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_EQ_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_EQ_1.xml : Triples = 1,989
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_GL_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_GL_1.xml : Triples = 132
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_SSH_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_SSH_1.xml : Triples = 335
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_SV_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_SV_1.xml : Triples = 307
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_TP_1.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210323T1730Z_1D_NL_TP_1.xml : Triples = 155
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210420T1730Z_1D_NL_DY_001.xml
+./MicroGrid/MicroGrid-Type1/MicroGrid-Type1-NL-MAS/20210420T1730Z_1D_NL_DY_001.xml : Triples = 350
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BD-MAS/20171002T0930Z_ENTSO-E_EQ_BD_2.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BD-MAS/20171002T0930Z_ENTSO-E_EQ_BD_2.xml : Triples = 237
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_DL_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_DL_1.xml : Triples = 2,372
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_EQ_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_EQ_1.xml : Triples = 2,577
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_GL_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_GL_1.xml : Triples = 182
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_SSH_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_SSH_1.xml : Triples = 566
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_SV_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_SV_1.xml : Triples = 527
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_TP_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-BE-MAS/20210401T1730Z_1D_BE_TP_1.xml : Triples = 321
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_DL_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_DL_1.xml : Triples = 663
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_EQ_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_EQ_1.xml : Triples = 624
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_SSH_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_SSH_1.xml : Triples = 131
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_SV_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_SV_1.xml : Triples = 130
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_TP_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-HVDC-MAS/20210401T1730Z_1D_HVDC_TP_1.xml : Triples = 94
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20171002T0930Z_ENTSO-E_EQ_BD_2.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20171002T0930Z_ENTSO-E_EQ_BD_2.xml : Triples = 237
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_ASSEMBLED_DL_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_ASSEMBLED_DL_1.xml : Triples = 8,460
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_ASSEMBLED_SV_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_ASSEMBLED_SV_1.xml : Triples = 965
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_ASSEMBLED_TP_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_ASSEMBLED_TP_1.xml : Triples = 650
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_BE_EQ_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_BE_EQ_1.xml : Triples = 2,577
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_BE_GL_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_BE_GL_1.xml : Triples = 182
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_BE_SSH_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_BE_SSH_1.xml : Triples = 566
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_HVDC_EQ_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_HVDC_EQ_1.xml : Triples = 624
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_HVDC_SSH_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_HVDC_SSH_1.xml : Triples = 131
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_NL_EQ_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_NL_EQ_1.xml : Triples = 1,963
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_NL_GL_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_NL_GL_1.xml : Triples = 112
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_NL_SSH_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-Merged/20210401T1730Z_1D_NL_SSH_1.xml : Triples = 327
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_DL_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_DL_1.xml : Triples = 1,314
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_EQ_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_EQ_1.xml : Triples = 1,963
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_GL_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_GL_1.xml : Triples = 112
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_SSH_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_SSH_1.xml : Triples = 327
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_SV_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_SV_1.xml : Triples = 301
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_TP_1.xml
+./MicroGrid/MicroGrid-Type2/MicroGrid-Type2-NL-MAS/20210401T1730Z_1D_NL_TP_1.xml : Triples = 149
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210422T2230Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210422T2230Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210422T2230Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210422T2230Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210422T2230Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210422T2230Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210422T2330Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210422T2330Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210422T2330Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210422T2330Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210422T2330Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210422T2330Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0030Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0030Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0030Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0030Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:13 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0030Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0030Z_1D_BE_SSH_002.xml : Triples = 312
+Total           : 0.92 sec : 81,947 Triples : 89,364.23 per second
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0130Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0130Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0130Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0130Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0130Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0130Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0230Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0230Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0230Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0230Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0230Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0230Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0330Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0330Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0330Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0330Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0330Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0330Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0430Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0430Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0430Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0430Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0430Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0430Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0530Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0530Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0530Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0530Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0530Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0530Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0630Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0630Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0630Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0630Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0630Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0630Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:15 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0730Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0730Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0730Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0730Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0730Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0730Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0830Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0830Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0830Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0830Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0830Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0830Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0930Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0930Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0930Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0930Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T0930Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T0930Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1030Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1030Z_1D_ASSEMBLED_SV_001.xml : Triples = 524
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1030Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1030Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1030Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1030Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1130Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1130Z_1D_ASSEMBLED_SV_001.xml : Triples = 524
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1130Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1130Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1130Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1130Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1230Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1230Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1230Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1230Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1230Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1230Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1330Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1330Z_1D_ASSEMBLED_SV_001.xml : Triples = 524
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1330Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1330Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1330Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1330Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1430Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1430Z_1D_ASSEMBLED_SV_001.xml : Triples = 529
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1430Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1430Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1430Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1430Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1530Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1530Z_1D_ASSEMBLED_SV_001.xml : Triples = 529
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1530Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1530Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1530Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1530Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1630Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1630Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1630Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1630Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1630Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1630Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1730Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1730Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1730Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1730Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1730Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1730Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1830Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1830Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1830Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1830Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1830Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1830Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1930Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1930Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1930Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1930Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T1930Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T1930Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T2030Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T2030Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T2030Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T2030Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T2030Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T2030Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T2130Z_1D_ASSEMBLED_SV_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T2130Z_1D_ASSEMBLED_SV_001.xml : Triples = 537
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T2130Z_1D_ASSEMBLED_TP_001.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T2130Z_1D_ASSEMBLED_TP_001.xml : Triples = 272
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/CGMs/20210423T2130Z_1D_BE_SSH_002.xml
+./MicroGrid/MicroGrid-Type3/CGMs/20210423T2130Z_1D_BE_SSH_002.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20171002T0930Z_ENTSO-E_EQ_BD_2.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20171002T0930Z_ENTSO-E_EQ_BD_2.xml : Triples = 215
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_DL_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_DL_001.xml : Triples = 973
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_EQ_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_EQ_001.xml : Triples = 1,629
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_SV_001.xml : Triples = 307
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_BE_TP_001.xml : Triples = 131
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_DL_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_DL_001.xml : Triples = 713
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_EQ_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_EQ_001.xml : Triples = 1,683
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_SV_001.xml : Triples = 217
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2230Z_1D_NL_TP_001.xml : Triples = 139
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_BE_SV_001.xml : Triples = 307
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_BE_TP_001.xml : Triples = 131
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_NL_SV_001.xml : Triples = 217
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210422T2330Z_1D_NL_TP_001.xml : Triples = 139
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_BE_SV_001.xml : Triples = 307
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_BE_TP_001.xml : Triples = 131
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_NL_SV_001.xml : Triples = 217
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0030Z_1D_NL_TP_001.xml : Triples = 139
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_BE_SV_001.xml : Triples = 307
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_BE_TP_001.xml : Triples = 131
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_NL_SV_001.xml : Triples = 217
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0130Z_1D_NL_TP_001.xml : Triples = 139
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_BE_SV_001.xml : Triples = 307
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_BE_TP_001.xml : Triples = 131
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_NL_SV_001.xml : Triples = 217
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0230Z_1D_NL_TP_001.xml : Triples = 139
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:16 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_BE_SV_001.xml : Triples = 307
+Total           : 0.89 sec : 35,993 Triples : 40,441.57 per second
+16:21:17 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_BE_TP_001.xml : Triples = 131
+16:21:17 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:17 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_NL_SV_001.xml : Triples = 217
+16:21:17 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0330Z_1D_NL_TP_001.xml : Triples = 139
+16:21:17 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:17 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_BE_SV_001.xml : Triples = 307
+16:21:17 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0430Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0530Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0630Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0730Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0830Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T0930Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_BE_SV_001.xml : Triples = 303
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_NL_SV_001.xml : Triples = 213
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1030Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_BE_SV_001.xml : Triples = 303
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_NL_SV_001.xml : Triples = 213
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1130Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1230Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_BE_SV_001.xml : Triples = 303
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_NL_SV_001.xml : Triples = 213
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1330Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_BE_SV_001.xml : Triples = 299
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1430Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_BE_SV_001.xml : Triples = 299
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1530Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1630Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1730Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1830Z_1D_NL_TP_001.xml : Triples = 139
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_BE_SV_001.xml : Triples = 307
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_BE_TP_001.xml : Triples = 131
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_NL_SV_001.xml : Triples = 217
+16:21:18 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T1930Z_1D_NL_TP_001.xml : Triples = 139
+Total           : 0.69 sec : 22,036 Triples : 31,843.93 per second
+16:21:19 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:19 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_BE_SV_001.xml : Triples = 307
+16:21:19 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_BE_TP_001.xml : Triples = 131
+16:21:19 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:19 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_NL_SV_001.xml : Triples = 217
+16:21:20 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2030Z_1D_NL_TP_001.xml : Triples = 139
+16:21:20 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_BE_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_BE_SSH_001.xml : Triples = 312
+16:21:20 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_BE_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_BE_SV_001.xml : Triples = 307
+16:21:20 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_BE_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_BE_TP_001.xml : Triples = 131
+16:21:20 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_NL_SSH_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_NL_SSH_001.xml : Triples = 229
+16:21:20 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_NL_SV_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_NL_SV_001.xml : Triples = 217
+16:21:20 INFO  riot            :: File: ./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_NL_TP_001.xml
+./MicroGrid/MicroGrid-Type3/IGMs/20210423T2130Z_1D_NL_TP_001.xml : Triples = 139
+16:21:20 INFO  riot            :: File: ./MiniGrid/MiniGrid-Merged/MiniGrid_DL.xml
+./MiniGrid/MiniGrid-Merged/MiniGrid_DL.xml : Triples = 5,730
+16:21:20 INFO  riot            :: File: ./MiniGrid/MiniGrid-Merged/MiniGrid_EQ.xml
+./MiniGrid/MiniGrid-Merged/MiniGrid_EQ.xml : Triples = 4,282
+16:21:20 INFO  riot            :: File: ./MiniGrid/MiniGrid-Merged/MiniGrid_EQBD.xml
+./MiniGrid/MiniGrid-Merged/MiniGrid_EQBD.xml : Triples = 84
+16:21:20 INFO  riot            :: File: ./MiniGrid/MiniGrid-Merged/MiniGrid_SSH.xml
+./MiniGrid/MiniGrid-Merged/MiniGrid_SSH.xml : Triples = 1,077
+16:21:20 INFO  riot            :: File: ./MiniGrid/MiniGrid-Merged/MiniGrid_SV.xml
+./MiniGrid/MiniGrid-Merged/MiniGrid_SV.xml : Triples = 871
+16:21:20 INFO  riot            :: File: ./MiniGrid/MiniGrid-Merged/MiniGrid_TP.xml
+./MiniGrid/MiniGrid-Merged/MiniGrid_TP.xml : Triples = 764
+16:21:20 INFO  riot            :: File: ./PowerFlow/PowerFlow/PowerFlow_EQ.xml
+./PowerFlow/PowerFlow/PowerFlow_EQ.xml : Triples = 480
+16:21:20 INFO  riot            :: File: ./PowerFlow/PowerFlow/PowerFlow_SSH.xml
+./PowerFlow/PowerFlow/PowerFlow_SSH.xml : Triples = 71
+16:21:20 INFO  riot            :: File: ./PowerFlow/PowerFlow/PowerFlow_SV.xml
+./PowerFlow/PowerFlow/PowerFlow_SV.xml : Triples = 68
+16:21:20 INFO  riot            :: File: ./PowerFlow/PowerFlow/PowerFlow_TP.xml
+./PowerFlow/PowerFlow/PowerFlow_TP.xml : Triples = 38
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerLinear_Type1/PST_Type1_EQ.xml
+./PST/PST_PhaseTapChangerLinear_Type1/PST_Type1_EQ.xml : Triples = 386
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerLinear_Type1/PST_Type1_SSH.xml
+./PST/PST_PhaseTapChangerLinear_Type1/PST_Type1_SSH.xml : Triples = 86
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerLinear_Type1/PST_Type1_SV.xml
+./PST/PST_PhaseTapChangerLinear_Type1/PST_Type1_SV.xml : Triples = 67
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerLinear_Type1/PST_Type1_TP.xml
+./PST/PST_PhaseTapChangerLinear_Type1/PST_Type1_TP.xml : Triples = 40
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerLinear_Type2/PST_Type2_EQ.xml
+./PST/PST_PhaseTapChangerLinear_Type2/PST_Type2_EQ.xml : Triples = 386
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerLinear_Type2/PST_Type2_SSH.xml
+./PST/PST_PhaseTapChangerLinear_Type2/PST_Type2_SSH.xml : Triples = 86
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerLinear_Type2/PST_Type2_SV.xml
+./PST/PST_PhaseTapChangerLinear_Type2/PST_Type2_SV.xml : Triples = 67
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerLinear_Type2/PST_Type2_TP.xml
+./PST/PST_PhaseTapChangerLinear_Type2/PST_Type2_TP.xml : Triples = 40
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerTable_Type3/PST_Type3_EQ.xml
+./PST/PST_PhaseTapChangerTable_Type3/PST_Type3_EQ.xml : Triples = 515
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerTable_Type3/PST_Type3_SSH.xml
+./PST/PST_PhaseTapChangerTable_Type3/PST_Type3_SSH.xml : Triples = 86
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerTable_Type3/PST_Type3_SV.xml
+./PST/PST_PhaseTapChangerTable_Type3/PST_Type3_SV.xml : Triples = 67
+16:21:20 INFO  riot            :: File: ./PST/PST_PhaseTapChangerTable_Type3/PST_Type3_TP.xml
+./PST/PST_PhaseTapChangerTable_Type3/PST_Type3_TP.xml : Triples = 40
+16:21:20 INFO  riot            :: File: ./RealGrid/RealGrid-Merged/RealGrid_EQ.xml
+./RealGrid/RealGrid-Merged/RealGrid_EQ.xml : Triples = 947,208
+16:21:22 INFO  riot            :: File: ./RealGrid/RealGrid-Merged/RealGrid_SSH.xml
+./RealGrid/RealGrid-Merged/RealGrid_SSH.xml : Triples = 187,034
+16:21:23 INFO  riot            :: File: ./RealGrid/RealGrid-Merged/RealGrid_SV.xml
+./RealGrid/RealGrid-Merged/RealGrid_SV.xml : Triples = 184,455
+16:21:23 INFO  riot            :: File: ./RealGrid/RealGrid-Merged/RealGrid_TP.xml
+./RealGrid/RealGrid-Merged/RealGrid_TP.xml : Triples = 96,740
+16:21:24 INFO  riot            :: File: ./SmallGrid/SmallGrid-Merged/SmallGrid_DL.xml
+./SmallGrid/SmallGrid-Merged/SmallGrid_DL.xml : Triples = 82,321
+16:21:24 INFO  riot            :: File: ./SmallGrid/SmallGrid-Merged/SmallGrid_EQ.xml
+./SmallGrid/SmallGrid-Merged/SmallGrid_EQ.xml : Triples = 53,260
+16:21:24 INFO  riot            :: File: ./SmallGrid/SmallGrid-Merged/SmallGrid_EQBD.xml
+./SmallGrid/SmallGrid-Merged/SmallGrid_EQBD.xml : Triples = 137
+16:21:24 INFO  riot            :: File: ./SmallGrid/SmallGrid-Merged/SmallGrid_GL.xml
+./SmallGrid/SmallGrid-Merged/SmallGrid_GL.xml : Triples = 4,662
+16:21:24 INFO  riot            :: File: ./SmallGrid/SmallGrid-Merged/SmallGrid_SSH.xml
+./SmallGrid/SmallGrid-Merged/SmallGrid_SSH.xml : Triples = 14,540
+16:21:24 INFO  riot            :: File: ./SmallGrid/SmallGrid-Merged/SmallGrid_SV.xml
+./SmallGrid/SmallGrid-Merged/SmallGrid_SV.xml : Triples = 11,849
+16:21:24 INFO  riot            :: File: ./SmallGrid/SmallGrid-Merged/SmallGrid_TP.xml
+./SmallGrid/SmallGrid-Merged/SmallGrid_TP.xml : Triples = 9,962
+16:21:24 INFO  riot            :: File: ./Svedala/Svedala-Merged/Svedala_EQ.xml
+./Svedala/Svedala-Merged/Svedala_EQ.xml : Triples = 55,743
+16:21:25 INFO  riot            :: File: ./Svedala/Svedala-Merged/Svedala_EQBD.xml
+./Svedala/Svedala-Merged/Svedala_EQBD.xml : Triples = 52
+16:21:25 INFO  riot            :: File: ./Svedala/Svedala-Merged/Svedala_SSH.xml
+./Svedala/Svedala-Merged/Svedala_SSH.xml : Triples = 15,799
+16:21:25 INFO  riot            :: File: ./Svedala/Svedala-Merged/Svedala_SV.xml
+./Svedala/Svedala-Merged/Svedala_SV.xml : Triples = 12,315
+16:21:25 INFO  riot            :: File: ./Svedala/Svedala-Merged/Svedala_TP.xml
+./Svedala/Svedala-Merged/Svedala_TP.xml : Triples = 10,326
+Total           : 5.51 sec : 1,704,404 Triples : 309,497.73 per second

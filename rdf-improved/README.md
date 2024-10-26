@@ -12,6 +12,8 @@ This document describes proposed inprovements to the representation of CIM/CGMES
         - [Custom CIM XML Parser](#custom-cim-xml-parser)
     - [Fix Resource URLs](#fix-resource-urls)
     - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
+    - [Sample Instance Data](#sample-instance-data)
+        - [Counting Files and Triples](#counting-files-and-triples)
 
 <!-- markdown-toc end -->
 
@@ -400,16 +402,15 @@ It uses simple string manipulation rather than a XML parser, so it relies on a r
 - A file has exactly one model: `md:FullModel` or `dm:DifferenceModel`
 - `dm:DifferenceModel` has exactly two sections `dm:reverseDifferences` and `dm:forwardDifferences`, in this order
 
-It uses the `owl-cli` tool by `@atextor`, as described at
-  https://github.com/Sveino/Inst4CIM-KG/blob/develop/rdfs-improved#atextor-tools-owl-cli-and-turtle-formatter .
-- It runs a command like this, using the Windows version of the `owl` command:
+It uses command-line tools to do the bulk of the work (see `sub ttl`):
+- For prettier formatting, it runs `owl-cli` by `@atextor` (the Windows version of a batch file)
+  as described at https://github.com/Sveino/Inst4CIM-KG/blob/develop/rdfs-improved#atextor-tools-owl-cli-and-turtle-formatter :
 ```
 owl.bat write --keepUnusedPrefixes -i rdfxml ...rdf ...ttl
 ```
-- `owl` produces better formatting, but for very large files it's better to use streaming.
-  In that case we should use Jena RIOT by changing one line in `sub ttl`:
+- For very large files, give option `-r` to use Jena Riot in streaming mode:
 ```
-riot.bat --syntax=rdfxml --out=ttl ...rdf > ...ttl
+riot.bat --syntax=rdfxml --stream=ttl ...rdf > ...ttl
 ```
 
 For a `dm:DifferenceModel` it invokes the command-line tool 3 times:
@@ -475,20 +476,22 @@ The URLs of CIM power system resources are represented in CIM XML like this:
 - reference: `rdf:resource="#_44e63d79-6b05-4c64-b490-d181863af7da"`
 
 They have two problems:
-- These are relative URLs. 
-  However, CIM XML files don't specify `xml:base` (see RDF 1.1 XML Syntax, section [2.14 Abbreviating URIs: rdf:ID and xml:base](https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax-ID-xml-base)).
-  This means the URLs are resolved in a tool-dependent way (eg by using the file location on local disk).
-  This is a very serious problem that undermines the stability of resource URLs.
-  We've resolved it by declaring `md:Model.modelingAuthoritySet` as BASE.
-- They start with a parasitic `_`.
-  - The reason is that `rdf:ID` cannot start with a digit, see
-    - RDF 1.1 XML Syntax, section [C.1 RELAX NG Compact Schema](https://www.w3.org/TR/rdf-syntax-grammar/#h3_section-RELAXNG-Schema), `IDsymbol`
-    - XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes, section [3.4.4 NMTOKEN](https://www.w3.org/TR/xmlschema11-2/#NMTOKEN)
-    - Extensible Markup Language (XML) 1.1 (Second Edition) section [Nmtoken](https://www.w3.org/TR/xml11/#NT-Nmtoken)
-  - `rdf:about` could have been used instead of `rdf:ID` to avoid that limitation.
-  - This is a purely cosmetic problem and we may leave it as is.
 
-The problems are fixed by the `cim-trig.pl` script described above: see URL examples in the previous section.
+These are relative URLs. 
+- However, CIM XML files don't specify `xml:base` (see RDF 1.1 XML Syntax, section [2.14 Abbreviating URIs: rdf:ID and xml:base](https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax-ID-xml-base)).
+- This means the URLs are resolved in a tool-dependent way (eg by using the file location on local disk).
+- This is a very serious problem that undermines the stability of resource URLs.
+- We've resolved it by declaring `md:Model.modelingAuthoritySet` as BASE.
+- This is fixed by the `cim-trig.pl` script described above: see URL examples in the previous section.
+
+They start with a parasitic `_`.
+- The reason is that `rdf:ID` cannot start with a digit, see
+  - RDF 1.1 XML Syntax, section [C.1 RELAX NG Compact Schema](https://www.w3.org/TR/rdf-syntax-grammar/#h3_section-RELAXNG-Schema), `IDsymbol`
+  - XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes, section [3.4.4 NMTOKEN](https://www.w3.org/TR/xmlschema11-2/#NMTOKEN)
+  - Extensible Markup Language (XML) 1.1 (Second Edition) section [Nmtoken](https://www.w3.org/TR/xml11/#NT-Nmtoken)
+- `rdf:about` could have been used instead of `rdf:ID` to avoid that limitation.
+- This is a purely cosmetic problem and we leave it as is.
+
 
 ## Add Datatypes To Instance Data
 https://github.com/Sveino/Inst4CIM-KG/issues/49
@@ -546,3 +549,69 @@ This update query can be applied on:
 - One CIM file, using an in-memory SPARQL Update tool like Jena `update`
 - A whole repository of CIM data, eg using GraphDB
 
+## Sample Instance Data
+To work out reasoning, validation and performance issues, we need sample instance data.
+We use the following sources:
+- [ENTSO-E_Test_Configurations_v3.0.2](https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/ENTSO-E_Test_Configurations_v3.0.2.zip): 357 files, of which 350 are `FullModel` and 7 are `DifferenceModel`
+- [Nordic44](https://github.com/Sveino/Nordic44/tree/develop/Instances): 15 files, of which 12 have standard `Model` structure and can be converted to Trig
+
+### Counting Files and Triples
+ENTSO-E files are nested 2-3 levels deep in the folder hierarchy:
+```
+cd ENTSO-E_Test_Configurations_v3.0.2/v3.0
+find . -name *.xml |perl -pe 's{[\w-]+}{*}g' | sort | uniq -c
+     47 ./*/*/*.*
+    310 ./*/*/*/*.*
+```
+
+I want to use `riot.bat --count` to see how many triples in total.
+But we will exclude `DifferenceModel` files (`*_diff.xml`) because `riot` cannot handle them (they are not standard RDF XML format):
+```
+find . -name *.xml ! -name *diff* | wc
+    350     350   23847
+```
+
+The total length of all filenames is quite large (24k) so it overflows the command line:
+```
+riot.bat --count `find . -name *.xml ! -name *diff*`
+The command line is too long.
+```
+
+In such case one uses `xargs`.
+Since the environment and the command line together are subject to a size limit,
+I tried to remove some wordy env vars (`ORIGINAL_PATH= PSModulePath= INFOPATH=`),
+but still it's greater than the limit on my shell (Cygwin Bash):
+```
+find . -name *.xml ! -name *diff* | env ORIGINAL_PATH= PSModulePath= INFOPATH= xargs --show-limit riot.bat --count
+Your environment variables take up 3940 bytes
+POSIX upper limit on argument length (this system): 26012
+POSIX smallest allowable upper limit on argument length (all systems): 4096
+Maximum length of command we could actually use: 22072
+Size of command buffer we are actually using: 26012
+Maximum parallelism (--max-procs must be no greater): 2147483647
+The command line is too long.
+```
+So I have to split the work in several parts: `-n 100` passes 100 files at a time, and `2>` saves STDERR to a file:
+```
+find . -name *.xml ! -name *diff* | xargs -n 100 riot.bat --count 2> count-ENTSOE.txt
+```
+I wrote a small script to massage this file:
+```
+perl count.pl count-ENTSOE.txt > count-ENTSOE1.txt
+```
+
+The total is 1844380 (1.8M triples) and the largest file is
+```
+947208  ./RealGrid/RealGrid-Merged/RealGrid_EQ.xml
+```
+
+Nordic44 files are a lot smaller:
+```
+cd Nordic44/Instances
+find . -name *.xml | xargs riot.bat --count 2> count-Nordic.txt
+perl count.pl count-Nordic.txt > count-Nordic1.txt
+```
+The total is 35481 (35k triples) and the largest file is
+```
+17420	./CGMES_2_4/Nordic44_CGM_37a_EQ.xml
+```

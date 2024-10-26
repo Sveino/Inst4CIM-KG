@@ -1,0 +1,35 @@
+16:46:05 INFO  riot            :: File: ./CDPSM_2_0/Nordic44_02_OPA-OPB_ElectricalProperties.xml
+./CDPSM_2_0/Nordic44_02_OPA-OPB_ElectricalProperties.xml : Triples = 19
+16:46:06 INFO  riot            :: File: ./CDPSM_2_0/Nordic44_03_Asset.xml
+./CDPSM_2_0/Nordic44_03_Asset.xml : Triples = 111
+16:46:06 INFO  riot            :: File: ./CDPSM_2_0/Nordic44_03_Common_ElectricalProperties.xml
+./CDPSM_2_0/Nordic44_03_Common_ElectricalProperties.xml : Triples = 107
+16:46:06 INFO  riot            :: File: ./CDPSM_2_0/Nordic44_03_inc.xml
+16:46:06 WARN  riot            :: [line: 22, col: 57] Encountered rdf:parseType='Statements'. Treated as rdf:parseType='Literal'
+16:46:06 WARN  riot            :: [line: 29, col: 57] Encountered rdf:parseType='Statements'. Treated as rdf:parseType='Literal'
+./CDPSM_2_0/Nordic44_03_inc.xml : Triples = 3
+16:46:06 INFO  riot            :: File: ./CDPSM_2_0/Nordic44_03_OPA_ElectricalProperties.xml
+./CDPSM_2_0/Nordic44_03_OPA_ElectricalProperties.xml : Triples = 30
+16:46:06 INFO  riot            :: File: ./CDPSM_2_0/Nordic44_03_OPB_ElectricalProperties.xml
+./CDPSM_2_0/Nordic44_03_OPB_ElectricalProperties.xml : Triples = 120
+16:46:06 INFO  riot            :: File: ./CDPSM_2_0/Nordic44_07_AssetCatalogue.xml
+./CDPSM_2_0/Nordic44_07_AssetCatalogue.xml : Triples = 162
+16:46:06 INFO  riot            :: File: ./CDPSM_2_0/Nordic44_CPSM_01_MF.xml
+./CDPSM_2_0/Nordic44_CPSM_01_MF.xml : Triples = 45
+16:46:06 INFO  riot            :: File: ./CGMES_2_4/Nordic44_CGM_36d_SSH.xml
+./CGMES_2_4/Nordic44_CGM_36d_SSH.xml : Triples = 2,410
+16:46:06 INFO  riot            :: File: ./CGMES_2_4/Nordic44_CGM_36e_DL.xml
+./CGMES_2_4/Nordic44_CGM_36e_DL.xml : Triples = 9,849
+16:46:06 INFO  riot            :: File: ./CGMES_2_4/Nordic44_CGM_36f_GL.xml
+./CGMES_2_4/Nordic44_CGM_36f_GL.xml : Triples = 1,268
+16:46:06 INFO  riot            :: File: ./CGMES_2_4/Nordic44_CGM_36f_MF.xml
+./CGMES_2_4/Nordic44_CGM_36f_MF.xml : Triples = 243
+16:46:06 INFO  riot            :: File: ./CGMES_2_4/Nordic44_CGM_36g_SV.xml
+./CGMES_2_4/Nordic44_CGM_36g_SV.xml : Triples = 2,356
+16:46:06 INFO  riot            :: File: ./CGMES_2_4/Nordic44_CGM_36g_TP.xml
+./CGMES_2_4/Nordic44_CGM_36g_TP.xml : Triples = 1,316
+16:46:06 INFO  riot            :: File: ./CGMES_2_4/Nordic44_CGM_37a_EQ.xml
+./CGMES_2_4/Nordic44_CGM_37a_EQ.xml : Triples = 17,420
+16:46:06 INFO  riot            :: File: ./CGMES_2_4/Nordic44_CGM_38_CO.xml
+./CGMES_2_4/Nordic44_CGM_38_CO.xml : Triples = 22
+Total           : 0.71 sec : 35,481 Triples : 50,114.41 per second : 0 errors : 2 warnings
