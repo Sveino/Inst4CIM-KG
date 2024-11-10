@@ -1,5 +1,6 @@
 ﻿test_rdf    = $(wildcard test/rdf/*)
-test_trig   = $(patsubst test/rdf/%.xml, test/trig/%.trig, $(test_rdf))
+test_trig   = $(patsubst test/rdf/%.xml, test/trig/%.trig,     $(test_rdf))
+test_jsonld = $(patsubst test/rdf/%.xml, test/jsonld/%.jsonld, $(test_rdf))
 
 nordic_source  = ../../../Nordic44/Instances
 nordic_target  = instances/Nordic44
@@ -14,7 +15,7 @@ entsoe_rdf     = $(wildcard $(entsoe_source)/*/*/*/*.xml) $(wildcard $(entsoe_so
 entsoe_trig    = $(subst .xml,.trig, $(subst $(entsoe_source),$(entsoe_target), $(entsoe_rdf))
 
 all:
-	@echo targets: context, test, nordic, entsoe, rm-test, rm-nordic, rm-entsoe
+	@echo targets: context, test, jsonld, nordic, entsoe, rm-test, rm-nordic, rm-entsoe
 
 context: cim-context-old.jsonld cim-context-new.jsonld
 
@@ -30,3 +31,11 @@ test/trig/%.trig: test/rdf/%.xml | cim-trig.pl
 	perl cim-trig.pl -r $^ > temp.trig
 	update.bat --update=fix-datatypes-old.ru --data=temp.trig --dump > $@
 	rm temp.trig
+
+jsonld: $(test_jsonld)
+
+rm-jsonld:
+	rm -f $(test_jsonld)
+
+test/jsonld/%.jsonld: test/trig/%.trig
+	riot.bat -formatted jsonld $^ | jsonld compact -c https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld > $@

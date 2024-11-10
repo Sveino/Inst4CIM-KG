@@ -213,6 +213,12 @@ We have considered several tools, and use the first two:
   - Cons: JSON-LD to Turtle doesn't use the prefixes from the context
 - [jq](https://stedolan.github.io/jq/download/ ) (if needed): for JSON manipulations
 
+To convert a single ontology file (Turtle), we use this command:
+```
+ttl2jsonld ontology.ttl |\
+  jsonld compact -c https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld > ontology.jsonld
+```
+
 #### JSON-LD Context
 To obtain the best possible JSON-LD form, we defined [CIM-ontology-context.jsonld](CIM-ontology-context.jsonld).
 It consists of two sections:
@@ -229,7 +235,7 @@ It consists of two sections:
   - `"@type": "@id"` declares an object property
   - `"@type": "xsd:date"` declares a data property with the specified datatype 
   - `"@language": "en"` results in a `langString` with that lang tag
-```js
+```json
   "cim:unitMultiplier"          : {"@type": "@id"},
   "cims:belongsToCategory"      : {"@type": "@id"},
   "dcat:landingPage"            : {"@type": "@id"},
