@@ -1,4 +1,4 @@
-﻿{"@context":
+{"@context":
  {"cim":          "https://cim.ucaiug.io/ns#",
   "eu":           "https://cim.ucaiug.io/ns/eu#",
   "nc":           "https://cim4.eu/ns/nc#",
