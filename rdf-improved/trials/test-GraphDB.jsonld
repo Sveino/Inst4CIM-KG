@@ -1,0 +1,22 @@
+{
+    "@id": "_:16524248fb6c49a7961dfcbd81e58dda10935",
+    "cim:reactance": {
+        "@value": "0.123",
+        "@type": "xsd:float"
+    },
+    "cim:normallyInService": {
+        "@value": "true",
+        "@type": "xsd:boolean"
+    },
+    "@context": {
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "cim": "https://cim.ucaiug.io/ns#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "rdf4j": "http://rdf4j.org/schema/rdf4j#",
+        "sesame": "http://www.openrdf.org/schema/sesame#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "fn": "http://www.w3.org/2005/xpath-functions#",
+        "@version": 1.1
+    }
+}

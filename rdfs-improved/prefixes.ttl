@@ -5,14 +5,14 @@
 @prefix eu1:          <http://iec.ch/TC57/CIM100-European#> .
 @prefix cims:         <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
 @prefix dcat-cim:     <https://cim4.eu/ns/dcat-cim#> .
-@prefix eumd:         <https://cim4.eu/ns/Metadata-European#> .
-@prefix md:           <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
-@prefix dm:           <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
-@prefix dm:           <https://ap-voc.cim4.eu/DatasetMetadata#> .
-@prefix profcim:      <https://cim.ucaiug.io/ns/prof-cim#> .
+@prefix eumd:         <https://cim4.eu/ns/Metadata-European#> .            # to be replaced with dcat/dcat-cim/prov
+@prefix md:           <http://iec.ch/TC57/61970-552/ModelDescription/1#> . # in the new model, to be replaced with dcat/dcat-cim. In the old model, to be kept
+@prefix dm:           <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .  # in the new model, to be replaced with dcat/dcat-cim. In the old model, to be kept
+@prefix dm:           <https://ap-voc.cim4.eu/DatasetMetadata#> .          # to be replaced by dcat-cim:
+@prefix profcim:      <https://cim.ucaiug.io/ns/prof-cim#> .               # to be removed (there's just 4)
 @prefix uml:          <http://iec.ch/TC57/NonStandard/UML#> .
 
-@prefix ae:           <https://ap-voc.cim4.eu/AssessedElement#> .
+@prefix ae:           <https://ap-voc.cim4.eu/AssessedElement#> .          # all these are not needed in ontologies or instance data, but are needed in SHACL: as ap-con.cim4.eu
 @prefix as:           <https://ap-voc.cim4.eu/AvailabilitySchedule#> .
 @prefix co:           <https://ap-voc.cim4.eu/Contingency#> .
 @prefix dh:           <https://ap-voc.cim4.eu/DocumentHeader#> .

@@ -1,0 +1,5 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim: <https://cim.ucaiug.io/ns#>
+construct {
+  [] cim:reactance "0.123"^^xsd:float; cim:normallyInService true
+} where {}
