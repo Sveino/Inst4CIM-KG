@@ -1,0 +1,5 @@
+{ "@graph": [
+    { "@id": "_:vb1970635",
+      "https://cim.ucaiug.io/ns#normallyInService": true,
+      "https://cim.ucaiug.io/ns#reactance": 0.1230000033974648 }
+] }

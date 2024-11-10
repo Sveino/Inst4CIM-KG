@@ -1,0 +1,21 @@
+{
+    "@id": "_:b0",
+    "cim:normallyInService": {
+        "@value": "true",
+        "@type": "xsd:boolean"
+    },
+    "cim:reactance": {
+        "@value": "0.123",
+        "@type": "xsd:float"
+    },
+    "@context": {
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "cim": "https://cim.ucaiug.io/ns#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "fn": "http://www.w3.org/2005/xpath-functions#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "sesame": "http://www.openrdf.org/schema/sesame#",
+        "rdf4j": "http://rdf4j.org/schema/rdf4j#"
+    }
+}

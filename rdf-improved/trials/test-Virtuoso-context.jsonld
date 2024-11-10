@@ -1,0 +1,8 @@
+{ "@context": {
+    "reactance": { "@id": "https://cim.ucaiug.io/ns#reactance" },
+    "normallyInService": { "@id": "https://cim.ucaiug.io/ns#normallyInService", "@type": "http://www.w3.org/2001/XMLSchema#boolean" }},
+  "@graph": [
+    { "@id": "_:vb550280",
+      "normallyInService": true,
+      "reactance": 0.1230000033974648 }
+] }

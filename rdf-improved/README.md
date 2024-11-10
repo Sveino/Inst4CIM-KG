@@ -13,18 +13,22 @@ This document describes proposed inprovements to the representation of CIM/CGMES
     - [Fix Resource URLs](#fix-resource-urls)
     - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
     - [Sample Instance Data](#sample-instance-data)
-        - [Counting Files and Triples](#counting-files-and-triples)
+        - [Counting Triples](#counting-triples)
+        - [Multipled Data](#multipled-data)
+    - [JSON-LD Serialization](#json-ld-serialization)
+        - [Formatting of Numbers and Booleans](#formatting-of-numbers-and-booleans)
 
 <!-- markdown-toc end -->
 
 ## Represent Models as Named Graphs
+https://github.com/Sveino/Inst4CIM-KG/issues/53
 
-CIM Differential Models are important because they allow to record only a delta against a base model,
-thus enabling What If analysis and other important scenarios.
+CIM Difference Models are important because they allow to record only a delta against a base model,
+thus enabling "What If" analysis and other important scenarios.
 
 A Differential Model:
 - Refers to the base model using `md:Model.Supersedes`
-- Checks certain statements using `dm:preconditions` (but this is not used in  CIM)
+- Checks certain statements using `dm:preconditions` (but this is not used in CIM)
 - Specifies statements to delete using `dm:reverseDifferences`
 - Specifies statements to insert using `dm:forwardDifferences`
 
@@ -51,8 +55,7 @@ the triples are intermingled with triples from other models
 (and the file name is not saved in any way).
 
 Therefore it was agreed that each model will be represented as a Named Graph
-that contains the model triples (thus they become quads):
-https://github.com/Sveino/Inst4CIM-KG/issues/53 .
+that contains the model triples (thus they become quads).
 
 ### Naive Graph Representation Attempt
 
@@ -456,17 +459,13 @@ See test results in [test/trig](test/trig). Let's look at a couple of examples.
 
 
 <urn:uri:27c8a164-c656-4712-994a-0ab7cec4fd34> { # reverseDifferences
-<http://fullgrid.eu/CGMES/3.0#87478acb-cd1f-40a6-b4a7-59ec99f8b063>
-  cim:IdentifiedObject.description "SET_PNT_1" .
-<http://fullgrid.eu/CGMES/3.0#fc908c16-468f-4a64-ba74-6f57175e0005>
-  cim:AnalogLimit.value "99" .
+<http://fullgrid.eu/CGMES/3.0#87478acb-cd1f-40a6-b4a7-59ec99f8b063> cim:IdentifiedObject.description "SET_PNT_1" .
+<http://fullgrid.eu/CGMES/3.0#fc908c16-468f-4a64-ba74-6f57175e0005> cim:AnalogLimit.value "99" .
 }
 
 <urn:uri:63528ef9-48ff-469b-a58e-ba274f2a10bb> { # forwardDifferences
-<http://fullgrid.eu/CGMES/3.0#87478acb-cd1f-40a6-b4a7-59ec99f8b063>
-  cim:IdentifiedObject.description "SET_PNT_1 test" .
-<http://fullgrid.eu/CGMES/3.0#fc908c16-468f-4a64-ba74-6f57175e0005>
-  cim:AnalogLimit.value "100" .
+<http://fullgrid.eu/CGMES/3.0#87478acb-cd1f-40a6-b4a7-59ec99f8b063> cim:IdentifiedObject.description "SET_PNT_1 test" .
+<http://fullgrid.eu/CGMES/3.0#fc908c16-468f-4a64-ba74-6f57175e0005> cim:AnalogLimit.value "100" .
 }
 ```
 
@@ -551,11 +550,18 @@ This update query can be applied on:
 
 ## Sample Instance Data
 To work out reasoning, validation and performance issues, we need sample instance data.
-We use the following sources:
-- [ENTSO-E_Test_Configurations_v3.0.2](https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/ENTSO-E_Test_Configurations_v3.0.2.zip): 357 files, of which 350 are `FullModel` and 7 are `DifferenceModel`
-- [Nordic44](https://github.com/Sveino/Nordic44/tree/develop/Instances): 15 files, of which 12 have standard `Model` structure and can be converted to Trig
+We can use the following datasets:
 
-### Counting Files and Triples
+| dataset                                 | xml  | zip | files | FullModel | triples | largest | largest file                             |
+|-----------------------------------------|------|-----|-------|-----------|---------|---------|------------------------------------------|
+| [ENTSO-E_Test_Configurations_v3.0.2](https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/ENTSO-E_Test_Configurations_v3.0.2.zip) | 151M | 19M |   357 |       350 | 1844380 |  947208 | RealGrid/RealGrid-Merged/RealGrid_EQ.xml |
+| [Nordic44](https://github.com/Sveino/Nordic44/tree/develop/Instances)                           | 2.9M |     |    15 |        12 |   35481 |   17420 | CGMES_2_4/Nordic44_CGM_37a_EQ.xml        |
+
+- "FullModel" are files that have a standard `md:FullModel` structure.
+  ENTSOE also have 7 `DifferenceModel` that we'll use but not "multiply".
+- See next section for counting triples
+ 
+### Counting Triples
 ENTSO-E files are nested 2-3 levels deep in the folder hierarchy:
 ```
 cd ENTSO-E_Test_Configurations_v3.0.2/v3.0
@@ -615,3 +621,66 @@ The total is 35481 (35k triples) and the largest file is
 ```
 17420	./CGMES_2_4/Nordic44_CGM_37a_EQ.xml
 ```
+
+### Multipled Data
+Chavdar Ivanov took 4 files from [ENTSO-E_Test_Configurations_v3.0.2](https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/ENTSO-E_Test_Configurations_v3.0.2.zip)
+and multiplied the data 10, 20, 50 and 100 times. 
+The results are in this [Microsoft Teams Drive](https://1drv.ms/f/s!AhDObGm0xWObjJI3y0obO3j9L4TSRw?e=4CDbxL).
+
+I got these 4 files: `RealGrid_EQ100.zip, RealGrid_SSH100.zip, RealGrid_SV100.zip, RealGrid_TP100.zip`.
+They are 1.9Gb zipped, 11Gb unzipped.
+
+## JSON-LD Serialization
+
+
+
+### Formatting of Numbers and Booleans
+https://github.com/Sveino/Inst4CIM-KG/issues/120
+
+JSON has only a few native literal datatypes: number, boolean, string, etc.
+JSON numbers are imprecise:
+- There is no distinction between integer and floating point
+- JSON doesn't define whether a number should be represented as `float` or `double`
+- Exact numbers (`xsd:decimal`) are not available natively
+
+This is raised as issue [json-ld-syntax#387](https://github.com/w3c/json-ld-syntax/issues/387), and is accepted in the [JSON-LD errata](https://w3c.github.io/json-ld-syntax/errata/).
+
+It is therefore better to always use **strings** rather than native **numbers**.
+The JSON-LD context (see previois section) attaches appropriate datatypes.
+
+To test the output of CIM numbers and booleans, we made `test/test.rq` that constructs a few triples:
+```sparql
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim: <https://cim.ucaiug.io/ns#>
+construct {
+  [] cim:reactance "0.123"^^xsd:float; cim:normallyInService true
+} where {}
+```
+The respective Turtle is `test.ttl`.
+
+Then we tried with a few tools and saved the results:
+- `test-GraphDB.jsonld`: GraphDB 10.7.3, save query result as JSON-LD, no context
+- `test-Jena-riot.jsonld`: 
+  - Install from [Apache Jena Commands](https://jena.apache.org/download/index.cgi#apache-jena-binary-distributions)
+  - Then run: `riot --formatted jsonld test.ttl > test-ttl2jsonld.jsonld`
+- `test-ttl2jsonld.jsonld`, no context:
+  - Install with `npm install -g @frogcat/ttl2jsonld`
+  - Then run `ttl2jsonld test.ttl > test-ttl2jsonld.jsonld`
+- `test-Virtuoso-context.jsonld`: [DBpedia SPARQL endpoint](https://dbpedia.org/sparql), save query result as [JSON-LD with context](https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=PREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0D%0APREFIX+cim%3A+%3Chttps%3A%2F%2Fcim.ucaiug.io%2Fns%23%3E%0D%0Aconstruct+%7B%0D%0A++%5B%5D+cim%3Areactance+%220.123%22%5E%5Exsd%3Afloat%3B+cim%3AnormallyInService+true%0D%0A%7D+where+%7B%7D%0D%0A&format=application%2Fld%2Bjson&timeout=30000&signal_void=on&signal_unconnected=on)
+- `test-Virtuoso-plain.jsonld`: [DBpedia SPARQL endpoint](https://dbpedia.org/sparql), save query result as [JSON-LD plain](https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=PREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0D%0APREFIX+cim%3A+%3Chttps%3A%2F%2Fcim.ucaiug.io%2Fns%23%3E%0D%0Aconstruct+%7B%0D%0A++%5B%5D+cim%3Areactance+%220.123%22%5E%5Exsd%3Afloat%3B+cim%3AnormallyInService+true%0D%0A%7D+where+%7B%7D%0D%0A&format=application%2Fx-ld%2Bjson&timeout=30000&signal_void=on&signal_unconnected=on)
+
+| tool             | reactance          | normallyInService  |
+|------------------|--------------------|--------------------|
+| GraphDB          | "0.123" xsd:float  | "true" xsd:boolean |
+| Jena riot        | "0.123" xsd:float  | "true" xsd:boolean |
+| ttl2jsonld       | "0.123" xsd:float  | true               |
+| Virtuoso context | 0.1230000033974648 | true               |
+| Virtuoso plain   | 0.1230000033974648 | true               |
+
+- GraphDB and Jena output `@value` in quotes and always attach a datatype
+- Virtuoso outputs only `@value` without quotes (and adds some fake decimal digits due to internal conversions)
+- ttl2json outputs the number as `@value` in quotes with datatype, but the boolean without quotes
+
+Note: in all cases we didn't specify a context to use.
+If we do, then more tools may output values in quotes.
+
