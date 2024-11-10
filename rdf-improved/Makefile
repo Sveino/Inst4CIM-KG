@@ -1,4 +1,4 @@
-﻿test_rdf    = $(wildcard test/rdf/*)
+test_rdf    = $(wildcard test/rdf/*)
 test_trig   = $(patsubst test/rdf/%.xml, test/trig/%.trig,     $(test_rdf))
 test_jsonld = $(patsubst test/rdf/%.xml, test/jsonld/%.jsonld, $(test_rdf))
 
