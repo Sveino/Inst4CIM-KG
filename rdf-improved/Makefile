@@ -1,5 +1,5 @@
 ﻿test_rdf    = $(wildcard test/rdf/*)
-test_trig   = $(patsubst test/rdf/%.xml, test/trig/%.trig, $(RDF))
+test_trig   = $(patsubst test/rdf/%.xml, test/trig/%.trig, $(test_rdf))
 
 nordic_source  = ../../../Nordic44/Instances
 nordic_target  = instances/Nordic44
@@ -13,9 +13,20 @@ entsoe_target  = instances/ENTSO-E_Test_Configurations_v3.0.2
 entsoe_rdf     = $(wildcard $(entsoe_source)/*/*/*/*.xml) $(wildcard $(entsoe_source)/*/*/*/*/*.xml)
 entsoe_trig    = $(subst .xml,.trig, $(subst $(entsoe_source),$(entsoe_target), $(entsoe_rdf))
 
-all::
-	 @echo "targets: test, nordic, entsoe, rm-test, rm-nordic, rm-entsoe
-all: $(TRIG)
+all:
+	@echo targets: context, test, nordic, entsoe, rm-test, rm-nordic, rm-entsoe
 
-test/trig/%.trig: cim-trig.pl test/rdf/%.xml
-	perl $^ $@
+context: cim-context-old.jsonld cim-context-new.jsonld
+
+cim-context-%.jsonld: cim-context-%.txt cim-context-common.txt
+	cat $^ > $@
+
+test: $(test_trig)
+
+rm-test:
+	rm -f $(test_trig)
+
+test/trig/%.trig: test/rdf/%.xml | cim-trig.pl
+	perl cim-trig.pl -r $^ > temp.trig
+	update.bat --update=fix-datatypes-old.ru --data=temp.trig --dump > $@
+	rm temp.trig

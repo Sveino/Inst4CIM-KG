@@ -14,14 +14,13 @@ use warnings;
 use autodie;
 use UUID qw(uuid4); # https://metacpan.org/pod/UUID
   # CIM UUIDs are version 4: https://github.com/Sveino/Spec4CIM-KG/issues/10
-use GetOpt::Std;
-my $opt_r;
+use Getopt::Std;
+our $opt_r;
 getopts("r");
 
 # owl.bat prints some junk on STDERR that I can't suppress on Cygwin, so we need to use explicit in/out filenames
-my $in = shift;
-my $out = shift or die <<"EOF";
-Usage: $0 -r in.rdf out.trig
+my $in = shift or die <<"EOF";
+Usage: $0 -r in.rdf > out.trig
       By default uses "owl write" for prettier output
   -r: Use riot in streaming mode for bigger output
 EOF
@@ -55,8 +54,8 @@ if ($model_type eq "dm:DifferenceModel") {
 \s*<dm:forwardDifferences rdf:parseType="Statements">(.*?)</dm:forwardDifferences>
 (.*)}s
     or die "Can't find dm:reverseDifferences FOLLOWED BY dm:forwardDifferences\n";
-  my $reverse_uri = "urn:uri:" . uuid4();
-  my $forward_uri = "urn:uri:" . uuid4();
+  my $reverse_uri = "urn:uuid:" . uuid4();
+  my $forward_uri = "urn:uuid:" . uuid4();
   my $reverse_ref = qq{<dm:reverseDifferences rdf:resource="$reverse_uri"/>};
   my $forward_ref = qq{<dm:forwardDifferences rdf:resource="$forward_uri"/>};
   $model = ttl_insert_after_prefixes
@@ -80,7 +79,6 @@ $forward
   $output = "$model}";
 };
 
-open(STDOUT,">$out");
 print $output;
 
 sub ttl {
@@ -103,15 +101,15 @@ sub ttl {
 
 sub ttl_no_prefixes {
   my $x = ttl(shift);
-  $x =~ s{\@prefix.*}{}g;
-  $x =~ s{^\n+}{}g;
-  $x =~ s{\n+$}{}g;
+  $x =~ s{^(\@base|\@prefix|BASE|PREFIX).*\n}{}gm;
+  $x =~ s{^\n+}{};
+  $x =~ s{\n+$}{};
   $x
 }
 
 sub ttl_insert_after_prefixes {
   my $x = ttl(shift);
   my $insert = shift;
-  $x =~ s{(\@prefix.*\n\n)}{$1$insert};
+  $x =~ s{^((\@base|\@prefix|BASE|PREFIX).*\n\n)}{$1$insert}m;
   $x
 }

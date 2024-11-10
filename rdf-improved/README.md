@@ -509,14 +509,31 @@ grep -E '^(cim|nc|eu|md|eumd)' datatypes-older.tsv | grep -v xsd:string > fix-da
 ```
 Then we format it as `values` for use in SPARQL.
 
-[fix-datatypes.ru](fix-datatypes.ru) looks like this:
-- We define dual prefixes `cim, cim1` and `eu, eu1` to accommodate the newest and older CIM versions:
+We make 3 scripts to account for namespace differences:
+- [fix-datatypes-old.ru](fix-datatypes-old.ru) works with the old namespaces:
+```sparql
+prefix cim: <http://iec.ch/TC57/CIM100#>
+prefix eu:  <http://iec.ch/TC57/CIM100-European#>
+```
+- [fix-datatypes-new.ru](fix-datatypes-new.ru) works with the new namespaces:
+```sparql
+prefix cim:  <https://cim.ucaiug.io/ns#>
+prefix eu:   <https://cim.ucaiug.io/ns/eu#>
+```
+- [fix-datatypes-both.ru](fix-datatypes-both.ru) works with either namespaces.
+- Note: the NC spec is new, so its prefix is only available int he new namespaces:
+```sparql
+prefix nc:   <https://cim4.eu/ns/nc#>
+```
+
+The more complex "both" script works like this:
+- Defines dual prefixes `cim, cim1` and `eu, eu1`:
 ```sparql
 prefix cim:  <https://cim.ucaiug.io/ns#>
 prefix cim1: <http://iec.ch/TC57/CIM100#>
-prefix nc:   <https://cim4.eu/ns/nc#>
 prefix eu:   <https://cim.ucaiug.io/ns/eu#>
 prefix eu1:  <http://iec.ch/TC57/CIM100-European#>
+prefix nc:   <https://cim4.eu/ns/nc#>
 prefix eumd: <https://cim4.eu/ns/Metadata-European#>
 prefix md:   <http://iec.ch/TC57/61970-552/ModelDescription/1#>
 prefix xsd:  <http://www.w3.org/2001/XMLSchema#>
@@ -536,17 +553,21 @@ where {
     (cim:ACDCConverter.baseS xsd:float)
     # 3000 more rows
   }
-  bind(uri(concat(str(cim1:),strafter(str(?prop),str(cim:)))) as ?prop1)
-  bind(uri(concat(str( eu1:),strafter(str(?prop),str( eu:)))) as ?prop2)
   graph ?g {?x ?p ?old}
   filter(datatype(?old)=xsd:string)
-  filter(?p=?prop || ?p=?prop1 || ?p=?prop2)
+  bind(if(strstarts(str(?p),str(cim1:)),uri(concat(str(cim:),strafter(str(?p),str(cim1:)))),?UNDEF) as ?p1)
+  bind(if(strstarts(str(?p),str(eu1:)), uri(concat(str(eu:), strafter(str(?p),str(eu1:)))), ?UNDEF) as ?p2)
+  filter(?p=?prop || ?p1=?prop || ?p2=?prop)
   bind(strdt(?old,?dt) as ?new)
 };
 ```
-This update query can be applied on:
+
+These updates can be applied on:
 - One CIM file, using an in-memory SPARQL Update tool like Jena `update`
 - A whole repository of CIM data, eg using GraphDB
+
+We include 3 versions because applying "both" on old data produces `cim1, eu1` prefixes.
+This is harmless, but doesn't look nice.
 
 ## Sample Instance Data
 To work out reasoning, validation and performance issues, we need sample instance data.
@@ -632,7 +653,9 @@ They are 1.9Gb zipped, 11Gb unzipped.
 
 ## JSON-LD Serialization
 
-
+```
+riot.bat --formatted jsonld test/trig/FullGrid_OP.trig | jsonld compact -c https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld
+```
 
 ### Formatting of Numbers and Booleans
 https://github.com/Sveino/Inst4CIM-KG/issues/120
