@@ -1,4 +1,4 @@
-﻿  "adms:versionNotes":                                                               {"@type": "xsd:string"},
+  "adms:versionNotes":                                                               {"@type": "xsd:string"},
   "cim:Control.controlType":                                                         {"@type": "xsd:string"},
   "cim:CoordinateSystem.crsUrn":                                                     {"@type": "xsd:string"},
   "cim:IdentifiedObject.aliasName":                                                  {"@type": "xsd:string"},
