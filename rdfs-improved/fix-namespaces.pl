@@ -1,4 +1,4 @@
-﻿#!perl -wp
+#!perl -wp
 
 # https://github.com/3lbits/CIM4NoUtility/issues/343
 

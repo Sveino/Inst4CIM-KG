@@ -1,4 +1,4 @@
-﻿| qk                          | mult   | uom       | range       |
+| qk                          | mult   | uom       | range       |
 |-----------------------------|--------|-----------|-------------|
 | cim:ActivePower             | "M"    | "W"       | cim:Float   |
 | cim:ActivePowerChangeRate   | "M"    | "WPers"   | cim:Float   |

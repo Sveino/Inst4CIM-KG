@@ -1,4 +1,4 @@
-﻿| qk                             | mult   | uom       | multFixed | uomFixed | range       |
+| qk                             | mult   | uom       | multFixed | uomFixed | range       |
 |--------------------------------|--------|-----------|-----------|----------|-------------|
 | cim1:ActivePower               | "M"    | "W"       | "True "   | "True "  | xsd:float   |
 | cim1:ActivePowerPerCurrentFlow | "M"    | "WPerA"   | "True "   | "True "  | xsd:float   |
