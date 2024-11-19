@@ -40,6 +40,7 @@ my ($rdf_open, $body, $rdf_close) =
 my ($base) =
   $body =~ m{<md:Model.modelingAuthoritySet>(.*?)<}
   or die "Can't find md:Model.modelingAuthoritySet\n";
+$rdf_open =~ s{xml:base="http://iec.ch/TC57/CIM100"}{}; # inappropriate for base of instance URLs
 $rdf_open =~ s{<rdf:RDF}{<rdf:RDF xml:base="$base"};
 
 # extract Model element and its attributes
