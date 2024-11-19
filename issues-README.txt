@@ -8,11 +8,13 @@ https://github.com/Sveino/Inst4CIM-KG/issues/108
 https://github.com/Sveino/Inst4CIM-KG/issues/109
 https://github.com/Sveino/Inst4CIM-KG/issues/11
 https://github.com/Sveino/Inst4CIM-KG/issues/110
+https://github.com/Sveino/Inst4CIM-KG/issues/117
 https://github.com/Sveino/Inst4CIM-KG/issues/12
 https://github.com/Sveino/Inst4CIM-KG/issues/120
 https://github.com/Sveino/Inst4CIM-KG/issues/122
 https://github.com/Sveino/Inst4CIM-KG/issues/123
 https://github.com/Sveino/Inst4CIM-KG/issues/13
+https://github.com/Sveino/Inst4CIM-KG/issues/135
 https://github.com/Sveino/Inst4CIM-KG/issues/14
 https://github.com/Sveino/Inst4CIM-KG/issues/15
 https://github.com/Sveino/Inst4CIM-KG/issues/16

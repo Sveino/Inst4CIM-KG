@@ -27,6 +27,9 @@ https://github.com/Sveino/Inst4CIM-KG/issues/126	delete extraneous "source" file
 https://github.com/Sveino/Inst4CIM-KG/issues/127	What is the unit for `Money` props?
 https://github.com/Sveino/Inst4CIM-KG/issues/128	cost/price (xsd:decimal) props not defined as `dataType Money`
 https://github.com/Sveino/Inst4CIM-KG/issues/13	Mis-defined Prefixes
+https://github.com/Sveino/Inst4CIM-KG/issues/133	voc folder and image
+https://github.com/Sveino/Inst4CIM-KG/issues/134	`ENTSO-E_Test_Configurations_v3.0.2` defects
+https://github.com/Sveino/Inst4CIM-KG/issues/135	should we add type `rdfg:Graph` ?
 https://github.com/Sveino/Inst4CIM-KG/issues/14	don't dictate the use of blank nodes
 https://github.com/Sveino/Inst4CIM-KG/issues/15	SHACL mixup between a node and its type
 https://github.com/Sveino/Inst4CIM-KG/issues/16	Don't use parasitic `PropertyShape`

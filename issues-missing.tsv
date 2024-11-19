@@ -4,7 +4,6 @@ https://github.com/Sveino/Inst4CIM-KG/issues/107 `First_Terminal, Second_Termina
 https://github.com/Sveino/Inst4CIM-KG/issues/113 deprecate `cims:AssociationUsed "No"` props (or even delete them?)
 https://github.com/Sveino/Inst4CIM-KG/issues/114 wrong `cims:AssociationUsed` or lacking `owl:inverseOf`
 https://github.com/Sveino/Inst4CIM-KG/issues/116 CIMXML converting strategy
-https://github.com/Sveino/Inst4CIM-KG/issues/117 multiply instance data 
 https://github.com/Sveino/Inst4CIM-KG/issues/119 multiple per-profile graphs in JSON-LD?
 https://github.com/Sveino/Inst4CIM-KG/issues/121 Add vann:preferredNamespacePrefix
 https://github.com/Sveino/Inst4CIM-KG/issues/124 examine props-same-name-different-range for errors
@@ -12,6 +11,8 @@ https://github.com/Sveino/Inst4CIM-KG/issues/125 fix props with multiple Ranges
 https://github.com/Sveino/Inst4CIM-KG/issues/126 delete extraneous "source" files
 https://github.com/Sveino/Inst4CIM-KG/issues/127 What is the unit for `Money` props?
 https://github.com/Sveino/Inst4CIM-KG/issues/128 cost/price (xsd:decimal) props not defined as `dataType Money`
+https://github.com/Sveino/Inst4CIM-KG/issues/133 voc folder and image
+https://github.com/Sveino/Inst4CIM-KG/issues/134 `ENTSO-E_Test_Configurations_v3.0.2` defects
 https://github.com/Sveino/Inst4CIM-KG/issues/27 get rid of `profcim` Primitives
 https://github.com/Sveino/Inst4CIM-KG/issues/31 change some langString to string
 https://github.com/Sveino/Inst4CIM-KG/issues/33 check ontology version URLs
