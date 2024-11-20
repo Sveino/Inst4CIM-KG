@@ -7,15 +7,18 @@ This document describes proposed inprovements to the representation of CIM/CGMES
 
 - [Improvements to CIM and CGMES RDFS Representation ](#improvements-to-cim-and-cgmes-rdfs-representation)
     - [Source Files](#source-files)
-    - [RDF Serializations](#rdf-serializations)
-        - [Turtle Serialization](#turtle-serialization)
-            - [atextor tools: owl-cli and turtle-formatter](#atextor-tools-owl-cli-and-turtle-formatter)
-            - [EDMC Tools for serialization, diff, hygiene checks, publication](#edmc-tools-for-serialization-diff-hygiene-checks-publication)
-            - [OBO Robot](#obo-robot)
-        - [JSON-LD Serialization](#json-ld-serialization)
-            - [JSON-LD Context](#json-ld-context)
-            - [Coverting to JSON-LD as a Debugging Tool](#coverting-to-json-ld-as-a-debugging-tool)
-        - [RDF/XML Serialization](#rdfxml-serialization)
+    - [Folders](#folders)
+    - [Files](#files)
+    - [Makefile](#makefile)
+- [RDF Serializations](#rdf-serializations)
+    - [Turtle Serialization](#turtle-serialization)
+        - [atextor tools: owl-cli and turtle-formatter](#atextor-tools-owl-cli-and-turtle-formatter)
+        - [EDMC Tools for serialization, diff, hygiene checks, publication](#edmc-tools-for-serialization-diff-hygiene-checks-publication)
+        - [OBO Robot](#obo-robot)
+    - [JSON-LD Serialization](#json-ld-serialization)
+        - [JSON-LD Context](#json-ld-context)
+        - [Conversion to JSON-LD as a Debugging Tool](#conversion-to-json-ld-as-a-debugging-tool)
+    - [RDF/XML Serialization](#rdfxml-serialization)
 - [Fixes](#fixes)
     - [Use Only One of RDFS2020 and RDFSEd2Beta Style](#use-only-one-of-rdfs2020-and-rdfsed2beta-style)
         - [Namespace Discrepancies in RDFS2020 CGMES vs NC](#namespace-discrepancies-in-rdfs2020-cgmes-vs-nc)
@@ -58,11 +61,23 @@ This document describes proposed inprovements to the representation of CIM/CGMES
         - [Mapping QuantityKinds and Units](#mapping-quantitykinds-and-units)
         - [Mapping Unit Multipliers](#mapping-unit-multipliers)
         - [All QuantityKinds, Units and Multipliers](#all-quantitykinds-units-and-multipliers)
-    - [Represent Models as Named Graphs](#represent-models-as-named-graphs)
 - [Fix Technical Notes](#fix-technical-notes)
     - [Fix Structure](#fix-structure)
     - [Fix Debugging](#fix-debugging)
     - [Fix Ordering and List](#fix-ordering-and-list)
+- [Remaining Ontology Issues](#remaining-ontology-issues)
+    - [Ontology Maintenance Workflows](#ontology-maintenance-workflows)
+    - [Ontology Modularity and Profiles](#ontology-modularity-and-profiles)
+    - [Model Representation](#model-representation)
+- [Reasoning](#reasoning)
+    - [Needed: Subclass Reasoning](#needed-subclass-reasoning)
+        - [Properties are Attached to Sibling Domains](#properties-are-attached-to-sibling-domains)
+        - [Properties Target Sibling Ranges](#properties-target-sibling-ranges)
+    - [Maybe: Inverse, Transitive Reasoning](#maybe-inverse-transitive-reasoning)
+    - [Maybe: Symmetric Reasoning](#maybe-symmetric-reasoning)
+    - [Not Needed: Semantic Equivalences](#not-needed-semantic-equivalences)
+    - [Not Needed: Domain/Range/Subproperty Reasoning](#not-needed-domainrangesubproperty-reasoning)
+    - [Not Needed: Functional Reasoning](#not-needed-functional-reasoning)
 
 <!-- markdown-toc end -->
 
@@ -73,21 +88,82 @@ We start from these RDFS renditions, which are the latest versions of CIM/CGMES 
 - https://github.com/Sveino/CGMES-NC/tree/develop/r2.3/ap-voc/rdf
   Available locally in [source/CGMES-NC/r2.3/ap-voc/rdf](../source/CGMES-NC/r2.3/ap-voc/rdf)
 
-## RDF Serializations
+## Folders
+This folder has the following subfolders:
+- CGMES: CIM/CGMES ontologies, with all [Fixes](#fixes) applied, as Turtle and JSON-LD. 
+  Based on v3.0 in the RDFS2020 rendition
+- CGMES-NC: NC (network code) ontologies, with all [Fixes](#fixes) applied, as Turtle and JSON-LD. 
+  Based on r2.3 in the RDFS2020 rendition
+- datatypes: analysis of [Property Datatype Maps](#property-datatype-maps)
+  - datatypes-older.tsv
+  - datatypes-new.tsv
+  - datatypes-actual.tsv
+  - RDFdatatypes.tsv
+  - CompleteDatatypeMap.tsv
+
+## Files
+This folder has the following files:
+- CIM-ontology-context.jsonld
+- duplicated-definitions.txt: terms duplicated across ontologies, see [Duplicated Definitions](#duplicated-definitions)
+- duplicated-terms.txt: terms duplicated across ontologies, see [Duplicated Terms](#duplicated-terms)
+- fix-namespaces.pl: convert ontology namespaces from old to new versions
+- fix-all.ru: various ontology [Fixes](#fixes) implemented as SPARQL Updates. 
+  It's the concatenation of the following files (see [Fix Ordering and List](#fix-ordering-and-list)):
+  - fix01-whitespace-6.ru
+  - fix02-datatypes-74.ru
+  - fix05-units-76,77.ru
+  - fix06-quantityKind-38.ru
+  - fix07-dataProps-38.ru
+  - fix08-remove-qkProps-38.ru
+  - fix09-map-qkUnitsMultipliers-38.ru
+  - fix10-classPropKind-75.ru
+  - fix11-inverseOf-26.ru
+  - fix12-multiplicity-30.ru
+  - fix13-XMLLiteral-72.ru
+  - fix14-langTagInCodes-47.ru
+  - fix15-deprecated-24.ru
+  - fix16-langTagLabelVsDefinition-93.ru
+  - fix20-ontologyMetadata-32.ru
+- literals-html.tsv: HTML elements in literals, see [HTML Tags and Escaped Entities in Definitions](#html-tags-and-escaped-entities-in-definitions)
+- literals-whitespace.tsv: extraneous whitespaces, see [Whitespace in Definitions](#whitespace-in-definitions) and  [Whitespace and Lang Tags in Key Values](#whitespace-and-lang-tags-in-key-values)
+- namespace-count.txt: count fo terms per namespace
+- prefixes.rq: all prefixes in SPARQL format
+- prefixes.ttl: all prefixes in Turtle format
+- qk-all.txt: all used quantity kinds
+- qk-CGMES.txt: quantity kinds used in CGMES
+- qk-CGMES_NC.txt: quantity kinds used in CGMES-NC
+- qk-units-CGMES.md: quantity kinds, multipliers, units, whether units and multipliers are fixed, and XSD range (datatype) used in CGMES
+- qk-units-CGMES-NC.md: quantity kinds, multipliers, units, whether units and multipliers are fixed, and XSD range (datatype) used in CGMES-NC
+- README.md: this file
+- terms-uniq.txt: unique terms across all ontologies
+
+## Makefile
+The Makefile defines the following `make` targets (printed if `make` with no target is invoked):
+- dirs: make dirs for ttl and jsonld renditions of the CGMES and CGMES-NC ontologies
+- clean: remove zero-size files
+- fix-all: make `fix-all.ru` by concatenating all `fix*.ru`
+- ttl1: make one ontology (`61970-600-2_Equipment-AP-Voc-RDFS2020_v3-0-0`) as Turtle and then invoke TortoiseGitMerge to compare it against the last committed version (for testing)
+- ttl: make all ontologies as Turtle
+- rm-ttl: remove all ontologies as Turtle (needed before remaking them)
+- jsonld1: make one ontology (`61970-600-2_Equipment-AP-Voc-RDFS2020_v3-0-0`) as JSON-LD and then invoke TortoiseGitMerge to compare it against the last committed version (for testing)
+- jsonld: make all ontologies as JSON-LD
+- rm-jsonld: remove all ontologies as JSON-LD (needed before remaking them)
+
+# RDF Serializations
 
 Originally CIM/CGMES is modeled in UML, from which the ontologies were extracted as RDF/XML.
-- [x] We agreed to adopt Turtle as master format, so we need to produce "good looking" and stable Turtle (see [Turtle Serialization](#turtle-serialization)).
+- We agreed to adopt Turtle as master format, so we need to produce "good looking" and stable Turtle (see [Turtle Serialization](#turtle-serialization)).
   In the process of conversion we also apply all ontology [Fixes](#fixes) described below.
-- [x] Then we produce good JSON-LD (see [JSON-LD Serialization](#json-ld-serialization)).
+- Then we produce good JSON-LD (see [JSON-LD Serialization](#json-ld-serialization)).
 
-TODO:
-- [ ] Agree folder structure: `rdf` vs `ttl` vs `jsonld`.
+Tasks:
+- Automate the conversion: I did it with a Makefile
+  - Or see [spotless](https://github.com/diffplug/spotless/), which is used to automate file manipulation in a project
+- TODO: Agree folder structure: `rdf` vs `ttl` vs `jsonld`.
   - But given the multitude of subfolders in `source/CGMES/v3.0/SHACL`, where do we make the format subfolders
   - For now I make the latter two but don't copy `rdf`
-- [x] Automate the conversion: I did it with a Makefile
-  - Or see [spotless](https://github.com/diffplug/spotless/), which is used to automate file manipulation in a project
 
-### Turtle Serialization
+## Turtle Serialization
 What tool to use to format Turtle? Requirements:
 - Do it in a predictable way
 - The conversion should be stable, i.e. diff-friendly
@@ -106,7 +182,7 @@ riot --formatted ttl IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQ.rdf > IEC61970-
 ```
 - [rdflib#2880 about longturtle](https://github.com/RDFLib/rdflib/issues/2880) which is a request to add pretty-printing features to Python's `rdflib`
 
-#### atextor tools: owl-cli and turtle-formatter
+### atextor tools: owl-cli and turtle-formatter
 This is my current selection:
 
 [atextor/turtle-formatter](https://github.com/atextor/turtle-formatter) is a Jena/Java tool specifically for this purpose.
@@ -148,7 +224,7 @@ I posted a large number of issues. As of 26-Sep-2024:
   - #14 log messages should go to STDERR not STDOUT bug:
     It just means that we must specify the output filename when running it
 
-#### EDMC Tools for serialization, diff, hygiene checks, publication
+### EDMC Tools for serialization, diff, hygiene checks, publication
 https://github.com/Sveino/Inst4CIM-KG/issues/58
 
 Elisa Kendall (one of the main FIBO ontologists):
@@ -165,7 +241,7 @@ We also have a pipeline that looks for a myriad of issues in ontologies, perform
   Dean Allemang, Pawel Garbacz, Przemysław Grądzki, Elisa Kendall, Robert Trypuz.
   Formal Ontology in Information Systems, DOI 10.3233/FAIA210375
 
-#### OBO Robot
+### OBO Robot
 https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](https://github.com/ontodev/robot/releases) page
 - By the OBO Foundry
 - Used by EDM Council. Elisa: I don’t know how well it works on RDF alone, mainly because I haven’t attempted to use it for that, but it works well as a companion tool to the RDF Toolkit
@@ -177,7 +253,7 @@ https://robot.obolibrary.org/ . Download `robot.jar` from the [ROBOT releases](h
 - Convert Manchester notation
 - Ontology metrics
 
-### JSON-LD Serialization
+## JSON-LD Serialization
 https://github.com/Sveino/Inst4CIM-KG/issues/99
 
 To produce good JSON-LD serialization of the ontologies, we use the experience from [GS1 EPCIS](https://github.com/gs1/EPCIS), see [Ontology#conversion-to-jsonld](https://github.com/gs1/EPCIS/tree/master/Ontology#conversion-to-jsonld).
@@ -219,7 +295,7 @@ ttl2jsonld ontology.ttl |\
   jsonld compact -c https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld > ontology.jsonld
 ```
 
-#### JSON-LD Context
+### JSON-LD Context
 To obtain the best possible JSON-LD form, we defined [CIM-ontology-context.jsonld](CIM-ontology-context.jsonld).
 It consists of two sections:
 - First we define the same prefixes as in `prefixes.ttl`:
@@ -264,7 +340,7 @@ It is important to deploy `CIM-ontology-context.jsonld` at a network location.
 For the ontologies, we could embed the context by using techniques described at GS1 EPCIS.
 But for instance data we definitely need a network context, so we better find a solution.
 
-#### Coverting to JSON-LD as a Debugging Tool
+### Conversion to JSON-LD as a Debugging Tool
 As part of working out the best possible JSON-LD form, we looked for irregularities
 as explained in https://github.com/Sveino/Inst4CIM-KG/issues/99 :
 ```
@@ -283,7 +359,7 @@ We found and diagnosed a number of issues:
 This is one of the benefits of using standard RDF serializations:
 by converting between them, one can check that everything is defined properly and as expected.
 
-### RDF/XML Serialization
+## RDF/XML Serialization
 
 TODO
 
@@ -1799,14 +1875,6 @@ But a very small number of them are in actual use in CGMES ontologies (see last 
 We should fix all units and multipliers as shown in [Fixed Units Representation](#fixed-units-representation),
 but will map to QUDT only the ones that are in use: this is shown in the previous two sections.
 
-## Represent Models as Named Graphs
-- https://github.com/Sveino/Inst4CIM-KG/issues/53
-- https://github.com/3lbits/CIM4NoUtility/discussions/321 is a relevant discussion
-  - See my examples there
-  - TODO: blank nodes will cause huge problems
-- [CGMES-TC/FullGrid_SC_diff.xml](https://github.com/Sveino/CGMES-TC/blob/develop/v3.0/FullGrid/FullGrid_SC_diff/FullGrid_SC_diff.xml) is an example difference model
-- [NC/PowerSystemProject.rdf](https://github.com/Sveino/Inst4CIM-KG/blob/develop/source/CGMES-NC/r2.3/ap-voc/rdf/PowerSystemProject-AP-Voc-RDFS2020.rdf) is a profile that addresses the difference model with some meta-data.
-
 # Fix Technical Notes
 The actual fixing can be done in two ways:
 - Using a semantic database:
@@ -1991,3 +2059,194 @@ cim:ActivePowerChangeRate skos:exactMatch quantitykind:ActivePowerChangeRate .
   - DONE [fix16-langTagLabelVsDefinition-93.ru](fix16-langTagLabelVsDefinition-93.ru)
 - 20 [Fixes to Ontology Metadata](#fixes-to-ontology-metadata) #32
   - DONE [fix20-ontologyMetadata-32.ru](fix20-ontologyMetadata-32.ru)
+
+# Remaining Ontology Issues
+
+This section lists and discusses tasks or problems that were posted and discussed, but are not yet resolved
+
+## Ontology Maintenance Workflows
+https://github.com/Sveino/Inst4CIM-KG/issues/106 spell-check all ontology terms
+
+Spelling mistakes in ontology terms are unpleasant, since when the ontology is used with instance data, fixing them requires a database migration.
+https://github.com/Sveino/Inst4CIM-KG/issues/105 is one such specific mistake, but are there others?
+
+Take the localnames of classes, properties and individuals.
+There are 7.2k: see [terms-uniq.txt](terms-uniq.txt) or this query:
+```
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX afn: <http://jena.apache.org/ARQ/function#>
+select ?localname {
+    ?x rdfs:label ?label
+    bind(afn:localname(?x) as ?localname)
+}
+```
+- Split identifiers on camel-case transitions, and on "." or "_" into words
+- Spell-check them with a spellchecker (spellcheckers in IDEs can do the above splitting)
+
+
+## Ontology Modularity and Profiles
+- https://github.com/Sveino/Inst4CIM-KG/issues/89  prof:hasArtifact use of xsd:anyURI
+
+
+## Model Representation
+A number of issues are related to how Models are represented.
+- In CIM XML and older CIM versions, 
+  this used classes `md:Model, dm:DifferenceModel`
+- In modern serialization formats (JSON-LD and Trig) and newer CIM versions, 
+  we want to use `dcat:Dataset` from the standard DCAT ontology (with additions),
+  as described in METADATA FOR DATASET AND DISTRIBUTION SPECIFICATION 
+  (Draft document version 2.4.0 of 2024-09-10)
+
+Issues:
+- https://github.com/Sveino/Inst4CIM-KG/issues/122 mapping from `md, dm` to `dct, dcat, dcat-cim, prov`:
+  This is the core mapping from `md, dm` to `dcat` and related ontologies (still under discussion)
+- https://github.com/Sveino/Inst4CIM-KG/issues/20  replace `eumd:DateTimeStamp` with standard datatype, remove `eu:URI`
+- https://github.com/Sveino/Inst4CIM-KG/issues/23  `dcat:hasVersion` is defined inconsistently
+- https://github.com/Sveino/Inst4CIM-KG/issues/25  Header: `Resource1 ... Resource13`?
+
+See also [Represent Models as Named Graphs](../rdf-improvement#represent-models-as-named-graphs) in `rdf-improvement`.
+
+# Reasoning
+- https://github.com/Sveino/Inst4CIM-KG/issues/50 define needed reasoning
+
+It is important to define what reasoning is required for CIM, especially in relation with SHACL validation.
+- Note: there has been some discussion that CIM uses "RDFS+" reasoning, but that is not defined sufficiently well, 
+  so it's better to discuss specific reasoning regimes explicitly
+
+## Needed: Subclass Reasoning
+Subclasses (`rdfs:subClassOf`) are widely used in CIM, eg here are some counts:
+```
+grep -c subClass */*/*
+CGMES-NC/ttl/AssessedElement-AP-Voc-RDFS2020.ttl:1
+CGMES-NC/ttl/AvailabilitySchedule-AP-Voc-RDFS2020.ttl:11
+CGMES-NC/ttl/Contingency-AP-Voc-RDFS2020.ttl:6
+CGMES-NC/ttl/EquipmentReliability-AP-Voc-RDFS2020.ttl:177
+CGMES-NC/ttl/GridDisturbance-AP-Voc-RDFS2020.ttl:10
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:2
+CGMES-NC/ttl/ImpactAssessmentMatrix-AP-Voc-RDFS2020.ttl:8
+CGMES-NC/ttl/MonitoringArea-AP-Voc-RDFS2020.ttl:6
+CGMES-NC/ttl/ObjectRegistry-AP-Voc-RDFS2020.ttl:0
+CGMES-NC/ttl/PowerSchedule-AP-Voc-RDFS2020.ttl:4
+CGMES-NC/ttl/PowerSystemProject-AP-Voc-RDFS2020.ttl:2
+CGMES-NC/ttl/RemedialAction-AP-Voc-RDFS2020.ttl:51
+CGMES-NC/ttl/RemedialActionSchedule-AP-Voc-RDFS2020.ttl:18
+CGMES-NC/ttl/SecurityAnalysisResult-AP-Voc-RDFS2020.ttl:2
+CGMES-NC/ttl/SensitivityMatrix-AP-Voc-RDFS2020.ttl:1
+CGMES-NC/ttl/StateInstructionSchedule-AP-Voc-RDFS2020.ttl:29
+CGMES-NC/ttl/SteadyStateHypothesisSchedule-AP-Voc-RDFS2020.ttl:42
+CGMES-NC/ttl/SteadyStateInstruction-AP-Voc-RDFS2020.ttl:12
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_DL.ttl:9
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_DY.ttl:258
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQ.ttl:175
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQBD.ttl:21
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_GL.ttl:5
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_OP.ttl:35
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SC.ttl:33
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SSH.ttl:71
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SV.ttl:11
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_TP.ttl:9
+```
+
+Subclass reasoning is required by SHACL. This is scattered in several places in the SHACL spec, so you have to follow this chain:
+- https://www.w3.org/TR/shacl/#ClassConstraintComponent : talks of "SHACL instance of `$class`"
+- https://www.w3.org/TR/shacl/#dfn-shacl-instance
+- https://www.w3.org/TR/shacl/#dfn-shacl-types
+- https://www.w3.org/TR/shacl/#dfn-shacl-superclass
+
+All CIM props have strict single-valued domain and range.
+This and the class hierarchy should be used to make simpler and modular shapes, but currently that is not the case.
+
+TODO: move the rest to shacl-improved.
+
+### Properties are Attached to Sibling Domains
+Currently, the "simple" SHACL shapes are generated in a way that assumes no subClass reasoning is present, e.g.:
+```ttl
+er:DCLineParallelingSwitch a sh:NodeShape;
+  sh:targetClass nc:DCLineParallelingSwitch;
+  sh:property
+    ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , 
+    ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , 
+    ido:IdentifiedObject.energyIdentCodeEic-datatype , ido:IdentifiedObject.energyIdentCodeEic-cardinality , 
+    ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , 
+    er:Equipment.Circuit-cardinality , er:Equipment.AggregatedEquipment-cardinality.
+```
+The generator traverses the class hierarchy and attaches each inherited property to each leaf-level class.
+E.g. above, all properties are inherited from superclasses of `DCLineParallelingSwitch`, but they are expanded at the level of that class.
+
+This leads to the following problems:
+- The SHACL shapes are much bigger and more complex, therefore slower
+- The shapes are brittle in face of change: if a subclass is added, all inherited props need to be attached to that class
+- If subclass reasoning is enabled, that will result in duplicate validation work and error reports
+
+### Properties Target Sibling Ranges
+The target (expected `sh:class`) of some CIM property shapes use complex disjunctions rather than an appropriate superclass, e.g.:
+```ttl
+dl:DiagramObject.IdentifiedObject-valueType a sh:NodeShape ;
+  sh:or ( dl:DiagramObject.IdentifiedObjectVisibilityLayer-valueType dl:DiagramObject.IdentifiedObjectDiagramStyle-valueType 
+    dl:DiagramObject.IdentifiedObjectDiagramObjectStyle-valueType dl:DiagramObject.IdentifiedObjectDiagramObject-valueType
+    dl:DiagramObject.IdentifiedObjectTextDiagramObject-valueType dl:DiagramObject.IdentifiedObjectDiagram-valueType ) .
+
+equ:ACDCConverter.PccTerminal-valueType a sh:PropertyShape ;
+  sh:or ( [sh:class cim:PowerTransformer] [sh:class cim:Switch] [sh:class cim:Disconnector] [sh:class cim:Fuse] 
+          [sh:class cim:GroundDisconnector] [sh:class cim:Jumper] [sh:class cim:Breaker] 
+          [sh:class cim:DisconnectingCircuitBreaker] [sh:class cim:LoadBreakSwitch] );
+```
+
+## Maybe: Inverse, Transitive Reasoning
+`owl:inverseOf`
+- Each CIM object prop has an inverse.
+- There's no preference of one direction to the other, so either can be present.
+But because SHACL must check one or the other direction, both must be present
+- need to do https://github.com/Sveino/Inst4CIM-KG/issues/26 replace cims:inverseRoleName by owl:inverseOf
+
+TODO 
+We said that Inverse reasoning is not mandatory, but is desirable for querying.
+If you write shapes that prohibit inverse triples, you'll raise a number of errors for repositories that do in fact provide inverse reasoning.
+This problem may be overcome in GraphDB if you validate only graph by graph, and don't include the onto:implicit graph (inferred triples).
+But still, it's a potential problem.
+
+TODO `owl:Transitive`
+
+## Maybe: Symmetric Reasoning
+TODO
+
+A `SymmetricProperty` is a self-inverse (`owl:inverseOf` itself).
+Therefore symmetric reasoning is a subset of inverse reasoning.
+
+`inverseOf` is itself symmetric, so it should be stated in both directions.
+This defect appears only for `dcat:Dataset.publisher - dcat:Dataset.Resource11`, as we can check with this query:
+```sparql
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+select * {
+  ?x cims:inverseRoleName ?y
+  filter not exists {?y cims:inverseRoleName ?x}
+}
+```
+
+Having Symmetric reasoning will facilitate inverse reasoning, even if `inverseOf` is not stated in one direction.
+But we can easily accomplish the same if we just add this axiom:
+```
+owl:inverseOf owl:inverseOf owl:inverseOf.
+```
+
+## Not Needed: Semantic Equivalences
+
+- https://github.com/Sveino/Inst4CIM-KG/issues/70  Use sameAs reasoning?
+- https://github.com/Sveino/Inst4CIM-KG/issues/123 Align NC instance file to both CGMES 2.4 and CGMES 3.0
+
+## Not Needed: Domain/Range/Subproperty Reasoning
+- `rdfs:domain`: AFAIK no CIM node is instantiated without class, and subClassOf will infer all relevant superclasses
+**Please confirm**
+- `rdfs:range`: 
+  - for ObjectProperties, same as `rdfs:domain`
+  - but for literals: https://github.com/Sveino/Inst4CIM-KG/issues/49
+
+- subPropertyOf: this finds nothing
+```
+grep subProperty */*/*
+```
+
+## Not Needed: Functional Reasoning
+
+- `FunctionalProperty, InverseFunctionalProperty`: https://github.com/Sveino/Inst4CIM-KG/issues/30
+  - But we don't want to infer `owl:sameAs` from these prop assertions.
