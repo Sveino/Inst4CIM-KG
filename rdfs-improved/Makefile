@@ -131,7 +131,7 @@ ttl1::
 
 jsonld1::
 	$(call TTL2JSONLD,$(ONE_TTL),one.jsonld)
-	#TortoiseGitMerge $(ONE_JSONLD) one.jsonld &
+	# TortoiseGitMerge $(ONE_JSONLD) one.jsonld &
 
 ttl: rm-ttl $(CGMES_TTL) $(CGMES_NC_TTL)
 
@@ -155,8 +155,8 @@ CGMES-NC/jsonld/%.jsonld: CGMES-NC/ttl/%.ttl
 
 jsonld: rm-jsonld $(CGMES_JSONLD) $(CGMES_NC_JSONLD)
 
-rm-jsonld::
+rm-jsonld:
 	rm -f $(CGMES_JSONLD) $(CGMES_NC_JSONLD)
 
-dirs::
+dirs:
 	mkdir CGMES CGMES/ttl CGMES CGMES/jsonld CGMES-NC CGMES-NC/ttl CGMES-NC/jsonld

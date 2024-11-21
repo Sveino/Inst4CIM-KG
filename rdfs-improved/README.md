@@ -2114,38 +2114,34 @@ It is important to define what reasoning is required for CIM, especially in rela
   so it's better to discuss specific reasoning regimes explicitly
 
 ## Needed: Subclass Reasoning
-Subclasses (`rdfs:subClassOf`) are widely used in CIM, eg here are some counts:
+Subclasses (`rdfs:subClassOf`) are widely used in CIM.
+- There are 712 subclass relations:
+```sparql
+select * {
+  ?x rdfs:subClassOf ?y
+} 
 ```
-grep -c subClass */*/*
-CGMES-NC/ttl/AssessedElement-AP-Voc-RDFS2020.ttl:1
-CGMES-NC/ttl/AvailabilitySchedule-AP-Voc-RDFS2020.ttl:11
-CGMES-NC/ttl/Contingency-AP-Voc-RDFS2020.ttl:6
-CGMES-NC/ttl/EquipmentReliability-AP-Voc-RDFS2020.ttl:177
-CGMES-NC/ttl/GridDisturbance-AP-Voc-RDFS2020.ttl:10
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:2
-CGMES-NC/ttl/ImpactAssessmentMatrix-AP-Voc-RDFS2020.ttl:8
-CGMES-NC/ttl/MonitoringArea-AP-Voc-RDFS2020.ttl:6
-CGMES-NC/ttl/ObjectRegistry-AP-Voc-RDFS2020.ttl:0
-CGMES-NC/ttl/PowerSchedule-AP-Voc-RDFS2020.ttl:4
-CGMES-NC/ttl/PowerSystemProject-AP-Voc-RDFS2020.ttl:2
-CGMES-NC/ttl/RemedialAction-AP-Voc-RDFS2020.ttl:51
-CGMES-NC/ttl/RemedialActionSchedule-AP-Voc-RDFS2020.ttl:18
-CGMES-NC/ttl/SecurityAnalysisResult-AP-Voc-RDFS2020.ttl:2
-CGMES-NC/ttl/SensitivityMatrix-AP-Voc-RDFS2020.ttl:1
-CGMES-NC/ttl/StateInstructionSchedule-AP-Voc-RDFS2020.ttl:29
-CGMES-NC/ttl/SteadyStateHypothesisSchedule-AP-Voc-RDFS2020.ttl:42
-CGMES-NC/ttl/SteadyStateInstruction-AP-Voc-RDFS2020.ttl:12
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_DL.ttl:9
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_DY.ttl:258
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQ.ttl:175
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQBD.ttl:21
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_GL.ttl:5
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_OP.ttl:35
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SC.ttl:33
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SSH.ttl:71
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SV.ttl:11
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_TP.ttl:9
+- Out of 927 classes, 712 (77%) are subclasses and 215 (23%) are not:
+```sparql
+select (count(*) as ?c) ?isSubclass {
+  ?x a owl:Class
+    bind(exists{?x rdfs:subClassOf ?y} as ?isSubclass)
+} group by ?isSubclass
 ```
+- Many of the 215 classes without parent are "TimePoint" or "Kind". There are much fewer true "root" classes that are listed under "Other" below:
+```sparql
+select ?kind (count(*) as ?c) {
+  ?x a owl:Class
+  filter not exists{?x rdfs:subClassOf ?y}
+  bind(replace(str(?x),".*(Kind|TimePoint)","$1") as ?kind1)
+  bind(if(?kind1=str(?x),"Other",?kind1) as ?kind)
+} group by ?kind
+```
+| kind        |  c |
+|-------------|----|
+| "Other"     | 76 |
+| "Kind"      | 99 |
+| "TimePoint" | 40 |
 
 Subclass reasoning is required by SHACL. This is scattered in several places in the SHACL spec, so you have to follow this chain:
 - https://www.w3.org/TR/shacl/#ClassConstraintComponent : talks of "SHACL instance of `$class`"
