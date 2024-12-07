@@ -10,7 +10,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/107	`First_Terminal, Second_Termina
 https://github.com/Sveino/Inst4CIM-KG/issues/108	missing "multiplier isFixed" in NC
 https://github.com/Sveino/Inst4CIM-KG/issues/109	terms without rdfs:comment
 https://github.com/Sveino/Inst4CIM-KG/issues/11	Remove Unused Enumeration Classes
-https://github.com/Sveino/Inst4CIM-KG/issues/110	deploy `CIM-ontology-context.jsonld` on a network location
+https://github.com/Sveino/Inst4CIM-KG/issues/110	deploy JSON-LD contexts on a permanent network location
 https://github.com/Sveino/Inst4CIM-KG/issues/113	deprecate `cims:AssociationUsed "No"` props (or even delete them?)
 https://github.com/Sveino/Inst4CIM-KG/issues/114	wrong `cims:AssociationUsed` or lacking `owl:inverseOf`
 https://github.com/Sveino/Inst4CIM-KG/issues/116	CIMXML converting strategy
@@ -30,7 +30,11 @@ https://github.com/Sveino/Inst4CIM-KG/issues/13	Mis-defined Prefixes
 https://github.com/Sveino/Inst4CIM-KG/issues/133	voc folder and image
 https://github.com/Sveino/Inst4CIM-KG/issues/134	`ENTSO-E_Test_Configurations_v3.0.2` defects
 https://github.com/Sveino/Inst4CIM-KG/issues/135	should we add type `rdfg:Graph` ?
+https://github.com/Sveino/Inst4CIM-KG/issues/136	Mapping plain JSON to JSON-LD with LinkML
+https://github.com/Sveino/Inst4CIM-KG/issues/137	consider using SHACL Compact
+https://github.com/Sveino/Inst4CIM-KG/issues/139	avoid using abbreviatons in ontology terms
 https://github.com/Sveino/Inst4CIM-KG/issues/14	don't dictate the use of blank nodes
+https://github.com/Sveino/Inst4CIM-KG/issues/140	consider options for using SHACL on graphs
 https://github.com/Sveino/Inst4CIM-KG/issues/15	SHACL mixup between a node and its type
 https://github.com/Sveino/Inst4CIM-KG/issues/16	Don't use parasitic `PropertyShape`
 https://github.com/Sveino/Inst4CIM-KG/issues/17	Don't use SHACL SPARQL where SHACL Standard is enough
@@ -84,7 +88,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/67	How do you do OCL2SHACL?
 https://github.com/Sveino/Inst4CIM-KG/issues/68	discrepancies in namespaces in RDFS2020 CGMES vs NC
 https://github.com/Sveino/Inst4CIM-KG/issues/69	merge and fix DatasetMetadata, Header, FileHeader
 https://github.com/Sveino/Inst4CIM-KG/issues/7	Wrong Declaration of Enumerations
-https://github.com/Sveino/Inst4CIM-KG/issues/70	Use sameAs reasoning?
+https://github.com/Sveino/Inst4CIM-KG/issues/70	Express links to old ontology term URLs
 https://github.com/Sveino/Inst4CIM-KG/issues/72	Datatype XMLLiteral in Definitions
 https://github.com/Sveino/Inst4CIM-KG/issues/73	Multilinguality in CIM?
 https://github.com/Sveino/Inst4CIM-KG/issues/74	Use Standard Datatypes

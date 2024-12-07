@@ -1,6 +1,6 @@
 .PHONY: all dirs ttl1 ttl rm-ttl clean fix-all
 
-all::
+all:
 	 @echo "targets: dirs, clean (zero files), fix-all (concat fix*.ru), ttl1 (for testing), ttl, rm-ttl, jsonld, rm-jsonld"
 
 FIX-ALL = $(wildcard fix[0-9]*)

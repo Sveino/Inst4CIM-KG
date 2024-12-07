@@ -121,12 +121,12 @@ gh issue ls -s all -L 1000 --json url,title -q 'sort_by(.url) | .[] | [.url, .ti
 perl -ne 'print "$1\n" while m{(https://github.com/Sveino/Inst4CIM-KG/issues/\d+)}g' README.md */README.md | sort | uniq > issues-README.txt
 cut -f1 issues-all.tsv | comm -3 - issues-README.txt | join - issues-all.tsv > issues-missing.tsv
 ```
-Running this on 11-Nov-2024 showed these counts:
+Running this on 7-Dec-2024 showed these counts:
 ```
 wc -l issues-*
-   47 issues-README.txt
-  112 issues-all.tsv
-   65 issues-missing.tsv
+   72 issues-README.txt
+  119 issues-all.tsv
+   47 issues-missing.tsv
 ```
 So now I need to go through 65 issues to put them in READMEs and summarize or describe them in more detail.
 
@@ -138,8 +138,9 @@ Note: `make issues` runs all these commands.
 - https://github.com/Sveino/Inst4CIM-KG/issues/48 review issue labels (tags): considerations for label evolution
 - https://github.com/Sveino/Inst4CIM-KG/issues/54 migrate Vladimir's issues from CIM4NoUtility: this is an older project, and we need to ensure all relevant issues have been reflected here
 - https://github.com/Sveino/Inst4CIM-KG/issues/79 approve all closed issues: periodically go through [closed issues assigned to Sveino that have no label `approved`](https://github.com/Sveino/Inst4CIM-KG/issues?q=is%3Aissue+is%3Aclosed+-label%3Aapproved+assignee%3Asveino), and approve the resolution
+- https://github.com/Sveino/Inst4CIM-KG/issues/142 describe all issues in READMEs 
 
-Done:
+DONE:
 - https://github.com/Sveino/Inst4CIM-KG/issues/1 Add initial structure and documents
 - https://github.com/Sveino/Inst4CIM-KG/issues/3 Upload NC r2.3.1
 - https://github.com/Sveino/Inst4CIM-KG/issues/92 convert Discussions to Issues

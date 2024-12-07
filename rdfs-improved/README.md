@@ -22,16 +22,7 @@ This document describes proposed inprovements to the representation of CIM/CGMES
 - [Fixes](#fixes)
     - [Use Only One of RDFS2020 and RDFSEd2Beta Style](#use-only-one-of-rdfs2020-and-rdfsed2beta-style)
         - [Namespace Discrepancies in RDFS2020 CGMES vs NC](#namespace-discrepancies-in-rdfs2020-cgmes-vs-nc)
-    - [Merge and Fix DatasetMetadata, Header, FileHeader](#merge-and-fix-datasetmetadata-header-fileheader)
     - [Fixes to Ontology Metadata](#fixes-to-ontology-metadata)
-    - [Add rdfs:isDefinedBy](#add-rdfsisdefinedby)
-    - [Duplication Between Ontologies](#duplication-between-ontologies)
-        - [Duplicated Definitions](#duplicated-definitions)
-        - [Duplicated Terms](#duplicated-terms)
-        - [Duplication Summary](#duplication-summary)
-    - [Prefixes](#prefixes)
-        - [Mis-defined Prefixes](#mis-defined-prefixes)
-        - [Too Many Prefixes](#too-many-prefixes)
     - [Improve Ordering of Ontology Terms](#improve-ordering-of-ontology-terms)
     - [Terms Per Namespace](#terms-per-namespace)
     - [Namespace Hijacking](#namespace-hijacking)
@@ -67,14 +58,25 @@ This document describes proposed inprovements to the representation of CIM/CGMES
     - [Fix Ordering and List](#fix-ordering-and-list)
 - [Remaining Ontology Issues](#remaining-ontology-issues)
     - [Ontology Maintenance Workflows](#ontology-maintenance-workflows)
-    - [Ontology Modularity and Profiles](#ontology-modularity-and-profiles)
     - [Model Representation](#model-representation)
+    - [Ontology Modularity (Duplication Between Ontologies)](#ontology-modularity-duplication-between-ontologies)
+        - [Duplicated Definitions](#duplicated-definitions)
+        - [Duplicated Terms](#duplicated-terms)
+        - [Duplication Summary](#duplication-summary)
+        - [Add rdfs:isDefinedBy](#add-rdfsisdefinedby)
+    - [Namespaces and Prefixes](#namespaces-and-prefixes)
+        - [Mis-defined Prefixes](#mis-defined-prefixes)
+        - [Too Many Prefixes](#too-many-prefixes)
+        - [Design Package and Profile URLs](#design-package-and-profile-urls)
+        - [Ontology Term URL Stability](#ontology-term-url-stability)
+    - [Descriptive Ontology Profiles](#descriptive-ontology-profiles)
 - [Reasoning](#reasoning)
     - [Needed: Subclass Reasoning](#needed-subclass-reasoning)
         - [Properties are Attached to Sibling Domains](#properties-are-attached-to-sibling-domains)
         - [Properties Target Sibling Ranges](#properties-target-sibling-ranges)
-    - [Maybe: Inverse, Transitive Reasoning](#maybe-inverse-transitive-reasoning)
+    - [Maybe: Inverse Reasoning](#maybe-inverse-reasoning)
     - [Maybe: Symmetric Reasoning](#maybe-symmetric-reasoning)
+    - [Maybe: Transitive Reasoning](#maybe-transitive-reasoning)
     - [Not Needed: Semantic Equivalences](#not-needed-semantic-equivalences)
     - [Not Needed: Domain/Range/Subproperty Reasoning](#not-needed-domainrangesubproperty-reasoning)
     - [Not Needed: Functional Reasoning](#not-needed-functional-reasoning)
@@ -445,68 +447,6 @@ dm:
 eu:
 ```
 
-## Merge and Fix DatasetMetadata, Header, FileHeader
-https://github.com/Sveino/Inst4CIM-KG/issues/69
-
-There are 3 ontologies `DatasetMetadata, Header, FileHeader` with overlapping scope.
-Several of the ontology terms are defined in 2 of the 3, indicating the need to merge:
-```
-grep -E '(dm:|eumd:)\w' */*/*
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:DateTimeStamp a rdfs:Class ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Ontology a owl:Ontology ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:Model1 a rdf:Property ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:usedSettings ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:Model2 a rdf:Property ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:processType ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:processType a rdf:Property ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model2 ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:usedSettings a rdf:Property ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model1 ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Package_DatasetMetadataProfile a cims:ClassCategory ;
-CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Package_DocDatasetMetadataProfile a cims:ClassCategory ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel a rdfs:Class ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:DateTimeStamp a rdfs:Class ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.forwardDifferences a rdf:Property ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.preconditions a rdf:Property ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.reverseDifferences a rdf:Property ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model.applicationSoftware a rdf:Property ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model1 a rdf:Property ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:usedSettings ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model2 a rdf:Property ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:processType ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:processType a rdf:Property ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model2 ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:usedSettings a rdf:Property ;
-CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model1 ;
-CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel a rdfs:Class ;
-CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.forwardDifferences a rdf:Property ;
-CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
-CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.preconditions a rdf:Property ;
-CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
-CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.reverseDifferences a rdf:Property ;
-CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
-```
-In addition:
-- `eumd:DateTimeStamp` is wrong
-- `eumd:Model1, eumd:Model2` are junk prop names
-
 ## Fixes to Ontology Metadata
 https://github.com/Sveino/Inst4CIM-KG/issues/32
 
@@ -536,229 +476,6 @@ eq:Ontology a owl:Ontology ;
   dct:rightsHolder "ENTSO-E" ;
   owl:versionInfo "3.0.0" .
 ```
-
-## Add rdfs:isDefinedBy
-
-https://github.com/Sveino/Inst4CIM-KG/issues/103
-Each ontology term should have rdfs:isDefinedBy to the ontology node.
-This allows semantic web crawlers that stumble upon a CIM term, to discover the whole CIM ontology.
-
-https://github.com/Sveino/Inst4CIM-KG/issues/5 is a soft blocker for this:
-- We could add multiple values for each term
-- But this is untypical usage
-- It may lead to a crawler fetching the same ontology multiple times, but I think the risk is low since the crawler should keep a queue of ontologies to be fetched (or already fetched) in any case.
-
-## Duplication Between Ontologies
-https://github.com/Sveino/Inst4CIM-KG/issues/5
-
-Common terms are duplicated many times.
-Eg the `Boolean` primitive is defined in 12/18 NC ontologies, and 9/10 CGMES ontologies (total 21):
-```
-grep ^cim:Boolean */*/*.ttl
-CGMES-NC/ttl/AssessedElement-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/AvailabilitySchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/Contingency-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/EquipmentReliability-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/GridDisturbance-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/PowerSchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/RemedialAction-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/RemedialActionSchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/SecurityAnalysisResult-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/StateInstructionSchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/SteadyStateHypothesisSchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES-NC/ttl/SteadyStateInstruction-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_DL.ttl:cim:Boolean a owl:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_DY.ttl:cim:Boolean a owl:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQ.ttl:cim:Boolean a owl:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQBD.ttl:cim:Boolean a owl:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_GL.ttl:cim:Boolean a owl:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_OP.ttl:cim:Boolean a owl:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SC.ttl:cim:Boolean a owl:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SSH.ttl:cim:Boolean a owl:Class ;
-CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SV.ttl:cim:Boolean a owl:Class ;
-```
-
-What's the problem:
-- There are discrepancies between multiple definitions.
-  They are due to CGMES using `RDFSEd2Beta` style but NC using `RDFS2020` style
-- If you put ontologies in separate named graphs,
-  there will be actual duplicated definitions of classes and properties,
-  causing a lot more expensive reasoning
-
-It's not only about primitives and other meta-terms.
-Electrical terms are also duplicated.
-The following subsections include an analysis of duplication.
-
-### Duplicated Definitions
-First let's take the definition into account:
-```
-grep -h ^[a-z] */*/*.ttl|grep -Ev '=|e[.]g[.]|kp1,|kq1'|sort|uniq -c|grep -v ' 1 '> duplicated-definitions.txt
-      4 cim:ACDCConverter a owl:Class ;
-      2 cim:ACDCConverter a rdfs:Class ;
-      3 cim:ACDCConverterDCTerminal a owl:Class ;
-      3 cim:ApparentPower.value a owl:DatatypeProperty, owl:FunctionalProperty ; ### RDFSEd2Beta
-      2 cim:ApparentPower.value a rdf:Property ; ### RDFS2020
-```
-This means that:
-- `ACDCConverter` is defined in 4 files one way, and in 2 files another way (inconsistently).
-- `ACDCConverterDCTerminal` is defined in 3 files, but always the same way
-- `cim:ApparentPower.value` is defined 3+2 times, and I've marked with `###` from which style it comes.
-
-### Duplicated Terms
-Now let's keep only the term.
-```
-grep -h ^[a-z] */*/*.ttl|grep -Ev '=|e[.]g[.]|kp1,|kq1'|perl -pe 's{ .*}{}'|sort|uniq -c|grep -v ' 1 '> duplicated-terms.txt
-      6 cim:ACDCConverter
-      3 cim:ACDCConverterDCTerminal
-      5 cim:ApparentPower.value
-     21 cim:Boolean
-```
-The counts may be a bit higher than the sum in the previous file:
-if a term is defined once in `RDFSEd2Beta` and once in `RDFS2020` style it won't appear in the previous file,
-but will appear in this file.
-
-### Duplication Summary
-Let's also extract the unique terms:
-```
-grep -h ^[a-z] */*/*.ttl|grep -Ev '=|e[.]g[.]|kp1,|kq1'|perl -pe 's{ .*}{}'|sort|uniq>terms-uniq.txt
-```
-
-And count of the analysis files we've produced:
-```
-wc -l *.txt
-   882 duplicated-definitions.txt
-   875 duplicated-terms.txt
-  7268 terms-uniq.txt
-```
-The problem is pervasive: 12% of terms are duplicated (875 out of 7268).
-The most "popular" terms are duplicated 28 times:
-```
-sort -rn duplicated-terms.txt |head -10
-     28 cim:String
-     28 cim:Date
-     24 cim:IdentifiedObject.mRID
-     24 cim:IdentifiedObject
-     23 cim:Float
-     22 cim:IdentifiedObject.name
-     21 cim:UnitSymbol
-     21 cim:UnitMultiplier
-     21 cim:DateTime
-     21 cim:Boolean
-```
-
-## Prefixes
-Here are all prefixes used across CGMES and NC: collected in [prefixes.ttl](prefixes.ttl).
-```ttl
-@prefix cim      : <http://iec.ch/TC57/CIM100#> .
-@prefix cim      : <https://cim.ucaiug.io/ns#> .
-@prefix cims     : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
-@prefix dcat-cim : <https://cim4.eu/ns/dcat-cim#> .
-@prefix eu       : <http://iec.ch/TC57/CIM100-European#> .
-@prefix eu       : <https://cim.ucaiug.io/ns/eu#> .
-@prefix eumd     : <https://cim4.eu/ns/Metadata-European#> .
-@prefix md       : <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
-@prefix nc       : <https://cim4.eu/ns/nc#> .
-@prefix profcim  : <https://cim.ucaiug.io/ns/prof-cim#> .
-
-@prefix dl       : <http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#> .
-@prefix dm       : <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
-@prefix dy       : <http://iec.ch/TC57/ns/CIM/Dynamics-EU#> .
-@prefix eq       : <http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#> .
-@prefix eqbd     : <http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU#> .
-@prefix gl       : <http://iec.ch/TC57/ns/CIM/GeographicalLocation-EU#> .
-@prefix op       : <http://iec.ch/TC57/ns/CIM/Operation-EU#> .
-@prefix sc       : <http://iec.ch/TC57/ns/CIM/ShortCircuit-EU#> .
-@prefix ssh      : <http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU#> .
-@prefix sv       : <http://iec.ch/TC57/ns/CIM/StateVariables-EU#> .
-@prefix tp       : <http://iec.ch/TC57/ns/CIM/Topology-EU#> .
-
-@prefix ae       : <https://ap.cim4.eu/AssessedElement#> .
-@prefix as       : <https://ap.cim4.eu/AvailabilitySchedule#> .
-@prefix co       : <https://ap.cim4.eu/Contingency#> .
-@prefix dh       : <https://ap.cim4.eu/DocumentHeader#> .
-@prefix er       : <https://ap.cim4.eu/EquipmentReliability#> .
-@prefix gd       : <https://ap.cim4.eu/GridDisturbance#> .
-@prefix iam      : <https://ap.cim4.eu/ImpactAssessmentMatrix#> .
-@prefix ma       : <https://ap.cim4.eu/MonitoringArea#> .
-@prefix or       : <https://ap.cim4.eu/ObjectRegistry#> .
-@prefix ps       : <https://ap.cim4.eu/PowerSchedule#> .
-@prefix psp      : <https://ap.cim4.eu/PowerSystemProject#> .
-@prefix ra       : <https://ap.cim4.eu/RemedialAction#> .
-@prefix ras      : <https://ap.cim4.eu/RemedialActionSchedule#> .
-@prefix sar      : <https://ap.cim4.eu/SecurityAnalysisResult#> .
-@prefix shs      : <https://ap.cim4.eu/SteadyStateHypothesisSchedule#> .
-@prefix sis      : <https://ap.cim4.eu/StateInstructionSchedule#> .
-@prefix sm       : <https://ap.cim4.eu/SensitivityMatrix#> .
-@prefix ssi      : <https://ap.cim4.eu/SteadyStateInstruction#> .
-
-@prefix adms     : <http://www.w3.org/ns/adms#> .
-@prefix dcat     : <http://www.w3.org/ns/dcat#> .
-@prefix dct      : <http://purl.org/dc/terms/> .
-@prefix dcterms  : <http://purl.org/dc/terms/#> .
-@prefix euvoc    : <http://publications.europa.eu/ontology/euvoc#> .
-@prefix owl      : <http://www.w3.org/2002/07/owl#> .
-@prefix prov     : <http://www.w3.org/ns/prov#> .
-@prefix rdf      : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs     : <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos     : <http://www.w3.org/2004/02/skos/core#> .
-@prefix xsd      : <http://www.w3.org/2001/XMLSchema#> .
-```
-
-They are listed in the following order:
-- CIM/CGMES/NC/model/header/meta
-- CGMES profiles
-- NC profiles
-- other (standard prefixes).
-
-The same order is used in [Makefile](Makefile) as `--prefixOrder` option
-so as to present the prefixes in the same order in converted Turtle files.
-
-### Mis-defined Prefixes
-https://github.com/Sveino/Inst4CIM-KG/issues/13
-
-There are a couple of problems with prefixes:
-- `dcterms` is wrong (has exraneous hash), as you can see at https://prefix.cc/dcterms:
-```ttl
-@prefix dct      : <http://purl.org/dc/terms/> .
-@prefix dcterms  : <http://purl.org/dc/terms/#> .
-```
-- For consistency, only `dct` should be used (which is the more popular spelling), not `dcat`
-
-This below is an expected issue, and will cause confusion if all ontologies are used together:
-- The CIM and CGMES "business" prefixes are defined twice.
-  This comes from the `RDFSEd2Beta` style (used for CGMES) vs `RDFS2020` style (used for CGMES NC)
-```ttl
-@prefix cim      : <http://iec.ch/TC57/CIM100#> .
-@prefix cim      : <https://cim.ucaiug.io/ns#> .
-@prefix eu       : <http://iec.ch/TC57/CIM100-European#> .
-@prefix eu       : <https://cim.ucaiug.io/ns/eu#> .
-```
-
-### Too Many Prefixes
-https://github.com/Sveino/Inst4CIM-KG/issues/4
-
-As you see, CGMES/NC uses about 4x more prefixes than the standard ones.
-Also, it hogs short 2-3 letter prefixes.
-There's no conflict with the standard ones eg (`dct, sh`) maybe by pure luck.
-
-Happily, the profile prefixes (group 2 and 3) are not used on terms (classes, props, individuals).
-(That would drive ontology users crazy.)
-Perhaps not even standards creators can say what is `psp` or `sis` without consulting some files.
-
-Most profile prefixes are used only for a couple of things, eg:
-```ttl
-grep -E '(ae|psp):' terms-uniq.txt
-ae:Ontology
-ae:Package_AssessedElementProfile
-ae:Package_DocAssessedElementProfile
-psp:Ontology
-psp:Package_PowerSystemProjectProfile
-```
-But there's no need to consume a prefix just for that.
-So it is recommended to remove profile prefixes.
-
-Only the `xx:Ontology` terms are ok (but don't need a namespace).
-The other terms in profile-specific namespaces are not ok, as analyzed in subsequent sections.
 
 ## Improve Ordering of Ontology Terms
 https://github.com/Sveino/Inst4CIM-KG/issues/40
@@ -1435,9 +1152,11 @@ We keep the `cims:multiplicity` annotation because it has more info than these O
 Such cardinalities are reflected in SHACL, but `cims:multiplicity`  gives easier access to this important info.
 
 ## QuantityKinds and Units of Measure
-https://github.com/Sveino/Inst4CIM-KG/issues/38
-- https://github.com/Sveino/Inst4CIM-KG/issues/29 is a subset of this
-- TODO: check if https://github.com/3lbits/CIM4NoUtility/issues/338 has anything more
+Several issues express the same set of problems:
+- https://github.com/Sveino/Inst4CIM-KG/issues/29 proposal to change representation of attributes and units (a subset of the next issue)
+- https://github.com/Sveino/Inst4CIM-KG/issues/38 Datatypes and Units of Measure 
+- https://github.com/Sveino/Inst4CIM-KG/issues/46 fix representation of All QuantityKinds and Units
+- https://github.com/3lbits/CIM4NoUtility/issues/338 leverage QUDT to represent quantity kinds and units 
 
 CGMES datatype properties are defined like this (`# new` shows the new style`):
 
@@ -2084,10 +1803,6 @@ select ?localname {
 - Spell-check them with a spellchecker (spellcheckers in IDEs can do the above splitting)
 
 
-## Ontology Modularity and Profiles
-- https://github.com/Sveino/Inst4CIM-KG/issues/89  prof:hasArtifact use of xsd:anyURI
-
-
 ## Model Representation
 A number of issues are related to how Models are represented.
 - In CIM XML and older CIM versions, 
@@ -2098,13 +1813,385 @@ A number of issues are related to how Models are represented.
   (Draft document version 2.4.0 of 2024-09-10)
 
 Issues:
-- https://github.com/Sveino/Inst4CIM-KG/issues/122 mapping from `md, dm` to `dct, dcat, dcat-cim, prov`:
-  This is the core mapping from `md, dm` to `dcat` and related ontologies (still under discussion)
 - https://github.com/Sveino/Inst4CIM-KG/issues/20  replace `eumd:DateTimeStamp` with standard datatype, remove `eu:URI`
 - https://github.com/Sveino/Inst4CIM-KG/issues/23  `dcat:hasVersion` is defined inconsistently
 - https://github.com/Sveino/Inst4CIM-KG/issues/25  Header: `Resource1 ... Resource13`?
+  `eumd:Model1, eumd:Model2` are also bad prop names.
+- https://github.com/Sveino/Inst4CIM-KG/issues/69 merge and fix `DatasetMetadata, Header, FileHeader`
+- https://github.com/Sveino/Inst4CIM-KG/issues/122 mapping from `md, dm` to `dcat, dct, dcat-cim, prov`.
+  This is the core mapping from `md, dm` to standard ontologies: `dcat, dct, dcat-cim, prov`.
 
 See also [Represent Models as Named Graphs](../rdf-improvement#represent-models-as-named-graphs) in `rdf-improvement`.
+
+There are 3 ontologies `DatasetMetadata, Header, FileHeader` with overlapping scope.
+Several of the ontology terms are defined in 2 of the 3, indicating the need to merge:
+```
+grep -E '(dm:|eumd:)\w' */*/*
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:DateTimeStamp a rdfs:Class ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:belongsToCategory dm:Package_DocDatasetMetadataProfile ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Ontology a owl:Ontology ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:Model1 a rdf:Property ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:usedSettings ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:Model2 a rdf:Property ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:processType ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:processType a rdf:Property ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model2 ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:eumd:usedSettings a rdf:Property ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model1 ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Package_DatasetMetadataProfile a cims:ClassCategory ;
+CGMES-NC/ttl/DatasetMetadata-AP-Voc-RDFS2020.ttl:dm:Package_DocDatasetMetadataProfile a cims:ClassCategory ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel a rdfs:Class ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:DateTimeStamp a rdfs:Class ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:dataType eumd:DateTimeStamp ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.forwardDifferences a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.preconditions a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:dm:DifferenceModel.reverseDifferences a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model.applicationSoftware a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model1 a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:usedSettings ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:Model2 a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:processType ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:processType a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model2 ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:eumd:usedSettings a rdf:Property ;
+CGMES-NC/ttl/Header-AP-Voc-RDFS2020.ttl:  cims:inverseRoleName eumd:Model1 ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel a rdfs:Class ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.forwardDifferences a rdf:Property ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.preconditions a rdf:Property ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
+CGMES/ttl/FileHeader_RDFS2019.ttl:dm:DifferenceModel.reverseDifferences a rdf:Property ;
+CGMES/ttl/FileHeader_RDFS2019.ttl:  rdfs:domain dm:DifferenceModel .
+```
+
+## Ontology Modularity (Duplication Between Ontologies)
+https://github.com/Sveino/Inst4CIM-KG/issues/5
+
+Common terms are duplicated many times. This creates the following problems:
+- There are discrepancies between multiple definitions.
+  They are due to CGMES using `RDFSEd2Beta` style but NC using `RDFS2020` style
+- If you put ontologies in separate named graphs,
+  there will be actual duplicated definitions of classes and properties,
+  causing a lot more expensive reasoning
+
+The decision is:
+- Only Packages (eg `eq:Package_CoreEquipmentProfile`) should define ontology terms
+- Profiles should only `owl:include` the relevant packages, but should not define terms
+
+So instead of 20 Profile ontologies that define terms multiple times, 
+we should have 40 ontologies that define each term once.
+This modularization (vocabulary profiling) should happen in CIM18 using CimContextor .
+
+Eg the `Boolean` primitive is defined in 12/18 NC ontologies, and 9/10 CGMES ontologies (total 21):
+```
+grep ^cim:Boolean */*/*.ttl
+CGMES-NC/ttl/AssessedElement-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/AvailabilitySchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/Contingency-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/EquipmentReliability-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/GridDisturbance-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/PowerSchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/RemedialAction-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/RemedialActionSchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/SecurityAnalysisResult-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/StateInstructionSchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/SteadyStateHypothesisSchedule-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES-NC/ttl/SteadyStateInstruction-AP-Voc-RDFS2020.ttl:cim:Boolean a rdfs:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_DL.ttl:cim:Boolean a owl:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_DY.ttl:cim:Boolean a owl:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQ.ttl:cim:Boolean a owl:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_EQBD.ttl:cim:Boolean a owl:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_GL.ttl:cim:Boolean a owl:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_OP.ttl:cim:Boolean a owl:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SC.ttl:cim:Boolean a owl:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SSH.ttl:cim:Boolean a owl:Class ;
+CGMES/ttl/IEC61970-600-2_CGMES_3_0_0_RDFS_501Ed2CD_SV.ttl:cim:Boolean a owl:Class ;
+```
+
+It's not only about primitives and other meta-terms.
+Electrical terms are also duplicated.
+The following subsections include an analysis of duplication.
+
+### Duplicated Definitions
+First let's take the definition into account:
+```
+grep -h ^[a-z] */*/*.ttl|grep -Ev '=|e[.]g[.]|kp1,|kq1'|sort|uniq -c|grep -v ' 1 '> duplicated-definitions.txt
+      4 cim:ACDCConverter a owl:Class ;
+      2 cim:ACDCConverter a rdfs:Class ;
+      3 cim:ACDCConverterDCTerminal a owl:Class ;
+      3 cim:ApparentPower.value a owl:DatatypeProperty, owl:FunctionalProperty ; ### RDFSEd2Beta
+      2 cim:ApparentPower.value a rdf:Property ; ### RDFS2020
+```
+This means that:
+- `ACDCConverter` is defined in 4 files one way, and in 2 files another way (inconsistently).
+- `ACDCConverterDCTerminal` is defined in 3 files, but always the same way
+- `cim:ApparentPower.value` is defined 3+2 times, and I've marked with `###` from which style it comes.
+
+### Duplicated Terms
+Now let's keep only the term.
+```
+grep -h ^[a-z] */*/*.ttl|grep -Ev '=|e[.]g[.]|kp1,|kq1'|perl -pe 's{ .*}{}'|sort|uniq -c|grep -v ' 1 '> duplicated-terms.txt
+      6 cim:ACDCConverter
+      3 cim:ACDCConverterDCTerminal
+      5 cim:ApparentPower.value
+     21 cim:Boolean
+```
+The counts may be a bit higher than the sum in the previous file:
+if a term is defined once in `RDFSEd2Beta` and once in `RDFS2020` style it won't appear in the previous file,
+but will appear in this file.
+
+### Duplication Summary
+Let's also extract the unique terms:
+```
+grep -h ^[a-z] */*/*.ttl|grep -Ev '=|e[.]g[.]|kp1,|kq1'|perl -pe 's{ .*}{}'|sort|uniq>terms-uniq.txt
+```
+
+And count of the analysis files we've produced:
+```
+wc -l *.txt
+   882 duplicated-definitions.txt
+   875 duplicated-terms.txt
+  7268 terms-uniq.txt
+```
+The problem is pervasive: 12% of terms are duplicated (875 out of 7268).
+The most "popular" terms are duplicated 28 times:
+```
+sort -rn duplicated-terms.txt |head -10
+     28 cim:String
+     28 cim:Date
+     24 cim:IdentifiedObject.mRID
+     24 cim:IdentifiedObject
+     23 cim:Float
+     22 cim:IdentifiedObject.name
+     21 cim:UnitSymbol
+     21 cim:UnitMultiplier
+     21 cim:DateTime
+     21 cim:Boolean
+```
+
+### Add rdfs:isDefinedBy
+
+https://github.com/Sveino/Inst4CIM-KG/issues/103
+Each ontology term should have rdfs:isDefinedBy to the ontology node.
+This allows semantic web crawlers that stumble upon a CIM term, to discover the whole CIM ontology.
+
+This should be done only after eliminating duplicate definitions, as described in previous sections.
+
+## Namespaces and Prefixes
+A number of problems are related to namespaces and prefixes
+- https://github.com/Sveino/Inst4CIM-KG/issues/4 Too Many Prefixes
+- https://github.com/Sveino/Inst4CIM-KG/issues/13 Mis-defined Prefixes
+- https://github.com/Sveino/Inst4CIM-KG/issues/121 Add vann:preferredNamespacePrefix
+
+Here are all prefixes used across CGMES and NC: collected in [prefixes.ttl](prefixes.ttl).
+```ttl
+@prefix cim      : <http://iec.ch/TC57/CIM100#> .
+@prefix cim      : <https://cim.ucaiug.io/ns#> .
+@prefix cims     : <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix dcat-cim : <https://cim4.eu/ns/dcat-cim#> .
+@prefix eu       : <http://iec.ch/TC57/CIM100-European#> .
+@prefix eu       : <https://cim.ucaiug.io/ns/eu#> .
+@prefix eumd     : <https://cim4.eu/ns/Metadata-European#> .
+@prefix md       : <http://iec.ch/TC57/61970-552/ModelDescription/1#> .
+@prefix nc       : <https://cim4.eu/ns/nc#> .
+@prefix profcim  : <https://cim.ucaiug.io/ns/prof-cim#> .
+
+@prefix dl       : <http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#> .
+@prefix dm       : <http://iec.ch/TC57/61970-552/DifferenceModel/1#> .
+@prefix dy       : <http://iec.ch/TC57/ns/CIM/Dynamics-EU#> .
+@prefix eq       : <http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#> .
+@prefix eqbd     : <http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU#> .
+@prefix gl       : <http://iec.ch/TC57/ns/CIM/GeographicalLocation-EU#> .
+@prefix op       : <http://iec.ch/TC57/ns/CIM/Operation-EU#> .
+@prefix sc       : <http://iec.ch/TC57/ns/CIM/ShortCircuit-EU#> .
+@prefix ssh      : <http://iec.ch/TC57/ns/CIM/SteadyStateHypothesis-EU#> .
+@prefix sv       : <http://iec.ch/TC57/ns/CIM/StateVariables-EU#> .
+@prefix tp       : <http://iec.ch/TC57/ns/CIM/Topology-EU#> .
+
+@prefix ae       : <https://ap.cim4.eu/AssessedElement#> .
+@prefix as       : <https://ap.cim4.eu/AvailabilitySchedule#> .
+@prefix co       : <https://ap.cim4.eu/Contingency#> .
+@prefix dh       : <https://ap.cim4.eu/DocumentHeader#> .
+@prefix er       : <https://ap.cim4.eu/EquipmentReliability#> .
+@prefix gd       : <https://ap.cim4.eu/GridDisturbance#> .
+@prefix iam      : <https://ap.cim4.eu/ImpactAssessmentMatrix#> .
+@prefix ma       : <https://ap.cim4.eu/MonitoringArea#> .
+@prefix or       : <https://ap.cim4.eu/ObjectRegistry#> .
+@prefix ps       : <https://ap.cim4.eu/PowerSchedule#> .
+@prefix psp      : <https://ap.cim4.eu/PowerSystemProject#> .
+@prefix ra       : <https://ap.cim4.eu/RemedialAction#> .
+@prefix ras      : <https://ap.cim4.eu/RemedialActionSchedule#> .
+@prefix sar      : <https://ap.cim4.eu/SecurityAnalysisResult#> .
+@prefix shs      : <https://ap.cim4.eu/SteadyStateHypothesisSchedule#> .
+@prefix sis      : <https://ap.cim4.eu/StateInstructionSchedule#> .
+@prefix sm       : <https://ap.cim4.eu/SensitivityMatrix#> .
+@prefix ssi      : <https://ap.cim4.eu/SteadyStateInstruction#> .
+
+@prefix adms     : <http://www.w3.org/ns/adms#> .
+@prefix dcat     : <http://www.w3.org/ns/dcat#> .
+@prefix dct      : <http://purl.org/dc/terms/> .
+@prefix dcterms  : <http://purl.org/dc/terms/#> .
+@prefix euvoc    : <http://publications.europa.eu/ontology/euvoc#> .
+@prefix owl      : <http://www.w3.org/2002/07/owl#> .
+@prefix prov     : <http://www.w3.org/ns/prov#> .
+@prefix rdf      : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs     : <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos     : <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd      : <http://www.w3.org/2001/XMLSchema#> .
+```
+
+They are listed in the following order:
+- CIM/CGMES/NC/model/header/meta
+- CGMES profiles
+- NC profiles
+- other (standard prefixes).
+
+The same order is used in [Makefile](Makefile) as `--prefixOrder` option
+so as to present the prefixes in the same order in converted Turtle files.
+
+### Mis-defined Prefixes
+
+There are a couple of problems with prefixes:
+- `dcterms` is wrong (has exraneous hash), as you can see at https://prefix.cc/dcterms :
+```ttl
+@prefix dct      : <http://purl.org/dc/terms/> .
+@prefix dcterms  : <http://purl.org/dc/terms/#> .
+```
+- For consistency, only `dct` should be used (which is the more popular spelling), not `dcat`
+
+This below is an expected issue, and will cause confusion if all ontologies are used together:
+- The CIM and CGMES "business" prefixes are defined twice.
+  This comes from the `RDFSEd2Beta` style (used for CGMES) vs `RDFS2020` style (used for CGMES NC)
+```ttl
+@prefix cim      : <http://iec.ch/TC57/CIM100#> .
+@prefix cim      : <https://cim.ucaiug.io/ns#> .
+@prefix eu       : <http://iec.ch/TC57/CIM100-European#> .
+@prefix eu       : <https://cim.ucaiug.io/ns/eu#> .
+```
+
+### Too Many Prefixes
+
+As you see, CGMES/NC uses about 4x more prefixes than the standard ones.
+Also, it hogs short 2-3 letter prefixes.
+There's no conflict with the standard ones eg (`dct, sh`) maybe by pure luck.
+
+Happily, the profile prefixes (group 2 and 3) are not used on terms (classes, props, individuals).
+(That would drive ontology users crazy.)
+Perhaps not even standards creators can say what is `psp` or `sis` without consulting some files.
+
+Most profile prefixes are used only for a couple of things, eg:
+```ttl
+grep -E '(ae|psp):' terms-uniq.txt
+ae:Ontology
+ae:Package_AssessedElementProfile
+ae:Package_DocAssessedElementProfile
+psp:Ontology
+psp:Package_PowerSystemProjectProfile
+```
+But there's no need to consume a prefix just for that.
+So it is recommended to remove profile prefixes.
+
+Only the `xx:Ontology` terms are ok (but don't need a namespace).
+The other terms in profile-specific namespaces are not ok, as analyzed in subsequent sections.
+
+### Design Package and Profile URLs
+- https://github.com/Sveino/Inst4CIM-KG/issues/56 Design package URLs (namespaces)
+
+Currently package URLs look like this, eg:
+- `dy:Package_Dynamics`: main package DY
+- `dy:Package_WindDynamics`: subpackage
+- `dy:Package_Wires`: core package
+
+This has the following problems:
+- The word `Dynamics` is redundant with `dy`. As outlined above, we don't need prefixes like `dy`
+- `WindDynamics` doesn't reflect the hierarchical nature of this sub-package
+- `Wires` is a core package so it should not be subjugated
+
+So the issue proposes the following naming convention:
+- `http://cim.ucaiug.io/grid/Dynamics`: main dynamics package and DY profile
+  (I think there doesn't need to be a difference between Profile and Package).
+- `http://cim.ucaiug.io/grid/Dynamics/Wind`: sub-package
+- `http://cim.ucaiug.io/grid/Wires`: core package, not under `Dynamics`
+
+### Ontology Term URL Stability
+- https://github.com/Sveino/Inst4CIM-KG/issues/33 check ontology version URLs
+- https://github.com/Sveino/Inst4CIM-KG/issues/57 Keep ontology and profile URLs stable
+- https://github.com/Sveino/Inst4CIM-KG/issues/82 old namespace CIM-schema-cim16 used in Nordic44
+- https://github.com/Sveino/Inst4CIM-KG/issues/123 Align NC instance file to both CGMES 2.4 and CGMES 3.0
+
+
+CIM/CGMES ontology URLs have been changed with every version, 
+leading to compatibility issues between data that uses different ontology versions,
+and the need to make time-consuming database migrations 
+if such incompatible instance data needs to be used together.
+
+The ENTSO-E document [RDF-Syntax User Guide v1.0](https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/RDF-SyntaxUserGuide_v1-0.pdf) (2024-01-17) section 3. "Combining different CIM versions" describes difficulties related to exchange of semantic data that uses versioned terms, and concludes:
+
+> Starting with CIM18, the CIM international standard development community agreed to keep the URI of the canonical CIM stable between different versions of CIM. This means that if a class is defined in CIM vocabulary its URI will not change. Semantic versioning should be applied on profile level and different packages in CIM in order to be able to describe and explain CIM evolution.
+
+Each ontology URL should be permanent, and `owl:versionIRI` should be used to express a versioned URL, if needed.
+
+The issues in section [Not Needed: Semantic Equivalences](#not-needed-semantic-equivalences) 
+discuss using semantic equivalences (`equivalentClass, equivalentProperty`) to map between terms in different versions.
+However, these properties are unsuitable because they are symmetric, 
+and because they would introduce redundant inferred triples.
+
+Therefore it was decided to use `dct:replaces` (an assymetric property) to express eg:
+```ttl
+cim:Equipment           dct:replaces cim16:Equipment, cim17:Equipment. # class
+cim:Equipment.inService dct:replaces cim17:Equipment.inService. # prop that was added in cim17
+```
+
+From such declarations, one can generate SPARQL Update queries to migrate data, eg:
+```sparql
+insert {
+  graph <new-graph> {
+    ?x a cim:Equipment ?y
+  }
+} where {
+  graph <old-graph> {
+    ?x a cim17:Equipment
+  }
+};
+
+insert {
+  graph <new-graph> {
+    ?x cim:Equipment.inService ?y
+  }
+} where {
+  graph <old-graph> {
+    ?x cim17:Equipment.inService ?y
+  }
+};
+```
+Of course, it is better to use VALUES lists to replace numerous terms at once.
+
+## Descriptive Ontology Profiles
+CIM/CGMES ontologies and shapes are numberous and with complex dependencies between them.
+So there is a definitive desire to describe them using [The Profiles Vocabulary](https://www.w3.org/TR/dx-prof/).
+
+The CIM community is looking for guidance to the Open Geospatial Consortium,
+in particular the GeoSPARQL [profile.ttl](https://github.com/opengeospatial/ogc-geosparql/blob/master/profile.ttl).
+
+Here are some technical issues, but the overall task is not yet discussed in detail.
+- https://github.com/opengeospatial/ogc-geosparql/issues/575 some problems in `profile.ttl`
+- https://github.com/opengeospatial/ogc-geosparql/issues/553 `prof:hasArtifact` use of `xsd:anyURI`
+- https://github.com/Sveino/Inst4CIM-KG/issues/89 `prof:hasArtifact` use of `xsd:anyURI`
 
 # Reasoning
 - https://github.com/Sveino/Inst4CIM-KG/issues/50 define needed reasoning
@@ -2144,6 +2231,9 @@ select ?kind (count(*) as ?c) {
 | "TimePoint" | 40 |
 
 Subclass reasoning is required by SHACL. This is scattered in several places in the SHACL spec, so you have to follow this chain:
+- https://www.w3.org/TR/shacl/#x3.2-data-graph : 
+  "The data graph is expected to include all the ontology axioms related to the data 
+  and especially all the `rdfs:subClassOf` triples in order for SHACL to correctly identify **class targets** and validate **Core SHACL constraints**"
 - https://www.w3.org/TR/shacl/#ClassConstraintComponent : talks of "SHACL instance of `$class`"
 - https://www.w3.org/TR/shacl/#dfn-shacl-instance
 - https://www.w3.org/TR/shacl/#dfn-shacl-types
@@ -2183,28 +2273,46 @@ dl:DiagramObject.IdentifiedObject-valueType a sh:NodeShape ;
     dl:DiagramObject.IdentifiedObjectTextDiagramObject-valueType dl:DiagramObject.IdentifiedObjectDiagram-valueType ) .
 
 equ:ACDCConverter.PccTerminal-valueType a sh:PropertyShape ;
+  sh:path ( cim:ACDCConverter.PccTerminal cim:Terminal.ConductingEquipment ) ;
   sh:or ( [sh:class cim:PowerTransformer] [sh:class cim:Switch] [sh:class cim:Disconnector] [sh:class cim:Fuse] 
           [sh:class cim:GroundDisconnector] [sh:class cim:Jumper] [sh:class cim:Breaker] 
           [sh:class cim:DisconnectingCircuitBreaker] [sh:class cim:LoadBreakSwitch] );
+  sh:name         "C:301:EQ:ACDCConverter.PccTerminal:valueType" ;
+  sh:message      "The terminal is not a terminal of a PowerTransformer or a Switch." ;
+  sh:description  "It is typically the terminal on the power transformer (or switch) closest to the AC network." ;
+
 ```
 
-## Maybe: Inverse, Transitive Reasoning
-`owl:inverseOf`
-- Each CIM object prop has an inverse.
-- There's no preference of one direction to the other, so either can be present.
-But because SHACL must check one or the other direction, both must be present
-- need to do https://github.com/Sveino/Inst4CIM-KG/issues/26 replace cims:inverseRoleName by owl:inverseOf
+## Maybe: Inverse Reasoning
+- DONE https://github.com/Sveino/Inst4CIM-KG/issues/26 replace `cims:inverseRoleName` by `owl:inverseOf`
 
-TODO 
-We said that Inverse reasoning is not mandatory, but is desirable for querying.
-If you write shapes that prohibit inverse triples, you'll raise a number of errors for repositories that do in fact provide inverse reasoning.
-This problem may be overcome in GraphDB if you validate only graph by graph, and don't include the onto:implicit graph (inferred triples).
-But still, it's a potential problem.
+Each CIM object property has an inverse. 
+These are now represented using the standard prop `owl:inverseOf`.
+However, instance data always has one direction of the inverse pair,
+namely the property marked with the annotation `cims:AssociationUsed "Yes"`.
+- https://github.com/Sveino/Inst4CIM-KG/issues/114 wrong `cims:AssociationUsed` or lacking `owl:inverseOf`
+  describes a few cases where that annotation is missing or wrong.
 
-TODO `owl:Transitive`
+Since it is not expected for the inverse direction properties to be present, 
+maybe we should mark that explicitly?
+This was discussed in
+- https://github.com/Sveino/Inst4CIM-KG/issues/113 deprecate cims:AssociationUsed "No" props (or even delete them?),
+  and a decision was made not to do it.
+
+It was decided that Inverse reasoning should not be mandatory, but is desirable for querying.
+- SHACL shapes do not rely on inverse reasoning 
+  so they often need to use `sh:inversePath`, 
+  which makes them more complicated.
+- https://github.com/Sveino/Inst4CIM-KG/issues/141 SHACL: Do not prohibit inverse reasoning.
+  There were plans to write SHACL shapes to check that `cims:AssociationUsed "No"` triples are not included.
+  If shapes that prohibit inverse triples are added, 
+  they will raise a number of errors on repositories that do in fact provide inverse reasoning.
+  This problem may be overcome by validating only named graphs with explicit instance data
+  (eg in GraphDB all inferred triples are in the `onto:implicit` graph).
+  But it may complicate validation scenarios.
 
 ## Maybe: Symmetric Reasoning
-TODO
+- https://github.com/Sveino/Inst4CIM-KG/issues/114 wrong `cims:AssociationUsed` or lacking `owl:inverseOf`
 
 A `SymmetricProperty` is a self-inverse (`owl:inverseOf` itself).
 Therefore symmetric reasoning is a subset of inverse reasoning.
@@ -2225,24 +2333,42 @@ But we can easily accomplish the same if we just add this axiom:
 owl:inverseOf owl:inverseOf owl:inverseOf.
 ```
 
-## Not Needed: Semantic Equivalences
+## Maybe: Transitive Reasoning
+TODO `owl:Transitive`
 
+## Not Needed: Semantic Equivalences
 - https://github.com/Sveino/Inst4CIM-KG/issues/70  Use sameAs reasoning?
 - https://github.com/Sveino/Inst4CIM-KG/issues/123 Align NC instance file to both CGMES 2.4 and CGMES 3.0
 
-## Not Needed: Domain/Range/Subproperty Reasoning
-- `rdfs:domain`: AFAIK no CIM node is instantiated without class, and subClassOf will infer all relevant superclasses
-**Please confirm**
-- `rdfs:range`: 
-  - for ObjectProperties, same as `rdfs:domain`
-  - but for literals: https://github.com/Sveino/Inst4CIM-KG/issues/49
+There was a discussion whether semantic equivalences (`sameAs, equivalentClass, equivalentProperty`)
+can be used to relate the newest URLs of ontologies and ontology terms to older versions.
+Since all these relations are symmetric, they are not suitable to express such asymmetric relations.
+It was decided to take care of URL stability of ontology terms,
+and use `dct:replaces` to point from the newest (permanent) URLs to older URLs.
 
-- subPropertyOf: this finds nothing
+## Not Needed: Domain/Range/Subproperty Reasoning
+- `rdfs:subPropertyOf`: is not used in CIM:
 ```
 grep subProperty */*/*
 ```
 
+- `rdfs:domain` is used extensively. 
+  However, all CIM resources are explicitly instantiated (have a defined class),
+  and `rdfs:subClassOf` reasoning will infer all relevant superclasses.
+  So `domain` reasoning is not needed
+- `rdfs:range` is defined for all `ObjectProperties`, so `range` reasoning is not needed
+- https://github.com/Sveino/Inst4CIM-KG/issues/49 Add Datatypes To Instance Data:
+  However, literals in instance data lacks XSD datatypes. 
+  This cannot be added with `range` reasoning, so we wrote a SPARQL update to do it.
+
 ## Not Needed: Functional Reasoning
 
-- `FunctionalProperty, InverseFunctionalProperty`: https://github.com/Sveino/Inst4CIM-KG/issues/30
-  - But we don't want to infer `owl:sameAs` from these prop assertions.
+- https://github.com/Sveino/Inst4CIM-KG/issues/30 express single-value props as owl:FunctionalProperty
+
+Under this issue, we used `cims:multiplicity` annotations to add standard property types:
+- `owl:FunctionalProperty` if the forward cardinality is max 1
+- `owl:InverseFunctionalProperty` if the backward cardinality is max 1
+
+SHACL shapes check the forward and backward cardinalities of all properties.
+Therefore we don't need Functional reasoning, 
+which would infer that two individuals are `owl:sameAs` if the "max 1" is not satisfied.

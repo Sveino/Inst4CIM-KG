@@ -2,10 +2,8 @@ https://github.com/Sveino/Inst4CIM-KG/issues/100 shorten prop names in JSONLD?
 https://github.com/Sveino/Inst4CIM-KG/issues/101 represent instances as JSONLD
 https://github.com/Sveino/Inst4CIM-KG/issues/107 `First_Terminal, Second_Terminal` use unusual separator
 https://github.com/Sveino/Inst4CIM-KG/issues/113 deprecate `cims:AssociationUsed "No"` props (or even delete them?)
-https://github.com/Sveino/Inst4CIM-KG/issues/114 wrong `cims:AssociationUsed` or lacking `owl:inverseOf`
 https://github.com/Sveino/Inst4CIM-KG/issues/116 CIMXML converting strategy
 https://github.com/Sveino/Inst4CIM-KG/issues/119 multiple per-profile graphs in JSON-LD?
-https://github.com/Sveino/Inst4CIM-KG/issues/121 Add vann:preferredNamespacePrefix
 https://github.com/Sveino/Inst4CIM-KG/issues/124 examine props-same-name-different-range for errors
 https://github.com/Sveino/Inst4CIM-KG/issues/125 fix props with multiple Ranges
 https://github.com/Sveino/Inst4CIM-KG/issues/126 delete extraneous "source" files
@@ -13,17 +11,17 @@ https://github.com/Sveino/Inst4CIM-KG/issues/127 What is the unit for `Money` pr
 https://github.com/Sveino/Inst4CIM-KG/issues/128 cost/price (xsd:decimal) props not defined as `dataType Money`
 https://github.com/Sveino/Inst4CIM-KG/issues/133 voc folder and image
 https://github.com/Sveino/Inst4CIM-KG/issues/134 `ENTSO-E_Test_Configurations_v3.0.2` defects
+https://github.com/Sveino/Inst4CIM-KG/issues/136 Mapping plain JSON to JSON-LD with LinkML
+https://github.com/Sveino/Inst4CIM-KG/issues/137 consider using SHACL Compact
+https://github.com/Sveino/Inst4CIM-KG/issues/139 avoid using abbreviatons in ontology terms
+https://github.com/Sveino/Inst4CIM-KG/issues/140 consider options for using SHACL on graphs
 https://github.com/Sveino/Inst4CIM-KG/issues/27 get rid of `profcim` Primitives
 https://github.com/Sveino/Inst4CIM-KG/issues/31 change some langString to string
-https://github.com/Sveino/Inst4CIM-KG/issues/33 check ontology version URLs
 https://github.com/Sveino/Inst4CIM-KG/issues/34 define prefixes `uml` and `xsd`
 https://github.com/Sveino/Inst4CIM-KG/issues/35 publish ap-voc as ttl
-https://github.com/Sveino/Inst4CIM-KG/issues/46 fix representation of All QuantityKinds and Units
 https://github.com/Sveino/Inst4CIM-KG/issues/47 remove spaces and lang tags from key values
 https://github.com/Sveino/Inst4CIM-KG/issues/51 Update NC profiles release 2.3.1
 https://github.com/Sveino/Inst4CIM-KG/issues/55 Representing datatypes in JSON-LD
-https://github.com/Sveino/Inst4CIM-KG/issues/56 Design package URLs (namespaces)
-https://github.com/Sveino/Inst4CIM-KG/issues/57 Keep ontology and profile URLs stable
 https://github.com/Sveino/Inst4CIM-KG/issues/59 Establish ontology best practices and hygiene checks
 https://github.com/Sveino/Inst4CIM-KG/issues/60 remove `AP` from `voc, con` file/folder names 
 https://github.com/Sveino/Inst4CIM-KG/issues/63 Naming of target files
@@ -33,7 +31,6 @@ https://github.com/Sveino/Inst4CIM-KG/issues/76 cim:ActivePowerPerFrequency.unit
 https://github.com/Sveino/Inst4CIM-KG/issues/78 remove "Compounds"? what is cim:Status?
 https://github.com/Sveino/Inst4CIM-KG/issues/80 EIC linked data publication?
 https://github.com/Sveino/Inst4CIM-KG/issues/81 remove values like `other`
-https://github.com/Sveino/Inst4CIM-KG/issues/82 old namespace CIM-schema-cim16 used in Nordic44
 https://github.com/Sveino/Inst4CIM-KG/issues/83 some literals that should be URLs
 https://github.com/Sveino/Inst4CIM-KG/issues/84 missing datatypes
 https://github.com/Sveino/Inst4CIM-KG/issues/87 bad relative URLs (need BASE or urn:uuid:)
