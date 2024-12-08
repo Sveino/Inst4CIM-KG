@@ -27,7 +27,7 @@ zip                = ../../instance-zipped
 
 all:
 	@echo targets: context, dirs, zips, test, jsonld, nordic, entsoe, multiplied, rm-test, rm-jsonld, rm-nordic, rm-entsoe, rm-multiplied, clean
-	@echo $(nordic_trig)
+	#@echo $(nordic_trig)
 
 context: cim-context-old.jsonld cim-context-new.jsonld
 cim-context-%.jsonld: cim-context-%.txt cim-context-common.txt

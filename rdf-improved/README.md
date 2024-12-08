@@ -189,10 +189,9 @@ zips:
 - The above is a bit dumb since it always considers all files and copy-pastes the same command three times, but it's ok for a starter
 
 # Represent Models as Named Graphs
-- https://github.com/Sveino/Inst4CIM-KG/issues/86 no connection of instance triples to Model
 - https://github.com/3lbits/CIM4NoUtility/discussions/321 Converting CIMXML DifferenceModel to CIMJSON-LD
 - https://github.com/Sveino/Inst4CIM-KG/issues/22 md:Statement is problematically defined
-- https://github.com/Sveino/Inst4CIM-KG/issues/135 should we add type rdfg:Graph?
+- https://github.com/Sveino/Inst4CIM-KG/issues/86 no connection of instance triples to Model
 
 If you convert a CIM XML model (eg `Nordic44_CGM_36d_SSH.xml`) to Turtle, you get something like this:
 ```ttl
@@ -654,6 +653,9 @@ See test results in [test/trig](test/trig). Let's look at a couple of examples.
 # Instance Data Fixes
 
 ## Fix Resource URLs
+- https://github.com/Sveino/Inst4CIM-KG/issues/87 bad relative URLs (need BASE or `urn:uuid:`)
+- https://github.com/Sveino/Inst4CIM-KG/issues/98 URL policy about MAS and BASE
+
 The URLs of CIM power system resources are represented in CIM XML like this:
 - definition:
   - `rdf:ID="_f37786d0-b118-4b92-bafb-326eac2a3877"`
@@ -754,19 +756,20 @@ This is harmless, but doesn't look nice.
 
 # Sample Instance Data
 To work out reasoning, validation and performance issues, we need sample instance data.
-We can use the following datasets:
+We can use the following datasets (one of them has minor defects):
+- https://github.com/Sveino/Inst4CIM-KG/issues/134 `ENTSO-E_Test_Configurations_v3.0.2` defects
 
 | dataset                                 | xml   | zip  | files | FullModel | triples |  largest | largest file                             |
 |-----------------------------------------|-------|------|-------|-----------|---------|----------|------------------------------------------|
 | [Nordic44](https://github.com/Sveino/Nordic44/tree/develop/Instances)                           | 2.9M  |      |    15 |        12 |   35481 |    17420 | CGMES_2_4/Nordic44_CGM_37a_EQ.xml        |
 | [ENTSO-E_Test_Configurations_v3.0.2](https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/ENTSO-E_Test_Configurations_v3.0.2.zip) | 151M  | 19M  |   357 |       350 | 1844380 |   947208 | RealGrid/RealGrid-Merged/RealGrid_EQ.xml |
 | [Multiplied](https://1drv.ms/f/s!AhDObGm0xWObjJI3y0obO3j9L4TSRw?e=4CDbxL)                         | 11G   | 1.9G |     4 |         4 |         | 94720800 | RealGrid_EQ100.zip                       |
-| Stattnet                                | 800MB | 30MB |       |           |         |          |                                          |
+| Statnett                                | 800MB | 30MB |       |           |         |          |                                          |
 
 - "FullModel" are files that have a standard `md:FullModel` structure. ENTSOE also has 7 `dm:DifferenceModel`
 - See next section for counting triples
 - See [Multipled Data](#multipled-data) for "multiplied"
-- "Stattnet" describes the actual Statnett grid, which is not public data. It's included only for comparison
+- "Statnett" describes the actual Statnett grid, which is not public data. It's included only for comparison
 
 ## Counting Triples
 ENTSO-E files are nested 2-3 levels deep in the folder hierarchy:

@@ -166,6 +166,8 @@ Tasks:
   - For now I make the latter two but don't copy `rdf`
 
 ## Turtle Serialization
+- https://github.com/Sveino/Inst4CIM-KG/issues/35 publish ap-voc as ttl
+
 What tool to use to format Turtle? Requirements:
 - Do it in a predictable way
 - The conversion should be stable, i.e. diff-friendly
@@ -1818,8 +1820,10 @@ Issues:
 - https://github.com/Sveino/Inst4CIM-KG/issues/25  Header: `Resource1 ... Resource13`?
   `eumd:Model1, eumd:Model2` are also bad prop names.
 - https://github.com/Sveino/Inst4CIM-KG/issues/69 merge and fix `DatasetMetadata, Header, FileHeader`
+- https://github.com/Sveino/Inst4CIM-KG/issues/116 CIMXML converting strategy
 - https://github.com/Sveino/Inst4CIM-KG/issues/122 mapping from `md, dm` to `dcat, dct, dcat-cim, prov`.
   This is the core mapping from `md, dm` to standard ontologies: `dcat, dct, dcat-cim, prov`.
+- https://github.com/Sveino/Inst4CIM-KG/issues/135 should we add type rdfg:Graph?
 
 See also [Represent Models as Named Graphs](../rdf-improvement#represent-models-as-named-graphs) in `rdf-improvement`.
 
@@ -2230,7 +2234,9 @@ select ?kind (count(*) as ?c) {
 | "Kind"      | 99 |
 | "TimePoint" | 40 |
 
-Subclass reasoning is required by SHACL. This is scattered in several places in the SHACL spec, so you have to follow this chain:
+Subclass reasoning is required by SHACL. See `shacl-improved` for more details.
+
+This is scattered in several places in the SHACL spec, so you have to follow this chain:
 - https://www.w3.org/TR/shacl/#x3.2-data-graph : 
   "The data graph is expected to include all the ontology axioms related to the data 
   and especially all the `rdfs:subClassOf` triples in order for SHACL to correctly identify **class targets** and validate **Core SHACL constraints**"

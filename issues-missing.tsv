@@ -1,8 +1,6 @@
 https://github.com/Sveino/Inst4CIM-KG/issues/100 shorten prop names in JSONLD?
 https://github.com/Sveino/Inst4CIM-KG/issues/101 represent instances as JSONLD
 https://github.com/Sveino/Inst4CIM-KG/issues/107 `First_Terminal, Second_Terminal` use unusual separator
-https://github.com/Sveino/Inst4CIM-KG/issues/113 deprecate `cims:AssociationUsed "No"` props (or even delete them?)
-https://github.com/Sveino/Inst4CIM-KG/issues/116 CIMXML converting strategy
 https://github.com/Sveino/Inst4CIM-KG/issues/119 multiple per-profile graphs in JSON-LD?
 https://github.com/Sveino/Inst4CIM-KG/issues/124 examine props-same-name-different-range for errors
 https://github.com/Sveino/Inst4CIM-KG/issues/125 fix props with multiple Ranges
@@ -10,15 +8,12 @@ https://github.com/Sveino/Inst4CIM-KG/issues/126 delete extraneous "source" file
 https://github.com/Sveino/Inst4CIM-KG/issues/127 What is the unit for `Money` props?
 https://github.com/Sveino/Inst4CIM-KG/issues/128 cost/price (xsd:decimal) props not defined as `dataType Money`
 https://github.com/Sveino/Inst4CIM-KG/issues/133 voc folder and image
-https://github.com/Sveino/Inst4CIM-KG/issues/134 `ENTSO-E_Test_Configurations_v3.0.2` defects
 https://github.com/Sveino/Inst4CIM-KG/issues/136 Mapping plain JSON to JSON-LD with LinkML
-https://github.com/Sveino/Inst4CIM-KG/issues/137 consider using SHACL Compact
 https://github.com/Sveino/Inst4CIM-KG/issues/139 avoid using abbreviatons in ontology terms
 https://github.com/Sveino/Inst4CIM-KG/issues/140 consider options for using SHACL on graphs
 https://github.com/Sveino/Inst4CIM-KG/issues/27 get rid of `profcim` Primitives
 https://github.com/Sveino/Inst4CIM-KG/issues/31 change some langString to string
 https://github.com/Sveino/Inst4CIM-KG/issues/34 define prefixes `uml` and `xsd`
-https://github.com/Sveino/Inst4CIM-KG/issues/35 publish ap-voc as ttl
 https://github.com/Sveino/Inst4CIM-KG/issues/47 remove spaces and lang tags from key values
 https://github.com/Sveino/Inst4CIM-KG/issues/51 Update NC profiles release 2.3.1
 https://github.com/Sveino/Inst4CIM-KG/issues/55 Representing datatypes in JSON-LD
@@ -33,8 +28,6 @@ https://github.com/Sveino/Inst4CIM-KG/issues/80 EIC linked data publication?
 https://github.com/Sveino/Inst4CIM-KG/issues/81 remove values like `other`
 https://github.com/Sveino/Inst4CIM-KG/issues/83 some literals that should be URLs
 https://github.com/Sveino/Inst4CIM-KG/issues/84 missing datatypes
-https://github.com/Sveino/Inst4CIM-KG/issues/87 bad relative URLs (need BASE or urn:uuid:)
 https://github.com/Sveino/Inst4CIM-KG/issues/91 generic identifiers (cim:Name)
 https://github.com/Sveino/Inst4CIM-KG/issues/96 coordinate props should be xsd:decimal
 https://github.com/Sveino/Inst4CIM-KG/issues/97 check out CDC
-https://github.com/Sveino/Inst4CIM-KG/issues/98 URL policy about MAS and BASE
