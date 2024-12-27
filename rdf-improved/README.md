@@ -18,9 +18,15 @@ This document describes proposed inprovements to the representation of CIM/CGMES
     - [Naive JSON-LD Graph Representation Attempt](#naive-json-ld-graph-representation-attempt)
     - [Nearly Correct JSON-LD Graph Representation](#nearly-correct-json-ld-graph-representation)
     - [Custom CIM XML Parser](#custom-cim-xml-parser)
-- [Instance Data Fixes](#instance-data-fixes)
-    - [Fix Resource URLs](#fix-resource-urls)
-    - [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
+- [CIM URIs and Resolvability](#cim-uris-and-resolvability)
+    - [Fix Under-defined Resource URLs](#fix-under-defined-resource-urls)
+    - [Resolvable Resource URLs or More Stable `urn:uuid`?](#resolvable-resource-urls-or-more-stable-urnuuid)
+    - [Resolvable Model (Graph) URLs?](#resolvable-model-graph-urls)
+    - [Global Semantic Resolution](#global-semantic-resolution)
+        - [Energy Identification Code](#energy-identification-code)
+        - [Energy Reference Data](#energy-reference-data)
+        - [UUIDs](#uuids)
+- [Add Datatypes To Instance Data](#add-datatypes-to-instance-data)
 - [Sample Instance Data](#sample-instance-data)
     - [Counting Triples](#counting-triples)
     - [Multipled Data](#multipled-data)
@@ -579,7 +585,7 @@ But there are still some problems:
 ## Custom CIM XML Parser
 https://github.com/Sveino/Inst4CIM-KG/issues/94 make custom CIM XML parser
 
-We need to  implement a custom CIM XML parser that handles `parseType="Statements"` and emits named graphs.
+We need to implement a custom CIM XML parser that handles `parseType="Statements"` and emits named graphs.
 
 [cim-trig.pl](cim-trig.pl) is a Perl script that converts CIM XML file to Trig (Turtle with graphs).
 It uses simple string manipulation rather than a XML parser, so it relies on a repeatable CIM XML layout as lines:
@@ -606,6 +612,8 @@ It generates new `urn:uuid` URIs for the reverse and forward models (using UUID 
 and adds named graphs to all model parts.
 In particular, model metadata is stored in the model graph,
 so it can be updated or deleted easily (eg by using the SPARQL Graph Protocol).
+
+It also sets a base to convert relative URLs to absolute URLs correctly (see next section).
 
 See test results in [test/trig](test/trig). Let's look at a couple of examples.
 
@@ -650,36 +658,200 @@ See test results in [test/trig](test/trig). Let's look at a couple of examples.
 }
 ```
 
-# Instance Data Fixes
+# CIM URIs and Resolvability
 
-## Fix Resource URLs
+## Fix Under-defined Resource URLs
 - https://github.com/Sveino/Inst4CIM-KG/issues/87 bad relative URLs (need BASE or `urn:uuid:`)
 - https://github.com/Sveino/Inst4CIM-KG/issues/98 URL policy about MAS and BASE
+- https://github.com/Sveino/Inst4CIM-KG/issues/143 use slash not hash in instance URLs (and remove parasitic underscore)
 
 The URLs of CIM power system resources are represented in CIM XML like this:
-- definition:
+- Definition:
   - `rdf:ID="_f37786d0-b118-4b92-bafb-326eac2a3877"`
   - or `rdf:about="#_f37786d0-b118-4b92-bafb-326eac2a3877"`
-- reference: `rdf:resource="#_44e63d79-6b05-4c64-b490-d181863af7da"`
+- Reference: `rdf:resource="#_44e63d79-6b05-4c64-b490-d181863af7da"`
 
-They have two problems:
+They have several problems:
+- These are relative URLs.
+  - However, CIM XML files don't specify `xml:base` (see RDF 1.1 XML Syntax, section [2.14 Abbreviating URIs: rdf:ID and xml:base](https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax-ID-xml-base)).
+  - This means the URLs are resolved in a tool-dependent way (e.g. by using the file location on local disk).
+  - This is a serious problem that undermines the interoperability and stability of resource URLs.
+  - We've resolved it by declaring `md:Model.modelingAuthoritySet` as BASE.
+  - This is fixed by the [cim-trig.pl](cim-trig.pl) script described in the previous section: see URL examples there.
+- They use trailing `#` (hash), which is added by `rdf:ID` by definition.
+  - Using hash is not a good idea for a large collection of resources if they would ever be **resolvable**
+    (which is the main reason for using URLs instead of URNs).
+  - A client doesn't send the part after the hash, so the server would have to return the complete collection of instances.
+- There is a parasitic `_` (underscore).
+  - The reason is that `rdf:ID` cannot start with a digit (but UUIDs can), see
+    - RDF 1.1 XML Syntax, section [C.1 RELAX NG Compact Schema](https://www.w3.org/TR/rdf-syntax-grammar/#h3_section-RELAXNG-Schema), `IDsymbol`
+    - XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes, section [3.4.4 NMTOKEN](https://www.w3.org/TR/xmlschema11-2/#NMTOKEN)
+    - Extensible Markup Language (XML) 1.1 (Second Edition) section [Nmtoken](https://www.w3.org/TR/xml11/#NT-Nmtoken)
+  - `rdf:about` could have been used instead of `rdf:ID` to avoid that limitation.
+  - This is a purely cosmetic problem but still annoying.
 
-These are relative URLs.
-- However, CIM XML files don't specify `xml:base` (see RDF 1.1 XML Syntax, section [2.14 Abbreviating URIs: rdf:ID and xml:base](https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax-ID-xml-base)).
-- This means the URLs are resolved in a tool-dependent way (e.g. by using the file location on local disk).
-- This is a serious problem that undermines the stability of resource URLs.
-- We've resolved it by declaring `md:Model.modelingAuthoritySet` as BASE.
-- This is fixed by the `cim-trig.pl` script described above: see URL examples in the previous section.
+The last two problems cannot be fixed in CIM XML because of `rdf:ID`.
+- They could be fixed in `cim-trig.pl` by rewriting URLs in the resulting Trig.
+- That will lead to an inconsistency with regards to CIM XML URLs.
+- But those URLs are under-defined (because of lacking `xml:base`), so I think we should do these fixes as well.
 
-They start with a parasitic `_`.
-- The reason is that `rdf:ID` cannot start with a digit, see
-  - RDF 1.1 XML Syntax, section [C.1 RELAX NG Compact Schema](https://www.w3.org/TR/rdf-syntax-grammar/#h3_section-RELAXNG-Schema), `IDsymbol`
-  - XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes, section [3.4.4 NMTOKEN](https://www.w3.org/TR/xmlschema11-2/#NMTOKEN)
-  - Extensible Markup Language (XML) 1.1 (Second Edition) section [Nmtoken](https://www.w3.org/TR/xml11/#NT-Nmtoken)
-- `rdf:about` could have been used instead of `rdf:ID` to avoid that limitation.
-- This is a purely cosmetic problem and we leave it as is.
+## Resolvable Resource URLs or More Stable `urn:uuid`?
+Although important resources have Energy Identification Codes (EIC), all resource URIs are based on UUIDs.
+In CIM XML these URIs are under-defined URLs, and the previous section describes how to fix this by setting `xml:base`.
 
-## Add Datatypes To Instance Data
+- https://github.com/Sveino/Inst4CIM-KG/issues/98 URL policy about MAS and BASE.
+
+This issue also discusses a desire for CIM data to be resolvable, following Linked Data principles.
+The benefits of such resolution are that one can fetch:
+- Up to date information on-demand
+- Data at a granularity chosen by the client not the server
+
+For example, the complete Norwegian grid model is 800Mb 
+and it is transferred multiple times per day between electricity authorities.
+If semantic resolution was available, this could be done in smaller portions, 
+and at different frequencies for different resources.
+
+**Resources** are real-world things (eg transmission lines, power stations) 
+and some of them are managed jointly by more than one authority.
+CIM records actual or hypothetical information about resources in **Models**,
+and the same resource may appear in multiple models.
+The same resource should have the same URL, regardless in how many models or profiles it appears.
+
+So resource URLs can be made resolvable only after careful consideration:
+- Each Modeling Authority should be careful about the selection and stability of its URLs
+- Resource URLs should not include profile names or model versions
+
+The above issue records some sound critique:
+- CIM XML models include a single `ModelAuthoritySet` (MAS).
+  That MAS is currently used by `cim-trig.pl` as the namespace (base) for **all resource** URLs involved in the model.
+  But as outlined above, resource URLs should be model-independent.
+  Therefore a TSO should adopt a **single MAS** for all its models, which may be infeasible.
+- Relying solely on MAS as a stable base seems too restrictive 
+  and may lead to long-term stability, maintenance and consistency problems as domains and schemes inevitably evolve.
+- Using resource URLs instead of URNs may endanger the stability of CIM URIs due to:
+  - TSO changes over time
+  - Different URL policies/approaches by different TSOs, or different departments of the same TSO
+  - Boundary and merged profiles tend to require different MAS
+  - Current CGMES recommended practice is for SV and DL profiles not to have any MAS
+
+In addition, making CIM resources resolvable is perhaps not a valid goal.
+- Statements about the same resource may be located in multiple models (named graphs).
+- While it is possible to return resource data as quads and include all statements about the resource, 
+  that is unusual and may be too granular and not a useful CIM response.
+- The reason is that the unit of exchange in CIM is the model, which leads to the next section
+
+In conclusion, it seems better to reformat instance URIs to use `urn:uuid:` instead of URLs.
+
+## Resolvable Model (Graph) URLs?
+The unit of data exchange in CIM is the **model**.
+A model includes all statements relevant to a power system analytics task.
+- It may also refer to other required models using `Model.DependentOn`
+- In the case of a DifferenceModel, it also refers to `Model.Supersedes` (base model),
+  `reverseDifferences` and `forwardDifferences` (statements to be deleted/inserted).
+
+Currently CIM XML uses `urn:uuid` for models, but `urn:uuid` does not facilitate resolution
+(barring a central authority that would track all model URIs minted by any authority, which is unfeasible).
+
+As explained above, we represent models as named graphs.
+One can use the [SPARQL 1.1 Graph Store HTTP Protocol](https://www.w3.org/TR/sparql11-http-rdf-update/) to resolve graph URLs and return data:
+see [Direct Graph Identification](https://www.w3.org/TR/sparql11-http-rdf-update/#direct-graph-identification). 
+
+## Global Semantic Resolution
+
+- https://github.com/Sveino/Inst4CIM-KG/issues/144 Global semantic resolver for electrical data
+
+To enable semantic resolution of electricity-related URLs, there are two options:
+- Each authority (TSO or other issuer of CIM data) designs and maintains its own namespace.
+  Resolution is based solely on the internet's Domain Name System.
+- A global resolver (operated e.g. by ENTSO-E) maintains a single harmonized namespace that redirects (delegates) to specific authorities.
+  The benefit is that the central resolver can enforce a stable naming policy 
+  that will keep URLs stable in the face of TSO changes.
+
+Global resolution strategies are already used by multiple communities:
+- **Publishing: DOIs**: eg https://dx.doi.org/10.13140/RG.2.2.33957.10729 .
+  The delegation is done based on DOI prefix, see [P1662](https://www.wikidata.org/wiki/Property:P1662) on Wikidata.
+  Eg `10.13140` above designates `DataCite` (which serves as registrant on behalf of `ResearchGate`). 
+  The DOI Foundation also keeps registrant pages, eg https://dx.doi.org/10.13140 .
+- **Internet: IP addresses**:
+  IANA and national agencies (like ARIN for USA and Canada) allocate IP addresses in blocks,
+  which are further subdivided by the IP registrant.
+  IPs are a fixed number of bits and don't include a separator, 
+  so bigger registrants get shorter prefixes and are allocated bigger network blocks.
+- **Web ID**: https://w3id.org/ by the W3C Permanent Identifiers Community Group
+  is a permalink resolver implemented as a simple Apache web server with `.htaccess` files.
+  These files are managed in a decentralized manner using the [perma-id/w3id.org](https://github.com/perma-id/w3id.org/) Github repo and pull requests.
+  Identifiers are allocated on a first-come-first-served basis.
+  - See [examples](https://github.com/perma-id/w3id.org/tree/master/examples) for a detailed description
+  - See [example](https://github.com/perma-id/w3id.org/tree/master/example) for publishing an ontology
+  - See [lbd/aec3po](https://github.com/perma-id/w3id.org/tree/master/lbd/aec3po) for publishing the Architecture, Engineering and Construction Compliance Checking and Permitting ontology (AEC3PO) at a permanent URL under the Linked Building Data group.
+    https://w3id.org/lbd/aec3po currently resolves to https://ci.mines-stetienne.fr/aec3po/ ,
+    but if that university is unable to provide the resource at some future point,
+    another partner can pick up the hosting, requiring only a simple change in Github.
+- **Logistics: GS1 Digital Links** based on identifiers like GTIN, GLN, GIAI etc: 
+  eg https://id.gs1.org/gtin/9506000134352?linkType=all . 
+  The delegation is based on GS1 Company Prefix, see [P3193](https://www.wikidata.org/wiki/Property:P3193) on Wikidata.
+  GTIN etc are fixed-width, so similarly to IP addresses, bigger registrants get shorter prefixes.
+  Eg `95060001343` above is one of the prefixes for "GS1 Global Office" (search at [gs1-company-database-gepir](https://www.gs1us.org/tools/gs1-company-database-gepir)),
+  and `52` is an example product type within this prefix.
+- **Legal Entity Identifiers**: e.g. [5967007LIEEXZXHAI017](https://search.gleif.org/#/record/5967007LIEEXZXHAI017) is Statnett
+  and the LEI is issued by [5299000J2N45DDNE4Y28](https://search.gleif.org/#/record/5299000J2N45DDNE4Y28) WM Datenservice 
+  based on Statnett's national registration with the Brønnøysund Register Centre
+  GLEIF delegates LEI issuance to licensed Local Operating Units (LOUs).
+  But rather than delegating the resolution, it keeps a central LEI database that is synchronized often with LOU data.
+- **EU Semantic Resources**, e.g. European Agency for Railways [ERA Ontology](https://linkedvocabs.org/data/era-ontology/3.1.0/doc/index-en.html)
+  has the semantic URL http://data.europa.eu/949/ , e.g. http://data.europa.eu/949/AggregatedObject .
+  (Note: the semantic URL currently does not resolve nicely, but ERA has plans to make the resolution better).
+  URL allocation is based on a numeric prefix (eg `949`) and delegation is managed by the EU Publications Office.
+ 
+For more examples, see the Wikipedia articles on
+[Persistent identifier](https://en.wikipedia.org/wiki/Persistent_identifier), [Permalink](https://en.wikipedia.org/wiki/Permalink), [PURL](https://en.wikipedia.org/wiki/Persistent_Uniform_Resource_Locator "Persistent Uniform Resource Locator"), [Handle](https://en.wikipedia.org/wiki/Handle_System "Handle System"), and [DOI](https://en.wikipedia.org/wiki/Digital_Object_Identifier "Digital Object Identifier").
+ 
+### Energy Identification Code
+What is the situation regarding permanent URLs in electricity:
+
+ENTSO-E has defined the Energy Identification Code (EIC), 
+eg see [P8645](https://www.wikidata.org/wiki/Property:P8645) on Wikidata and [Energy Identification Code](https://en.wikipedia.org/wiki/Energy_Identification_Code) on Wikipedia.
+- ENTSO-E delegates EIC issuance to Local Issuing Offices (LIOs). As of 2024-12-17, there are [62 LIOs](https://www.entsoe.eu/data/energy-identification-codes-eic/#eic-lio-websites).
+- ENTSO-E keeps a central database:
+  - https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/ lists 59.5k (select "EIC type: All codes" and "Show: 100")
+  - https://transparency.ontotext.com/graphdb/sparql (ask for login) lists 58.6k with this SPARQL query
+```sparql
+PREFIX tr: <https://transparency.ontotext.com/resource/tr/>
+select (count(*) as ?c) {?x tr:eic ?y} 
+```
+- However, the central database doesn't offer individually resolvable pages per EIC. Furthermore, it is incomplete. 
+ - The Wikidata page lists over 20 "source website for the property", and eg for https://iodb.elia.be/en/publiceiclist/indexpartialview the first two EIC `22T20160907---1Y, 22T20160907----1` are missing. These are "Internal Lines" but other Internal Lines are present in the central database
+  - ENTSO-G https://www.entsog.eu/approved-codes refers to the ENTSO-E list, but my impression is that Gas-related codes are more sparsely represented in the central database
+- The first two EIC chars are the LIO code so potentially could be used for redirecting. 
+However, LIOs don't have an obligation to publish resolvable pages; the [EIC Reference Manual](https://eepublicdownloads.entsoe.eu/clean-documents/EDI/Library/EIC_Reference_Manual_Release_5_5.pdf#page=8.74) only mandates:
+  - to provide a local registry on a web-page accessible by third parties. The LIO publishes the energy sector (gas or electricity or both) and the EIC code types that it covers;
+  - to publish the list of all EIC codes allocated by the LIO in a processable form according to the EIC implementation guide that can be downloaded by third party
+
+### Energy Reference Data
+
+https://energy.referencedata.eu/ currently has a number of important lists, but no per-resource resolution.
+- It serves whole semantic files, eg https://energy.referencedata.eu/StandardReasonCodeTypeList.ttl
+- Needless to say, the EIC register https://energy.referencedata.eu/EIC.ttl is pretty huge.
+
+### UUIDs
+
+CIM/CGMES requires that node URNs are based on UUIDs. 
+- EICs of major resources are recorded as additional identifiers
+- But the main (canonical) mRID is based on UUID
+- UUIDs don't have a prefix that would allow partitioning/delegation, which makes global resolution problematic
+  (barring a central authority that would track all resource or model URIs minted by any authority, which is unfeasible)
+
+So we would need to rely on some URL prefix before the UUID to enable resolution.
+ENTSO-E could operate a central resolver and redirect per prefix:
+- For example
+  - `https://energy.referencedata.eu/model/statnett/<uuid>` vs 
+  - `https://energy.referencedata.eu/model/elia/<uuid>`
+- This is bit better than relying on TSO-specific namespaces, eg
+  - `http://data.statnett.no/<uuid>` vs
+  - `https://iodb.elia.be/<uuid>`
+- Of course, it's still up to authorities to serve meaningful data for these URLs
+
+# Add Datatypes To Instance Data
 https://github.com/Sveino/Inst4CIM-KG/issues/49 Add Datatypes To Instance Data
 
 In CGMES instance data, all literals are strings, but should be marked with the appropriate datatype.
