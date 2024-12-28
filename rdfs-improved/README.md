@@ -1,11 +1,11 @@
-# Improvements to CIM and CGMES RDFS Representation 
+# Improvements to CIM and CGMES RDFS Representation
 
 This document describes proposed inprovements to the representation of CIM/CGMES ontologies.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-- [Improvements to CIM and CGMES RDFS Representation ](#improvements-to-cim-and-cgmes-rdfs-representation)
+- [Improvements to CIM and CGMES RDFS Representation](#improvements-to-cim-and-cgmes-rdfs-representation)
     - [Source Files](#source-files)
     - [Folders](#folders)
     - [Files](#files)
@@ -64,6 +64,12 @@ This document describes proposed inprovements to the representation of CIM/CGMES
         - [Duplicated Terms](#duplicated-terms)
         - [Duplication Summary](#duplication-summary)
         - [Add rdfs:isDefinedBy](#add-rdfsisdefinedby)
+    - [Avoid Abbreviations in Ontology Terms](#avoid-abbreviations-in-ontology-terms)
+    - [Avoid Overly Specific Properties](#avoid-overly-specific-properties)
+        - [Shorten Prop Names](#shorten-prop-names)
+        - [Shorten Prop Names in JSON-LD](#shorten-prop-names-in-json-ld)
+        - [Props with Same Name but Different Characteristics](#props-with-same-name-but-different-characteristics)
+        - [Other Overly-Specific Props](#other-overly-specific-props)
     - [Namespaces and Prefixes](#namespaces-and-prefixes)
         - [Mis-defined Prefixes](#mis-defined-prefixes)
         - [Too Many Prefixes](#too-many-prefixes)
@@ -92,9 +98,9 @@ We start from these RDFS renditions, which are the latest versions of CIM/CGMES 
 
 ## Folders
 This folder has the following subfolders:
-- CGMES: CIM/CGMES ontologies, with all [Fixes](#fixes) applied, as Turtle and JSON-LD. 
+- CGMES: CIM/CGMES ontologies, with all [Fixes](#fixes) applied, as Turtle and JSON-LD.
   Based on v3.0 in the RDFS2020 rendition
-- CGMES-NC: NC (network code) ontologies, with all [Fixes](#fixes) applied, as Turtle and JSON-LD. 
+- CGMES-NC: NC (network code) ontologies, with all [Fixes](#fixes) applied, as Turtle and JSON-LD.
   Based on r2.3 in the RDFS2020 rendition
 - datatypes: analysis of [Property Datatype Maps](#property-datatype-maps)
   - datatypes-older.tsv
@@ -109,7 +115,7 @@ This folder has the following files:
 - duplicated-definitions.txt: terms duplicated across ontologies, see [Duplicated Definitions](#duplicated-definitions)
 - duplicated-terms.txt: terms duplicated across ontologies, see [Duplicated Terms](#duplicated-terms)
 - fix-namespaces.pl: convert ontology namespaces from old to new versions
-- fix-all.ru: various ontology [Fixes](#fixes) implemented as SPARQL Updates. 
+- fix-all.ru: various ontology [Fixes](#fixes) implemented as SPARQL Updates.
   It's the concatenation of the following files (see [Fix Ordering and List](#fix-ordering-and-list)):
   - fix01-whitespace-6.ru
   - fix02-datatypes-74.ru
@@ -262,15 +268,15 @@ https://github.com/Sveino/Inst4CIM-KG/issues/99
 
 To produce good JSON-LD serialization of the ontologies, we use the experience from [GS1 EPCIS](https://github.com/gs1/EPCIS), see [Ontology#conversion-to-jsonld](https://github.com/gs1/EPCIS/tree/master/Ontology#conversion-to-jsonld).
 We have considered several tools, and use the first two:
-- [ttl2jsonld](https://github.com/frogcat/ttl2jsonld). 
+- [ttl2jsonld](https://github.com/frogcat/ttl2jsonld).
   Install with: `npm install -g @frogcat/ttl2jsonld`
   - Pro: converts Turtle to JSON-LD, preserves order
   - Pro (if needed): emits lists in short-hand
     - eg `"@type":"owl:Class", "owl:unionOf":{"@list":[{"@id":"Class1"}, {"@id":"Class2"}]}}}`
   - Cons: generates a simple context using only the Turtle prefixes
   - Cons: can't specify a custom context
-- [jsonld-cli](https://github.com/digitalbazaar/jsonld-cli). 
-  It's the same code that drives the [JSON-LD Playground](https://json-ld.org/playground).  
+- [jsonld-cli](https://github.com/digitalbazaar/jsonld-cli).
+  It's the same code that drives the [JSON-LD Playground](https://json-ld.org/playground).
   Install with: `npm install -g jsonld-cli`.
   See [gs1/EPCIS#jsonld-cli](https://github.com/gs1/EPCIS/blob/master/Turtle/README.md#jsonld-cli) for further advice.
   - Cons: can't convert Turtle to JSON-LD, see [digitalbazaar/jsonld-cli#19](https://github.com/digitalbazaar/jsonld-cli/issues/19)
@@ -313,7 +319,7 @@ It consists of two sections:
 - Then we define property characteristics, so the instance data can carry pure values, rather than having to repeat these characteristics. Notes:
   - We have shown only one example per namespace per characteristic. See the full file for all props.
   - `"@type": "@id"` declares an object property
-  - `"@type": "xsd:date"` declares a data property with the specified datatype 
+  - `"@type": "xsd:date"` declares a data property with the specified datatype
   - `"@language": "en"` results in a `langString` with that lang tag
 ```json
   "cim:unitMultiplier"          : {"@type": "@id"},
@@ -334,7 +340,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/110
 It is important to deploy `CIM-ontology-context.jsonld` at a network location.
 - The first cut was done with a local file file://CIM-ontology-context.jsonld .
   The output includes the same relative URL, which is not good.
-- We cannot use github directly 
+- We cannot use github directly
   (https://github.com/Sveino/Inst4CIM-KG/raw/refs/heads/develop/rdfs-improved/CIM-ontology-context.jsonld)
   because it doesn't serve the appropriate content type
 - So we currently use rawgit2 (https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld),
@@ -632,7 +638,8 @@ grep -h Enumeration */*/* |sort|uniq -c
 Remove these parasitic `Enumeration` classes.
 
 ## Wrong Declaration of Enumerations
-https://github.com/Sveino/Inst4CIM-KG/issues/7
+- https://github.com/Sveino/Inst4CIM-KG/issues/7 Wrong Declaration of Enumerations 
+- https://github.com/3lbits/CIM4NoUtility/issues/355 problems with semantic definition of enumerations
 
 All enumerations are declared like this:
 ```ttl
@@ -654,7 +661,8 @@ This way you mark the nature of the class without adding every instance under `c
 Instances already have `cims:isenum "True"`.
 
 ## Fix Representation of NamedIndividuals
-https://github.com/Sveino/Inst4CIM-KG/issues/45
+- https://github.com/Sveino/Inst4CIM-KG/issues/45 Fix Representation of NamedIndividuals
+- https://github.com/3lbits/CIM4NoUtility/issues/355 problems with semantic definition of enumerations
 
 This query finds 554 individuals (all CIM individuals have these 3 characteristics)
 ```ttl
@@ -680,7 +688,7 @@ So we want to change this to:
 cim:AsynchronousMachineKind.generator a cim:AsynchronousMachineKind ;
   rdfs:label "generator "@en ;
   skos:definition "The Asynchronous Machine is a generator."@en ;
-  ssh:isenum "True" .
+  cims:stereotype "enum" .
 ```
 
 ## Mis-declared Packages
@@ -1156,11 +1164,12 @@ Such cardinalities are reflected in SHACL, but `cims:multiplicity`  gives easier
 ## QuantityKinds and Units of Measure
 Several issues express the same set of problems:
 - https://github.com/Sveino/Inst4CIM-KG/issues/29 proposal to change representation of attributes and units (a subset of the next issue)
-- https://github.com/Sveino/Inst4CIM-KG/issues/38 Datatypes and Units of Measure 
+- https://github.com/Sveino/Inst4CIM-KG/issues/38 Datatypes and Units of Measure
 - https://github.com/Sveino/Inst4CIM-KG/issues/46 fix representation of All QuantityKinds and Units
-- https://github.com/3lbits/CIM4NoUtility/issues/338 leverage QUDT to represent quantity kinds and units 
+- https://github.com/3lbits/CIM4NoUtility/issues/338 leverage QUDT to represent quantity kinds and units
 
-CGMES datatype properties are defined like this (`# new` shows the new style`):
+CGMES datatype properties are defined like this.
+The main column shows the "RDFS2020" style, and `# new` shows the "RDFSEd2Beta" style (it has some omissions, so we don't use it):
 
 ```ttl
 cim:ACDCConverter.baseS a rdf:Property;       # new: owl:FunctionalProperty , owl:DatatypeProperty ;
@@ -1197,7 +1206,7 @@ There are numerous problems:
 - `cim:ApparentPower` is a class, and datatype properties cannot point to a class
 - `cim:ApparentPower` is not used in any CGMES instance data
 - In CGMES instance data, `ACDCConverter.baseS` is a string, but should be marked as `^^xsd:float`
-- The meta-properties `eq:isCIMDatatype, eq:isFixed` use profile dataspaces rather than `cims`
+- The meta-properties `eq:isCIMDatatype, eq:isFixed` use per-profile dataspaces rather than `cims:`
 - The key value "True " is spelled with a space for `multiplier, unit`
 
 CIM defines a large set of units of measure, eg:
@@ -1225,19 +1234,20 @@ cim:UnitMultiplier.M a a cim:UnitMultiplier;                         # new: owl:
 - But they are not used: eg `cim:ApparentPower.unit` says it has `rdfs:range cim:UnitSymbol`, but uses a string value "VA". Same for `cim:ApparentPower.multiplier`
 - `cim:UnitSymbol.VA` uses a different label `rdfs:label "VA "@en`, which has two mistakes:
   - Trailing space
-  - lang tag `@en` (in fact it's a SI symbol that has no language)
+  - lang tag `@en` (in fact that is a SI symbol that has no language)
 - `cim:UnitSymbol.VA` wrongly says `a owl:Thing; rdfs:domain cim:UnitSymbol`.
   - Instead it should say `a cim:UnitSymbol`.
 - Similar problems apply to `cim:UnitMultiplier.M`, and:
   - It doesn't express the multiplier as a number `1e6` but only as a string `"Mega 10**6"`
 
 ### Fixed Units Representation
-We want to fix the representation as follows, and also connect to QUDT (see https://github.com/qudt/qudt-public-repo/issues/969) .
-To be clear, this below is just a blueprint, which parts of it will be implemented and where is still for discussion.
+We want to fix the representation as follows, and also connect to QUDT (see https://github.com/qudt/qudt-public-repo/issues/969 ).
 
-First we correct the property: give a numeric range,
-but also specify `hasQuantityKind` and `hasUnit` using `qudt` props.
-We link to a global QUDT unit, but also give the multiplier and unitSymbol separately, using `cims` props:
+First we correct the property:
+- Declare it `DatatypeProperty` and give it a simple numeric range
+- But also specify `hasQuantityKind` and `hasUnit` using `qudt:` props
+- Link to a global QUDT unit, but also give the multiplier and unitSymbol separately, using `cims:` props
+- Keep the CIM-specific quantity kind since it often has a more electricity-specific description than is available in QUDT
 ```ttl
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
@@ -1271,7 +1281,7 @@ because they are replaced by universal props `cim:multiplier, cim:unitSymbol` re
 We delete `cim:ApparentPower.value` because the actual DatatypeProperty `cim:ACDCConverter.baseS`
 now carries a number (`xsd:float`).
 Please note that some classes have actual DatatypeProperties named `.value`.
-We keep those, although in some cases the domain class doesn't have any more data so we could skip it, eg:
+We keep those, although in some cases the domain class doesn't have any more fields so we could skip it, eg:
 ```ttl
 cim:ActivePowerLimit.value a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "value"@en ;
@@ -1318,7 +1328,6 @@ cim:UnitMultiplier.M a cim:UnitMultiplier;
   skos:exactMatch prefix:Mega.
 ```
 
-
 CIM has a "none" multipler:
 ```ttl
 cim:UnitMultiplier.none a cim:UnitMultiplier ;
@@ -1330,8 +1339,7 @@ cim:UnitMultiplier.none a cim:UnitMultiplier ;
   `cim:<QuantityKind>.multiplier/cims:isFixed="none"`
 - QUDT better follows the semantic web principle that when some data is missing or doesn't apply, you don't need to state it:
   it doesn't have something like `prefix:One`.
-- But we'll follow CIM and use the `cim:UnitMultiplier.none` as given
-
+- But we'll follow CIM and use `cim:UnitMultiplier.none` as given
 
 ### Property Datatype Maps
 The previous section defines how we want to correct units, but where can we find the datatypes to use?
@@ -1347,7 +1355,7 @@ There are several approaches/resources that may help us:
   - It maps 3101 properties and is identical to the above one.
 - After mapping CIM datatypes (https://github.com/Sveino/Inst4CIM-KG/issues/74 )
   and fixing the representation of data props with units (https://github.com/Sveino/Inst4CIM-KG/issues/38 )
-  we extract [datatypes-actual.tsv](datatypes/datatypes-actual.tsv) with this query. 
+  we extract [datatypes-actual.tsv](datatypes/datatypes-actual.tsv) with this query.
   It includes NC and maps 3704 props (was 3712 in an older version):
 ```sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -1438,8 +1446,8 @@ There are 30 QuantityKinds in use:
 - Inductance
 - Length
 - Money
-- PU
-- PerCent
+- PU ("per unit", dimensionless)
+- PerCent (1/100 of PU, dimensionless)
 - Pressure
 - Reactance
 - ReactivePower
@@ -1490,49 +1498,49 @@ We see that the data agrees between old and new style
 
 We add corresponding QUDT resources (last 3 columns):
 
-| qk                            | mult   | uom       | range       | new range   | QuantityKind                           | Unit                        | unit match      |
-|-------------------------------|--------|-----------|-------------|-------------|----------------------------------------|-----------------------------|-----------------|
-| cim:ActivePower               | "M"    | "W"       | cim:Float   | xsd:float   | quantitykind:ActivePower               | unit:MegaW                  | skos:exactMatch |
-| cim:ActivePowerChangeRate     | "M"    | "WPers"   | cim:Float   |             | quantitykind:ActivePowerChangeRate     | unit:MegaW-PER-SEC          | skos:exactMatch |
-| cim:ActivePowerPerCurrentFlow | "M"    | "WPerA"   |             | xsd:float   | quantitykind:ActivePowerPerCurrentFlow | unit:MegaW-PER-A            | skos:exactMatch |
-| cim:ActivePowerPerFrequency   | "M"    | "WPerHz"  |             | xsd:float   | quantitykind:ActivePowerPerFrequency   | unit:MegaW-PER-HZ           | skos:exactMatch |
-| cim:AngleDegrees              | "none" | "deg"     | cim:Float   | xsd:float   | quantitykind:Angle                     | unit:DEG                    | skos:exactMatch |
-| cim:AngleRadians              | "none" | "rad"     |             | xsd:float   | quantitykind:Angle                     | unit:RAD                    | skos:exactMatch |
-| cim:ApparentPower             | "M"    | "VA"      | cim:Float   | xsd:float   | quantitykind:ApparentPower             | unit:MegaV-A                | skos:exactMatch |
-| cim:Area                      | "none" | "m2"      |             | xsd:float   | quantitykind:Area                      | unit:M2                     | skos:exactMatch |
-| cim:Capacitance               | "none" | "F"       |             | xsd:float   | quantitykind:Capacitance               | unit:FARAD                  | skos:exactMatch |
-| cim:Conductance               | "none" | "S"       |             | xsd:float   | quantitykind:Conductance               | unit:S                      | skos:exactMatch |
-| cim:CurrentFlow               | "none" | "A"       | cim:Float   | xsd:float   | quantitykind:ElectricCurrent           | unit:A                      | skos:exactMatch |
-| cim:Frequency                 | "none" | "Hz"      | cim:Float   | xsd:float   | quantitykind:Frequency                 | unit:HZ                     | skos:exactMatch |
-| cim:Impedance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Inductance                | unit:OHM                    | skos:exactMatch |
-| cim:Length                    | "k"    | "m"       |             | xsd:float   | quantitykind:Length                    | unit:KiloM                  | skos:exactMatch |
-| cim:Money                     | "none" |           | cim:Decimal | xsd:decimal | quantitykind:Currency                  |                             | skos:exactMatch |
-| cim:PU                        | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio        |                             |                 |
-| cim:PerCent                   | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio        | unit:PERCENT                | skos:exactMatch |
-| cim:Pressure                  | "k"    | "Pa"      | cim:Float   |             | quantitykind:Pressure                  | unit:KiloPA                 | skos:exactMatch |
-| cim:Reactance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Reactance                 | unit:OHM                    | skos:exactMatch |
-| cim:ReactivePower             | "M"    | "VAr"     | cim:Float   | xsd:float   | quantitykind:ReactivePower             | unit:MegaV-A_Reactive       | skos:exactMatch |
-| cim:RealEnergy                | "M"    | "Wh"      | cim:Float   | xsd:float   | quantitykind:Energy                    | unit:MegaW-HR               | skos:exactMatch |
-| cim:Resistance                | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Resistance                | unit:OHM                    | skos:exactMatch |
-| cim:RotationSpeed             | "none" | "Hz"      | xsd:float   |             | quantitykind:AngularVelocity           | unit:REV-PER-SEC            | skos:narrower   |
-| cim:Seconds                   | "none" | "s"       | cim:Float   | xsd:float   | quantitykind:Time                      | unit:SEC                    | skos:exactMatch |
-| cim:Susceptance               | "none" | "S"       |             | xsd:float   | quantitykind:Susceptance               | unit:S                      | skos:exactMatch |
-| cim:Temperature               | "none" | "degC"    | cim:Float   | xsd:float   | quantitykind:Temperature               | unit:DEG_C                  | skos:exactMatch |
-| cim:Voltage                   | "k"    | "V"       | cim:Float   | xsd:float   | quantitykind:Voltage                   | unit:KiloV                  | skos:exactMatch |
-| cim:VoltagePerReactivePower   | "k"    | "VPerVAr" | cim:Float   | xsd:float   | quantitykind:VoltagePerReactivePower   | unit:KiloV-PER-V-A_Reactive | skos:exactMatch |
-| cim:VolumeFlowRate            | "none" | "m3Pers"  |             | xsd:float   | quantitykind:VolumeFlowRate            | unit:M3-PER-SEC             | skos:exactMatch |
+| qk                            | mult   | uom       | range       | new range   | QuantityKind                               | Unit                        | unit match      |
+|-------------------------------|--------|-----------|-------------|-------------|--------------------------------------------|-----------------------------|-----------------|
+| cim:ActivePower               | "M"    | "W"       | cim:Float   | xsd:float   | quantitykind:ActivePower                   | unit:MegaW                  | skos:exactMatch |
+| cim:ActivePowerChangeRate     | "M"    | "WPers"   | cim:Float   |             | (*) quantitykind:ActivePowerChangeRate     | unit:MegaW-PER-SEC          | skos:exactMatch |
+| cim:ActivePowerPerCurrentFlow | "M"    | "WPerA"   |             | xsd:float   | (*) quantitykind:ActivePowerPerCurrentFlow | unit:MegaW-PER-A            | skos:exactMatch |
+| cim:ActivePowerPerFrequency   | "M"    | "WPerHz"  |             | xsd:float   | (*) quantitykind:ActivePowerPerFrequency   | unit:MegaW-PER-HZ           | skos:exactMatch |
+| cim:AngleDegrees              | "none" | "deg"     | cim:Float   | xsd:float   | quantitykind:Angle                         | unit:DEG                    | skos:exactMatch |
+| cim:AngleRadians              | "none" | "rad"     |             | xsd:float   | quantitykind:Angle                         | unit:RAD                    | skos:exactMatch |
+| cim:ApparentPower             | "M"    | "VA"      | cim:Float   | xsd:float   | quantitykind:ApparentPower                 | unit:MegaV-A                | skos:exactMatch |
+| cim:Area                      | "none" | "m2"      |             | xsd:float   | quantitykind:Area                          | unit:M2                     | skos:exactMatch |
+| cim:Capacitance               | "none" | "F"       |             | xsd:float   | quantitykind:Capacitance                   | unit:FARAD                  | skos:exactMatch |
+| cim:Conductance               | "none" | "S"       |             | xsd:float   | quantitykind:Conductance                   | unit:S                      | skos:exactMatch |
+| cim:CurrentFlow               | "none" | "A"       | cim:Float   | xsd:float   | quantitykind:ElectricCurrent               | unit:A                      | skos:exactMatch |
+| cim:Frequency                 | "none" | "Hz"      | cim:Float   | xsd:float   | quantitykind:Frequency                     | unit:HZ                     | skos:exactMatch |
+| cim:Impedance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Inductance                    | unit:OHM                    | skos:exactMatch |
+| cim:Length                    | "k"    | "m"       |             | xsd:float   | quantitykind:Length                        | unit:KiloM                  | skos:exactMatch |
+| cim:Money                     | "none" |           | cim:Decimal | xsd:decimal | quantitykind:Currency                      |                             | skos:exactMatch |
+| cim:PU                        | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio            |                             |                 |
+| cim:PerCent                   | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio            | unit:PERCENT                | skos:exactMatch |
+| cim:Pressure                  | "k"    | "Pa"      | cim:Float   |             | quantitykind:Pressure                      | unit:KiloPA                 | skos:exactMatch |
+| cim:Reactance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Reactance                     | unit:OHM                    | skos:exactMatch |
+| cim:ReactivePower             | "M"    | "VAr"     | cim:Float   | xsd:float   | quantitykind:ReactivePower                 | unit:MegaV-A_Reactive       | skos:exactMatch |
+| cim:RealEnergy                | "M"    | "Wh"      | cim:Float   | xsd:float   | quantitykind:Energy                        | unit:MegaW-HR               | skos:exactMatch |
+| cim:Resistance                | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Resistance                    | unit:OHM                    | skos:exactMatch |
+| cim:RotationSpeed             | "none" | "Hz"      |             | xsd:float   | quantitykind:AngularVelocity               | unit:REV-PER-SEC            | skos:narrower   |
+| cim:Seconds                   | "none" | "s"       | cim:Float   | xsd:float   | quantitykind:Time                          | unit:SEC                    | skos:exactMatch |
+| cim:Susceptance               | "none" | "S"       |             | xsd:float   | quantitykind:Susceptance                   | unit:S                      | skos:exactMatch |
+| cim:Temperature               | "none" | "degC"    | cim:Float   | xsd:float   | quantitykind:Temperature                   | unit:DEG_C                  | skos:exactMatch |
+| cim:Voltage                   | "k"    | "V"       | cim:Float   | xsd:float   | quantitykind:Voltage                       | unit:KiloV                  | skos:exactMatch |
+| cim:VoltagePerReactivePower   | "k"    | "VPerVAr" | cim:Float   | xsd:float   | (*) quantitykind:VoltagePerReactivePower   | unit:KiloV-PER-V-A_Reactive | skos:exactMatch |
+| cim:VolumeFlowRate            | "none" | "m3Pers"  |             | xsd:float   | quantitykind:VolumeFlowRate                | unit:M3-PER-SEC             | skos:exactMatch |
 
+Notes:
 - `cim:VoltagePerReactivePower` uses two multipliers, which is inconsistent: https://github.com/Sveino/Inst4CIM-KG/issues/77
-
-We need to submit a MR to QUDT for these new QuantityKinds and Units (https://github.com/qudt/qudt-public-repo/issues/970 ) :
+- (*) We need to submit a MR to QUDT for these new QuantityKinds and Units (https://github.com/qudt/qudt-public-repo/issues/970 and listed below):
 - Note: `WPers` is used for two different kinds: `ActivePowerPerFrequency` and `ActivePowerChangeRate`.
   The former is wrong: corrected to `WperHz`, and defined `cim:UnitSymbol.WperHz`.
 
 | QuantityKind              | Unit1              | Unit2                  |
 |---------------------------|--------------------|------------------------|
-| ActivePowerChangeRate     | W-PER-SEC          | MegaW-PER-SEC          |
 | ActivePowerPerCurrentFlow | W-PER-A            | MegaW-PER-A            |
 | ActivePowerPerFrequency   | W-PER-HZ           | MegaW-PER-HZ           |
+| ActivePowerChangeRate     | W-PER-SEC          | MegaW-PER-SEC          |
 | VoltagePerReactivePower   | V-PER-V-A_Reactive | KiloV-PER-V-A_Reactive |
 
 After we add the above kinds, all `QuantityKinds` will be mapped as `skos:exactMatch`.
@@ -1807,11 +1815,11 @@ select ?localname {
 
 ## Model Representation
 A number of issues are related to how Models are represented.
-- In CIM XML and older CIM versions, 
+- In CIM XML and older CIM versions,
   this used classes `md:Model, dm:DifferenceModel`
-- In modern serialization formats (JSON-LD and Trig) and newer CIM versions, 
+- In modern serialization formats (JSON-LD and Trig) and newer CIM versions,
   we want to use `dcat:Dataset` from the standard DCAT ontology (with additions),
-  as described in METADATA FOR DATASET AND DISTRIBUTION SPECIFICATION 
+  as described in METADATA FOR DATASET AND DISTRIBUTION SPECIFICATION
   (Draft document version 2.4.0 of 2024-09-10)
 
 Issues:
@@ -1897,7 +1905,7 @@ The decision is:
 - Only Packages (eg `eq:Package_CoreEquipmentProfile`) should define ontology terms
 - Profiles should only `owl:include` the relevant packages, but should not define terms
 
-So instead of 20 Profile ontologies that define terms multiple times, 
+So instead of 20 Profile ontologies that define terms multiple times,
 we should have 40 ontologies that define each term once.
 This modularization (vocabulary profiling) should happen in CIM18 using CimContextor .
 
@@ -1995,6 +2003,302 @@ Each ontology term should have rdfs:isDefinedBy to the ontology node.
 This allows semantic web crawlers that stumble upon a CIM term, to discover the whole CIM ontology.
 
 This should be done only after eliminating duplicate definitions, as described in previous sections.
+
+## Avoid Abbreviations in Ontology Terms
+- https://github.com/Sveino/Inst4CIM-KG/issues/139 avoid using abbreviations in ontology terms
+- https://github.com/Sveino/Inst4CIM-KG/issues/106 spell-check all ontology terms:
+  should be able to find all abbreviations (words not found in a dictionary)
+
+Any professional domain uses well-established abbreviations, and electricity is not an exception.
+However, CIM seems to over-use abbreviations.
+
+Abbreviations like `cim:ExcAC1A` and `kd`:
+- Make it very hard for a non-expert in a specific **narrow** electrical field to understand the term
+- Make it harder for an LLM to generate a query, since it also needs to read and remember descriptions, not only term labels
+- Lead to semantic ambiguity and in some cases inconsistency
+
+For example, the following query returns 22 props called `kd`:
+```sparql
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+select * {
+    ?p a owl:DatatypeProperty; rdfs:comment ?descr; rdfs:range ?range
+    filter (strends(str(?p),".kd"))
+}
+```
+One is boolean, the rest are float. But it seems they talk about 5 completely different things:
+
+| Demagnetizing Factor                                                                                                             |
+|----------------------------------------------------------------------------------------------------------------------------------|
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>Kd</i>) (>= 0). Typical value = 0,38."                    |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>Kd</i>) (>= 0). Typical value = 0,35."                    |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>Kd</i>) (>= 0). Typical value = 0,499."                   |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>Kd</i>) (>= 0). Typical value = 1,91."                    |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>Kd</i>) (>= 0). Typical value = 1,1."                     |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>K</i><i><sub>D</sub></i>) (>= 0). Typical value = 0,38."  |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>K</i><i><sub>D</sub></i>) (>= 0). Typical value = 0,35."  |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>K</i><i><sub>D</sub></i>) (>= 0). Typical value = 0,499." |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>K</i><i><sub>D</sub></i>) (>= 0). Typical value = 1,91."  |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>K</i><i><sub>D</sub></i>) (>= 0). Typical value = 0,02."  |
+| "Demagnetizing factor, a function of exciter alternator reactances (<i>K</i><i><sub>D</sub></i>) (>= 0). Typical value = 1,1."   |
+
+| Gain                                                                                  |
+|---------------------------------------------------------------------------------------|
+| "Regulator derivative gain (<i>K</i><i><sub>D</sub></i>) (>= 0). Typical value = 20." |
+| "Gain (<i>K</i><i><sub>D</sub></i>)."                                                 |
+| "Drop governor gain (<i>Kd</i>)."                                                     |
+| "Derivative gain (<i>Kd</i>). Typical value = 1,11."                                  |
+| "Derivative gain (<i>Kd</i>). Typical value = 0."                                     |
+| "Derivative controller derivative gain (<i>Kd</i>)."                                  |
+| "Derivative gain (<i>Kd</i>). Typical value = 1,11."                                  |
+| "Gain (<i>Kd</i>). Typical value = 1,0."                                              |
+
+| Regulation Factor                                           |
+|-------------------------------------------------------------|
+| "Exciter regulation factor (<i>Kd</i>). Typical value = 2." |
+
+| Reactance                                                    |
+|--------------------------------------------------------------|
+| "Exciter internal reactance (<i>Kd</i>). Typical value = 0." |
+
+| WHAT IS THIS                                                                                      |
+|---------------------------------------------------------------------------------------------------|
+| "Selector (<i>Kd</i>). true = e<sup>- sTdelay</sup> used false = e<sup>- sTdelay</sup> not used." |
+
+It would be much better to use descriptive names, eg `demagnetizingFactor` for the first one.
+
+## Avoid Overly Specific Properties
+
+CIM/CGMES ontologies include over 5.2k props: 3703 datatype and 1511 object props:
+```sparql
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select ?type (count(*) as ?c) {
+  values ?type {owl:DatatypeProperty owl:ObjectProperty}
+  ?p a ?type
+} group by ?type
+```
+
+This huge number could be reduced by about 2.9k props by removing unnecessary differences.
+
+Some good practices in ontology development include:
+- Create distinct properties only when they differ in meaning or range.
+  Do not create unique props per domain (hosting class).
+- Create distinct classes only when:
+  - They are different from a business point of view, OR
+  - They have some unique incoming or outgoing props.
+
+All 900 CIM classes have some unique props.
+But because of the variety of prop names, this may be a "self-fulfilling promise".
+- Such unnecessary complexity makes queries:
+  - Harder to writ: need to keep a reference handy while writing
+  - Harder to maintain: if a query needs to access a different class, the properties within that class may also need to be changed
+- There is no subproperty hierarchy in CIM to allow querying props at a higher level
+
+### Shorten Prop Names
+- https://github.com/Sveino/Inst4CIM-KG/issues/100 shorten prop names in JSONLD?
+
+CIM prop names are qualified by (prepended with) the domain (hosting) class.
+In addition, multi-valued object props are named in plural (eg `Terminals` vs `Terminal`), further adding to the variety of prop names.
+
+This query finds 758 prop groups that have the same last part (prop name), but different first part (class name):
+```sparql
+PREFIX afn: <http://jena.apache.org/ARQ/function#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select ?lastPart (group_concat(?firstPart) as ?classes) (count(*) as ?c) {
+  values ?kind {owl:DatatypeProperty owl:ObjectProperty}
+  ?p a ?kind
+  bind(afn:localname(?p) as ?localname)
+  bind(replace(?localname,"^(.*)\\..*$","$1.*") as ?firstPart)
+  bind(replace(?localname,"^.*\\.(.*?)s?$","$1") as ?lastPart)
+} group by ?lastPart having (?c>1) order by ?lastPart
+```
+
+The "worst offender" is the prop `ta` that is qualified with 53 class names:
+`ExcAC1A.* ExcAC2A.* ExcAC3A.* ExcAC4A.* ExcAC5A.* ExcAC6A.* ExcAC8B.* ExcAVR1.* ExcAVR2.* ExcAVR5.* ExcCZ.* ExcDC1A.* ExcDC2A.* ExcDC3A1.* ExcIEEEAC1A.* ExcIEEEAC2A.* ExcIEEEAC3A.* ExcIEEEAC4A.* ExcIEEEAC5A.* ExcIEEEAC6A.* ExcIEEEAC8B.* ExcIEEEDC1A.* ExcIEEEDC2A.* ExcIEEEDC4B.* ExcIEEEST1A.* ExcIEEEST2A.* ExcIEEEST3A.* ExcIEEEST4B.* ExcNI.* ExcREXS.* ExcST1A.* ExcST2A.* ExcST4B.* GovCT1.* GovCT2.* GovGAST4.* GovHydroFrancis.* GovHydroPID2.* GovHydroPelton.* GovHydroWPID.* GovSteamFV2.* GovSteamFV3.* GovSteamFV4.* Pss2B.* PssSB4.*`
+
+The total is 3629 qualified prop names. If we reduce them to 758 unique prop names, that will remove 2.9k props from CIM,
+significantly reducing its complexity.
+
+Such a fix probably cannot be done in CIM RDF (ontologies and SPARQL) because the change will be too disruptive.
+But we can consider doing it in JSON/JSON-LD
+
+### Shorten Prop Names in JSON-LD
+We considered shortening props in CIM JSON-LD, eg
+- In the JSONLD serialization ideally we will have the type and just the property name, without the class name
+- The draft [IEC 62361-104 CIM Profiles to JSON schema Mapping](https://cimug.ucaiug.org/WG19/IEC%2062361-104%20CIM%20Profiles%20to%20JSON%20schema%20Mapping%20-%20DRAFT/57-62361-104-IS-CIM%20Profiles%20to%20JSON%20Schema%20Mapping_rev01v20.pdf) rev01v20 of 2021-07-06 considers shortened prop names)
+
+It will also be useful in CIM GraphQL.
+Ontotext Semantic Objects enables GraphQL querying over RDF,
+and as part of the `owl2soml` tool design we did some analysis, see [CIM Shorten Prop Names](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#cim-shorten-prop-names):
+- [Intro](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#intro)
+  - [Motivation](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#motivation)
+  - [LLM Querying Example](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#llm-querying-example)
+  - [Ontological Concern](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#ontological-concern)
+  - [Class Disjointness](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#class-disjointness)
+  - [Define Super-properties?](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#define-super-properties)
+  - [Shorten Props in JSON-LD](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#shorten-props-in-json-ld)
+- [CIM Prop Name Analysis](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#cim-prop-name-analysis)
+  - [CIM Local Prop Name Conflicts](https://github.com/VladimirAlexiev/soml/blob/master/owl2soml/CIM-shorten.md#cim-local-prop-name-conflicts)
+
+There are several preconditions for such shortening to be possible in JSON-LD, in order to avoid confusion between shortened prop names:
+- The same class cannot carry several props with the same name (last part).
+  [CIM UML Modeling Rules and Recommendations section 5.10 Inheritance Rules](https://cim-mg.ucaiug.io/latest/section5-cim-uml-modeling-rules-and-recommendations/#inheritance-rules) includes
+  Rule118: Inheritance should never create situations where attribute names or role names are duplicated or "override" within the inheritance lineage.
+- The kind (data/object), meaning and cardinality of props that have the same last part should be the same.
+  The CIM Semantics WG confirmed this verbally, but more investigation is required (see next section).
+- We need to use type-scoped (class-dependent) JSON-LD contexts to define per-class property expansion
+  (see JSON-LD 1.1 [Example 46: Defining an `@context` within a term definition used on `@type`](https://w3c.github.io/json-ld-syntax/#example-defining-an-context-within-a-term-definition-used-on-type .))
+- We need subclass reasoning since prop definitions may be made at a parent, not at the lowest-level class
+- For each resource, `@type` must be present for this to work.
+  However, `@type` is not present in `forward/reverseDifferences` of `DifferenceModels`
+
+So it is still not confirmed whether this can be done in JSON-LD.
+
+### Props with Same Name but Different Characteristics
+- https://github.com/Sveino/Inst4CIM-KG/issues/124 examine props-same-name-different-range for errors
+
+This query finds differences between same-named props:
+```sparql
+PREFIX afn: <http://jena.apache.org/ARQ/function#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+select ?q ?p1 ?r1 ?p2 ?r2 {
+  values ?kind1 {owl:DatatypeProperty owl:ObjectProperty} ?p1 a ?kind1.
+  values ?kind2 {owl:DatatypeProperty owl:ObjectProperty} ?p2 a ?kind2.
+  bind(replace(str(?p1),".*\\.(.*)","$1") as ?lastPart1)
+  bind(replace(str(?p2),".*\\.(.*)","$1") as ?lastPart2)
+  filter(str(?p1)<str(?p2) && ?lastPart1=?lastPart2)
+  ?p1 ?q ?r1.
+  ?p2 ?q ?r2.
+  filter(
+    ?q != rdfs:domain &&
+    !(?r1 in (owl:FunctionalProperty, owl:InverseFunctionalProperty)) &&
+    !(?r2 in (owl:FunctionalProperty, owl:InverseFunctionalProperty)) &&
+    ?r1 != ?r2)
+}
+```
+The first 1k rows take 50s (saved as [props-same-name-different-characteristics.csv](props-same-name-different-characteristics.csv)).
+Tried to download all rows but had to abort after 9 min.
+
+This specialized query looks for the most significant kind of difference: different ranges:
+```sparql
+PREFIX afn: <http://jena.apache.org/ARQ/function#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+select ?p1 ?r1 ?p2 ?r2 {
+  values ?kind1 {owl:DatatypeProperty owl:ObjectProperty} ?p1 a ?kind1.
+  values ?kind2 {owl:DatatypeProperty owl:ObjectProperty} ?p2 a ?kind2.
+  bind(replace(str(?p1),".*\\.(.*)","$1") as ?lastPart1)
+  bind(replace(str(?p2),".*\\.(.*)","$1") as ?lastPart2)
+  filter(str(?p1)<str(?p2) && ?lastPart1=?lastPart2)
+  ?p1 rdfs:range ?r1.
+  ?p2 rdfs:range ?r2.
+  filter(?r1 != ?r2)
+}
+```
+It takes 2 minutes and finds 583 difference pairs (saved as [props-same-name-different-range.csv](props-same-name-different-range.csv)).
+
+Let's consider a few examples:
+```
+grep uelin, props-same-name-different-range.csv
+```
+
+- `kd` is used as boolean in `cim:Pss1A.kd`, but as float in 21 other classes.
+  We already considered this problem in [Avoid Abbreviations in Ontology Terms](#avoid-abbreviations-in-ontology-terms).
+- `uelin` is used as boolean vs enumerated value: `cim:ExcIEEEST1AUELselectorKind, cim:ExcST7BUELselectorKind, cim:ExcST7BUELselectorKind...` etc
+
+This analysis has uncovered some errors that need to be fixed,
+or renamings to make property semantics more explicit, eg:
+- rename `nc:GateInputPin.absoluteValue` (which is boolean) to `useAbsoluteValue`
+- to better distinguish it from `nc:PowerFlowResult.absoluteValue` (which is float)
+
+### Other Overly-Specific Props
+
+- https://github.com/Sveino/Inst4CIM-KG/issues/149 don't use Overly Specific Props; guidance when to use class vs subclass in prop name
+
+This query finds 36 props named "Terminal" or "Terminals":
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select * {
+  ?p a owl:ObjectProperty; rdfs:range ?range
+  bind(replace(str(?p),".*\\.","") as ?suffix)
+  filter(regex(?suffix,"Terminal","i"))
+} order by ?suffix
+```
+
+| p                                                         | range                            | suffix                        |
+|-----------------------------------------------------------|----------------------------------|-------------------------------|
+| nc:InfeedTerminal.ACDCTerminal                            | cim:ACDCTerminal                 | "ACDCTerminal"                |
+| nc:PowerFlowResult.ACDCTerminal                           | cim:ACDCTerminal                 | "ACDCTerminal"                |
+| nc:VoltageAngleLimit.AngleReferenceTerminal               | cim:Terminal                     | "AngleReferenceTerminal"      |
+| nc:MonitoringArea.AreaBorderTerminal                      | nc:AreaBorderTerminal            | "AreaBorderTerminal"          |
+| nc:Terminal.AreaBorderTerminal                            | nc:AreaBorderTerminal            | "AreaBorderTerminal"          |
+| nc:PinDCTerminal.DCTerminal                               | cim:DCTerminal                   | "DCTerminal"                  |
+| cim:ACDCConverter.DCTerminals                             | cim:ACDCConverterDCTerminal      | "DCTerminals"                 |
+| cim:DCNode.DCTerminals                                    | cim:DCBaseTerminal               | "DCTerminals"                 |
+| cim:DCConductingEquipment.DCTerminals                     | cim:DCTerminal                   | "DCTerminals"                 |
+| cim:DCTopologicalNode.DCTerminals                         | cim:DCBaseTerminal               | "DCTerminals"                 |
+| cim:MutualCoupling.First_Terminal                         | cim:Terminal                     | "First_Terminal"              |
+| nc:PowerFrequencyController.FrequencyMonitoringTerminal   | nc:FrequencyMonitoringTerminal   | "FrequencyMonitoringTerminal" |
+| nc:Terminal.FrequencyMonitoringTerminal                   | nc:FrequencyMonitoringTerminal   | "FrequencyMonitoringTerminal" |
+| nc:Circuit.IdentifyingTerminal                            | cim:Terminal                     | "IdentifyingTerminal"         |
+| nc:ACDCTerminal.InfeedTerminal                            | nc:InfeedTerminal                | "InfeedTerminal"              |
+| nc:InfeedLimit.InfeedTerminal                             | nc:InfeedTerminal                | "InfeedTerminal"              |
+| nc:DirectCurrentSubstationController.MultiterminalControl | nc:DirectCurrentMasterController | "MultiterminalControl"        |
+| cim:ACDCConverter.PccTerminal                             | cim:Terminal                     | "PccTerminal"                 |
+| nc:DCTerminal.PinDCTerminal                               | nc:PinDCTerminal                 | "PinDCTerminal"               |
+| nc:Terminal.PinTerminal                                   | nc:PinTerminal                   | "PinTerminal"                 |
+| cim:MutualCoupling.Second_Terminal                        | cim:Terminal                     | "Second_Terminal"             |
+| cim:OperationalLimitSet.Terminal                          | cim:ACDCTerminal                 | "Terminal"                    |
+| nc:FrequencyMonitoringTerminal.Terminal                   | cim:Terminal                     | "Terminal"                    |
+| nc:PinTerminal.Terminal                                   | cim:Terminal                     | "Terminal"                    |
+| nc:AreaBorderTerminal.Terminal                            | cim:Terminal                     | "Terminal"                    |
+| cim:RemoteInputSignal.Terminal                            | cim:Terminal                     | "Terminal"                    |
+| cim:BusNameMarker.Terminal                                | cim:ACDCTerminal                 | "Terminal"                    |
+| cim:AuxiliaryEquipment.Terminal                           | cim:Terminal                     | "Terminal"                    |
+| cim:RegulatingControl.Terminal                            | cim:Terminal                     | "Terminal"                    |
+| cim:TieFlow.Terminal                                      | cim:Terminal                     | "Terminal"                    |
+| cim:TransformerEnd.Terminal                               | cim:Terminal                     | "Terminal"                    |
+| cim:Measurement.Terminal                                  | cim:ACDCTerminal                 | "Terminal"                    |
+| cim:SvPowerFlow.Terminal                                  | cim:Terminal                     | "Terminal"                    |
+| cim:TopologicalNode.Terminal                              | cim:Terminal                     | "Terminal"                    |
+| cim:ConductingEquipment.Terminals                         | cim:Terminal                     | "Terminals"                   |
+| cim:ConnectivityNode.Terminals                            | cim:Terminal                     | "Terminals"                   |
+
+Which of these properties could be renamed to just "Terminal"?
+- Only `First_Terminal, Second_Terminal` are likely to appear together within the same hosting class.
+- Plurals can be renamed to singular without any confusion or loss of meaning
+- There is no clear guidance when a specific subclass should be used in the prop URL, and there are some inconsistencies:
+  - `cim:ACDCConverter.DCTerminals` uses "DCTerminal" but the range is `cim:ACDCConverterDCTerminal`
+  - `cim:DCNode.DCTerminals` uses "DCTerminal" but the range is `cim:DCBaseTerminal`
+  - `cim:OperationalLimitSet.Terminal` uses "Terminal" but the range is `cim:ACDCTerminal`
+
+Note: there are 12 classes named "Terminal":
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+select * {
+  ?c a owl:Class
+  filter(strends(str(?c),"Terminal"))
+  optional {?c rdfs:subClassOf ?parent}
+} order by ?parent
+```
+
+Their hierarchy is as follows:
+- cim:IdentifiedObject
+  - cim:ACDCTerminal
+    - cim:Terminal
+    - cim:DCBaseTerminal
+      - cim:DCTerminal
+      - cim:ACDCConverterDCTerminal
+  - nc:FunctionInputVariable
+    - nc:GateInputPin
+      - nc:PinTerminal
+      - nc:PinDCTerminal
+- nc:FrequencyMonitoringTerminal
+- nc:InfeedTerminal
+- nc:AreaBorderTerminal
 
 ## Namespaces and Prefixes
 A number of problems are related to namespaces and prefixes
@@ -2139,9 +2443,9 @@ So the issue proposes the following naming convention:
 - https://github.com/Sveino/Inst4CIM-KG/issues/123 Align NC instance file to both CGMES 2.4 and CGMES 3.0
 
 
-CIM/CGMES ontology URLs have been changed with every version, 
+CIM/CGMES ontology URLs have been changed with every version,
 leading to compatibility issues between data that uses different ontology versions,
-and the need to make time-consuming database migrations 
+and the need to make time-consuming database migrations
 if such incompatible instance data needs to be used together.
 
 The ENTSO-E document [RDF-Syntax User Guide v1.0](https://www.entsoe.eu/Documents/CIM_documents/Grid_Model_CIM/RDF-SyntaxUserGuide_v1-0.pdf) (2024-01-17) section 3. "Combining different CIM versions" describes difficulties related to exchange of semantic data that uses versioned terms, and concludes:
@@ -2150,9 +2454,9 @@ The ENTSO-E document [RDF-Syntax User Guide v1.0](https://www.entsoe.eu/Document
 
 Each ontology URL should be permanent, and `owl:versionIRI` should be used to express a versioned URL, if needed.
 
-The issues in section [Not Needed: Semantic Equivalences](#not-needed-semantic-equivalences) 
+The issues in section [Not Needed: Semantic Equivalences](#not-needed-semantic-equivalences)
 discuss using semantic equivalences (`equivalentClass, equivalentProperty`) to map between terms in different versions.
-However, these properties are unsuitable because they are symmetric, 
+However, these properties are unsuitable because they are symmetric,
 and because they would introduce redundant inferred triples.
 
 Therefore it was decided to use `dct:replaces` (an assymetric property) to express eg:
@@ -2201,7 +2505,7 @@ Here are some technical issues, but the overall task is not yet discussed in det
 - https://github.com/Sveino/Inst4CIM-KG/issues/50 define needed reasoning
 
 It is important to define what reasoning is required for CIM, especially in relation with SHACL validation.
-- Note: there has been some discussion that CIM uses "RDFS+" reasoning, but that is not defined sufficiently well, 
+- Note: there has been some discussion that CIM uses "RDFS+" reasoning, but that is not defined sufficiently well,
   so it's better to discuss specific reasoning regimes explicitly
 
 ## Needed: Subclass Reasoning
@@ -2210,7 +2514,7 @@ Subclasses (`rdfs:subClassOf`) are widely used in CIM.
 ```sparql
 select * {
   ?x rdfs:subClassOf ?y
-} 
+}
 ```
 - Out of 927 classes, 712 (77%) are subclasses and 215 (23%) are not:
 ```sparql
@@ -2237,8 +2541,8 @@ select ?kind (count(*) as ?c) {
 Subclass reasoning is required by SHACL. See `shacl-improved` for more details.
 
 This is scattered in several places in the SHACL spec, so you have to follow this chain:
-- https://www.w3.org/TR/shacl/#x3.2-data-graph : 
-  "The data graph is expected to include all the ontology axioms related to the data 
+- https://www.w3.org/TR/shacl/#x3.2-data-graph :
+  "The data graph is expected to include all the ontology axioms related to the data
   and especially all the `rdfs:subClassOf` triples in order for SHACL to correctly identify **class targets** and validate **Core SHACL constraints**"
 - https://www.w3.org/TR/shacl/#ClassConstraintComponent : talks of "SHACL instance of `$class`"
 - https://www.w3.org/TR/shacl/#dfn-shacl-instance
@@ -2256,10 +2560,10 @@ Currently, the "simple" SHACL shapes are generated in a way that assumes no subC
 er:DCLineParallelingSwitch a sh:NodeShape;
   sh:targetClass nc:DCLineParallelingSwitch;
   sh:property
-    ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality , 
-    ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality , 
-    ido:IdentifiedObject.energyIdentCodeEic-datatype , ido:IdentifiedObject.energyIdentCodeEic-cardinality , 
-    ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality , 
+    ido:IdentifiedObject.mRID-datatype , ido:IdentifiedObject.mRID-cardinality ,
+    ido:IdentifiedObject.description-datatype , ido:IdentifiedObject.description-cardinality ,
+    ido:IdentifiedObject.energyIdentCodeEic-datatype , ido:IdentifiedObject.energyIdentCodeEic-cardinality ,
+    ido:IdentifiedObject.name-datatype , ido:IdentifiedObject.name-cardinality ,
     er:Equipment.Circuit-cardinality , er:Equipment.AggregatedEquipment-cardinality.
 ```
 The generator traverses the class hierarchy and attaches each inherited property to each leaf-level class.
@@ -2274,14 +2578,14 @@ This leads to the following problems:
 The target (expected `sh:class`) of some CIM property shapes use complex disjunctions rather than an appropriate superclass, e.g.:
 ```ttl
 dl:DiagramObject.IdentifiedObject-valueType a sh:NodeShape ;
-  sh:or ( dl:DiagramObject.IdentifiedObjectVisibilityLayer-valueType dl:DiagramObject.IdentifiedObjectDiagramStyle-valueType 
+  sh:or ( dl:DiagramObject.IdentifiedObjectVisibilityLayer-valueType dl:DiagramObject.IdentifiedObjectDiagramStyle-valueType
     dl:DiagramObject.IdentifiedObjectDiagramObjectStyle-valueType dl:DiagramObject.IdentifiedObjectDiagramObject-valueType
     dl:DiagramObject.IdentifiedObjectTextDiagramObject-valueType dl:DiagramObject.IdentifiedObjectDiagram-valueType ) .
 
 equ:ACDCConverter.PccTerminal-valueType a sh:PropertyShape ;
   sh:path ( cim:ACDCConverter.PccTerminal cim:Terminal.ConductingEquipment ) ;
-  sh:or ( [sh:class cim:PowerTransformer] [sh:class cim:Switch] [sh:class cim:Disconnector] [sh:class cim:Fuse] 
-          [sh:class cim:GroundDisconnector] [sh:class cim:Jumper] [sh:class cim:Breaker] 
+  sh:or ( [sh:class cim:PowerTransformer] [sh:class cim:Switch] [sh:class cim:Disconnector] [sh:class cim:Fuse]
+          [sh:class cim:GroundDisconnector] [sh:class cim:Jumper] [sh:class cim:Breaker]
           [sh:class cim:DisconnectingCircuitBreaker] [sh:class cim:LoadBreakSwitch] );
   sh:name         "C:301:EQ:ACDCConverter.PccTerminal:valueType" ;
   sh:message      "The terminal is not a terminal of a PowerTransformer or a Switch." ;
@@ -2292,26 +2596,26 @@ equ:ACDCConverter.PccTerminal-valueType a sh:PropertyShape ;
 ## Maybe: Inverse Reasoning
 - DONE https://github.com/Sveino/Inst4CIM-KG/issues/26 replace `cims:inverseRoleName` by `owl:inverseOf`
 
-Each CIM object property has an inverse. 
+Each CIM object property has an inverse.
 These are now represented using the standard prop `owl:inverseOf`.
 However, instance data always has one direction of the inverse pair,
 namely the property marked with the annotation `cims:AssociationUsed "Yes"`.
 - https://github.com/Sveino/Inst4CIM-KG/issues/114 wrong `cims:AssociationUsed` or lacking `owl:inverseOf`
   describes a few cases where that annotation is missing or wrong.
 
-Since it is not expected for the inverse direction properties to be present, 
+Since it is not expected for the inverse direction properties to be present,
 maybe we should mark that explicitly?
 This was discussed in
 - https://github.com/Sveino/Inst4CIM-KG/issues/113 deprecate cims:AssociationUsed "No" props (or even delete them?),
   and a decision was made not to do it.
 
 It was decided that Inverse reasoning should not be mandatory, but is desirable for querying.
-- SHACL shapes do not rely on inverse reasoning 
-  so they often need to use `sh:inversePath`, 
+- SHACL shapes do not rely on inverse reasoning
+  so they often need to use `sh:inversePath`,
   which makes them more complicated.
 - https://github.com/Sveino/Inst4CIM-KG/issues/141 SHACL: Do not prohibit inverse reasoning.
   There were plans to write SHACL shapes to check that `cims:AssociationUsed "No"` triples are not included.
-  If shapes that prohibit inverse triples are added, 
+  If shapes that prohibit inverse triples are added,
   they will raise a number of errors on repositories that do in fact provide inverse reasoning.
   This problem may be overcome by validating only named graphs with explicit instance data
   (eg in GraphDB all inferred triples are in the `onto:implicit` graph).
@@ -2358,13 +2662,13 @@ and use `dct:replaces` to point from the newest (permanent) URLs to older URLs.
 grep subProperty */*/*
 ```
 
-- `rdfs:domain` is used extensively. 
+- `rdfs:domain` is used extensively.
   However, all CIM resources are explicitly instantiated (have a defined class),
   and `rdfs:subClassOf` reasoning will infer all relevant superclasses.
   So `domain` reasoning is not needed
 - `rdfs:range` is defined for all `ObjectProperties`, so `range` reasoning is not needed
 - https://github.com/Sveino/Inst4CIM-KG/issues/49 Add Datatypes To Instance Data:
-  However, literals in instance data lacks XSD datatypes. 
+  However, literals in instance data lacks XSD datatypes.
   This cannot be added with `range` reasoning, so we wrote a SPARQL update to do it.
 
 ## Not Needed: Functional Reasoning
@@ -2376,5 +2680,5 @@ Under this issue, we used `cims:multiplicity` annotations to add standard proper
 - `owl:InverseFunctionalProperty` if the backward cardinality is max 1
 
 SHACL shapes check the forward and backward cardinalities of all properties.
-Therefore we don't need Functional reasoning, 
+Therefore we don't need Functional reasoning,
 which would infer that two individuals are `owl:sameAs` if the "max 1" is not satisfied.
