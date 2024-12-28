@@ -9,8 +9,11 @@ https://github.com/Sveino/Inst4CIM-KG/issues/127 What is the unit for `Money` pr
 https://github.com/Sveino/Inst4CIM-KG/issues/128 cost/price (xsd:decimal) props not defined as `dataType Money`
 https://github.com/Sveino/Inst4CIM-KG/issues/133 voc folder and image
 https://github.com/Sveino/Inst4CIM-KG/issues/136 Mapping plain JSON to JSON-LD with LinkML
-https://github.com/Sveino/Inst4CIM-KG/issues/139 avoid using abbreviatons in ontology terms
 https://github.com/Sveino/Inst4CIM-KG/issues/140 consider options for using SHACL on graphs
+https://github.com/Sveino/Inst4CIM-KG/issues/145 do we need PropertyReference UUIDs in the ontologies?
+https://github.com/Sveino/Inst4CIM-KG/issues/146 Mapping bidirectional UML relation to LinkML
+https://github.com/Sveino/Inst4CIM-KG/issues/147 consider resolvable model (graph) URLs
+https://github.com/Sveino/Inst4CIM-KG/issues/148 add URI options to `cim-trig.pl`?
 https://github.com/Sveino/Inst4CIM-KG/issues/27 get rid of `profcim` Primitives
 https://github.com/Sveino/Inst4CIM-KG/issues/31 change some langString to string
 https://github.com/Sveino/Inst4CIM-KG/issues/34 define prefixes `uml` and `xsd`

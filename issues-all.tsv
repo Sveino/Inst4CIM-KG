@@ -13,7 +13,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/11	Remove Unused Enumeration Classe
 https://github.com/Sveino/Inst4CIM-KG/issues/110	deploy JSON-LD contexts on a permanent network location
 https://github.com/Sveino/Inst4CIM-KG/issues/113	deprecate `cims:AssociationUsed "No"` props (or even delete them?)
 https://github.com/Sveino/Inst4CIM-KG/issues/114	wrong `cims:AssociationUsed` or lacking `owl:inverseOf`
-https://github.com/Sveino/Inst4CIM-KG/issues/116	CIMXML converting strategy
+https://github.com/Sveino/Inst4CIM-KG/issues/116	CIMXML converting strategy (re Model)
 https://github.com/Sveino/Inst4CIM-KG/issues/117	multiply instance data 
 https://github.com/Sveino/Inst4CIM-KG/issues/119	multiple per-profile graphs in JSON-LD?
 https://github.com/Sveino/Inst4CIM-KG/issues/12	Mis-declared Packages
@@ -35,6 +35,14 @@ https://github.com/Sveino/Inst4CIM-KG/issues/137	consider using SHACL Compact
 https://github.com/Sveino/Inst4CIM-KG/issues/139	avoid using abbreviatons in ontology terms
 https://github.com/Sveino/Inst4CIM-KG/issues/14	don't dictate the use of blank nodes
 https://github.com/Sveino/Inst4CIM-KG/issues/140	consider options for using SHACL on graphs
+https://github.com/Sveino/Inst4CIM-KG/issues/141	SHACL: Do not prohibit inverse reasoning
+https://github.com/Sveino/Inst4CIM-KG/issues/142	describe all issues in READMEs
+https://github.com/Sveino/Inst4CIM-KG/issues/143	use slash not hash in instance URLs (and remove parasitic underscore)
+https://github.com/Sveino/Inst4CIM-KG/issues/144	global semantic resolver for electrical data (I Have a Dream)
+https://github.com/Sveino/Inst4CIM-KG/issues/145	do we need PropertyReference UUIDs in the ontologies?
+https://github.com/Sveino/Inst4CIM-KG/issues/146	Mapping bidirectional UML relation to LinkML
+https://github.com/Sveino/Inst4CIM-KG/issues/147	consider resolvable model (graph) URLs
+https://github.com/Sveino/Inst4CIM-KG/issues/148	add URI options to `cim-trig.pl`?
 https://github.com/Sveino/Inst4CIM-KG/issues/15	SHACL mixup between a node and its type
 https://github.com/Sveino/Inst4CIM-KG/issues/16	Don't use parasitic `PropertyShape`
 https://github.com/Sveino/Inst4CIM-KG/issues/17	Don't use SHACL SPARQL where SHACL Standard is enough
