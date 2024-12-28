@@ -27,7 +27,6 @@ zip                = ../../instance-zipped
 
 all:
 	@echo targets: context, dirs, zips, test, jsonld, nordic, entsoe, multiplied, rm-test, rm-jsonld, rm-nordic, rm-entsoe, rm-multiplied, clean
-	#@echo $(nordic_trig)
 
 context: cim-context-old.jsonld cim-context-new.jsonld
 cim-context-%.jsonld: cim-context-%.txt cim-context-common.txt
@@ -45,12 +44,15 @@ zips:
 clean:
 	find instances test -type f -size 0 -exec rm {} \;
 
+fix-datatypes-and-model.ru: fix-datatypes-old.ru fix-model.ru
+	cat $^ > $@
+
 test: $(test_trig)
 rm-test:
 	rm -f $(test_trig)
-test/trig/%.trig: test/rdf/%.xml | cim-trig.pl
+test/trig/%.trig: test/rdf/%.xml | cim-trig.pl fix-datatypes-and-model.ru
 	perl cim-trig.pl -r $^ > temp.trig
-	update.bat --update=fix-datatypes-old.ru --data=temp.trig --dump > $@
+	update.bat --update=fix-datatypes-and-model.ru --data=temp.trig --dump > $@
 	rm temp.trig
 
 jsonld: $(test_jsonld)
@@ -62,17 +64,17 @@ test/jsonld/%.jsonld: test/trig/%.trig
 nordic: $(nordic_trig)
 rm-nordic:
 	rm -f $(nordic_trig)
-$(nordic_target)/%.trig: $(nordic_source)/%.xml | cim-trig.pl
+$(nordic_target)/%.trig: $(nordic_source)/%.xml | cim-trig.pl fix-datatypes-and-model.ru
 	perl cim-trig.pl -r $^ > temp.trig
-	update.bat --update=fix-datatypes-old.ru --data=temp.trig --dump > $@
+	update.bat --update=fix-datatypes-and-model.ru --data=temp.trig --dump > $@
 	rm temp.trig
 
 entsoe: $(entsoe_trig)
 rm-entsoe:
 	rm -f $(entsoe_trig)
-$(entsoe_target)/%.trig: $(entsoe_source)/%.xml | cim-trig.pl
+$(entsoe_target)/%.trig: $(entsoe_source)/%.xml | cim-trig.pl fix-datatypes-and-model.ru
 	perl cim-trig.pl -r $^ > temp.trig
-	update.bat --update=fix-datatypes-old.ru --data=temp.trig --dump > $@
+	update.bat --update=fix-datatypes-and-model.ru --data=temp.trig --dump > $@
 	rm temp.trig
 
 multiplied: $(multiplied_trig)

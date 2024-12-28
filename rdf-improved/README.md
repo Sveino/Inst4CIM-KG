@@ -18,6 +18,7 @@ This document describes proposed inprovements to the representation of CIM/CGMES
     - [Naive JSON-LD Graph Representation Attempt](#naive-json-ld-graph-representation-attempt)
     - [Nearly Correct JSON-LD Graph Representation](#nearly-correct-json-ld-graph-representation)
     - [Custom CIM XML Parser](#custom-cim-xml-parser)
+    - [Fix Model Representation](#fix-model-representation)
 - [CIM URIs and Resolvability](#cim-uris-and-resolvability)
     - [Fix Under-defined Resource URLs](#fix-under-defined-resource-urls)
     - [Resolvable Resource URLs or More Stable `urn:uuid`?](#resolvable-resource-urls-or-more-stable-urnuuid)
@@ -658,6 +659,41 @@ See test results in [test/trig](test/trig). Let's look at a couple of examples.
 }
 ```
 
+## Fix Model Representation
+- https://github.com/Sveino/Inst4CIM-KG/issues/122 mapping from `md, dm` to `dct, dcat, dcat-cim, prov`
+- https://github.com/Sveino/Inst4CIM-KG/issues/135 add type `rdfg:Graph`
+
+The SPARQL Update [fix-model.ru](fix-model.ru) makes the following modifications to models by mapping them to `dct, dcat, dcat-cim`.
+The mapping was agreed in https://github.com/Sveino/Inst4CIM-KG/issues/122 and a meeting on 2024-11-21:
+
+| old                           | new                                             | comment                                                                                              |
+|-------------------------------|-------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| md:FullModel                  | dcat:Dataset, rdfg:Graph                        | Add `dct:identifier`                                                                                 |
+| dm:DifferenceModel            | dcat-cim:DifferenceSet, rdfg:Graph              | Add `dct:identifier`                                                                                 |
+| md:Model.created              | dct:issued                                      | Represents when the Dataset is created, `^^xsd:date`                                                 |
+| md:Model.created              | dcat:distribution: dcat:Distribution.dct:issued | Represents when the Distribution is created, `^^xsd:dateTime`                                        |
+| md:Model.scenarioTime         | dct:temporal: dct:PeriodOfTime.dcat:startDate   | `dct:PeriodOfTime` with `dcat:startDate ^^xsd:dateTime`                                              |
+| md:Model.scenarioTime         | dct:temporal: dct:PeriodOfTime.dcat:endDate     | SSH, TP and SV models have `dcat:endDate` that is 1H after start; other models have no specified end |
+|                               | dcat:temporalResolution                         | SSH, TP and SV models have `"PT1H"^^xsd:duration`, indicating hourly values                          |
+| md:Model.description          | dct:description                                 |                                                                                                      |
+| md:Model.modelingAuthoritySet | dcat:isVersionOf                                | Convert to URL. Represents abstract "super-dataset", see [DCAT3 Example 33: Version history](https://www.w3.org/TR/vocab-dcat-3/#ex-version-chain-and-hierarchy)      |
+| md:Model.modelingAuthoritySet | json-ld:base                                    | Append `#`. Namespace of instances, see [json-ld:base](https://www.w3.org/ns/json-ld#base) or [json-ld.ttl](https://www.w3.org/ns/json-ld.ttl)                        |
+| md:Model.profile              | dct:conformsTo                                  | Convert to URL                                                                                       |
+| md:Model.version              | dcat:version                                    | If it's an integer, convert to string                                                                |
+| md:Model.DependentOn          | dct:requires                                    |                                                                                                      |
+| md:Model.Supersedes           | dcat:previousVersion                            |                                                                                                      |
+| dm:reverseDifferences         | dcat-cim:reverseDifferenceSet                   | Add types `dcat:Resource, rdfg:Graph` and `dct:title, dct:identifier`                                |
+| dm:forwardDifferences         | dcat-cim:forwardDifferenceSet                   | Add types `dcat:Resource, rdfg:Graph` and `dct:title, dct:identifier`                                |
+
+Notes:
+- The type `md:FullModel` or `dm:DifferenceModel` is required; and `md:Model.profile` is required
+- The update must be run after `cim-trig.pl` and can be run before or after `fix-datatypes.ru`
+- The datatypes of the "new" properties need to be declared in the new Model (dcat-cim) ontology
+  - In particular, `dcat:isVersionOf` should be a URL not `xsd:anyURI` literal
+- Similarly to `fix-datatypes.ru`, for small files it can be run in an in-memory Update processor like Jena `update`; for large files it needs to run in a semantic repository
+- The update makes two blank sub-nodes (`dcat:Distribution, dct:PeriodOfTime`)
+- The update adds `dct:identifier` (UUID) to all of `reverseDifferenceSet, forwardDifferenceSet, FullModel, DifferenceModel`
+
 # CIM URIs and Resolvability
 
 ## Fix Under-defined Resource URLs
@@ -1069,16 +1105,29 @@ The final instance data for testing consists of the following trig files:
 The 3 zipped files are available publicly in the Google Folder [instance-zipped](https://drive.google.com/drive/folders/16JDUjSeKY-3rgGsIfAoLn9jr_3YD4Ho_?usp=sharing).
 
 # JSON-LD Serialization
+https://github.com/Sveino/Inst4CIM-KG/issues/101 represent instances as JSONLD Sveino/Inst4CIM-KG:
+this is a summary issue that incorporates a number of other issues,
+including relevant issues posted in Dec 2023 in the https://github.com/3lbits/CIM4NoUtility project:
+- https://github.com/3lbits/CIM4NoUtility/discussions/321 Converting CIMXML DifferenceModel to CIMJSON-LD
+- https://github.com/3lbits/CIM4NoUtility/issues/333 JSON-LD: use type and id aliases; maybe also value and language?
+- https://github.com/3lbits/CIM4NoUtility/issues/332 JSON-LD: streaming or canonicalization?
+- https://github.com/3lbits/CIM4NoUtility/issues/331 JSON-LD: use shortened props and lowerCamelCase
+  - https://github.com/Sveino/Inst4CIM-KG/issues/100 shorten prop names in JSONLD?
+- https://github.com/3lbits/CIM4NoUtility/issues/330 JSON-LD: do we need version 1.1?
+  
 
 After converting CIM XML to a representation using named graphs (Trig), we can convert it to JSON-LD.
 E.g. to convert an instance file using the old namespaces, we use this command:
 ```
 riot.bat --formatted jsonld test/trig/FullGrid_OP.trig | jsonld compact -c https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld
 ```
-The tools used are described  in the sibling folder at [JSON-LD Serialization](https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#json-ld-serialization).
+The tools used are described in the context of ontology serialization in the sibling folder at [JSON-LD Serialization](https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#json-ld-serialization).
 
 
 ## JSON-LD Context
+- https://github.com/Sveino/Inst4CIM-KG/issues/55 Representing datatypes in JSON-LD
+- https://github.com/3lbits/CIM4NoUtility/issues/329 JSON-LD: richer context, network context
+
 A good JSON-LD serialization depends on an appropriate context that defines namespaces 
 and property characteristics i.e. `@type` (`@id` for object props, XSD datatype for datatype props).
 
@@ -1108,7 +1157,8 @@ https://github.com/Sveino/Inst4CIM-KG/issues/110 deploy JSON-LD contexts on a pe
 - But we need for a more permanent CIMug or ENTSOE location.
 
 ## Formatting of Numbers and Booleans
-https://github.com/Sveino/Inst4CIM-KG/issues/120 number representation in JSONLD
+- https://github.com/Sveino/Inst4CIM-KG/issues/120 number representation in JSONLD
+
 
 JSON has only a few native literal datatypes: `number, boolean, string, null`.
 JSON numbers are imprecise:

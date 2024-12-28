@@ -1,823 +1,18 @@
-PREFIX cim:  <http://iec.ch/TC57/CIM100#>
-PREFIX dm:   <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
-PREFIX eu:   <http://iec.ch/TC57/CIM100-European#>
-PREFIX eumd: <https://cim4.eu/ns/Metadata-European#>
-PREFIX md:   <http://iec.ch/TC57/61970-552/ModelDescription/1#>
-PREFIX nc:   <https://cim4.eu/ns/nc#>
-PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim:      <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:     <http://www.w3.org/ns/dcat#>
+PREFIX dcat-cim: <https://cim4.eu/ns/dcat-cim#>
+PREFIX dct:      <http://purl.org/dc/terms/>
+PREFIX dm:       <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:       <http://iec.ch/TC57/CIM100-European#>
+PREFIX eumd:     <https://cim4.eu/ns/Metadata-European#>
+PREFIX json-ld:  <https://www.w3.org/ns/json-ld#>
+PREFIX md:       <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:       <https://cim4.eu/ns/nc#>
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfg:     <http://www.w3.org/2004/03/trix/rdfg-1/>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 
-<urn:uuid:285bbdd6-99b5-4ee2-8bff-874ab4323378> {
-    <http://tennet.nl/CGMES#_3a705ef0-80e6-43b5-a9db-02ae130ab38f>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682916"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_649a76ff-50bc-457f-b965-033814273e1d>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.683138"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_d7422ce6-a13d-41ca-8111-9462b2e789dc>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "d7422ce6-a13d-41ca-8111-9462b2e789dc";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_7cf4108d-d355-48f5-8556-d42c37a8e2c8>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_3d4e9276-68b5-4d28-9d9e-0dfb5b9860e8>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.68225"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_0dbed103-fc51-4df4-a6fa-0dee4c57f3a3>
-            cim:TransformerEnd.Terminal  <http://tennet.nl/CGMES#_421c7930-64c3-435d-afb8-2bb73b333e34> .
-    
-    <http://tennet.nl/CGMES#_835c45c5-e710-4b11-858f-704066a43904>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.683361"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_36679ac7-f571-4528-b92a-47e95fbc22e9>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681805"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_89ef40fb-5d77-45cb-8073-cc2d1d171dcd>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "89ef40fb-5d77-45cb-8073-cc2d1d171dcd";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_03943678-b63e-44d8-bc7d-9461da496268>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_0761805f-8d0c-4a83-aec6-d3bd978097d8>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.02265452"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_5a716e55-2365-454c-be9b-642853275533>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de> .
-    
-    <http://tennet.nl/CGMES#_4ed170fe-2571-4044-9bfa-7345e70a69d2>
-            rdf:type                    cim:TieFlow;
-            cim:IdentifiedObject.mRID   "4ed170fe-2571-4044-9bfa-7345e70a69d2";
-            cim:IdentifiedObject.name   "TieFlow";
-            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
-            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_8f308117-8bbd-4798-b145-4e78f7d049e7>;
-            cim:TieFlow.positiveFlowIn  true .
-    
-    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8>
-            rdf:type                       cim:OperationalLimitType;
-            cim:IdentifiedObject.mRID      "bf2a4896-2e92-465b-b5f9-b033993a31c8";
-            cim:IdentifiedObject.name      "Limit Type TATL";
-            cim:OperationalLimitType.acceptableDuration
-                    "600"^^xsd:float;
-            cim:OperationalLimitType.direction
-                    cim:OperationalLimitDirectionKind.absoluteValue;
-            cim:OperationalLimitType.isInfiniteDuration
-                    false;
-            eu:IdentifiedObject.shortName  "TATL";
-            eu:OperationalLimitType.kind   eu:LimitKind.tatl .
-    
-    <http://tennet.nl/CGMES#_9b32f407-183b-4ddc-b213-d0eccf796455>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.008924291"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_6bd09407-16dd-4ecb-b504-2ddb1db3b3df>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.004439676"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_6fd8188f-65a6-4473-b8f1-ffe6122ba6ab>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "6fd8188f-65a6-4473-b8f1-ffe6122ba6ab";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_13ee714f-6df4-4039-8519-5cf4e84ab20d>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_069e3d31-b5b0-4136-ab22-d40779e369b2>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.680805"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_fd472104-d68c-4536-ba4a-5fd9349c0a65>
-            cim:OperationalLimitSet.Terminal
-                    <http://tennet.nl/CGMES#_c9b27b4e-d492-4c3c-b147-67addbb9d3ea> .
-    
-    <http://tennet.nl/CGMES#_44b4277a-0f4b-43a8-ad93-6f7d6ef02061>
-            cim:RatioTapChanger.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de> .
-    
-    <http://tennet.nl/CGMES#_b35893b0-22d4-4127-9351-9c46fba6059b>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "1574"^^xsd:float;
-            cim:IdentifiedObject.mRID     "b35893b0-22d4-4127-9351-9c46fba6059b";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_37cc4210-71c0-4328-a86b-df0f65e76ef4>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>
-            rdf:type                   cim:PhaseTapChangerTable;
-            cim:IdentifiedObject.mRID  "50c903e2-ecbb-41b8-9a1d-746543c9b63f";
-            cim:IdentifiedObject.name  "NL_TR2_2" .
-    
-    <http://tennet.nl/CGMES#_5bc43480-4543-4193-8b0e-7ba7bf5b3441>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "5bc43480-4543-4193-8b0e-7ba7bf5b3441";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_79a1fb3a-a66a-468c-8c78-c25714c73eba>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_b4029b1f-2727-4fa3-8275-da91787f8521>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681027"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_12f7803a-c65b-4a14-8c0d-7e52becb5772>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "46188.04"^^xsd:float;
-            cim:IdentifiedObject.mRID     "12f7803a-c65b-4a14-8c0d-7e52becb5772";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_261d13c4-1527-42a5-ad0d-a3b817971166>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_ef715edd-516e-4bfd-adc4-1c882852920e>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "839.7826"^^xsd:float;
-            cim:IdentifiedObject.mRID     "ef715edd-516e-4bfd-adc4-1c882852920e";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_d47a27cc-9fad-40f2-a08c-37e545c268df>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_26069582-0f76-47fb-8bc0-44c99fb08887>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "1233.9"^^xsd:float;
-            cim:IdentifiedObject.mRID     "26069582-0f76-47fb-8bc0-44c99fb08887";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_125eeb58-1c45-41b2-a981-7d5993b40cda>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_7d8fe4bf-94a9-4e2b-a90f-1271bdd99325>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.05780642"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_03c0a363-bbb1-4353-a4a6-f78ef8d8cc84>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.68125"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_e2befe6d-07e5-48d1-8315-577bc038a827>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.03804918"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_f9ffc8ea-37f2-404a-9bd3-f3fa15476d4c>
-            rdf:type                    cim:TieFlow;
-            cim:IdentifiedObject.mRID   "f9ffc8ea-37f2-404a-9bd3-f3fa15476d4c";
-            cim:IdentifiedObject.name   "TieFlow";
-            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
-            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_6aecb9ba-5835-4b70-89bc-96d687e45779>;
-            cim:TieFlow.positiveFlowIn  true .
-    
-    <http://tennet.nl/CGMES#_7cfff021-02d4-4aa1-8fe7-b9af9c1fdc44>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "1371"^^xsd:float;
-            cim:IdentifiedObject.mRID     "7cfff021-02d4-4aa1-8fe7-b9af9c1fdc44";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_7cf4108d-d355-48f5-8556-d42c37a8e2c8>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_c557146e-dfc4-4020-9738-d592b188338b>
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_90f78705-5ef4-479a-8d5a-70efc554e0ba> .
-    
-    <http://tennet.nl/CGMES#_ee649b97-d2ec-47e1-976f-0f4d9f50fa11>
-            cim:PhaseTapChangerTabular.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f> .
-    
-    <http://tennet.nl/CGMES#_41ca9e70-1cb4-4971-b8e6-a97a15580b89>
-            cim:TransformerEnd.Terminal  <http://tennet.nl/CGMES#_31bf04d0-7e34-465b-95a4-0604700325cf> .
-    
-    <http://tennet.nl/CGMES#_03287f0c-5562-4533-be7f-2fb40e1888f5>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "2000"^^xsd:float;
-            cim:IdentifiedObject.mRID     "03287f0c-5562-4533-be7f-2fb40e1888f5";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_14e9e317-a168-44a2-82ef-7c76190108a2>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_80f45cfb-a123-4438-aa1d-88fd63ed8ee4>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.01803153"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_e3479531-ffab-4d87-bc6d-5669e1854a28>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682138"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_fcd1200d-f49c-4958-b09c-eb36286f3ca3>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682361"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_eec323a6-074f-4e68-a2db-89a0689afd16>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de> .
-    
-    <http://tennet.nl/CGMES#_675f4994-9544-4634-9dae-7b8b2abdfef0>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.04650027"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_5dfee914-a4fd-4bde-a5b4-c4caa6378d10>
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_cae57656-3fc2-4f5e-9ab9-fa5b118a632a> .
-    
-    <http://tennet.nl/CGMES#_357e3e14-c38e-4a7e-9c95-b3dbe158f5f3>
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_90f78705-5ef4-479a-8d5a-70efc554e0ba> .
-    
-    <http://tennet.nl/CGMES#_5e6588fe-5d2c-4715-b746-a02b2710ad2d>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.008747523"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_26ce5ed9-6557-473e-a710-b7720c2c8355>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "46188.04"^^xsd:float;
-            cim:IdentifiedObject.mRID     "26ce5ed9-6557-473e-a710-b7720c2c8355";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_cf3e5341-6736-4b34-b4da-e4af2073765b>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_dbf8c02e-2079-40fc-a8aa-b68dfc6aa5fd>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681139"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_749f4bc4-bfdb-4bda-8124-21b97e76f9df>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.05001429"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_3777ebd7-2977-43ba-87aa-1d1f4dff32b2>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682583"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_df448145-8fef-4e66-93c2-b7f00a4ef857>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.06922422"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_32fb1a15-6650-4559-a7d2-12e5b75daa4b>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.680916"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_84c93dae-4254-4b24-b0ee-3fc4bdf1ea02>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "84c93dae-4254-4b24-b0ee-3fc4bdf1ea02";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_14e9e317-a168-44a2-82ef-7c76190108a2>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_113fa6bb-c406-44a1-b9b7-67c43efe8372>
-            rdf:type                   cim:ConformLoadGroup;
-            cim:IdentifiedObject.mRID  "113fa6bb-c406-44a1-b9b7-67c43efe8372";
-            cim:IdentifiedObject.name  "TENNET TSO B.V.confLoadGr";
-            cim:LoadGroup.SubLoadArea  <http://tennet.nl/CGMES#_c4e8eb3a-76b0-4192-91fe-c2f0a60af0df> .
-    
-    <http://tennet.nl/CGMES#_0bc0a45a-f196-430e-b5ac-37c39188a7ce>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.0614186"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_261d13c4-1527-42a5-ad0d-a3b817971166>
-            cim:OperationalLimitSet.Terminal
-                    <http://tennet.nl/CGMES#_31bf04d0-7e34-465b-95a4-0604700325cf> .
-    
-    <http://tennet.nl/CGMES#_8eb25188-24dd-4f6e-97d9-b7b03c49454e>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "8eb25188-24dd-4f6e-97d9-b7b03c49454e";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_9a03e8ee-e832-43c8-b38e-0d43f8ef7355>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_cf3e5341-6736-4b34-b4da-e4af2073765b>
-            cim:OperationalLimitSet.Terminal
-                    <http://tennet.nl/CGMES#_70b326a3-5913-494f-b8f8-8e366253b597> .
-    
-    <http://tennet.nl/CGMES#_eec7d9c6-536e-4449-96df-f4c7d633682a>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.683138"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_1118a9c0-cf20-45eb-a539-561e76fde2e2>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.02987964"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_2b05a185-07f6-4e72-a2c3-d28425c7aefc>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "1371"^^xsd:float;
-            cim:IdentifiedObject.mRID     "2b05a185-07f6-4e72-a2c3-d28425c7aefc";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_13ee714f-6df4-4039-8519-5cf4e84ab20d>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_945d6e95-1b83-47c5-a0e9-277d434c2d12>
-            rdf:type                    cim:TieFlow;
-            cim:IdentifiedObject.mRID   "945d6e95-1b83-47c5-a0e9-277d434c2d12";
-            cim:IdentifiedObject.name   "TieFlow";
-            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
-            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_57979d14-d1d8-4311-ae53-aa8890423885>;
-            cim:TieFlow.positiveFlowIn  true .
-    
-    <http://tennet.nl/CGMES#_2f424b90-a264-4592-8854-9838596c9f78>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "1574"^^xsd:float;
-            cim:IdentifiedObject.mRID     "2f424b90-a264-4592-8854-9838596c9f78";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_03943678-b63e-44d8-bc7d-9461da496268>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_e3b3aeff-3818-4dac-934c-33109122860f>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682694"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_b3c7dd07-c19a-4532-b212-27775264884f>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.0654528"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_105bd87e-1212-482f-aa64-376f3b0024b5>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.03398448"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_53bd73f5-902c-4497-80d8-3707c90b7dcc>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.03681348"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_9a754a67-532f-4917-a6dd-6436b22b9a17>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.02573574"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_4df90339-ae02-4da1-8e1e-69ab068df065>
-            cim:TransformerEnd.Terminal  <http://tennet.nl/CGMES#_70b326a3-5913-494f-b8f8-8e366253b597> .
-    
-    <http://tennet.nl/CGMES#_1fee8078-51b8-49cf-a1cd-db18db2f840d>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.683249"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_70b326a3-5913-494f-b8f8-8e366253b597>
-            rdf:type                       cim:Terminal;
-            cim:ACDCTerminal.sequenceNumber
-                    2;
-            cim:IdentifiedObject.mRID      "70b326a3-5913-494f-b8f8-8e366253b597";
-            cim:IdentifiedObject.name      "Terminal";
-            cim:Terminal.ConductingEquipment
-                    <http://tennet.nl/CGMES#_80016742-31b3-432a-b00a-300667a1e572>;
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_124b9180-9112-4b8a-a651-9c1bb9a031da>;
-            cim:Terminal.phases            cim:PhaseCode.ABC .
-    
-    <http://tennet.nl/CGMES#_613dfeb3-0161-4cec-aaa9-ccddd885771b>
-            cim:RegulatingControl.Terminal  <http://tennet.nl/CGMES#_757d4f50-707b-47a0-891c-cbaefd649631> .
-    
-    <http://tennet.nl/CGMES#_4669c2b7-89d0-46d1-9bbb-37e989d581cd>
-            rdf:type                    cim:TieFlow;
-            cim:IdentifiedObject.mRID   "4669c2b7-89d0-46d1-9bbb-37e989d581cd";
-            cim:IdentifiedObject.name   "TieFlow";
-            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
-            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_6b1cd30c-19ba-44e1-9447-d01db6b1ef9d>;
-            cim:TieFlow.positiveFlowIn  true .
-    
-    <http://tennet.nl/CGMES#_c743cfb3-8279-4721-9eee-12020dd89f64>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "2000"^^xsd:float;
-            cim:IdentifiedObject.mRID     "c743cfb3-8279-4721-9eee-12020dd89f64";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_9a03e8ee-e832-43c8-b38e-0d43f8ef7355>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_56105225-1754-40da-b6df-43fd7cfeb50a>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "1876"^^xsd:float;
-            cim:IdentifiedObject.mRID     "56105225-1754-40da-b6df-43fd7cfeb50a";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_b4d8f5e2-7b7a-45eb-b65a-252843d6acf4>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_39b3ec77-b0b6-4a15-bc2b-36e752af54c4>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.01732449"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_641b55be-29e0-4abf-ac03-fd23e467e5c2>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681472"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_2ca6c9d7-1310-4487-a177-0c3f7b461194>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "3306.644"^^xsd:float;
-            cim:IdentifiedObject.mRID     "2ca6c9d7-1310-4487-a177-0c3f7b461194";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_fd472104-d68c-4536-ba4a-5fd9349c0a65>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>
-            cim:ControlArea.EnergyArea  <http://tennet.nl/CGMES#_70c4656c-f7a0-4319-98bb-84fb5e2e9b37> .
-    
-    <http://tennet.nl/CGMES#_e7c1b1c7-aaeb-470a-9cb5-93a3ec269179>
-            cim:OperationalLimitSet.Terminal
-                    <http://tennet.nl/CGMES#_421c7930-64c3-435d-afb8-2bb73b333e34> .
-    
-    <http://tennet.nl/CGMES#_5dd946ee-deca-4766-948c-635e0fd47562>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681583"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_cbdffa42-3eea-46aa-8e90-1de1c205fc71>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.03204435"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_86764bf6-6472-4ebe-9d6b-bcceffe66dad>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "86764bf6-6472-4ebe-9d6b-bcceffe66dad";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_b4d8f5e2-7b7a-45eb-b65a-252843d6acf4>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_f0f5143d-5e04-4fcd-bdb7-1d2d46c604ef>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.02732521"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_d1b48f8e-2f5c-45e5-8446-79a6604d3c8a>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.06164702"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_69add5b4-70bd-4360-8a93-286256c0d38b>
-            cim:ConformLoad.LoadGroup  <http://tennet.nl/CGMES#_113fa6bb-c406-44a1-b9b7-67c43efe8372> .
-    
-    <http://tennet.nl/CGMES#_39408e1d-792e-4cfb-9610-2c8c031b7e6a>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682472"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_4cdd75fd-f620-4d26-b635-c7b97735fe67>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681694"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_757d4f50-707b-47a0-891c-cbaefd649631>
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_90f78705-5ef4-479a-8d5a-70efc554e0ba> .
-    
-    <http://tennet.nl/CGMES#_60b1dbda-df22-4212-b495-f19200ef6458>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.004395567"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_08ad0781-b65c-4f2e-b5ba-00d58bcf2e58>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "08ad0781-b65c-4f2e-b5ba-00d58bcf2e58";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_a2c3d48f-d768-4e1e-8841-6e9c4913f11f>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_06aa2535-8010-4424-a97c-3a48b0aafec5>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.05392985"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_6745e040-9fd4-4cc5-8bfd-902d0aed4ee6>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "3306.644"^^xsd:float;
-            cim:IdentifiedObject.mRID     "6745e040-9fd4-4cc5-8bfd-902d0aed4ee6";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_e7c1b1c7-aaeb-470a-9cb5-93a3ec269179>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_14f1c9bd-93d8-4238-9e26-aacc53fe8855>
-            rdf:type                    cim:TieFlow;
-            cim:IdentifiedObject.mRID   "14f1c9bd-93d8-4238-9e26-aacc53fe8855";
-            cim:IdentifiedObject.name   "TieFlow";
-            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
-            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_ae588863-b154-451d-978a-7ab08ac50fb6>;
-            cim:TieFlow.positiveFlowIn  true .
-    
-    <http://tennet.nl/CGMES#_74414256-fc15-42a0-85f5-8c231863c9c6>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f> .
-    
-    <http://tennet.nl/CGMES#_c9b27b4e-d492-4c3c-b147-67addbb9d3ea>
-            rdf:type                       cim:Terminal;
-            cim:ACDCTerminal.sequenceNumber
-                    1;
-            cim:IdentifiedObject.mRID      "c9b27b4e-d492-4c3c-b147-67addbb9d3ea";
-            cim:IdentifiedObject.name      "Terminal";
-            cim:Terminal.ConductingEquipment
-                    <http://tennet.nl/CGMES#_80016742-31b3-432a-b00a-300667a1e572>;
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_cae57656-3fc2-4f5e-9ab9-fa5b118a632a>;
-            cim:Terminal.phases            cim:PhaseCode.ABC .
-    
-    <http://tennet.nl/CGMES#_421c7930-64c3-435d-afb8-2bb73b333e34>
-            rdf:type                       cim:Terminal;
-            cim:ACDCTerminal.sequenceNumber
-                    1;
-            cim:IdentifiedObject.mRID      "421c7930-64c3-435d-afb8-2bb73b333e34";
-            cim:IdentifiedObject.name      "Terminal";
-            cim:Terminal.ConductingEquipment
-                    <http://tennet.nl/CGMES#_2184f365-8cd5-4b5d-8a28-9d68603bb6a4>;
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_cae57656-3fc2-4f5e-9ab9-fa5b118a632a>;
-            cim:Terminal.phases            cim:PhaseCode.ABC .
-    
-    <http://tennet.nl/CGMES#_cb816a07-f79f-4eed-a279-2ad2ca435f91>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.07682406"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_4480247c-9999-4fe5-98f7-29e822873d4b>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682361"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_03c2b90a-162e-44b4-901f-ad3bc40fb95f>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.01345523"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_93e330b4-16de-40e4-b084-6f20646fa161>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.04606397"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_febed19f-d33a-44fb-add3-4b10dcfee64c>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.05142054"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_f3600241-63dc-485b-aefb-4ec24028f8b3>
-            cim:TransformerEnd.Terminal  <http://tennet.nl/CGMES#_c9b27b4e-d492-4c3c-b147-67addbb9d3ea> .
-    
-    <http://tennet.nl/CGMES#_653bc4b8-518b-4adc-9d68-012fb641fb1d>
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_cae57656-3fc2-4f5e-9ab9-fa5b118a632a> .
-    
-    <http://tennet.nl/CGMES#_bdf2881d-ccd0-4f7b-b239-e1e085572f94>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681916"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_b780341b-7b90-498f-ab63-9deb16eff206>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "b780341b-7b90-498f-ab63-9deb16eff206";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_37cc4210-71c0-4328-a86b-df0f65e76ef4>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_b1e03a8f-6a11-4454-af58-4a4a680e857f>
-            cim:ConformLoad.LoadGroup  <http://tennet.nl/CGMES#_113fa6bb-c406-44a1-b9b7-67c43efe8372> .
-    
-    <http://tennet.nl/CGMES#_ceb1cd1e-bece-4ff2-90bf-fe3932ffd014>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681139"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_daec57cc-6f98-44af-8645-afcfec90aa5f>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.04163161"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_47545df1-566d-4a8d-86e8-882655c6e79e>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "1876"^^xsd:float;
-            cim:IdentifiedObject.mRID     "47545df1-566d-4a8d-86e8-882655c6e79e";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_a2c3d48f-d768-4e1e-8841-6e9c4913f11f>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_16ab43b0-1f68-48d2-8d2b-bb8bfaddd79f>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681583"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_2e3a7427-0dd9-498d-853f-3269e02105f6>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.01305754"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>
-            rdf:type                   cim:RatioTapChangerTable;
-            cim:IdentifiedObject.mRID  "24533a0f-3c24-4253-863a-5b1449e5b2de";
-            cim:IdentifiedObject.name  "NL_TR2_3" .
-    
-    <http://tennet.nl/CGMES#_4c798580-bf82-43cc-aac6-3f7ef1683836>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682916"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_52ac1197-1688-4214-ba55-9f0a0154420c>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682027"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_0c329ca6-c05a-416b-a919-885fd4860566>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.07163366"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_70c4656c-f7a0-4319-98bb-84fb5e2e9b37>
-            rdf:type                   cim:LoadArea;
-            cim:IdentifiedObject.mRID  "70c4656c-f7a0-4319-98bb-84fb5e2e9b37";
-            cim:IdentifiedObject.name  "NL LoadArea" .
-    
-    <http://tennet.nl/CGMES#_25ab1b5b-6803-47e2-805a-ab7b2072e034>
-            cim:ConformLoad.LoadGroup  <http://tennet.nl/CGMES#_113fa6bb-c406-44a1-b9b7-67c43efe8372> .
-    
-    <http://tennet.nl/CGMES#_301ffe68-fcb9-455f-8c4e-7280943667a4>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.06649923"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_5d6db173-ce6d-4a8d-b830-7192d7060daa>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.681361"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_1b65a297-4735-499f-8fe8-f08ea01b291f>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "1233.9"^^xsd:float;
-            cim:IdentifiedObject.mRID     "1b65a297-4735-499f-8fe8-f08ea01b291f";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_79a1fb3a-a66a-468c-8c78-c25714c73eba>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_31bf04d0-7e34-465b-95a4-0604700325cf>
-            rdf:type                       cim:Terminal;
-            cim:ACDCTerminal.sequenceNumber
-                    2;
-            cim:IdentifiedObject.mRID      "31bf04d0-7e34-465b-95a4-0604700325cf";
-            cim:IdentifiedObject.name      "Terminal";
-            cim:Terminal.ConductingEquipment
-                    <http://tennet.nl/CGMES#_2184f365-8cd5-4b5d-8a28-9d68603bb6a4>;
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_124b9180-9112-4b8a-a651-9c1bb9a031da>;
-            cim:Terminal.phases            cim:PhaseCode.ABC .
-    
-    <http://tennet.nl/CGMES#_1613356f-6177-4959-b300-42b0c0e73059>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.682805"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_9679897d-56e5-4910-9263-5a9a50c7a8c4>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.02154983"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_6b03ed33-44a4-4fe6-a806-a0e76733304a>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "-0.05639308"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_2783b836-4271-4252-96a7-588c3a1b1826>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "500"^^xsd:float;
-            cim:IdentifiedObject.mRID     "2783b836-4271-4252-96a7-588c3a1b1826";
-            cim:IdentifiedObject.name     "TATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_125eeb58-1c45-41b2-a981-7d5993b40cda>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
-    
-    <http://tennet.nl/CGMES#_66161dc4-42c4-4ad6-8e5d-b4bbb135bf03>
-            cim:RatioTapChangerTablePoint.RatioTapChangerTable
-                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
-            cim:TapChangerTablePoint.x  "5.68125"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_c4e8eb3a-76b0-4192-91fe-c2f0a60af0df>
-            rdf:type                   cim:SubLoadArea;
-            cim:IdentifiedObject.mRID  "c4e8eb3a-76b0-4192-91fe-c2f0a60af0df";
-            cim:IdentifiedObject.name  "TENNET TSO B.V. SubLoadArea";
-            cim:SubLoadArea.LoadArea   <http://tennet.nl/CGMES#_70c4656c-f7a0-4319-98bb-84fb5e2e9b37> .
-    
-    <http://tennet.nl/CGMES#_e37ee101-2f68-4d55-b24f-c24c5faba8b5>
-            rdf:type                      cim:CurrentLimit;
-            cim:CurrentLimit.normalValue  "461.8804"^^xsd:float;
-            cim:IdentifiedObject.mRID     "e37ee101-2f68-4d55-b24f-c24c5faba8b5";
-            cim:IdentifiedObject.name     "PATL";
-            cim:OperationalLimit.OperationalLimitSet
-                    <http://tennet.nl/CGMES#_83f719ad-2083-44ea-9ebc-9f456c114bdb>;
-            cim:OperationalLimit.OperationalLimitType
-                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
-    
-    <http://tennet.nl/CGMES#_369c3ab7-cb8c-418d-bdf0-9aa88af7e238>
-            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
-                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
-            cim:PhaseTapChangerTablePoint.angle
-                    "0.04207603"^^xsd:float .
-    
-    <http://tennet.nl/CGMES#_faab7959-f9bf-421b-bc3f-d364e0c1388b>
-            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_124b9180-9112-4b8a-a651-9c1bb9a031da> .
-}
-
-<urn:uuid:f6239a76-5523-4017-8afe-b1a2cb13f89d> {
+<urn:uuid:123964ad-b09f-434a-bc7b-9c612d093e94> {
     <http://tennet.nl/CGMES#_3a705ef0-80e6-43b5-a9db-02ae130ab38f>
             cim:RatioTapChangerTablePoint.RatioTapChangerTable
                     <http://tennet.nl/CGMES#_868ba067-8413-45d5-9d06-d75bc913800e>;
@@ -2011,6 +1206,11 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
             cim:OperationalLimit.OperationalLimitType
                     <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
     
+    <urn:uuid:123964ad-b09f-434a-bc7b-9c612d093e94>
+            rdf:type        rdfg:Graph , dcat:Resource;
+            dct:identifier  "123964ad-b09f-434a-bc7b-9c612d093e94";
+            dct:title       "Forward Difference Set of 9adc1c2c-deb0-4e3b-ac80-1d131f9cb8b8" .
+    
     <http://tennet.nl/CGMES#_4233da0a-4b2c-4283-a6ee-20e1f9f7e09e>
             rdf:type                   cim:PhaseTapChangerTable;
             cim:IdentifiedObject.mRID  "4233da0a-4b2c-4283-a6ee-20e1f9f7e09e";
@@ -2123,15 +1323,837 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 
 <urn:uuid:9adc1c2c-deb0-4e3b-ac80-1d131f9cb8b8> {
     <urn:uuid:9adc1c2c-deb0-4e3b-ac80-1d131f9cb8b8>
-            rdf:type                       dm:DifferenceModel;
-            dm:forwardDifferences          <urn:uuid:f6239a76-5523-4017-8afe-b1a2cb13f89d>;
-            dm:reverseDifferences          <urn:uuid:285bbdd6-99b5-4ee2-8bff-874ab4323378>;
-            md:Model.DependentOn           <urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7>;
-            md:Model.Supersedes            <urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61>;
-            md:Model.created               "2021-11-19T23:16:27Z"^^xsd:dateTime;
-            md:Model.description           "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
-            md:Model.modelingAuthoritySet  "http://tennet.nl/CGMES"^^xsd:anyURI;
-            md:Model.profile               "http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0"^^xsd:anyURI , "http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/3.0"^^xsd:anyURI;
-            md:Model.scenarioTime          "2021-03-25T15:30:00Z"^^xsd:dateTime;
-            md:Model.version               "001" .
+            rdf:type                       rdfg:Graph , dcat-cim:DifferenceSet;
+            dct:conformsTo                 <http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0> , <http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/3.0>;
+            dct:description                "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
+            dct:identifier                 "9adc1c2c-deb0-4e3b-ac80-1d131f9cb8b8";
+            dct:issued                     "2021-11-19"^^xsd:date;
+            dct:requires                   <urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7>;
+            dct:temporal                   [ rdf:type        dct:PeriodOfTime;
+                                             dcat:startDate  "2021-03-25T15:30:00Z"^^xsd:dateTime
+                                           ];
+            dcat:distribution              [ rdf:type    dcat:Distribution;
+                                             dct:issued  "2021-11-19T23:16:27Z"^^xsd:dateTime
+                                           ];
+            dcat:isVersionOf               <http://tennet.nl/CGMES>;
+            dcat:previousVersion           <urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61>;
+            dcat:version                   "001";
+            dcat-cim:forwardDifferenceSet  <urn:uuid:123964ad-b09f-434a-bc7b-9c612d093e94>;
+            dcat-cim:reverseDifferenceSet  <urn:uuid:db0cdb47-3462-4012-a2cb-13e0cd7ac35b>;
+            json-ld:base                   "http://tennet.nl/CGMES#" .
+}
+
+<urn:uuid:db0cdb47-3462-4012-a2cb-13e0cd7ac35b> {
+    <http://tennet.nl/CGMES#_3a705ef0-80e6-43b5-a9db-02ae130ab38f>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682916"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_649a76ff-50bc-457f-b965-033814273e1d>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.683138"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_d7422ce6-a13d-41ca-8111-9462b2e789dc>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "d7422ce6-a13d-41ca-8111-9462b2e789dc";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_7cf4108d-d355-48f5-8556-d42c37a8e2c8>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_3d4e9276-68b5-4d28-9d9e-0dfb5b9860e8>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.68225"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_0dbed103-fc51-4df4-a6fa-0dee4c57f3a3>
+            cim:TransformerEnd.Terminal  <http://tennet.nl/CGMES#_421c7930-64c3-435d-afb8-2bb73b333e34> .
+    
+    <http://tennet.nl/CGMES#_835c45c5-e710-4b11-858f-704066a43904>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.683361"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_36679ac7-f571-4528-b92a-47e95fbc22e9>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681805"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_89ef40fb-5d77-45cb-8073-cc2d1d171dcd>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "89ef40fb-5d77-45cb-8073-cc2d1d171dcd";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_03943678-b63e-44d8-bc7d-9461da496268>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_0761805f-8d0c-4a83-aec6-d3bd978097d8>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.02265452"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_5a716e55-2365-454c-be9b-642853275533>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de> .
+    
+    <urn:uuid:db0cdb47-3462-4012-a2cb-13e0cd7ac35b>
+            rdf:type        rdfg:Graph , dcat:Resource;
+            dct:identifier  "db0cdb47-3462-4012-a2cb-13e0cd7ac35b";
+            dct:title       "Reverse Difference Set of 9adc1c2c-deb0-4e3b-ac80-1d131f9cb8b8" .
+    
+    <http://tennet.nl/CGMES#_4ed170fe-2571-4044-9bfa-7345e70a69d2>
+            rdf:type                    cim:TieFlow;
+            cim:IdentifiedObject.mRID   "4ed170fe-2571-4044-9bfa-7345e70a69d2";
+            cim:IdentifiedObject.name   "TieFlow";
+            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
+            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_8f308117-8bbd-4798-b145-4e78f7d049e7>;
+            cim:TieFlow.positiveFlowIn  true .
+    
+    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8>
+            rdf:type                       cim:OperationalLimitType;
+            cim:IdentifiedObject.mRID      "bf2a4896-2e92-465b-b5f9-b033993a31c8";
+            cim:IdentifiedObject.name      "Limit Type TATL";
+            cim:OperationalLimitType.acceptableDuration
+                    "600"^^xsd:float;
+            cim:OperationalLimitType.direction
+                    cim:OperationalLimitDirectionKind.absoluteValue;
+            cim:OperationalLimitType.isInfiniteDuration
+                    false;
+            eu:IdentifiedObject.shortName  "TATL";
+            eu:OperationalLimitType.kind   eu:LimitKind.tatl .
+    
+    <http://tennet.nl/CGMES#_9b32f407-183b-4ddc-b213-d0eccf796455>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.008924291"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_6bd09407-16dd-4ecb-b504-2ddb1db3b3df>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.004439676"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_6fd8188f-65a6-4473-b8f1-ffe6122ba6ab>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "6fd8188f-65a6-4473-b8f1-ffe6122ba6ab";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_13ee714f-6df4-4039-8519-5cf4e84ab20d>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_069e3d31-b5b0-4136-ab22-d40779e369b2>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.680805"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_fd472104-d68c-4536-ba4a-5fd9349c0a65>
+            cim:OperationalLimitSet.Terminal
+                    <http://tennet.nl/CGMES#_c9b27b4e-d492-4c3c-b147-67addbb9d3ea> .
+    
+    <http://tennet.nl/CGMES#_44b4277a-0f4b-43a8-ad93-6f7d6ef02061>
+            cim:RatioTapChanger.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de> .
+    
+    <http://tennet.nl/CGMES#_b35893b0-22d4-4127-9351-9c46fba6059b>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "1574"^^xsd:float;
+            cim:IdentifiedObject.mRID     "b35893b0-22d4-4127-9351-9c46fba6059b";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_37cc4210-71c0-4328-a86b-df0f65e76ef4>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>
+            rdf:type                   cim:PhaseTapChangerTable;
+            cim:IdentifiedObject.mRID  "50c903e2-ecbb-41b8-9a1d-746543c9b63f";
+            cim:IdentifiedObject.name  "NL_TR2_2" .
+    
+    <http://tennet.nl/CGMES#_5bc43480-4543-4193-8b0e-7ba7bf5b3441>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "5bc43480-4543-4193-8b0e-7ba7bf5b3441";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_79a1fb3a-a66a-468c-8c78-c25714c73eba>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_b4029b1f-2727-4fa3-8275-da91787f8521>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681027"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_12f7803a-c65b-4a14-8c0d-7e52becb5772>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "46188.04"^^xsd:float;
+            cim:IdentifiedObject.mRID     "12f7803a-c65b-4a14-8c0d-7e52becb5772";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_261d13c4-1527-42a5-ad0d-a3b817971166>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_ef715edd-516e-4bfd-adc4-1c882852920e>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "839.7826"^^xsd:float;
+            cim:IdentifiedObject.mRID     "ef715edd-516e-4bfd-adc4-1c882852920e";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_d47a27cc-9fad-40f2-a08c-37e545c268df>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_26069582-0f76-47fb-8bc0-44c99fb08887>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "1233.9"^^xsd:float;
+            cim:IdentifiedObject.mRID     "26069582-0f76-47fb-8bc0-44c99fb08887";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_125eeb58-1c45-41b2-a981-7d5993b40cda>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_7d8fe4bf-94a9-4e2b-a90f-1271bdd99325>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.05780642"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_03c0a363-bbb1-4353-a4a6-f78ef8d8cc84>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.68125"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_e2befe6d-07e5-48d1-8315-577bc038a827>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.03804918"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_f9ffc8ea-37f2-404a-9bd3-f3fa15476d4c>
+            rdf:type                    cim:TieFlow;
+            cim:IdentifiedObject.mRID   "f9ffc8ea-37f2-404a-9bd3-f3fa15476d4c";
+            cim:IdentifiedObject.name   "TieFlow";
+            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
+            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_6aecb9ba-5835-4b70-89bc-96d687e45779>;
+            cim:TieFlow.positiveFlowIn  true .
+    
+    <http://tennet.nl/CGMES#_7cfff021-02d4-4aa1-8fe7-b9af9c1fdc44>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "1371"^^xsd:float;
+            cim:IdentifiedObject.mRID     "7cfff021-02d4-4aa1-8fe7-b9af9c1fdc44";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_7cf4108d-d355-48f5-8556-d42c37a8e2c8>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_c557146e-dfc4-4020-9738-d592b188338b>
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_90f78705-5ef4-479a-8d5a-70efc554e0ba> .
+    
+    <http://tennet.nl/CGMES#_ee649b97-d2ec-47e1-976f-0f4d9f50fa11>
+            cim:PhaseTapChangerTabular.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f> .
+    
+    <http://tennet.nl/CGMES#_41ca9e70-1cb4-4971-b8e6-a97a15580b89>
+            cim:TransformerEnd.Terminal  <http://tennet.nl/CGMES#_31bf04d0-7e34-465b-95a4-0604700325cf> .
+    
+    <http://tennet.nl/CGMES#_03287f0c-5562-4533-be7f-2fb40e1888f5>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "2000"^^xsd:float;
+            cim:IdentifiedObject.mRID     "03287f0c-5562-4533-be7f-2fb40e1888f5";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_14e9e317-a168-44a2-82ef-7c76190108a2>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_80f45cfb-a123-4438-aa1d-88fd63ed8ee4>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.01803153"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_e3479531-ffab-4d87-bc6d-5669e1854a28>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682138"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_fcd1200d-f49c-4958-b09c-eb36286f3ca3>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682361"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_eec323a6-074f-4e68-a2db-89a0689afd16>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de> .
+    
+    <http://tennet.nl/CGMES#_675f4994-9544-4634-9dae-7b8b2abdfef0>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.04650027"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_5dfee914-a4fd-4bde-a5b4-c4caa6378d10>
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_cae57656-3fc2-4f5e-9ab9-fa5b118a632a> .
+    
+    <http://tennet.nl/CGMES#_357e3e14-c38e-4a7e-9c95-b3dbe158f5f3>
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_90f78705-5ef4-479a-8d5a-70efc554e0ba> .
+    
+    <http://tennet.nl/CGMES#_5e6588fe-5d2c-4715-b746-a02b2710ad2d>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.008747523"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_26ce5ed9-6557-473e-a710-b7720c2c8355>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "46188.04"^^xsd:float;
+            cim:IdentifiedObject.mRID     "26ce5ed9-6557-473e-a710-b7720c2c8355";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_cf3e5341-6736-4b34-b4da-e4af2073765b>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_dbf8c02e-2079-40fc-a8aa-b68dfc6aa5fd>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681139"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_749f4bc4-bfdb-4bda-8124-21b97e76f9df>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.05001429"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_3777ebd7-2977-43ba-87aa-1d1f4dff32b2>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682583"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_df448145-8fef-4e66-93c2-b7f00a4ef857>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.06922422"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_32fb1a15-6650-4559-a7d2-12e5b75daa4b>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.680916"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_84c93dae-4254-4b24-b0ee-3fc4bdf1ea02>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "84c93dae-4254-4b24-b0ee-3fc4bdf1ea02";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_14e9e317-a168-44a2-82ef-7c76190108a2>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_113fa6bb-c406-44a1-b9b7-67c43efe8372>
+            rdf:type                   cim:ConformLoadGroup;
+            cim:IdentifiedObject.mRID  "113fa6bb-c406-44a1-b9b7-67c43efe8372";
+            cim:IdentifiedObject.name  "TENNET TSO B.V.confLoadGr";
+            cim:LoadGroup.SubLoadArea  <http://tennet.nl/CGMES#_c4e8eb3a-76b0-4192-91fe-c2f0a60af0df> .
+    
+    <http://tennet.nl/CGMES#_0bc0a45a-f196-430e-b5ac-37c39188a7ce>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.0614186"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_261d13c4-1527-42a5-ad0d-a3b817971166>
+            cim:OperationalLimitSet.Terminal
+                    <http://tennet.nl/CGMES#_31bf04d0-7e34-465b-95a4-0604700325cf> .
+    
+    <http://tennet.nl/CGMES#_8eb25188-24dd-4f6e-97d9-b7b03c49454e>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "8eb25188-24dd-4f6e-97d9-b7b03c49454e";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_9a03e8ee-e832-43c8-b38e-0d43f8ef7355>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_cf3e5341-6736-4b34-b4da-e4af2073765b>
+            cim:OperationalLimitSet.Terminal
+                    <http://tennet.nl/CGMES#_70b326a3-5913-494f-b8f8-8e366253b597> .
+    
+    <http://tennet.nl/CGMES#_eec7d9c6-536e-4449-96df-f4c7d633682a>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.683138"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_1118a9c0-cf20-45eb-a539-561e76fde2e2>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.02987964"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_2b05a185-07f6-4e72-a2c3-d28425c7aefc>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "1371"^^xsd:float;
+            cim:IdentifiedObject.mRID     "2b05a185-07f6-4e72-a2c3-d28425c7aefc";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_13ee714f-6df4-4039-8519-5cf4e84ab20d>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_945d6e95-1b83-47c5-a0e9-277d434c2d12>
+            rdf:type                    cim:TieFlow;
+            cim:IdentifiedObject.mRID   "945d6e95-1b83-47c5-a0e9-277d434c2d12";
+            cim:IdentifiedObject.name   "TieFlow";
+            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
+            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_57979d14-d1d8-4311-ae53-aa8890423885>;
+            cim:TieFlow.positiveFlowIn  true .
+    
+    <http://tennet.nl/CGMES#_2f424b90-a264-4592-8854-9838596c9f78>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "1574"^^xsd:float;
+            cim:IdentifiedObject.mRID     "2f424b90-a264-4592-8854-9838596c9f78";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_03943678-b63e-44d8-bc7d-9461da496268>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_e3b3aeff-3818-4dac-934c-33109122860f>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682694"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_b3c7dd07-c19a-4532-b212-27775264884f>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.0654528"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_105bd87e-1212-482f-aa64-376f3b0024b5>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.03398448"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_53bd73f5-902c-4497-80d8-3707c90b7dcc>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.03681348"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_9a754a67-532f-4917-a6dd-6436b22b9a17>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.02573574"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_4df90339-ae02-4da1-8e1e-69ab068df065>
+            cim:TransformerEnd.Terminal  <http://tennet.nl/CGMES#_70b326a3-5913-494f-b8f8-8e366253b597> .
+    
+    <http://tennet.nl/CGMES#_1fee8078-51b8-49cf-a1cd-db18db2f840d>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.683249"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_70b326a3-5913-494f-b8f8-8e366253b597>
+            rdf:type                       cim:Terminal;
+            cim:ACDCTerminal.sequenceNumber
+                    2;
+            cim:IdentifiedObject.mRID      "70b326a3-5913-494f-b8f8-8e366253b597";
+            cim:IdentifiedObject.name      "Terminal";
+            cim:Terminal.ConductingEquipment
+                    <http://tennet.nl/CGMES#_80016742-31b3-432a-b00a-300667a1e572>;
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_124b9180-9112-4b8a-a651-9c1bb9a031da>;
+            cim:Terminal.phases            cim:PhaseCode.ABC .
+    
+    <http://tennet.nl/CGMES#_613dfeb3-0161-4cec-aaa9-ccddd885771b>
+            cim:RegulatingControl.Terminal  <http://tennet.nl/CGMES#_757d4f50-707b-47a0-891c-cbaefd649631> .
+    
+    <http://tennet.nl/CGMES#_4669c2b7-89d0-46d1-9bbb-37e989d581cd>
+            rdf:type                    cim:TieFlow;
+            cim:IdentifiedObject.mRID   "4669c2b7-89d0-46d1-9bbb-37e989d581cd";
+            cim:IdentifiedObject.name   "TieFlow";
+            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
+            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_6b1cd30c-19ba-44e1-9447-d01db6b1ef9d>;
+            cim:TieFlow.positiveFlowIn  true .
+    
+    <http://tennet.nl/CGMES#_c743cfb3-8279-4721-9eee-12020dd89f64>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "2000"^^xsd:float;
+            cim:IdentifiedObject.mRID     "c743cfb3-8279-4721-9eee-12020dd89f64";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_9a03e8ee-e832-43c8-b38e-0d43f8ef7355>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_56105225-1754-40da-b6df-43fd7cfeb50a>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "1876"^^xsd:float;
+            cim:IdentifiedObject.mRID     "56105225-1754-40da-b6df-43fd7cfeb50a";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_b4d8f5e2-7b7a-45eb-b65a-252843d6acf4>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_39b3ec77-b0b6-4a15-bc2b-36e752af54c4>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.01732449"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_641b55be-29e0-4abf-ac03-fd23e467e5c2>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681472"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_2ca6c9d7-1310-4487-a177-0c3f7b461194>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "3306.644"^^xsd:float;
+            cim:IdentifiedObject.mRID     "2ca6c9d7-1310-4487-a177-0c3f7b461194";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_fd472104-d68c-4536-ba4a-5fd9349c0a65>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>
+            cim:ControlArea.EnergyArea  <http://tennet.nl/CGMES#_70c4656c-f7a0-4319-98bb-84fb5e2e9b37> .
+    
+    <http://tennet.nl/CGMES#_e7c1b1c7-aaeb-470a-9cb5-93a3ec269179>
+            cim:OperationalLimitSet.Terminal
+                    <http://tennet.nl/CGMES#_421c7930-64c3-435d-afb8-2bb73b333e34> .
+    
+    <http://tennet.nl/CGMES#_5dd946ee-deca-4766-948c-635e0fd47562>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681583"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_cbdffa42-3eea-46aa-8e90-1de1c205fc71>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.03204435"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_86764bf6-6472-4ebe-9d6b-bcceffe66dad>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "86764bf6-6472-4ebe-9d6b-bcceffe66dad";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_b4d8f5e2-7b7a-45eb-b65a-252843d6acf4>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_f0f5143d-5e04-4fcd-bdb7-1d2d46c604ef>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.02732521"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_d1b48f8e-2f5c-45e5-8446-79a6604d3c8a>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.06164702"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_69add5b4-70bd-4360-8a93-286256c0d38b>
+            cim:ConformLoad.LoadGroup  <http://tennet.nl/CGMES#_113fa6bb-c406-44a1-b9b7-67c43efe8372> .
+    
+    <http://tennet.nl/CGMES#_39408e1d-792e-4cfb-9610-2c8c031b7e6a>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682472"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_4cdd75fd-f620-4d26-b635-c7b97735fe67>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681694"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_757d4f50-707b-47a0-891c-cbaefd649631>
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_90f78705-5ef4-479a-8d5a-70efc554e0ba> .
+    
+    <http://tennet.nl/CGMES#_60b1dbda-df22-4212-b495-f19200ef6458>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.004395567"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_08ad0781-b65c-4f2e-b5ba-00d58bcf2e58>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "08ad0781-b65c-4f2e-b5ba-00d58bcf2e58";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_a2c3d48f-d768-4e1e-8841-6e9c4913f11f>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_06aa2535-8010-4424-a97c-3a48b0aafec5>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.05392985"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_6745e040-9fd4-4cc5-8bfd-902d0aed4ee6>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "3306.644"^^xsd:float;
+            cim:IdentifiedObject.mRID     "6745e040-9fd4-4cc5-8bfd-902d0aed4ee6";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_e7c1b1c7-aaeb-470a-9cb5-93a3ec269179>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_14f1c9bd-93d8-4238-9e26-aacc53fe8855>
+            rdf:type                    cim:TieFlow;
+            cim:IdentifiedObject.mRID   "14f1c9bd-93d8-4238-9e26-aacc53fe8855";
+            cim:IdentifiedObject.name   "TieFlow";
+            cim:TieFlow.ControlArea     <http://tennet.nl/CGMES#_31b2fe09-63f6-44f6-9b4f-01dbe7e4944a>;
+            cim:TieFlow.Terminal        <http://tennet.nl/CGMES#_ae588863-b154-451d-978a-7ab08ac50fb6>;
+            cim:TieFlow.positiveFlowIn  true .
+    
+    <http://tennet.nl/CGMES#_74414256-fc15-42a0-85f5-8c231863c9c6>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f> .
+    
+    <http://tennet.nl/CGMES#_c9b27b4e-d492-4c3c-b147-67addbb9d3ea>
+            rdf:type                       cim:Terminal;
+            cim:ACDCTerminal.sequenceNumber
+                    1;
+            cim:IdentifiedObject.mRID      "c9b27b4e-d492-4c3c-b147-67addbb9d3ea";
+            cim:IdentifiedObject.name      "Terminal";
+            cim:Terminal.ConductingEquipment
+                    <http://tennet.nl/CGMES#_80016742-31b3-432a-b00a-300667a1e572>;
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_cae57656-3fc2-4f5e-9ab9-fa5b118a632a>;
+            cim:Terminal.phases            cim:PhaseCode.ABC .
+    
+    <http://tennet.nl/CGMES#_421c7930-64c3-435d-afb8-2bb73b333e34>
+            rdf:type                       cim:Terminal;
+            cim:ACDCTerminal.sequenceNumber
+                    1;
+            cim:IdentifiedObject.mRID      "421c7930-64c3-435d-afb8-2bb73b333e34";
+            cim:IdentifiedObject.name      "Terminal";
+            cim:Terminal.ConductingEquipment
+                    <http://tennet.nl/CGMES#_2184f365-8cd5-4b5d-8a28-9d68603bb6a4>;
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_cae57656-3fc2-4f5e-9ab9-fa5b118a632a>;
+            cim:Terminal.phases            cim:PhaseCode.ABC .
+    
+    <http://tennet.nl/CGMES#_cb816a07-f79f-4eed-a279-2ad2ca435f91>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.07682406"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_4480247c-9999-4fe5-98f7-29e822873d4b>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682361"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_03c2b90a-162e-44b4-901f-ad3bc40fb95f>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.01345523"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_93e330b4-16de-40e4-b084-6f20646fa161>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.04606397"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_febed19f-d33a-44fb-add3-4b10dcfee64c>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.05142054"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_f3600241-63dc-485b-aefb-4ec24028f8b3>
+            cim:TransformerEnd.Terminal  <http://tennet.nl/CGMES#_c9b27b4e-d492-4c3c-b147-67addbb9d3ea> .
+    
+    <http://tennet.nl/CGMES#_653bc4b8-518b-4adc-9d68-012fb641fb1d>
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_cae57656-3fc2-4f5e-9ab9-fa5b118a632a> .
+    
+    <http://tennet.nl/CGMES#_bdf2881d-ccd0-4f7b-b239-e1e085572f94>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681916"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_b780341b-7b90-498f-ab63-9deb16eff206>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "b780341b-7b90-498f-ab63-9deb16eff206";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_37cc4210-71c0-4328-a86b-df0f65e76ef4>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_b1e03a8f-6a11-4454-af58-4a4a680e857f>
+            cim:ConformLoad.LoadGroup  <http://tennet.nl/CGMES#_113fa6bb-c406-44a1-b9b7-67c43efe8372> .
+    
+    <http://tennet.nl/CGMES#_ceb1cd1e-bece-4ff2-90bf-fe3932ffd014>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681139"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_daec57cc-6f98-44af-8645-afcfec90aa5f>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.04163161"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_47545df1-566d-4a8d-86e8-882655c6e79e>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "1876"^^xsd:float;
+            cim:IdentifiedObject.mRID     "47545df1-566d-4a8d-86e8-882655c6e79e";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_a2c3d48f-d768-4e1e-8841-6e9c4913f11f>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_16ab43b0-1f68-48d2-8d2b-bb8bfaddd79f>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681583"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_2e3a7427-0dd9-498d-853f-3269e02105f6>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.01305754"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>
+            rdf:type                   cim:RatioTapChangerTable;
+            cim:IdentifiedObject.mRID  "24533a0f-3c24-4253-863a-5b1449e5b2de";
+            cim:IdentifiedObject.name  "NL_TR2_3" .
+    
+    <http://tennet.nl/CGMES#_4c798580-bf82-43cc-aac6-3f7ef1683836>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682916"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_52ac1197-1688-4214-ba55-9f0a0154420c>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682027"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_0c329ca6-c05a-416b-a919-885fd4860566>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.07163366"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_70c4656c-f7a0-4319-98bb-84fb5e2e9b37>
+            rdf:type                   cim:LoadArea;
+            cim:IdentifiedObject.mRID  "70c4656c-f7a0-4319-98bb-84fb5e2e9b37";
+            cim:IdentifiedObject.name  "NL LoadArea" .
+    
+    <http://tennet.nl/CGMES#_25ab1b5b-6803-47e2-805a-ab7b2072e034>
+            cim:ConformLoad.LoadGroup  <http://tennet.nl/CGMES#_113fa6bb-c406-44a1-b9b7-67c43efe8372> .
+    
+    <http://tennet.nl/CGMES#_301ffe68-fcb9-455f-8c4e-7280943667a4>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.06649923"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_5d6db173-ce6d-4a8d-b830-7192d7060daa>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.681361"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_1b65a297-4735-499f-8fe8-f08ea01b291f>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "1233.9"^^xsd:float;
+            cim:IdentifiedObject.mRID     "1b65a297-4735-499f-8fe8-f08ea01b291f";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_79a1fb3a-a66a-468c-8c78-c25714c73eba>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_31bf04d0-7e34-465b-95a4-0604700325cf>
+            rdf:type                       cim:Terminal;
+            cim:ACDCTerminal.sequenceNumber
+                    2;
+            cim:IdentifiedObject.mRID      "31bf04d0-7e34-465b-95a4-0604700325cf";
+            cim:IdentifiedObject.name      "Terminal";
+            cim:Terminal.ConductingEquipment
+                    <http://tennet.nl/CGMES#_2184f365-8cd5-4b5d-8a28-9d68603bb6a4>;
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_124b9180-9112-4b8a-a651-9c1bb9a031da>;
+            cim:Terminal.phases            cim:PhaseCode.ABC .
+    
+    <http://tennet.nl/CGMES#_1613356f-6177-4959-b300-42b0c0e73059>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.682805"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_9679897d-56e5-4910-9263-5a9a50c7a8c4>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.02154983"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_6b03ed33-44a4-4fe6-a806-a0e76733304a>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "-0.05639308"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_2783b836-4271-4252-96a7-588c3a1b1826>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "500"^^xsd:float;
+            cim:IdentifiedObject.mRID     "2783b836-4271-4252-96a7-588c3a1b1826";
+            cim:IdentifiedObject.name     "TATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_125eeb58-1c45-41b2-a981-7d5993b40cda>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_bf2a4896-2e92-465b-b5f9-b033993a31c8> .
+    
+    <http://tennet.nl/CGMES#_66161dc4-42c4-4ad6-8e5d-b4bbb135bf03>
+            cim:RatioTapChangerTablePoint.RatioTapChangerTable
+                    <http://tennet.nl/CGMES#_24533a0f-3c24-4253-863a-5b1449e5b2de>;
+            cim:TapChangerTablePoint.x  "5.68125"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_c4e8eb3a-76b0-4192-91fe-c2f0a60af0df>
+            rdf:type                   cim:SubLoadArea;
+            cim:IdentifiedObject.mRID  "c4e8eb3a-76b0-4192-91fe-c2f0a60af0df";
+            cim:IdentifiedObject.name  "TENNET TSO B.V. SubLoadArea";
+            cim:SubLoadArea.LoadArea   <http://tennet.nl/CGMES#_70c4656c-f7a0-4319-98bb-84fb5e2e9b37> .
+    
+    <http://tennet.nl/CGMES#_e37ee101-2f68-4d55-b24f-c24c5faba8b5>
+            rdf:type                      cim:CurrentLimit;
+            cim:CurrentLimit.normalValue  "461.8804"^^xsd:float;
+            cim:IdentifiedObject.mRID     "e37ee101-2f68-4d55-b24f-c24c5faba8b5";
+            cim:IdentifiedObject.name     "PATL";
+            cim:OperationalLimit.OperationalLimitSet
+                    <http://tennet.nl/CGMES#_83f719ad-2083-44ea-9ebc-9f456c114bdb>;
+            cim:OperationalLimit.OperationalLimitType
+                    <http://tennet.nl/CGMES#_1aee0921-7cbe-481c-9078-daf66ab2a950> .
+    
+    <http://tennet.nl/CGMES#_369c3ab7-cb8c-418d-bdf0-9aa88af7e238>
+            cim:PhaseTapChangerTablePoint.PhaseTapChangerTable
+                    <http://tennet.nl/CGMES#_50c903e2-ecbb-41b8-9a1d-746543c9b63f>;
+            cim:PhaseTapChangerTablePoint.angle
+                    "0.04207603"^^xsd:float .
+    
+    <http://tennet.nl/CGMES#_faab7959-f9bf-421b-bc3f-d364e0c1388b>
+            cim:Terminal.ConnectivityNode  <http://tennet.nl/CGMES#_124b9180-9112-4b8a-a651-9c1bb9a031da> .
 }

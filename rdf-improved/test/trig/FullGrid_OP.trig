@@ -1,10 +1,16 @@
-PREFIX cim:  <http://iec.ch/TC57/CIM100#>
-PREFIX eu:   <http://iec.ch/TC57/CIM100-European#>
-PREFIX eumd: <https://cim4.eu/ns/Metadata-European#>
-PREFIX md:   <http://iec.ch/TC57/61970-552/ModelDescription/1#>
-PREFIX nc:   <https://cim4.eu/ns/nc#>
-PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim:      <http://iec.ch/TC57/CIM100#>
+PREFIX dcat:     <http://www.w3.org/ns/dcat#>
+PREFIX dcat-cim: <https://cim4.eu/ns/dcat-cim#>
+PREFIX dct:      <http://purl.org/dc/terms/>
+PREFIX dm:       <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX eu:       <http://iec.ch/TC57/CIM100-European#>
+PREFIX eumd:     <https://cim4.eu/ns/Metadata-European#>
+PREFIX json-ld:  <https://www.w3.org/ns/json-ld#>
+PREFIX md:       <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:       <https://cim4.eu/ns/nc#>
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfg:     <http://www.w3.org/2004/03/trix/rdfg-1/>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 
 <urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7> {
     <http://fullgrid.eu/CGMES/3.0#_fc908c16-468f-4a64-ba74-6f57175e0005>
@@ -218,14 +224,21 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
             cim:SetPoint.value             "250.0"^^xsd:float .
     
     <urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7>
-            rdf:type                       md:FullModel;
-            md:Model.DependentOn           <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3>;
-            md:Model.created               "2020-12-10T00:21:43Z"^^xsd:dateTime;
-            md:Model.description           "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
-            md:Model.modelingAuthoritySet  "http://fullgrid.eu/CGMES/3.0"^^xsd:anyURI;
-            md:Model.profile               "http://iec.ch/TC57/ns/CIM/Operation-EU/3.0"^^xsd:anyURI;
-            md:Model.scenarioTime          "2021-02-09T19:30:00Z"^^xsd:dateTime;
-            md:Model.version               "1" .
+            rdf:type           rdfg:Graph , dcat:Dataset;
+            dct:conformsTo     <http://iec.ch/TC57/ns/CIM/Operation-EU/3.0>;
+            dct:description    "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
+            dct:identifier     "52a409c9-72d8-4b5f-bf72-9a22ec9353f7";
+            dct:issued         "2020-12-10"^^xsd:date;
+            dct:requires       <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3>;
+            dct:temporal       [ rdf:type        dct:PeriodOfTime;
+                                 dcat:startDate  "2021-02-09T19:30:00Z"^^xsd:dateTime
+                               ];
+            dcat:distribution  [ rdf:type    dcat:Distribution;
+                                 dct:issued  "2020-12-10T00:21:43Z"^^xsd:dateTime
+                               ];
+            dcat:isVersionOf   <http://fullgrid.eu/CGMES/3.0>;
+            dcat:version       "1";
+            json-ld:base       "http://fullgrid.eu/CGMES/3.0#" .
     
     <http://fullgrid.eu/CGMES/3.0#_8176be1d-346d-4869-a3f7-6ba57de63f2f>
             rdf:type                       cim:RaiseLowerCommand;
