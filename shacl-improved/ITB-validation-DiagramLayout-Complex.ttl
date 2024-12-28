@@ -1,0 +1,655 @@
+@prefix adsh:    <http://www.w3.org/ns/advanced-shacl#> .
+@prefix bpsh:    <http://itb.ec.europa.eu/ns/shacl-shacl-bp#> .
+@prefix cim:     <http://iec.ch/TC57/CIM100#> .
+@prefix cims:    <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix dash:    <http://datashapes.org/dash#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix dlu:     <http://iec.ch/TC57/ns/CIM/DiagramLayout-EU/constraints/IEC61970-301/3.0#> .
+@prefix eu:      <http://iec.ch/TC57/CIM100-European#> .
+@prefix graphql: <http://datashapes.org/graphql#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix shsh:    <http://www.w3.org/ns/shacl-shacl#> .
+@prefix swa:     <http://topbraid.org/swa#> .
+@prefix tosh:    <http://topbraid.org/tosh#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+[ rdf:type     sh:ValidationReport;
+  sh:conforms  false;
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxExclusiveConstraintComponent-maxExclusive;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClosedConstraintComponent-ignoredProperties;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinInclusiveConstraintComponent-minInclusive;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:AndConstraintComponent-and;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LanguageInConstraintComponent-languageIn;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClosedConstraintComponent-closed;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedValueShapesDisjoint;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:OrConstraintComponent-or;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedValueShapesDisjoint;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxCountConstraintComponent-maxCount;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LessThanConstraintComponent-lessThan;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:UniqueLangConstraintComponent-uniqueLang;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PatternConstraintComponent-flags;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:JSConstraint-js;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:AndConstraintComponent-and;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:DisjointConstraintComponent-disjoint;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedValueShape;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedValueShape;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedValueShape;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClosedConstraintComponent-ignoredProperties;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NodeKindConstraintComponent-nodeKind;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PropertyConstraintComponent-property;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinLengthConstraintComponent-minLength;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ExpressionConstraintComponent-expression;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:;
+                 sh:resultMessage              "The values of sh:namespace are literals of datatype xsd:anyURI."@en;
+                 sh:resultPath                 ( sh:declare sh:namespace );
+                 sh:resultSeverity             sh:Violation;
+                 sh:sourceConstraintComponent  sh:DatatypeConstraintComponent;
+                 sh:sourceShape                [] ;
+                 sh:value                      "http://www.w3.org/ns/shacl#"
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:EqualsConstraintComponent-equals;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:InConstraintComponent-in;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:SPARQLConstraintComponent-sparql;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:DatatypeConstraintComponent-datatype;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinCountConstraintComponent-minCount;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PatternConstraintComponent-flags;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  dlu:DiagramObjectPoint;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      dlu:DiagramObjectPoint
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:DatatypeConstraintComponent-datatype;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ExpressionConstraintComponent-expression;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedValueShape;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:XoneConstraintComponent-xone;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PropertyConstraintComponent-property;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PatternConstraintComponent-pattern;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:JSConstraint-js;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClosedConstraintComponent-closed;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedMaxCount;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:UniqueLangConstraintComponent-uniqueLang;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NodeKindConstraintComponent-nodeKind;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinExclusiveConstraintComponent-minExclusive;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:HasValueConstraintComponent-hasValue;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxInclusiveConstraintComponent-maxInclusive;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinCountConstraintComponent-minCount;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LessThanConstraintComponent-lessThan;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PatternConstraintComponent-pattern;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:EqualsConstraintComponent-equals;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  dlu:DiagramObject.IdentifiedObject-additionalValueType;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      dlu:DiagramObject.IdentifiedObject-additionalValueType
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LessThanOrEqualsConstraintComponent-lessThanOrEquals;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NotConstraintComponent-not;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClassConstraintComponent-class;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClassConstraintComponent-class;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedValueShapesDisjoint;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LanguageInConstraintComponent-languageIn;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NotConstraintComponent-not;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxLengthConstraintComponent-maxLength;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinInclusiveConstraintComponent-minInclusive;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NodeConstraintComponent-node;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedValueShapesDisjoint;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:InConstraintComponent-in;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxExclusiveConstraintComponent-maxExclusive;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxInclusiveConstraintComponent-maxInclusive;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedMaxCount;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinLengthConstraintComponent-minLength;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:HasValueConstraintComponent-hasValue;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NodeConstraintComponent-node;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinExclusiveConstraintComponent-minExclusive;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:DisjointConstraintComponent-disjoint;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LessThanOrEqualsConstraintComponent-lessThanOrEquals;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxCountConstraintComponent-maxCount;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedMinCount;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:OrConstraintComponent-or;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:XoneConstraintComponent-xone;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedMinCount;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:SPARQLConstraintComponent-sparql;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxLengthConstraintComponent-maxLength;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ]
+] .

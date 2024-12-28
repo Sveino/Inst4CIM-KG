@@ -13,13 +13,14 @@ However, CGMES shapes are complex, and it is not surprising that various improve
         - [In-memory vs On-disk Databases and Incremental Validation](#in-memory-vs-on-disk-databases-and-incremental-validation)
         - [Malformed Data Tests](#malformed-data-tests)
         - [Validating a Difference Model](#validating-a-difference-model)
+        - [Describing Tests and Results Semantically](#describing-tests-and-results-semantically)
     - [SHACL Engines and Requirements](#shacl-engines-and-requirements)
         - [Flexible Specification of dataGraph](#flexible-specification-of-datagraph)
         - [Useful/Readable ValidationReports](#usefulreadable-validationreports)
         - [Limit Number of Violations](#limit-number-of-violations)
     - [SHACL Improvements](#shacl-improvements)
         - [Write SHACL for the Spec Not for a Specific Implementation](#write-shacl-for-the-spec-not-for-a-specific-implementation)
-        - [Check for Syntax Errors](#check-for-syntax-errors)
+        - [Check for Syntax Errors Using SHACL SHACL](#check-for-syntax-errors-using-shacl-shacl)
         - [Check for Internal Consistency](#check-for-internal-consistency)
             - [Each NodeShape Should have a Property](#each-nodeshape-should-have-a-property)
             - [All PropertyShapes Should be Used](#all-propertyshapes-should-be-used)
@@ -43,6 +44,8 @@ However, CGMES shapes are complex, and it is not surprising that various improve
         - [Don't Use Regex on Numbers](#dont-use-regex-on-numbers)
         - [Don't Use nodeKind Literal or Blank Node](#dont-use-nodekind-literal-or-blank-node)
         - [Split Into Simpler Shapes](#split-into-simpler-shapes)
+    - [Don't Use Property Paths Unnecessarily](#dont-use-property-paths-unnecessarily)
+    - [Checking Datatypes](#checking-datatypes)
     - [Other SHACL Issues](#other-shacl-issues)
 
 <!-- markdown-toc end -->
@@ -101,6 +104,14 @@ TODO
 ### Validating a Difference Model
 TODO
 
+### Describing Tests and Results Semantically
+TestManifest
+EARL
+https://csarven.ca/linked-specifications-reports
+
+https://www.itb.ec.europa.eu/docs/tdl/latest/
+GITB Test Description Language (TDL).
+
 ## SHACL Engines and Requirements
 - https://github.com/Sveino/Inst4CIM-KG/issues/95 which SHACL validators to try?
 
@@ -117,6 +128,18 @@ a whole section on ValidationReports. Use some knowledge from https://transparen
 Chavdar has carefully crafted sh:message: that should be upheld (from sh:message to sh:resultMessage). And variable substitution to be allowed not only for SPARQL shapes but also standard shapes: https://github.com/w3c/shacl/issues/84 .
 Some of these should be part of the validation engine, others can be added by a post-processing as we did in TEKG (count results and prevalences, raise sourceShape)
 TODO
+
+https://github.com/ISAITB/shacl-validator/issues/15
+If you look at https://transparency.ontotext.com/app/validations, you will see validation result counts that are very well organized:
+by applicability, group, and each row is a NodeShape.
+When you click on a count, you see the list of ValidationResults for that NodeShape and applicability (eg country, zone, etc).
+
+- Shapes are laid out like this: https://transparency.ontotext.com/spec/#describing-validation-rules
+- sh:ValidationResult are laid out like this: https://transparency.ontotext.com/spec/#individual-validation-results
+- Counts are laid out like this: https://transparency.ontotext.com/spec/#summary-validation-results
+
+We did face the problem that `sh:sourceShape` often pointed to blank nodes (the list of `and/or` or a blank `PropertyShape`). We used this query to redirect it to point to the respective `sh:NodeShape` (since all our shape metadata is attached there).
+"appliesTo" is a custom extension to SHACL, so you should ignore it
 
 ### Limit Number of Violations
 Ability to put limits on total number of reports, and number of reports per shape. Eg: https://rdf4j.org/documentation/programming/shacl/#limiting-the-validation-report . And I posted https://github.com/w3c/data-shapes/issues/161
@@ -150,12 +173,13 @@ select (count(*) as ?c) {
 ```
 The command-line count is less precise since it counts commented-out code, and some duplicates in `.rdf` vs `.ttl`.
 
-| Resource           | cmdline | SPARQL |
+| Count              | cmdline | SPARQL |
 |--------------------|---------|--------|
 | SHACL files        |     114 |        |
 | `sh:NodeShape`     |    2277 |   1719 |
 | `sh:PropertyShape` |   18987 |  11308 |
 | `sh:property`      |         |  20042 |
+| Triples            |         | 158415 |
 
 Because of their sheer volume and complexity, it is no wonder that there are various problems, as decribed in following sections.
 Please note:
@@ -177,13 +201,34 @@ Since approving the SHACL Recommendation in 2017, SHACL standardization is re-en
 - The [SHACL Community Group](https://www.w3.org/groups/cg/shacl/)
 - The SHACL Working Group is being reconstituted, see [PROPOSED Data Shapes Working Group Charter](https://www.w3.org/2024/10/data-shapes.html)
 
-### Check for Syntax Errors
+### Check for Syntax Errors Using SHACL SHACL
 
 The SHACL spec describes the structure of shapes informally.
 Although there is no formal SHACL grammar, the SHACL SHACL shapes define a lot of tests to check the structure of shapes.
 - Use the [EU Interoperability Test Bed (ITB)](https://www.itb.ec.europa.eu/shacl/shacl/upload) to check all shapes for validity (it offers 3 varieties of SHACL SHACL shapes)
 - In case you find some problems or incompleteness with SHACL SHACL, post issues at the SHACL Github project.
   The newly constituted SHACL 1.2 WG should take care of them.
+
+For example, validating `61970-301_DiagramLayout-AP-Con-Complex-SHACL_v3-0-0.ttl` results in the following report:
+(saved as [ITB-validation-DiagramLayout-Complex.ttl](ITB-validation-DiagramLayout-Complex.ttl))
+
+![](ITB-validation-DiagramLayout-Complex.png)
+
+Paradoxically, the 1 error is the result of importing the `sh:` ontology, which has `sh:declare/sh:namespace` as strings rather than `xsd:AnyURI`.
+
+Validating `61970-301_Equipment-AP-Con-Complex-SHACL_v3-0-0.ttl` (saved as [ITB-validation-Equipment-Complex.ttl](ITB-validation-Equipment-Complex.ttl))
+leads to similar errors and warnings, but there is an extra error reported:
+
+> The values of sh:select must be valid SPARQL 1.1 SELECT queries with a single result variable this.
+> Value:
+```sparql
+SELECT DISTINCT ?this WHERE {
+  ?this rdf:type cim:PowerTransformer .
+  FILTER NOT EXISTS {?this ^cim:PowerTransformerEnd.PowerTransformer/cim:TransformerEnd.endNumber 3}. }
+```
+This is a bug in the ITB validator, reported as https://github.com/ISAITB/shacl-validator/issues/14 .
+
+In addition, the ITB validator does not include a useful `sh:focusNode` in most `ValidationResults`, reported as https://github.com/ISAITB/shacl-validator/issues/15 .
 
 Please note that SHACL SHACL cannot check all possible malformations.
 Eg the `sh:or` below is invalid (it should be a list of node shapes to check) but won't be caught by SHACL SHACL:
@@ -1139,8 +1184,8 @@ It is complicated and has logical errors:
   This means the FILTER can never succeed and this rule will never return violations.
 - It checks the condition of 3 values together, so will not report nodes that fail one of the conditions
 
-It is better to split it into 3 `PropertyShapes` per property, 
-use those properties as `sh:path` instead of blaming `rdf:type`, 
+It is better to split it into 3 `PropertyShapes` per property,
+use those properties as `sh:path` instead of blaming `rdf:type`,
 check their presence (`minCount=maxCount=1`),
 and check with `sh:hasValue` rather than an expensive SPARQL check:
 
@@ -1189,6 +1234,86 @@ eq600:ReactiveCapabilityCurve.y2Unit a sh:PropertyShape ;
 
 ```
 
+## Don't Use Property Paths Unnecessarily
+Consider the following shape:
+```ttl
+gl:Location  rdf:type   sh:NodeShape ;
+        sh:property     gl:Status.value-cardinality , gl:TownDetail.country-datatype , gl:StreetAddress.streetDetail-cardinality , gl:StreetDetail.addressGeneral3-cardinality , gl:TownDetail.code-datatype , gl:StreetDetail.name-cardinality , gl:StreetDetail.addressGeneral-datatype , gl:Location.CoordinateSystem-valueType , gl:StreetDetail.type-cardinality , ido:IdentifiedObject.mRID-cardinality , gl:StreetAddress.poBox-cardinality , gl:StreetDetail.addressGeneral2-datatype , gl:Status.dateTime-cardinality , gl:StreetAddress.townDetail-datatype , gl:StreetDetail.addressGeneral-cardinality , gl:Status.remark-cardinality , gl:Location.mainAddress-cardinality , gl:TownDetail.name-cardinality , gl:TownDetail.section-cardinality , ido:IdentifiedObject.mRID-datatype , gl:StreetDetail.prefix-datatype , gl:StreetDetail.suffix-datatype , gl:TownDetail.stateOrProvince-cardinality , gl:StreetDetail.code-cardinality , ido:IdentifiedObject.name-cardinality , gl:StreetDetail.number-cardinality , gl:StreetAddress.status-datatype , gl:Status.dateTime-datatype , gl:StreetAddress.language-cardinality , gl:Location.mainAddress-datatype , gl:StreetDetail.suffix-cardinality , gl:Location.PowerSystemResources-cardinality , gl:StreetDetail.suiteNumber-cardinality , gl:StreetDetail.code-datatype , gl:StreetAddress.streetDetail-datatype , gl:TownDetail.section-datatype , gl:StreetDetail.addressGeneral3-datatype , gl:Status.value-datatype , gl:StreetAddress.postalCode-cardinality , gl:StreetDetail.floorIdentification-cardinality , gl:StreetAddress.status-cardinality , gl:Status.remark-datatype , gl:TownDetail.country-cardinality , gl:TownDetail.code-cardinality , gl:TownDetail.stateOrProvince-datatype , gl:StreetDetail.number-datatype , gl:StreetAddress.townDetail-cardinality , gl:Status.reason-cardinality , gl:StreetDetail.suiteNumber-datatype , ido:IdentifiedObject.name-datatype , gl:StreetAddress.language-datatype , gl:StreetDetail.withinTownLimits-datatype , gl:StreetDetail.buildingName-datatype , gl:Status.reason-datatype , gl:StreetDetail.addressGeneral2-cardinality , gl:StreetAddress.postalCode-datatype , gl:TownDetail.name-datatype , gl:StreetDetail.withinTownLimits-cardinality , gl:StreetDetail.floorIdentification-datatype , gl:StreetDetail.type-datatype , gl:Location.CoordinateSystem-cardinality , gl:StreetDetail.buildingName-cardinality , gl:StreetDetail.prefix-cardinality , gl:StreetDetail.name-datatype , gl:StreetAddress.poBox-datatype ;
+        sh:targetClass  cim:Location .
+```
+
+It is unnecessarily complex since it checks all attributes of all nested "value objects" by using property paths, eg:
+```ttl
+gl:StreetDetail.suiteNumber-datatype
+  rdf:type        sh:PropertyShape ;
+  sh:datatype     xsd:string ;
+  sh:description  "This constraint validates the datatype of the property (attribute)." ;
+  sh:group        gl:DatatypesGroup ;
+  sh:message      "The datatype is not literal or it violates the xsd datatype." ;
+  sh:name         "StreetDetail.suiteNumber-datatype" ;
+  sh:nodeKind     sh:Literal ;
+  sh:order        5 ;
+  sh:path         ( cim:Location.mainAddress cim:StreetAddress.streetDetail cim:StreetDetail.suiteNumber ) ;
+```
+The same complex property shapes are checked for the shape `gl:ServiceLocation`.
+
+This complexity is unnecessary: write simpler modular shapes to check the classes `cim:StreetAddress, cim:StreetDetail`.
+Then in the main classes `cim:Location, cim:ServiceLocation`, simply check the relations to `cim:StreetAddress`.
+
+The shorter the prop paths in a given node shape, the better.
+
+## Checking Datatypes
+- https://github.com/Sveino/Inst4CIM-KG/issues/150 SHACL: Checking Datatypes
+
+CIM SHACL includes datatype checking: there are 3778 checks:
+```sparql
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+select * {
+    ?propShape sh:path ?prop; sh:datatype ?dt
+} order by ?prop
+```
+The breakdown of prop checks by namespace is as follows:
+| ns                                              |    c | comment                                  |
+|-------------------------------------------------|------|------------------------------------------|
+| http://iec.ch/TC57/CIM100                       | 3060 |                                          |
+| https://cim4.eu/ns/nc                           |  577 |                                          |
+| (blank)                                         |   31 | complex property paths, see prev section |
+| https://cim.ucaiug.io/ns                        |   30 |                                          |
+| http://purl.org/dc/terms/                       |   27 |                                          |
+| http://iec.ch/TC57/CIM100-European              |   18 |                                          |
+| http://www.w3.org/ns/dcat                       |   15 |                                          |
+| http://iec.ch/TC57/61970-552/ModelDescription/1 |   12 |                                          |
+| http://www.w3.org/ns/prov                       |    2 |                                          |
+| http://www.w3.org/ns/adms                       |    2 |                                          |
+| https://cim.ucaiug.io/ns/eu                     |    2 |                                          |
+| http://publications.europa.eu/ontology/euvoc    |    1 |                                          |
+| https://cim4.eu/ns/Metadata-European            |    1 |                                          |
+
+The following query finds props whose datatype is not checked.
+It considers both the `cim17` (older) and the `cim` (current) namespace:
+```sparql
+PREFIX cim17: <http://iec.ch/TC57/CIM100#>
+PREFIX cim: <https://cim.ucaiug.io/ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+
+select ?prop ?dt {
+  ?prop a owl:DatatypeProperty; rdfs:range ?dt
+  bind(iri(concat(str(cim17:),strafter(str(?prop),str(cim:)))) as ?propOld)
+  filter not exists {[] sh:path ?prop; sh:datatype ?dt}
+  filter not exists {[] sh:path ?propOld; sh:datatype ?dt}
+} order by ?prop
+```
+
+Saved as [prop-datatypes-not-checked.tsv](prop-datatypes-not-checked.tsv).
+Notes:
+- Props of value objects (`cim:StreetAddress, cim:StreetDetail, cim:TownDetail`) are checked,
+  but using unnecessary prop paths
+- Some props use wrong prefixes, eg `dct:Resource.modified`
+- Some props are not really used in instance data, eg `rdf:Statement.object`
+- Some props are probably in wrong namespaces, eg `dct:PowerSystemProjectGroup.description`
+- Some newer props need to be added to checking: `cim:Contingency.mustStudy, cim:DCConductingEquipment.ratedCurrent; nc:GridStateAlteration.enabled, nc:GridStateAlteration.participationFactor`
 
 ## Other SHACL Issues
 TODO: dispatch them above, or write new sections

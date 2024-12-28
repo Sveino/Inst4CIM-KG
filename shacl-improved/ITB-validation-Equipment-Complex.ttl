@@ -1,0 +1,1240 @@
+@prefix adsh:    <http://www.w3.org/ns/advanced-shacl#> .
+@prefix bpsh:    <http://itb.ec.europa.eu/ns/shacl-shacl-bp#> .
+@prefix cim:     <http://iec.ch/TC57/CIM100#> .
+@prefix cims:    <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix dash:    <http://datashapes.org/dash#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix equ:     <http://iec.ch/TC57/ns/CIM/Equipment-EU/constraints/IEC61970-301/3.0#> .
+@prefix eu:      <http://iec.ch/TC57/CIM100-European#> .
+@prefix graphql: <http://datashapes.org/graphql#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix shsh:    <http://www.w3.org/ns/shacl-shacl#> .
+@prefix swa:     <http://topbraid.org/swa#> .
+@prefix tosh:    <http://topbraid.org/tosh#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+[ rdf:type     sh:ValidationReport;
+  sh:conforms  false;
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:NonlinearShuntCompensator;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:NonlinearShuntCompensator
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCBusbar;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCBusbar
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:XoneConstraintComponent-xone;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Clamp-numberOfTerminals;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Clamp-numberOfTerminals
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ACLineSegment;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ACLineSegment
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinInclusiveConstraintComponent-minInclusive;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:LimitKind;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:LimitKind
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCShunt;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCShunt
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxExclusiveConstraintComponent-maxExclusive;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:VoltageLimit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:VoltageLimit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxCountConstraintComponent-maxCount;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:InConstraintComponent-in;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NodeKindConstraintComponent-nodeKind;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinExclusiveConstraintComponent-minExclusive;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  [] ;
+                 sh:resultMessage              "Using the values of sh:prefixes as defined by 5.2.1 Prefix Declarations for SPARQL Queries, the values of sh:select must be valid SPARQL 1.1 SELECT queries with a single result variable this."@en;
+                 sh:resultPath                 sh:select;
+                 sh:resultSeverity             sh:Violation;
+                 sh:sourceConstraintComponent  sh:PatternConstraintComponent;
+                 sh:sourceShape                [] ;
+                 sh:value                      "\n                SELECT DISTINCT ?this\n                WHERE {\n                  ?this rdf:type cim:PowerTransformer   .\n                  FILTER NOT EXISTS {?this ^cim:PowerTransformerEnd.PowerTransformer/cim:TransformerEnd.endNumber 3}.\n                }\n                "
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:LoadResponseCharacteristic;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:LoadResponseCharacteristic
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:EquivalentBranch;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:EquivalentBranch
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinLengthConstraintComponent-minLength;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ConductingEquipment-twoTerminals;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ConductingEquipment-twoTerminals
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ReactiveCapabilityCurve-curveYvalues;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ReactiveCapabilityCurve-curveYvalues
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedValueShapesDisjoint;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ACDCConverter;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ACDCConverter
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:GeneratingUnit.nominalP;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:GeneratingUnit.nominalP
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCBreaker;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCBreaker
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:VsConverter;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:VsConverter
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClosedConstraintComponent-ignoredProperties;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxLengthConstraintComponent-maxLength;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClosedConstraintComponent-closed;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LanguageInConstraintComponent-languageIn;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ConductingEquipment-twoTerminalsShape;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ConductingEquipment-twoTerminalsShape
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Breaker;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Breaker
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:LoadBreakSwitch;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:LoadBreakSwitch
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClassConstraintComponent-class;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedValueShapesDisjoint;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinCountConstraintComponent-minCount;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCLineSegment;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCLineSegment
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedMaxCount;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:RegulatingControl;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:RegulatingControl
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:InConstraintComponent-in;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCChopper;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCChopper
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:BaseVoltage;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:BaseVoltage
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClosedConstraintComponent-closed;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedValueShape;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinCountConstraintComponent-minCount;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ConductingEquipment-oneTerminal;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ConductingEquipment-oneTerminal
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:EquivalentInjection;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:EquivalentInjection
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:WindGeneratingUnit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:WindGeneratingUnit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:XoneConstraintComponent-xone;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Fuse;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Fuse
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ThermalGeneratingUnit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ThermalGeneratingUnit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:HydroGeneratingUnit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:HydroGeneratingUnit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:TapChanger;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:TapChanger
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LessThanOrEqualsConstraintComponent-lessThanOrEquals;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedMinCount;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:AsynchronousMachine;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:AsynchronousMachine
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DisconnectingCircuitBreaker;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DisconnectingCircuitBreaker
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PatternConstraintComponent-pattern;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:PowerElectronicsConnection;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:PowerElectronicsConnection
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:OrConstraintComponent-or;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ConductingEquipment.BaseVoltage;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ConductingEquipment.BaseVoltage
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:StaticVarCompensator;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:StaticVarCompensator
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:DisjointConstraintComponent-disjoint;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCGround;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCGround
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PatternConstraintComponent-flags;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:;
+                 sh:resultMessage              "The values of sh:namespace are literals of datatype xsd:anyURI."@en;
+                 sh:resultPath                 ( sh:declare sh:namespace );
+                 sh:resultSeverity             sh:Violation;
+                 sh:sourceConstraintComponent  sh:DatatypeConstraintComponent;
+                 sh:sourceShape                [] ;
+                 sh:value                      "http://www.w3.org/ns/shacl#"
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:HasValueConstraintComponent-hasValue;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinLengthConstraintComponent-minLength;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:GroundDisconnector;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:GroundDisconnector
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NotConstraintComponent-not;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:CsConverter;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:CsConverter
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:PhaseTapChangerSymmetrical;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:PhaseTapChangerSymmetrical
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:HasValueConstraintComponent-hasValue;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LanguageInConstraintComponent-languageIn;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinInclusiveConstraintComponent-minInclusive;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MinExclusiveConstraintComponent-minExclusive;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Terminal;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Terminal
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:PowerTransformer-twoWinding;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:PowerTransformer-twoWinding
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:EarthFaultCompensator;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:EarthFaultCompensator
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:SolarGeneratingUnit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:SolarGeneratingUnit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:TapChangerControl;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:TapChangerControl
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ApparentPowerLimit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ApparentPowerLimit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:SynchronousMachine;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:SynchronousMachine
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClosedConstraintComponent-ignoredProperties;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Equipment;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Equipment
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:AndConstraintComponent-and;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:BoundaryPoint;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:BoundaryPoint
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:CurrentLimit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:CurrentLimit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:JSConstraint-js;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:PowerTransformer;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:PowerTransformer
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxCountConstraintComponent-maxCount;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxExclusiveConstraintComponent-maxExclusive;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PropertyConstraintComponent-property;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:GeneratingUnit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:GeneratingUnit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCSeriesDevice;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCSeriesDevice
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:SPARQLConstraintComponent-sparql;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LessThanConstraintComponent-lessThan;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PropertyConstraintComponent-property;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Disconnector;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Disconnector
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCSwitch;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCSwitch
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:DatatypeConstraintComponent-datatype;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NodeKindConstraintComponent-nodeKind;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:OrConstraintComponent-or;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:DisjointConstraintComponent-disjoint;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:RegularTimePoint;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:RegularTimePoint
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:EqualsConstraintComponent-equals;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ACDCTerminal;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ACDCTerminal
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxLengthConstraintComponent-maxLength;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:RatioTapChanger;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:RatioTapChanger
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:PhaseTapChangerTabular;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:PhaseTapChangerTabular
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:NuclearGeneratingUnit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:NuclearGeneratingUnit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Switch;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Switch
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:BusbarSection;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:BusbarSection
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedValueShape;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LessThanOrEqualsConstraintComponent-lessThanOrEquals;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:OperationalLimitType;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:OperationalLimitType
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:PhaseTapChangerAsymmetrical;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:PhaseTapChangerAsymmetrical
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:PowerTransformerEnd;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:PowerTransformerEnd
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:LinearShuntCompensator;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:LinearShuntCompensator
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:LessThanConstraintComponent-lessThan;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PatternConstraintComponent-flags;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:JSConstraint-js;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ControlAreaGeneratingUnit.GeneratingUnit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ControlAreaGeneratingUnit.GeneratingUnit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:DCDisconnector;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:DCDisconnector
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:AndConstraintComponent-and;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:UniqueLangConstraintComponent-uniqueLang;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Cut;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Cut
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:PhaseTapChangerLinear;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:PhaseTapChangerLinear
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NodeConstraintComponent-node;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ClassConstraintComponent-class;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxInclusiveConstraintComponent-maxInclusive;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:UniqueLangConstraintComponent-uniqueLang;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedValueShape;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Terminal.phases;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Terminal.phases
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedValueShapesDisjoint;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedValueShape;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:ActivePowerLimit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:ActivePowerLimit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedValueShapesDisjoint;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ExpressionConstraintComponent-expression;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMinCountConstraintComponent-qualifiedMinCount;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:MaxInclusiveConstraintComponent-maxInclusive;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:DatatypeConstraintComponent-datatype;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:SeriesCompensator;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:SeriesCompensator
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:BatteryUnit;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:BatteryUnit
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:QualifiedMaxCountConstraintComponent-qualifiedMaxCount;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NodeConstraintComponent-node;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:ExpressionConstraintComponent-expression;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Clamp;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Clamp
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:EqualsConstraintComponent-equals;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:SPARQLConstraintComponent-sparql;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:NotConstraintComponent-not;
+                 sh:resultMessage              "Each property SHALL have a sh:name (in the context of the target where it appears) to provide human-oriented labels. This is the preferred alternative to overwriting rdfs:labels coming from external foreign vocabularies to fit the context better."@en;
+                 sh:resultPath                 sh:name;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountNameProperty
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  equ:Jumper;
+                 sh:resultMessage              "Every NodeShape SHOULD contain rdfs:label and rdfs:comment, and they SHOULD only have one value per language tag."@en;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:AndConstraintComponent;
+                 sh:sourceShape                bpsh:NodeShapeShape;
+                 sh:value                      equ:Jumper
+               ];
+  sh:result    [ rdf:type                      sh:ValidationResult;
+                 sh:focusNode                  sh:PatternConstraintComponent-pattern;
+                 sh:resultMessage              "Each property SHOULD have sh:description (in the context of the target where it appears) to provide further human-oriented details. This is the preferred solution over adding additional usage notes to fit the context."@en;
+                 sh:resultPath                 sh:description;
+                 sh:resultSeverity             sh:Warning;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent;
+                 sh:sourceShape                bpsh:CountDescriptionProperty
+               ]
+] .
