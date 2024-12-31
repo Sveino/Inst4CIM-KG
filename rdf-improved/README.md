@@ -22,7 +22,7 @@ This document describes proposed inprovements to the representation of CIM/CGMES
 - [CIM URIs and Resolvability](#cim-uris-and-resolvability)
     - [Fix Under-defined Resource URLs](#fix-under-defined-resource-urls)
     - [Resolvable Resource URLs or More Stable `urn:uuid`?](#resolvable-resource-urls-or-more-stable-urnuuid)
-    - [Resolvable Model (Graph) URLs?](#resolvable-model-graph-urls)
+    - [Resolvable Model (Graph) URLs or Traditional `urn:uuid`?](#resolvable-model-graph-urls-or-traditional-urnuuid)
     - [Global Semantic Resolution](#global-semantic-resolution)
         - [Energy Identification Code](#energy-identification-code)
         - [Energy Reference Data](#energy-reference-data)
@@ -39,48 +39,50 @@ This document describes proposed inprovements to the representation of CIM/CGMES
 <!-- markdown-toc end -->
 
 ## Folders
-- instances:  [Sample Instance Data](#sample-instance-data) as Trig, 
+- [instances](instances):  [Sample Instance Data](#sample-instance-data) as Trig, 
   from Nordic44, ENTSO-E and "multiplied" (large), see [Multipled Data](#multipled-data)
-- test: xml, trig and jsonld test instance files (8 of each kind)
-- trials: various trial files
+- [test](test): xml, trig and jsonld test instance files (8 of each kind)
+- [trials](trials): various trial files
 
 ## Files
-- cim-context-new.txt: prefix file for JSON-LD context using new namespaces
-- cim-context-old.txt: prefix file for JSON-LD context using old namespaces
-- cim-context-common.txt: common  file for JSON-LD context
-- cim-context-new.jsonld: JSON-LD context using new namespaces
-- cim-context-old.jsonld: JSON-LD context using old namespaces
-- cim-context-strings.txt: properties with `"@type": "xsd:string"`. Not added to context since that is the default datatype
-- cim-trig.pl: converts CIM XML (Full or Difference models) to Trig: see  [Custom CIM XML Parser](#custom-cim-xml-parser)
-- count.pl: script to clean up files produced by `riot --count`
-- count-ENTSOE.txt: count of triples in ENTSO-E instance files as produced by `riot --count`
-- count-ENTSOE1.txt: pure count of triples in ENTSO-E instance files
-- count-Nordic.txt: count of triples in Nordic44 instance files as produced by `riot --count`
-- count-Nordic1.txt: pure count of triples in Nordic44 instance files
-- fix-datatypes-new.ru: SPARQL Update to add datatypes to instance files using new namespaces
-- fix-datatypes-old.ru: SPARQL Update to add datatypes to instance files using old namespaces
-- fix-datatypes-both.ru: SPARQL Update to add datatypes to instance files using either new or old namespaces
-- props-same-name-different-characteristics.csv: properties with same name (last part of URL) but different characteristics
-- props-same-name-different-range.csv: properties with same name (last part of URL) but different range (the most important characteristic)
-- README.md: this file
+- [cim-context-new.txt](cim-context-new.txt): prefix file for JSON-LD context using new namespaces
+- [cim-context-old.txt](cim-context-old.txt): prefix file for JSON-LD context using old namespaces
+- [cim-context-common.txt](cim-context-common.txt): common  file for JSON-LD context
+- [cim-context-new.jsonld](cim-context-new.jsonld): JSON-LD context using new namespaces
+- [cim-context-old.jsonld](cim-context-old.jsonld): JSON-LD context using old namespaces
+- [cim-context-strings.txt](cim-context-strings.txt): properties with `"@type": "xsd:string"`. Not added to context since that is the default datatype
+- [cim-trig.pl](cim-trig.pl): converts CIM XML (Full or Difference models) to Trig: see  [Custom CIM XML Parser](#custom-cim-xml-parser)
+- [count.pl](count.pl): script to clean up files produced by `riot --count`
+- [count-ENTSOE.txt](count-ENTSOE.txt): count of triples in ENTSO-E instance files as produced by `riot --count`
+- [count-ENTSOE1.txt](count-ENTSOE1.txt): pure count of triples in ENTSO-E instance files
+- [count-Nordic.txt](count-Nordic.txt): count of triples in Nordic44 instance files as produced by `riot --count`
+- [count-Nordic1.txt](count-Nordic1.txt): pure count of triples in Nordic44 instance files
+- [fix-datatypes-new.ru](fix-datatypes-new.ru): SPARQL Update to add datatypes to instance files using new namespaces
+- [fix-datatypes-old.ru](fix-datatypes-old.ru): SPARQL Update to add datatypes to instance files using old namespaces
+- [fix-datatypes-both.ru](fix-datatypes-both.ru): SPARQL Update to add datatypes to instance files using either new or old namespaces
+- [fix-model.ru](fix-model.ru): SPARQL update to 
+- [fix-datatypes-and-model.ru](fix-datatypes-and-model.ru): concatenated `fix-datatypes-old.ru` and fix-model.ru
+- [props-same-name-different-characteristics.csv](props-same-name-different-characteristics.csv): properties with same name (last part of URL) but different characteristics
+- [props-same-name-different-range.csv](props-same-name-different-range.csv): properties with same name (last part of URL) but different range (the most important characteristic)
+- [README.md](README.md): this file
 
 ## Makefile
 This folder uses [make](https://www.gnu.org/software/make/manual/) to automate various tasks 
 and ensure that dependencies are tracked and files are remade when needed.
 The Makefile defines the following targets (printed when `make` is invoked without target)
-- context: JSON-LD context for new and old namespaces
-- dirs: all subdirs in `instances`
-- test: test instance files in trig
-- jsonld: test instance files in jsonld
-- nordic: Nordic44 instance files in trig
-- entsoe: ENTSO-E instance files in trig
-- multiplied: "multiplied" instance files in trig
-- rm-test: remove "test/trig" instance files
-- rm-jsonld: remove "test/jsonld" instance files
-- rm-nordic: remove Nordic44 trig instance files
-- rm-entsoe: remove ENTSO-E trig instance files
-- rm-multiplied: remove "multiplied" trig instance files
-- clean: remove files of size zero
+- `context`: JSON-LD context for new and old namespaces
+- `dirs`: all subdirs in `instances`
+- `test`: test instance files in trig
+- `jsonld`: test instance files in jsonld
+- `nordic`: Nordic44 instance files in trig
+- `entsoe`: ENTSO-E instance files in trig
+- `multiplied`: "multiplied" instance files in trig
+- `rm-test`: remove "test/trig" instance files
+- `rm-jsonld`: remove "test/jsonld" instance files
+- `rm-nordic`: remove Nordic44 trig instance files
+- `rm-entsoe`: remove ENTSO-E trig instance files
+- `rm-multiplied`: remove "multiplied" trig instance files
+- `clean`: remove files of size zero
 
 The `make` manual is very comprehensive, but dense and hard to understand.
 So if you are not familiar with make, it can be quite a challenge to understand and maintain the Makefile.
@@ -778,7 +780,7 @@ In addition, making CIM resources resolvable is perhaps not a valid goal.
 
 In conclusion, it seems better to reformat instance URIs to use `urn:uuid:` instead of URLs.
 
-## Resolvable Model (Graph) URLs?
+## Resolvable Model (Graph) URLs or Traditional `urn:uuid`?
 The unit of data exchange in CIM is the **model**.
 A model includes all statements relevant to a power system analytics task.
 - It may also refer to other required models using `Model.DependentOn`
@@ -813,6 +815,14 @@ Global resolution strategies are already used by multiple communities:
   which are further subdivided by the IP registrant.
   IPs are a fixed number of bits and don't include a separator, 
   so bigger registrants get shorter prefixes and are allocated bigger network blocks.
+- **LifeScience Identifiers**: https://identifiers.org is a global register and resolver of life science identifiers
+  - Currently 842 identifier schemes (namespaces) are registered at https://registry.identifiers.org/registry .
+  - It allows global resolution and delegation, eg https://identifiers.org/pubmed:16333295 resolves to the PubMed resource https://pubmed.ncbi.nlm.nih.gov/16333295/
+  - In addition to the primary resource (usually at the website of the identifier scheme creator),
+    it allows to register secondary resources (resolvers).
+    Eg https://registry.identifiers.org/registry/pubmed lists 1 primary and 4 secondary resources.
+  - The same information is available in SPARQL (https://sparql.api.identifiers.org/ ) 
+    and can be used to access redirects; and semantic URLs for SPARQL Federation
 - **Web ID**: https://w3id.org/ by the W3C Permanent Identifiers Community Group
   is a permalink resolver implemented as a simple Apache web server with `.htaccess` files.
   These files are managed in a decentralized manner using the [perma-id/w3id.org](https://github.com/perma-id/w3id.org/) Github repo and pull requests.
