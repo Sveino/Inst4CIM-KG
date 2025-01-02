@@ -29,6 +29,7 @@ However, CGMES shapes are complex, and it is not surprising that various improve
             - [Properties are Attached to Sibling Domains](#properties-are-attached-to-sibling-domains)
             - [Properties Target Sibling Ranges](#properties-target-sibling-ranges)
         - [Don't Overuse rdf:type Checks](#dont-overuse-rdftype-checks)
+            - [Don't Use Fake rdf:type Path with SPARQL](#dont-use-fake-rdftype-path-with-sparql)
         - [Don't Overuse sh:in](#dont-overuse-shin)
         - [Don't Overuse SHACL SPARQL](#dont-overuse-shacl-sparql)
             - [Alternative or Disjunction Instead of SPARQL](#alternative-or-disjunction-instead-of-sparql)
@@ -190,7 +191,7 @@ Please note:
 
 We discussed the reasons for the problems described below, and a lot of them came from the need to make shapes work on at least one validation engine:
 - Complex constructs were used instead of simpler or more standard constructs, because the particular engine had performance issues.
-- Extra embellishments were added (e.g. paths with fake `rdf:type`) because the particular engine complained if there's no path.
+- Extra embellishments were added e.g. paths with fake `rdf:type` (see [Don't Use Fake rdf:type Path with SPARQL](#dont-use-fake-rdftype-path-with-sparql)).
 
 However, the CIM validation effort is large, important and must be sustained for decades to come.
 So instead of catering to specific implementations, the CIM shapes should be written against the SHACL spec,
@@ -515,16 +516,16 @@ Most of the time that pattern is unnecessary, given the previous section and the
 For example, one of the "Complex" SHACL files has 10 instances of the pattern:
 ```
 grep "sh:path.*rdf:type" CGMES/v3.0/SHACL/ttl/61970-456_StateVariables-AP-Con-Complex-Explicit-CrossProfile-SHACL_v3-0-0.ttl
-        sh:path         (cim:SvInjection.TopologicalNode rdf:type) ;
-        sh:path         (cim:SvStatus.ConductingEquipment rdf:type ) ;
-        sh:path         (cim:TopologicalIsland.AngleRefTopologicalNode rdf:type) ;
-        sh:path         (cim:SvTapStep.TapChanger rdf:type) ;
-        sh:path         (cim:SvSwitch.Switch rdf:type) ;
-        sh:path         (cim:SvVoltage.TopologicalNode rdf:type) ;
-        sh:path         (cim:DCTopologicalIsland.DCTopologicalNodes rdf:type) ;
-        sh:path         (cim:TopologicalIsland.TopologicalNodes rdf:type) ;
-        sh:path         (cim:SvPowerFlow.Terminal rdf:type) ;
-        sh:path         (cim:SvShuntCompensatorSections.ShuntCompensator rdf:type) ;
+  sh:path (cim:SvInjection.TopologicalNode rdf:type) ;
+  sh:path (cim:SvStatus.ConductingEquipment rdf:type ) ;
+  sh:path (cim:TopologicalIsland.AngleRefTopologicalNode rdf:type) ;
+  sh:path (cim:SvTapStep.TapChanger rdf:type) ;
+  sh:path (cim:SvSwitch.Switch rdf:type) ;
+  sh:path (cim:SvVoltage.TopologicalNode rdf:type) ;
+  sh:path (cim:DCTopologicalIsland.DCTopologicalNodes rdf:type) ;
+  sh:path (cim:TopologicalIsland.TopologicalNodes rdf:type) ;
+  sh:path (cim:SvPowerFlow.Terminal rdf:type) ;
+  sh:path (cim:SvShuntCompensatorSections.ShuntCompensator rdf:type) ;
 ```
 They are all of the same kind, eg
 ```ttl
@@ -558,20 +559,67 @@ sv456cpe:TopologicalIsland.AngleRefTopologicalNode-valueType
         sh:severity     sh:Violation .
 ```
 
-Now let's examine the pattern in another file, using the interactive listing utility `less`:
+#### Don't Use Fake rdf:type Path with SPARQL
+
+Let's examine `sh:path.*rdf:type` in another file, using the interactive listing utility `less`:
 ```
 less "+/sh:path.*rdf:type" CGMES-NC/r2.3/ap-con/ttl/EquipmentReliability-AP-Con-Complex-SHACL.ttl
 ```
-There are about 6 and they are all of the kind described in [Don't Overuse SHACL SPARQL](#dont-overuse-shacl-sparql).
+
+There are about 6 and they look like this:
+```ttl
+erc:EnergyComponent a sh:NodeShape ;
+  sh:property     erc:EnergyComponent-associations;
+  sh:targetClass  nc:EnergyComponent .
+
+erc:EnergyComponent-associations a sh:PropertyShape ;
+  sh:description  "The EnergyComponent shall be associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
+  sh:sparql       erc:EnergyComponent-associationsSparql ;
+  sh:path         rdf:type ;
+  sh:group        erc:ERgroup ;
+  sh:name         "C:NC:ER:EnergyComponent:associations" ;
+  sh:order        2 ;
+  sh:severity     sh:Violation .
+
+erc:EnergyComponent-associationsSparql a sh:SPARQLConstraint ;
+  sh:message      "EnergyComponent is not associated with either GeneratingUnit, PowerElecronicsUnit, EnergyConsumer or HydroPump." ;
+  sh:prefixes cim: ;
+  sh:select """
+    SELECT  $this
+    WHERE {
+      BIND(EXISTS{$this nc:EnergyComponent.GeneratingUnit      ?o1} AS ?adugu).
+      BIND(EXISTS{$this nc:EnergyComponent.PowerElecronicsUnit ?o2} AS ?adupe).
+      BIND(EXISTS{$this nc:EnergyComponent.EnergyConsumer      ?o2} AS ?aduec).
+      BIND(EXISTS{$this nc:EnergyComponent.HydroPump           ?o2} AS ?aduhp).
+      FILTER (?adugu=false && ?adupe=false && ?aduec=false && ?aduhp=false).
+    }""" .
+```
+We explain in [Don't Overuse SHACL SPARQL](#dont-overuse-shacl-sparql) that this can be replaced with a standard SHACL shape using `sh:alternativePath` or `sh:or`.
+But here we want to focus on the use of `sh:path rdf:type`: this is a fake path, since the shape is not about `rdf:type` at all.
+
+[Property Shapes](https://www.w3.org/TR/shacl/#x2.3-property-shapes) must have `sh:path` and are in fact defined this way:
+"A property shape is a shape in the shapes graph that is the subject of a triple that has `sh:path` as its predicate".
+[SHACL-SHACL](https://www.w3.org/TR/shacl/#shacl-shacl) also requires `sh:path` to be present exactly once, see `shsh:PropertyShapeShape`.
+
+However, [SPARQL-based Constraints](https://www.w3.org/TR/shacl/#x5.-sparql-based-constraints) may be used with either property shapes or node shapes.
+In this case `erc:EnergyComponent` doesn't have any other prop shapes, so we can simply attach the SPARQL constraint to it:
+```ttl
+erc:EnergyComponent a sh:NodeShape ;
+  sh:targetClass  nc:EnergyComponent;
+  sh:sparql       erc:EnergyComponent-associationsSparql ;
+  sh:name         "C:NC:ER:EnergyComponent:associations" ;
+  sh:severity     sh:Violation .
+```
+If the node shape had multiple SPARQL constraints, we could use `sh:and` to incorporate all of them.
 
 ### Don't Overuse sh:in
 
 Currently `sh:in` is used 934 times. A lot of these uses can be replaced with a simple `sh:class`
 to check the range of an object property that points to:
 - A superclass: instead of listing all subclasses, use
-- An enumeration: instead of listing all values, use the enumeration clas/.
+- An enumeration: instead of listing all values, use the enumeration class.
 
-Needless to say, ontologies should be part of the `dataGraph` when doing validation
+Needless to say, ontologies should be part of the `dataGraph` when doing validation.
 
 ### Don't Overuse SHACL SPARQL
 - https://github.com/Sveino/Inst4CIM-KG/issues/17 Don't use SHACL SPARQL where SHACL Standard is enough
@@ -581,7 +629,7 @@ CGMES uses quite a lot of `SPARQLConstraints`:
 PREFIX sh: <http://www.w3.org/ns/shacl#>
 select * {
   {select (count(*) as ?sparql) {?x sh:sparql ?y}}
- {select (count(*) as ?select) {?x sh:select ?y}}
+  {select (count(*) as ?select) {?x sh:select ?y}}
   {select (count(*) as ?target) {?x sh:target ?y}}
 }
 ```
