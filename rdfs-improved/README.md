@@ -1168,6 +1168,10 @@ Several issues express the same set of problems:
 - https://github.com/Sveino/Inst4CIM-KG/issues/46 fix representation of All QuantityKinds and Units
 - https://github.com/3lbits/CIM4NoUtility/issues/338 leverage QUDT to represent quantity kinds and units
 
+After the fixes described in this section were implemented, a follow-up discussion was raised:
+- https://github.com/Sveino/Inst4CIM-KG/issues/152 discussion on Datatypes and Units of Measure
+
+
 CGMES datatype properties are defined like this.
 The main column shows the "RDFS2020" style, and `# new` shows the "RDFSEd2Beta" style (it has some omissions, so we don't use it):
 
@@ -1206,7 +1210,7 @@ There are numerous problems:
 - `cim:ApparentPower` is a class, and datatype properties cannot point to a class
 - `cim:ApparentPower` is not used in any CGMES instance data
 - In CGMES instance data, `ACDCConverter.baseS` is a string, but should be marked as `^^xsd:float`
-- The meta-properties `eq:isCIMDatatype, eq:isFixed` use per-profile dataspaces rather than `cims:`
+- The meta-properties `eq:isCIMDatatype, eq:isFixed` use per-profile namespaces rather than `cims:`
 - The key value "True " is spelled with a space for `multiplier, unit`
 
 CIM defines a large set of units of measure, eg:
