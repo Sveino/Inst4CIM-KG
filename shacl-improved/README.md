@@ -13,11 +13,15 @@ However, CGMES shapes are complex, and it is not surprising that various improve
         - [In-memory vs On-disk Databases and Incremental Validation](#in-memory-vs-on-disk-databases-and-incremental-validation)
         - [Malformed Data Tests](#malformed-data-tests)
         - [Validating a Difference Model](#validating-a-difference-model)
-        - [Describing Tests and Results Semantically](#describing-tests-and-results-semantically)
+            - [Cannot Use Blank Nodes](#cannot-use-blank-nodes)
+    - [Describing Tests and Results Semantically](#describing-tests-and-results-semantically)
+        - [Describing SHACL Tests and Results](#describing-shacl-tests-and-results)
+        - [Describing ENTSO-E Tests](#describing-entso-e-tests)
     - [SHACL Engines and Requirements](#shacl-engines-and-requirements)
         - [Flexible Specification of dataGraph](#flexible-specification-of-datagraph)
         - [Useful/Readable ValidationReports](#usefulreadable-validationreports)
         - [Limit Number of Violations](#limit-number-of-violations)
+        - [SHACL 1.2](#shacl-12)
     - [SHACL Improvements](#shacl-improvements)
         - [Write SHACL for the Spec Not for a Specific Implementation](#write-shacl-for-the-spec-not-for-a-specific-implementation)
         - [Check for Syntax Errors Using SHACL SHACL](#check-for-syntax-errors-using-shacl-shacl)
@@ -45,34 +49,35 @@ However, CGMES shapes are complex, and it is not surprising that various improve
         - [Don't Use Regex on Numbers](#dont-use-regex-on-numbers)
         - [Don't Use nodeKind Literal or Blank Node](#dont-use-nodekind-literal-or-blank-node)
         - [Split Into Simpler Shapes](#split-into-simpler-shapes)
-    - [Don't Use Property Paths Unnecessarily](#dont-use-property-paths-unnecessarily)
-    - [Checking Datatypes](#checking-datatypes)
+        - [Don't Use Property Paths Unnecessarily](#dont-use-property-paths-unnecessarily)
+        - [Checking Datatypes](#checking-datatypes)
     - [Other SHACL Issues](#other-shacl-issues)
 
 <!-- markdown-toc end -->
 
 
 ## Test Scenarios
-This section describes various test scenarios and needs to ensure:
+This section describes various test scenarios that intend to ensure:
 - Conformance of data to validation rules
 - Conformance (completeness and correctness) and performance of validation engines.
   Often this needs to be considered in conjunction with reasoning and storage engines (semantic databases)
-- Correctness and completeness of SHACL shapes.
+- Completeness and correctness of SHACL shapes.
 
 ### Test Data
 The parallel folder `rdf-improved` describes and provides links to test data
 - [Sample Instance Data](../rdf-improved#sample-instance-data) describes several datasets
 - [Multipled Data](../rdf-improved#multipled-data) describes how one of them is scaled 100x
-- The total is 95M triples in 2.2Gb zip (9.8Gb unzipped `trig`)
+  - The total is 95M triples in 2.2Gb zip (9.8Gb unzipped `trig`)
+  - Please note this data uses named graphs, but the old representation of Models (`dm, md` not `dcat`)
 
 ### In-memory vs On-disk Databases and Incremental Validation
-All CIM valiation tested to date works on in-memory models.
+All CIM valiators tested to date work on in-memory models.
 This means that a CIM data file is loaded, and SHACL is executed over that in-memory model.
 This works ok for small data and for simple conformance testing.
 
 However, an electrical enterprise may have very large models that are persistent
 (eg the detailed description of the complete grid of a country).
-Keeping such a model in files and loading it to an in-memory RDF model is not efficient.
+Keeping such a model in files and loading it to an in-memory RDF model every time it needs to be used, is not efficient.
 It is better to persist the model to an on-disk database.
 
 Now consider this scenario: a CIM model consisting of several billion triples,
@@ -81,37 +86,114 @@ This can happen in several scenarios:
 - Some data is being corrected
 - A CIM differential model is being processed.
   This happens by copying the base model, deleting `reverseDifferences` and inserting `forwardDifferences`
-- A negative conformance test is created as a small delta (invalid data) over a large positive model (valid data)
+- A negative conformance test is created as a small delta (invalid data) over a large positive model (valid data).
+  Such tests can be used to check the completeness of SHACL shapes.
 
-In all these scenarios, we want to validate the changed data.
-- Making the change and revalidating the complete model will be very inefficient and cannot be made on every update (transation).
+In all these scenarios, we want to validate the changed data only.
+- Making the change and revalidating the complete model will be very inefficient and cannot be made on every update (transaction).
 - A better scenario is for the validator to focus only on the changed triples (while taking into account persisted triples).
   This allows to validate every transaction and is called "incremental validation"
 
 Incremental validation hinges on the ability of the validator to "understand" key triples mentioned in SHACL shapes.
-Then it can analyze the transaction for such triples, or "watch" these triples through change notification,
+Then it can analyze the transaction for such key triples, or "watch" these triples through change notification,
 and can run only the subset of shapes that validate the changed triples.
-
-SHACL SPARQL doesn't work well for incremental validation, since it's hard to "understand" SPARQL and figure out what triples may be involved.
-SPARQL triple patterns may include wildcard properties and other complications.
-We are not aware of any implementation of incremental validation over SPARQL.
-
-RDF4J ShaclSail is incremental and supports SHACL SPARQL. SPARQL targets are run on every transaction (non-incrementally).
+- SHACL SPARQL doesn't work well for incremental validation, since it's hard to "understand" SPARQL and figure out what triples may be involved.
+  SPARQL triple patterns may include wildcard properties and other complications.
+  We are not aware of any implementation of incremental validation over SPARQL.
+- RDF4J ShaclSail is incremental and therefore very efficient.
+  It also supports SHACL SPARQL, but SPARQL targets are run on every transaction (non-incrementally).
 
 ### Malformed Data Tests
 To check the correctness of SHACL shapes
-TODO
+TODO relate to Chavdar's request for "invocation report"
 
 ### Validating a Difference Model
-TODO
+A difference model cannot be validated in isolation.
+Assume the following setup:
+- A base model (graph) B that is already validated
+- A differential model (graph) D that refers to B and includes reverse differences R and forward differences F.
 
-### Describing Tests and Results Semantically
-TestManifest
-EARL
-https://csarven.ca/linked-specifications-reports
+The most efficient scenario to validate the difference model D is as follows.
+All steps target (affect) graph D:
+- Copy graph B to a new graph D without validation
+- Make a transaction to replace the metadata of model B with the metadata of model D, 
+  with validation (this is very small data, so the validation is fast)
+- Load graphs R and F without validation. 
+  This data is typically much smaller than B.
+- (*) Make a transaction to delete the triples of graph R and insert the triples of graph F, with validation.
+  This can be a large transaction, but typically much smaller than B.
+- Delete R and F because we don't need them anymore
+  
+The most complex step is (*) and it can look like this SPARQL Update query.
+See [SPARQL 1.1 Railroad Diagram](https://github.com/VladimirAlexiev/grammar-diagrams#sparql-11-railroad-diagram) for the grammar, in particular the [Modify grammar production](https://rawgit2.com/VladimirAlexiev/grammar-diagrams/master/sparql11-grammar.xhtml#Modify):
+```sparql
+with <D> delete {?s ?p ?o} using <R> where {?s ?p ?o};
+with <D> insert {?s ?p ?o} using <F> where {?s ?p ?o};
+```
+(here `<D>` typically looks like `<urn:uuid:05edbf91-231f-4386-97c0-d4cb498d0afc>`
+and similarly for the other graphs)
 
-https://www.itb.ec.europa.eu/docs/tdl/latest/
-GITB Test Description Language (TDL).
+This should work the same as the following Update query:
+```sparql
+delete {graph <D> {?s ?p ?o}} where {graph <R> {?s ?p ?o}};
+insert {graph <D> {?s ?p ?o}} where {graph <F> {?s ?p ?o}};
+```
+
+#### Cannot Use Blank Nodes
+Please note CIM data must not use blank nodes since the `reverseDifferences` graph is made of triples not triple patterns.
+You cannot delete statements involving blank nodes by specifying them in `reverseDifferences`:
+blank node names are not stable and they are rewritten on every serialization.
+
+This is discussed in:
+- https://github.com/Sveino/Inst4CIM-KG/issues/14
+- https://github.com/3lbits/CIM4NoUtility/discussions/321#discussioncomment-10741521
+- https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdf-improved#nearly-correct-json-ld-graph-representation
+
+CIM might use blank nodes for representing:
+- Datatype properties with quantity kind, eg `cim:Conductor.length [cim:Length.value "60"]`.
+  But the new representation uses a direct data property: `cim:Conductor.length "60"^^xsd:float`
+- Reification (`rdf:Statement`) for representing model content: but now we use named graphs for this, not reification
+- Compound (value) object like `Address`: but I have not seen it in real data.
+ 
+## Describing Tests and Results Semantically
+
+Describing conformance tests and results in a machine-readable way is very useful, since it allows a better management process.
+- As an example, the EU DIGIT (directorate of IT) offers Interoperability Test Bed as a service to facilitate the conformance testing of IT systems. 
+  The GITB [Test Description Language (TDL)](https://www.itb.ec.europa.eu/docs/tdl/latest/) is used to define test cases to realise a specification's conformance testing needs.
+
+However, TDL is an XML-based language. 
+For us it makes more sense to describe tests and results semantically (using RDF).
+All W3C specifications require a Test Suite and an Implementation Report before they can become Recommendations.
+The report should list at least 2 independent implementations that have attempted the test suite, and their results.
+
+Thus, the following can be described and interlinked semantically:
+- A **Specification**, with its individual clauses
+- Some **Profiles** that are feature bundles from the specification.
+  E.g. SHACL 1.0 has Core and Advanced Features, 
+  and https://github.com/w3c/data-shapes/issues/216 asks to define more fine-grained profiles for SHACL 1.2
+- A **Test Suite** consisting of test cases, usually organized along profiles and a hierarchy
+- A **Test Runner** that can exercise an implementation against the test suite and record results automatically
+- **Implementations** that claim conformance (test subjects) 
+- Test **Results** of individual implementations
+- Test summary (**Implementation Report**) that lists implementations, and their conformance results
+
+The paper [Linked Specifications, Test Suites, and Implementation Reports](https://csarven.ca/linked-specifications-reports)
+explains the value of such interlinking on the example of the Linked Data Notifications (LDN) W3C Recommendation.
+
+There are two relevant W3C ontologies:
+- Test Manifest: describes test suites, their hierarchical structure, and individual tests.
+  Individual test suites customize the [TestManifest for SPARQL](https://www.w3.org/2001/sw/DataAccess/tests/test-manifest#) and add some custom props for their specific needs
+- Evaluation And Report Language (EARL): [specification](https://www.w3.org/TR/EARL10-Schema/), [home page](https://www.w3.org/2001/03/earl/), [ontology](http://www.w3.org/ns/earl#)
+
+### Describing SHACL Tests and Results
+
+SHACL Test Suite and Implementation Report
+https://w3c.github.io/data-shapes/data-shapes-test-suite/
+https://github.com/w3c/data-shapes/tree/gh-pages/shacl12-test-suite/tests
+https://github.com/w3c/data-shapes/issues/269
+
+### Describing ENTSO-E Tests
+
 
 ## SHACL Engines and Requirements
 - https://github.com/Sveino/Inst4CIM-KG/issues/95 which SHACL validators to try?
@@ -145,6 +227,16 @@ We did face the problem that `sh:sourceShape` often pointed to blank nodes (the 
 ### Limit Number of Violations
 Ability to put limits on total number of reports, and number of reports per shape. Eg: https://rdf4j.org/documentation/programming/shacl/#limiting-the-validation-report . And I posted https://github.com/w3c/data-shapes/issues/161
 TODO
+
+### SHACL 1.2
+TODO write a few notes about the work of the WG and timing.
+https://w3c.github.io/data-shapes/shacl12-core/
+https://w3c.github.io/data-shapes/shacl12-sparql/
+
+Write about Complexity of new features
+
+https://www.w3.org/2024/12/data-shapes.html : timing
+
 
 ## SHACL Improvements
 CIM/CGMES and CGMES NC include a very large number of shapes.
@@ -1282,7 +1374,7 @@ eq600:ReactiveCapabilityCurve.y2Unit a sh:PropertyShape ;
 
 ```
 
-## Don't Use Property Paths Unnecessarily
+### Don't Use Property Paths Unnecessarily
 Consider the following shape:
 ```ttl
 gl:Location  rdf:type   sh:NodeShape ;
@@ -1310,7 +1402,7 @@ Then in the main classes `cim:Location, cim:ServiceLocation`, simply check the r
 
 The shorter the prop paths in a given node shape, the better.
 
-## Checking Datatypes
+### Checking Datatypes
 - https://github.com/Sveino/Inst4CIM-KG/issues/150 SHACL: Checking Datatypes
 
 CIM SHACL includes datatype checking: there are 3778 checks:
@@ -1369,3 +1461,5 @@ TODO: dispatch them above, or write new sections
 - https://github.com/Sveino/Inst4CIM-KG/issues/18 Don't use tabs in SHACL files
 - https://github.com/Sveino/Inst4CIM-KG/issues/67 How do you do OCL2SHACL?
 - https://github.com/Sveino/Inst4CIM-KG/issues/137 consider using SHACL Compact
+- https://github.com/Sveino/Inst4CIM-KG/issues/151 SHACL-improved readme
+https://github.com/Sveino/Inst4CIM-KG/issues/157 SHACL: do not `import sh:`
