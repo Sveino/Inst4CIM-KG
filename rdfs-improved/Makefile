@@ -57,7 +57,7 @@ OWL_WRITE = owl.bat write --prefixAlign=right --useCommaByDefault \
   --prefixOrder ra		\
   --prefixOrder ras		\
   --prefixOrder sar		\
-   --prefixOrder sm		\
+  --prefixOrder sm		\
   --prefixOrder sis		\
   --prefixOrder shs		\
   --prefixOrder ssi		\
