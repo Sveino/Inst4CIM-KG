@@ -26,7 +26,7 @@ multiplied_trig    = $(subst .xml,.trig, $(subst $(multiplied_source),$(multipli
 zip                = ../../instance-zipped
 
 all:
-	@echo targets: context, dirs, zips, test, jsonld, nordic, entsoe, multiplied, rm-test, rm-jsonld, rm-nordic, rm-entsoe, rm-multiplied, clean
+	@echo targets: fix-datatypes, context, dirs, zips, test, jsonld, nordic, entsoe, multiplied, rm-test, rm-jsonld, rm-nordic, rm-entsoe, rm-multiplied, clean
 
 context: cim-context-old.jsonld cim-context-new.jsonld
 cim-context-%.jsonld: cim-context-%.txt cim-context-common.txt
@@ -43,6 +43,14 @@ zips:
 
 clean:
 	find instances test -type f -size 0 -exec rm {} \;
+
+fix-datatypes: fix-datatypes-old.ru fix-datatypes-new.ru fix-datatypes-and-model.ru
+
+fix-datatypes-old.ru: fix-datatypes-common.ru
+	echo "prefix cim: <http://iec.ch/TC57/CIM100#>" | cat - $^ > $@
+
+fix-datatypes-new.ru: fix-datatypes-common.ru
+	echo "prefix cim: <https://cim.ucaiug.io/ns#>" | cat - $^ > $@
 
 fix-datatypes-and-model.ru: fix-datatypes-old.ru fix-model.ru
 	cat $^ > $@

@@ -1,9 +1,11 @@
-prefix cim:  <https://cim.ucaiug.io/ns#>
-prefix nc:   <https://cim4.eu/ns/nc#>
-prefix eu:   <https://cim.ucaiug.io/ns/eu#>
-prefix eumd: <https://cim4.eu/ns/Metadata-European#>
-prefix md:   <http://iec.ch/TC57/61970-552/ModelDescription/1#>
-prefix xsd:  <http://www.w3.org/2001/XMLSchema#>
+prefix cim: <https://cim.ucaiug.io/ns#>
+prefix nc:      <https://cim4.eu/ns/nc#>
+prefix eu:      <http://iec.ch/TC57/CIM100-European#>
+prefix eumd:    <https://cim4.eu/ns/Metadata-European#>
+prefix md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix dcat:    <http://www.w3.org/ns/dcat#>
+prefix xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 delete {graph ?g {?x ?prop ?old}}
 insert {graph ?g {?x ?prop ?new}}
@@ -48,6 +50,8 @@ where {
     (cim:AnalogLimit.value                                            xsd:float     )
     (cim:ApparentPowerLimit.normalValue                               xsd:float     )
     (cim:ApparentPowerLimit.value                                     xsd:float     )
+    (cim:Asset.critical                                               xsd:boolean   )
+    (cim:Asset.inUseDate                                              xsd:date      )
     (cim:AsynchronousMachine.converterFedDrive                        xsd:boolean   )
     (cim:AsynchronousMachine.efficiency                               xsd:float     )
     (cim:AsynchronousMachine.iaIrRatio                                xsd:float     )
@@ -2225,6 +2229,7 @@ where {
     (cim:OverexcLimX2.t3                                              xsd:float     )
     (cim:OverexcLimX2.vlow                                            xsd:float     )
     (cim:OverexcitationLimiterUserDefined.proprietary                 xsd:boolean   )
+    (cim:Ownership.share                                              xsd:float     )
     (cim:PFVArControllerType1UserDefined.proprietary                  xsd:boolean   )
     (cim:PFVArControllerType2UserDefined.proprietary                  xsd:boolean   )
     (cim:PFVArType1IEEEPFController.ovex                              xsd:boolean   )
@@ -2703,6 +2708,10 @@ where {
     (cim:ShuntCompensator.normalSections                              xsd:integer   )
     (cim:ShuntCompensator.sections                                    xsd:float     )
     (cim:ShuntCompensator.voltageSensitivity                          xsd:float     )
+    (cim:ShuntCompensatorInfo.maxPowerLoss                            xsd:float     )
+    (cim:ShuntCompensatorInfo.ratedCurrent                            xsd:float     )
+    (cim:ShuntCompensatorInfo.ratedReactivePower                      xsd:float     )
+    (cim:ShuntCompensatorInfo.ratedVoltage                            xsd:float     )
     (cim:StaticVarCompensator.capacitiveRating                        xsd:float     )
     (cim:StaticVarCompensator.inductiveRating                         xsd:float     )
     (cim:StaticVarCompensator.q                                       xsd:float     )
@@ -2725,6 +2734,11 @@ where {
     (cim:Switch.open                                                  xsd:boolean   )
     (cim:Switch.ratedCurrent                                          xsd:float     )
     (cim:Switch.retained                                              xsd:boolean   )
+    (cim:SwitchInfo.breakingCapacity                                  xsd:float     )
+    (cim:SwitchInfo.isSinglePhase                                     xsd:boolean   )
+    (cim:SwitchInfo.isUnganged                                        xsd:boolean   )
+    (cim:SwitchInfo.ratedCurrent                                      xsd:float     )
+    (cim:SwitchInfo.ratedVoltage                                      xsd:float     )
     (cim:SynchronousMachine.earthing                                  xsd:boolean   )
     (cim:SynchronousMachine.earthingStarPointR                        xsd:float     )
     (cim:SynchronousMachine.earthingStarPointX                        xsd:float     )
@@ -2778,6 +2792,14 @@ where {
     (cim:TapChanger.neutralU                                          xsd:float     )
     (cim:TapChanger.normalStep                                        xsd:integer   )
     (cim:TapChanger.step                                              xsd:float     )
+    (cim:TapChangerInfo.highStep                                      xsd:float     )
+    (cim:TapChangerInfo.lowStep                                       xsd:float     )
+    (cim:TapChangerInfo.neutralStep                                   xsd:float     )
+    (cim:TapChangerInfo.neutralU                                      xsd:float     )
+    (cim:TapChangerInfo.ratedApparentPower                            xsd:float     )
+    (cim:TapChangerInfo.ratedCurrent                                  xsd:float     )
+    (cim:TapChangerInfo.ratedVoltage                                  xsd:float     )
+    (cim:TapChangerInfo.stepVoltageIncrement                          xsd:float     )
     (cim:TapChangerTablePoint.b                                       xsd:float     )
     (cim:TapChangerTablePoint.g                                       xsd:float     )
     (cim:TapChangerTablePoint.r                                       xsd:float     )
@@ -2789,6 +2811,14 @@ where {
     (cim:TransformerEnd.grounded                                      xsd:boolean   )
     (cim:TransformerEnd.rground                                       xsd:float     )
     (cim:TransformerEnd.xground                                       xsd:float     )
+    (cim:TransformerEndInfo.b                                         xsd:float     )
+    (cim:TransformerEndInfo.endNumber                                 xsd:integer   )
+    (cim:TransformerEndInfo.g                                         xsd:float     )
+    (cim:TransformerEndInfo.phaseAngleClock                           xsd:float     )
+    (cim:TransformerEndInfo.r                                         xsd:float     )
+    (cim:TransformerEndInfo.ratedS                                    xsd:float     )
+    (cim:TransformerEndInfo.ratedU                                    xsd:float     )
+    (cim:TransformerEndInfo.x                                         xsd:float     )
     (cim:TurbLCFB1.db                                                 xsd:float     )
     (cim:TurbLCFB1.emax                                               xsd:float     )
     (cim:TurbLCFB1.fb                                                 xsd:float     )
@@ -3070,6 +3100,14 @@ where {
     (cim:WindRefFrameRotIEC.upll2                                     xsd:float     )
     (cim:WindType1or2UserDefined.proprietary                          xsd:boolean   )
     (cim:WindType3or4UserDefined.proprietary                          xsd:boolean   )
+    (cim:WireInfo.gmr                                                 xsd:float     )
+    (cim:WireInfo.insulated                                           xsd:boolean   )
+    (cim:WireInfo.nominalTemperature                                  xsd:float     )
+    (cim:WireInfo.rAC25                                               xsd:float     )
+    (cim:WireInfo.rAC75                                               xsd:float     )
+    (cim:WireInfo.rDC20                                               xsd:float     )    
+    (dcat:startDate                                                   xsd:dateTime  )
+    (dcterms:issued                                                   xsd:dateTime  )
     (eu:BoundaryPoint.isDirectCurrent                                 xsd:boolean   )
     (eu:BoundaryPoint.isExcludedFromAreaInterchange                   xsd:boolean   )
     (md:Model.created                                                 xsd:dateTime  )
@@ -3585,6 +3623,8 @@ where {
     (nc:VsConverterTimePoint.targetPowerFactorPcc                     xsd:float     )
     (nc:VsConverterTimePoint.targetQpcc                               xsd:float     )
     (nc:VsConverterTimePoint.targetUpcc                               xsd:float     )
+    (prov:generatedAtTime                                             xsd:dateTime  )
+
   }
   graph ?g {?x ?prop ?old}
   filter(datatype(?old)=xsd:string)
