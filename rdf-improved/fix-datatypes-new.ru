@@ -6,6 +6,7 @@ prefix md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
 prefix dcterms: <http://purl.org/dc/terms/>
 prefix dcat:    <http://www.w3.org/ns/dcat#>
 prefix xsd:     <http://www.w3.org/2001/XMLSchema#>
+prefix prov:    <http://www.w3.org/ns/prov#>
 
 delete {graph ?g {?x ?prop ?old}}
 insert {graph ?g {?x ?prop ?new}}
@@ -3107,6 +3108,8 @@ where {
     (cim:WireInfo.rAC75                                               xsd:float     )
     (cim:WireInfo.rDC20                                               xsd:float     )    
     (dcat:startDate                                                   xsd:dateTime  )
+    (dcat:endDate                                                     xsd:dateTime  )
+    (dcat:temporalResolution                                          xsd:duration  )
     (dcterms:issued                                                   xsd:dateTime  )
     (eu:BoundaryPoint.isDirectCurrent                                 xsd:boolean   )
     (eu:BoundaryPoint.isExcludedFromAreaInterchange                   xsd:boolean   )

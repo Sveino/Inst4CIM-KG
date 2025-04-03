@@ -5,7 +5,7 @@
 # - Relies on a repeatable CIM XML layout as lines (uses simple string manipulation).
 #   If needed, I can change it to work with proper XML access. This module seems suitable:
 # use XML::DT; # https://metacpan.org/pod/XML::DT
-# - A file has exactly one model: md:FullModel or dm:DifferenceModel
+# - A file has exactly one model: md:FullModel|dcat:Dataset or dm:DifferenceModel|dcat-cim:DifferenceSet
 # - dm:DifferenceModel has exactly two sections dm:reverseDifferences and dm:forwardDifferences in this order
 # - Uses "owl write" (non-streaming) for nicer formatting
 # - For very large files, use Jena riot in --stream mode (streaming)
@@ -38,27 +38,27 @@ my ($rdf_open, $body, $rdf_close) =
   $xml =~ m{(.*?<rdf:RDF.*?>)(.*?)(</rdf:RDF>)}s
   or die "Can't find rdf:RDF element\n";
 my ($base) =
-  $body =~ m{<md:Model.modelingAuthoritySet>(.*?)<}
-  or die "Can't find md:Model.modelingAuthoritySet\n";
+  $body =~ m{(?:<md:Model.modelingAuthoritySet>|<dcat:isVersionOf rdf:resource=")(.*?)[<"]}
+  or die "Can't find md:Model.modelingAuthoritySet|dcat:isVersionOf rdf:resource\n";
 $rdf_open =~ s{xml:base="http://iec.ch/TC57/CIM100"}{}; # inappropriate for base of instance URLs
 $rdf_open =~ s{<rdf:RDF}{<rdf:RDF xml:base="$base#"};
 
 # extract Model element and its attributes
 my ($model, $model_type, $model_uri) =
-  $body =~ m{(<(md:FullModel|dm:DifferenceModel) rdf:about="(.*?)".*?</\2>)}s
-  or die "Can't find md:FullModel or dm:DifferenceModel\n";
+  $body =~ m{(<(md:FullModel|dcat:Dataset|dm:DifferenceModel|dcat-?cim:DifferenceSet) rdf:about="(.*?)".*?</\2>)}s
+  or die "Can't find md:FullModel|dcat:Dataset or dm:DifferenceModel|dcat-cim:DifferenceSet\n";
 
-if ($model_type eq "dm:DifferenceModel") {
-  my ($model_open, $reverse, $forward, $model_close) =
+if ($model_type =~ "dm:DifferenceModel|dcat-?cim:DifferenceSet") {
+  my ($model_open, $reverse_tag, $reverse, $reverse_tag1, $forward_tag, $forward, $forward_tag1, $model_close) =
     $model =~ m{(.*?)
-\s*<dm:reverseDifferences rdf:parseType="Statements">(.*?)</dm:reverseDifferences>
-\s*<dm:forwardDifferences rdf:parseType="Statements">(.*?)</dm:forwardDifferences>
+\s*<(dm:reverseDifferences|dcat-?cim:reverseDifferenceSet) rdf:parseType="Statements">(.*?)</(dm:reverseDifferences|dcat-?cim:reverseDifferenceSet)>
+\s*<(dm:forwardDifferences|dcat-?cim:forwardDifferenceSet) rdf:parseType="Statements">(.*?)</(dm:forwardDifferences|dcat-?cim:forwardDifferenceSet)>
 (.*)}s
-    or die "Can't find dm:reverseDifferences FOLLOWED BY dm:forwardDifferences\n";
+    or die "Can't find dm:reverseDifferences|dcat-cim:reverseDifferenceSet FOLLOWED BY dm:forwardDifferences|dcat-cim:forwardDifferenceSet\n";
   my $reverse_uri = "urn:uuid:" . uuid4();
   my $forward_uri = "urn:uuid:" . uuid4();
-  my $reverse_ref = qq{<dm:reverseDifferences rdf:resource="$reverse_uri"/>};
-  my $forward_ref = qq{<dm:forwardDifferences rdf:resource="$forward_uri"/>};
+  my $reverse_ref = qq{<$reverse_tag rdf:resource="$reverse_uri"/>};
+  my $forward_ref = qq{<$forward_tag rdf:resource="$forward_uri"/>};
   $model = ttl_insert_after_prefixes
     ("$rdf_open$model_open$reverse_ref$forward_ref$model_close$rdf_close",
     "<$model_uri> { # model metadata\n");
