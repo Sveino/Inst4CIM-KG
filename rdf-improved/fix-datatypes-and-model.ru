@@ -1,4 +1,4 @@
-prefix cim: <http://iec.ch/TC57/CIM100#>
+prefix cim: <https://cim.ucaiug.io/ns#>
 prefix nc:      <https://cim4.eu/ns/nc#>
 prefix eu:      <http://iec.ch/TC57/CIM100-European#>
 prefix eumd:    <https://cim4.eu/ns/Metadata-European#>

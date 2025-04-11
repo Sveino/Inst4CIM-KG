@@ -52,7 +52,7 @@ fix-datatypes-old.ru: fix-datatypes-common.ru
 fix-datatypes-new.ru: fix-datatypes-common.ru
 	echo "prefix cim: <https://cim.ucaiug.io/ns#>" | cat - $^ > $@
 
-fix-datatypes-and-model.ru: fix-datatypes-old.ru fix-model.ru
+fix-datatypes-and-model.ru: fix-datatypes-new.ru fix-model.ru
 	cat $^ > $@
 
 test: $(test_trig)
