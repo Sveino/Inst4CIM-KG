@@ -2,6 +2,9 @@ prefix nc:      <https://cim4.eu/ns/nc#>
 prefix eu:      <http://iec.ch/TC57/CIM100-European#>
 prefix eumd:    <https://cim4.eu/ns/Metadata-European#>
 prefix md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+prefix entsoe2: <http://entsoe.eu/CIM/SchemaExtension/3/2#>
+prefix icim:    <http://iec.ch/TC57/2013/CIM-schema-cim16-info#>
+prefix pti:     <http://www.pti-us.com/PTI_CIM-schema-cim16#>
 prefix dcterms: <http://purl.org/dc/terms/>
 prefix dcat:    <http://www.w3.org/ns/dcat#>
 prefix xsd:     <http://www.w3.org/2001/XMLSchema#>
@@ -1200,7 +1203,9 @@ where {
     (cim:GenICompensationForGenJ.rcij                                 xsd:float     )
     (cim:GenICompensationForGenJ.xcij                                 xsd:float     )
     (cim:GeneratingUnit.governorSCD                                   xsd:float     )
+    (cim:GeneratingUnit.highControlLimit                              xsd:float     ) 
     (cim:GeneratingUnit.longPF                                        xsd:float     )
+    (cim:GeneratingUnit.lowControlLimit                               xsd:float     )
     (cim:GeneratingUnit.lowerRampRate                                 xsd:float     )
     (cim:GeneratingUnit.maxEconomicP                                  xsd:float     )
     (cim:GeneratingUnit.maxOperatingP                                 xsd:float     )
@@ -2744,7 +2749,9 @@ where {
     (cim:SynchronousMachine.earthingStarPointX                        xsd:float     )
     (cim:SynchronousMachine.ikk                                       xsd:float     )
     (cim:SynchronousMachine.maxQ                                      xsd:float     )
+    (cim:SynchronousMachine.maxU                                      xsd:float     )
     (cim:SynchronousMachine.minQ                                      xsd:float     )
+    (cim:SynchronousMachine.minU                                      xsd:float     )
     (cim:SynchronousMachine.mu                                        xsd:float     )
     (cim:SynchronousMachine.qPercent                                  xsd:float     )
     (cim:SynchronousMachine.r                                         xsd:float     )
@@ -3106,12 +3113,18 @@ where {
     (cim:WireInfo.rAC25                                               xsd:float     )
     (cim:WireInfo.rAC75                                               xsd:float     )
     (cim:WireInfo.rDC20                                               xsd:float     )    
-    (dcat:startDate                                                   xsd:dateTime  )
     (dcat:endDate                                                     xsd:dateTime  )
+    (dcat:startDate                                                   xsd:dateTime  )
     (dcat:temporalResolution                                          xsd:duration  )
     (dcterms:issued                                                   xsd:dateTime  )
+    (entsoe2:CircuitShare.contributionFactor                          xsd:float     )
+    (entsoe2:EnergyCongestionZone.netACInterchange                    xsd:float     )
+    (entsoe2:EnergyCongestionZone.netACInterchangeTolerance           xsd:float     )
+    (entsoe2:EnergyCongestionZone.netDCInterchange                    xsd:float     )
     (eu:BoundaryPoint.isDirectCurrent                                 xsd:boolean   )
     (eu:BoundaryPoint.isExcludedFromAreaInterchange                   xsd:boolean   )
+    (icim:GateInputPin.thresholdPercentage                            xsd:float     )
+    (icim:Stage.priority                                              xsd:integer   )
     (md:Model.created                                                 xsd:dateTime  )
     (md:Model.modelingAuthoritySet                                    xsd:anyURI    )
     (md:Model.profile                                                 xsd:anyURI    )
@@ -3626,7 +3639,23 @@ where {
     (nc:VsConverterTimePoint.targetQpcc                               xsd:float     )
     (nc:VsConverterTimePoint.targetUpcc                               xsd:float     )
     (prov:generatedAtTime                                             xsd:dateTime  )
-
+    (pti:GeneratingUnit.gtap                                          xsd:float     )
+    (pti:GeneratingUnit.meritOrder                                    xsd:float     )
+    (pti:GeneratingUnit.rmpct                                         xsd:float     )
+    (pti:GeneratingUnit.rt                                            xsd:float     )
+    (pti:GeneratingUnit.xt                                            xsd:float     )
+    (pti:PowerTransformer.cm                                          xsd:float     )
+    (pti:PowerTransformer.cr                                          xsd:float     )
+    (pti:PowerTransformer.cw                                          xsd:float     )
+    (pti:PowerTransformer.cx                                          xsd:float     )
+    (pti:PowerTransformer.cz                                          xsd:float     )
+    (pti:PowerTransformer.nmetr                                       xsd:float     )
+    (pti:PowerTransformer.rma                                         xsd:float     )
+    (pti:PowerTransformer.rmi                                         xsd:float     )
+    (pti:PowerTransformerEnd.ang                                      xsd:float     )
+    (pti:PowerTransformerEnd.nomV                                     xsd:float     )
+    (pti:PowerTransformerEnd.sBase                                    xsd:float     )
+    (pti:SynchronousMachine.x                                         xsd:float     )
   }
   graph ?g {?x ?prop ?old}
   filter(datatype(?old)=xsd:string)
