@@ -46,14 +46,14 @@ clean:
 
 fix-datatypes: fix-datatypes-older.ru fix-datatypes-old.ru fix-datatypes-new.ru fix-datatypes-and-model.ru
 
-fix-datatypes-old.ru: fix-datatypes-common.ru
-	echo "prefix cim: <http://iec.ch/TC57/CIM100#>" | cat - $^ > $@
+# fix-datatypes-old.ru: fix-datatypes-common.ru
+# 	echo "prefix cim: <http://iec.ch/TC57/CIM100#>" | cat - $^ > $@
 
-fix-datatypes-older.ru: fix-datatypes-common.ru
-	echo "prefix cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>" | cat - $^ > $@
+# fix-datatypes-older.ru: fix-datatypes-common.ru
+# 	echo "prefix cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>" | cat - $^ > $@
 
-fix-datatypes-new.ru: fix-datatypes-common.ru
-	echo "prefix cim: <https://cim.ucaiug.io/ns#>" | cat - $^ > $@
+# fix-datatypes-new.ru: fix-datatypes-common.ru
+# 	echo "prefix cim: <https://cim.ucaiug.io/ns#>" | cat - $^ > $@
 
 fix-datatypes-and-model.ru: fix-datatypes-new.ru fix-model.ru
 	cat $^ > $@

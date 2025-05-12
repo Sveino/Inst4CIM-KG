@@ -1,6 +1,6 @@
 prefix cim: <https://cim.ucaiug.io/ns#>
 prefix nc:      <https://cim4.eu/ns/nc#>
-prefix eu:      <http://iec.ch/TC57/CIM100-European#>
+prefix eu:      <https://cim.ucaiug.io/ns/eu#>
 prefix eumd:    <https://cim4.eu/ns/Metadata-European#>
 prefix md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
 prefix entsoe2: <http://entsoe.eu/CIM/SchemaExtension/3/2#>
