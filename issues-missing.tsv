@@ -1,8 +1,5 @@
-https://github.com/Sveino/Inst4CIM-KG/issues/100 shorten prop names in JSONLD?
-https://github.com/Sveino/Inst4CIM-KG/issues/101 represent instances as JSONLD
 https://github.com/Sveino/Inst4CIM-KG/issues/107 `First_Terminal, Second_Terminal` use unusual separator
-https://github.com/Sveino/Inst4CIM-KG/issues/119 multiple per-profile graphs in JSON-LD?
-https://github.com/Sveino/Inst4CIM-KG/issues/124 examine props-same-name-different-range for errors
+https://github.com/Sveino/Inst4CIM-KG/issues/119 multiple per-profile graphs (in JSON-LD and Trig)
 https://github.com/Sveino/Inst4CIM-KG/issues/125 fix props with multiple Ranges
 https://github.com/Sveino/Inst4CIM-KG/issues/126 delete extraneous "source" files
 https://github.com/Sveino/Inst4CIM-KG/issues/127 What is the unit for `Money` props?
@@ -14,12 +11,20 @@ https://github.com/Sveino/Inst4CIM-KG/issues/145 do we need PropertyReference UU
 https://github.com/Sveino/Inst4CIM-KG/issues/146 Mapping bidirectional UML relation to LinkML
 https://github.com/Sveino/Inst4CIM-KG/issues/147 consider resolvable model (graph) URLs
 https://github.com/Sveino/Inst4CIM-KG/issues/148 add URI options to `cim-trig.pl`?
+https://github.com/Sveino/Inst4CIM-KG/issues/153 definitions: markdown vs asciidoc
+https://github.com/Sveino/Inst4CIM-KG/issues/154 Updated Dataset header model
+https://github.com/Sveino/Inst4CIM-KG/issues/155 CIMXML description of dcat:Dataset
+https://github.com/Sveino/Inst4CIM-KG/issues/156 CIM needs subproperties
+https://github.com/Sveino/Inst4CIM-KG/issues/158 AC-DC confusion
+https://github.com/Sveino/Inst4CIM-KG/issues/159 Test base urn:uuid:
+https://github.com/Sveino/Inst4CIM-KG/issues/160 Rename V-A in CIM-QUDT mapping
+https://github.com/Sveino/Inst4CIM-KG/issues/161 define `cims` ontology
+https://github.com/Sveino/Inst4CIM-KG/issues/162 syntax for internal links (in ontology **definitions** to other ontology terms)
 https://github.com/Sveino/Inst4CIM-KG/issues/27 get rid of `profcim` Primitives
 https://github.com/Sveino/Inst4CIM-KG/issues/31 change some langString to string
 https://github.com/Sveino/Inst4CIM-KG/issues/34 define prefixes `uml` and `xsd`
 https://github.com/Sveino/Inst4CIM-KG/issues/47 remove spaces and lang tags from key values
 https://github.com/Sveino/Inst4CIM-KG/issues/51 Update NC profiles release 2.3.1
-https://github.com/Sveino/Inst4CIM-KG/issues/55 Representing datatypes in JSON-LD
 https://github.com/Sveino/Inst4CIM-KG/issues/59 Establish ontology best practices and hygiene checks
 https://github.com/Sveino/Inst4CIM-KG/issues/60 remove `AP` from `voc, con` file/folder names 
 https://github.com/Sveino/Inst4CIM-KG/issues/63 Naming of target files

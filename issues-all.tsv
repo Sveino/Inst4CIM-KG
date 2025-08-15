@@ -15,7 +15,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/113	deprecate `cims:AssociationUsed
 https://github.com/Sveino/Inst4CIM-KG/issues/114	wrong `cims:AssociationUsed` or lacking `owl:inverseOf`
 https://github.com/Sveino/Inst4CIM-KG/issues/116	CIMXML converting strategy (re Model)
 https://github.com/Sveino/Inst4CIM-KG/issues/117	multiply instance data 
-https://github.com/Sveino/Inst4CIM-KG/issues/119	multiple per-profile graphs in JSON-LD?
+https://github.com/Sveino/Inst4CIM-KG/issues/119	multiple per-profile graphs (in JSON-LD and Trig)
 https://github.com/Sveino/Inst4CIM-KG/issues/12	Mis-declared Packages
 https://github.com/Sveino/Inst4CIM-KG/issues/120	number representation in JSONLD
 https://github.com/Sveino/Inst4CIM-KG/issues/121	Add vann:preferredNamespacePrefix
@@ -43,8 +43,22 @@ https://github.com/Sveino/Inst4CIM-KG/issues/145	do we need PropertyReference UU
 https://github.com/Sveino/Inst4CIM-KG/issues/146	Mapping bidirectional UML relation to LinkML
 https://github.com/Sveino/Inst4CIM-KG/issues/147	consider resolvable model (graph) URLs
 https://github.com/Sveino/Inst4CIM-KG/issues/148	add URI options to `cim-trig.pl`?
+https://github.com/Sveino/Inst4CIM-KG/issues/149	don't use Overly Specific Props; guidance when to use class vs subclass in prop name
 https://github.com/Sveino/Inst4CIM-KG/issues/15	SHACL mixup between a node and its type
+https://github.com/Sveino/Inst4CIM-KG/issues/150	SHACL: Checking Datatypes
+https://github.com/Sveino/Inst4CIM-KG/issues/151	SHACL-improved readme
+https://github.com/Sveino/Inst4CIM-KG/issues/152	discussion on Datatypes and Units of Measure 
+https://github.com/Sveino/Inst4CIM-KG/issues/153	definitions: markdown vs asciidoc
+https://github.com/Sveino/Inst4CIM-KG/issues/154	Updated Dataset header model
+https://github.com/Sveino/Inst4CIM-KG/issues/155	CIMXML description of dcat:Dataset
+https://github.com/Sveino/Inst4CIM-KG/issues/156	CIM needs subproperties
+https://github.com/Sveino/Inst4CIM-KG/issues/157	SHACL: do not `import sh:`
+https://github.com/Sveino/Inst4CIM-KG/issues/158	AC-DC confusion
+https://github.com/Sveino/Inst4CIM-KG/issues/159	Test base urn:uuid:
 https://github.com/Sveino/Inst4CIM-KG/issues/16	Don't use parasitic `PropertyShape`
+https://github.com/Sveino/Inst4CIM-KG/issues/160	Rename V-A in CIM-QUDT mapping
+https://github.com/Sveino/Inst4CIM-KG/issues/161	define `cims` ontology
+https://github.com/Sveino/Inst4CIM-KG/issues/162	syntax for internal links (in ontology **definitions** to other ontology terms)
 https://github.com/Sveino/Inst4CIM-KG/issues/17	Don't use SHACL SPARQL where SHACL Standard is enough
 https://github.com/Sveino/Inst4CIM-KG/issues/18	Don't use tabs in SHACL files
 https://github.com/Sveino/Inst4CIM-KG/issues/19	`valueType` shapes are complicated and incorrect

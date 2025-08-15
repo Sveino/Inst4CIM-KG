@@ -1,5 +1,7 @@
 https://github.com/Sveino/Inst4CIM-KG/issues/1
 https://github.com/Sveino/Inst4CIM-KG/issues/10
+https://github.com/Sveino/Inst4CIM-KG/issues/100
+https://github.com/Sveino/Inst4CIM-KG/issues/101
 https://github.com/Sveino/Inst4CIM-KG/issues/103
 https://github.com/Sveino/Inst4CIM-KG/issues/104
 https://github.com/Sveino/Inst4CIM-KG/issues/105
@@ -17,6 +19,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/120
 https://github.com/Sveino/Inst4CIM-KG/issues/121
 https://github.com/Sveino/Inst4CIM-KG/issues/122
 https://github.com/Sveino/Inst4CIM-KG/issues/123
+https://github.com/Sveino/Inst4CIM-KG/issues/124
 https://github.com/Sveino/Inst4CIM-KG/issues/13
 https://github.com/Sveino/Inst4CIM-KG/issues/134
 https://github.com/Sveino/Inst4CIM-KG/issues/135
@@ -27,7 +30,10 @@ https://github.com/Sveino/Inst4CIM-KG/issues/141
 https://github.com/Sveino/Inst4CIM-KG/issues/142
 https://github.com/Sveino/Inst4CIM-KG/issues/143
 https://github.com/Sveino/Inst4CIM-KG/issues/144
+https://github.com/Sveino/Inst4CIM-KG/issues/149
 https://github.com/Sveino/Inst4CIM-KG/issues/15
+https://github.com/Sveino/Inst4CIM-KG/issues/150
+https://github.com/Sveino/Inst4CIM-KG/issues/152
 https://github.com/Sveino/Inst4CIM-KG/issues/16
 https://github.com/Sveino/Inst4CIM-KG/issues/17
 https://github.com/Sveino/Inst4CIM-KG/issues/18
@@ -60,6 +66,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/5
 https://github.com/Sveino/Inst4CIM-KG/issues/50
 https://github.com/Sveino/Inst4CIM-KG/issues/53
 https://github.com/Sveino/Inst4CIM-KG/issues/54
+https://github.com/Sveino/Inst4CIM-KG/issues/55
 https://github.com/Sveino/Inst4CIM-KG/issues/56
 https://github.com/Sveino/Inst4CIM-KG/issues/57
 https://github.com/Sveino/Inst4CIM-KG/issues/58
