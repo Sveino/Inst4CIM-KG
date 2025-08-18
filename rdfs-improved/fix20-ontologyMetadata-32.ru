@@ -1,9 +1,10 @@
 # https://github.com/Sveino/Inst4CIM-KG/issues/32
 
-prefix owl:  <http://www.w3.org/2002/07/owl#>
-prefix dcat: <http://www.w3.org/ns/dcat#>
-prefix dct:  <http://purl.org/dc/terms/>
-prefix dc:   <http://purl.org/dc/elements/1.1/>
+prefix owl:     <http://www.w3.org/2002/07/owl#>
+prefix dcat:    <http://www.w3.org/ns/dcat#>
+prefix dct:     <http://purl.org/dc/terms/>
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix dc:      <http://purl.org/dc/elements/1.1/>
 
 delete {?x dct:conformsTo ?old}
 insert {?x dc:source ?new}
