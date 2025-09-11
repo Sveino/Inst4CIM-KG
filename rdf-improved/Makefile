@@ -70,7 +70,7 @@ jsonld: $(test_jsonld)
 rm-jsonld:
 	rm -f $(test_jsonld)
 test/jsonld/%.jsonld: test/trig/%.trig
-	riot.bat -formatted jsonld $^ | jsonld compact -c https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld > $@
+	riot.bat -formatted jsonld $^ | jsonld compact -c https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld > $@
 
 nordic: $(nordic_trig)
 rm-nordic:
