@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "sv:Ontology",
@@ -64,7 +64,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "DC side of the current source converter (CSC).\nThe firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.\nThe reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.\nThe attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.\nThe attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees.",
+      "rdfs:comment": "DC side of the current source converter (CSC).\r\nThe firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.\r\nThe reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.\r\nThe attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.\r\nThe attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees.",
       "rdfs:label": "CsConverter",
       "rdfs:subClassOf": "cim:ACDCConverter"
     },
@@ -75,7 +75,7 @@
       "cims:stereotype": {
         "@id": "uml:concrete"
       },
-      "rdfs:comment": "An electrically connected subset of the network. DC topological islands can change as the current network state changes, e.g. due to: \n- disconnect switches or breakers changing state in a SCADA/EMS.\n- manual creation, change or deletion of topological nodes in a planning tool.\nOnly energised TopologicalNode-s shall be part of the topological island.",
+      "rdfs:comment": "An electrically connected subset of the network. DC topological islands can change as the current network state changes, e.g. due to: \r\n- disconnect switches or breakers changing state in a SCADA/EMS.\r\n- manual creation, change or deletion of topological nodes in a planning tool.\r\nOnly energised TopologicalNode-s shall be part of the topological island.",
       "rdfs:label": "DCTopologicalIsland",
       "rdfs:subClassOf": "cim:IdentifiedObject"
     },
@@ -201,7 +201,7 @@
       "cims:stereotype": {
         "@id": "uml:concrete"
       },
-      "rdfs:comment": "An electrically connected subset of the network. Topological islands can change as the current network state changes, e.g. due to: \n- disconnect switches or breakers changing state in a SCADA/EMS.\n- manual creation, change or deletion of topological nodes in a planning tool.\nOnly energised TopologicalNode-s shall be part of the topological island.",
+      "rdfs:comment": "An electrically connected subset of the network. Topological islands can change as the current network state changes, e.g. due to: \r\n- disconnect switches or breakers changing state in a SCADA/EMS.\r\n- manual creation, change or deletion of topological nodes in a planning tool.\r\nOnly energised TopologicalNode-s shall be part of the topological island.",
       "rdfs:label": "TopologicalIsland",
       "rdfs:subClassOf": "cim:IdentifiedObject"
     },
@@ -209,7 +209,7 @@
       "@id": "cim:TopologicalNode",
       "@type": "owl:Class",
       "cims:belongsToCategory": "sv:Package_StateVariablesProfile",
-      "rdfs:comment": "For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).\nFor a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called \"busses\".",
+      "rdfs:comment": "For a detailed substation model a topological node is a set of connectivity nodes that, in the current network state, are connected together through any type of closed switches, including  jumpers. Topological nodes change as the current network state changes (i.e., switches, breakers, etc. change state).\r\nFor a planning model, switch statuses are not used to form topological nodes. Instead they are manually created or deleted in a model builder tool. Topological nodes maintained this way are also called \"busses\".",
       "rdfs:label": "TopologicalNode"
     },
     {
@@ -219,7 +219,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r\n\r\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\r\n\r\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
       "rdfs:label": "UnitMultiplier"
     },
     {
@@ -229,7 +229,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r\nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r\nThe integer values are used for harmonization with IEC 61850.",
       "rdfs:label": "UnitSymbol"
     },
     {
@@ -571,7 +571,7 @@
       },
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "The active power loss at a DC Pole \n= idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2.\nFor lossless operation Pdc=Pac.\nFor rectifier operation with losses Pdc=Pac-lossP.\nFor inverter operation with losses Pdc=Pac+lossP.\nIt is converter’s state variable used in power flow. The attribute shall be a positive value.",
+      "rdfs:comment": "The active power loss at a DC Pole \r\n= idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2.\r\nFor lossless operation Pdc=Pac.\r\nFor rectifier operation with losses Pdc=Pac-lossP.\r\nFor inverter operation with losses Pdc=Pac+lossP.\r\nIt is converter’s state variable used in power flow. The attribute shall be a positive value.",
       "rdfs:domain": "cim:ACDCConverter",
       "rdfs:label": "poleLossP",
       "rdfs:range": "xsd:float",
@@ -664,7 +664,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "cim:IdentifiedObject",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -961,6 +961,10 @@
     },
     {
       "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Impedance"
+    },
+    {
+      "@id": "cim:Inductance",
       "skos:exactMatch": "quantitykind:Inductance"
     },
     {
@@ -1312,7 +1316,8 @@
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
       "rdfs:comment": "Electric inductance in henrys (Wb/A).",
-      "rdfs:label": "H"
+      "rdfs:label": "H",
+      "skos:exactMatch": "unit:H"
     },
     {
       "@id": "cim:UnitSymbol.HPerm",
@@ -1569,7 +1574,7 @@
       "@id": "cim:UnitSymbol.VAr",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\r\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
       "rdfs:label": "VAr",
       "skos:exactMatch": "unit:V-A_Reactive"
     },
@@ -1750,7 +1755,7 @@
       "@id": "cim:UnitSymbol.cosPhi",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Power factor, dimensionless.\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
+      "rdfs:comment": "Power factor, dimensionless.\r\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\r\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
       "rdfs:label": "cosPhi"
     },
     {
@@ -1793,7 +1798,7 @@
       "@id": "cim:UnitSymbol.degC",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Relative temperature in degrees Celsius.\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
+      "rdfs:comment": "Relative temperature in degrees Celsius.\r\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
       "rdfs:label": "degC",
       "skos:exactMatch": "unit:DEG_C"
     },
@@ -2201,7 +2206,7 @@
     {
       "@id": "sv:Package_StateVariablesProfile",
       "@type": "cims:ClassCategory",
-      "rdfs:comment": "A state variables dataset which conforms to the IEC 61970-456 state variables profile contains all objects required to complete the specification of a steady-state solution. \nA state variables dataset is always exchanged in full. \nA state variables dataset of an assembled model contains state variables related objects for all model authority sets being part of the assembled model.",
+      "rdfs:comment": "A state variables dataset which conforms to the IEC 61970-456 state variables profile contains all objects required to complete the specification of a steady-state solution. \r\nA state variables dataset is always exchanged in full. \r\nA state variables dataset of an assembled model contains state variables related objects for all model authority sets being part of the assembled model.",
       "rdfs:label": "StateVariablesProfile"
     }
   ]

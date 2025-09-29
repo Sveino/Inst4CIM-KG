@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "eqbd:Ontology",
@@ -211,7 +211,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r\n\r\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\r\n\r\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
       "rdfs:label": "UnitMultiplier"
     },
     {
@@ -221,7 +221,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r\nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r\nThe integer values are used for harmonization with IEC 61850.",
       "rdfs:label": "UnitSymbol"
     },
     {
@@ -608,7 +608,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "cim:IdentifiedObject",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -640,7 +640,7 @@
       },
       "qudt:hasQuantityKind": "cim:Voltage",
       "qudt:hasUnit": "unit:KiloV",
-      "rdfs:comment": "The bus bar's high voltage limit.\nThe limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with lowVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.",
+      "rdfs:comment": "The bus bar's high voltage limit.\r\nThe limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with lowVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.",
       "rdfs:domain": "cim:VoltageLevel",
       "rdfs:label": "highVoltageLimit",
       "rdfs:range": "xsd:float",
@@ -659,7 +659,7 @@
       },
       "qudt:hasQuantityKind": "cim:Voltage",
       "qudt:hasUnit": "unit:KiloV",
-      "rdfs:comment": "The bus bar's low voltage limit.\nThe limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with highVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.",
+      "rdfs:comment": "The bus bar's low voltage limit.\r\nThe limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with highVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present.",
       "rdfs:domain": "cim:VoltageLevel",
       "rdfs:label": "lowVoltageLimit",
       "rdfs:range": "xsd:float",
@@ -679,7 +679,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "The ISO code of the region which the \"From\" side of the Boundary point belongs to or it is connected to.\nThe ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum.",
+      "rdfs:comment": "The ISO code of the region which the \"From\" side of the Boundary point belongs to or it is connected to.\r\nThe ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum.",
       "rdfs:domain": "eu:BoundaryPoint",
       "rdfs:label": "fromEndIsoCode",
       "rdfs:range": "xsd:string"
@@ -697,7 +697,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "A human readable name with length of the string 64 characters maximum. It covers the following two cases:\n-if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the \"From\" side of the tie-line is connected to.\n-if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the \"From\" side of the Boundary point is connected to.",
+      "rdfs:comment": "A human readable name with length of the string 64 characters maximum. It covers the following two cases:\r\n-if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the \"From\" side of the tie-line is connected to.\r\n-if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the \"From\" side of the Boundary point is connected to.",
       "rdfs:domain": "eu:BoundaryPoint",
       "rdfs:label": "fromEndName",
       "rdfs:range": "xsd:string"
@@ -769,7 +769,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "The ISO code of the region which the \"To\" side of the Boundary point belongs to or is connected to.\nThe ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum.",
+      "rdfs:comment": "The ISO code of the region which the \"To\" side of the Boundary point belongs to or is connected to.\r\nThe ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum.",
       "rdfs:domain": "eu:BoundaryPoint",
       "rdfs:label": "toEndIsoCode",
       "rdfs:range": "xsd:string"
@@ -787,7 +787,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "A human readable name with length of the string 64 characters maximum. It covers the following two cases:\n-if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the \"To\" side of the tie-line is connected to.\n-if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the \"To\" side of the Boundary point is connected to.",
+      "rdfs:comment": "A human readable name with length of the string 64 characters maximum. It covers the following two cases:\r\n-if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the \"To\" side of the tie-line is connected to.\r\n-if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the \"To\" side of the Boundary point is connected to.",
       "rdfs:domain": "eu:BoundaryPoint",
       "rdfs:label": "toEndName",
       "rdfs:range": "xsd:string"
@@ -898,6 +898,10 @@
     },
     {
       "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Impedance"
+    },
+    {
+      "@id": "cim:Inductance",
       "skos:exactMatch": "quantitykind:Inductance"
     },
     {
@@ -1244,7 +1248,8 @@
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
       "rdfs:comment": "Electric inductance in henrys (Wb/A).",
-      "rdfs:label": "H"
+      "rdfs:label": "H",
+      "skos:exactMatch": "unit:H"
     },
     {
       "@id": "cim:UnitSymbol.HPerm",
@@ -1501,7 +1506,7 @@
       "@id": "cim:UnitSymbol.VAr",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\r\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
       "rdfs:label": "VAr",
       "skos:exactMatch": "unit:V-A_Reactive"
     },
@@ -1682,7 +1687,7 @@
       "@id": "cim:UnitSymbol.cosPhi",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Power factor, dimensionless.\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
+      "rdfs:comment": "Power factor, dimensionless.\r\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\r\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
       "rdfs:label": "cosPhi"
     },
     {
@@ -1725,7 +1730,7 @@
       "@id": "cim:UnitSymbol.degC",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Relative temperature in degrees Celsius.\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
+      "rdfs:comment": "Relative temperature in degrees Celsius.\r\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
       "rdfs:label": "degC",
       "skos:exactMatch": "unit:DEG_C"
     },

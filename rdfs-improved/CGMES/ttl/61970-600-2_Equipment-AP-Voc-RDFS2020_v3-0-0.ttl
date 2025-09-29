@@ -4,6 +4,7 @@
 @prefix           eq: <http://iec.ch/TC57/ns/CIM/CoreEquipment-EU#> .
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
+@prefix      dcterms: <http://purl.org/dc/terms/> .
 @prefix          owl: <http://www.w3.org/2002/07/owl#> .
 @prefix       prefix: <http://qudt.org/vocab/prefix/> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -58,8 +59,8 @@ cim:ACDCTerminal a owl:Class ;
 
 cim:ACLineSegment a owl:Class ;
   rdfs:label "ACLineSegment" ;
-  rdfs:comment """A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.
-For symmetrical, transposed three phase lines, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.
+  rdfs:comment """A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.\r
+For symmetrical, transposed three phase lines, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.\r
 The BaseVoltage at the two ends of ACLineSegments in a Line shall have the same BaseVoltage.nominalVoltage. However, boundary lines may have slightly different BaseVoltage.nominalVoltages and variation is allowed. Larger voltage difference in general requires use of an equivalent branch."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -88,7 +89,7 @@ cim:AsynchronousMachine a owl:Class ;
 
 cim:AuxiliaryEquipment a owl:Class ;
   rdfs:label "AuxiliaryEquipment" ;
-  rdfs:comment """AuxiliaryEquipment describe equipment that is not performing any primary functions but support for the equipment performing the primary function.
+  rdfs:comment """AuxiliaryEquipment describe equipment that is not performing any primary functions but support for the equipment performing the primary function.\r
 AuxiliaryEquipment is attached to primary equipment via an association with Terminal."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   rdfs:subClassOf cim:Equipment .
@@ -136,7 +137,7 @@ cim:BusNameMarker a owl:Class ;
 
 cim:BusbarSection a owl:Class ;
   rdfs:label "BusbarSection" ;
-  rdfs:comment """A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation. 
+  rdfs:comment """A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation. \r
 Voltage measurements are typically obtained from voltage transformers that are connected to busbar sections. A bus bar section may have many physical terminals but for analysis is modelled with exactly one logical terminal."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -151,7 +152,7 @@ cim:CAESPlant a owl:Class ;
 
 cim:Clamp a owl:Class ;
   rdfs:label "Clamp" ;
-  rdfs:comment """A Clamp is a galvanic connection at a line segment where other equipment is connected. A Clamp does not cut the line segment. 
+  rdfs:comment """A Clamp is a galvanic connection at a line segment where other equipment is connected. A Clamp does not cut the line segment. \r
 A Clamp is ConductingEquipment and has one Terminal with an associated ConnectivityNode. Any other ConductingEquipment can be connected to the Clamp ConnectivityNode."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -225,10 +226,10 @@ cim:Connector a owl:Class ;
 
 cim:ControlArea a owl:Class ;
   rdfs:label "ControlArea" ;
-  rdfs:comment """A control area is a grouping of generating units and/or loads and a cutset of tie lines (as terminals) which may be used for a variety of purposes including automatic generation control, power flow solution area interchange control specification, and input to load forecasting. All generation and load within the area defined by the terminals on the border are considered in the area interchange control. Note that any number of overlapping control area specifications can be superimposed on the physical model. The following general principles apply to ControlArea:
-1.  The control area orientation for net interchange is positive for an import, negative for an export.
-2.  The control area net interchange is determined by summing flows in Terminals. The Terminals are identified by creating a set of TieFlow objects associated with a ControlArea object. Each TieFlow object identifies one Terminal.
-3.  In a single network model, a tie between two control areas must be modelled in both control area specifications, such that the two representations of the tie flow sum to zero.
+  rdfs:comment """A control area is a grouping of generating units and/or loads and a cutset of tie lines (as terminals) which may be used for a variety of purposes including automatic generation control, power flow solution area interchange control specification, and input to load forecasting. All generation and load within the area defined by the terminals on the border are considered in the area interchange control. Note that any number of overlapping control area specifications can be superimposed on the physical model. The following general principles apply to ControlArea:\r
+1.  The control area orientation for net interchange is positive for an import, negative for an export.\r
+2.  The control area net interchange is determined by summing flows in Terminals. The Terminals are identified by creating a set of TieFlow objects associated with a ControlArea object. Each TieFlow object identifies one Terminal.\r
+3.  In a single network model, a tie between two control areas must be modelled in both control area specifications, such that the two representations of the tie flow sum to zero.\r
 4.  The normal orientation of Terminal flow is positive for flow into the conducting equipment that owns the Terminal. (i.e. flow from a bus into a device is positive.) However, the orientation of each flow in the control area specification must align with the control area convention, i.e. import is positive. If the orientation of the Terminal flow referenced by a TieFlow is positive into the control area, then this is confirmed by setting TieFlow.positiveFlowIn flag TRUE. If not, the orientation must be reversed by setting the TieFlow.positiveFlowIn flag FALSE."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -249,10 +250,10 @@ cim:ControlAreaTypeKind a owl:Class ;
 
 cim:CsConverter a owl:Class ;
   rdfs:label "CsConverter" ;
-  rdfs:comment """DC side of the current source converter (CSC).
-The firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.
-The reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.
-The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.
+  rdfs:comment """DC side of the current source converter (CSC).\r
+The firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.\r
+The reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.\r
+The attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.\r
 The attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -298,8 +299,8 @@ cim:CurveStyle a owl:Class ;
 
 cim:Cut a owl:Class ;
   rdfs:label "Cut" ;
-  rdfs:comment """A cut separates a line segment into two parts. The cut appears as a switch inserted between these two parts and connects them together. As the cut is normally open there is no galvanic connection between the two line segment parts. But it is possible to close the cut to get galvanic connection.
-The cut terminals are oriented towards the line segment terminals with the same sequence number. Hence the cut terminal with sequence number equal to 1 is oriented to the line segment's terminal with sequence number equal to 1.
+  rdfs:comment """A cut separates a line segment into two parts. The cut appears as a switch inserted between these two parts and connects them together. As the cut is normally open there is no galvanic connection between the two line segment parts. But it is possible to close the cut to get galvanic connection.\r
+The cut terminals are oriented towards the line segment terminals with the same sequence number. Hence the cut terminal with sequence number equal to 1 is oriented to the line segment's terminal with sequence number equal to 1.\r
 The cut terminals also act as connection points for jumpers and other equipment, e.g. a mobile generator. To enable this, connectivity nodes are placed at the cut terminals. Once the connectivity nodes are in place any conducting equipment can be connected at them."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -467,7 +468,7 @@ cim:EnergyConnection a owl:Class ;
 
 cim:EnergyConsumer a owl:Class ;
   rdfs:label "EnergyConsumer" ;
-  rdfs:comment """Generic user of energy - a  point of consumption on the power system model.
+  rdfs:comment """Generic user of energy - a  point of consumption on the power system model.\r
 EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -709,17 +710,17 @@ cim:LoadGroup a owl:Class ;
 
 cim:LoadResponseCharacteristic a owl:Class ;
   rdfs:label "LoadResponseCharacteristic" ;
-  rdfs:comment """Models the characteristic response of the load demand due to changes in system conditions such as voltage and frequency. It is not related to demand response.
-If LoadResponseCharacteristic.exponentModel is True, the exponential voltage or frequency dependent models are specified and used as to calculate active and reactive power components of the load model.
-The equations to calculate active and reactive power components of the load model are internal to the power flow calculation, hence they use different quantities depending on the use case of the data exchange. 
-The equations for exponential voltage dependent load model injected power are: 
-pInjection= Pnominal* (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.pVoltageExponent
-qInjection= Qnominal* (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.qVoltageExponent
-Where: 
-1) * means "multiply" and ** is "raised to power of";
-2) Pnominal and Qnominal represent the active power and reactive power at nominal voltage as any load described by the voltage exponential model shall be given at nominal voltage.  This means that EnergyConsumer.p and EnergyConsumer.q  are at nominal voltage.
-3) After power flow is solved: 
--pInjection and qInjection correspond to SvPowerflow.p and SvPowerflow.q respectively.  
+  rdfs:comment """Models the characteristic response of the load demand due to changes in system conditions such as voltage and frequency. It is not related to demand response.\r
+If LoadResponseCharacteristic.exponentModel is True, the exponential voltage or frequency dependent models are specified and used as to calculate active and reactive power components of the load model.\r
+The equations to calculate active and reactive power components of the load model are internal to the power flow calculation, hence they use different quantities depending on the use case of the data exchange. \r
+The equations for exponential voltage dependent load model injected power are: \r
+pInjection= Pnominal* (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.pVoltageExponent\r
+qInjection= Qnominal* (Voltage/cim:BaseVoltage.nominalVoltage) ** cim:LoadResponseCharacteristic.qVoltageExponent\r
+Where: \r
+1) * means "multiply" and ** is "raised to power of";\r
+2) Pnominal and Qnominal represent the active power and reactive power at nominal voltage as any load described by the voltage exponential model shall be given at nominal voltage.  This means that EnergyConsumer.p and EnergyConsumer.q  are at nominal voltage.\r
+3) After power flow is solved: \r
+-pInjection and qInjection correspond to SvPowerflow.p and SvPowerflow.q respectively.  \r
 - Voltage corresponds to SvVoltage.v at the TopologicalNode where the load is connected."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -768,8 +769,8 @@ cim:NuclearGeneratingUnit a owl:Class ;
 
 cim:OperationalLimit a owl:Class ;
   rdfs:label "OperationalLimit" ;
-  rdfs:comment """A value and normal value associated with a specific kind of limit. 
-The sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  
+  rdfs:comment """A value and normal value associated with a specific kind of limit. \r
+The sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \r
 If a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   rdfs:subClassOf cim:IdentifiedObject .
@@ -803,8 +804,8 @@ cim:PetersenCoil a owl:Class ;
 
 cim:PhaseCode a owl:Class ;
   rdfs:label "PhaseCode" ;
-  rdfs:comment """An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.
-Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.
+  rdfs:comment """An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.\r
+Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.\r
 The integer values are from IEC 61968-9 to support revenue metering applications."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:enumeration .
@@ -824,8 +825,8 @@ cim:PhaseTapChangerAsymmetrical a owl:Class ;
 
 cim:PhaseTapChangerLinear a owl:Class ;
   rdfs:label "PhaseTapChangerLinear" ;
-  rdfs:comment """Describes a tap changer with a linear relation between the tap step and the phase angle difference across the transformer. This is a mathematical model that is an approximation of a real phase tap changer.
-The phase angle is computed as stepPhaseShiftIncrement times the tap position.
+  rdfs:comment """Describes a tap changer with a linear relation between the tap step and the phase angle difference across the transformer. This is a mathematical model that is an approximation of a real phase tap changer.\r
+The phase angle is computed as stepPhaseShiftIncrement times the tap position.\r
 The voltage magnitude of both sides is the same."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -914,9 +915,9 @@ cim:PowerSystemResource a owl:Class ;
 
 cim:PowerTransformer a owl:Class ;
   rdfs:label "PowerTransformer" ;
-  rdfs:comment """An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).
-A power transformer may be composed of separate transformer tanks that need not be identical.
-A power transformer can be modelled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.
+  rdfs:comment """An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).\r
+A power transformer may be composed of separate transformer tanks that need not be identical.\r
+A power transformer can be modelled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.\r
 The inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -924,12 +925,12 @@ The inherited association ConductingEquipment.BaseVoltage should not be used.  T
 
 cim:PowerTransformerEnd a owl:Class ;
   rdfs:label "PowerTransformerEnd" ;
-  rdfs:comment """A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.
-The impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows.
-1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.
-2) for a three Terminal PowerTransformer the three PowerTransformerEnds represent a star equivalent with each leg in the star represented by r, r0, x, and x0 values.
-3) For a three Terminal transformer each PowerTransformerEnd shall have g, g0, b and b0 values corresponding to the no load losses distributed on the three PowerTransformerEnds. The total no load loss shunt impedances may also be placed at one of the PowerTransformerEnds, preferably the end numbered 1, having the shunt values on end 1.  This is the preferred way.
-4) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.
+  rdfs:comment """A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.\r
+The impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows.\r
+1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.\r
+2) for a three Terminal PowerTransformer the three PowerTransformerEnds represent a star equivalent with each leg in the star represented by r, r0, x, and x0 values.\r
+3) For a three Terminal transformer each PowerTransformerEnd shall have g, g0, b and b0 values corresponding to the no load losses distributed on the three PowerTransformerEnds. The total no load loss shunt impedances may also be placed at one of the PowerTransformerEnds, preferably the end numbered 1, having the shunt values on end 1.  This is the preferred way.\r
+4) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.\r
 Each PowerTransformerEnd must be contained by a PowerTransformer. Because a PowerTransformerEnd (or any other object) can not be contained by more than one parent, a PowerTransformerEnd can not have an association to an EquipmentContainer (Substation, VoltageLevel, etc)."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -943,8 +944,8 @@ cim:ProtectedSwitch a owl:Class ;
 
 cim:RatioTapChanger a owl:Class ;
   rdfs:label "RatioTapChanger" ;
-  rdfs:comment """A tap changer that changes the voltage ratio impacting the voltage magnitude but not the phase angle across the transformer.
-
+  rdfs:comment """A tap changer that changes the voltage ratio impacting the voltage magnitude but not the phase angle across the transformer.\r
+\r
 Angle sign convention (general): Positive value indicates a positive phase shift from the winding where the tap is located to the other winding (for a two-winding transformer)."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -991,13 +992,13 @@ cim:RegulatingCondEq a owl:Class ;
 
 cim:RegulatingControl a owl:Class ;
   rdfs:label "RegulatingControl" ;
-  rdfs:comment """Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. 
-Remote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.
-The specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.
-For flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.
-The attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:
-- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;
-- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.
+  rdfs:comment """Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \r
+Remote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\r
+The specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.\r
+For flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.\r
+The attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:\r
+- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;\r
+- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.\r
 The attributes minAllowedTargetValue and maxAllowedTargetValue are not related to the attribute targetDeadband and thus they are not treated as an alternative of the targetDeadband. They are needed due to limitations in the local substation controller. The attribute targetDeadband is used to prevent the power flow from move the tap position in circles (hunting) that is to be used regardless of the attributes minAllowedTargetValue and maxAllowedTargetValue."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -1077,8 +1078,8 @@ cim:SolarGeneratingUnit a owl:Class ;
 
 cim:StaticVarCompensator a owl:Class ;
   rdfs:label "StaticVarCompensator" ;
-  rdfs:comment """A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.
-
+  rdfs:comment """A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\r
+\r
 The SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -1200,20 +1201,20 @@ cim:TransformerEnd a owl:Class ;
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier" ;
-  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r
+\r
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".\r
+\r
 For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg"."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:enumeration .
 
 cim:UnitSymbol a owl:Class ;
   rdfs:label "UnitSymbol" ;
-  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r
 The integer values are used for harmonization with IEC 61850."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:enumeration .
@@ -1227,7 +1228,7 @@ cim:VoltageLevel a owl:Class ;
 
 cim:VoltageLimit a owl:Class ;
   rdfs:label "VoltageLimit" ;
-  rdfs:comment """Operational limit applied to voltage.
+  rdfs:comment """Operational limit applied to voltage.\r
 The use of operational VoltageLimit is preferred instead of limits defined at VoltageLevel. The operational VoltageLimits are used, if present."""@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
   cims:stereotype uml:concrete ;
@@ -1329,8 +1330,8 @@ cim:ACDCConverterDCTerminal.DCConductingEquipment a owl:ObjectProperty, owl:Func
 
 cim:ACDCConverterDCTerminal.polarity a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "polarity" ;
-  rdfs:comment """Represents the normal network polarity condition. Depending on the converter configuration the value shall be set as follows:
-- For a monopole with two converter terminals use DCPolarityKind “positive” and “negative”.
+  rdfs:comment """Represents the normal network polarity condition. Depending on the converter configuration the value shall be set as follows:\r
+- For a monopole with two converter terminals use DCPolarityKind “positive” and “negative”.\r
 - For a bi-pole or symmetric monopole with three converter terminals use DCPolarityKind “positive”, “middle” and “negative”."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -2655,7 +2656,7 @@ cim:Terminal.TransformerEnd a owl:ObjectProperty, owl:InverseFunctionalProperty 
 
 cim:Terminal.phases a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "phases" ;
-  rdfs:comment """Represents the normal network phasing condition. If the attribute is missing, three phases (ABC) shall be assumed, except for terminals of grounding classes (specializations of EarthFaultCompensator, GroundDisconnector, and Ground) which will be assumed to be N. Therefore, phase code ABCN is explicitly declared when needed, e.g. for star point grounding equipment.
+  rdfs:comment """Represents the normal network phasing condition. If the attribute is missing, three phases (ABC) shall be assumed, except for terminals of grounding classes (specializations of EarthFaultCompensator, GroundDisconnector, and Ground) which will be assumed to be N. Therefore, phase code ABCN is explicitly declared when needed, e.g. for star point grounding equipment.\r
 The phase code on terminals connecting same ConnectivityNode or same TopologicalNode as well as for equipment between two terminals shall be consistent."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
@@ -3321,6 +3322,7 @@ cim:DCGround.inductance a owl:DatatypeProperty, owl:FunctionalProperty ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
   qudt:hasQuantityKind cim:Inductance ;
+  qudt:hasUnit unit:H ;
   rdfs:domain cim:DCGround ;
   rdfs:range xsd:float .
 
@@ -3356,6 +3358,7 @@ cim:DCLineSegment.inductance a owl:DatatypeProperty, owl:FunctionalProperty ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
   qudt:hasQuantityKind cim:Inductance ;
+  qudt:hasUnit unit:H ;
   rdfs:domain cim:DCLineSegment ;
   rdfs:range xsd:float .
 
@@ -3391,6 +3394,7 @@ cim:DCSeriesDevice.inductance a owl:DatatypeProperty, owl:FunctionalProperty ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
   qudt:hasQuantityKind cim:Inductance ;
+  qudt:hasUnit unit:H ;
   rdfs:domain cim:DCSeriesDevice ;
   rdfs:range xsd:float .
 
@@ -3516,7 +3520,7 @@ cim:EnergySource.pMin a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:Equipment.aggregate a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "aggregate" ;
-  rdfs:comment """The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to “true” the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  
+  rdfs:comment """The aggregate flag provides an alternative way of representing an aggregated (equivalent) element. It is applicable in cases when the dedicated classes for equivalent equipment do not have all of the attributes necessary to represent the required level of detail.  In case the flag is set to “true” the single instance of equipment represents multiple pieces of equipment that have been modelled together as an aggregate equivalent obtained by a network reduction procedure. Examples would be power transformers or synchronous machines operating in parallel modelled as a single aggregate power transformer or aggregate synchronous machine.  \r
 The attribute is not used for EquivalentBranch, EquivalentShunt and EquivalentInjection."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
@@ -3545,7 +3549,7 @@ cim:EquivalentBranch.r a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:EquivalentBranch.r21 a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "r21" ;
-  rdfs:comment """Resistance from terminal sequence 2 to terminal sequence 1 .Used for steady state power flow. This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.r is given, then EquivalentBranch.r21 is assumed equal to EquivalentBranch.r.
+  rdfs:comment """Resistance from terminal sequence 2 to terminal sequence 1 .Used for steady state power flow. This attribute is optional and represent unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.r is given, then EquivalentBranch.r21 is assumed equal to EquivalentBranch.r.\r
 Usage rule : EquivalentBranch is a result of network reduction prior to the data exchange."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.ohm ;
@@ -3570,7 +3574,7 @@ cim:EquivalentBranch.x a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:EquivalentBranch.x21 a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "x21" ;
-  rdfs:comment """Reactance from terminal sequence 2 to terminal sequence 1. Used for steady state power flow. This attribute is optional and represents an unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.x is given, then EquivalentBranch.x21 is assumed equal to EquivalentBranch.x.
+  rdfs:comment """Reactance from terminal sequence 2 to terminal sequence 1. Used for steady state power flow. This attribute is optional and represents an unbalanced network such as off-nominal phase shifter. If only EquivalentBranch.x is given, then EquivalentBranch.x21 is assumed equal to EquivalentBranch.x.\r
 Usage rule: EquivalentBranch is a result of network reduction prior to the data exchange."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.ohm ;
@@ -3779,7 +3783,7 @@ cim:GeneratingUnit.minOperatingP a owl:DatatypeProperty, owl:FunctionalProperty 
 
 cim:GeneratingUnit.nominalP a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "nominalP" ;
-  rdfs:comment """The nominal power of the generating unit.  Used to give precise meaning to percentage based attributes such as the governor speed change droop (governorSCD attribute).
+  rdfs:comment """The nominal power of the generating unit.  Used to give precise meaning to percentage based attributes such as the governor speed change droop (governorSCD attribute).\r
 The attribute shall be a positive value equal to or less than RotatingMachine.ratedS."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
@@ -3792,7 +3796,7 @@ The attribute shall be a positive value equal to or less than RotatingMachine.ra
 
 cim:GeneratingUnit.ratedGrossMaxP a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedGrossMaxP" ;
-  rdfs:comment """The unit's gross rated maximum capacity (book value).
+  rdfs:comment """The unit's gross rated maximum capacity (book value).\r
 The attribute shall be a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
@@ -3805,7 +3809,7 @@ The attribute shall be a positive value."""@en ;
 
 cim:GeneratingUnit.ratedGrossMinP a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedGrossMinP" ;
-  rdfs:comment """The gross rated minimum generation level which the unit can safely operate at while delivering power to the transmission grid.
+  rdfs:comment """The gross rated minimum generation level which the unit can safely operate at while delivering power to the transmission grid.\r
 The attribute shall be a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
@@ -3818,7 +3822,7 @@ The attribute shall be a positive value."""@en ;
 
 cim:GeneratingUnit.ratedNetMaxP a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedNetMaxP" ;
-  rdfs:comment """The net rated maximum capacity determined by subtracting the auxiliary power used to operate the internal plant machinery from the rated gross maximum capacity.
+  rdfs:comment """The net rated maximum capacity determined by subtracting the auxiliary power used to operate the internal plant machinery from the rated gross maximum capacity.\r
 The attribute shall be a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
@@ -3903,7 +3907,7 @@ cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty 
 
 cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -3944,20 +3948,20 @@ cim:LinearShuntCompensator.gPerSection a owl:DatatypeProperty, owl:FunctionalPro
 
 cim:LoadResponseCharacteristic.exponentModel a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "exponentModel" ;
-  rdfs:comment """Indicates the exponential voltage dependency model is to be used. If false, the coefficient model is to be used.
-The exponential voltage dependency model consist of the attributes:
-- pVoltageExponent
-- qVoltageExponent
-- pFrequencyExponent
-- qFrequencyExponent.
-The coefficient model consist of the attributes:
-- pConstantImpedance
-- pConstantCurrent
-- pConstantPower
-- qConstantImpedance
-- qConstantCurrent
-- qConstantPower.
-The sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.
+  rdfs:comment """Indicates the exponential voltage dependency model is to be used. If false, the coefficient model is to be used.\r
+The exponential voltage dependency model consist of the attributes:\r
+- pVoltageExponent\r
+- qVoltageExponent\r
+- pFrequencyExponent\r
+- qFrequencyExponent.\r
+The coefficient model consist of the attributes:\r
+- pConstantImpedance\r
+- pConstantCurrent\r
+- pConstantPower\r
+- qConstantImpedance\r
+- qConstantCurrent\r
+- qConstantPower.\r
+The sum of pConstantImpedance, pConstantCurrent and pConstantPower shall equal 1.\r
 The sum of qConstantImpedance, qConstantCurrent and qConstantPower shall equal 1."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -4110,7 +4114,7 @@ cim:PhaseTapChangerAsymmetrical.windingConnectionAngle a owl:DatatypeProperty, o
 
 cim:PhaseTapChangerLinear.stepPhaseShiftIncrement a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "stepPhaseShiftIncrement" ;
-  rdfs:comment """Phase shift per step position. A positive value indicates a positive angle variation from the Terminal at the  PowerTransformerEnd,  where the TapChanger is located, into the transformer.
+  rdfs:comment """Phase shift per step position. A positive value indicates a positive angle variation from the Terminal at the  PowerTransformerEnd,  where the TapChanger is located, into the transformer.\r
 The actual phase shift increment might be more accurately computed from the symmetrical or asymmetrical models or a tap step table lookup if those are available."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.deg ;
@@ -4148,7 +4152,7 @@ cim:PhaseTapChangerLinear.xMin a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:PhaseTapChangerNonLinear.voltageStepIncrement a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "voltageStepIncrement" ;
-  rdfs:comment """The voltage step increment on the out of phase winding (the PowerTransformerEnd where the TapChanger is located) specified in percent of rated voltage of the PowerTransformerEnd. A positive value means a positive voltage variation from the Terminal at the PowerTransformerEnd, where the TapChanger is located, into the transformer.
+  rdfs:comment """The voltage step increment on the out of phase winding (the PowerTransformerEnd where the TapChanger is located) specified in percent of rated voltage of the PowerTransformerEnd. A positive value means a positive voltage variation from the Terminal at the PowerTransformerEnd, where the TapChanger is located, into the transformer.\r
 When the increment is negative, the voltage decreases when the tap step increases."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -4222,7 +4226,7 @@ cim:PowerElectronicsConnection.minQ a owl:DatatypeProperty, owl:FunctionalProper
 
 cim:PowerElectronicsConnection.ratedS a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedS" ;
-  rdfs:comment """Nameplate apparent power rating for the unit.
+  rdfs:comment """Nameplate apparent power rating for the unit.\r
 The attribute shall have a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VA ;
@@ -4235,7 +4239,7 @@ The attribute shall have a positive value."""@en ;
 
 cim:PowerElectronicsConnection.ratedU a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedU" ;
-  rdfs:comment """Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.
+  rdfs:comment """Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.\r
 The attribute shall be a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
@@ -4296,7 +4300,7 @@ cim:PowerTransformerEnd.g a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:PowerTransformerEnd.r a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "r" ;
-  rdfs:comment """Resistance (star-model) of the transformer end.
+  rdfs:comment """Resistance (star-model) of the transformer end.\r
 The attribute shall be equal to or greater than zero for non-equivalent transformers."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.ohm ;
@@ -4309,7 +4313,7 @@ The attribute shall be equal to or greater than zero for non-equivalent transfor
 
 cim:PowerTransformerEnd.ratedS a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedS" ;
-  rdfs:comment """Normal apparent power rating.
+  rdfs:comment """Normal apparent power rating.\r
 The attribute shall be a positive value. For a two-winding transformer the values for the high and low voltage sides shall be identical."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VA ;
@@ -4322,8 +4326,8 @@ The attribute shall be a positive value. For a two-winding transformer the value
 
 cim:PowerTransformerEnd.ratedU a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedU" ;
-  rdfs:comment """Rated voltage: phase-phase for three-phase windings, and either phase-phase or phase-neutral for single-phase windings.
-A high voltage side, as given by TransformerEnd.endNumber, shall have a ratedU that is greater than or equal to ratedU for the lower voltage sides.
+  rdfs:comment """Rated voltage: phase-phase for three-phase windings, and either phase-phase or phase-neutral for single-phase windings.\r
+A high voltage side, as given by TransformerEnd.endNumber, shall have a ratedU that is greater than or equal to ratedU for the lower voltage sides.\r
 The attribute shall be a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
@@ -4348,7 +4352,7 @@ cim:PowerTransformerEnd.x a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:RatioTapChanger.stepVoltageIncrement a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "stepVoltageIncrement" ;
-  rdfs:comment """Tap step increment, in per cent of rated voltage of the power transformer end, per step position.
+  rdfs:comment """Tap step increment, in per cent of rated voltage of the power transformer end, per step position.\r
 When the increment is negative, the voltage decreases when the tap step increases."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -4413,7 +4417,7 @@ cim:RotatingMachine.ratedPowerFactor a owl:DatatypeProperty, owl:FunctionalPrope
 
 cim:RotatingMachine.ratedS a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedS" ;
-  rdfs:comment """Nameplate apparent power rating for the unit.
+  rdfs:comment """Nameplate apparent power rating for the unit.\r
 The attribute shall have a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VA ;
@@ -4426,7 +4430,7 @@ The attribute shall have a positive value."""@en ;
 
 cim:RotatingMachine.ratedU a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedU" ;
-  rdfs:comment """Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.
+  rdfs:comment """Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909.\r
 The attribute shall be a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
@@ -4563,7 +4567,7 @@ cim:StaticVarCompensator.inductiveRating a owl:DatatypeProperty, owl:FunctionalP
 
 cim:StaticVarCompensator.slope a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "slope" ;
-  rdfs:comment """The characteristics slope of an SVC defines how the reactive power output changes in proportion to the difference between the regulated bus voltage and the voltage setpoint.
+  rdfs:comment """The characteristics slope of an SVC defines how the reactive power output changes in proportion to the difference between the regulated bus voltage and the voltage setpoint.\r
 The attribute shall be a positive value or zero."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.VPerVAr ;
@@ -4597,7 +4601,7 @@ cim:Switch.normalOpen a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:Switch.ratedCurrent a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratedCurrent" ;
-  rdfs:comment """The maximum continuous current carrying capacity in amps governed by the device material and construction.
+  rdfs:comment """The maximum continuous current carrying capacity in amps governed by the device material and construction.\r
 The attribute shall be a positive value."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.A ;
@@ -4654,7 +4658,7 @@ cim:SynchronousMachine.qPercent a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:TapChanger.highStep a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "highStep" ;
-  rdfs:comment """Highest possible tap step position, advance from neutral.
+  rdfs:comment """Highest possible tap step position, advance from neutral.\r
 The attribute shall be greater than lowStep."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -4679,8 +4683,8 @@ cim:TapChanger.ltcFlag a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:TapChanger.neutralStep a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "neutralStep" ;
-  rdfs:comment """The neutral tap step position for this winding.
-The attribute shall be equal to or greater than lowStep and equal or less than highStep.
+  rdfs:comment """The neutral tap step position for this winding.\r
+The attribute shall be equal to or greater than lowStep and equal or less than highStep.\r
 It is the step position where the voltage is neutralU when the other terminals of the transformer are at the ratedU.  If there are other tap changers on the transformer those taps are kept constant at their neutralStep."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -4689,7 +4693,7 @@ It is the step position where the voltage is neutralU when the other terminals o
 
 cim:TapChanger.neutralU a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "neutralU" ;
-  rdfs:comment """Voltage at which the winding operates at the neutral tap setting. It is the voltage at the terminal of the PowerTransformerEnd associated with the tap changer when all tap changers on the transformer are at their neutralStep position.  Normally neutralU of the tap changer is the same as ratedU of the PowerTransformerEnd, but it can differ in special cases such as when the tapping mechanism is separate from the winding more common on lower voltage transformers.
+  rdfs:comment """Voltage at which the winding operates at the neutral tap setting. It is the voltage at the terminal of the PowerTransformerEnd associated with the tap changer when all tap changers on the transformer are at their neutralStep position.  Normally neutralU of the tap changer is the same as ratedU of the PowerTransformerEnd, but it can differ in special cases such as when the tapping mechanism is separate from the winding more common on lower voltage transformers.\r
 This attribute is not relevant for PhaseTapChangerAsymmetrical, PhaseTapChangerSymmetrical and PhaseTapChangerLinear."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
@@ -4702,7 +4706,7 @@ This attribute is not relevant for PhaseTapChangerAsymmetrical, PhaseTapChangerS
 
 cim:TapChanger.normalStep a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "normalStep" ;
-  rdfs:comment """The tap step position used in "normal" network operation for this winding. For a "Fixed" tap changer indicates the current physical tap setting.
+  rdfs:comment """The tap step position used in "normal" network operation for this winding. For a "Fixed" tap changer indicates the current physical tap setting.\r
 The attribute shall be equal to or greater than lowStep and equal to or less than highStep."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -4711,7 +4715,7 @@ The attribute shall be equal to or greater than lowStep and equal to or less tha
 
 cim:TapChangerTablePoint.b a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "b" ;
-  rdfs:comment """The magnetizing branch susceptance deviation as a percentage of nominal value. The actual susceptance is calculated as follows:
+  rdfs:comment """The magnetizing branch susceptance deviation as a percentage of nominal value. The actual susceptance is calculated as follows:\r
 calculated magnetizing susceptance = b(nominal) * (1 + b(from this class)/100).   The b(nominal) is defined as the static magnetizing susceptance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -4724,7 +4728,7 @@ calculated magnetizing susceptance = b(nominal) * (1 + b(from this class)/100). 
 
 cim:TapChangerTablePoint.g a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "g" ;
-  rdfs:comment """The magnetizing branch conductance deviation as a percentage of nominal value. The actual conductance is calculated as follows:
+  rdfs:comment """The magnetizing branch conductance deviation as a percentage of nominal value. The actual conductance is calculated as follows:\r
 calculated magnetizing conductance = g(nominal) * (1 + g(from this class)/100).   The g(nominal) is defined as the static magnetizing conductance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -4737,7 +4741,7 @@ calculated magnetizing conductance = g(nominal) * (1 + g(from this class)/100). 
 
 cim:TapChangerTablePoint.r a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "r" ;
-  rdfs:comment """The resistance deviation as a percentage of nominal value. The actual reactance is calculated as follows:
+  rdfs:comment """The resistance deviation as a percentage of nominal value. The actual reactance is calculated as follows:\r
 calculated resistance = r(nominal) * (1 + r(from this class)/100).   The r(nominal) is defined as the static resistance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -4750,7 +4754,7 @@ calculated resistance = r(nominal) * (1 + r(from this class)/100).   The r(nomin
 
 cim:TapChangerTablePoint.ratio a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "ratio" ;
-  rdfs:comment """The voltage at the tap step divided by rated voltage of the transformer end having the tap changer. Hence this is a value close to one.
+  rdfs:comment """The voltage at the tap step divided by rated voltage of the transformer end having the tap changer. Hence this is a value close to one.\r
 For example, if the ratio at step 1 is 1.01, and the rated voltage of the transformer end is 110kV, then the voltage obtained by setting the tap changer to step 1 to is 111.1kV."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
@@ -4767,7 +4771,7 @@ cim:TapChangerTablePoint.step a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:TapChangerTablePoint.x a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "x" ;
-  rdfs:comment """The series reactance deviation as a percentage of nominal value. The actual reactance is calculated as follows:
+  rdfs:comment """The series reactance deviation as a percentage of nominal value. The actual reactance is calculated as follows:\r
 calculated reactance = x(nominal) * (1 + x(from this class)/100).   The x(nominal) is defined as the static series reactance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -4796,7 +4800,7 @@ cim:TransformerEnd.endNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:VoltageLevel.highVoltageLimit a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "highVoltageLimit" ;
-  rdfs:comment """The bus bar's high voltage limit.
+  rdfs:comment """The bus bar's high voltage limit.\r
 The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with lowVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
@@ -4809,7 +4813,7 @@ The limit applies to all equipment and nodes contained in a given VoltageLevel. 
 
 cim:VoltageLevel.lowVoltageLimit a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "lowVoltageLimit" ;
-  rdfs:comment """The bus bar's low voltage limit.
+  rdfs:comment """The bus bar's low voltage limit.\r
 The limit applies to all equipment and nodes contained in a given VoltageLevel. It is not required that it is exchanged in pair with highVoltageLimit. It is preferable to use operational VoltageLimit, which prevails, if present."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.k ;
   cim:unitSymbol cim:UnitSymbol.V ;
@@ -4842,7 +4846,7 @@ cim:VsConverter.maxModulationIndex a owl:DatatypeProperty, owl:FunctionalPropert
 
 eu:BoundaryPoint.fromEndIsoCode a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "fromEndIsoCode" ;
-  rdfs:comment """The ISO code of the region which the "From" side of the Boundary point belongs to or it is connected to.
+  rdfs:comment """The ISO code of the region which the "From" side of the Boundary point belongs to or it is connected to.\r
 The ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "European", uml:attribute ;
@@ -4851,8 +4855,8 @@ The ISO code is a two-character country code as defined by ISO 3166 (http://www.
 
 eu:BoundaryPoint.fromEndName a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "fromEndName" ;
-  rdfs:comment """A human readable name with length of the string 64 characters maximum. It covers the following two cases:
--if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the "From" side of the tie-line is connected to.
+  rdfs:comment """A human readable name with length of the string 64 characters maximum. It covers the following two cases:\r
+-if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the "From" side of the tie-line is connected to.\r
 -if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the "From" side of the Boundary point is connected to."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "European", uml:attribute ;
@@ -4885,7 +4889,7 @@ eu:BoundaryPoint.isExcludedFromAreaInterchange a owl:DatatypeProperty, owl:Funct
 
 eu:BoundaryPoint.toEndIsoCode a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "toEndIsoCode" ;
-  rdfs:comment """The ISO code of the region which the "To" side of the Boundary point belongs to or is connected to.
+  rdfs:comment """The ISO code of the region which the "To" side of the Boundary point belongs to or is connected to.\r
 The ISO code is a two-character country code as defined by ISO 3166 (http://www.iso.org/iso/country_codes). The length of the string is 2 characters maximum."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "European", uml:attribute ;
@@ -4894,8 +4898,8 @@ The ISO code is a two-character country code as defined by ISO 3166 (http://www.
 
 eu:BoundaryPoint.toEndName a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "toEndName" ;
-  rdfs:comment """A human readable name with length of the string 64 characters maximum. It covers the following two cases:
--if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the "To" side of the tie-line is connected to.
+  rdfs:comment """A human readable name with length of the string 64 characters maximum. It covers the following two cases:\r
+-if the Boundary point is placed on a tie-line, it is the name (IdentifiedObject.name) of the substation at which the "To" side of the tie-line is connected to.\r
 -if the Boundary point is placed in a substation, it is the name (IdentifiedObject.name) of the element (e.g. PowerTransformer, ACLineSegment, Switch, etc.) at which the "To" side of the Boundary point is connected to."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "European", uml:attribute ;
@@ -5967,13 +5971,14 @@ cim:HydroTurbineKind.pelton a cim:HydroTurbineKind ;
   rdfs:comment "Pelton."@en ;
   cims:stereotype "enum" .
 
-cim:Impedance skos:exactMatch quantitykind:Inductance .
+cim:Impedance skos:exactMatch quantitykind:Impedance .
 
 cim:Inductance a qudt:QuantityKind ;
   rdfs:label "Inductance" ;
   rdfs:comment "Inductive part of reactance (imaginary part of impedance), at rated frequency."@en ;
   cims:belongsToCategory eq:Package_CoreEquipmentProfile ;
-  qudt:applicableUnit cim:UnitSymbol.H .
+  qudt:applicableUnit cim:UnitSymbol.H ;
+  skos:exactMatch quantitykind:Inductance .
 
 cim:Length a qudt:QuantityKind ;
   rdfs:label "Length" ;
@@ -6491,7 +6496,8 @@ cim:UnitSymbol.GyPers a cim:UnitSymbol ;
 cim:UnitSymbol.H a cim:UnitSymbol ;
   rdfs:label "H" ;
   rdfs:comment "Electric inductance in henrys (Wb/A)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:H .
 
 cim:UnitSymbol.HPerm a cim:UnitSymbol ;
   rdfs:label "HPerm" ;
@@ -6676,7 +6682,7 @@ cim:UnitSymbol.VAh a cim:UnitSymbol ;
 
 cim:UnitSymbol.VAr a cim:UnitSymbol ;
   rdfs:label "VAr" ;
-  rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
+  rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\r
 Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."""@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:V-A_Reactive .
@@ -6814,8 +6820,8 @@ cim:UnitSymbol.character a cim:UnitSymbol ;
 
 cim:UnitSymbol.cosPhi a cim:UnitSymbol ;
   rdfs:label "cosPhi" ;
-  rdfs:comment """Power factor, dimensionless.
-Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.
+  rdfs:comment """Power factor, dimensionless.\r
+Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\r
 Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility."""@en ;
   cims:stereotype "enum" .
 
@@ -6847,7 +6853,7 @@ cim:UnitSymbol.deg a cim:UnitSymbol ;
 
 cim:UnitSymbol.degC a cim:UnitSymbol ;
   rdfs:label "degC" ;
-  rdfs:comment """Relative temperature in degrees Celsius.
+  rdfs:comment """Relative temperature in degrees Celsius.\r
 In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software."""@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:DEG_C .
@@ -7200,13 +7206,13 @@ eu:LimitKind.alarmVoltage a eu:LimitKind ;
 
 eu:LimitKind.highVoltage a eu:LimitKind ;
   rdfs:label "highVoltage" ;
-  rdfs:comment """Referring to the rating of the equipments, a voltage too high can lead to accelerated ageing or the destruction of the equipment. 
+  rdfs:comment """Referring to the rating of the equipments, a voltage too high can lead to accelerated ageing or the destruction of the equipment. \r
 This limit type may or may not have duration."""@en ;
   cims:stereotype "European", "enum" .
 
 eu:LimitKind.lowVoltage a eu:LimitKind ;
   rdfs:label "lowVoltage" ;
-  rdfs:comment """A too low voltage can disturb the normal operation of some protections and transformer equipped with on-load tap changers, electronic power devices or can affect the behaviour of the auxiliaries of generation units.
+  rdfs:comment """A too low voltage can disturb the normal operation of some protections and transformer equipped with on-load tap changers, electronic power devices or can affect the behaviour of the auxiliaries of generation units.\r
 This limit type may or may not have duration."""@en ;
   cims:stereotype "European", "enum" .
 
@@ -7217,7 +7223,7 @@ eu:LimitKind.operationalVoltageLimit a eu:LimitKind ;
 
 eu:LimitKind.patl a eu:LimitKind ;
   rdfs:label "patl" ;
-  rdfs:comment """The Permanent Admissible Transmission Loading (PATL) is the loading in amperes, MVA or MW that can be accepted by a network branch for an unlimited duration without any risk for the material.
+  rdfs:comment """The Permanent Admissible Transmission Loading (PATL) is the loading in amperes, MVA or MW that can be accepted by a network branch for an unlimited duration without any risk for the material.\r
 The OperationnalLimitType.isInfiniteDuration is set to true. There shall be only one OperationalLimitType of kind PATL per OperationalLimitSet if the PATL is ApparentPowerLimit, ActivePowerLimit, or CurrentLimit for a given Terminal or Equipment."""@en ;
   cims:stereotype "European", "enum" .
 
@@ -7233,22 +7239,22 @@ eu:LimitKind.stability a eu:LimitKind ;
 
 eu:LimitKind.tatl a eu:LimitKind ;
   rdfs:label "tatl" ;
-  rdfs:comment """Temporarily Admissible Transmission Loading (TATL) which is the loading in amperes, MVA or MW that can be accepted by a branch for a certain limited duration.
-The TATL can be defined in different ways:
-<ul>
-\t<li>as a fixed percentage of the PATL for a given time (for example, 115% of the PATL that can be accepted during 15 minutes),</li>
-</ul>
-<ul>
-\t<li>pairs of TATL type and Duration calculated for each line taking into account its particular configuration and conditions of functioning (for example, it can define a TATL acceptable during 20 minutes and another one acceptable during 10 minutes).</li>
-</ul>
-Such a definition of TATL can depend on the initial operating conditions of the network element (sag situation of a line).
+  rdfs:comment """Temporarily Admissible Transmission Loading (TATL) which is the loading in amperes, MVA or MW that can be accepted by a branch for a certain limited duration.\r
+The TATL can be defined in different ways:\r
+<ul>\r
+\t<li>as a fixed percentage of the PATL for a given time (for example, 115% of the PATL that can be accepted during 15 minutes),</li>\r
+</ul>\r
+<ul>\r
+\t<li>pairs of TATL type and Duration calculated for each line taking into account its particular configuration and conditions of functioning (for example, it can define a TATL acceptable during 20 minutes and another one acceptable during 10 minutes).</li>\r
+</ul>\r
+Such a definition of TATL can depend on the initial operating conditions of the network element (sag situation of a line).\r
 The duration attribute can be used to define several TATL limit types. Hence multiple TATL limit values may exist having different durations."""@en ;
   cims:stereotype "European", "enum" .
 
 eu:LimitKind.tc a eu:LimitKind ;
   rdfs:label "tc" ;
-  rdfs:comment """Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.
-The tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).
+  rdfs:comment """Tripping Current (TC) is the ultimate intensity without any delay. It is defined as the threshold the line will trip without any possible remedial actions.\r
+The tripping of the network element is ordered by protections against short circuits or by overload protections, but in any case, the activation delay of these protections is not compatible with the reaction delay of an operator (less than one minute).\r
 The duration is always zero if the OperationalLimitType.acceptableDuration is exchanged. Only one limit value exists for the TC type."""@en ;
   cims:stereotype "European", "enum" .
 

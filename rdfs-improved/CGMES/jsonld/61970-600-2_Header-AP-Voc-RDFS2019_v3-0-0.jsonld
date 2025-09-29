@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "dm:DifferenceModel",
@@ -34,7 +34,7 @@
       "@type": "owl:Class",
       "cims:belongsToCategory": "cim:Package_FileHeaderProfile",
       "cims:stereotype": "md",
-      "rdfs:comment": "A Model is a collection of data describing instances, objects or entities, real or computed. In the context of CIM the semantics of the data is defined by profiles. Hence a model can contain equipment data, power flow initial values, power flow results etc.\nThe Model class describes the header content that is the same for the FullModel and the DifferenceModel. A Model is identified by an rdf:about attribute. The rdf:about attribute uniquely describe the model data and not the CIMXML document. A new rdf:about identification is generated for created documents only when the model data has changed. A repeated creation of documents from unchanged model data shall have the same rdf:about identification as previous document generated from the same model data.",
+      "rdfs:comment": "A Model is a collection of data describing instances, objects or entities, real or computed. In the context of CIM the semantics of the data is defined by profiles. Hence a model can contain equipment data, power flow initial values, power flow results etc.\r\nThe Model class describes the header content that is the same for the FullModel and the DifferenceModel. A Model is identified by an rdf:about attribute. The rdf:about attribute uniquely describe the model data and not the CIMXML document. A new rdf:about identification is generated for created documents only when the model data has changed. A repeated creation of documents from unchanged model data shall have the same rdf:about identification as previous document generated from the same model data.",
       "rdfs:label": "Model"
     },
     {
@@ -89,7 +89,7 @@
       "@type": "owl:ObjectProperty",
       "cims:AssociationUsed": "Yes",
       "cims:multiplicity": "cims:M:0..n",
-      "rdfs:comment": "A reference to the model documents that the model described by this document depends on. In general there can be 0 or many Model.DependentOn depending on the profile and the content of the instance file.\nFor instance:\n– A load flow solution depends on the topology model it was computed from\n– A topology model computed by a topology processor depends on the network model it was computed from.\nThe referenced models are identified by the FullModel rdf:about attribute for full model documents and by DifferenceModel rdf:about attribute for difference model documents.\nThe references are maintained by the producer of the CIMXML document and the references are valid for the model with version and identifier for which the document was created.",
+      "rdfs:comment": "A reference to the model documents that the model described by this document depends on. In general there can be 0 or many Model.DependentOn depending on the profile and the content of the instance file.\r\nFor instance:\r\n– A load flow solution depends on the topology model it was computed from\r\n– A topology model computed by a topology processor depends on the network model it was computed from.\r\nThe referenced models are identified by the FullModel rdf:about attribute for full model documents and by DifferenceModel rdf:about attribute for difference model documents.\r\nThe references are maintained by the producer of the CIMXML document and the references are valid for the model with version and identifier for which the document was created.",
       "rdfs:domain": "md:Model",
       "rdfs:label": "DependentOn",
       "rdfs:range": "md:Model",

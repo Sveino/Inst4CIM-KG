@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "dl:Ontology",
@@ -131,7 +131,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r\n\r\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\r\n\r\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
       "rdfs:label": "UnitMultiplier"
     },
     {
@@ -141,7 +141,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r\nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r\nThe integer values are used for harmonization with IEC 61850.",
       "rdfs:label": "UnitSymbol"
     },
     {
@@ -151,7 +151,7 @@
       "cims:stereotype": {
         "@id": "uml:concrete"
       },
-      "rdfs:comment": "Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering.\nCIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n.",
+      "rdfs:comment": "Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering.\r\nCIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n.",
       "rdfs:label": "VisibilityLayer",
       "rdfs:subClassOf": "cim:IdentifiedObject"
     },
@@ -460,7 +460,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "The offset in the X direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\n\nThe offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right.",
+      "rdfs:comment": "The offset in the X direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\r\n\r\nThe offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right.",
       "rdfs:domain": "cim:DiagramObject",
       "rdfs:label": "offsetX",
       "rdfs:range": "xsd:float"
@@ -475,7 +475,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "The offset in the Y direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\n\nThe offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis.",
+      "rdfs:comment": "The offset in the Y direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).\r\n\r\nThe offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis.",
       "rdfs:domain": "cim:DiagramObject",
       "rdfs:label": "offsetY",
       "rdfs:range": "xsd:float"
@@ -492,7 +492,7 @@
       },
       "qudt:hasQuantityKind": "cim:AngleDegrees",
       "qudt:hasUnit": "unit:DEG",
-      "rdfs:comment": "Sets the angle of rotation of the diagram object.  Zero degrees is pointing to the top of the diagram.  Rotation is clockwise.  DiagramObject.rotation=0 has the following meaning: The connection point of an element which has one terminal is pointing to the top side of the diagram. The connection point \"From side\" of an element which has more than one terminal is pointing to the top side of the diagram.\nDiagramObject.rotation=90 has the following meaning: The connection point of an element which has one terminal is pointing to the right hand side of the diagram. The connection point \"From side\" of an element which has more than one terminal is pointing to the right hand side of the diagram.",
+      "rdfs:comment": "Sets the angle of rotation of the diagram object.  Zero degrees is pointing to the top of the diagram.  Rotation is clockwise.  DiagramObject.rotation=0 has the following meaning: The connection point of an element which has one terminal is pointing to the top side of the diagram. The connection point \"From side\" of an element which has more than one terminal is pointing to the top side of the diagram.\r\nDiagramObject.rotation=90 has the following meaning: The connection point of an element which has one terminal is pointing to the right hand side of the diagram. The connection point \"From side\" of an element which has more than one terminal is pointing to the right hand side of the diagram.",
       "rdfs:domain": "cim:DiagramObject",
       "rdfs:label": "rotation",
       "rdfs:range": "xsd:float",
@@ -584,7 +584,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "cim:IdentifiedObject",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -689,6 +689,10 @@
     },
     {
       "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Impedance"
+    },
+    {
+      "@id": "cim:Inductance",
       "skos:exactMatch": "quantitykind:Inductance"
     },
     {
@@ -1049,7 +1053,8 @@
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
       "rdfs:comment": "Electric inductance in henrys (Wb/A).",
-      "rdfs:label": "H"
+      "rdfs:label": "H",
+      "skos:exactMatch": "unit:H"
     },
     {
       "@id": "cim:UnitSymbol.HPerm",
@@ -1306,7 +1311,7 @@
       "@id": "cim:UnitSymbol.VAr",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\r\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
       "rdfs:label": "VAr",
       "skos:exactMatch": "unit:V-A_Reactive"
     },
@@ -1487,7 +1492,7 @@
       "@id": "cim:UnitSymbol.cosPhi",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Power factor, dimensionless.\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
+      "rdfs:comment": "Power factor, dimensionless.\r\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\r\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
       "rdfs:label": "cosPhi"
     },
     {
@@ -1530,7 +1535,7 @@
       "@id": "cim:UnitSymbol.degC",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Relative temperature in degrees Celsius.\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
+      "rdfs:comment": "Relative temperature in degrees Celsius.\r\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
       "rdfs:label": "degC",
       "skos:exactMatch": "unit:DEG_C"
     },
@@ -1933,7 +1938,7 @@
     {
       "@id": "dl:Package_DiagramLayoutProfile",
       "@type": "cims:ClassCategory",
-      "rdfs:comment": "This standard specifies an exchange profile for schematics with the following characteristics.\nA generic method for linking the diagram object to the domain data. Domain data and diagram layout data can be exchanged together with the domain data, or separately from each other with the assumption that domain data will have already been imported should diagram layout data be imported separately.\nIt does not require or imply a specific domain data format. Therefore, it supports domain data modelled according to the IEC 61970-301 Common information model (CIM) that is exchanged in the IEC 61970-501 format (CIM RDF schema). Diagram layout data references domain data in compliance with IEC/TR 62541-1, <i>OPC Unified Architecture</i>).\nThe intended usage of this standard is that the source of a diagram will use the standard to encode the layout of their diagram as they created it. It is then incumbent upon any receiver to supply the means of using that diagram layout in their system.\n<ul>\n\t<li>In the simplest situation, if the source uses Switch object placements, the receiver creates a generic Switch template in the receiver's system that will be used to render Switches (i.e. there is no exchange of Switch templates).</li>\n\t<li>In more complex situations, a 1:1 correspondence may not be desirable, and receivers may have to create generic transformations in order to use exchanges.</li>\n\t<li>However, in both situations, it is expected that once an investment is made in a strategy for rendering, repeated imports may be carried out automatically.</li>\n</ul>\nSupports the exchange of diagram objects that have no relationship to domain data, i.e., pure static background objects.\nSupports multiple representations of the same domain object in the same or different diagrams.\nAllows the diagram to be used as the unit of exchange, providing a straightforward approach to partial exchange, or an exchange between systems that have a separate model and repository for diagram layout data. \nSupports assignment of diagram objects to layers or other means, for showing or hiding information based on zoom level and/or user interest.\nA generic method for proprietary extensions to enable full round tripping (export and import back into the same system) without information loss within a system, and without breaking the standard exchange format.",
+      "rdfs:comment": "This standard specifies an exchange profile for schematics with the following characteristics.\r\nA generic method for linking the diagram object to the domain data. Domain data and diagram layout data can be exchanged together with the domain data, or separately from each other with the assumption that domain data will have already been imported should diagram layout data be imported separately.\r\nIt does not require or imply a specific domain data format. Therefore, it supports domain data modelled according to the IEC 61970-301 Common information model (CIM) that is exchanged in the IEC 61970-501 format (CIM RDF schema). Diagram layout data references domain data in compliance with IEC/TR 62541-1, <i>OPC Unified Architecture</i>).\r\nThe intended usage of this standard is that the source of a diagram will use the standard to encode the layout of their diagram as they created it. It is then incumbent upon any receiver to supply the means of using that diagram layout in their system.\r\n<ul>\r\n\t<li>In the simplest situation, if the source uses Switch object placements, the receiver creates a generic Switch template in the receiver's system that will be used to render Switches (i.e. there is no exchange of Switch templates).</li>\r\n\t<li>In more complex situations, a 1:1 correspondence may not be desirable, and receivers may have to create generic transformations in order to use exchanges.</li>\r\n\t<li>However, in both situations, it is expected that once an investment is made in a strategy for rendering, repeated imports may be carried out automatically.</li>\r\n</ul>\r\nSupports the exchange of diagram objects that have no relationship to domain data, i.e., pure static background objects.\r\nSupports multiple representations of the same domain object in the same or different diagrams.\r\nAllows the diagram to be used as the unit of exchange, providing a straightforward approach to partial exchange, or an exchange between systems that have a separate model and repository for diagram layout data. \r\nSupports assignment of diagram objects to layers or other means, for showing or hiding information based on zoom level and/or user interest.\r\nA generic method for proprietary extensions to enable full round tripping (export and import back into the same system) without information loss within a system, and without breaking the standard exchange format.",
       "rdfs:label": "DiagramLayoutProfile"
     }
   ]

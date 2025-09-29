@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "ae:Ontology",
@@ -57,7 +57,7 @@
       "@id": "cim:OperationalLimit",
       "@type": "owl:Class",
       "cims:belongsToCategory": "ae:Package_AssessedElementProfile",
-      "rdfs:comment": "A value and normal value associated with a specific kind of limit. \nThe sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \nIf a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.",
+      "rdfs:comment": "A value and normal value associated with a specific kind of limit. \r\nThe sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \r\nIf a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.",
       "rdfs:label": "OperationalLimit"
     },
     {
@@ -67,7 +67,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r\n\r\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\r\n\r\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
       "rdfs:label": "UnitMultiplier"
     },
     {
@@ -77,7 +77,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r\nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r\nThe integer values are used for harmonization with IEC 61850.",
       "rdfs:label": "UnitSymbol"
     },
     {
@@ -90,7 +90,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.\nThe measurements and limits are as defined in the steady state hypothesis.",
+      "rdfs:comment": "Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.\r\nThe measurements and limits are as defined in the steady state hypothesis.",
       "rdfs:label": "AssessedElement",
       "rdfs:subClassOf": "cim:IdentifiedObject"
     },
@@ -654,7 +654,7 @@
       "cims:AssociationUsed": "No",
       "cims:multiplicity": "cims:M:0..n",
       "cims:stereotype": "NC",
-      "rdfs:comment": "The overlapping assessed element on which the physical flows are significantly impacted by\nelectricity exchanges in two or more regions or by remedial actions from two or more regions.",
+      "rdfs:comment": "The overlapping assessed element on which the physical flows are significantly impacted by\r\nelectricity exchanges in two or more regions or by remedial actions from two or more regions.",
       "rdfs:domain": "nc:OverlappingZone",
       "rdfs:label": "OverlappingAssessedElement",
       "rdfs:range": "nc:AssessedElement",
@@ -775,7 +775,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "cim:IdentifiedObject",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -810,7 +810,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Percentage of the maximum flow (margin) reserved to anticipate forecasting errors.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "Percentage of the maximum flow (margin) reserved to anticipate forecasting errors.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "flowReliabilityMargin",
       "rdfs:range": "xsd:float",
@@ -830,7 +830,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Indicates if the assessed element is scanned in the base case. In case of a base case overload, the assessed element is considered as a limiting element for the optimization process.\nTrue means that the assessed element is scanned in the base case. False means it is not scanned in the base case.",
+      "rdfs:comment": "Indicates if the assessed element is scanned in the base case. In case of a base case overload, the assessed element is considered as a limiting element for the optimization process.\r\nTrue means that the assessed element is scanned in the base case. False means it is not scanned in the base case.",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "inBaseCase",
       "rdfs:range": "xsd:boolean"
@@ -850,7 +850,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Percentage of the maximum flow (margin) from coordinated capacity calculation, i.e. capacity available for cross-zonal trade within the considered coordination area.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "Percentage of the maximum flow (margin) from coordinated capacity calculation, i.e. capacity available for cross-zonal trade within the considered coordination area.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "insideCapacityMargin",
       "rdfs:range": "xsd:float",
@@ -908,7 +908,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Maximum adjustment, relative to maximum flow allowed for exceeding the maximum flow of this assessed element.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "Maximum adjustment, relative to maximum flow allowed for exceeding the maximum flow of this assessed element.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "maxMarginAdjustment",
       "rdfs:range": "xsd:float",
@@ -930,7 +930,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "The normal percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit under normal operating conditions. The maximum percentage shall by default be 10% of the remaining margin.\nIt is only used when an assessed element is considered conservative for a region.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "The normal percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit under normal operating conditions. The maximum percentage shall by default be 10% of the remaining margin.\r\nIt is only used when an assessed element is considered conservative for a region.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "normalAppointedMargin",
       "rdfs:range": "xsd:float",
@@ -1112,7 +1112,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "A positive margin that defines the overload allowed in a solution for the assessed element for a normal situation. The margin represents influences that can be solved by the System Operators using available remedial action which is not cross-border relevant remedial action.\nAll relevant operational limits (e.g. PATL, TATL, etc) are modified by this margin value. The attribute represents the increase. The allowed value range is [0,100].",
+      "rdfs:comment": "A positive margin that defines the overload allowed in a solution for the assessed element for a normal situation. The margin represents influences that can be solved by the System Operators using available remedial action which is not cross-border relevant remedial action.\r\nAll relevant operational limits (e.g. PATL, TATL, etc) are modified by this margin value. The attribute represents the increase. The allowed value range is [0,100].",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "normalPositiveVirtualMargin",
       "rdfs:range": "xsd:float",
@@ -1134,7 +1134,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Normal threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).\nThe allowed value range is [0,100].",
+      "rdfs:comment": "Normal threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "normalScannedThresholdMargin",
       "rdfs:range": "xsd:float",
@@ -1174,7 +1174,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Percentage of the maximum flow (margin) capacity calculation, i.e. the capacity available for cross-zonal trade outside the considered coordination area. \nThe allowed value range is [0,100].",
+      "rdfs:comment": "Percentage of the maximum flow (margin) capacity calculation, i.e. the capacity available for cross-zonal trade outside the considered coordination area. \r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "outsideCapacityMargin",
       "rdfs:range": "xsd:float",
@@ -1196,7 +1196,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Target for the remaining available margin as a percentage of maximum flow.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "Target for the remaining available margin as a percentage of maximum flow.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:AssessedElement",
       "rdfs:label": "targetRemainingAvailableMargin",
       "rdfs:range": "xsd:float",
@@ -1216,7 +1216,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "nc:AssessedElementWithContingency",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -1252,7 +1252,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "nc:AssessedElementWithRemedialAction",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -1288,7 +1288,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "nc:CrossBorderRelevance",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -1378,6 +1378,10 @@
     },
     {
       "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Impedance"
+    },
+    {
+      "@id": "cim:Inductance",
       "skos:exactMatch": "quantitykind:Inductance"
     },
     {

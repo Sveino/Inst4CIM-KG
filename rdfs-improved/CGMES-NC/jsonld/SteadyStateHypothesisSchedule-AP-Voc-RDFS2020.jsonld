@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "shs:Ontology",
@@ -83,14 +83,14 @@
       "@id": "cim:ControlArea",
       "@type": "owl:Class",
       "cims:belongsToCategory": "shs:Package_SteadyStateHypothesisScheduleProfile",
-      "rdfs:comment": "A control area is a grouping of generating units and/or loads and a cutset of tie lines (as terminals) which may be used for a variety of purposes including automatic generation control, power flow solution area interchange control specification, and input to load forecasting. All generation and load within the area defined by the terminals on the border are considered in the area interchange control. Note that any number of overlapping control area specifications can be superimposed on the physical model. The following general principles apply to ControlArea:\n1.  The control area orientation for net interchange is positive for an import, negative for an export.\n2.  The control area net interchange is determined by summing flows in Terminals. The Terminals are identified by creating a set of TieFlow objects associated with a ControlArea object. Each TieFlow object identifies one Terminal.\n3.  In a single network model, a tie between two control areas must be modelled in both control area specifications, such that the two representations of the tie flow sum to zero.\n4.  The normal orientation of Terminal flow is positive for flow into the conducting equipment that owns the Terminal. (i.e. flow from a bus into a device is positive.) However, the orientation of each flow in the control area specification must align with the control area convention, i.e. import is positive. If the orientation of the Terminal flow referenced by a TieFlow is positive into the control area, then this is confirmed by setting TieFlow.positiveFlowIn flag TRUE. If not, the orientation must be reversed by setting the TieFlow.positiveFlowIn flag FALSE.",
+      "rdfs:comment": "A control area is a grouping of generating units and/or loads and a cutset of tie lines (as terminals) which may be used for a variety of purposes including automatic generation control, power flow solution area interchange control specification, and input to load forecasting. All generation and load within the area defined by the terminals on the border are considered in the area interchange control. Note that any number of overlapping control area specifications can be superimposed on the physical model. The following general principles apply to ControlArea:\r\n1.  The control area orientation for net interchange is positive for an import, negative for an export.\r\n2.  The control area net interchange is determined by summing flows in Terminals. The Terminals are identified by creating a set of TieFlow objects associated with a ControlArea object. Each TieFlow object identifies one Terminal.\r\n3.  In a single network model, a tie between two control areas must be modelled in both control area specifications, such that the two representations of the tie flow sum to zero.\r\n4.  The normal orientation of Terminal flow is positive for flow into the conducting equipment that owns the Terminal. (i.e. flow from a bus into a device is positive.) However, the orientation of each flow in the control area specification must align with the control area convention, i.e. import is positive. If the orientation of the Terminal flow referenced by a TieFlow is positive into the control area, then this is confirmed by setting TieFlow.positiveFlowIn flag TRUE. If not, the orientation must be reversed by setting the TieFlow.positiveFlowIn flag FALSE.",
       "rdfs:label": "ControlArea"
     },
     {
       "@id": "cim:CsConverter",
       "@type": "owl:Class",
       "cims:belongsToCategory": "shs:Package_SteadyStateHypothesisScheduleProfile",
-      "rdfs:comment": "DC side of the current source converter (CSC).\nThe firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.\nThe reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.\nThe attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.\nThe attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees.",
+      "rdfs:comment": "DC side of the current source converter (CSC).\r\nThe firing angle controls the dc voltage at the converter, both for rectifier and inverter. The difference between the dc voltages of the rectifier and inverter determines the dc current. The extinction angle is used to limit the dc voltage at the inverter, if needed, and is not used in active power control. The firing angle, transformer tap position and number of connected filters are the primary means to control a current source dc line. Higher level controls are built on top, e.g. dc voltage, dc current and active power. From a steady state perspective it is sufficient to specify the wanted active power transfer (ACDCConverter.targetPpcc) and the control functions will set the dc voltage, dc current, firing angle, transformer tap position and number of connected filters to meet this. Therefore attributes targetAlpha and targetGamma are not applicable in this case.\r\nThe reactive power consumed by the converter is a function of the firing angle, transformer tap position and number of connected filter, which can be approximated with half of the active power. The losses is a function of the dc voltage and dc current.\r\nThe attributes minAlpha and maxAlpha define the range of firing angles for rectifier operation between which no discrete tap changer action takes place. The range is typically 10-18 degrees.\r\nThe attributes minGamma and maxGamma define the range of extinction angles for inverter operation between which no discrete tap changer action takes place. The range is typically 17-20 degrees.",
       "rdfs:label": "CsConverter"
     },
     {
@@ -166,7 +166,7 @@
       "@id": "cim:RegulatingControl",
       "@type": "owl:Class",
       "cims:belongsToCategory": "shs:Package_SteadyStateHypothesisScheduleProfile",
-      "rdfs:comment": "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \nRemote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\nThe specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.\nFor flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.\nThe attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:\n- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;\n- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.\nThe attributes minAllowedTargetValue and maxAllowedTargetValue are not related to the attribute targetDeadband and thus they are not treated as an alternative of the targetDeadband. They are needed due to limitations in the local substation controller. The attribute targetDeadband is used to prevent the power flow from move the tap position in circles (hunting) that is to be used regardless of the attributes minAllowedTargetValue and maxAllowedTargetValue.",
+      "rdfs:comment": "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \r\nRemote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\r\nThe specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.\r\nFor flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.\r\nThe attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:\r\n- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;\r\n- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.\r\nThe attributes minAllowedTargetValue and maxAllowedTargetValue are not related to the attribute targetDeadband and thus they are not treated as an alternative of the targetDeadband. They are needed due to limitations in the local substation controller. The attribute targetDeadband is used to prevent the power flow from move the tap position in circles (hunting) that is to be used regardless of the attributes minAllowedTargetValue and maxAllowedTargetValue.",
       "rdfs:label": "RegulatingControl"
     },
     {
@@ -191,7 +191,7 @@
       "@id": "cim:StaticVarCompensator",
       "@type": "owl:Class",
       "cims:belongsToCategory": "shs:Package_SteadyStateHypothesisScheduleProfile",
-      "rdfs:comment": "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\n\nThe SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.",
+      "rdfs:comment": "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\r\n\r\nThe SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.",
       "rdfs:label": "StaticVarCompensator"
     },
     {
@@ -239,7 +239,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r\n\r\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\r\n\r\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
       "rdfs:label": "UnitMultiplier"
     },
     {
@@ -249,14 +249,14 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r\nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r\nThe integer values are used for harmonization with IEC 61850.",
       "rdfs:label": "UnitSymbol"
     },
     {
       "@id": "cim:VoltageLimit",
       "@type": "owl:Class",
       "cims:belongsToCategory": "shs:Package_SteadyStateHypothesisScheduleProfile",
-      "rdfs:comment": "Operational limit applied to voltage.\nThe use of operational VoltageLimit is preferred instead of limits defined at VoltageLevel. The operational VoltageLimits are used, if present.",
+      "rdfs:comment": "Operational limit applied to voltage.\r\nThe use of operational VoltageLimit is preferred instead of limits defined at VoltageLevel. The operational VoltageLimits are used, if present.",
       "rdfs:label": "VoltageLimit"
     },
     {
@@ -3373,7 +3373,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "cim:IdentifiedObject",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -3438,7 +3438,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+      "rdfs:comment": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution in the case a simplified power flow model is used.",
       "rdfs:domain": "nc:ACDCConverterRegularSchedule",
       "rdfs:label": "p",
       "rdfs:range": "xsd:float",
@@ -3460,7 +3460,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+      "rdfs:comment": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution in the case a simplified power flow model is used.",
       "rdfs:domain": "nc:ACDCConverterRegularSchedule",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -3544,7 +3544,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+      "rdfs:comment": "Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution in the case a simplified power flow model is used.",
       "rdfs:domain": "nc:ACDCTimePoint",
       "rdfs:label": "p",
       "rdfs:range": "xsd:float",
@@ -3566,7 +3566,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution in the case a simplified power flow model is used.",
+      "rdfs:comment": "Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution in the case a simplified power flow model is used.",
       "rdfs:domain": "nc:ACDCTimePoint",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -4120,7 +4120,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution.",
       "rdfs:domain": "nc:EnergyConnectionRegularSchedule",
       "rdfs:label": "p",
       "rdfs:range": "xsd:float",
@@ -4142,7 +4142,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution.",
       "rdfs:domain": "nc:EnergyConnectionRegularSchedule",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -4182,7 +4182,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution.",
       "rdfs:domain": "nc:EnergyConnectionTimePoint",
       "rdfs:label": "p",
       "rdfs:range": "xsd:float",
@@ -4204,7 +4204,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution.",
       "rdfs:domain": "nc:EnergyConnectionTimePoint",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -4226,7 +4226,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
+      "rdfs:comment": "Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for steady state solutions.",
       "rdfs:domain": "nc:EquivalentInjectionRegularSchedule",
       "rdfs:label": "p",
       "rdfs:range": "xsd:float",
@@ -4248,7 +4248,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
+      "rdfs:comment": "Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for steady state solutions.",
       "rdfs:domain": "nc:EquivalentInjectionRegularSchedule",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -4328,7 +4328,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
+      "rdfs:comment": "Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for steady state solutions.",
       "rdfs:domain": "nc:EquivalentInjectionTimePoint",
       "rdfs:label": "p",
       "rdfs:range": "xsd:float",
@@ -4350,7 +4350,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
+      "rdfs:comment": "Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for steady state solutions.",
       "rdfs:domain": "nc:EquivalentInjectionTimePoint",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -4412,7 +4412,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for steady state solutions.",
       "rdfs:domain": "nc:ExternalNetworkInjectionRegularSchedule",
       "rdfs:label": "p",
       "rdfs:range": "xsd:float",
@@ -4434,7 +4434,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
+      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for steady state solutions.",
       "rdfs:domain": "nc:ExternalNetworkInjectionRegularSchedule",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -4492,7 +4492,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ActivePower",
       "qudt:hasUnit": "unit:MegaW",
-      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
+      "rdfs:comment": "Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for steady state solutions.",
       "rdfs:domain": "nc:ExternalNetworkInjectionTimePoint",
       "rdfs:label": "p",
       "rdfs:range": "xsd:float",
@@ -4514,7 +4514,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for steady state solutions.",
+      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for steady state solutions.",
       "rdfs:domain": "nc:ExternalNetworkInjectionTimePoint",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -4606,7 +4606,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "nc:HourPeriod",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -4840,7 +4840,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Shunt compensator sections in use. Starting value for steady state solution. The attribute shall be a positive value or zero. Non integer values are allowed to support continuous variables. The reasons for continuous value are to support study cases where no discrete shunt compensators has yet been designed, a solutions where a narrow voltage band force the sections to oscillate or accommodate for a continuous solution as input. \nFor LinearShuntConpensator the value shall be between zero and ShuntCompensator.maximumSections. At value zero the shunt compensator conductance and admittance is zero. Linear interpolation of conductance and admittance between the previous and next integer section is applied in case of non-integer values.\nFor NonlinearShuntCompensator-s shall only be set to one of the NonlinearShuntCompenstorPoint.sectionNumber. There is no interpolation between NonlinearShuntCompenstorPoint-s.",
+      "rdfs:comment": "Shunt compensator sections in use. Starting value for steady state solution. The attribute shall be a positive value or zero. Non integer values are allowed to support continuous variables. The reasons for continuous value are to support study cases where no discrete shunt compensators has yet been designed, a solutions where a narrow voltage band force the sections to oscillate or accommodate for a continuous solution as input. \r\nFor LinearShuntConpensator the value shall be between zero and ShuntCompensator.maximumSections. At value zero the shunt compensator conductance and admittance is zero. Linear interpolation of conductance and admittance between the previous and next integer section is applied in case of non-integer values.\r\nFor NonlinearShuntCompensator-s shall only be set to one of the NonlinearShuntCompenstorPoint.sectionNumber. There is no interpolation between NonlinearShuntCompenstorPoint-s.",
       "rdfs:domain": "nc:ShuntCompensatorTimePoint",
       "rdfs:label": "sections",
       "rdfs:range": "xsd:float"
@@ -4878,7 +4878,7 @@
       ],
       "qudt:hasQuantityKind": "cim:ReactivePower",
       "qudt:hasUnit": "unit:MegaV-A_Reactive",
-      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\nStarting value for a steady state solution.",
+      "rdfs:comment": "Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r\nStarting value for a steady state solution.",
       "rdfs:domain": "nc:StaticVarCompensatorTimePoint",
       "rdfs:label": "q",
       "rdfs:range": "xsd:float",
@@ -4898,7 +4898,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:\n<ul>\n\t<li>locked=true and Switch.open=true. The resulting state is open and locked;</li>\n\t<li>locked=false and Switch.open=true. The resulting state is open;</li>\n\t<li>locked=false and Switch.open=false. The resulting state is closed.</li>\n</ul>",
+      "rdfs:comment": "If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:\r\n<ul>\r\n\t<li>locked=true and Switch.open=true. The resulting state is open and locked;</li>\r\n\t<li>locked=false and Switch.open=true. The resulting state is open;</li>\r\n\t<li>locked=false and Switch.open=false. The resulting state is closed.</li>\r\n</ul>",
       "rdfs:domain": "nc:SwitchRegularSchedule",
       "rdfs:label": "locked",
       "rdfs:range": "xsd:boolean"
@@ -4952,7 +4952,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:\n<ul>\n\t<li>locked=true and Switch.open=true. The resulting state is open and locked;</li>\n\t<li>locked=false and Switch.open=true. The resulting state is open;</li>\n\t<li>locked=false and Switch.open=false. The resulting state is closed.</li>\n</ul>",
+      "rdfs:comment": "If true, the switch is locked. The resulting switch state is a combination of locked and Switch.open attributes as follows:\r\n<ul>\r\n\t<li>locked=true and Switch.open=true. The resulting state is open and locked;</li>\r\n\t<li>locked=false and Switch.open=true. The resulting state is open;</li>\r\n\t<li>locked=false and Switch.open=false. The resulting state is closed.</li>\r\n</ul>",
       "rdfs:domain": "nc:SwitchTimePoint",
       "rdfs:label": "locked",
       "rdfs:range": "xsd:boolean"
@@ -5060,7 +5060,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Tap changer position.\nStarting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changer has yet been designed, a solution where a narrow voltage band forces the tap step to oscillate or to accommodate for a continuous solution as input.\nThe attribute shall be equal to or greater than lowStep and equal to or less than highStep.",
+      "rdfs:comment": "Tap changer position.\r\nStarting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changer has yet been designed, a solution where a narrow voltage band forces the tap step to oscillate or to accommodate for a continuous solution as input.\r\nThe attribute shall be equal to or greater than lowStep and equal to or less than highStep.",
       "rdfs:domain": "nc:TapRegularSchedule",
       "rdfs:label": "step",
       "rdfs:range": "xsd:float"
@@ -5114,7 +5114,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Tap changer position.\nStarting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changer has yet been designed, a solution where a narrow voltage band forces the tap step to oscillate or to accommodate for a continuous solution as input.\nThe attribute shall be equal to or greater than lowStep and equal to or less than highStep.",
+      "rdfs:comment": "Tap changer position.\r\nStarting step for a steady state solution. Non integer values are allowed to support continuous tap variables. The reasons for continuous value are to support study cases where no discrete tap changer has yet been designed, a solution where a narrow voltage band forces the tap step to oscillate or to accommodate for a continuous solution as input.\r\nThe attribute shall be equal to or greater than lowStep and equal to or less than highStep.",
       "rdfs:domain": "nc:TapScheduleTimePoint",
       "rdfs:label": "step",
       "rdfs:range": "xsd:float"
@@ -5623,6 +5623,10 @@
     },
     {
       "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Impedance"
+    },
+    {
+      "@id": "cim:Inductance",
       "skos:exactMatch": "quantitykind:Inductance"
     },
     {
@@ -5777,7 +5781,7 @@
       "@id": "cim:UnitSymbol.VAr",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\r\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
       "rdfs:label": "VAr",
       "skos:exactMatch": "unit:V-A_Reactive"
     },

@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "ra:Ontology",
@@ -82,7 +82,7 @@
       "@id": "cim:EnergyConsumer",
       "@type": "owl:Class",
       "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
-      "rdfs:comment": "Generic user of energy - a  point of consumption on the power system model.\nEnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False.",
+      "rdfs:comment": "Generic user of energy - a  point of consumption on the power system model.\r\nEnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False.",
       "rdfs:label": "EnergyConsumer"
     },
     {
@@ -137,14 +137,14 @@
       "@id": "cim:Measurement",
       "@type": "owl:Class",
       "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
-      "rdfs:comment": "A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement. \nThe PSR - Measurement association is intended to capture this use of Measurement and is included in the naming hierarchy based on EquipmentContainer. The naming hierarchy typically has Measurements as leaves, e.g. Substation-VoltageLevel-Bay-Switch-Measurement.\nSome Measurements represent quantities related to a particular sensor location in the network, e.g. a voltage transformer (VT) or potential transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator. The sensing position is not captured in the PSR - Measurement association. Instead it is captured by the Measurement - Terminal association that is used to define the sensing location in the network topology. The location is defined by the connection of the Terminal to ConductingEquipment. \nIf both a Terminal and PSR are associated, and the PSR is of type ConductingEquipment, the associated Terminal should belong to that ConductingEquipment instance.\nWhen the sensor location is needed both Measurement-PSR and Measurement-Terminal are used. The Measurement-Terminal association is never used alone.",
+      "rdfs:comment": "A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement. \r\nThe PSR - Measurement association is intended to capture this use of Measurement and is included in the naming hierarchy based on EquipmentContainer. The naming hierarchy typically has Measurements as leaves, e.g. Substation-VoltageLevel-Bay-Switch-Measurement.\r\nSome Measurements represent quantities related to a particular sensor location in the network, e.g. a voltage transformer (VT) or potential transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator. The sensing position is not captured in the PSR - Measurement association. Instead it is captured by the Measurement - Terminal association that is used to define the sensing location in the network topology. The location is defined by the connection of the Terminal to ConductingEquipment. \r\nIf both a Terminal and PSR are associated, and the PSR is of type ConductingEquipment, the associated Terminal should belong to that ConductingEquipment instance.\r\nWhen the sensor location is needed both Measurement-PSR and Measurement-Terminal are used. The Measurement-Terminal association is never used alone.",
       "rdfs:label": "Measurement"
     },
     {
       "@id": "cim:OperationalLimit",
       "@type": "owl:Class",
       "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
-      "rdfs:comment": "A value and normal value associated with a specific kind of limit. \nThe sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \nIf a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.",
+      "rdfs:comment": "A value and normal value associated with a specific kind of limit. \r\nThe sub class value and normalValue attributes vary inversely to the associated OperationalLimitType.acceptableDuration (acceptableDuration for short).  \r\nIf a particular piece of equipment has multiple operational limits of the same kind (apparent power, current, etc.), the limit with the greatest acceptableDuration shall have the smallest limit value and the limit with the smallest acceptableDuration shall have the largest limit value.  Note: A large current can only be allowed to flow through a piece of equipment for a short duration without causing damage, but a lesser current can be allowed to flow for a longer duration.",
       "rdfs:label": "OperationalLimit"
     },
     {
@@ -166,7 +166,7 @@
       "@id": "cim:RegulatingControl",
       "@type": "owl:Class",
       "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
-      "rdfs:comment": "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \nRemote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\nThe specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.\nFor flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.\nThe attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:\n- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;\n- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.\nThe attributes minAllowedTargetValue and maxAllowedTargetValue are not related to the attribute targetDeadband and thus they are not treated as an alternative of the targetDeadband. They are needed due to limitations in the local substation controller. The attribute targetDeadband is used to prevent the power flow from move the tap position in circles (hunting) that is to be used regardless of the attributes minAllowedTargetValue and maxAllowedTargetValue.",
+      "rdfs:comment": "Specifies a set of equipment that works together to control a power system quantity such as voltage or flow. \r\nRemote bus voltage control is possible by specifying the controlled terminal located at some place remote from the controlling equipment.\r\nThe specified terminal shall be associated with the connectivity node of the controlled point.  The most specific subtype of RegulatingControl shall be used in case such equipment participate in the control, e.g. TapChangerControl for tap changers.\r\nFor flow control, load sign convention is used, i.e. positive sign means flow out from a TopologicalNode (bus) into the conducting equipment.\r\nThe attribute minAllowedTargetValue and maxAllowedTargetValue are required in the following cases:\r\n- For a power generating module operated in power factor control mode to specify maximum and minimum power factor values;\r\n- Whenever it is necessary to have an off center target voltage for the tap changer regulator. For instance, due to long cables to off shore wind farms and the need to have a simpler setup at the off shore transformer platform, the voltage is controlled from the land at the connection point for the off shore wind farm. Since there usually is a voltage rise along the cable, there is typical and overvoltage of up 3-4 kV compared to the on shore station. Thus in normal operation the tap changer on the on shore station is operated with a target set point, which is in the lower parts of the dead band.\r\nThe attributes minAllowedTargetValue and maxAllowedTargetValue are not related to the attribute targetDeadband and thus they are not treated as an alternative of the targetDeadband. They are needed due to limitations in the local substation controller. The attribute targetDeadband is used to prevent the power flow from move the tap position in circles (hunting) that is to be used regardless of the attributes minAllowedTargetValue and maxAllowedTargetValue.",
       "rdfs:label": "RegulatingControl"
     },
     {
@@ -187,7 +187,7 @@
       "@id": "cim:StaticVarCompensator",
       "@type": "owl:Class",
       "cims:belongsToCategory": "ra:Package_RemedialActionProfile",
-      "rdfs:comment": "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\n\nThe SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.",
+      "rdfs:comment": "A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\r\n\r\nThe SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero.",
       "rdfs:label": "StaticVarCompensator"
     },
     {
@@ -231,7 +231,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r\n\r\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\r\n\r\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
       "rdfs:label": "UnitMultiplier"
     },
     {
@@ -241,7 +241,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r\nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r\nThe integer values are used for harmonization with IEC 61850.",
       "rdfs:label": "UnitSymbol"
     },
     {
@@ -561,7 +561,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "It represents the intertemporal range, which means that this is the maximum change of an attribute value between two time stamps or per time unit (e.g. hour). Both up and down directions are defined by the direction attribute, i.e. There are different schedules per direction. \nThe class is not instantiated for PropertyReference which refers to Boolean type attributes. \nFor instance the following example illustrates the approach:\n- A tap changer related grid state alteration having two intertemporal range schedules.\n-   For a particular point in time, the value from up schedule is 6 and the value from down schedule is 3.\n- Then, the GridStateIntensity for the same point in time cannot be more than plus 6 taps from the current, or more than minus 3 taps from the current.",
+      "rdfs:comment": "It represents the intertemporal range, which means that this is the maximum change of an attribute value between two time stamps or per time unit (e.g. hour). Both up and down directions are defined by the direction attribute, i.e. There are different schedules per direction. \r\nThe class is not instantiated for PropertyReference which refers to Boolean type attributes. \r\nFor instance the following example illustrates the approach:\r\n- A tap changer related grid state alteration having two intertemporal range schedules.\r\n-   For a particular point in time, the value from up schedule is 6 and the value from down schedule is 3.\r\n- Then, the GridStateIntensity for the same point in time cannot be more than plus 6 taps from the current, or more than minus 3 taps from the current.",
       "rdfs:label": "IntertemporalPropertyRange",
       "rdfs:subClassOf": "nc:RangeConstraint"
     },
@@ -929,7 +929,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.\n<ul>\n\t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>\n\t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>\n\t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>\n</ul>",
+      "rdfs:comment": "Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.\r\n<ul>\r\n\t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>\r\n\t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>\r\n\t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>\r\n</ul>",
       "rdfs:label": "RemedialActionDependency"
     },
     {
@@ -982,7 +982,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).\nA Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action.",
+      "rdfs:comment": "Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).\r\nA Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action.",
       "rdfs:label": "RemedialActionScheme",
       "rdfs:subClassOf": "cim:PowerSystemResource"
     },
@@ -1088,7 +1088,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "Defines the static range, which means that this is the minimum and/or maximum of an attribute value. The value provided by the schedule replaces the value of the attribute to which the schedule refers to.\nIn case that the PropertyReference refers to Boolean type attributes, RangeConstraint.direction shall be none or upAndDown and the RangeConstraint.valueKind shall be absolute. If the direction is none then optimization of the attribute referenced by the PropertyReference is not possible if the current status is already as the value in the range. Otherwise if the direction is upAndDown, the optimization can change from true to false or vice versa independently of the initial value in the operational scenario.\nFor instance for a tap changer related grid state alteration for a particular point in time, if the range of TapChanger.step is to be restricted, the value of the schedule will represent that new TapChanger.step range.",
+      "rdfs:comment": "Defines the static range, which means that this is the minimum and/or maximum of an attribute value. The value provided by the schedule replaces the value of the attribute to which the schedule refers to.\r\nIn case that the PropertyReference refers to Boolean type attributes, RangeConstraint.direction shall be none or upAndDown and the RangeConstraint.valueKind shall be absolute. If the direction is none then optimization of the attribute referenced by the PropertyReference is not possible if the current status is already as the value in the range. Otherwise if the direction is upAndDown, the optimization can change from true to false or vice versa independently of the initial value in the operational scenario.\r\nFor instance for a tap changer related grid state alteration for a particular point in time, if the range of TapChanger.step is to be restricted, the value of the schedule will represent that new TapChanger.step range.",
       "rdfs:label": "StaticPropertyRange",
       "rdfs:subClassOf": "nc:RangeConstraint"
     },
@@ -2588,7 +2588,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "The kind of the remedial action. If curative remedial action, it is required to have an association with ContingencyWithRemedialAction.\nIf preventive remedial action, RemedialAction class shall not have association with ContingencyWithRemedialAction.",
+      "rdfs:comment": "The kind of the remedial action. If curative remedial action, it is required to have an association with ContingencyWithRemedialAction.\r\nIf preventive remedial action, RemedialAction class shall not have association with ContingencyWithRemedialAction.",
       "rdfs:domain": "nc:RemedialAction",
       "rdfs:label": "kind",
       "rdfs:range": "nc:RemedialActionKind"
@@ -3125,7 +3125,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "cim:IdentifiedObject",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -3158,7 +3158,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "nc:ContingencyWithRemedialAction",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -3196,7 +3196,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "High economic active power limit given by the percentage of the relevant units operating p.   e.g. If a generating unit (G1) with maximum operating active power of 100 MW and a conform load with active maximum load of 50 MW (L1). Max economic p margin of 90% will give the limit of the shift key to be 90 MW for the G1 and 45 MW for the L1.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "High economic active power limit given by the percentage of the relevant units operating p.   e.g. If a generating unit (G1) with maximum operating active power of 100 MW and a conform load with active maximum load of 50 MW (L1). Max economic p margin of 90% will give the limit of the shift key to be 90 MW for the G1 and 45 MW for the L1.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:CountertradeRemedialAction",
       "rdfs:label": "maxEconomicPMargin",
       "rdfs:range": "xsd:float",
@@ -3218,7 +3218,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Low economic active power limit given by the percentage of the relevant units operating p.   e.g. If a generating unit (G1) with minimum operating active power of 10 MW and a conform load with active maximum load of 5 MW (L1). Min economic p margin of 90%  will give the limit of the shift key to be 11 MW for the G1 and 5.5 MW for the L1.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "Low economic active power limit given by the percentage of the relevant units operating p.   e.g. If a generating unit (G1) with minimum operating active power of 10 MW and a conform load with active maximum load of 5 MW (L1). Min economic p margin of 90%  will give the limit of the shift key to be 11 MW for the G1 and 5.5 MW for the L1.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:CountertradeRemedialAction",
       "rdfs:label": "minEconomicPMargin",
       "rdfs:range": "xsd:float",
@@ -3312,7 +3312,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "The threshold percentage that should be used for compare with the percentage change between input value and threshold value.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "The threshold percentage that should be used for compare with the percentage change between input value and threshold value.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:GateInputPin",
       "rdfs:label": "thresholdPercentage",
       "rdfs:range": "xsd:float",
@@ -3502,7 +3502,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "The normal (initial) value. The meaning of the value is defined by the attribute referenced by the PropertyReference. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false.\nIf the valueKind is incremental or incrementalPercentage, then the value shall be positive (greater than zero).\nIf the valueKind is incrementalPercentage, then the value shall be in the range [0, 100].",
+      "rdfs:comment": "The normal (initial) value. The meaning of the value is defined by the attribute referenced by the PropertyReference. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false.\r\nIf the valueKind is incremental or incrementalPercentage, then the value shall be positive (greater than zero).\r\nIf the valueKind is incrementalPercentage, then the value shall be in the range [0, 100].",
       "rdfs:domain": "nc:RangeConstraint",
       "rdfs:label": "normalValue",
       "rdfs:range": "xsd:float"
@@ -3522,7 +3522,7 @@
       ],
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Impact threshold margin for the use of the remedial action. Meaning that the remedial action should not be used if it cannot resolve violation with more than the given impact threshold margin.\nThe allowed value range is [0,100].",
+      "rdfs:comment": "Impact threshold margin for the use of the remedial action. Meaning that the remedial action should not be used if it cannot resolve violation with more than the given impact threshold margin.\r\nThe allowed value range is [0,100].",
       "rdfs:domain": "nc:RemedialAction",
       "rdfs:label": "impactThresholdMargin",
       "rdfs:range": "xsd:float",
@@ -3632,7 +3632,7 @@
           "@id": "uml:attribute"
         }
       ],
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "nc:RemedialActionDependency",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -4909,6 +4909,10 @@
     },
     {
       "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Impedance"
+    },
+    {
+      "@id": "cim:Inductance",
       "skos:exactMatch": "quantitykind:Inductance"
     },
     {
@@ -4999,7 +5003,7 @@
       "@id": "cim:UnitSymbol.VAr",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\r\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
       "rdfs:label": "VAr",
       "skos:exactMatch": "unit:V-A_Reactive"
     },

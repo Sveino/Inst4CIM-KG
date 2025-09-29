@@ -4,6 +4,7 @@
 @prefix           sm: <https://ap-voc.cim4.eu/SensitivityMatrix#> .
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
+@prefix      dcterms: <http://purl.org/dc/terms/> .
 @prefix          owl: <http://www.w3.org/2002/07/owl#> .
 @prefix          rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix         rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -41,7 +42,7 @@ cim:IdentifiedObject a owl:Class ;
 
 nc:AssessedElement a owl:Class ;
   rdfs:label "AssessedElement" ;
-  rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.
+  rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.\r
 The measurements and limits are as defined in the steady state hypothesis."""@en ;
   cims:belongsToCategory sm:Package_SensitivityMatrixProfile ;
   cims:stereotype "NC" .
@@ -261,7 +262,7 @@ cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty 
 
 cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;

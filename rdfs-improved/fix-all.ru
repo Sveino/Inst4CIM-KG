@@ -179,7 +179,8 @@ where {
          (cim:Conductance               quantitykind:Conductance              )
          (cim:CurrentFlow               quantitykind:ElectricCurrent          )
          (cim:Frequency                 quantitykind:Frequency                )
-         (cim:Impedance                 quantitykind:Inductance               )
+         (cim:Impedance                 quantitykind:Impedance                )
+         (cim:Inductance                quantitykind:Inductance               )
          (cim:Length                    quantitykind:Length                   )
          (cim:Money                     quantitykind:Currency                 )
          (cim:PU                        quantitykind:DimensionlessRatio       )
@@ -216,6 +217,7 @@ insert {?unit ?rel ?unitQudt}
 where {
   values (?unit                   ?rel            ?unitQudt              ) {
          (cim:UnitSymbol.A        skos:exactMatch unit:A                 )
+         (cim:UnitSymbol.H        skos:exactMatch unit:H                 )
          (cim:UnitSymbol.F        skos:exactMatch unit:FARAD             )
          (cim:UnitSymbol.Hz       skos:exactMatch unit:HZ                )
          (cim:UnitSymbol.Hz       skos:narrower   unit:REV-PER-SEC       )
@@ -259,6 +261,7 @@ where {
          (cim:CurrentFlow               cim:UnitMultiplier.none  cim:UnitSymbol.A        unit:A                     )
          (cim:Frequency                 cim:UnitMultiplier.none  cim:UnitSymbol.Hz       unit:HZ                    )
          (cim:Impedance                 cim:UnitMultiplier.none  cim:UnitSymbol.ohm      unit:OHM                   )
+         (cim:Inductance                cim:UnitMultiplier.none  cim:UnitSymbol.H        unit:H                     )
          (cim:Length                    cim:UnitMultiplier.k     cim:UnitSymbol.m        unit:KiloM                 )
          (cim:PerCent                   cim:UnitMultiplier.none  cim:UnitSymbol.none     unit:PERCENT               )
          (cim:Pressure                  cim:UnitMultiplier.k     cim:UnitSymbol.Pa       unit:KiloPA                )

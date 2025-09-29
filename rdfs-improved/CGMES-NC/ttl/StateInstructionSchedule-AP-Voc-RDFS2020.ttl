@@ -4,6 +4,7 @@
 @prefix          sis: <https://ap-voc.cim4.eu/StateInstructionSchedule#> .
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
+@prefix      dcterms: <http://purl.org/dc/terms/> .
 @prefix          owl: <http://www.w3.org/2002/07/owl#> .
 @prefix       prefix: <http://qudt.org/vocab/prefix/> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -59,7 +60,7 @@ cim:EnergyConnection a owl:Class ;
 
 cim:EnergyConsumer a owl:Class ;
   rdfs:label "EnergyConsumer" ;
-  rdfs:comment """Generic user of energy - a  point of consumption on the power system model.
+  rdfs:comment """Generic user of energy - a  point of consumption on the power system model.\r
 EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False."""@en ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile .
 
@@ -119,27 +120,27 @@ cim:Season a owl:Class ;
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier" ;
-  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r
+\r
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".\r
+\r
 For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg"."""@en ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype uml:enumeration .
 
 cim:UnitSymbol a owl:Class ;
   rdfs:label "UnitSymbol" ;
-  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r
 The integer values are used for harmonization with IEC 61850."""@en ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype uml:enumeration .
 
 nc:AssessedElement a owl:Class ;
   rdfs:label "AssessedElement" ;
-  rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.
+  rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.\r
 The measurements and limits are as defined in the steady state hypothesis."""@en ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC" ;
@@ -485,11 +486,11 @@ nc:RemedialAction a owl:Class ;
 
 nc:RemedialActionDependency a owl:Class ;
   rdfs:label "RemedialActionDependency" ;
-  rdfs:comment """Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.
-<ul>
-\t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>
-\t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>
-\t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>
+  rdfs:comment """Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.\r
+<ul>\r
+\t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>\r
+\t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>\r
+\t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>\r
 </ul>"""@en ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC" .
@@ -515,7 +516,7 @@ nc:RemedialActionGroupTimePoint a owl:Class ;
 
 nc:RemedialActionScheme a owl:Class ;
   rdfs:label "RemedialActionScheme" ;
-  rdfs:comment """Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).
+  rdfs:comment """Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).\r
 A Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action."""@en ;
   cims:belongsToCategory sis:Package_StateInstructionScheduleProfile ;
   cims:stereotype "NC" .
@@ -1928,7 +1929,7 @@ cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty 
 
 cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -1961,8 +1962,8 @@ cim:Season.startDate a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:AssessedElementRegularTimePoint.appointedMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "appointedMargin" ;
-  rdfs:comment """The percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit. The maximum percentage shall by default be 10% of the remaining margin.
-It is only used when an assessed element is considered conservative for a region.
+  rdfs:comment """The percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit. The maximum percentage shall by default be 10% of the remaining margin.\r
+It is only used when an assessed element is considered conservative for a region.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -1995,7 +1996,7 @@ nc:AssessedElementRegularTimePoint.maxFlow a owl:DatatypeProperty, owl:Functiona
 
 nc:AssessedElementRegularTimePoint.scannedThresholdMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "scannedThresholdMargin" ;
-  rdfs:comment """Threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).
+  rdfs:comment """Threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -2008,8 +2009,8 @@ The allowed value range is [0,100]."""@en ;
 
 nc:AssessedElementRegularTimePoint.virtualPositiveMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "virtualPositiveMargin" ;
-  rdfs:comment """A margin defined only for scanned AssessedElement (If AssessedElement.ScannedForRegion is present) in order to represent the influence of available remedial action which is not cross-border relevant remedial action.
-The margin is modifying the limits used for the assessment whatever the limit it is (e.g. PATL, TATL).This symbolizes a remedial action that can be applied internally by the System Operator. It will be resolved by the System Operator and not by the optimization of remedial actions. The attribute shall be a positive value.
+  rdfs:comment """A margin defined only for scanned AssessedElement (If AssessedElement.ScannedForRegion is present) in order to represent the influence of available remedial action which is not cross-border relevant remedial action.\r
+The margin is modifying the limits used for the assessment whatever the limit it is (e.g. PATL, TATL).This symbolizes a remedial action that can be applied internally by the System Operator. It will be resolved by the System Operator and not by the optimization of remedial actions. The attribute shall be a positive value.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -2022,8 +2023,8 @@ The allowed value range is [0,100]."""@en ;
 
 nc:AssessedElementTimePoint.appointedMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "appointedMargin" ;
-  rdfs:comment """The percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit. The maximum percentage shall by default be 10% of the remaining margin.
-It is only used when an assessed element is considered conservative for a region.
+  rdfs:comment """The percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit. The maximum percentage shall by default be 10% of the remaining margin.\r
+It is only used when an assessed element is considered conservative for a region.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -2124,7 +2125,7 @@ nc:AssessedElementTimePoint.maxFlow a owl:DatatypeProperty, owl:FunctionalProper
 
 nc:AssessedElementTimePoint.scannedThresholdMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "scannedThresholdMargin" ;
-  rdfs:comment """Threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).
+  rdfs:comment """Threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -2145,8 +2146,8 @@ nc:AssessedElementTimePoint.targetRemainingAvailableMarginJustification a owl:Da
 
 nc:AssessedElementTimePoint.virtualPositiveMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "virtualPositiveMargin" ;
-  rdfs:comment """A margin defined only for scanned AssessedElement (If AssessedElement.ScannedForRegion is present) in order to represent the influence of available remedial action which is not cross-border relevant remedial action.
-The margin is modifying the limits used for the assessment whatever the limit it is (e.g. PATL, TATL).This symbolizes a remedial action that can be applied internally by the System Operator. It will be resolved by the System Operator and not by the optimization of remedial actions. The attribute shall be a positive value.
+  rdfs:comment """A margin defined only for scanned AssessedElement (If AssessedElement.ScannedForRegion is present) in order to represent the influence of available remedial action which is not cross-border relevant remedial action.\r
+The margin is modifying the limits used for the assessment whatever the limit it is (e.g. PATL, TATL).This symbolizes a remedial action that can be applied internally by the System Operator. It will be resolved by the System Operator and not by the optimization of remedial actions. The attribute shall be a positive value.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -2275,9 +2276,9 @@ nc:GridStateAlterationTimePoint.enabled a owl:DatatypeProperty, owl:FunctionalPr
 
 nc:GridStateAlterationTimePoint.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
+In the case of priority strategy, the item with the lowest number gets allocated energy first.\r
 e.g. If 0 this grid alteration does not participate. The sum of all participation factors for all grid state alterations associated with same remedial action shall be equal to 100%."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -2298,7 +2299,7 @@ nc:HourPeriod.endTime a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:HourPeriod.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -2343,8 +2344,8 @@ nc:ParticipationFactorTimePoint.atTime a owl:DatatypeProperty, owl:FunctionalPro
 
 nc:ParticipationFactorTimePoint.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
 In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -2361,7 +2362,7 @@ nc:PowerBidDependency.delay a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:PowerBidDependency.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -3548,7 +3549,9 @@ cim:CurrentFlow a qudt:QuantityKind ;
 
 cim:Frequency skos:exactMatch quantitykind:Frequency .
 
-cim:Impedance skos:exactMatch quantitykind:Inductance .
+cim:Impedance skos:exactMatch quantitykind:Impedance .
+
+cim:Inductance skos:exactMatch quantitykind:Inductance .
 
 cim:Length skos:exactMatch quantitykind:Length .
 

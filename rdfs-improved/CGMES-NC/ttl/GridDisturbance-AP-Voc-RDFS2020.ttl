@@ -4,6 +4,7 @@
 @prefix           gd: <https://ap-voc.cim4.eu/GridDisturbance#> .
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
+@prefix      dcterms: <http://purl.org/dc/terms/> .
 @prefix          owl: <http://www.w3.org/2002/07/owl#> .
 @prefix       prefix: <http://qudt.org/vocab/prefix/> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -86,24 +87,24 @@ cim:Location a owl:Class ;
 
 cim:Outage a owl:Class ;
   rdfs:label "Outage" ;
-  rdfs:comment """Document describing details of an active or planned outage in a part of the electrical network.
-A non-planned outage may be created upon:
-- a breaker trip,
-- a fault indicator status change,
-- a meter event indicating customer outage,
-- a reception of one or more customer trouble calls, or
-- an operator command, reflecting information obtained from the field crew.
-Outage restoration may be performed using a switching plan which complements the outage information with detailed switching activities, including the relationship to the crew and work.
-A planned outage may be created upon:
-- a request for service, maintenance or construction work in the field, or
+  rdfs:comment """Document describing details of an active or planned outage in a part of the electrical network.\r
+A non-planned outage may be created upon:\r
+- a breaker trip,\r
+- a fault indicator status change,\r
+- a meter event indicating customer outage,\r
+- a reception of one or more customer trouble calls, or\r
+- an operator command, reflecting information obtained from the field crew.\r
+Outage restoration may be performed using a switching plan which complements the outage information with detailed switching activities, including the relationship to the crew and work.\r
+A planned outage may be created upon:\r
+- a request for service, maintenance or construction work in the field, or\r
 - an operator-defined outage for what-if/contingency network analysis."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   rdfs:subClassOf cim:Document .
 
 cim:PhaseCode a owl:Class ;
   rdfs:label "PhaseCode" ;
-  rdfs:comment """An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.
-Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.
+  rdfs:comment """An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.\r
+Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.\r
 The integer values are from IEC 61968-9 to support revenue metering applications."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   cims:stereotype uml:enumeration .
@@ -122,34 +123,34 @@ cim:PositionPoint a owl:Class ;
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier" ;
-  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r
+\r
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".\r
+\r
 For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg"."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   cims:stereotype uml:enumeration .
 
 cim:UnitSymbol a owl:Class ;
   rdfs:label "UnitSymbol" ;
-  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r
 The integer values are used for harmonization with IEC 61850."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   cims:stereotype uml:enumeration .
 
 cim:UnplannedOutage a owl:Class ;
   rdfs:label "UnplannedOutage" ;
-  rdfs:comment """Document describing the consequence of an unplanned outage in a part of the electrical network. For the purposes of this model, an unplanned outage refers to a state where energy is not delivered; such as, customers out of service, a street light is not served, etc.
-A unplanned outage may be created upon:
-- impacts the SAIDI calculation
-- a breaker trip,
-- a fault indicator status change,
-- a meter event indicating customer outage,
-- a reception of one or more customer trouble calls, or
-- an operator command, reflecting information obtained from the field crew.
+  rdfs:comment """Document describing the consequence of an unplanned outage in a part of the electrical network. For the purposes of this model, an unplanned outage refers to a state where energy is not delivered; such as, customers out of service, a street light is not served, etc.\r
+A unplanned outage may be created upon:\r
+- impacts the SAIDI calculation\r
+- a breaker trip,\r
+- a fault indicator status change,\r
+- a meter event indicating customer outage,\r
+- a reception of one or more customer trouble calls, or\r
+- an operator command, reflecting information obtained from the field crew.\r
 Outage restoration may be performed using a switching plan which complements the outage information with detailed switching activities, including the relationship to the crew and work."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   cims:stereotype uml:concrete ;
@@ -157,10 +158,10 @@ Outage restoration may be performed using a switching plan which complements the
 
 nc:AutoReclosingKind a owl:Class ;
   rdfs:label "AutoReclosingKind" ;
-  rdfs:comment """The type of autoreclosing that occurred with the trip.
-
-If high-speed automatic reclosing is successful at one end of a line, but the line needs to be reclosed manually at the other end, choose manual reclosing.
-
+  rdfs:comment """The type of autoreclosing that occurred with the trip.\r
+\r
+If high-speed automatic reclosing is successful at one end of a line, but the line needs to be reclosed manually at the other end, choose manual reclosing.\r
+\r
 In this document, high-speed automatic reclosing refers to automatic reclosing after less than 2 seconds."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   cims:stereotype "NC", uml:enumeration .
@@ -185,8 +186,8 @@ nc:FaultCause a owl:Class ;
 
 nc:FaultKind a owl:Class ;
   rdfs:label "FaultKind" ;
-  rdfs:comment """One fault can consist of several fault types. If a fault consists of several fault types, the most significant fault type is used.
-
+  rdfs:comment """One fault can consist of several fault types. If a fault consists of several fault types, the most significant fault type is used.\r
+\r
 In case of developing faults, that is in faults changing from one type to another, the final type is given."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   cims:stereotype "NC", uml:enumeration .
@@ -219,26 +220,26 @@ nc:SystemOperator a owl:Class ;
 
 nc:SystemUnitKind a owl:Class ;
   rdfs:label "SystemUnitKind" ;
-  rdfs:comment """A system unit is defined as:
-
-A group of components which are delimited by one or more circuit breakers.
-
-Note 1: the system unit concept has been defined to simplify the calculation of availability. While a system unit is always delimited by circuit breakers, an individual component may not always be. A system unit may therefore contain more than one component. 
-
-Note 2: the circuit breakers are not included in the system unit.
- 
-Note 3: a tripped element is synonymous to a tripped system unit.
-
-Note 4: the type of a system unit is determined by its dominant component. The available system unit types are power transformer, overhead line, cable, reactor, busbar, series capacitor, shunt capacitor and SVC.
-
+  rdfs:comment """A system unit is defined as:\r
+\r
+A group of components which are delimited by one or more circuit breakers.\r
+\r
+Note 1: the system unit concept has been defined to simplify the calculation of availability. While a system unit is always delimited by circuit breakers, an individual component may not always be. A system unit may therefore contain more than one component. \r
+\r
+Note 2: the circuit breakers are not included in the system unit.\r
+ \r
+Note 3: a tripped element is synonymous to a tripped system unit.\r
+\r
+Note 4: the type of a system unit is determined by its dominant component. The available system unit types are power transformer, overhead line, cable, reactor, busbar, series capacitor, shunt capacitor and SVC.\r
+\r
 Note 5: when a system unit is no longer transporting or supplying electrical energy, the system unit is affected by an outage. The system unit is unavailable after the outage has occurred."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   cims:stereotype "NC", uml:enumeration .
 
 nc:TripKind a owl:Class ;
   rdfs:label "TripKind" ;
-  rdfs:comment """Whether the type of the trip due to the outage was automatic, automatic with successful automatic reclosing or manual.
-
+  rdfs:comment """Whether the type of the trip due to the outage was automatic, automatic with successful automatic reclosing or manual.\r
+\r
 In case of a fault in the reclosing automatics resulting in lack of reclosing, automatic should be chosen as an alternative."""@en ;
   cims:belongsToCategory gd:Package_GridDisturbanceProfile ;
   cims:stereotype "NC", uml:enumeration .
@@ -449,8 +450,8 @@ nc:Fault.category a owl:ObjectProperty, owl:FunctionalProperty ;
 
 nc:Fault.faultKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "faultKind" ;
-  rdfs:comment """One fault can consist of several fault types. If a fault consists of several fault types, the most significant fault type is used.
-
+  rdfs:comment """One fault can consist of several fault types. If a fault consists of several fault types, the most significant fault type is used.\r
+\r
 In case of developing faults, that is in faults changing from one type to another, the final type is given."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -479,8 +480,8 @@ nc:FaultCause.FaultCauseType a owl:ObjectProperty, owl:FunctionalProperty ;
 
 nc:FaultCause.certaintyLevel a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "certaintyLevel" ;
-  rdfs:comment """The degree of certainty of which the cause of a fault is determined by a user. 
-Note 1: the used certainty levels are low, medium and high. High certainty level is used when the cause of a fault is 100 % certain or when the cause is the most probable cause and potentially determined by an expert. Medium certainty level is used when the cause of the fault is very probable but there is not enough evidence to fully support the claim. Low certainty level is used when there is some idea of what the cause could be with the help of, for example, the fault details or expert knowledge. 
+  rdfs:comment """The degree of certainty of which the cause of a fault is determined by a user. \r
+Note 1: the used certainty levels are low, medium and high. High certainty level is used when the cause of a fault is 100 % certain or when the cause is the most probable cause and potentially determined by an expert. Medium certainty level is used when the cause of the fault is very probable but there is not enough evidence to fully support the claim. Low certainty level is used when there is some idea of what the cause could be with the help of, for example, the fault details or expert knowledge. \r
 Note 2: the fault cause ‘unknown’ is used if no other fault cause can be chosen by any degree of certainty."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -595,10 +596,10 @@ nc:SystemOperator.Fault a owl:ObjectProperty, owl:InverseFunctionalProperty ;
 
 nc:UnplannedOutage.autoReclosingKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "autoReclosingKind" ;
-  rdfs:comment """The type of autoreclosing that occurred with the trip.
-
-If high-speed automatic reclosing is successful at one end of a line, but the line needs to be reclosed manually at the other end, choose manual reclosing.
-
+  rdfs:comment """The type of autoreclosing that occurred with the trip.\r
+\r
+If high-speed automatic reclosing is successful at one end of a line, but the line needs to be reclosed manually at the other end, choose manual reclosing.\r
+\r
 In this document, high-speed automatic reclosing refers to automatic reclosing after less than 2 seconds."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -607,20 +608,20 @@ In this document, high-speed automatic reclosing refers to automatic reclosing a
 
 nc:UnplannedOutage.systemUnitKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "systemUnitKind" ;
-  rdfs:comment """The type of system unit of the component affected by the outage.
-
-A system unit is defined as:
-
-A group of components which are delimited by one or more circuit breakers.
-
-Note 1: the system unit concept has been defined to simplify the calculation of availability. While a system unit is always delimited by circuit breakers, an individual component may not always be. A system unit may therefore contain more than one component. 
-
-Note 2: the circuit breakers are not included in the system unit.
-
-Note 3: a tripped element is synonymous to a tripped system unit.
-
-Note 4: the type of a system unit is determined by its dominant component. The available system unit types are power transformer, overhead line, cable, reactor, busbar, series capacitor, shunt capacitor and SVC.
-
+  rdfs:comment """The type of system unit of the component affected by the outage.\r
+\r
+A system unit is defined as:\r
+\r
+A group of components which are delimited by one or more circuit breakers.\r
+\r
+Note 1: the system unit concept has been defined to simplify the calculation of availability. While a system unit is always delimited by circuit breakers, an individual component may not always be. A system unit may therefore contain more than one component. \r
+\r
+Note 2: the circuit breakers are not included in the system unit.\r
+\r
+Note 3: a tripped element is synonymous to a tripped system unit.\r
+\r
+Note 4: the type of a system unit is determined by its dominant component. The available system unit types are power transformer, overhead line, cable, reactor, busbar, series capacitor, shunt capacitor and SVC.\r
+\r
 Note 5: when a system unit is no longer transporting or supplying electrical energy, the system unit is affected by an outage. The system unit is unavailable after the outage has occurred."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -629,8 +630,8 @@ Note 5: when a system unit is no longer transporting or supplying electrical ene
 
 nc:UnplannedOutage.tripKind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "tripKind" ;
-  rdfs:comment """Whether the type of the trip due to the outage was automatic, automatic with successful automatic reclosing or manual.
-
+  rdfs:comment """Whether the type of the trip due to the outage was automatic, automatic with successful automatic reclosing or manual.\r
+\r
 In case of a fault in the reclosing automatics resulting in lack of reclosing, automatic should be chosen as an alternative."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -639,8 +640,8 @@ In case of a fault in the reclosing automatics resulting in lack of reclosing, a
 
 cim:CoordinateSystem.crsUrn a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "crsUrn" ;
-  rdfs:comment """A Uniform Resource Name (URN) for the coordinate reference system (crs) used to define 'Location.PositionPoints'.
-An example would be the European Petroleum Survey Group (EPSG) code for a coordinate reference system, defined in URN under the Open Geospatial Consortium (OGC) namespace as: urn:ogc:def:crs:EPSG::XXXX, where XXXX is an EPSG code (a full list of codes can be found at the EPSG Registry web site http://www.epsg-registry.org/). To define the coordinate system as being WGS84 (latitude, longitude) using an EPSG OGC, this attribute would be urn:ogc:def:crs:EPSG::4236.
+  rdfs:comment """A Uniform Resource Name (URN) for the coordinate reference system (crs) used to define 'Location.PositionPoints'.\r
+An example would be the European Petroleum Survey Group (EPSG) code for a coordinate reference system, defined in URN under the Open Geospatial Consortium (OGC) namespace as: urn:ogc:def:crs:EPSG::XXXX, where XXXX is an EPSG code (a full list of codes can be found at the EPSG Registry web site http://www.epsg-registry.org/). To define the coordinate system as being WGS84 (latitude, longitude) using an EPSG OGC, this attribute would be urn:ogc:def:crs:EPSG::4236.\r
 A profile should limit this code to a set of allowed URNs agreed to by all sending and receiving parties."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -665,7 +666,7 @@ cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty 
 
 cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -722,7 +723,7 @@ nc:Fault.duration a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:Fault.isDirectlyEarthed a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "isDirectlyEarthed" ;
-  rdfs:comment """Whether the power system is directly earthed (true) or compensated (false). 
+  rdfs:comment """Whether the power system is directly earthed (true) or compensated (false). \r
 Usually optional for faults on units with reactive compensation with voltages lower than 100 kV."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -731,13 +732,13 @@ Usually optional for faults on units with reactive compensation with voltages lo
 
 nc:Fault.isIntermittent a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "isIntermittent" ;
-  rdfs:comment """The kind of occurrence of the fault. It is either intermittent (true) or non-intermittent (false).
-An intermittent fault is a recurring fault in the same unit and in the same place and for the same reason which repeats itself before it becomes necessary to carry out any repairs or eliminate the cause [8].
-A non-intermittent fault occurs only once.
-
-Note 1: a fault which repeats itself after an inspection, which did not result in the fault being pinpointed or repaired, is not considered an intermittent fault. A fault like this is considered as the beginning of a grid disturbance every time the fault occurs.
-Note 2: one example of an intermittent fault is galloping lines.
-Note 3: when deciding whether a fault is intermittent or not, one should consider more of the cause, location and consequence of the fault and not on the time between the faults. An intermittent fault is counted as one fault. However, all individual caused outages are connected to this fault.
+  rdfs:comment """The kind of occurrence of the fault. It is either intermittent (true) or non-intermittent (false).\r
+An intermittent fault is a recurring fault in the same unit and in the same place and for the same reason which repeats itself before it becomes necessary to carry out any repairs or eliminate the cause [8].\r
+A non-intermittent fault occurs only once.\r
+\r
+Note 1: a fault which repeats itself after an inspection, which did not result in the fault being pinpointed or repaired, is not considered an intermittent fault. A fault like this is considered as the beginning of a grid disturbance every time the fault occurs.\r
+Note 2: one example of an intermittent fault is galloping lines.\r
+Note 3: when deciding whether a fault is intermittent or not, one should consider more of the cause, location and consequence of the fault and not on the time between the faults. An intermittent fault is counted as one fault. However, all individual caused outages are connected to this fault.\r
 Note 4: there is no standard for the required timespan between intermittent faults. Some system operators use 2 hours."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -746,14 +747,14 @@ Note 4: there is no standard for the required timespan between intermittent faul
 
 nc:Fault.isPermanent a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "isPermanent" ;
-  rdfs:comment """Whether the fault is a permanent (true) or a temporary (false) fault.
-A permanent fault is a fault that will remain unless it is removed by some intervention.
-Note 1 to entry: The “intervention” may be modification or maintenance.
-Note 2: a permanent fault requires repair or adjustment before the unit is ready for operation. For example, the resetting of computers is considered as repair work and a switch in the wrong position is considered as a permanent fault. Signal acknowledgement is not considered as repair work. 
-Note 3: the duration of the disconnection is irrelevant when determining if a fault is permanent or not.
-
-A temporary fault is a fault where the unit or component is undamaged and is restored to service by switching operations without repair but possibly with on-site inspection.  
-Note 1: a temporary fault does not require measures other than the reconnection of circuit breakers, replacement of fuses or signal acknowledgement.
+  rdfs:comment """Whether the fault is a permanent (true) or a temporary (false) fault.\r
+A permanent fault is a fault that will remain unless it is removed by some intervention.\r
+Note 1 to entry: The “intervention” may be modification or maintenance.\r
+Note 2: a permanent fault requires repair or adjustment before the unit is ready for operation. For example, the resetting of computers is considered as repair work and a switch in the wrong position is considered as a permanent fault. Signal acknowledgement is not considered as repair work. \r
+Note 3: the duration of the disconnection is irrelevant when determining if a fault is permanent or not.\r
+\r
+A temporary fault is a fault where the unit or component is undamaged and is restored to service by switching operations without repair but possibly with on-site inspection.  \r
+Note 1: a temporary fault does not require measures other than the reconnection of circuit breakers, replacement of fuses or signal acknowledgement.\r
 Note 2: the duration of the disconnection is irrelevant when determining if a fault is temporary or not. If, for example, a fault results in long-term disconnection and (on-site) inspection cannot pinpoint its source, the fault is considered to be temporary as no repairs are carried out."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -762,12 +763,12 @@ Note 2: the duration of the disconnection is irrelevant when determining if a fa
 
 nc:Fault.repairTime a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "repairTime" ;
-  rdfs:comment """Time from when repair commences, including necessary troubleshooting, until the unit’s function(s) has (have) been resumed and the unit is ready for operation.
-
-Note 1: repair time is registered only for permanent faults and does not include administrative delays (voluntary waiting time). However, any preparations necessary to carry out repairs, for example the collection or ordering of spare parts, waiting for spare parts or transport, are included in the repair time. 
-
-Note 2: the repair time is zero if a fault is left unrepaired deliberately.
-
+  rdfs:comment """Time from when repair commences, including necessary troubleshooting, until the unit’s function(s) has (have) been resumed and the unit is ready for operation.\r
+\r
+Note 1: repair time is registered only for permanent faults and does not include administrative delays (voluntary waiting time). However, any preparations necessary to carry out repairs, for example the collection or ordering of spare parts, waiting for spare parts or transport, are included in the repair time. \r
+\r
+Note 2: the repair time is zero if a fault is left unrepaired deliberately.\r
+\r
 Note 3: this definition differs from the IEC 192-07-19 definition by also including the preparation time necessary to carry out the repairs mentioned in note 1."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -776,8 +777,8 @@ Note 3: this definition differs from the IEC 192-07-19 definition by also includ
 
 nc:Fault.sequenceNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "sequenceNumber" ;
-  rdfs:comment """A chronological serial number indicating the order of the faults related to the grid disturbance. 
-
+  rdfs:comment """A chronological serial number indicating the order of the faults related to the grid disturbance. \r
+\r
 Primary faults have fault ID “1”, and secondary/latent faults have fault ID “2” or more."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -786,7 +787,7 @@ Primary faults have fault ID “1”, and secondary/latent faults have fault ID 
 
 nc:FaultCause.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -803,7 +804,7 @@ nc:FaultOutage.isMainFault a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:FaultOutage.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -883,7 +884,9 @@ cim:CurrentFlow skos:exactMatch quantitykind:ElectricCurrent .
 
 cim:Frequency skos:exactMatch quantitykind:Frequency .
 
-cim:Impedance skos:exactMatch quantitykind:Inductance .
+cim:Impedance skos:exactMatch quantitykind:Impedance .
+
+cim:Inductance skos:exactMatch quantitykind:Inductance .
 
 cim:Length skos:exactMatch quantitykind:Length .
 
@@ -1108,15 +1111,15 @@ gd:Package_GridDisturbanceProfile a cims:ClassCategory ;
 
 nc:AutoReclosingKind.automaticallyAfter2SecondsOrMore a nc:AutoReclosingKind ;
   rdfs:label "automaticallyAfter2SecondsOrMore" ;
-  rdfs:comment """If the automatic reclosing was successful in 2 seconds or more.
-
+  rdfs:comment """If the automatic reclosing was successful in 2 seconds or more.\r
+\r
 Also known as "successful high-speed reclosing"."""@en ;
   cims:stereotype "enum" .
 
 nc:AutoReclosingKind.automaticallyAfterLessThan2Seconds a nc:AutoReclosingKind ;
   rdfs:label "automaticallyAfterLessThan2Seconds" ;
-  rdfs:comment """If the automatic reclosing was successful in 2 seconds or less.
-
+  rdfs:comment """If the automatic reclosing was successful in 2 seconds or less.\r
+\r
 Also known as "successful high-speed reclosing"."""@en ;
   cims:stereotype "enum" .
 
@@ -1172,15 +1175,15 @@ nc:CertaintyLevelKind.none a nc:CertaintyLevelKind ;
 
 nc:FaultCategoryKind.operational a nc:FaultCategoryKind ;
   rdfs:label "operational" ;
-  rdfs:comment """A fault due to a temporary human error.
-
+  rdfs:comment """A fault due to a temporary human error.\r
+\r
 Note 1: incorrect operation is considered a fault in a component, or in other words, the incorrect operation is attributed to the unit which has been operated incorrectly."""@en ;
   cims:stereotype "enum" .
 
 nc:FaultCategoryKind.system a nc:FaultCategoryKind ;
   rdfs:label "system" ;
-  rdfs:comment """A fault due to off-nominal parameters, exceeding of regulated norms and standards, or exceeding protection limits.
-
+  rdfs:comment """A fault due to off-nominal parameters, exceeding of regulated norms and standards, or exceeding protection limits.\r
+\r
 Note 1: Typical examples of system fault causes are high/low frequency, power oscillations, overload, overvoltage, undervoltage or high harmonic content in voltage or current. Common causes for system faults are significant changes in load or generation and switching of lines or transformers with following change of load flow."""@en ;
   cims:stereotype "enum" .
 
@@ -1221,7 +1224,7 @@ nc:FaultKind.other a nc:FaultKind ;
 
 nc:FaultKind.undesiredFunction a nc:FaultKind ;
   rdfs:label "undesiredFunction" ;
-  rdfs:comment """If the component's main function occurred correctly but had an undesired result, that is, the fault.
+  rdfs:comment """If the component's main function occurred correctly but had an undesired result, that is, the fault.\r
 Is only stated if the component is a circuit breaker, disconnector or control system."""@en ;
   cims:stereotype "enum" .
 
@@ -1287,15 +1290,15 @@ nc:SystemUnitKind.svc a nc:SystemUnitKind ;
 
 nc:TripKind.automatic a nc:TripKind ;
   rdfs:label "automatic" ;
-  rdfs:comment """The trip that resulted in the outage was automatic.
-
+  rdfs:comment """The trip that resulted in the outage was automatic.\r
+\r
 In case of a fault in the reclosing automatics resulting in lack of reclosing, automatic should be chosen as an alternative."""@en ;
   cims:stereotype "enum" .
 
 nc:TripKind.automaticWithUnsuccessfulAutomaticReclosing a nc:TripKind ;
   rdfs:label "automaticWithUnsuccessfulAutomaticReclosing" ;
-  rdfs:comment """The trip that resulted in an outage was correctly initiated but the automatic reclosing was unsuccessful.
-
+  rdfs:comment """The trip that resulted in an outage was correctly initiated but the automatic reclosing was unsuccessful.\r
+\r
 In case of a fault in the reclosing automatics resulting in lack of reclosing, automatic should be chosen as an alternative."""@en ;
   cims:stereotype "enum" .
 

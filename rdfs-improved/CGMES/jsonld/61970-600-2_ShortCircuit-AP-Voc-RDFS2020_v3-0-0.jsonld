@@ -1,5 +1,5 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld",
   "@graph": [
     {
       "@id": "sc:Ontology",
@@ -49,7 +49,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.\nFor symmetrical, transposed three phase lines, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.\nThe BaseVoltage at the two ends of ACLineSegments in a Line shall have the same BaseVoltage.nominalVoltage. However, boundary lines may have slightly different BaseVoltage.nominalVoltages and variation is allowed. Larger voltage difference in general requires use of an equivalent branch.",
+      "rdfs:comment": "A wire or combination of wires, with consistent electrical characteristics, building a single electrical system, used to carry alternating current between points in the power system.\r\nFor symmetrical, transposed three phase lines, it is sufficient to use attributes of the line segment, which describe impedances and admittances for the entire length of the segment.  Additionally impedances can be computed by using length and associated per length impedances.\r\nThe BaseVoltage at the two ends of ACLineSegments in a Line shall have the same BaseVoltage.nominalVoltage. However, boundary lines may have slightly different BaseVoltage.nominalVoltages and variation is allowed. Larger voltage difference in general requires use of an equivalent branch.",
       "rdfs:label": "ACLineSegment",
       "rdfs:subClassOf": "cim:Conductor"
     },
@@ -77,7 +77,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation. \nVoltage measurements are typically obtained from voltage transformers that are connected to busbar sections. A bus bar section may have many physical terminals but for analysis is modelled with exactly one logical terminal.",
+      "rdfs:comment": "A conductor, or group of conductors, with negligible impedance, that serve to connect other conducting equipment within a single substation. \r\nVoltage measurements are typically obtained from voltage transformers that are connected to busbar sections. A bus bar section may have many physical terminals but for analysis is modelled with exactly one logical terminal.",
       "rdfs:label": "BusbarSection",
       "rdfs:subClassOf": "cim:Connector"
     },
@@ -294,7 +294,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).\nA power transformer may be composed of separate transformer tanks that need not be identical.\nA power transformer can be modelled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.\nThe inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.",
+      "rdfs:comment": "An electrical device consisting of  two or more coupled windings, with or without a magnetic core, for introducing mutual coupling between electric circuits. Transformers can be used to control voltage and phase shift (active power flow).\r\nA power transformer may be composed of separate transformer tanks that need not be identical.\r\nA power transformer can be modelled with or without tanks and is intended for use in both balanced and unbalanced representations.   A power transformer typically has two terminals, but may have one (grounding), three or more terminals.\r\nThe inherited association ConductingEquipment.BaseVoltage should not be used.  The association from TransformerEnd to BaseVoltage should be used instead.",
       "rdfs:label": "PowerTransformer",
       "rdfs:subClassOf": "cim:ConductingEquipment"
     },
@@ -308,7 +308,7 @@
           "@id": "uml:concrete"
         }
       ],
-      "rdfs:comment": "A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.\nThe impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows.\n1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.\n2) for a three Terminal PowerTransformer the three PowerTransformerEnds represent a star equivalent with each leg in the star represented by r, r0, x, and x0 values.\n3) For a three Terminal transformer each PowerTransformerEnd shall have g, g0, b and b0 values corresponding to the no load losses distributed on the three PowerTransformerEnds. The total no load loss shunt impedances may also be placed at one of the PowerTransformerEnds, preferably the end numbered 1, having the shunt values on end 1.  This is the preferred way.\n4) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.\nEach PowerTransformerEnd must be contained by a PowerTransformer. Because a PowerTransformerEnd (or any other object) can not be contained by more than one parent, a PowerTransformerEnd can not have an association to an EquipmentContainer (Substation, VoltageLevel, etc).",
+      "rdfs:comment": "A PowerTransformerEnd is associated with each Terminal of a PowerTransformer.\r\nThe impedance values r, r0, x, and x0 of a PowerTransformerEnd represents a star equivalent as follows.\r\n1) for a two Terminal PowerTransformer the high voltage (TransformerEnd.endNumber=1) PowerTransformerEnd has non zero values on r, r0, x, and x0 while the low voltage (TransformerEnd.endNumber=2) PowerTransformerEnd has zero values for r, r0, x, and x0.  Parameters are always provided, even if the PowerTransformerEnds have the same rated voltage.  In this case, the parameters are provided at the PowerTransformerEnd which has TransformerEnd.endNumber equal to 1.\r\n2) for a three Terminal PowerTransformer the three PowerTransformerEnds represent a star equivalent with each leg in the star represented by r, r0, x, and x0 values.\r\n3) For a three Terminal transformer each PowerTransformerEnd shall have g, g0, b and b0 values corresponding to the no load losses distributed on the three PowerTransformerEnds. The total no load loss shunt impedances may also be placed at one of the PowerTransformerEnds, preferably the end numbered 1, having the shunt values on end 1.  This is the preferred way.\r\n4) for a PowerTransformer with more than three Terminals the PowerTransformerEnd impedance values cannot be used. Instead use the TransformerMeshImpedance or split the transformer into multiple PowerTransformers.\r\nEach PowerTransformerEnd must be contained by a PowerTransformer. Because a PowerTransformerEnd (or any other object) can not be contained by more than one parent, a PowerTransformerEnd can not have an association to an EquipmentContainer (Substation, VoltageLevel, etc).",
       "rdfs:label": "PowerTransformerEnd",
       "rdfs:subClassOf": "cim:TransformerEnd"
     },
@@ -397,7 +397,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \n\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\n\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
+      "rdfs:comment": "The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r\n\r\nFor example, if a unit symbol is \"m2Pers\" and the multiplier is \"k\", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol \"Þ\" represents the derived unit \"m2Pers\", then applying the multiplier \"k\" can be conceptualized simply as \"kÞ\".\r\n\r\nFor example, the SI unit for mass is \"kg\" and not \"g\".  If the unit symbol is defined as \"kg\", then the multiplier is applied to \"kg\" as a whole and does not replace the \"k\" in front of the \"g\". In this case, the multiplier of \"m\" would be used with the unit symbol of \"kg\" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the \"kg\" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the \"kg\" were replaced by a symbol \"Þ\", then it is easier to conceptualize the multiplier \"m\" as creating the proper unit \"mÞ\", and not the forbidden unit \"mkg\".",
       "rdfs:label": "UnitMultiplier"
     },
     {
@@ -407,7 +407,7 @@
       "cims:stereotype": {
         "@id": "uml:enumeration"
       },
-      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \nThe integer values are used for harmonization with IEC 61850.",
+      "rdfs:comment": "The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as \"F\" instead of \"CPerV\". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as \"kgPerm3\". With the exception of the \"kg\", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r\nEvery unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r\nTo allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol \"/\" is replaced by the letters \"Per\". Exponents are written in plain text after the unit as \"m3\" instead of being formatted as \"m\" with a superscript of 3  or introducing a symbol as in \"m^3\". The degree symbol \"°\" is replaced with the letters \"deg\". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r\nNon-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r\nThe integer values are used for harmonization with IEC 61850.",
       "rdfs:label": "UnitSymbol"
     },
     {
@@ -716,7 +716,7 @@
       },
       "qudt:hasQuantityKind": "cim:CurrentFlow",
       "qudt:hasUnit": "unit:A",
-      "rdfs:comment": "Maximum allowable peak short-circuit current of busbar (Ipmax in IEC 60909-0). \nMechanical limit of the busbar in the substation itself. Used for short circuit data exchange according to IEC 60909.",
+      "rdfs:comment": "Maximum allowable peak short-circuit current of busbar (Ipmax in IEC 60909-0). \r\nMechanical limit of the busbar in the substation itself. Used for short circuit data exchange according to IEC 60909.",
       "rdfs:domain": "cim:BusbarSection",
       "rdfs:label": "ipMax",
       "rdfs:range": "xsd:float",
@@ -868,7 +868,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Negative sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Negative sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\r\nEquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "negativeR12",
       "rdfs:range": "xsd:float",
@@ -887,7 +887,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Negative sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Negative sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\r\nEquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "negativeR21",
       "rdfs:range": "xsd:float",
@@ -906,7 +906,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Negative sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Negative sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\r\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "negativeX12",
       "rdfs:range": "xsd:float",
@@ -925,7 +925,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Negative sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage: EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Negative sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\r\nUsage: EquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "negativeX21",
       "rdfs:range": "xsd:float",
@@ -944,7 +944,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Positive sequence series resistance from terminal sequence  1 to terminal sequence 2 . Used for short circuit data exchange according to IEC 60909. \nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Positive sequence series resistance from terminal sequence  1 to terminal sequence 2 . Used for short circuit data exchange according to IEC 60909. \r\nEquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "positiveR12",
       "rdfs:range": "xsd:float",
@@ -963,7 +963,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Positive sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Positive sequence series resistance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\r\nEquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "positiveR21",
       "rdfs:range": "xsd:float",
@@ -982,7 +982,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Positive sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Positive sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\r\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "positiveX12",
       "rdfs:range": "xsd:float",
@@ -1001,7 +1001,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Positive sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Positive sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\r\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "positiveX21",
       "rdfs:range": "xsd:float",
@@ -1020,7 +1020,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Zero sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nEquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Zero sequence series resistance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\r\nEquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "zeroR12",
       "rdfs:range": "xsd:float",
@@ -1039,7 +1039,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Zero sequence series resistance from terminal sequence  2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Zero sequence series resistance from terminal sequence  2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\r\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "zeroR21",
       "rdfs:range": "xsd:float",
@@ -1058,7 +1058,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Zero sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Zero sequence series reactance from terminal sequence  1 to terminal sequence 2. Used for short circuit data exchange according to IEC 60909.\r\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "zeroX12",
       "rdfs:range": "xsd:float",
@@ -1077,7 +1077,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Zero sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Zero sequence series reactance from terminal sequence 2 to terminal sequence 1. Used for short circuit data exchange according to IEC 60909.\r\nUsage : EquivalentBranch is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentBranch",
       "rdfs:label": "zeroX21",
       "rdfs:range": "xsd:float",
@@ -1096,7 +1096,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Positive sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Positive sequence resistance. Used to represent Extended-Ward (IEC 60909).\r\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentInjection",
       "rdfs:label": "r",
       "rdfs:range": "xsd:float",
@@ -1115,7 +1115,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Zero sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Zero sequence resistance. Used to represent Extended-Ward (IEC 60909).\r\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentInjection",
       "rdfs:label": "r0",
       "rdfs:range": "xsd:float",
@@ -1134,7 +1134,7 @@
       },
       "qudt:hasQuantityKind": "cim:Resistance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Negative sequence resistance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Negative sequence resistance. Used to represent Extended-Ward (IEC 60909).\r\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentInjection",
       "rdfs:label": "r2",
       "rdfs:range": "xsd:float",
@@ -1153,7 +1153,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Positive sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Positive sequence reactance. Used to represent Extended-Ward (IEC 60909).\r\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentInjection",
       "rdfs:label": "x",
       "rdfs:range": "xsd:float",
@@ -1172,7 +1172,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Zero sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Zero sequence reactance. Used to represent Extended-Ward (IEC 60909).\r\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentInjection",
       "rdfs:label": "x0",
       "rdfs:range": "xsd:float",
@@ -1191,7 +1191,7 @@
       },
       "qudt:hasQuantityKind": "cim:Reactance",
       "qudt:hasUnit": "unit:OHM",
-      "rdfs:comment": "Negative sequence reactance. Used to represent Extended-Ward (IEC 60909).\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
+      "rdfs:comment": "Negative sequence reactance. Used to represent Extended-Ward (IEC 60909).\r\nUsage : Extended-Ward is a result of network reduction prior to the data exchange.",
       "rdfs:domain": "cim:EquivalentInjection",
       "rdfs:label": "x2",
       "rdfs:range": "xsd:float",
@@ -1388,7 +1388,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
+      "rdfs:comment": "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r\nFor CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.",
       "rdfs:domain": "cim:IdentifiedObject",
       "rdfs:label": "mRID",
       "rdfs:range": "xsd:string"
@@ -1978,7 +1978,7 @@
       },
       "qudt:hasQuantityKind": "cim:CurrentFlow",
       "qudt:hasUnit": "unit:A",
-      "rdfs:comment": "The maximum current the varistor is designed to handle at specified duration. It is used for short circuit calculations and exchanged only if SeriesCompensator.varistorPresent is true.\nThe attribute shall be a positive value.",
+      "rdfs:comment": "The maximum current the varistor is designed to handle at specified duration. It is used for short circuit calculations and exchanged only if SeriesCompensator.varistorPresent is true.\r\nThe attribute shall be a positive value.",
       "rdfs:domain": "cim:SeriesCompensator",
       "rdfs:label": "varistorRatedCurrent",
       "rdfs:range": "xsd:float",
@@ -2088,7 +2088,7 @@
       },
       "qudt:hasQuantityKind": "cim:CurrentFlow",
       "qudt:hasUnit": "unit:A",
-      "rdfs:comment": "Steady-state short-circuit current (in A for the profile) of generator with compound excitation during 3-phase short circuit.\n- Ikk=0: Generator with no compound excitation.\n- Ikk&lt;&gt;0: Generator with compound excitation.\nIkk is used to calculate the minimum steady-state short-circuit current for generators with compound excitation.\n(4.6.1.2 in IEC 60909-0:2001).\nUsed only for single fed short circuit on a generator. (4.3.4.2. in IEC 60909-0:2001).",
+      "rdfs:comment": "Steady-state short-circuit current (in A for the profile) of generator with compound excitation during 3-phase short circuit.\r\n- Ikk=0: Generator with no compound excitation.\r\n- Ikk&lt;&gt;0: Generator with compound excitation.\r\nIkk is used to calculate the minimum steady-state short-circuit current for generators with compound excitation.\r\n(4.6.1.2 in IEC 60909-0:2001).\r\nUsed only for single fed short circuit on a generator. (4.3.4.2. in IEC 60909-0:2001).",
       "rdfs:domain": "cim:SynchronousMachine",
       "rdfs:label": "ikk",
       "rdfs:range": "xsd:float",
@@ -2105,7 +2105,7 @@
       "cims:stereotype": {
         "@id": "uml:attribute"
       },
-      "rdfs:comment": "Factor to calculate the breaking current (Section 4.5.2.1 in IEC 60909-0).\nUsed only for single fed short circuit on a generator (Section 4.3.4.2. in IEC 60909-0).",
+      "rdfs:comment": "Factor to calculate the breaking current (Section 4.5.2.1 in IEC 60909-0).\r\nUsed only for single fed short circuit on a generator (Section 4.3.4.2. in IEC 60909-0).",
       "rdfs:domain": "cim:SynchronousMachine",
       "rdfs:label": "mu",
       "rdfs:range": "xsd:float"
@@ -2233,7 +2233,7 @@
       },
       "qudt:hasQuantityKind": "cim:PerCent",
       "qudt:hasUnit": "unit:PERCENT",
-      "rdfs:comment": "Range of generator voltage regulation (PG in IEC 60909-0) used for calculation of the impedance correction factor KG defined in IEC 60909-0.\nThis attribute is used to describe the operating voltage of the generating unit.",
+      "rdfs:comment": "Range of generator voltage regulation (PG in IEC 60909-0) used for calculation of the impedance correction factor KG defined in IEC 60909-0.\r\nThis attribute is used to describe the operating voltage of the generating unit.",
       "rdfs:domain": "cim:SynchronousMachine",
       "rdfs:label": "voltageRegulationRange",
       "rdfs:range": "xsd:float",
@@ -2401,6 +2401,10 @@
     },
     {
       "@id": "cim:Impedance",
+      "skos:exactMatch": "quantitykind:Impedance"
+    },
+    {
+      "@id": "cim:Inductance",
       "skos:exactMatch": "quantitykind:Inductance"
     },
     {
@@ -2831,7 +2835,8 @@
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
       "rdfs:comment": "Electric inductance in henrys (Wb/A).",
-      "rdfs:label": "H"
+      "rdfs:label": "H",
+      "skos:exactMatch": "unit:H"
     },
     {
       "@id": "cim:UnitSymbol.HPerm",
@@ -3088,7 +3093,7 @@
       "@id": "cim:UnitSymbol.VAr",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
+      "rdfs:comment": "Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\r\nNote: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.",
       "rdfs:label": "VAr",
       "skos:exactMatch": "unit:V-A_Reactive"
     },
@@ -3269,7 +3274,7 @@
       "@id": "cim:UnitSymbol.cosPhi",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Power factor, dimensionless.\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
+      "rdfs:comment": "Power factor, dimensionless.\r\nNote 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.\r\nNote 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.",
       "rdfs:label": "cosPhi"
     },
     {
@@ -3312,7 +3317,7 @@
       "@id": "cim:UnitSymbol.degC",
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
-      "rdfs:comment": "Relative temperature in degrees Celsius.\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
+      "rdfs:comment": "Relative temperature in degrees Celsius.\r\nIn the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.",
       "rdfs:label": "degC",
       "skos:exactMatch": "unit:DEG_C"
     },

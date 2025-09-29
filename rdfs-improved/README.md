@@ -1516,7 +1516,8 @@ We add corresponding QUDT resources (last 3 columns):
 | cim:Conductance               | "none" | "S"       |             | xsd:float   | quantitykind:Conductance                   | unit:S                      | skos:exactMatch |
 | cim:CurrentFlow               | "none" | "A"       | cim:Float   | xsd:float   | quantitykind:ElectricCurrent               | unit:A                      | skos:exactMatch |
 | cim:Frequency                 | "none" | "Hz"      | cim:Float   | xsd:float   | quantitykind:Frequency                     | unit:HZ                     | skos:exactMatch |
-| cim:Impedance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Inductance                    | unit:OHM                    | skos:exactMatch |
+| cim:Impedance                 | "none" | "ohm"     | cim:Float   | xsd:float   | quantitykind:Impedance                     | unit:OHM                    | skos:exactMatch |
+| cim:Inductance                | "none" | "H"       | cim:Float   | xsd:float   | quantitykind:Inductance                    | unit:H                      | skos:exactMatch |
 | cim:Length                    | "k"    | "m"       |             | xsd:float   | quantitykind:Length                        | unit:KiloM                  | skos:exactMatch |
 | cim:Money                     | "none" |           | cim:Decimal | xsd:decimal | quantitykind:Currency                      |                             | skos:exactMatch |
 | cim:PU                        | "none" | "none"    | cim:Float   | xsd:float   | quantitykind:DimensionlessRatio            |                             |                 |

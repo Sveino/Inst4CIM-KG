@@ -4,6 +4,7 @@
 @prefix          iam: <https://ap-voc.cim4.eu/ImpactAssessmentMatrix#> .
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
+@prefix      dcterms: <http://purl.org/dc/terms/> .
 @prefix          owl: <http://www.w3.org/2002/07/owl#> .
 @prefix          rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix         rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -350,7 +351,7 @@ cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty 
 
 cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -367,7 +368,7 @@ cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:OutcomeValue.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -376,7 +377,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
 
 nc:OwnerRemedialActionAssessment.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -385,7 +386,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
 
 nc:RemedialActionImpact.impactQuantity a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "impactQuantity" ;
-  rdfs:comment """Delta, positive or negative, quantity that when it is applied to the remedial action,  it will cause impact on a conducting equipment monitored by the assessed system operator.
+  rdfs:comment """Delta, positive or negative, quantity that when it is applied to the remedial action,  it will cause impact on a conducting equipment monitored by the assessed system operator.\r
 Example of relevant remedial action changes are redispatching, countertrading, change of set point on HVDC systems or change of taps on phase-shifting transformers."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -394,7 +395,7 @@ Example of relevant remedial action changes are redispatching, countertrading, c
 
 nc:RemedialActionImpact.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
-  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.
+  rdfs:comment """Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.\r
 For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -403,7 +404,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
 
 nc:RemedialActionOutcomeValue.impactQuantity a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "impactQuantity" ;
-  rdfs:comment """Delta, positive or negative, quantity that when it is applied to the remedial action,  it will cause impact on a conducting equipment monitored by the assessed system operator.
+  rdfs:comment """Delta, positive or negative, quantity that when it is applied to the remedial action,  it will cause impact on a conducting equipment monitored by the assessed system operator.\r
 Example of relevant remedial action changes are redispatching, countertrading, change of set point on HVDC systems or change of taps on phase-shifting transformers."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;

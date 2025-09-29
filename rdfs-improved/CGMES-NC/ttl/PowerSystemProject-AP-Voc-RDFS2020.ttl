@@ -3,6 +3,7 @@
 @prefix          psp: <https://ap-voc.cim4.eu/PowerSystemProject#> .
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
+@prefix      dcterms: <http://purl.org/dc/terms/> .
 @prefix          owl: <http://www.w3.org/2002/07/owl#> .
 @prefix          rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix         rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -189,7 +190,7 @@ dcat:Resource.hasVersion a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 dcat:Resource.isVersionOf a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "isVersionOf" ;
-  rdfs:comment """A related resource of which the described resource is a version, edition, or adaptation.
+  rdfs:comment """A related resource of which the described resource is a version, edition, or adaptation.\r
 Changes in version imply substantive changes in content rather than differences in format. This property is intended to be used with non-literal values. This property is an inverse property of hasVersion."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "dcat", uml:attribute ;
@@ -222,7 +223,7 @@ dcat:Resource.versionNotes a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 dct:PowerSystemProjectGroup.description a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "description" ;
-  rdfs:comment """A free-text account of the resource.
+  rdfs:comment """A free-text account of the resource.\r
 Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -231,8 +232,8 @@ Description may include but is not limited to: an abstract, a table of contents,
 
 dct:PowerSystemProjectGroup.identifier a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "identifier" ;
-  rdfs:comment """A unique identifier of the resource being described or cataloged.
-The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
+  rdfs:comment """A unique identifier of the resource being described or cataloged.\r
+The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.\r
 The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -249,7 +250,7 @@ dct:PowerSystemProjectGroup.title a owl:DatatypeProperty, owl:FunctionalProperty
 
 dct:Resource.accessRights a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "accessRights" ;
-  rdfs:comment """Information about who access the resource or an indication of its security status.
+  rdfs:comment """Information about who access the resource or an indication of its security status.\r
 Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -266,7 +267,7 @@ dct:Resource.conformsTo a owl:DatatypeProperty ;
 
 dct:Resource.creator a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "creator" ;
-  rdfs:comment """An entity responsible for making the resource.
+  rdfs:comment """An entity responsible for making the resource.\r
 Recommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -275,7 +276,7 @@ Recommended practice is to identify the creator with a URI. If this is not possi
 
 dct:Resource.description a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "description" ;
-  rdfs:comment """A free-text account of the resource.
+  rdfs:comment """A free-text account of the resource.\r
 Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -284,8 +285,8 @@ Description may include but is not limited to: an abstract, a table of contents,
 
 dct:Resource.identifier a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "identifier" ;
-  rdfs:comment """A unique identifier of the resource being described or cataloged.
-The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.
+  rdfs:comment """A unique identifier of the resource being described or cataloged.\r
+The identifier might be used as part of the IRI of the resource, but still having it represented explicitly is useful.\r
 The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -294,7 +295,7 @@ The identifier is a text string which is assigned to the resource to provide an 
 
 dct:Resource.issued a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "issued" ;
-  rdfs:comment """Date of formal issuance of the resource.
+  rdfs:comment """Date of formal issuance of the resource.\r
 Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -303,7 +304,7 @@ Recommended practice is to describe the date, date/time, or period of time as re
 
 dct:Resource.license a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "license" ;
-  rdfs:comment """A legal document under which the resource is made available.
+  rdfs:comment """A legal document under which the resource is made available.\r
 Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -312,7 +313,7 @@ Recommended practice is to identify the license document with a URI. If this is 
 
 dct:Resource.modified a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "modified" ;
-  rdfs:comment """Most recent date on which the item was changed, updated or modified.
+  rdfs:comment """Most recent date on which the item was changed, updated or modified.\r
 Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
@@ -329,7 +330,7 @@ dct:Resource.publisher a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 dct:Resource.rights a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "rights" ;
-  rdfs:comment "A statement that concerns all rights not addressed with dct:license or dct:accessRights, such as copyright statements."@en ;
+  rdfs:comment "A statement that concerns all rights not addressed with dcterms:license or dcterms:accessRights, such as copyright statements."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;
   rdfs:domain dcat:Resource ;
@@ -337,7 +338,7 @@ dct:Resource.rights a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 dct:Resource.rightsHolder a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "rightsHolder" ;
-  rdfs:comment """Information about rights held in and over the resource.
+  rdfs:comment """Information about rights held in and over the resource.\r
 Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "dcterms", uml:attribute ;

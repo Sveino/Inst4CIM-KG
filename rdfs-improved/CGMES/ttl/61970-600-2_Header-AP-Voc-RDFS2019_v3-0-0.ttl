@@ -24,7 +24,7 @@ md:FullModel a owl:Class ;
 
 md:Model a owl:Class ;
   rdfs:label "Model" ;
-  rdfs:comment """A Model is a collection of data describing instances, objects or entities, real or computed. In the context of CIM the semantics of the data is defined by profiles. Hence a model can contain equipment data, power flow initial values, power flow results etc.
+  rdfs:comment """A Model is a collection of data describing instances, objects or entities, real or computed. In the context of CIM the semantics of the data is defined by profiles. Hence a model can contain equipment data, power flow initial values, power flow results etc.\r
 The Model class describes the header content that is the same for the FullModel and the DifferenceModel. A Model is identified by an rdf:about attribute. The rdf:about attribute uniquely describe the model data and not the CIMXML document. A new rdf:about identification is generated for created documents only when the model data has changed. A repeated creation of documents from unchanged model data shall have the same rdf:about identification as previous document generated from the same model data."""@en ;
   cims:belongsToCategory cim:Package_FileHeaderProfile ;
   cims:stereotype "md" .
@@ -61,11 +61,11 @@ dm:DifferenceModel.reverseDifferences a owl:ObjectProperty ;
 
 md:Model.DependentOn a owl:ObjectProperty ;
   rdfs:label "DependentOn" ;
-  rdfs:comment """A reference to the model documents that the model described by this document depends on. In general there can be 0 or many Model.DependentOn depending on the profile and the content of the instance file.
-For instance:
-– A load flow solution depends on the topology model it was computed from
-– A topology model computed by a topology processor depends on the network model it was computed from.
-The referenced models are identified by the FullModel rdf:about attribute for full model documents and by DifferenceModel rdf:about attribute for difference model documents.
+  rdfs:comment """A reference to the model documents that the model described by this document depends on. In general there can be 0 or many Model.DependentOn depending on the profile and the content of the instance file.\r
+For instance:\r
+– A load flow solution depends on the topology model it was computed from\r
+– A topology model computed by a topology processor depends on the network model it was computed from.\r
+The referenced models are identified by the FullModel rdf:about attribute for full model documents and by DifferenceModel rdf:about attribute for difference model documents.\r
 The references are maintained by the producer of the CIMXML document and the references are valid for the model with version and identifier for which the document was created."""@en ;
   cims:AssociationUsed "Yes" ;
   cims:multiplicity cims:M:0..n ;

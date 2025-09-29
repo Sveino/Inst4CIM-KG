@@ -4,6 +4,7 @@
 @prefix          ssi: <https://ap-voc.cim4.eu/SteadyStateInstruction#> .
 @prefix         dcat: <http://www.w3.org/ns/dcat#> .
 @prefix          dct: <http://purl.org/dc/terms/> .
+@prefix      dcterms: <http://purl.org/dc/terms/> .
 @prefix          owl: <http://www.w3.org/2002/07/owl#> .
 @prefix       prefix: <http://qudt.org/vocab/prefix/> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
@@ -48,7 +49,7 @@ cim:Currency a owl:Class ;
 
 cim:EnergyConsumer a owl:Class ;
   rdfs:label "EnergyConsumer" ;
-  rdfs:comment """Generic user of energy - a  point of consumption on the power system model.
+  rdfs:comment """Generic user of energy - a  point of consumption on the power system model.\r
 EnergyConsumer.pfixed, .qfixed, .pfixedPct and .qfixedPct have meaning only if there is no LoadResponseCharacteristic associated with EnergyConsumer or if LoadResponseCharacteristic.exponentModel is set to False."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", uml:concrete .
@@ -90,30 +91,30 @@ cim:Reservoir a owl:Class ;
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier" ;
-  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
-
-For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
-
+  rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. \r
+\r
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".\r
+\r
 For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg"."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype uml:enumeration .
 
 cim:UnitSymbol a owl:Class ;
   rdfs:label "UnitSymbol" ;
-  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
-Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
-To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
-Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+  rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. \r
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.\r
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.\r
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. \r
 The integer values are used for harmonization with IEC 61850."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype uml:enumeration .
 
 nc:ACEmulationControlFunction a owl:Class ;
   rdfs:label "ACEmulationControlFunction" ;
-  rdfs:comment """The AC emulation control function is used when AC emulation model is activated for a DC system. It consists in computing the active power set point of the DC system as a function of the voltage angle difference between both points of common coupling with the AC network in order to mimic the behavior of an AC transmission line. This control mode enables the automatic adjustment of the active power reference following variations of the AC system operational point. 
-The setpoint of the DC system is calculated by Psetpoint=Pref+Kdc*(angle1-angle2), where
-- Pref is the existing active power setpoint; 
-- Kdc is the control system gain and  
+  rdfs:comment """The AC emulation control function is used when AC emulation model is activated for a DC system. It consists in computing the active power set point of the DC system as a function of the voltage angle difference between both points of common coupling with the AC network in order to mimic the behavior of an AC transmission line. This control mode enables the automatic adjustment of the active power reference following variations of the AC system operational point. \r
+The setpoint of the DC system is calculated by Psetpoint=Pref+Kdc*(angle1-angle2), where\r
+- Pref is the existing active power setpoint; \r
+- Kdc is the control system gain and  \r
 - angle1 and angle2 are the phase angle measurement (measured at points of common coupling with the AC network) respectively at the side 1 and 2 of the DC system."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
@@ -132,7 +133,7 @@ nc:AreaDispatchableUnit a owl:Class ;
 
 nc:AssessedElement a owl:Class ;
   rdfs:label "AssessedElement" ;
-  rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.
+  rdfs:comment """Assessed element is a network element for which the electrical state is evaluated in the regional or cross-regional process and which value is expected to fulfil regional rules function of the operational security limits.\r
 The measurements and limits are as defined in the steady state hypothesis."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
@@ -225,9 +226,9 @@ nc:CurrentDroopControlFunction a owl:Class ;
 
 nc:CurrentDroopOverride a owl:Class ;
   rdfs:label "CurrentDroopOverride" ;
-  rdfs:comment """Current droop override uses the following logic:
-- When the current exceeds a threshold the device executes the following transitions: 1) When injecting an inductive voltage or in monitoring mode the device tends to inject a voltage proportional to the difference between the line current and the aforementioned threshold. 2) When injecting a capacitive voltage the device transitions to monitoring mode. 
-- If the aforementioned proportional voltage is lower than the initial one, the voltage injection remains unchanged. 
+  rdfs:comment """Current droop override uses the following logic:\r
+- When the current exceeds a threshold the device executes the following transitions: 1) When injecting an inductive voltage or in monitoring mode the device tends to inject a voltage proportional to the difference between the line current and the aforementioned threshold. 2) When injecting a capacitive voltage the device transitions to monitoring mode. \r
+- If the aforementioned proportional voltage is lower than the initial one, the voltage injection remains unchanged. \r
 Current droop override is not applied when the device operates in currentDroop mode."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
@@ -425,11 +426,11 @@ nc:RemedialAction a owl:Class ;
 
 nc:RemedialActionDependency a owl:Class ;
   rdfs:label "RemedialActionDependency" ;
-  rdfs:comment """Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.
-<ul>
-\t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>
-\t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>
-\t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>
+  rdfs:comment """Remedial action dependency is making two remedial actions depending on each other. Multiple dependency is done by multiple instances of this class. The dependency can arrive by having one of the following examples.\r
+<ul>\r
+\t<li>The dependent remedial action is controlled by different system operator (Modeling Authority)  (e.g. SIPS that goes across control area).</li>\r
+\t<li>The dependent remedial action is representing  two or more remedial action that represent the same grid state alteration but with different modeling resolution (e.g. detail direct current model versus a simplified model).</li>\r
+\t<li>The remedial action can be combined with other remedial action without the need to create multiple remedial action with the same grid alteration for enabling dependency.</li>\r
 </ul>"""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
@@ -442,7 +443,7 @@ nc:RemedialActionGroup a owl:Class ;
 
 nc:RemedialActionScheme a owl:Class ;
   rdfs:label "RemedialActionScheme" ;
-  rdfs:comment """Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).
+  rdfs:comment """Remedial Action Scheme (RAS), Special Protection Schemes (SPS), System Protection Schemes (SPS) or System Integrity Protection Schemes (SIPS).\r
 A Remedial Action Scheme consists of one or more stages that can trigger and execute a protection action."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
@@ -512,8 +513,8 @@ nc:StaticSynchronousSeriesCompensator a owl:Class ;
 
 nc:StaticVarCompensator a owl:Class ;
   rdfs:label "StaticVarCompensator" ;
-  rdfs:comment """A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.
-
+  rdfs:comment """A facility for providing variable and controllable shunt reactive power. The SVC typically consists of a stepdown transformer, filter, thyristor-controlled reactor, and thyristor-switched capacitor arms.\r
+\r
 The SVC may operate in fixed MVar output mode or in voltage control mode. When in voltage control mode, the output of the SVC will be proportional to the deviation of voltage at the controlled bus from the voltage setpoint.  The SVC characteristic slope defines the proportion.  If the voltage at the controlled bus is equal to the voltage setpoint, the SVC MVar output is zero."""@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete ;
@@ -702,7 +703,7 @@ nc:ACEmulationControlFunction.referenceP a owl:DatatypeProperty, owl:FunctionalP
 
 nc:ACEmulationControlFunction.timeConstant a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "timeConstant" ;
-  rdfs:comment """Control system time constant in AC transmission emulation control. It affects the time needed to 
+  rdfs:comment """Control system time constant in AC transmission emulation control. It affects the time needed to \r
 reach a new steady state equilibrium point after a network perturbation extremely important to guarantee N-1 relief related to an interconnection. The higher is time constant the slower is the DC system dynamic."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.s ;
@@ -747,8 +748,8 @@ nc:AreaDispatchableUnit.p a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:AssessedElement.appointedMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "appointedMargin" ;
-  rdfs:comment """The percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit under normal operating conditions. The maximum percentage shall by default be 10% of the remaining margin.
-It is only used when an assessed element is considered conservative for a region.
+  rdfs:comment """The percentage (appointed to a region) of the remaining margin obtained in the grid model to reach its current limit under normal operating conditions. The maximum percentage shall by default be 10% of the remaining margin.\r
+It is only used when an assessed element is considered conservative for a region.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -841,7 +842,7 @@ nc:AssessedElement.maxFlow a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:AssessedElement.maxMarginAdjustment a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "maxMarginAdjustment" ;
-  rdfs:comment """Maximum adjustment, relative to maximum flow allowed for exceeding the maximum flow of this assessed element.
+  rdfs:comment """Maximum adjustment, relative to maximum flow allowed for exceeding the maximum flow of this assessed element.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -854,8 +855,8 @@ The allowed value range is [0,100]."""@en ;
 
 nc:AssessedElement.positiveVirtualMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "positiveVirtualMargin" ;
-  rdfs:comment """A positive margin that defines the overload allowed in a solution for the assessed element for the current situation. The margin represents influences that can be solved by the System Operators using available remedial action which is not cross-border relevant remedial action.
-All relevant operational limits (e.g. PATL, TATL, etc) are modified by this margin value. The attribute represents the increase.
+  rdfs:comment """A positive margin that defines the overload allowed in a solution for the assessed element for the current situation. The margin represents influences that can be solved by the System Operators using available remedial action which is not cross-border relevant remedial action.\r
+All relevant operational limits (e.g. PATL, TATL, etc) are modified by this margin value. The attribute represents the increase.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -868,7 +869,7 @@ The allowed value range is [0,100]."""@en ;
 
 nc:AssessedElement.scannedThresholdMargin a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "scannedThresholdMargin" ;
-  rdfs:comment """Threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).
+  rdfs:comment """Threshold percentage that a scanned element can be overloaded, on a given element, on top of any overload prior to optimisation (default= 5%). e.g. Initial loading of the element is 110%, with a 5% scanned threshold margin, the new maximum is 115% of the limit (e.g. PATL, TATL, etc).\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -997,7 +998,7 @@ nc:BiddingZoneBorder.transmissionReliabilityMargin a owl:DatatypeProperty, owl:F
 
 nc:CircuitShare.contributionFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "contributionFactor" ;
-  rdfs:comment """Contribution factor for the circuit which is part of a power transfer corridor.
+  rdfs:comment """Contribution factor for the circuit which is part of a power transfer corridor.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -1010,7 +1011,7 @@ The allowed value range is [0,100]."""@en ;
 
 nc:Contingency.probability a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "probability" ;
-  rdfs:comment """The forecasted probability of the occurrence of the contingency based on the given operational condition, status of the equipment and the forecasted environment condition.
+  rdfs:comment """The forecasted probability of the occurrence of the contingency based on the given operational condition, status of the equipment and the forecasted environment condition.\r
 The allowed value range is [0,100]."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -1155,8 +1156,8 @@ nc:DCPole.p a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:DCPole.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
 In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -1165,11 +1166,11 @@ In the case of priority strategy, the item with the lowest number gets allocated
 
 nc:DCSwitch.locked a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "locked" ;
-  rdfs:comment """If true, the switch is locked. The resulting switch state is a combination of locked and DCSwitch.open attributes as follows:
-<ul>
-\t<li>locked=true and DCSwitch.open=true. The resulting state is open and locked;</li>
-\t<li>locked=false and DCSwitch.open=true. The resulting state is open;</li>
-\t<li>locked=false and DCSwitch.open=false. The resulting state is closed.</li>
+  rdfs:comment """If true, the switch is locked. The resulting switch state is a combination of locked and DCSwitch.open attributes as follows:\r
+<ul>\r
+\t<li>locked=true and DCSwitch.open=true. The resulting state is open and locked;</li>\r
+\t<li>locked=false and DCSwitch.open=true. The resulting state is open;</li>\r
+\t<li>locked=false and DCSwitch.open=false. The resulting state is closed.</li>\r
 </ul>"""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
@@ -1186,7 +1187,7 @@ nc:DCSwitch.open a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:DCTieCorridor.p a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "p" ;
-  rdfs:comment """Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.
+  rdfs:comment """Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\r
 Starting value for a steady state solution in the case a simplified power flow model is used."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
@@ -1199,7 +1200,7 @@ Starting value for a steady state solution in the case a simplified power flow m
 
 nc:DCTieCorridor.q a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "q" ;
-  rdfs:comment """Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.
+  rdfs:comment """Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node.\r
 Starting value for a steady state solution in the case a simplified power flow model is used."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VAr ;
@@ -1252,8 +1253,8 @@ nc:EnergyBlockOrder.sequence a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:EnergyConsumer.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
 In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -1282,7 +1283,7 @@ nc:EnergyGroup.participationFactor a owl:DatatypeProperty, owl:FunctionalPropert
 
 nc:FACTSEquipment.q a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "q" ;
-  rdfs:comment """Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+  rdfs:comment """Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r
 Starting value for a steady state solution."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.VAr ;
@@ -1355,8 +1356,8 @@ nc:GeneratingUnit.mustRunQ a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:GeneratingUnit.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
 In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -1373,9 +1374,9 @@ nc:GridStateAlteration.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:GridStateAlteration.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
-In the case of priority strategy, the item with the lowest number gets allocated energy first.
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
+In the case of priority strategy, the item with the lowest number gets allocated energy first.\r
 e.g. If 0 this grid alteration does not participate. The sum of all participation factors for all grid state alterations associated with same remedial action shall be equal to 100%."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.none ;
@@ -1388,8 +1389,8 @@ e.g. If 0 this grid alteration does not participate. The sum of all participatio
 
 nc:HydroPump.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
 In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -1550,7 +1551,7 @@ nc:PowerCapacity.regulatingUpAllocation a owl:DatatypeProperty, owl:FunctionalPr
 
 nc:PowerElectronicsUnit.p a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "p" ;
-  rdfs:comment """Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.
+  rdfs:comment """Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node.\r
 Starting value for a steady state solution."""@en ;
   cim:unitMultiplier cim:UnitMultiplier.M ;
   cim:unitSymbol cim:UnitSymbol.W ;
@@ -1563,8 +1564,8 @@ Starting value for a steady state solution."""@en ;
 
 nc:PowerElectronicsUnit.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
 In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -1629,8 +1630,8 @@ nc:PowerTransferCorridor.enabled a owl:DatatypeProperty, owl:FunctionalProperty 
 
 nc:RangeConstraint.value a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "value" ;
-  rdfs:comment """The value at the time. The meaning of the value is defined by the attribute referenced by the PropertyReference. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false. 
-If the valueKind is incremental or incrementalPercentage, then the value shall be positive (greater than zero).
+  rdfs:comment """The value at the time. The meaning of the value is defined by the attribute referenced by the PropertyReference. The value can be integer, float or boolean. In case of boolean 1 equals true and 0 equals false. \r
+If the valueKind is incremental or incrementalPercentage, then the value shall be positive (greater than zero).\r
 If the valueKind is incrementalPercentage, then the value shall be in the range [0, 100]."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -1731,8 +1732,8 @@ nc:ScheduleResource.p a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:ScheduleResource.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
 In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -1753,8 +1754,8 @@ nc:SchedulingArea.p a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 nc:SchedulingArea.participationFactor a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "participationFactor" ;
-  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.
-In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). 
+  rdfs:comment """Participation factor describing the entity part of the active power provided by a collection of entities (e.g. an active power forecast to a collection of entities is divided to each of the member entity according to the participation factor). Must be a positive value.\r
+In the case of a sharing strategy, the distribution is following entities value (V) equals aggregated value (T) divided by sum of participation factors (PF), i.e. V=T/sum(PF). \r
 In the case of priority strategy, the item with the lowest number gets allocated energy first."""@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype "NC", uml:attribute ;
@@ -2687,7 +2688,9 @@ cim:Impedance a qudt:QuantityKind ;
   rdfs:comment "Ratio of voltage to current."@en ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   qudt:applicableUnit cim:UnitSymbol.ohm ;
-  skos:exactMatch quantitykind:Inductance .
+  skos:exactMatch quantitykind:Impedance .
+
+cim:Inductance skos:exactMatch quantitykind:Inductance .
 
 cim:Length skos:exactMatch quantitykind:Length .
 
@@ -2774,7 +2777,7 @@ cim:UnitSymbol.V a cim:UnitSymbol ;
 
 cim:UnitSymbol.VAr a cim:UnitSymbol ;
   rdfs:label "VAr" ;
-  rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
+  rdfs:comment """Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).\r
 Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose."""@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:V-A_Reactive .
@@ -2831,8 +2834,8 @@ nc:CompensatorControlModeKind.voltage a nc:CompensatorControlModeKind ;
 
 nc:DCControlModeKind.acEmulation a nc:DCControlModeKind ;
   rdfs:label "acEmulation" ;
-  rdfs:comment """An AC emulation control aims to reproduce the behaviour of an AC line by means of a function of the difference between angles in both converter stations in DC links embedded within a single synchronous AC grid. For changes in the phase angle on either station, the response of this control is to ‘emulate the behaviour of an AC line’ in both steady and transient states. 
-The AC emulation control needs measurement signals for the angles at both ends of the DC system (at the AC points of common coupling of the DC system). In practice, the angle difference is measured by built-in devices in the converters and the synchronization of angle measurements on both stations is done by means of GPS.
+  rdfs:comment """An AC emulation control aims to reproduce the behaviour of an AC line by means of a function of the difference between angles in both converter stations in DC links embedded within a single synchronous AC grid. For changes in the phase angle on either station, the response of this control is to ‘emulate the behaviour of an AC line’ in both steady and transient states. \r
+The AC emulation control needs measurement signals for the angles at both ends of the DC system (at the AC points of common coupling of the DC system). In practice, the angle difference is measured by built-in devices in the converters and the synchronization of angle measurements on both stations is done by means of GPS.\r
 ACEmulationControlFunction is used by this control. The control can only be applied by a controller that have access to the two AC points of common coupling of the DC system. Therefore it cannot be applied for a ACDCConverterController."""@en ;
   cims:stereotype "enum" .
 
