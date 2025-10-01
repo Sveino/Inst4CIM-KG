@@ -2,16 +2,19 @@
 # https://github.com/Sveino/Inst4CIM-KG/issues/74
 # https://github.com/Sveino/Inst4CIM-KG/issues/28
 # https://github.com/Sveino/Inst4CIM-KG/issues/64
+# https://github.com/statnett/Talk2PowerSystem_PM/issues/225
 
-PREFIX cim: <https://cim.ucaiug.io/ns#>
-PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> 
-PREFIX eu: <https://cim.ucaiug.io/ns/eu#>
-PREFIX eumd: <https://cim4.eu/ns/Metadata-European#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+PREFIX cims:    <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> 
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+PREFIX eumd:    <https://cim4.eu/ns/Metadata-European#>
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
 PREFIX profcim: <https://cim.ucaiug.io/ns/prof-cim#> 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX uml:     <http://iec.ch/TC57/NonStandard/UML#>
+PREFIX uml1:    <http://langdale.com.au/2005/UML#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 delete {?prop cims:dataType ?old}
 insert {?prop rdfs:range    ?new}
