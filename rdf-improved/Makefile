@@ -2,7 +2,7 @@ test_rdf           = $(wildcard test/rdf/*)
 test_trig          = $(patsubst test/rdf/%.xml, test/trig/%.trig,     $(test_rdf))
 test_jsonld        = $(patsubst test/rdf/%.xml, test/jsonld/%.jsonld, $(test_rdf))
 
-nordic_source      = ../../../Nordic44/Instances
+nordic_source      = ../../Nordic44/Instances
 nordic_dirs       != /usr/bin/find $(nordic_source) -type d
 nordic_target      = instances/Nordic44
 nordic_target_dirs = $(subst $(nordic_source),$(nordic_target),$(nordic_dirs))
@@ -11,7 +11,7 @@ nordic_ignore2     = $(patsubst %, $(nordic_source)/%, $(nordic_ignore))
 nordic_rdf         = $(filter-out $(nordic_ignore2), $(wildcard $(nordic_source)/*_2_*/*.xml))
 nordic_trig        = $(subst .xml,.trig, $(subst $(nordic_source),$(nordic_target), $(nordic_rdf)))
 
-entsoe_source      = ../../../CGMES-SHACL/ENTSO-E_Test_Configurations_v3.0.2/v3.0
+entsoe_source      = ../../ENTSOE-SHACL/ENTSO-E_Test_Configurations_v3.0.2/v3.0
 entsoe_dirs       != /usr/bin/find $(entsoe_source) -type d
 entsoe_target      = instances/ENTSO-E_Test_Configurations_v3.0.2
 entsoe_target_dirs = $(subst $(entsoe_source),$(entsoe_target),$(entsoe_dirs))
