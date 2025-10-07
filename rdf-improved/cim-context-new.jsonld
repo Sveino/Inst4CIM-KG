@@ -75,6 +75,7 @@
   "cim:AnalogLimitSet.Measurements":                                                 {"@type": "@id"},
   "cim:AnalogValue.Analog":                                                          {"@type": "@id"},
   "cim:AnalogValue.AnalogControl":                                                   {"@type": "@id"},
+  "cim:AnalogValue.value":                                                           {"@type": "xsd:float"},
   "cim:ApparentPowerLimit.normalValue":                                              {"@type": "xsd:float"},
   "cim:ApparentPowerLimit.value":                                                    {"@type": "xsd:float"},
   "cim:Asset.AssetContainer":                                                        {"@type": "@id"},

@@ -35,6 +35,7 @@ This document describes proposed inprovements to the representation of CIM/CGMES
 - [JSON-LD Serialization](#json-ld-serialization)
     - [JSON-LD Context](#json-ld-context)
     - [Formatting of Numbers and Booleans](#formatting-of-numbers-and-booleans)
+    - [Example From Telemark-120 ](#example-from-telemark-120)
 
 <!-- markdown-toc end -->
 
@@ -1129,7 +1130,7 @@ including relevant issues posted in Dec 2023 in the https://github.com/3lbits/CI
 After converting CIM XML to a representation using named graphs (Trig), we can convert it to JSON-LD.
 E.g. to convert an instance file using the old namespaces, we use this command:
 ```
-riot.bat --formatted jsonld test/trig/FullGrid_OP.trig | jsonld compact -c https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld
+riot.bat --formatted jsonld test/trig/FullGrid_OP.trig | jsonld compact -c https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld
 ```
 The tools used are described in the context of ontology serialization in the sibling folder at [JSON-LD Serialization](https://github.com/Sveino/Inst4CIM-KG/tree/develop/rdfs-improved#json-ld-serialization).
 
@@ -1160,10 +1161,10 @@ The assembled context files are:
 - cim-context-old.jsonld: JSON-LD context using old namespaces
 
 https://github.com/Sveino/Inst4CIM-KG/issues/110 deploy JSON-LD contexts on a permanent network location:
-- Currently JSON-LD files use network contexts on "rawgit2.com", which serves them with appropriate `content-type: application/ld+json`:
-  - https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld for ontologies
-  - https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld for instance files using old namespaces
-  - https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-new.jsonld for instance files using new namespaces
+- Currently JSON-LD files use network contexts on "raw.githack.com", which serves them with appropriate `content-type: application/ld+json`:
+  - https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdfs-improved/CIM-ontology-context.jsonld for ontologies
+  - https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld for instance files using old namespaces
+  - https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-new.jsonld for instance files using new namespaces
 - But we need for a more permanent CIMug or ENTSOE location.
 
 ## Formatting of Numbers and Booleans
@@ -1217,3 +1218,59 @@ Then we tried with a few tools and saved the results:
 Note1: above we didn't specify a context to use. If we do, then more tools may output values in quotes.
 
 Note2: see https://github.com/digitalbazaar/jsonld.js/issues/558 for a similar problem related to native `boolean` in JSON-LD.
+
+## Example From Telemark-120 
+https://github.com/3lbits/CIM4NoUtility/issues/405 JSON-LD: problems in numeric and dateTime literals 
+
+Consider `Telemark-120-MV1_OP.jsonld`:
+```json
+ {
+  "@id": "urn:uuid:4e707066-d551-4f75-ae9c-c8fba5e6242d",
+  "@type": "cim:AnalogValue",
+  "cim:IdentifiedObject.mRID": "4e707066-d551-4f75-ae9c-c8fba5e6242d",
+  "cim:IdentifiedObject.description": "Engene Analog 5 Analog Value 5",
+  "cim:IdentifiedObject.name": "ENGENE AN5 AV5",
+  "cim:MeasurementValue.sensorAccuracy": 97.2,
+  "cim:MeasurementValue.timeStamp": "2021-08-11T11:45:39.393725Z",
+  "cim:AnalogValue.value": 10.6,
+  "cim:AnalogValue.Analog": {
+    "@id": "urn:uuid:25498d39-29b5-45aa-8dae-ccfa497353db"
+  }
+ },
+ ```
+Resulting in this Turtle (see it [loaded in graphdb](https://cim.ontotext.com/graphdb/resource?uri=urn:uuid:4e707066-d551-4f75-ae9c-c8fba5e6242d&role=subject)):
+```ttl
+<urn:uuid:4e707066-d551-4f75-ae9c-c8fba5e6242d>
+   rdf:type                            cim:AnalogValue;
+   cim:AnalogValue.Analog              <urn:uuid:25498d39-29b5-45aa-8dae-ccfa497353db>;
+   cim:AnalogValue.value               1.06E1;                         ###
+   cim:IdentifiedObject.description    "Engene Analog 5 Analog Value 5";
+   cim:IdentifiedObject.mRID           "4e707066-d551-4f75-ae9c-c8fba5e6242d";
+   cim:IdentifiedObject.name           "ENGENE AN5 AV5";
+   cim:MeasurementValue.sensorAccuracy 9.72E1;                         ###
+   cim:MeasurementValue.timeStamp      "2021-08-11T11:45:39.393725Z" . ###
+```
+- Numbers are converted to scientific notation and `xsd:double` instead of `xsd:float`
+- The timestamp doesn't have datatype `xsd:dateTime`
+
+To fix this, emit numbers as strings, and a richer context that defines datatypes.
+As a bonus, you don't need to specify `"@id"`:
+```json
+{
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-new.jsonld",
+  "@graph": {
+     "@id": "urn:uuid:4e707066-d551-4f75-ae9c-c8fba5e6242d",
+     "@type": "cim:AnalogValue",
+     "cim:IdentifiedObject.mRID": "4e707066-d551-4f75-ae9c-c8fba5e6242d",
+     "cim:IdentifiedObject.description": "Engene Analog 5 Analog Value 5",
+     "cim:IdentifiedObject.name": "ENGENE AN5 AV5",
+     "cim:MeasurementValue.sensorAccuracy": "97.2",
+     "cim:MeasurementValue.timeStamp": "2021-08-11T11:45:39.393725Z",
+     "cim:AnalogValue.value": "10.6",
+     "cim:AnalogValue.Analog": "urn:uuid:25498d39-29b5-45aa-8dae-ccfa497353db"
+ }
+}
+```
+See results in the [jsonld playground](https://json-ld.org/playground/#startTab=tab-nquads&json-ld=%7B%22%40context%22%3A%22https%3A%2F%2Fraw.githack.com%2FSveino%2FInst4CIM-KG%2Fdevelop%2Frdf-improved%2Fcim-context-new.jsonld%22%2C%22%40graph%22%3A%7B%22%40id%22%3A%22urn%3Auuid%3A4e707066-d551-4f75-ae9c-c8fba5e6242d%22%2C%22%40type%22%3A%22cim%3AAnalogValue%22%2C%22cim%3AIdentifiedObject.mRID%22%3A%224e707066-d551-4f75-ae9c-c8fba5e6242d%22%2C%22cim%3AIdentifiedObject.description%22%3A%22Engene%20Analog%205%20Analog%20Value%205%22%2C%22cim%3AIdentifiedObject.name%22%3A%22ENGENE%20AN5%20AV5%22%2C%22cim%3AMeasurementValue.sensorAccuracy%22%3A%2297.2%22%2C%22cim%3AMeasurementValue.timeStamp%22%3A%222021-08-11T11%3A45%3A39.393725Z%22%2C%22cim%3AAnalogValue.value%22%3A%2210.6%22%2C%22cim%3AAnalogValue.Analog%22%3A%22urn%3Auuid%3A25498d39-29b5-45aa-8dae-ccfa497353db%22%7D%7D).
+The only problem is that `cim:AnalogValue.value` doesn't get the correct datatype.
+The reason is that it's not in the provided ontologies, and thus not in the context (I'll add it asap).
