@@ -3685,7 +3685,7 @@
   "dcat:nextVersion":                                                                {"@type": "@id"},
   "dcat:previousVersion":                                                            {"@type": "@id"},
   "dcat:seriesMember":                                                               {"@type": "@id"},
-  "dcat:startDate":                                                                  {"@type": "xsd:dateTime"},
+  "dcat:startDate":                                                                  {"@type": "xsd:dateTimeStamp"},
   "dcat:temporalResolution":                                                         {"@type": "xsd:duration"},
   "dct:HasPart":                                                                     {"@type": "@id"},
   "dct:IsPartOf":                                                                    {"@type": "@id"},
