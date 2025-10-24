@@ -3659,7 +3659,7 @@ where {
     (pti:SynchronousMachine.x                                         xsd:float     )
   }
   graph ?g {?x ?prop ?old}
-  filter(datatype(?old)=xsd:string)
-  bind(strdt(?old,?dt) as ?new)
+  filter(datatype(?old) != ?dt)
+  bind(strdt(str(?old),?dt) as ?new)
 };
 
