@@ -1964,6 +1964,8 @@ cim:RealEnergy a qudt:QuantityKind ;
 
 cim:Resistance skos:exactMatch quantitykind:Resistance .
 
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
+
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 
 cim:Seconds a qudt:QuantityKind ;

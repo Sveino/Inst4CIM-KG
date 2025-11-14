@@ -806,46 +806,6 @@
       "owl:inverseOf": "nc:Outage.Interruption"
     },
     {
-      "@id": "nc:Interruption.energyNotDelivered",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:RealEnergy"
-      },
-      "cims:multiplicity": "cims:M:0..1",
-      "cims:stereotype": [
-        "NC",
-        {
-          "@id": "uml:attribute"
-        }
-      ],
-      "rdfs:comment": "The estimated energy which would have been delivered through the delivery point if no interruption and no transmission restrictions had occurred.",
-      "rdfs:domain": "nc:Interruption",
-      "rdfs:label": "energyNotDelivered"
-    },
-    {
-      "@id": "nc:Interruption.energyNotSupplied",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:RealEnergy"
-      },
-      "cims:multiplicity": "cims:M:0..1",
-      "cims:stereotype": [
-        "NC",
-        {
-          "@id": "uml:attribute"
-        }
-      ],
-      "rdfs:comment": "The estimated energy which would have been supplied to end-users if no interruption and no transmission restrictions had occurred.",
-      "rdfs:domain": "nc:Interruption",
-      "rdfs:label": "energyNotSupplied"
-    },
-    {
       "@id": "nc:Outage.FaultOutage",
       "@type": [
         "owl:ObjectProperty",
@@ -1260,6 +1220,46 @@
       "rdfs:range": "xsd:duration"
     },
     {
+      "@id": "nc:Interruption.energyNotDelivered",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:RealEnergy",
+      "rdfs:comment": "The estimated energy which would have been delivered through the delivery point if no interruption and no transmission restrictions had occurred.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "energyNotDelivered",
+      "rdfs:range": "xsd:float",
+      "cim:unitSymbol": "cim:UnitSymbol.Wh"
+    },
+    {
+      "@id": "nc:Interruption.energyNotSupplied",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:RealEnergy",
+      "rdfs:comment": "The estimated energy which would have been supplied to end-users if no interruption and no transmission restrictions had occurred.",
+      "rdfs:domain": "nc:Interruption",
+      "rdfs:label": "energyNotSupplied",
+      "rdfs:range": "xsd:float",
+      "cim:unitSymbol": "cim:UnitSymbol.Wh"
+    },
+    {
       "@id": "nc:Interruption.interruptedPower",
       "@type": [
         "owl:DatatypeProperty",
@@ -1646,6 +1646,10 @@
     {
       "@id": "cim:Resistance",
       "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:ResistancePerLength",
+      "skos:exactMatch": "quantitykind:LinearResistance"
     },
     {
       "@id": "cim:RotationSpeed",

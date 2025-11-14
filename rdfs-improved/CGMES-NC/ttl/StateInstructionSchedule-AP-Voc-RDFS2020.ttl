@@ -1271,14 +1271,6 @@ nc:InfeedLimitTimePoint.InfeedLimitSchedule a owl:ObjectProperty, owl:Functional
   rdfs:domain nc:InfeedLimitTimePoint ;
   rdfs:range nc:InfeedLimitSchedule .
 
-nc:InfeedLimitTimePoint.valueA a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "valueA" ;
-  rdfs:comment "Value of current limit. The attribute shall be a positive value or zero."@en ;
-  cims:dataType cim:CurrentFlow ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", uml:attribute ;
-  rdfs:domain nc:InfeedLimitTimePoint .
-
 nc:ParticipationFactorTimePoint.PowerShiftKeySchedule a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "PowerShiftKeySchedule" ;
   rdfs:comment "The Power Shift Key schedule which belongs to the participation factor timepoint."@en ;
@@ -1863,22 +1855,6 @@ nc:UnitCostTimePoint.UnitCostSchedule a owl:ObjectProperty, owl:FunctionalProper
   rdfs:domain nc:UnitCostTimePoint ;
   rdfs:range nc:UnitCostSchedule .
 
-nc:UnitCostTimePoint.startupCost a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "startupCost" ;
-  rdfs:comment "The initial startup cost incurred for each start of the GeneratingUnit."@en ;
-  cims:dataType cim:Money ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", uml:attribute ;
-  rdfs:domain nc:UnitCostTimePoint .
-
-nc:UnitCostTimePoint.warmStartupCost a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "warmStartupCost" ;
-  rdfs:comment "The warm startup cost incurred for each start of the GeneratingUnit."@en ;
-  cims:dataType cim:Money ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", uml:attribute ;
-  rdfs:domain nc:UnitCostTimePoint .
-
 nc:VoltageAngleLimit.VoltageAngleSchedule a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "VoltageAngleSchedule" ;
   rdfs:comment "Voltage angle schedule associated with a voltage angle limit."@en ;
@@ -2322,6 +2298,16 @@ nc:InfeedLimitTimePoint.atTime a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:domain nc:InfeedLimitTimePoint ;
   rdfs:range xsd:dateTime .
 
+nc:InfeedLimitTimePoint.valueA a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "valueA" ;
+  rdfs:comment "Value of current limit. The attribute shall be a positive value or zero."@en ;
+  cim:unitSymbol cim:UnitSymbol.A ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:CurrentFlow ;
+  rdfs:domain nc:InfeedLimitTimePoint ;
+  rdfs:range xsd:float .
+
 nc:InfeedLimitTimePoint.valueW a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "valueW" ;
   rdfs:comment "Value of active power limit. The attribute shall be a positive value or zero."@en ;
@@ -2684,6 +2670,24 @@ nc:UnitCostTimePoint.atTime a owl:DatatypeProperty, owl:FunctionalProperty ;
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:UnitCostTimePoint ;
   rdfs:range xsd:dateTime .
+
+nc:UnitCostTimePoint.startupCost a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "startupCost" ;
+  rdfs:comment "The initial startup cost incurred for each start of the GeneratingUnit."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:Money ;
+  rdfs:domain nc:UnitCostTimePoint ;
+  rdfs:range xsd:decimal .
+
+nc:UnitCostTimePoint.warmStartupCost a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "warmStartupCost" ;
+  rdfs:comment "The warm startup cost incurred for each start of the GeneratingUnit."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:Money ;
+  rdfs:domain nc:UnitCostTimePoint ;
+  rdfs:range xsd:decimal .
 
 nc:VoltageAngleTimePoint.atTime a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "atTime" ;
@@ -3585,6 +3589,8 @@ cim:RealEnergy a qudt:QuantityKind ;
   skos:exactMatch quantitykind:Energy .
 
 cim:Resistance skos:exactMatch quantitykind:Resistance .
+
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
 
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 

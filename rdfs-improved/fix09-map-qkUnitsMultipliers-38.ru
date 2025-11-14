@@ -42,6 +42,7 @@ where {
          (cim:Voltage                   quantitykind:Voltage                  )
          (cim:VoltagePerReactivePower   quantitykind:VoltagePerReactivePower  )
          (cim:VolumeFlowRate            quantitykind:VolumeFlowRate           )
+         (cim:ResistancePerLength       quantitykind:LinearResistance         )
   }
   ?qa a qudt:QuantityKind
 };
@@ -85,6 +86,7 @@ where {
          (cim:UnitSymbol.ohm      skos:exactMatch unit:OHM               )
          (cim:UnitSymbol.rad      skos:exactMatch unit:RAD               )
          (cim:UnitSymbol.s        skos:exactMatch unit:SEC               )
+         (cim:UnitSymbol.ohmPerm  skos:exactMatch unit:OHM-PER-M         )
   }
   ?unit a cim:UnitSymbol
 };
@@ -121,6 +123,7 @@ where {
          (cim:Voltage                   cim:UnitMultiplier.k     cim:UnitSymbol.V        unit:KiloV                 )
          (cim:VoltagePerReactivePower   cim:UnitMultiplier.k     cim:UnitSymbol.VPerVAr  unit:KiloV-PER-V-A_Reactive)
          (cim:VolumeFlowRate            cim:UnitMultiplier.none  cim:UnitSymbol.m3Pers   unit:M3-PER-SEC            )
+         (cim:ResistancePerLength       cim:UnitMultiplier.none  cim:UnitSymbol.ohmPerm  unit:OHM-PER-M             )
   }
   ?prop
     qudt:hasQuantityKind ?qk;

@@ -353,6 +353,8 @@ cim:RealEnergy skos:exactMatch quantitykind:Energy .
 
 cim:Resistance skos:exactMatch quantitykind:Resistance .
 
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
+
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 
 cim:Seconds skos:exactMatch quantitykind:Time .

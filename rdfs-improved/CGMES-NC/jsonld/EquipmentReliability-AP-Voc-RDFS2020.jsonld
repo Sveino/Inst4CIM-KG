@@ -5445,26 +5445,6 @@
       "owl:inverseOf": "nc:ScheduleResource.GeneratingUnit"
     },
     {
-      "@id": "nc:GeneratingUnit.normalMustRunQ",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:ReactivePower"
-      },
-      "cims:multiplicity": "cims:M:0..1",
-      "cims:stereotype": [
-        "NC",
-        {
-          "@id": "uml:attribute"
-        }
-      ],
-      "rdfs:comment": "Normal minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node.",
-      "rdfs:domain": "cim:GeneratingUnit",
-      "rdfs:label": "normalMustRunQ"
-    },
-    {
       "@id": "nc:GeothermalGeneratingUnit.kind",
       "@type": [
         "owl:ObjectProperty",
@@ -8717,6 +8697,26 @@
       "cim:unitSymbol": "cim:UnitSymbol.W"
     },
     {
+      "@id": "nc:GeneratingUnit.normalMustRunQ",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:ReactivePower",
+      "rdfs:comment": "Normal minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "normalMustRunQ",
+      "rdfs:range": "xsd:float",
+      "cim:unitSymbol": "cim:UnitSymbol.VAr"
+    },
+    {
       "@id": "nc:GeneratingUnit.normalStartupCost",
       "@type": [
         "owl:DatatypeProperty",
@@ -11424,6 +11424,10 @@
       "rdfs:comment": "Resistance (real part of impedance).",
       "rdfs:label": "Resistance",
       "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:ResistancePerLength",
+      "skos:exactMatch": "quantitykind:LinearResistance"
     },
     {
       "@id": "cim:RotationSpeed",

@@ -13,5 +13,6 @@ s{http://iec.ch/TC57/CIM/CIM100#}            {https://cim.ucaiug.io/ns#}; # bug 
 s{http://iec.ch/TC57/ns/CIM#}                {https://cim.ucaiug.io/ns#}; # bug https://github.com/statnett/CIM4Enterprise/issues/16
 s{http://iec.ch/TC57/2016/CIM-schema-cim17#} {https://cim.ucaiug.io/ns#};
 s{http://entsoe.eu/ns/nc#}                   {https://cim4.eu/ns/nc#};
+s{http://cim4.eu/ns/nc#}                     {https://cim4.eu/ns/nc#};
 s{http://purl.org/dc/terms/#}                {http://purl.org/dc/terms/};
 s{dct:}                                      {dcterms:}g;

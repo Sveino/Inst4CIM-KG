@@ -2088,26 +2088,6 @@
       "owl:inverseOf": "nc:InfeedLimitSchedule.InfeedLimitTimePoint"
     },
     {
-      "@id": "nc:InfeedLimitTimePoint.valueA",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:CurrentFlow"
-      },
-      "cims:multiplicity": "cims:M:0..1",
-      "cims:stereotype": [
-        "NC",
-        {
-          "@id": "uml:attribute"
-        }
-      ],
-      "rdfs:comment": "Value of current limit. The attribute shall be a positive value or zero.",
-      "rdfs:domain": "nc:InfeedLimitTimePoint",
-      "rdfs:label": "valueA"
-    },
-    {
       "@id": "nc:ParticipationFactorTimePoint.PowerShiftKeySchedule",
       "@type": [
         "owl:ObjectProperty",
@@ -3034,46 +3014,6 @@
       "owl:inverseOf": "nc:UnitCostSchedule.UnitCostTimePoint"
     },
     {
-      "@id": "nc:UnitCostTimePoint.startupCost",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:Money"
-      },
-      "cims:multiplicity": "cims:M:0..1",
-      "cims:stereotype": [
-        "NC",
-        {
-          "@id": "uml:attribute"
-        }
-      ],
-      "rdfs:comment": "The initial startup cost incurred for each start of the GeneratingUnit.",
-      "rdfs:domain": "nc:UnitCostTimePoint",
-      "rdfs:label": "startupCost"
-    },
-    {
-      "@id": "nc:UnitCostTimePoint.warmStartupCost",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:Money"
-      },
-      "cims:multiplicity": "cims:M:0..1",
-      "cims:stereotype": [
-        "NC",
-        {
-          "@id": "uml:attribute"
-        }
-      ],
-      "rdfs:comment": "The warm startup cost incurred for each start of the GeneratingUnit.",
-      "rdfs:domain": "nc:UnitCostTimePoint",
-      "rdfs:label": "warmStartupCost"
-    },
-    {
       "@id": "nc:VoltageAngleLimit.VoltageAngleSchedule",
       "@type": [
         "owl:ObjectProperty",
@@ -3932,6 +3872,26 @@
       "rdfs:range": "xsd:dateTime"
     },
     {
+      "@id": "nc:InfeedLimitTimePoint.valueA",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:CurrentFlow",
+      "rdfs:comment": "Value of current limit. The attribute shall be a positive value or zero.",
+      "rdfs:domain": "nc:InfeedLimitTimePoint",
+      "rdfs:label": "valueA",
+      "rdfs:range": "xsd:float",
+      "cim:unitSymbol": "cim:UnitSymbol.A"
+    },
+    {
       "@id": "nc:InfeedLimitTimePoint.valueW",
       "@type": [
         "owl:DatatypeProperty",
@@ -4680,6 +4640,44 @@
       "rdfs:domain": "nc:UnitCostTimePoint",
       "rdfs:label": "atTime",
       "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "nc:UnitCostTimePoint.startupCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Money",
+      "rdfs:comment": "The initial startup cost incurred for each start of the GeneratingUnit.",
+      "rdfs:domain": "nc:UnitCostTimePoint",
+      "rdfs:label": "startupCost",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "nc:UnitCostTimePoint.warmStartupCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Money",
+      "rdfs:comment": "The warm startup cost incurred for each start of the GeneratingUnit.",
+      "rdfs:domain": "nc:UnitCostTimePoint",
+      "rdfs:label": "warmStartupCost",
+      "rdfs:range": "xsd:decimal"
     },
     {
       "@id": "nc:VoltageAngleTimePoint.atTime",
@@ -6131,6 +6129,10 @@
     {
       "@id": "cim:Resistance",
       "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:ResistancePerLength",
+      "skos:exactMatch": "quantitykind:LinearResistance"
     },
     {
       "@id": "cim:RotationSpeed",

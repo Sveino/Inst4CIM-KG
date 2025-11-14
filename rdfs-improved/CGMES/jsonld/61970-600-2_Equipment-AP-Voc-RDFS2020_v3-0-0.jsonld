@@ -9708,6 +9708,10 @@
       "skos:exactMatch": "quantitykind:Resistance"
     },
     {
+      "@id": "cim:ResistancePerLength",
+      "skos:exactMatch": "quantitykind:LinearResistance"
+    },
+    {
       "@id": "cim:RotationSpeed",
       "@type": "qudt:QuantityKind",
       "cims:belongsToCategory": "eq:Package_CoreEquipmentProfile",
@@ -10869,7 +10873,8 @@
       "@type": "cim:UnitSymbol",
       "cims:stereotype": "enum",
       "rdfs:comment": "Electric resistance per length in ohms per metre ((V/A)/m).",
-      "rdfs:label": "ohmPerm"
+      "rdfs:label": "ohmPerm",
+      "skos:exactMatch": "unit:OHM-PER-M"
     },
     {
       "@id": "cim:UnitSymbol.ohmm",

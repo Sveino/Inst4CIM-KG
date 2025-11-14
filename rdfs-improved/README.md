@@ -1534,6 +1534,8 @@ We add corresponding QUDT resources (last 3 columns):
 | cim:Voltage                   | "k"    | "V"       | cim:Float   | xsd:float   | quantitykind:Voltage                       | unit:KiloV                  | skos:exactMatch |
 | cim:VoltagePerReactivePower   | "k"    | "VPerVAr" | cim:Float   | xsd:float   | (*) quantitykind:VoltagePerReactivePower   | unit:KiloV-PER-V-A_Reactive | skos:exactMatch |
 | cim:VolumeFlowRate            | "none" | "m3Pers"  |             | xsd:float   | quantitykind:VolumeFlowRate                | unit:M3-PER-SEC             | skos:exactMatch |
+| cim:ResistancePerLength       | "none" | "ohmPerm" |             |             | quantitykind:LinearResistance              | unit:OHM-PER-M              | skos:exactMatch |
+
 
 Notes:
 - `cim:VoltagePerReactivePower` uses two multipliers, which is inconsistent: https://github.com/Sveino/Inst4CIM-KG/issues/77

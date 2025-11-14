@@ -1314,6 +1314,10 @@
       "skos:exactMatch": "quantitykind:Resistance"
     },
     {
+      "@id": "cim:ResistancePerLength",
+      "skos:exactMatch": "quantitykind:LinearResistance"
+    },
+    {
       "@id": "cim:RotationSpeed",
       "skos:exactMatch": "quantitykind:AngularVelocity"
     },

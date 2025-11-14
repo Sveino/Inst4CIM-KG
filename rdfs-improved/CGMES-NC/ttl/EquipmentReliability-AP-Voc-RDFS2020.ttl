@@ -3250,14 +3250,6 @@ nc:GeneratingUnit.ScheduleResource a owl:ObjectProperty, owl:FunctionalProperty 
   rdfs:domain cim:GeneratingUnit ;
   rdfs:range nc:ScheduleResource .
 
-nc:GeneratingUnit.normalMustRunQ a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "normalMustRunQ" ;
-  rdfs:comment "Normal minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node."@en ;
-  cims:dataType cim:ReactivePower ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", uml:attribute ;
-  rdfs:domain cim:GeneratingUnit .
-
 nc:GeothermalGeneratingUnit.kind a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "kind" ;
   rdfs:comment "Kind of geothermal generating unit."@en ;
@@ -5166,6 +5158,16 @@ nc:GeneratingUnit.normalMustRunP a owl:DatatypeProperty, owl:FunctionalProperty 
   rdfs:domain cim:GeneratingUnit ;
   rdfs:range xsd:float .
 
+nc:GeneratingUnit.normalMustRunQ a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "normalMustRunQ" ;
+  rdfs:comment "Normal minimum reactive power injection that is needed to meet must-run requirement. This value can be higher or equal to minimum operational limit. Load sign convention is used, i.e. positive sign means flow out from a node."@en ;
+  cim:unitSymbol cim:UnitSymbol.VAr ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:ReactivePower ;
+  rdfs:domain cim:GeneratingUnit ;
+  rdfs:range xsd:float .
+
 nc:GeneratingUnit.normalStartupCost a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "normalStartupCost" ;
   rdfs:comment "The normal initial startup cost incurred for each start of the GeneratingUnit."@en ;
@@ -6736,6 +6738,8 @@ cim:Resistance a qudt:QuantityKind ;
   cims:belongsToCategory er:Package_EquipmentReliabilityProfile ;
   qudt:applicableUnit cim:UnitSymbol.ohm ;
   skos:exactMatch quantitykind:Resistance .
+
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
 
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 

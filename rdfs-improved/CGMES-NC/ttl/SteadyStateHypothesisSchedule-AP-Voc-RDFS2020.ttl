@@ -3220,6 +3220,8 @@ cim:Resistance a qudt:QuantityKind ;
   qudt:applicableUnit cim:UnitSymbol.ohm ;
   skos:exactMatch quantitykind:Resistance .
 
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
+
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 
 cim:Seconds skos:exactMatch quantitykind:Time .

@@ -661,6 +661,8 @@ cim:RealEnergy skos:exactMatch quantitykind:Energy .
 
 cim:Resistance skos:exactMatch quantitykind:Resistance .
 
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
+
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 
 cim:Seconds skos:exactMatch quantitykind:Time .
@@ -1437,7 +1439,8 @@ cim:UnitSymbol.ohm a cim:UnitSymbol ;
 cim:UnitSymbol.ohmPerm a cim:UnitSymbol ;
   rdfs:label "ohmPerm" ;
   rdfs:comment "Electric resistance per length in ohms per metre ((V/A)/m)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:OHM-PER-M .
 
 cim:UnitSymbol.ohmm a cim:UnitSymbol ;
   rdfs:label "ohmm" ;

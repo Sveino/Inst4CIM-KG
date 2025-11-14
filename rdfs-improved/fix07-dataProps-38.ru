@@ -13,15 +13,19 @@ insert {
   ?prop qudt:hasQuantityKind ?qk; cim:unitMultiplier ?multiplier; cim:unitSymbol ?unitOfMeasure;
     rdfs:range ?dataType
 } where {
-  ?prop a rdf:Property; cims:dataType ?qk.
+  values ?propType {rdf:Property owl:ObjectProperty}
+  ?prop a ?propType; cims:dataType ?qk.
   ?qk a qudt:QuantityKind.
-  ?mult rdfs:domain ?qk; rdfs:range cim:UnitMultiplier; cims:isFixed ?mult1.
-  bind(iri(concat(str(cim:UnitMultiplier),".",?mult1)) as ?multiplier)
+  optional {
+    ?mult rdfs:domain ?qk; rdfs:range cim:UnitMultiplier; cims:isFixed ?mult1.
+    bind(iri(concat(str(cim:UnitMultiplier),".",?mult1)) as ?multiplier)
+  }
   optional {
     ?unit rdfs:domain ?qk; rdfs:range cim:UnitSymbol; cims:isFixed ?unit1
     bind(iri(concat(str(cim:UnitSymbol),".",?unit1)) as ?unitOfMeasure)
   }
-  ?value rdfs:domain ?qk; rdfs:label "value"@en; rdfs:range ?dataType
+  optional {?value rdfs:domain ?qk; rdfs:label "value"@en; rdfs:range ?dataType1}
+  bind(coalesce(?dataType1,xsd:float) as ?dataType)
 };
 
 # fix props pointing to Compound
@@ -29,6 +33,7 @@ insert {
 delete {?prop cims:dataType ?compound}
 insert {?prop rdfs:range ?compound}
 where {
-  ?prop a rdf:Property; cims:dataType ?compound. 
+  values ?propType {rdf:Property owl:ObjectProperty}
+  ?prop a ?propType; cims:dataType ?compound. 
   ?compound cims:stereotype "Compound"
 };

@@ -1133,23 +1133,6 @@
       "rdfs:label": "VoltageInjectionControlFunction"
     },
     {
-      "@id": "cim:GeneratingUnit.startupCost",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:Money"
-      },
-      "cims:multiplicity": "cims:M:0..1",
-      "cims:stereotype": {
-        "@id": "uml:attribute"
-      },
-      "rdfs:comment": "The initial startup cost incurred for each start of the GeneratingUnit.",
-      "rdfs:domain": "cim:GeneratingUnit",
-      "rdfs:label": "startupCost"
-    },
-    {
       "@id": "nc:CompensatorController.mode",
       "@type": [
         "owl:ObjectProperty",
@@ -1184,46 +1167,6 @@
       "rdfs:domain": "nc:DirectCurrentEquipmentController",
       "rdfs:label": "mode",
       "rdfs:range": "nc:DCControlModeKind"
-    },
-    {
-      "@id": "nc:FrequencyControlFuntion.targetValue",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:Frequency"
-      },
-      "cims:multiplicity": "cims:M:1..1",
-      "cims:stereotype": [
-        "NC",
-        {
-          "@id": "uml:attribute"
-        }
-      ],
-      "rdfs:comment": "Target value for the frequency that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
-      "rdfs:domain": "nc:FrequencyControlFuntion",
-      "rdfs:label": "targetValue"
-    },
-    {
-      "@id": "nc:GeneratingUnit.warmStartupCost",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
-      "cims:dataType": {
-        "@id": "cim:Money"
-      },
-      "cims:multiplicity": "cims:M:0..1",
-      "cims:stereotype": [
-        "NC",
-        {
-          "@id": "uml:attribute"
-        }
-      ],
-      "rdfs:comment": "The warm startup cost incurred for each start of the GeneratingUnit.",
-      "rdfs:domain": "cim:GeneratingUnit",
-      "rdfs:label": "warmStartupCost"
     },
     {
       "@id": "nc:InjectionController.mode",
@@ -1359,6 +1302,22 @@
       "rdfs:domain": "cim:Equipment",
       "rdfs:label": "networkAnalysisEnabled",
       "rdfs:range": "xsd:boolean"
+    },
+    {
+      "@id": "cim:GeneratingUnit.startupCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": {
+        "@id": "uml:attribute"
+      },
+      "qudt:hasQuantityKind": "cim:Money",
+      "rdfs:comment": "The initial startup cost incurred for each start of the GeneratingUnit.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "startupCost",
+      "rdfs:range": "xsd:decimal"
     },
     {
       "@id": "cim:RegulatingCondEq.controlEnabled",
@@ -2540,6 +2499,26 @@
       "rdfs:range": "xsd:float"
     },
     {
+      "@id": "nc:FrequencyControlFuntion.targetValue",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:1..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Frequency",
+      "rdfs:comment": "Target value for the frequency that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment.",
+      "rdfs:domain": "nc:FrequencyControlFuntion",
+      "rdfs:label": "targetValue",
+      "rdfs:range": "xsd:float",
+      "cim:unitSymbol": "cim:UnitSymbol.Hz"
+    },
+    {
       "@id": "nc:FuelStorage.energyStorage",
       "@type": [
         "owl:DatatypeProperty",
@@ -2658,6 +2637,25 @@
       "rdfs:domain": "cim:GeneratingUnit",
       "rdfs:label": "participationFactor",
       "rdfs:range": "xsd:float"
+    },
+    {
+      "@id": "nc:GeneratingUnit.warmStartupCost",
+      "@type": [
+        "owl:DatatypeProperty",
+        "owl:FunctionalProperty"
+      ],
+      "cims:multiplicity": "cims:M:0..1",
+      "cims:stereotype": [
+        "NC",
+        {
+          "@id": "uml:attribute"
+        }
+      ],
+      "qudt:hasQuantityKind": "cim:Money",
+      "rdfs:comment": "The warm startup cost incurred for each start of the GeneratingUnit.",
+      "rdfs:domain": "cim:GeneratingUnit",
+      "rdfs:label": "warmStartupCost",
+      "rdfs:range": "xsd:decimal"
     },
     {
       "@id": "nc:GridStateAlteration.enabled",
@@ -4980,6 +4978,10 @@
     {
       "@id": "cim:Resistance",
       "skos:exactMatch": "quantitykind:Resistance"
+    },
+    {
+      "@id": "cim:ResistancePerLength",
+      "skos:exactMatch": "quantitykind:LinearResistance"
     },
     {
       "@id": "cim:RotationSpeed",

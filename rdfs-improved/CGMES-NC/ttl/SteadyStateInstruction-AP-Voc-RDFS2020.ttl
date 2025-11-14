@@ -569,14 +569,6 @@ nc:VoltageInjectionControlFunction a owl:Class ;
   cims:belongsToCategory ssi:Package_SteadyStateInstructionProfile ;
   cims:stereotype "Description", "NC", uml:concrete .
 
-cim:GeneratingUnit.startupCost a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "startupCost" ;
-  rdfs:comment "The initial startup cost incurred for each start of the GeneratingUnit."@en ;
-  cims:dataType cim:Money ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
-  rdfs:domain cim:GeneratingUnit .
-
 nc:CompensatorController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "mode" ;
   rdfs:comment "Mode of the compensator controller."@en ;
@@ -592,22 +584,6 @@ nc:DirectCurrentEquipmentController.mode a owl:ObjectProperty, owl:FunctionalPro
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain nc:DirectCurrentEquipmentController ;
   rdfs:range nc:DCControlModeKind .
-
-nc:FrequencyControlFuntion.targetValue a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "targetValue" ;
-  rdfs:comment "Target value for the frequency that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
-  cims:dataType cim:Frequency ;
-  cims:multiplicity cims:M:1..1 ;
-  cims:stereotype "NC", uml:attribute ;
-  rdfs:domain nc:FrequencyControlFuntion .
-
-nc:GeneratingUnit.warmStartupCost a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "warmStartupCost" ;
-  rdfs:comment "The warm startup cost incurred for each start of the GeneratingUnit."@en ;
-  cims:dataType cim:Money ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", uml:attribute ;
-  rdfs:domain cim:GeneratingUnit .
 
 nc:InjectionController.mode a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "mode" ;
@@ -672,6 +648,15 @@ cim:Equipment.networkAnalysisEnabled a owl:DatatypeProperty, owl:FunctionalPrope
   cims:stereotype uml:attribute ;
   rdfs:domain cim:Equipment ;
   rdfs:range xsd:boolean .
+
+cim:GeneratingUnit.startupCost a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "startupCost" ;
+  rdfs:comment "The initial startup cost incurred for each start of the GeneratingUnit."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:Money ;
+  rdfs:domain cim:GeneratingUnit ;
+  rdfs:range xsd:decimal .
 
 cim:RegulatingCondEq.controlEnabled a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "controlEnabled" ;
@@ -1302,6 +1287,16 @@ nc:FrequencyControlFuntion.frequencyBias a owl:DatatypeProperty, owl:FunctionalP
   rdfs:domain nc:FrequencyControlFuntion ;
   rdfs:range xsd:float .
 
+nc:FrequencyControlFuntion.targetValue a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "targetValue" ;
+  rdfs:comment "Target value for the frequency that the control function is calculating to achieve by adjusting the operational setting to the controlled equipment."@en ;
+  cim:unitSymbol cim:UnitSymbol.Hz ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:Frequency ;
+  rdfs:domain nc:FrequencyControlFuntion ;
+  rdfs:range xsd:float .
+
 nc:FuelStorage.energyStorage a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "energyStorage" ;
   rdfs:comment "Amount of energy available in the storage."@en ;
@@ -1363,6 +1358,15 @@ In the case of priority strategy, the item with the lowest number gets allocated
   cims:stereotype "NC", uml:attribute ;
   rdfs:domain cim:GeneratingUnit ;
   rdfs:range xsd:float .
+
+nc:GeneratingUnit.warmStartupCost a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "warmStartupCost" ;
+  rdfs:comment "The warm startup cost incurred for each start of the GeneratingUnit."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:Money ;
+  rdfs:domain cim:GeneratingUnit ;
+  rdfs:range xsd:decimal .
 
 nc:GridStateAlteration.enabled a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "enabled" ;
@@ -2729,6 +2733,8 @@ cim:RealEnergy a qudt:QuantityKind ;
   skos:exactMatch quantitykind:Energy .
 
 cim:Resistance skos:exactMatch quantitykind:Resistance .
+
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
 
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 

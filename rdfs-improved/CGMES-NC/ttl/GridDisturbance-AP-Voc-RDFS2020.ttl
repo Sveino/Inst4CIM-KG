@@ -548,22 +548,6 @@ nc:Interruption.Outage a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:domain nc:Interruption ;
   rdfs:range cim:Outage .
 
-nc:Interruption.energyNotDelivered a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "energyNotDelivered" ;
-  rdfs:comment "The estimated energy which would have been delivered through the delivery point if no interruption and no transmission restrictions had occurred."@en ;
-  cims:dataType cim:RealEnergy ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", uml:attribute ;
-  rdfs:domain nc:Interruption .
-
-nc:Interruption.energyNotSupplied a owl:ObjectProperty, owl:FunctionalProperty ;
-  rdfs:label "energyNotSupplied" ;
-  rdfs:comment "The estimated energy which would have been supplied to end-users if no interruption and no transmission restrictions had occurred."@en ;
-  cims:dataType cim:RealEnergy ;
-  cims:multiplicity cims:M:0..1 ;
-  cims:stereotype "NC", uml:attribute ;
-  rdfs:domain nc:Interruption .
-
 nc:Outage.FaultOutage a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   rdfs:label "FaultOutage" ;
   rdfs:comment "The combination of a fault and an outage to be simulated for this outage."@en ;
@@ -819,6 +803,26 @@ nc:Interruption.duration a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:domain nc:Interruption ;
   rdfs:range xsd:duration .
 
+nc:Interruption.energyNotDelivered a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "energyNotDelivered" ;
+  rdfs:comment "The estimated energy which would have been delivered through the delivery point if no interruption and no transmission restrictions had occurred."@en ;
+  cim:unitSymbol cim:UnitSymbol.Wh ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:RealEnergy ;
+  rdfs:domain nc:Interruption ;
+  rdfs:range xsd:float .
+
+nc:Interruption.energyNotSupplied a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "energyNotSupplied" ;
+  rdfs:comment "The estimated energy which would have been supplied to end-users if no interruption and no transmission restrictions had occurred."@en ;
+  cim:unitSymbol cim:UnitSymbol.Wh ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype "NC", uml:attribute ;
+  qudt:hasQuantityKind cim:RealEnergy ;
+  rdfs:domain nc:Interruption ;
+  rdfs:range xsd:float .
+
 nc:Interruption.interruptedPower a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "interruptedPower" ;
   rdfs:comment "The estimated power that was delivered through the delivery point when the interruption occurred."@en ;
@@ -1060,6 +1064,8 @@ cim:RealEnergy a qudt:QuantityKind ;
   skos:exactMatch quantitykind:Energy .
 
 cim:Resistance skos:exactMatch quantitykind:Resistance .
+
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
 
 cim:RotationSpeed skos:exactMatch quantitykind:AngularVelocity .
 

@@ -6218,6 +6218,8 @@ cim:Resistance a qudt:QuantityKind ;
   qudt:applicableUnit cim:UnitSymbol.ohm ;
   skos:exactMatch quantitykind:Resistance .
 
+cim:ResistancePerLength skos:exactMatch quantitykind:LinearResistance .
+
 cim:RotationSpeed a qudt:QuantityKind ;
   rdfs:label "RotationSpeed" ;
   rdfs:comment "Number of revolutions per second."@en ;
@@ -7060,7 +7062,8 @@ cim:UnitSymbol.ohm a cim:UnitSymbol ;
 cim:UnitSymbol.ohmPerm a cim:UnitSymbol ;
   rdfs:label "ohmPerm" ;
   rdfs:comment "Electric resistance per length in ohms per metre ((V/A)/m)."@en ;
-  cims:stereotype "enum" .
+  cims:stereotype "enum" ;
+  skos:exactMatch unit:OHM-PER-M .
 
 cim:UnitSymbol.ohmm a cim:UnitSymbol ;
   rdfs:label "ohmm" ;
