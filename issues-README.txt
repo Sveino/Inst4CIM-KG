@@ -33,7 +33,9 @@ https://github.com/Sveino/Inst4CIM-KG/issues/144
 https://github.com/Sveino/Inst4CIM-KG/issues/149
 https://github.com/Sveino/Inst4CIM-KG/issues/15
 https://github.com/Sveino/Inst4CIM-KG/issues/150
+https://github.com/Sveino/Inst4CIM-KG/issues/151
 https://github.com/Sveino/Inst4CIM-KG/issues/152
+https://github.com/Sveino/Inst4CIM-KG/issues/157
 https://github.com/Sveino/Inst4CIM-KG/issues/16
 https://github.com/Sveino/Inst4CIM-KG/issues/17
 https://github.com/Sveino/Inst4CIM-KG/issues/18

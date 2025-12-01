@@ -39,7 +39,7 @@ https://github.com/Sveino/Inst4CIM-KG/issues/141	SHACL: Do not prohibit inverse 
 https://github.com/Sveino/Inst4CIM-KG/issues/142	describe all issues in READMEs
 https://github.com/Sveino/Inst4CIM-KG/issues/143	use slash not hash in instance URLs (and remove parasitic underscore)
 https://github.com/Sveino/Inst4CIM-KG/issues/144	global semantic resolver for electrical data (I Have a Dream)
-https://github.com/Sveino/Inst4CIM-KG/issues/145	do we need PropertyReference UUIDs in the ontologies?
+https://github.com/Sveino/Inst4CIM-KG/issues/145	PropertyReference questions
 https://github.com/Sveino/Inst4CIM-KG/issues/146	Mapping bidirectional UML relation to LinkML
 https://github.com/Sveino/Inst4CIM-KG/issues/147	consider resolvable model (graph) URLs
 https://github.com/Sveino/Inst4CIM-KG/issues/148	add URI options to `cim-trig.pl`?
@@ -59,8 +59,27 @@ https://github.com/Sveino/Inst4CIM-KG/issues/16	Don't use parasitic `PropertySha
 https://github.com/Sveino/Inst4CIM-KG/issues/160	Rename V-A in CIM-QUDT mapping
 https://github.com/Sveino/Inst4CIM-KG/issues/161	define `cims` ontology
 https://github.com/Sveino/Inst4CIM-KG/issues/162	syntax for internal links (in ontology **definitions** to other ontology terms)
+https://github.com/Sveino/Inst4CIM-KG/issues/163	missed to convert some cims:dataType
+https://github.com/Sveino/Inst4CIM-KG/issues/164	duplicate type statements across named graphs
+https://github.com/Sveino/Inst4CIM-KG/issues/165	`AnalogValue.value, MeasurementValue.value` missing in ontologies
+https://github.com/Sveino/Inst4CIM-KG/issues/166	define props `cim:unitMultiplier, cim:unitSymbol`
+https://github.com/Sveino/Inst4CIM-KG/issues/167	missing `nc:LogicOperatorsKind` values
+https://github.com/Sveino/Inst4CIM-KG/issues/168	how to represent fractional units (Price and CurrencyExchange)
+https://github.com/Sveino/Inst4CIM-KG/issues/169	How to represent direction of flow between two zones
 https://github.com/Sveino/Inst4CIM-KG/issues/17	Don't use SHACL SPARQL where SHACL Standard is enough
+https://github.com/Sveino/Inst4CIM-KG/issues/170	`measurementType, MeasurementValueSource` structure (feature of interest, qualifier)
+https://github.com/Sveino/Inst4CIM-KG/issues/171	union class cimr:EquipmentOrContainer
+https://github.com/Sveino/Inst4CIM-KG/issues/172	CIM needs traits/mixins/flavors; and/or multiple hierarchy/typing
+https://github.com/Sveino/Inst4CIM-KG/issues/173	try OntoMetrics
+https://github.com/Sveino/Inst4CIM-KG/issues/174	change `dcat-cim` to `dcatcim`
+https://github.com/Sveino/Inst4CIM-KG/issues/175	what is a timeseries? Analog vs AnalogValue
+https://github.com/Sveino/Inst4CIM-KG/issues/176	update QUDT units to latest naming convention
+https://github.com/Sveino/Inst4CIM-KG/issues/177	"super-dataset": Catalog or Dataset with `dct:hasPart`
+https://github.com/Sveino/Inst4CIM-KG/issues/178	hijacked rdfs:domain in Header (MAJOR breakage)
+https://github.com/Sveino/Inst4CIM-KG/issues/179	confusion Impedance-Inductance
 https://github.com/Sveino/Inst4CIM-KG/issues/18	Don't use tabs in SHACL files
+https://github.com/Sveino/Inst4CIM-KG/issues/180	add Quantities `ResistancePerLength, Displacement` and respective Units
+https://github.com/Sveino/Inst4CIM-KG/issues/181	xsd:dateTimeStamp or xsd:dateTime?
 https://github.com/Sveino/Inst4CIM-KG/issues/19	`valueType` shapes are complicated and incorrect
 https://github.com/Sveino/Inst4CIM-KG/issues/20	replace `eumd:DateTimeStamp` with standard datatype, remove `eu:URI`
 https://github.com/Sveino/Inst4CIM-KG/issues/21	HTML Tags and Escaped Entities in Definitions

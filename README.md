@@ -121,14 +121,17 @@ gh issue ls -s all -L 1000 --json url,title -q 'sort_by(.url) | .[] | [.url, .ti
 perl -ne 'print "$1\n" while m{(https://github.com/Sveino/Inst4CIM-KG/issues/\d+)}g' README.md */README.md | sort | uniq > issues-README.txt
 cut -f1 issues-all.tsv | comm -3 - issues-README.txt | join - issues-all.tsv > issues-missing.tsv
 ```
-Running this on 7-Dec-2024 showed these counts:
+Then we count issues to see:
+- how many need to be added to the 3 READMEs (summarized or described in more detail)
+- the evolution in time:
 ```
 wc -l issues-*
-   72 issues-README.txt
-  119 issues-all.tsv
-   47 issues-missing.tsv
 ```
-So now I need to go through 65 issues to put them in READMEs and summarize or describe them in more detail.
+| File               | 7-Dec-2024 | 1-Dec-2025 |
+|--------------------|------------|------------|
+| issues-README.txt  |         72 |        100 |
+| issues-all.tsv     |        119 |        160 |
+| issues-missing.tsv |         47 |         60 |
 
 Note: `make issues` runs all these commands.
 
