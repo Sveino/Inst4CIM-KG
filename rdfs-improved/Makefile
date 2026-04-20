@@ -1,7 +1,7 @@
 .PHONY: all dirs ttl1 ttl rm-ttl clean fix-all
 
 all:
-	 @echo "targets: dirs, clean (zero files), fix-all (concat fix*.ru), ttl1 (for testing), ttl, rm-ttl, jsonld, rm-jsonld"
+	 @echo "targets: dirs, clean (zero files), fix-all (concat fix*.ru), ttl1 (for testing), ttl, rm-ttl, jsonld, rm-jsonld, zip (of ttl)"
 
 FIX-ALL = $(wildcard fix[0-9]*)
 
@@ -160,3 +160,6 @@ rm-jsonld:
 
 dirs:
 	mkdir CGMES CGMES/ttl CGMES CGMES/jsonld CGMES-NC CGMES-NC/ttl CGMES-NC/jsonld
+
+zip: $(CGMES_TTL) $(CGMES_NC_TTL)
+	zip -9 -u -o CGMES-NC-ttl.zip $^
