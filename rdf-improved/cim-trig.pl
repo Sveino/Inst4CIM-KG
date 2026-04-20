@@ -39,14 +39,15 @@ my ($rdf_open, $body, $rdf_close) =
   or die "Can't find rdf:RDF element\n";
 my ($base) =
   $body =~ m{(?:<md:Model.modelingAuthoritySet>|<dcat:isVersionOf rdf:resource=")(.*?)[<"]}
-  or die "Can't find md:Model.modelingAuthoritySet|dcat:isVersionOf rdf:resource\n";
-$rdf_open =~ s{xml:base="http://iec.ch/TC57/CIM100"}{}; # inappropriate for base of instance URLs
-$rdf_open =~ s{<rdf:RDF}{<rdf:RDF xml:base="$base#"};
+  or warn qq{WARN: can't find md:Model.modelingAuthoritySet|dcat:isVersionOf rdf:resource\n};
+$rdf_open =~ s{xml:base="http://iec.ch/TC57/CIM100"}{}
+  and warn qq{WARN: xml:base="http://iec.ch/TC57/CIM100" is inappropriate for instance URLs\n};
+$rdf_open =~ s{<rdf:RDF}{<rdf:RDF xml:base="$base#"} if $base;
 
 # extract Model element and its attributes
 my ($model, $model_type, $model_uri) =
   $body =~ m{(<(md:FullModel|dcat:Dataset|dm:DifferenceModel|dcat-?cim:DifferenceSet) rdf:about="(.*?)".*?</\2>)}s
-  or die "Can't find md:FullModel|dcat:Dataset or dm:DifferenceModel|dcat-cim:DifferenceSet\n";
+  or die "Can't find md:FullModel|dcat:Dataset or dm:DifferenceModel|dcatcim:DifferenceSet\n";
 
 if ($model_type =~ "dm:DifferenceModel|dcat-?cim:DifferenceSet") {
   my ($model_open, $reverse_tag, $reverse, $reverse_tag1, $forward_tag, $forward, $forward_tag1, $model_close) =

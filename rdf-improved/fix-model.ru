@@ -1,6 +1,6 @@
 prefix md:       <http://iec.ch/TC57/61970-552/ModelDescription/1#>
 prefix dm:       <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
-prefix dcat-cim: <https://cim4.eu/ns/dcat-cim#>
+prefix dcatcim:  <https://cim4.eu/ns/dcatcim#>
 prefix dcat:     <http://www.w3.org/ns/dcat#>
 prefix dct:      <http://purl.org/dc/terms/>
 prefix json-ld:  <https://www.w3.org/ns/json-ld#>
@@ -34,8 +34,8 @@ insert {
       json-ld:base                                       ?base                    ;
       dcat:version                                       ?version_string          ;
       dcat:previousVersion                               ?supersedes              ;
-      dcat-cim:reverseDifferenceSet                      ?reverseDifferences      ;
-      dcat-cim:forwardDifferenceSet                      ?forwardDifferences      .
+      dcatcim:reverseDifferenceSet                       ?reverseDifferences      ;
+      dcatcim:forwardDifferenceSet                       ?forwardDifferences      .
   }
   graph ?reverseDifferences {
     ?reverseDifferences a rdfg:Graph, dcat:Resource; dct:title ?reverse_title; dct:identifier ?reverse_id
@@ -47,8 +47,8 @@ insert {
 where {
   graph ?g {
     values (?type        ?type_new) {
-      (md:FullModel       dcat:Dataset          )
-      (dm:DifferenceModel dcat-cim:DifferenceSet)
+      (md:FullModel       dcat:Dataset         )
+      (dm:DifferenceModel dcatcim:DifferenceSet)
     }
     ?model a ?type
     bind(strafter(str(?model),"urn:uuid:") as ?model_id)
