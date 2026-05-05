@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eu="http://iec.ch/TC57/CIM100-European#" xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#" xmlns:cim="http://iec.ch/TC57/CIM100#">
+  <md:FullModel rdf:about="urn:uuid:d11b06e3-b709-4d45-9b49-188b2089be16">
+    <md:Model.DependentOn rdf:resource="urn:uuid:1b65ada7-39ca-42b8-a278-39c457ed82c3"/>
+    <md:Model.created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-02-06T14:18:22Z</md:Model.created>
+    <md:Model.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The equipment dataset of the boundary that is used in the ReliCapGrid.</md:Model.description>
+    <md:Model.modelingAuthoritySet rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://ninerealms.nr/boundary</md:Model.modelingAuthoritySet>
+    <md:Model.profile rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/3.0</md:Model.profile>
+    <md:Model.scenarioTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-06-16T23:30:00Z</md:Model.scenarioTime>
+    <md:Model.version rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</md:Model.version>
+  </md:FullModel>
+  <eu:BoundaryPoint rdf:about="urn:uuid:c65325ed-92a7-384a-834b-99c1ceea32ef">
+    <eu:BoundaryPoint.ConnectivityNode rdf:resource="urn:uuid:b66f15c0-cb6e-11e1-bcee-406c8f32ef58"/>
+    <eu:BoundaryPoint.fromEndIsoCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SD</eu:BoundaryPoint.fromEndIsoCode>
+    <eu:BoundaryPoint.fromEndName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bouchala3</eu:BoundaryPoint.fromEndName>
+    <eu:BoundaryPoint.fromEndNameTso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TSO-Svedala</eu:BoundaryPoint.fromEndNameTso>
+    <eu:BoundaryPoint.isExcludedFromAreaInterchange rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</eu:BoundaryPoint.isExcludedFromAreaInterchange>
+    <eu:BoundaryPoint.toEndIsoCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BO</eu:BoundaryPoint.toEndIsoCode>
+    <eu:BoundaryPoint.toEndName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mastania3</eu:BoundaryPoint.toEndName>
+    <eu:BoundaryPoint.toEndNameTso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TSO-Belgovia</eu:BoundaryPoint.toEndNameTso>
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boundary point 3 between Svedala (substation name) and Belgovia (substation name) (225kV).</cim:IdentifiedObject.description>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">c65325ed-92a7-384a-834b-99c1ceea32ef</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO3</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO3</eu:IdentifiedObject.shortName>
+  </eu:BoundaryPoint>
+  <cim:ConnectivityNode rdf:about="urn:uuid:b66f15c0-cb6e-11e1-bcee-406c8f32ef58">
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="urn:uuid:2e08aa26-2719-4b3e-a0eb-a9bd0ddbcae1"/>
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boundary point 3 between Svedala (substation name) and Belgovia (substation name) (225kV).</cim:IdentifiedObject.description>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">b66f15c0-cb6e-11e1-bcee-406c8f32ef58</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO3</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO3</eu:IdentifiedObject.shortName>
+  </cim:ConnectivityNode>
+  <cim:Line rdf:about="urn:uuid:2e08aa26-2719-4b3e-a0eb-a9bd0ddbcae1">
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Line BP_SD-BO3</cim:IdentifiedObject.description>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2e08aa26-2719-4b3e-a0eb-a9bd0ddbcae1</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO3</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO3</eu:IdentifiedObject.shortName>
+    <cim:Line.Region rdf:resource="urn:uuid:fbcc6679-6da5-4cfd-b50c-8ce23f450c78"/>
+  </cim:Line>
+  <eu:BoundaryPoint rdf:about="urn:uuid:fd0e36b7-817f-4547-9e0f-a07011aecd48">
+    <eu:BoundaryPoint.ConnectivityNode rdf:resource="urn:uuid:b6978550-cb6e-11e1-bcee-406c8f32ef58"/>
+    <eu:BoundaryPoint.fromEndIsoCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SD</eu:BoundaryPoint.fromEndIsoCode>
+    <eu:BoundaryPoint.fromEndName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bouchala2</eu:BoundaryPoint.fromEndName>
+    <eu:BoundaryPoint.fromEndNameTso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TSO-Svedala</eu:BoundaryPoint.fromEndNameTso>
+    <eu:BoundaryPoint.isExcludedFromAreaInterchange rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</eu:BoundaryPoint.isExcludedFromAreaInterchange>
+    <eu:BoundaryPoint.toEndIsoCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BO</eu:BoundaryPoint.toEndIsoCode>
+    <eu:BoundaryPoint.toEndName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mastania2</eu:BoundaryPoint.toEndName>
+    <eu:BoundaryPoint.toEndNameTso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TSO-Belgovia</eu:BoundaryPoint.toEndNameTso>
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boundary point 2 between Svedala (substation name) and Belgovia (substation name) (380kV).</cim:IdentifiedObject.description>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fd0e36b7-817f-4547-9e0f-a07011aecd48</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO2</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO2</eu:IdentifiedObject.shortName>
+  </eu:BoundaryPoint>
+  <cim:ConnectivityNode rdf:about="urn:uuid:b6978550-cb6e-11e1-bcee-406c8f32ef58">
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="urn:uuid:54a2e470-ef70-443f-ae81-bcf2d117caa3"/>
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boundary point 2 between Svedala (substation name) and Belgovia (substation name) (380kV).</cim:IdentifiedObject.description>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">b6978550-cb6e-11e1-bcee-406c8f32ef58</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO2</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO2</eu:IdentifiedObject.shortName>
+  </cim:ConnectivityNode>
+  <cim:Line rdf:about="urn:uuid:54a2e470-ef70-443f-ae81-bcf2d117caa3">
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Line BP_SD-BO2</cim:IdentifiedObject.description>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">54a2e470-ef70-443f-ae81-bcf2d117caa3</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO2</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO2</eu:IdentifiedObject.shortName>
+    <cim:Line.Region rdf:resource="urn:uuid:fbcc6679-6da5-4cfd-b50c-8ce23f450c78"/>
+  </cim:Line>
+  <eu:BoundaryPoint rdf:about="urn:uuid:082e267e-53e4-cb00-c6ed-be67d80701c1">
+    <eu:BoundaryPoint.ConnectivityNode rdf:resource="urn:uuid:f738d362-c11c-4ca2-82da-a4fa115b3392"/>
+    <eu:BoundaryPoint.fromEndIsoCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SD</eu:BoundaryPoint.fromEndIsoCode>
+    <eu:BoundaryPoint.fromEndName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bouchala</eu:BoundaryPoint.fromEndName>
+    <eu:BoundaryPoint.fromEndNameTso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TSO-Svedala</eu:BoundaryPoint.fromEndNameTso>
+    <eu:BoundaryPoint.isExcludedFromAreaInterchange rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</eu:BoundaryPoint.isExcludedFromAreaInterchange>
+    <eu:BoundaryPoint.toEndIsoCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BO</eu:BoundaryPoint.toEndIsoCode>
+    <eu:BoundaryPoint.toEndName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mastania</eu:BoundaryPoint.toEndName>
+    <eu:BoundaryPoint.toEndNameTso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TSO-Belgovia</eu:BoundaryPoint.toEndNameTso>
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boundary point 1 between Svedala (substation name) and Belgovia (substation name) (380kV).</cim:IdentifiedObject.description>
+    <eu:IdentifiedObject.energyIdentCodeEic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10T-EH-PT-10004U</eu:IdentifiedObject.energyIdentCodeEic>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">082e267e-53e4-cb00-c6ed-be67d80701c1</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO1</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO1</eu:IdentifiedObject.shortName>
+  </eu:BoundaryPoint>
+  <cim:ConnectivityNode rdf:about="urn:uuid:f738d362-c11c-4ca2-82da-a4fa115b3392">
+    <cim:ConnectivityNode.ConnectivityNodeContainer rdf:resource="urn:uuid:77ca5612-67a1-4a52-a180-86560777ab4a"/>
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boundary point 1 between Svedala (substation name) and Belgovia (substation name) (380kV).</cim:IdentifiedObject.description>
+    <eu:IdentifiedObject.energyIdentCodeEic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10T-EH-PT-10004U</eu:IdentifiedObject.energyIdentCodeEic>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">f738d362-c11c-4ca2-82da-a4fa115b3392</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO1</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO1</eu:IdentifiedObject.shortName>
+  </cim:ConnectivityNode>
+  <cim:Line rdf:about="urn:uuid:77ca5612-67a1-4a52-a180-86560777ab4a">
+    <cim:IdentifiedObject.description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Line BP_SD-BO1</cim:IdentifiedObject.description>
+    <eu:IdentifiedObject.energyIdentCodeEic rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10T-BO-GA-10314U</eu:IdentifiedObject.energyIdentCodeEic>
+    <cim:IdentifiedObject.mRID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">77ca5612-67a1-4a52-a180-86560777ab4a</cim:IdentifiedObject.mRID>
+    <cim:IdentifiedObject.name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO1</cim:IdentifiedObject.name>
+    <eu:IdentifiedObject.shortName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BP_SD-BO1</eu:IdentifiedObject.shortName>
+    <cim:Line.Region rdf:resource="urn:uuid:fbcc6679-6da5-4cfd-b50c-8ce23f450c78"/>
+  </cim:Line>
+</rdf:RDF>
