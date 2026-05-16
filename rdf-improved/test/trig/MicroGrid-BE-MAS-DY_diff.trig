@@ -1,57 +1,62 @@
-PREFIX cim:      <http://iec.ch/TC57/CIM100#>
-PREFIX dcat:     <http://www.w3.org/ns/dcat#>
-PREFIX dcat-cim: <https://cim4.eu/ns/dcat-cim#>
-PREFIX dct:      <http://purl.org/dc/terms/>
-PREFIX dm:       <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
-PREFIX eu:       <http://iec.ch/TC57/CIM100-European#>
-PREFIX eumd:     <https://cim4.eu/ns/Metadata-European#>
-PREFIX json-ld:  <https://www.w3.org/ns/json-ld#>
-PREFIX md:       <http://iec.ch/TC57/61970-552/ModelDescription/1#>
-PREFIX nc:       <https://cim4.eu/ns/nc#>
-PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfg:     <http://www.w3.org/2004/03/trix/rdfg-1/>
-PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dct:     <http://purl.org/dc/terms/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX entsoe2: <http://entsoe.eu/CIM/SchemaExtension/3/2#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+PREFIX eumd:    <https://cim4.eu/ns/Metadata-European#>
+PREFIX icim:    <http://iec.ch/TC57/2013/CIM-schema-cim16-info#>
+PREFIX json-ld: <https://www.w3.org/ns/json-ld#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX pti:     <http://www.pti-us.com/PTI_CIM-schema-cim16#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfg:    <http://www.w3.org/2004/03/trix/rdfg-1/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
-<urn:uuid:c39c80ce-40b5-407d-9687-4cbbc90193cd> {
-    <http://elia.be/CGMES#_f7d4412c-6567-4759-aa48-4c881dd79902>
+<urn:uuid:50888254-3936-4f99-a218-cd2c5c393653> {
+    <urn:uuid:f7d4412c-6567-4759-aa48-4c881dd79902>
             cim:ExcIEEEAC4A.ka  "200"^^xsd:float .
     
-    <urn:uuid:c39c80ce-40b5-407d-9687-4cbbc90193cd>
+    <urn:uuid:50888254-3936-4f99-a218-cd2c5c393653>
             rdf:type        rdfg:Graph , dcat:Resource;
-            dct:identifier  "c39c80ce-40b5-407d-9687-4cbbc90193cd";
+            dct:identifier  "50888254-3936-4f99-a218-cd2c5c393653";
             dct:title       "Reverse Difference Set of 87da6373-3b6c-47a2-9493-1918a8d9df61" .
 }
 
-<urn:uuid:887e2c64-dcb5-4768-b5be-a0e4ee42b4de> {
-    <urn:uuid:887e2c64-dcb5-4768-b5be-a0e4ee42b4de>
-            rdf:type        rdfg:Graph , dcat:Resource;
-            dct:identifier  "887e2c64-dcb5-4768-b5be-a0e4ee42b4de";
-            dct:title       "Forward Difference Set of 87da6373-3b6c-47a2-9493-1918a8d9df61" .
-    
-    <http://elia.be/CGMES#_f7d4412c-6567-4759-aa48-4c881dd79902>
+<urn:uuid:27fb330f-0586-468d-b6bd-f48edcd19238> {
+    <urn:uuid:f7d4412c-6567-4759-aa48-4c881dd79902>
             cim:ExcIEEEAC4A.ka  "300"^^xsd:float;
             cim:IdentifiedObject.description
                     "Modified parameter Ka" .
+    
+    <urn:uuid:27fb330f-0586-468d-b6bd-f48edcd19238>
+            rdf:type        rdfg:Graph , dcat:Resource;
+            dct:identifier  "27fb330f-0586-468d-b6bd-f48edcd19238";
+            dct:title       "Forward Difference Set of 87da6373-3b6c-47a2-9493-1918a8d9df61" .
 }
 
 <urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61> {
     <urn:uuid:87da6373-3b6c-47a2-9493-1918a8d9df61>
-            rdf:type                       rdfg:Graph , dcat-cim:DifferenceSet;
-            dct:conformsTo                 <http://iec.ch/TC57/ns/CIM/Dynamics-EU/1.0>;
-            dct:description                "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
-            dct:identifier                 "87da6373-3b6c-47a2-9493-1918a8d9df61";
-            dct:issued                     "2021-11-19"^^xsd:date;
-            dct:requires                   <urn:uuid:095c6b30-255d-40d5-85fe-2c9fe6c9846d>;
-            dct:temporal                   [ rdf:type        dct:PeriodOfTime;
-                                             dcat:startDate  "2021-04-21T15:30:00Z"^^xsd:dateTime
-                                           ];
-            dcat:distribution              [ rdf:type    dcat:Distribution;
-                                             dct:issued  "2021-11-19T23:16:27Z"^^xsd:dateTime
-                                           ];
-            dcat:isVersionOf               <http://elia.be/CGMES>;
-            dcat:previousVersion           <urn:uuid:8e91166f-12ce-4a20-b0bf-7be301171d0b>;
-            dcat:version                   "002";
-            dcat-cim:forwardDifferenceSet  <urn:uuid:887e2c64-dcb5-4768-b5be-a0e4ee42b4de>;
-            dcat-cim:reverseDifferenceSet  <urn:uuid:c39c80ce-40b5-407d-9687-4cbbc90193cd>;
-            json-ld:base                   "http://elia.be/CGMES#" .
+            rdf:type                      dcatcim:DifferenceSet , rdfg:Graph;
+            dct:conformsTo                <http://iec.ch/TC57/ns/CIM/Dynamics-EU/1.0>;
+            dct:description               "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
+            dct:identifier                "87da6373-3b6c-47a2-9493-1918a8d9df61";
+            dct:issued                    "2021-11-19"^^xsd:date;
+            dct:requires                  <urn:uuid:095c6b30-255d-40d5-85fe-2c9fe6c9846d>;
+            dct:temporal                  [ rdf:type        dct:PeriodOfTime;
+                                            dcat:startDate  "2021-04-21T15:30:00Z"^^xsd:dateTime
+                                          ];
+            dcat:distribution             [ rdf:type    dcat:Distribution;
+                                            dct:issued  "2021-11-19T23:16:27Z"^^xsd:dateTime
+                                          ];
+            dcat:isVersionOf              <http://elia.be/CGMES>;
+            dcat:previousVersion          <urn:uuid:8e91166f-12ce-4a20-b0bf-7be301171d0b>;
+            dcat:version                  "002";
+            dcatcim:forwardDifferenceSet  <urn:uuid:27fb330f-0586-468d-b6bd-f48edcd19238>;
+            dcatcim:reverseDifferenceSet  <urn:uuid:50888254-3936-4f99-a218-cd2c5c393653>;
+            json-ld:base                  "http://elia.be/CGMES#" .
 }

@@ -1,6 +1,6 @@
-test_rdf           = $(wildcard test/rdf/*)
-test_trig          = $(patsubst test/rdf/%.xml, test/trig/%.trig,     $(test_rdf))
-test_jsonld        = $(patsubst test/rdf/%.xml, test/jsonld/%.jsonld, $(test_rdf))
+test_rdf           = $(wildcard test/cimxml/*)
+test_trig          = $(patsubst test/cimxml/%.xml, test/trig/%.trig,     $(test_rdf))  $(patsubst test/nquads/%.nq, test/trig/%.trig, $(wildcard test/nquads/*.nq))
+test_jsonld        = $(patsubst test/trig/%.trig, test/jsonld/%.jsonld, $(test_trig))
 
 nordic_source      = ../../Nordic44/Instances
 nordic_dirs       != /usr/bin/find $(nordic_source) -type d
@@ -11,7 +11,7 @@ nordic_ignore2     = $(patsubst %, $(nordic_source)/%, $(nordic_ignore))
 nordic_rdf         = $(filter-out $(nordic_ignore2), $(wildcard $(nordic_source)/*_2_*/*.xml))
 nordic_trig        = $(subst .xml,.trig, $(subst $(nordic_source),$(nordic_target), $(nordic_rdf)))
 
-entsoe_source      = ../../ENTSOE-SHACL/ENTSO-E_Test_Configurations_v3.0.2/v3.0
+entsoe_source      = ../../ENTSOE/ENTSO-E_Test_Configurations_v3.0.2/v3.0
 entsoe_dirs       != /usr/bin/find $(entsoe_source) -type d
 entsoe_target      = instances/ENTSO-E_Test_Configurations_v3.0.2
 entsoe_target_dirs = $(subst $(entsoe_source),$(entsoe_target),$(entsoe_dirs))
@@ -26,7 +26,11 @@ multiplied_trig    = $(subst .xml,.trig, $(subst $(multiplied_source),$(multipli
 zip                = ../../instance-zipped
 
 all:
-	@echo targets: fix-datatypes, context, dirs, zips, test, jsonld, nordic, entsoe, multiplied, rm-test, rm-jsonld, rm-nordic, rm-entsoe, rm-multiplied, clean
+	@echo targets: echo, fix-datatypes, context, dirs, zips, test, jsonld, nordic, entsoe, multiplied, rm-test, rm-jsonld, rm-nordic, rm-entsoe, rm-multiplied, clean
+
+echo:
+	@echo trig: $(test_trig)
+	@echo jsonld: $(test_jsonld)
 
 context: cim-context-old.jsonld cim-context-new.jsonld
 cim-context-%.jsonld: cim-context-%.txt cim-context-common.txt
@@ -61,16 +65,22 @@ fix-datatypes-and-model.ru: fix-datatypes-new.ru fix-model.ru
 test: $(test_trig)
 rm-test:
 	rm -f $(test_trig)
-test/trig/%.trig: test/rdf/%.xml | cim-trig.pl fix-datatypes-and-model.ru
-	perl cim-trig.pl -r $^ > temp.trig
+test/trig/%.trig: test/cimxml/%.xml | fix-ns.pl cim-urn-uuid.pl cim-trig.pl fix-datatypes-and-model.ru
+	perl fix-ns.pl $^ | perl cim-urn-uuid.pl > temp.xml
+	perl cim-trig.pl -r temp.xml > temp.trig
 	update.bat --update=fix-datatypes-and-model.ru --data=temp.trig --dump > $@
-	rm temp.trig
+	rm temp.xml temp.trig
+
+test/trig/%.trig: test/nquads/%.nq | fix-ns.pl fix-datatypes-and-model.ru
+	perl fix-ns.pl $^ > temp.nq
+	update.bat --update=fix-datatypes-and-model.ru --data=temp.nq --dump > $@
+	rm temp.nq
 
 jsonld: $(test_jsonld)
 rm-jsonld:
 	rm -f $(test_jsonld)
 test/jsonld/%.jsonld: test/trig/%.trig
-	riot.bat -formatted jsonld $^ | jsonld compact -c https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld > $@
+	riot.bat -formatted jsonld $^ | jsonld compact -c https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-new.jsonld > $@
 
 nordic: $(nordic_trig)
 rm-nordic:

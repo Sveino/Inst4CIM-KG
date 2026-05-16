@@ -1,451 +1,353 @@
-PREFIX cim:      <http://iec.ch/TC57/CIM100#>
-PREFIX dcat:     <http://www.w3.org/ns/dcat#>
-PREFIX dcat-cim: <https://cim4.eu/ns/dcat-cim#>
-PREFIX dct:      <http://purl.org/dc/terms/>
-PREFIX dm:       <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
-PREFIX eu:       <http://iec.ch/TC57/CIM100-European#>
-PREFIX eumd:     <https://cim4.eu/ns/Metadata-European#>
-PREFIX json-ld:  <https://www.w3.org/ns/json-ld#>
-PREFIX md:       <http://iec.ch/TC57/61970-552/ModelDescription/1#>
-PREFIX nc:       <https://cim4.eu/ns/nc#>
-PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfg:     <http://www.w3.org/2004/03/trix/rdfg-1/>
-PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dct:     <http://purl.org/dc/terms/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX entsoe2: <http://entsoe.eu/CIM/SchemaExtension/3/2#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+PREFIX eumd:    <https://cim4.eu/ns/Metadata-European#>
+PREFIX icim:    <http://iec.ch/TC57/2013/CIM-schema-cim16-info#>
+PREFIX json-ld: <https://www.w3.org/ns/json-ld#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX pti:     <http://www.pti-us.com/PTI_CIM-schema-cim16#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfg:    <http://www.w3.org/2004/03/trix/rdfg-1/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 <urn:uuid:55e5a7a1-93fb-44ab-9c3f-cbfcfcc93247> {
-    <http://fullgrid.eu/CGMES/3.0#_36dab81d-f517-4d5d-a4d8-11277efbae8d>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_c5aa8f57-82a4-4242-b093-2183cc6732b5>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_cf8cdf2b-c09b-4601-a3b2-b6715cd3fe46>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_0544c491-290e-4887-a677-c6cf51c7c62e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6e98ce95-7986-47d1-81c6-5ce74ffb1ca1>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_d4f41742-192f-4b1a-8735-e0cf000a478e>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_25ad3814-1d3a-4154-88ad-94adf87c113b>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_2939d1e5-abf0-4494-bc07-6d6b88de49a4>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_10e4eeef-6b0f-4c80-aa2c-ec394a8fa6cb>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_69fb097a-8366-4f62-8cac-095c41649501>;
-            cim:SvPowerFlow.p         "-75"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0ec46677-efa1-483a-963d-e3122f3de5d1>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_58889b22-7bd5-4e54-8602-2e115bfa2ed7>;
-            cim:SvVoltage.angle            "-8.632430"^^xsd:float;
-            cim:SvVoltage.v                "115.500000"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_cf2b37f5-400d-4166-ba7a-57fb3c6bfd44>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_62a4d7b2-acca-4726-8d47-a85afbcf0642>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_88cf0780-0b1d-40ab-a19c-dde3f412358a>
-            rdf:type                   cim:DCTopologicalIsland;
-            cim:DCTopologicalIsland.DCTopologicalNodes
-                    <http://fullgrid.eu/CGMES/3.0#_62e05955-9dd9-41c2-9753-75f04838d258> , <http://fullgrid.eu/CGMES/3.0#_d444a448-d542-4929-a369-0bf360079f5b> , <http://fullgrid.eu/CGMES/3.0#_5b11fb75-b075-4c01-8a5c-ecfc6cc6e616> , <http://fullgrid.eu/CGMES/3.0#_0e8a2acc-6550-4ab7-8a61-975dea4b0ea5> , <http://fullgrid.eu/CGMES/3.0#_34d01770-11e9-46c7-b8da-20855cfcffeb> , <http://fullgrid.eu/CGMES/3.0#_c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6> , <http://fullgrid.eu/CGMES/3.0#_d4fc45b2-7090-4d26-b620-e7a319aca9b5> , <http://fullgrid.eu/CGMES/3.0#_2e18bb26-ab9d-41a8-9a1e-71aa3c98d425> , <http://fullgrid.eu/CGMES/3.0#_1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb> , <http://fullgrid.eu/CGMES/3.0#_fd8c8a4f-2f26-4912-b11f-5d52accad641> , <http://fullgrid.eu/CGMES/3.0#_4b1a0c1a-85a4-4a85-9e20-db775ae9dcce> , <http://fullgrid.eu/CGMES/3.0#_155a50ec-13d8-4104-879f-e998411be2ea> , <http://fullgrid.eu/CGMES/3.0#_b7a85241-4141-4241-b08b-df7d3bd0c06f>;
-            cim:IdentifiedObject.mRID  "88cf0780-0b1d-40ab-a19c-dde3f412358a";
-            cim:IdentifiedObject.name  "DC_TOP_NET_1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8dc40049-12a2-4c0c-914b-73fabdbbc90e>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_ad96b7fb-3130-4782-a33b-09979e30c025>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8a31d8ab-e2c5-4513-8846-cb3d2b537371>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_e2bdd541-97c0-4781-b40d-713a7bbe2777>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_34e0c388-bcdc-4df3-b92e-444cc9cef750>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_5331ff9a-14e7-4c10-9b85-0f5cc1dddab4>;
-            cim:SvPowerFlow.p         "-90.000000"^^xsd:float;
-            cim:SvPowerFlow.q         "103.893000"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fea158bc-8a39-4984-9eb1-a00a272d573f>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_2be66ddb-e536-47c9-8881-830e46a97a4f>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7cdbd14c-3a08-44dd-b413-dbf81d998d3e>
-            rdf:type                     cim:VsConverter;
-            cim:ACDCConverter.idc        "962.342430"^^xsd:float;
-            cim:ACDCConverter.poleLossP  "3.333385"^^xsd:float;
-            cim:ACDCConverter.uc         "124.334501"^^xsd:float;
-            cim:ACDCConverter.udc        "150.000000"^^xsd:float;
-            cim:IdentifiedObject.mRID    "7cdbd14c-3a08-44dd-b413-dbf81d998d3e";
-            cim:VsConverter.delta        "0"^^xsd:float;
-            cim:VsConverter.uv           "124.334501"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_3d54001a-1e34-416c-b7af-da1510158a65>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_7f830c46-a1e0-466c-bad5-1b7523147805>;
-            cim:SvVoltage.angle            "-6.149480"^^xsd:float;
-            cim:SvVoltage.v                "226.006478"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4404ba3b-8d64-4a0a-bd3e-8e1b50d0d549>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_840e2c69-6ffd-45e6-8d60-bdedc73acfef>;
-            cim:SvPowerFlow.p         "-75"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_27eb6d6e-83e4-4580-977d-086e3189e884>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_ba0e78a4-f7d5-464c-9517-9f33f4e68c64>;
-            cim:SvTapStep.position    "10"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b4fd28e5-de4e-474a-8366-2f10c43952dd>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_d3435b9a-1077-49ac-ab24-969734b70fd5>;
-            cim:SvPowerFlow.p         "1.000000"^^xsd:float;
-            cim:SvPowerFlow.q         "0e+000"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_05eba599-8459-40ee-840d-2bf54f069b89>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_184b6377-ff16-48a0-8cb3-620a10c58e56>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b9c4f2d6-8b25-40af-a27d-15ecc69bb7a9>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_5614f030-c1c8-435c-8d5b-580721dce0a0>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_cbfafd75-1497-4a31-8ecb-d45e89d0b309>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_c20b82b4-2b19-4cf7-9527-73a252f9cf74>;
-            cim:SvTapStep.position    "7"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ceb3e9c8-cf8e-417e-80ea-2769bcd25e83>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_97fe7f71-1a56-4d3b-97fe-1085d6d972f5>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_80b9b3de-73eb-4cc3-8ca3-b5c1630c641b>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_d84be2ac-c639-49b2-b9f7-207a02ecfd03>;
-            cim:SvPowerFlow.p         "-34.542367"^^xsd:float;
-            cim:SvPowerFlow.q         "1.292361"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_003cc295-dbee-425e-9164-1b42bc02453b>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_c05ab5b3-82eb-4c9d-9851-93f6cd30e32f>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a6bb4fdc-fcff-403e-9c74-2bd937295ec0>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_8eb05bae-8d2f-44dd-b206-b3477b84d9ec>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_eba5da2b-3308-4916-92e7-cbfbcaf4b3c4>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_543f5566-a809-4e74-bdeb-c6a0ccb8afcb>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_52680105-690f-4a3e-9ecb-27333d5b53e7>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d282a4f2-fc06-4e2b-94d8-d5472ba7db8b>;
-            cim:SvVoltage.angle            "-6.216820"^^xsd:float;
-            cim:SvVoltage.v                "225.471858"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_3f16a305-1e5c-4ef4-b028-9e38026bbff2>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_49aa21f8-8463-4b00-b93d-960ae7dd2811>;
-            cim:SvPowerFlow.p         "0"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8f69c78d-fada-49cd-936a-a0050ad56966>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>;
-            cim:SvVoltage.angle            "-8.734640"^^xsd:float;
-            cim:SvVoltage.v                "225.658343"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_16bdd41c-b9e6-4ccd-8725-19b7235ac2d9>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_578a730a-b763-4a3e-baae-9d0d0dd03524>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0205c2ba-9c48-463f-ad9e-492e938f296b>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_acbfd6be-2fc9-4ea3-b74a-caaa16a31018>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c7fa30a7-d0ee-4341-be80-196d64d2158c>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_1619fc53-f06a-44c1-9f44-d3720fc3d92e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ceaa1632-5c47-4828-a1e9-d5cd03764ba5>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_b3936a6c-cdab-44d8-93d8-2f2013805d05>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a1f1a119-b9b2-470f-8c13-3082c51e7932>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_c3504bc4-212c-4b8d-99b9-3042d3551f00>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9a579f19-6bb2-4369-b368-ee6344c17133>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_ff3d16a7-77d9-4f86-945a-b1b8fee995fb>;
-            cim:SvPowerFlow.p         "-118.000000"^^xsd:float;
-            cim:SvPowerFlow.q         "-68.351957"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b4d336f1-b2f6-4f1b-a499-03b6d9eae89d>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_1ebb3954-be11-4825-9dd6-4357f9715a08>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_18def49e-5904-4438-84f3-a0251ce8e69d>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_aac86575-36d8-455d-abe8-34edb60b6e04>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_69042df2-ef84-4fa0-8dc9-b1f26941d864>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_7874083b-e588-416d-b125-863c2681f6a3>;
-            cim:SvVoltage.angle            "-8.734640"^^xsd:float;
-            cim:SvVoltage.v                "413.589732"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_48062ed5-d02f-402f-aba3-b2876aae760f>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_ff13a516-6228-43f1-8513-e21ebcbe6a0d>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5b097fd1-8006-47ab-a95b-285a0cf021cd>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_184b6377-ff16-48a0-8cb3-620a10c58e56>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_687810a5-e206-44ec-a19a-014160374b1d>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_866f8f54-565d-4fbb-9c4f-780298f80752>;
-            cim:SvVoltage.angle            "-6.474900"^^xsd:float;
-            cim:SvVoltage.v                "411.500287"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_28d8001a-2e8e-4dde-a1bd-cead9ff0f2e2>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_7fbf6b98-27b4-4330-8d2d-00ff2575286e>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6ef0183e-2afb-4029-8b0e-3677cb90bf1f>
+    <urn:uuid:6ef0183e-2afb-4029-8b0e-3677cb90bf1f>
             rdf:type  cim:SvShuntCompensatorSections;
             cim:SvShuntCompensatorSections.ShuntCompensator
-                    <http://fullgrid.eu/CGMES/3.0#_a7565e09-33eb-4dfc-8837-6a19f877ec29>;
+                    <urn:uuid:a7565e09-33eb-4dfc-8837-6a19f877ec29>;
             cim:SvShuntCompensatorSections.sections
                     "1"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_cc9578f6-20b9-4a88-b4b0-7557f81317bd>
+    <urn:uuid:43ad5549-4afb-45df-8210-ff75296653ef>
             rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_a6c9e04c-9659-4516-bde6-5e31ba66cd38>;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:17c1fd73-ab8f-4984-aab3-a0e80f6cddbc>;
+            cim:SvVoltage.angle            "-8.632430"^^xsd:float;
+            cim:SvVoltage.v                "115.500000"^^xsd:float .
+    
+    <urn:uuid:1d15233c-9fbe-46f8-81f4-a4106de5270a>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:bec23818-76a9-4e47-aecd-76f8ad3f1199>;
+            cim:SvVoltage.angle            "12.534110"^^xsd:float;
+            cim:SvVoltage.v                "124.334501"^^xsd:float .
+    
+    <urn:uuid:abd2de6e-e82f-466a-a26a-651d6ce1fc24>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:d1393cd4-4a1e-43d3-bc6e-a63b0baca1eb>;
+            cim:SvTapStep.position    "4"^^xsd:float .
+    
+    <urn:uuid:c25c7b98-cb1a-457a-9d08-0165ffb1d98c>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:7cdbd14c-3a08-44dd-b413-dbf81d998d3e>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:f5e85ac9-aabf-47c2-8a28-93d0642a471e>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:450dc36a-3fea-40ec-be02-524dfe307d26>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:aba8e57f-46e5-4740-b41d-e2695e632a96>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:bfa60a69-855c-4179-889e-a7f56988af6e>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:003cc295-dbee-425e-9164-1b42bc02453b>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:c05ab5b3-82eb-4c9d-9851-93f6cd30e32f>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:38f45b29-ae4d-4e0c-bf11-1a27d0974ba8>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:ed9f5001-2b84-49a5-9b00-2c9b0591eb06>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:8dc40049-12a2-4c0c-914b-73fabdbbc90e>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:ad96b7fb-3130-4782-a33b-09979e30c025>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:36a1b1f0-f08f-481f-9c7d-33695b52fe60>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:12e5b86c-e552-4607-bb42-402a0eb4fffd>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:8a31d8ab-e2c5-4513-8846-cb3d2b537371>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:e2bdd541-97c0-4781-b40d-713a7bbe2777>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:cc9578f6-20b9-4a88-b4b0-7557f81317bd>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:a6c9e04c-9659-4516-bde6-5e31ba66cd38>;
             cim:SvVoltage.angle            "-8.751450"^^xsd:float;
             cim:SvVoltage.v                "225.622398"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_12b842c5-32b2-4598-bb28-85841d6fc794>
+    <urn:uuid:84088fad-53ce-4abd-968a-396c3f9ed8b8>
             rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_094cd7e3-fc76-4fbc-a1d3-7ed5e23ce70a>;
-            cim:SvTapStep.position    "17"^^xsd:float .
+            cim:SvTapStep.TapChanger  <urn:uuid:ec968eed-b009-4206-a3a7-d7735a07b355>;
+            cim:SvTapStep.position    "6"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_2f016dc8-e1b2-49dc-8373-f3d83dd07a22>
+    <urn:uuid:2c07a421-2ecc-4c2b-8ca4-4636b30447b6>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_99ff08b9-87c1-4017-b15f-a5b68e49d750>;
+                    <urn:uuid:fb139144-102f-486d-9d47-c78f7ad784fa>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_a154a517-4ecf-4be0-8aeb-bd8d40503da2>
+    <urn:uuid:df3800e8-ace4-448f-b30e-d56fa839fd31>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_af1d683b-e581-4b1a-8e80-2b854283f636>;
+                    <urn:uuid:7fbf6b98-27b4-4330-8d2d-00ff2575286e>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_61e78678-099e-4f69-a9d7-d95f7176e3dd>
+    <urn:uuid:7cd56e1c-47dc-4e24-a05c-b60b1a5f9272>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_d64195f6-4d3d-4052-b91d-6b197995efd4>;
+                    <urn:uuid:cf2205b6-12e4-4d1c-9e8e-6bfdfca787bb>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_cb60b2b4-4aa5-430c-b999-7d1f6745f067>
+    <urn:uuid:6b5d56fd-4cd5-4dd2-a782-69516f0c1ad7>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:dd100e03-e942-43c2-932b-d2e01bb9bd07>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:28d8001a-2e8e-4dde-a1bd-cead9ff0f2e2>
             rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_0544c491-290e-4887-a677-c6cf51c7c62e>;
+            cim:SvSwitch.Switch  <urn:uuid:7fbf6b98-27b4-4330-8d2d-00ff2575286e>;
             cim:SvSwitch.open    false .
     
-    <http://fullgrid.eu/CGMES/3.0#_2e6c56ec-9ab1-45e6-b6df-6a321957ab37>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_2b6d5c08-b083-4b05-aec6-2f2c18ff32cb>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4a433c62-0a56-4867-944d-8ddbf722e783>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_7056bbcf-1ad4-4bc9-beec-ac9f247b01d9>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e1a16016-1b8e-4fb3-91f4-01f39592bf5f>
+    <urn:uuid:07fd166c-a4f5-4dd3-8d7e-36375d1c3549>
             rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_918484e1-e9d6-41ec-88c6-4d3a8cec53cd>;
-            cim:SvPowerFlow.p         "-118.000000"^^xsd:float;
-            cim:SvPowerFlow.q         "-68.351957"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_47581c13-5fef-435a-a104-80c6cafc71c3>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_9b225755-08c3-472e-b1fa-9a9be48fec3d>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d735ecad-e033-4fb2-a28e-4129eb5faac7>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_7eec4043-7805-4d8f-9ba3-d63bce88d9be>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4fd9f69b-3354-4f0e-b735-ba2e81ee58a9>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_3d2f09f5-f2d2-4810-92ed-1b26e066a1d6>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_07fd166c-a4f5-4dd3-8d7e-36375d1c3549>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_ce8698bf-251b-4488-9712-ef00202026a8>;
+            cim:SvPowerFlow.Terminal  <urn:uuid:ce8698bf-251b-4488-9712-ef00202026a8>;
             cim:SvPowerFlow.p         "200.000000"^^xsd:float;
             cim:SvPowerFlow.q         "90.000000"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_5a37c4e2-8f64-4263-8443-848a2becbf30>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_b594eb01-62a7-4d95-8e36-64eb4167d74c>;
-            cim:SvPowerFlow.p         "1.184602"^^xsd:float;
-            cim:SvPowerFlow.q         "-59.230078"^^xsd:float .
+    <urn:uuid:efaab3b3-d397-49d3-bcd0-042bf4848f3e>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:4520f8f3-0b52-4a34-b916-d199dc1dae95>;
+            cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_09112a9d-5c94-44b7-b955-82f1a90d47a9>
+    <urn:uuid:eba5da2b-3308-4916-92e7-cbfbcaf4b3c4>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:543f5566-a809-4e74-bdeb-c6a0ccb8afcb>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:1462c719-3abc-4632-908c-dacc053f09bd>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:27651fac-2c7f-4a96-b669-eb914be45c5b>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:7d53e90c-fc7f-418d-bc59-d61013940161>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:2f8f192b-e261-44c7-85fb-646fa9281728>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:315ce5d6-85ab-49c7-9cc1-0ef3a410fb01>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:9444340e-9295-4e3b-a4c1-f55dce24ca8e>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:3937b06e-af5a-44d3-88c1-d5020f1515f5>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:2e52dcc1-2b32-4313-bf50-d6d18fdedad8>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:434f39be-964a-40dd-bf41-6e0aaf85bf4d>
+            rdf:type                    cim:SvInjection;
+            cim:SvInjection.TopologicalNode
+                    <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>;
+            cim:SvInjection.pInjection  "0.0"^^xsd:float;
+            cim:SvInjection.qInjection  "0.0"^^xsd:float .
+    
+    <urn:uuid:54ff28a7-7866-4889-9983-81148f8bc60a>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:37e90dfb-9d6c-4233-a4fd-6f4c2c909ecd>;
+            cim:SvPowerFlow.p         "-19.99"^^xsd:float;
+            cim:SvPowerFlow.q         "-19.99"^^xsd:float .
+    
+    <urn:uuid:88cf0780-0b1d-40ab-a19c-dde3f412358a>
+            rdf:type                   cim:DCTopologicalIsland;
+            cim:DCTopologicalIsland.DCTopologicalNodes
+                    <urn:uuid:0e8a2acc-6550-4ab7-8a61-975dea4b0ea5> , <urn:uuid:62e05955-9dd9-41c2-9753-75f04838d258> , <urn:uuid:fd8c8a4f-2f26-4912-b11f-5d52accad641> , <urn:uuid:2e18bb26-ab9d-41a8-9a1e-71aa3c98d425> , <urn:uuid:b7a85241-4141-4241-b08b-df7d3bd0c06f> , <urn:uuid:155a50ec-13d8-4104-879f-e998411be2ea> , <urn:uuid:d444a448-d542-4929-a369-0bf360079f5b> , <urn:uuid:4b1a0c1a-85a4-4a85-9e20-db775ae9dcce> , <urn:uuid:c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6> , <urn:uuid:d4fc45b2-7090-4d26-b620-e7a319aca9b5> , <urn:uuid:34d01770-11e9-46c7-b8da-20855cfcffeb> , <urn:uuid:1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb> , <urn:uuid:5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>;
+            cim:IdentifiedObject.mRID  "88cf0780-0b1d-40ab-a19c-dde3f412358a";
+            cim:IdentifiedObject.name  "DC_TOP_NET_1" .
+    
+    <urn:uuid:dbe4ecd3-237d-4cce-9ccc-04e1d714678d>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:8b8f89f1-b226-4e40-9414-7517f1868fe7>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:8b4ad9c1-0e87-486e-bc1e-f11de0a1859f>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:8add0faf-5960-4882-a293-a5f79aef82c3>;
+            cim:SvPowerFlow.p         "-43.627121"^^xsd:float;
+            cim:SvPowerFlow.q         "78.432952"^^xsd:float .
+    
+    <urn:uuid:9a579f19-6bb2-4369-b368-ee6344c17133>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:ff3d16a7-77d9-4f86-945a-b1b8fee995fb>;
+            cim:SvPowerFlow.p         "-118.000000"^^xsd:float;
+            cim:SvPowerFlow.q         "-68.351957"^^xsd:float .
+    
+    <urn:uuid:181a6847-a2b5-41e5-811c-b77badb6ffc7>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:335c1895-a4a3-46d1-b13c-687bc4cec343>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:6fd8f3c7-0c4d-483e-b05e-852e000ece79>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:d044b1fa-5ec4-43b6-96f9-99afba975573>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:c60bcbf0-1556-4780-8181-1ed33381d876>
             rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a>;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:1fdbd284-1504-4db8-a8c2-ee935f36879e>;
             cim:SvVoltage.angle            "-8.632430"^^xsd:float;
             cim:SvVoltage.v                "115.500000"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_997bfdd6-6a4a-4b91-89b5-436423235e7f>
+    <urn:uuid:8420363c-7aae-488a-b772-eb1c9d104277>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:05675d2d-bb4c-4165-808f-0c7671a790cd>;
+            cim:SvVoltage.angle            "-8.260120"^^xsd:float;
+            cim:SvVoltage.v                "226.136561"^^xsd:float .
+    
+    <urn:uuid:39d23d96-d952-4f5f-a0ab-2dc331dd4d6c>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:43f1888c-c495-4efc-acee-2123ba99fbb8>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:997bfdd6-6a4a-4b91-89b5-436423235e7f>
             rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_08d5cb60-f1e7-452a-8023-3b7292cc23ce>;
+            cim:SvPowerFlow.Terminal  <urn:uuid:08d5cb60-f1e7-452a-8023-3b7292cc23ce>;
             cim:SvPowerFlow.p         "-40.273274"^^xsd:float;
             cim:SvPowerFlow.q         "83.928997"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_8ba202e0-a343-4bdb-a6c1-e4f031366549>
+    <urn:uuid:cbfafd75-1497-4a31-8ecb-d45e89d0b309>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:c20b82b4-2b19-4cf7-9527-73a252f9cf74>;
+            cim:SvTapStep.position    "7"^^xsd:float .
+    
+    <urn:uuid:c27de31f-9967-4f3f-8389-9e0ef9b22998>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:14532a5a-b4f0-49a9-95e5-817a21ac809b>;
+            cim:SvTapStep.position    "6"^^xsd:float .
+    
+    <urn:uuid:a6948626-b600-4af3-b047-110f197d9fdd>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_3a1494c9-4752-4264-a5fc-4997b4aa2009>;
+                    <urn:uuid:56bd00d3-4877-4e76-8fdd-5768d82a919a>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_004baa5e-eb99-489a-8fc0-ccc63657cf7c>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_d11c0694-da10-4635-8afb-ebd4f0682f70>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_edf520ae-3462-459c-838b-8d8e9a1241ba>
+    <urn:uuid:5ad53399-db17-4eaa-a287-f142886ddc99>
             rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_4f2fea1d-b4c1-40ea-b3eb-958b7b1d7576>;
+            cim:SvSwitch.Switch  <urn:uuid:c3504bc4-212c-4b8d-99b9-3042d3551f00>;
             cim:SvSwitch.open    false .
     
-    <http://fullgrid.eu/CGMES/3.0#_725b6e99-f35f-4794-997e-bf88180102ca>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_b8f5b2e0-3522-4465-8ce7-e238a863c46c>;
-            cim:SvPowerFlow.p         "-33.718508"^^xsd:float;
-            cim:SvPowerFlow.q         "2.598975"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9aa035ca-8637-4ce4-991d-4dc5ec13a15f>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_61146890-aa23-41df-8048-d4441c24fda7>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4b917203-e9b3-42c8-b058-af888000dd58>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_d259a2ef-04ff-4790-ac13-b4c48f8e92c2>;
-            cim:SvPowerFlow.p         "0"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4e75b2b8-4c13-4159-af35-87345f481531>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_b6bb3424-88af-4934-a46c-ef220f778cbb>;
-            cim:SvPowerFlow.p         "200.000000"^^xsd:float;
-            cim:SvPowerFlow.q         "50.000000"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1ba008b3-591d-4a7e-80fa-acd6dc729019>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_e0d6595a-36ec-4fed-a585-54804ff02b91>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6fd99327-5ecf-4191-ab97-50e59a138394>
+    <urn:uuid:28be3c1b-4253-434d-b2ec-b41b66855ad9>
             rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_3beceba6-2ea4-4c7d-802b-b117f638dda3>;
+            cim:SvSwitch.Switch  <urn:uuid:d11c0694-da10-4635-8afb-ebd4f0682f70>;
             cim:SvSwitch.open    false .
     
-    <http://fullgrid.eu/CGMES/3.0#_0f6efdf0-d28c-4792-891d-eaaa66980c81>
+    <urn:uuid:0205c2ba-9c48-463f-ad9e-492e938f296b>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:acbfd6be-2fc9-4ea3-b74a-caaa16a31018>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:2a3edf7e-1a9c-451f-9e2d-968a96b868da>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_620f7d77-6a26-47d4-933e-1e2a5881befb>;
+                    <urn:uuid:e718f6c3-1859-4858-951d-ceff95c2fb1d>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_2a3edf7e-1a9c-451f-9e2d-968a96b868da>
+    <urn:uuid:47581c13-5fef-435a-a104-80c6cafc71c3>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_e718f6c3-1859-4858-951d-ceff95c2fb1d>;
+                    <urn:uuid:9b225755-08c3-472e-b1fa-9a9be48fec3d>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_bc02e04a-d245-4dc6-ade5-3144b65b727a>
+    <urn:uuid:fdfdc8f5-c948-46dd-a6f4-345a1b76d305>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_c5aa8f57-82a4-4242-b093-2183cc6732b5>;
+                    <urn:uuid:0062fda9-1883-48b8-975b-47828a371ccd>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_a680e726-541c-4833-b15f-ddd68cb3624a>
+    <urn:uuid:f37da347-f794-4210-a540-d40ac27ca1f2>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:ff13a516-6228-43f1-8513-e21ebcbe6a0d>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:34c14e2e-bc9c-47a1-85e8-760bc6980cf8>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:0b0fc078-f889-46d2-bb63-35ee6c65bc0f>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:f91f8f6a-a4e4-4490-bbd0-c31d5ed7bda3>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:b60321bf-09b7-42db-a679-4fc2dd9370df>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:84487c28-bc4f-4f27-909b-6111546d91ab>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:8eb05bae-8d2f-44dd-b206-b3477b84d9ec>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:33d7c618-e355-4f2c-8006-10273792f4dd>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:abf36e01-6c4e-4a65-b9cb-b7b3b62c021b>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:fa736f7f-40c2-436d-9528-b18931662804>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:592f3d0c-bd64-4bb5-b779-d873d8895d6d>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:09f422c9-bb40-450b-ab03-5fa8e22fbf33>
             rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>;
-            cim:SvVoltage.angle            "-8.632430"^^xsd:float;
-            cim:SvVoltage.v                "115.500000"^^xsd:float .
+            cim:SvVoltage.TopologicalNode  <urn:uuid:bd9d594b-e909-4890-9225-27b54a7c272a>;
+            cim:SvVoltage.angle            "-6.486570"^^xsd:float;
+            cim:SvVoltage.v                "411.770499"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_da0d37c5-4926-4732-a33c-696e15f8f373>
+    <urn:uuid:4bc29148-0a83-4ce4-8ddb-3e5acb05f503>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_09ad7fd9-f141-4939-8faa-c6c71e920200>;
+                    <urn:uuid:e40166e1-f954-4c0c-b343-bd8049d0f799>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_1a0d9ab5-9fb7-4534-a8a9-d4cee11974a9>
-            rdf:type  cim:SvShuntCompensatorSections;
-            cim:SvShuntCompensatorSections.ShuntCompensator
-                    <http://fullgrid.eu/CGMES/3.0#_68972669-2a90-462c-9f58-dd44fdd5c841>;
-            cim:SvShuntCompensatorSections.sections
-                    "1"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_92872a44-e192-4299-94b7-5ce649894ec4>
+    <urn:uuid:df2ddf9b-68c5-4926-a6f1-67ef1cc5ff4f>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_469cab52-b961-4910-bf44-4109580732b6>;
+                    <urn:uuid:3beceba6-2ea4-4c7d-802b-b117f638dda3>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:7ff93aac-5680-4145-85c8-fc4ab7b274ed>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:61503fe7-c9e4-410f-a16e-f354a5bace22>;
             cim:SvStatus.inService  true .
     
     <urn:uuid:55e5a7a1-93fb-44ab-9c3f-cbfcfcc93247>
@@ -467,692 +369,59 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
             dcat:version             "1";
             json-ld:base             "http://fullgrid.eu/CGMES/3.0#" .
     
-    <http://fullgrid.eu/CGMES/3.0#_70d39349-7f6d-4ad3-8a45-c1a978ac36dc>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
-            cim:SvVoltage.angle            "-6.665390"^^xsd:float;
-            cim:SvVoltage.v                "413.589732"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1b32a23b-f199-4702-b139-5ffc724a7b61>
+    <urn:uuid:5c5488d5-744e-42f3-ac9a-316f44614505>
             rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_be12d211-8d63-401a-a9c5-bafc8bd9baeb>;
+            cim:SvSwitch.Switch  <urn:uuid:0d76d781-5117-4e1c-af35-ca8849474b39>;
             cim:SvSwitch.open    false .
     
-    <http://fullgrid.eu/CGMES/3.0#_86c0093f-d3b8-48d3-83cf-074b8a6024cf>
-            rdf:type  cim:SvShuntCompensatorSections;
-            cim:SvShuntCompensatorSections.ShuntCompensator
-                    <http://fullgrid.eu/CGMES/3.0#_469cab52-b961-4910-bf44-4109580732b6>;
-            cim:SvShuntCompensatorSections.sections
-                    "1"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_efaab3b3-d397-49d3-bcd0-042bf4848f3e>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_4520f8f3-0b52-4a34-b916-d199dc1dae95>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d52adbf8-44d6-4310-8548-0f58bcfadf41>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_92a44d18-5efc-449b-b2a5-beb906791d10>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5f0626ad-4de2-4836-bbdc-8bd6b1747bdd>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_05b42ccb-5843-40d7-9b68-5cd6b0a8be2e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6a5a437e-12f7-454a-903f-2b1b8bfd86d5>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_36c16739-2e6d-4634-a3ce-23862d705a6d>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c25c7b98-cb1a-457a-9d08-0165ffb1d98c>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_7cdbd14c-3a08-44dd-b413-dbf81d998d3e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_dab7e098-ed95-4f2b-8bed-3ae20b919e98>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_c32d3466-e3f9-496e-83ee-f1ba90914509>;
-            cim:SvPowerFlow.p         "-83.922866"^^xsd:float;
-            cim:SvPowerFlow.q         "147.271512"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_2c07a421-2ecc-4c2b-8ca4-4636b30447b6>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_fb139144-102f-486d-9d47-c78f7ad784fa>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_cd57d7ac-ed25-43f8-8607-b57b3b7ba926>
+    <urn:uuid:36dab81d-f517-4d5d-a4d8-11277efbae8d>
             rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_e718f6c3-1859-4858-951d-ceff95c2fb1d>;
+            cim:SvSwitch.Switch  <urn:uuid:c5aa8f57-82a4-4242-b093-2183cc6732b5>;
             cim:SvSwitch.open    false .
     
-    <http://fullgrid.eu/CGMES/3.0#_ca86fbf9-777e-4d20-ad4d-8c60d1e5b5a7>
+    <urn:uuid:a1128db2-16e3-4005-8faf-e469a605c5c2>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:867d778a-e83f-4a98-ab9b-60d00d411d73>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:2f016dc8-e1b2-49dc-8373-f3d83dd07a22>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:99ff08b9-87c1-4017-b15f-a5b68e49d750>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:4269fc65-b8c7-4db8-863f-a611844a56c9>
             rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_85f20ec0-c6d5-4006-8b49-031de3899693>;
-            cim:SvPowerFlow.p         "0"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a4f58322-106a-4acd-a370-f457b152447f>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_8b5e73bc-bc88-49d9-be57-26f606221816>;
-            cim:SvVoltage.angle            "-6.634090"^^xsd:float;
-            cim:SvVoltage.v                "413.215265"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_df7ffa2b-d89f-44e7-933e-52ee397ccd1c>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_d4f41742-192f-4b1a-8735-e0cf000a478e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e0d6595a-36ec-4fed-a585-54804ff02b91>
-            rdf:type                     cim:CsConverter;
-            cim:ACDCConverter.idc        "500.000000"^^xsd:float;
-            cim:ACDCConverter.poleLossP  "0.311636"^^xsd:float;
-            cim:ACDCConverter.uc         "126.332508"^^xsd:float;
-            cim:ACDCConverter.udc        "151.250000"^^xsd:float;
-            cim:CsConverter.alpha        "17.6"^^xsd:float;
-            cim:CsConverter.gamma        "18.9"^^xsd:float;
-            cim:IdentifiedObject.mRID    "e0d6595a-36ec-4fed-a585-54804ff02b91" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fffebe6a-ec97-4694-992d-ec72b5dfa6fb>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_be12d211-8d63-401a-a9c5-bafc8bd9baeb>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_434f39be-964a-40dd-bf41-6e0aaf85bf4d>
-            rdf:type                    cim:SvInjection;
-            cim:SvInjection.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>;
-            cim:SvInjection.pInjection  "0.0"^^xsd:float;
-            cim:SvInjection.qInjection  "0.0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_aba8e57f-46e5-4740-b41d-e2695e632a96>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_bfa60a69-855c-4179-889e-a7f56988af6e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e678af94-d193-4c14-88cc-25fe328eec51>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_455f5f96-f641-40ea-9f26-448194a66fff>;
-            cim:SvTapStep.position    "6"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6211ffef-6ca2-4b5d-9714-98e2bb66267f>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_53caabd1-d997-43ff-9871-dd2b370498b9>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_f74bcf5f-fa54-4b7b-a89d-d369aab0d826>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_ee2a2f31-0edd-4c72-82f0-ab084130622f>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9615ed62-d3fc-47bb-9c38-9027c0531054>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_abf36e01-6c4e-4a65-b9cb-b7b3b62c021b>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_50829c63-8a9f-4d6d-b9ba-4a42ca1be7b0>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_7d07103c-8a17-4af5-8f23-5283e1964300>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1e2f0e68-1b48-4c9a-a40c-9ed48238c63b>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_abb15d78-cccb-4d2a-8e8d-a4b45a5a35a8>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_475378eb-7263-4972-9b08-0066c32869bc>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_8b8f89f1-b226-4e40-9414-7517f1868fe7>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d6d03ff0-8fbb-420c-9f02-695a7d8f5f2b>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_578a730a-b763-4a3e-baae-9d0d0dd03524>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a6948626-b600-4af3-b047-110f197d9fdd>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_56bd00d3-4877-4e76-8fdd-5768d82a919a>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e7945937-522a-461b-90a7-1ff9bee62cd5>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_31995ea6-ee32-4cec-a4e0-9322c22a58e6>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_84487c28-bc4f-4f27-909b-6111546d91ab>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_8eb05bae-8d2f-44dd-b206-b3477b84d9ec>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8420363c-7aae-488a-b772-eb1c9d104277>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_05675d2d-bb4c-4165-808f-0c7671a790cd>;
-            cim:SvVoltage.angle            "-8.260120"^^xsd:float;
-            cim:SvVoltage.v                "226.136561"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_269a8933-0e8b-4b18-8cc5-4b3e9fd6e1cc>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_11265a88-de02-470f-bc4b-da2196ce9302>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fdbdcaf0-b31c-4cd1-b5fd-53a955ee2406>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_3e67aaae-e737-48e8-bd0a-3a83abe8acb6>;
-            cim:SvVoltage.angle            "5.724049"^^xsd:float;
-            cim:SvVoltage.v                "225.808184"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c9ead4ab-47ac-465d-9714-1c0a2a2b2a48>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_d39f53ad-fd81-4496-b688-7fbf3ca8379f>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_45952096-b6bb-4909-a1a8-652c313c8107>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_c859beb5-62f0-43c0-a269-b41d4f9a5c37>;
-            cim:SvVoltage.angle            "-4.880770"^^xsd:float;
-            cim:SvVoltage.v                "126.387329"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_054b8e6d-7552-42c9-8599-d2ac48123da4>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_450dc36a-3fea-40ec-be02-524dfe307d26>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_961e88b2-abfc-44bc-8324-cc4a91486fab>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_a43ca411-d1c5-4177-91c7-5d244c1cf8ea>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e221fae1-46ea-46f4-96c3-3398e8d0670a>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_d3101b41-2d49-43ee-95b7-d60c445a55cc>;
-            cim:SvPowerFlow.p         "0"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4bc29148-0a83-4ce4-8ddb-3e5acb05f503>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_e40166e1-f954-4c0c-b343-bd8049d0f799>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_df3800e8-ace4-448f-b30e-d56fa839fd31>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_7fbf6b98-27b4-4330-8d2d-00ff2575286e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_39d23d96-d952-4f5f-a0ab-2dc331dd4d6c>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_43f1888c-c495-4efc-acee-2123ba99fbb8>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e0b651dc-3e56-4a31-9018-741607b554db>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
-            cim:SvVoltage.angle            "-8.267930"^^xsd:float;
-            cim:SvVoltage.v                "226.033049"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_f07e8233-31c7-4b99-8392-315b12652e28>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_230dfc70-363f-43d7-8307-613a5b21c555>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8af5a7e3-38cb-4714-ad36-20e1625c196d>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_9ec9e1bb-295b-4347-8ddc-d384119681f8>;
-            cim:SvStatus.inService  false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_cc1198cc-eca6-42ed-bd44-35e1c16c0e8a>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_fa2d9b9b-2b79-4cf6-a7cc-a2dbb8730383>;
-            cim:SvPowerFlow.p         "0"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_54ff28a7-7866-4889-9983-81148f8bc60a>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_37e90dfb-9d6c-4233-a4fd-6f4c2c909ecd>;
-            cim:SvPowerFlow.p         "-19.99"^^xsd:float;
-            cim:SvPowerFlow.q         "-19.99"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c60bcbf0-1556-4780-8181-1ed33381d876>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_1fdbd284-1504-4db8-a8c2-ee935f36879e>;
-            cim:SvVoltage.angle            "-8.632430"^^xsd:float;
-            cim:SvVoltage.v                "115.500000"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a6839f25-d3b0-460e-8e70-99f6ec2bb0b3>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_a7565e09-33eb-4dfc-8837-6a19f877ec29>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d4539369-9c9c-45c7-bf98-3ac36258d785>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_d9233706-3e52-481d-aa08-444ef6cf8c2b>;
+            cim:SvPowerFlow.Terminal  <urn:uuid:9be289e1-b82c-45ee-8939-459f032f6baf>;
             cim:SvPowerFlow.p         "-118.000000"^^xsd:float;
             cim:SvPowerFlow.q         "-68.351957"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_8752673a-5e71-43f8-b6e5-3eac61405185>
+    <urn:uuid:1b32a23b-f199-4702-b139-5ffc724a7b61>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:be12d211-8d63-401a-a9c5-bafc8bd9baeb>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:e1a16016-1b8e-4fb3-91f4-01f39592bf5f>
             rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_8ac543ac-abfb-4f9b-9381-72709bd8188e>;
-            cim:SvPowerFlow.p         "0"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_45255acf-b7be-4650-bc50-82dbc1eb14c1>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_125e8e92-2c08-46c4-a157-817f265a2082>;
-            cim:SvPowerFlow.p         "0"^^xsd:float;
-            cim:SvPowerFlow.q         "0"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6fd8f3c7-0c4d-483e-b05e-852e000ece79>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_d044b1fa-5ec4-43b6-96f9-99afba975573>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_850c09bf-19b0-417a-b678-3d09749fcb4d>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_0b0fc078-f889-46d2-bb63-35ee6c65bc0f>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_3a213bbf-8aa1-4651-bfbd-1034177c8717>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_c591a9ca-ff19-47b9-8389-7713c79f1169>;
-            cim:SvVoltage.angle            "-12.196600"^^xsd:float;
-            cim:SvVoltage.v                "126.332508"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a1128db2-16e3-4005-8faf-e469a605c5c2>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_867d778a-e83f-4a98-ab9b-60d00d411d73>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_38f45b29-ae4d-4e0c-bf11-1a27d0974ba8>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_ed9f5001-2b84-49a5-9b00-2c9b0591eb06>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_33d7c618-e355-4f2c-8006-10273792f4dd>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_abf36e01-6c4e-4a65-b9cb-b7b3b62c021b>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_842439fc-d06e-47aa-acc5-72729a6a618f>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_7251f462-c9a8-4f25-9a5d-f1941000e482>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6b5d56fd-4cd5-4dd2-a782-69516f0c1ad7>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_dd100e03-e942-43c2-932b-d2e01bb9bd07>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_f86c95d8-a5d4-49ef-97ae-21186626b415>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_c3e9d784-06eb-487a-98bc-468eba79ee5f>;
-            cim:SvPowerFlow.p         "-5"^^xsd:float;
-            cim:SvPowerFlow.q         "-2"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_68d390cb-da8c-46d1-9973-d5fca1cd45f9>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_fc8c7bab-8717-488e-9bd5-b24aed692676>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d6355568-b5ef-474b-a807-62549bf0b506>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_4dd46d53-9579-47d4-951a-cdddac52dd0d>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_f65e50a6-5c89-48f6-acf6-fbcdd0912c30>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_67a35a3d-35a0-4bbe-a48a-f28228a67469>;
-            cim:SvVoltage.angle            "-3.639090"^^xsd:float;
-            cim:SvVoltage.v                "224.157402"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7cd56e1c-47dc-4e24-a05c-b60b1a5f9272>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_cf2205b6-12e4-4d1c-9e8e-6bfdfca787bb>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_dfda0c34-797e-42fe-ae4e-2c62c0032db5>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_0d76d781-5117-4e1c-af35-ca8849474b39>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_407becef-9d38-4276-a243-e298ac0bfc66>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_34777fdd-896d-4653-bcac-e065743e3741>;
-            cim:SvVoltage.angle            "-6.212020"^^xsd:float;
-            cim:SvVoltage.v                "10.795720"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7d02a469-16c6-43a2-93d2-58f91c33e1d7>
-            rdf:type  cim:SvShuntCompensatorSections;
-            cim:SvShuntCompensatorSections.ShuntCompensator
-                    <http://fullgrid.eu/CGMES/3.0#_0062fda9-1883-48b8-975b-47828a371ccd>;
-            cim:SvShuntCompensatorSections.sections
-                    "1"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_28be3c1b-4253-434d-b2ec-b41b66855ad9>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_d11c0694-da10-4635-8afb-ebd4f0682f70>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e2f2b403-c8de-4bf5-b9f0-d9500348cc7d>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_b3936a6c-cdab-44d8-93d8-2f2013805d05>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0318a384-27a1-4dd7-a1b2-299a30aaa759>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_4dd46d53-9579-47d4-951a-cdddac52dd0d>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5ad53399-db17-4eaa-a287-f142886ddc99>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_c3504bc4-212c-4b8d-99b9-3042d3551f00>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c27de31f-9967-4f3f-8389-9e0ef9b22998>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_14532a5a-b4f0-49a9-95e5-817a21ac809b>;
-            cim:SvTapStep.position    "6"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_3306dc69-5157-4b2b-a26a-012011cd6b0c>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_707aeec2-cd18-4c05-9e90-b5cf171f0d81>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fa736f7f-40c2-436d-9528-b18931662804>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_592f3d0c-bd64-4bb5-b779-d873d8895d6d>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_679bc2de-6ad2-4e6c-8ec4-1facf9bf5f16>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_8e842efc-1fd1-41b2-90e5-ba043659c601>;
-            cim:SvVoltage.angle            "-10.499000"^^xsd:float;
-            cim:SvVoltage.v                "124.427328"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8406f2b9-33fe-44bc-8d1a-2f516d49dd96>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d>;
-            cim:SvVoltage.angle            "-6.320160"^^xsd:float;
-            cim:SvVoltage.v                "21.987000"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8a71ee08-f147-4a97-8710-1dc98bddc9df>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_53caabd1-d997-43ff-9871-dd2b370498b9>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_84088fad-53ce-4abd-968a-396c3f9ed8b8>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_ec968eed-b009-4206-a3a7-d7735a07b355>;
-            cim:SvTapStep.position    "6"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_eb4a0baa-37ab-446d-8dbd-63f8b0ef1b0d>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_b694a34d-faa4-46c8-9de4-a64c8a8029c9>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_3937b06e-af5a-44d3-88c1-d5020f1515f5>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_2e52dcc1-2b32-4313-bf50-d6d18fdedad8>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_09f422c9-bb40-450b-ab03-5fa8e22fbf33>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_bd9d594b-e909-4890-9225-27b54a7c272a>;
-            cim:SvVoltage.angle            "-6.486570"^^xsd:float;
-            cim:SvVoltage.v                "411.770499"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_01dd39c0-47e4-4c66-8585-14d31c181f96>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_07c65f92-fd67-4967-be59-735ff275e40e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_773c3390-e4ff-479a-b3a5-56cca182fc49>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4e3f37e9-3453-4533-aa69-ca23a5a8642b>;
-            cim:SvVoltage.angle            "-8.734640"^^xsd:float;
-            cim:SvVoltage.v                "225.658343"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9d5137e4-c251-4fa1-ac8a-0773a7c96773>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_c05ab5b3-82eb-4c9d-9851-93f6cd30e32f>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fdfdc8f5-c948-46dd-a6f4-345a1b76d305>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_0062fda9-1883-48b8-975b-47828a371ccd>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_18a60fa4-4f56-4b11-b755-fd9199fcf5b2>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_5acea568-6d34-4843-a49f-0f845a51ead8>;
-            cim:SvPowerFlow.p         "0e+000"^^xsd:float;
-            cim:SvPowerFlow.q         "-126.787790"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_f5e85ac9-aabf-47c2-8a28-93d0642a471e>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_450dc36a-3fea-40ec-be02-524dfe307d26>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5aa50071-5f18-4d4a-a08d-eb0c7707d85a>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_4f2fea1d-b4c1-40ea-b3eb-958b7b1d7576>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c40300c9-3d7b-4781-bc4a-fedc8fc1f58a>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_fc8ea9bc-f256-48d8-93e4-6b4dfec52dc7>;
-            cim:SvTapStep.position    "15"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_df18c28e-144e-474d-b671-e86cca56ce1b>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_707aeec2-cd18-4c05-9e90-b5cf171f0d81>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_21c77cbe-5ac6-4ecc-b2c7-a8ac6687a59d>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_09cc4e0a-336f-43ee-b29a-43049904cea9>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_abd2de6e-e82f-466a-a26a-651d6ce1fc24>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_d1393cd4-4a1e-43d3-bc6e-a63b0baca1eb>;
-            cim:SvTapStep.position    "4"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1462c719-3abc-4632-908c-dacc053f09bd>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_27651fac-2c7f-4a96-b669-eb914be45c5b>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_181a6847-a2b5-41e5-811c-b77badb6ffc7>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_335c1895-a4a3-46d1-b13c-687bc4cec343>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0a641f6a-04f3-4d9e-855d-460d888bac95>
-            rdf:type  cim:SvShuntCompensatorSections;
-            cim:SvShuntCompensatorSections.ShuntCompensator
-                    <http://fullgrid.eu/CGMES/3.0#_867d778a-e83f-4a98-ab9b-60d00d411d73>;
-            cim:SvShuntCompensatorSections.sections
-                    "1"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b2719dd0-54d5-4950-91c7-8caf1636f31f>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_1ffdd306-f4cb-4779-bd95-562a23d140d5>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_315ce5d6-85ab-49c7-9cc1-0ef3a410fb01>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_9444340e-9295-4e3b-a4c1-f55dce24ca8e>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0de35156-b5e9-4658-8e58-1151acc46b12>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_696bd5b2-a911-4172-9b04-65ed440d4d94>;
-            cim:SvTapStep.position    "21"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d36d8a06-f4ac-401d-b51e-d7d689d4ca29>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_68972669-2a90-462c-9f58-dd44fdd5c841>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7375fb01-397f-484e-a821-8e809834a57c>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_335c1895-a4a3-46d1-b13c-687bc4cec343>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_dbe4ecd3-237d-4cce-9ccc-04e1d714678d>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_8b8f89f1-b226-4e40-9414-7517f1868fe7>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_bac01efb-0455-43b0-aee4-34d805a8b249>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_bc4a546e-839a-45e1-9008-509fdedec38a>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fc8c7bab-8717-488e-9bd5-b24aed692676>
-            rdf:type                     cim:CsConverter;
-            cim:ACDCConverter.idc        "500.000000"^^xsd:float;
-            cim:ACDCConverter.poleLossP  "0.311637"^^xsd:float;
-            cim:ACDCConverter.uc         "126.387329"^^xsd:float;
-            cim:ACDCConverter.udc        "150.000000"^^xsd:float;
-            cim:CsConverter.alpha        "17.8"^^xsd:float;
-            cim:CsConverter.gamma        "18.7"^^xsd:float;
-            cim:IdentifiedObject.mRID    "fc8c7bab-8717-488e-9bd5-b24aed692676" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1d2ed28d-7c9c-483d-ba67-68125afef371>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_fbd2fea4-2d71-4e31-8399-25ebd6c9c205>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_34c14e2e-bc9c-47a1-85e8-760bc6980cf8>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_0b0fc078-f889-46d2-bb63-35ee6c65bc0f>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_43ad5549-4afb-45df-8210-ff75296653ef>
-            rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_17c1fd73-ab8f-4984-aab3-a0e80f6cddbc>;
-            cim:SvVoltage.angle            "-8.632430"^^xsd:float;
-            cim:SvVoltage.v                "115.500000"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_36a1b1f0-f08f-481f-9c7d-33695b52fe60>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_12e5b86c-e552-4607-bb42-402a0eb4fffd>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_2d777295-6069-4249-b2ea-b1ac0d8f72e6>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_1c0d415d-7e56-4fad-a127-f131cf53b9cb>;
-            cim:SvPowerFlow.p         "0e+000"^^xsd:float;
-            cim:SvPowerFlow.q         "-42.070633"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_14a93df5-2c42-46d2-b0e0-15ae5118cbbf>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_a43ca411-d1c5-4177-91c7-5d244c1cf8ea>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_642e8848-145b-4e36-81bb-3894b1844af0>
-            rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_230dfc70-363f-43d7-8307-613a5b21c555>;
-            cim:SvSwitch.open    false .
-    
-    <http://fullgrid.eu/CGMES/3.0#_f91f8f6a-a4e4-4490-bbd0-c31d5ed7bda3>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_b60321bf-09b7-42db-a679-4fc2dd9370df>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b5d07f04-df03-4936-81f1-06afbd84dc1f>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_13ba1c07-0087-443e-87a7-6f5327d62216>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_cf169afd-b8bb-490b-af16-1bfbdc3d5ec2>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_ad0c849a-0299-443b-a1a2-fc44ab0409ad>;
-            cim:SvPowerFlow.p         "-5"^^xsd:float;
-            cim:SvPowerFlow.q         "-2"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4269fc65-b8c7-4db8-863f-a611844a56c9>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_9be289e1-b82c-45ee-8939-459f032f6baf>;
+            cim:SvPowerFlow.Terminal  <urn:uuid:918484e1-e9d6-41ec-88c6-4d3a8cec53cd>;
             cim:SvPowerFlow.p         "-118.000000"^^xsd:float;
             cim:SvPowerFlow.q         "-68.351957"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_7f9d4959-7d01-421c-8680-e9c3a7e20dc2>
-            rdf:type                   cim:TopologicalIsland;
-            cim:IdentifiedObject.mRID  "7f9d4959-7d01-421c-8680-e9c3a7e20dc2";
-            cim:IdentifiedObject.name  "TOP_NET_1";
-            cim:TopologicalIsland.AngleRefTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_34777fdd-896d-4653-bcac-e065743e3741>;
-            cim:TopologicalIsland.TopologicalNodes
-                    <http://fullgrid.eu/CGMES/3.0#_7874083b-e588-416d-b125-863c2681f6a3> , <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> , <http://fullgrid.eu/CGMES/3.0#_4e3f37e9-3453-4533-aa69-ca23a5a8642b> , <http://fullgrid.eu/CGMES/3.0#_8e842efc-1fd1-41b2-90e5-ba043659c601> , <http://fullgrid.eu/CGMES/3.0#_d282a4f2-fc06-4e2b-94d8-d5472ba7db8b> , <http://fullgrid.eu/CGMES/3.0#_c859beb5-62f0-43c0-a269-b41d4f9a5c37> , <http://fullgrid.eu/CGMES/3.0#_8b5e73bc-bc88-49d9-be57-26f606221816> , <http://fullgrid.eu/CGMES/3.0#_17c1fd73-ab8f-4984-aab3-a0e80f6cddbc> , <http://fullgrid.eu/CGMES/3.0#_58889b22-7bd5-4e54-8602-2e115bfa2ed7> , <http://fullgrid.eu/CGMES/3.0#_a6c9e04c-9659-4516-bde6-5e31ba66cd38> , <http://fullgrid.eu/CGMES/3.0#_9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a> , <http://fullgrid.eu/CGMES/3.0#_bd9d594b-e909-4890-9225-27b54a7c272a> , <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> , <http://fullgrid.eu/CGMES/3.0#_1fdbd284-1504-4db8-a8c2-ee935f36879e> , <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> , <http://fullgrid.eu/CGMES/3.0#_7f830c46-a1e0-466c-bad5-1b7523147805> , <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> , <http://fullgrid.eu/CGMES/3.0#_bec23818-76a9-4e47-aecd-76f8ad3f1199> , <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d> , <http://fullgrid.eu/CGMES/3.0#_3e67aaae-e737-48e8-bd0a-3a83abe8acb6> , <http://fullgrid.eu/CGMES/3.0#_c591a9ca-ff19-47b9-8389-7713c79f1169> , <http://fullgrid.eu/CGMES/3.0#_866f8f54-565d-4fbb-9c4f-780298f80752> , <http://fullgrid.eu/CGMES/3.0#_05675d2d-bb4c-4165-808f-0c7671a790cd> , <http://fullgrid.eu/CGMES/3.0#_67a35a3d-35a0-4bbe-a48a-f28228a67469> , <http://fullgrid.eu/CGMES/3.0#_34777fdd-896d-4653-bcac-e065743e3741> .
+    <urn:uuid:0a641f6a-04f3-4d9e-855d-460d888bac95>
+            rdf:type  cim:SvShuntCompensatorSections;
+            cim:SvShuntCompensatorSections.ShuntCompensator
+                    <urn:uuid:867d778a-e83f-4a98-ab9b-60d00d411d73>;
+            cim:SvShuntCompensatorSections.sections
+                    "1"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_f4c30d8c-fe10-45a6-b7c4-f2b41b120aa5>
+    <urn:uuid:9d5137e4-c251-4fa1-ac8a-0773a7c96773>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_79419546-a3bd-4964-a49a-6d39b1c9cdc5>;
+                    <urn:uuid:c05ab5b3-82eb-4c9d-9851-93f6cd30e32f>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_31995ea6-ee32-4cec-a4e0-9322c22a58e6>
+    <urn:uuid:31995ea6-ee32-4cec-a4e0-9322c22a58e6>
             rdf:type                     cim:VsConverter;
             cim:ACDCConverter.idc        "962.342430"^^xsd:float;
             cim:ACDCConverter.poleLossP  "3.333380"^^xsd:float;
@@ -1162,113 +431,849 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
             cim:VsConverter.delta        "0"^^xsd:float;
             cim:VsConverter.uv           "124.427328"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_7d53e90c-fc7f-418d-bc59-d61013940161>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_2f8f192b-e261-44c7-85fb-646fa9281728>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9c0c199c-34fa-4466-8945-83d8d8a39c5b>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_acbfd6be-2fc9-4ea3-b74a-caaa16a31018>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_df2ddf9b-68c5-4926-a6f1-67ef1cc5ff4f>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_3beceba6-2ea4-4c7d-802b-b117f638dda3>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1ea019cf-3706-4e68-b602-865966b53a9a>
-            rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_e908154a-63fa-4a41-a86b-440b2c26cd93>;
-            cim:SvTapStep.position    "-2"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_dacbbebd-49e8-44cc-8376-d5fc8bc36ef3>
+    <urn:uuid:3306dc69-5157-4b2b-a26a-012011cd6b0c>
             rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_dd100e03-e942-43c2-932b-d2e01bb9bd07>;
+            cim:SvSwitch.Switch  <urn:uuid:707aeec2-cd18-4c05-9e90-b5cf171f0d81>;
             cim:SvSwitch.open    false .
     
-    <http://fullgrid.eu/CGMES/3.0#_6c337a4f-f5b4-4c76-9f57-8982007adf98>
+    <urn:uuid:687810a5-e206-44ec-a19a-014160374b1d>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:866f8f54-565d-4fbb-9c4f-780298f80752>;
+            cim:SvVoltage.angle            "-6.474900"^^xsd:float;
+            cim:SvVoltage.v                "411.500287"^^xsd:float .
+    
+    <urn:uuid:773c3390-e4ff-479a-b3a5-56cca182fc49>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:4e3f37e9-3453-4533-aa69-ca23a5a8642b>;
+            cim:SvVoltage.angle            "-8.734640"^^xsd:float;
+            cim:SvVoltage.v                "225.658343"^^xsd:float .
+    
+    <urn:uuid:f65e50a6-5c89-48f6-acf6-fbcdd0912c30>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:67a35a3d-35a0-4bbe-a48a-f28228a67469>;
+            cim:SvVoltage.angle            "-3.639090"^^xsd:float;
+            cim:SvVoltage.v                "224.157402"^^xsd:float .
+    
+    <urn:uuid:ab8a7efd-155e-43eb-8c5f-e9741775a1c4>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:ba8cca63-a7fb-4067-93f1-f475d960c559>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:68d390cb-da8c-46d1-9973-d5fca1cd45f9>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:fc8c7bab-8717-488e-9bd5-b24aed692676>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:5aa50071-5f18-4d4a-a08d-eb0c7707d85a>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:4f2fea1d-b4c1-40ea-b3eb-958b7b1d7576>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:ceaa1632-5c47-4828-a1e9-d5cd03764ba5>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:b3936a6c-cdab-44d8-93d8-2f2013805d05>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:bc02e04a-d245-4dc6-ade5-3144b65b727a>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:c5aa8f57-82a4-4242-b093-2183cc6732b5>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:9aa035ca-8637-4ce4-991d-4dc5ec13a15f>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:61146890-aa23-41df-8048-d4441c24fda7>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:725b6e99-f35f-4794-997e-bf88180102ca>
             rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_77069353-beef-482f-9c3b-682d2d8759e5>;
+            cim:SvPowerFlow.Terminal  <urn:uuid:b8f5b2e0-3522-4465-8ce7-e238a863c46c>;
+            cim:SvPowerFlow.p         "-33.718508"^^xsd:float;
+            cim:SvPowerFlow.q         "2.598975"^^xsd:float .
+    
+    <urn:uuid:80b9b3de-73eb-4cc3-8ca3-b5c1630c641b>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:d84be2ac-c639-49b2-b9f7-207a02ecfd03>;
+            cim:SvPowerFlow.p         "-34.542367"^^xsd:float;
+            cim:SvPowerFlow.q         "1.292361"^^xsd:float .
+    
+    <urn:uuid:0ec46677-efa1-483a-963d-e3122f3de5d1>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:58889b22-7bd5-4e54-8602-2e115bfa2ed7>;
+            cim:SvVoltage.angle            "-8.632430"^^xsd:float;
+            cim:SvVoltage.v                "115.500000"^^xsd:float .
+    
+    <urn:uuid:b5d07f04-df03-4936-81f1-06afbd84dc1f>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:13ba1c07-0087-443e-87a7-6f5327d62216>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:dacbbebd-49e8-44cc-8376-d5fc8bc36ef3>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:dd100e03-e942-43c2-932b-d2e01bb9bd07>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:9615ed62-d3fc-47bb-9c38-9027c0531054>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:abf36e01-6c4e-4a65-b9cb-b7b3b62c021b>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:eb4a0baa-37ab-446d-8dbd-63f8b0ef1b0d>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:b694a34d-faa4-46c8-9de4-a64c8a8029c9>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:c40300c9-3d7b-4781-bc4a-fedc8fc1f58a>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:fc8ea9bc-f256-48d8-93e4-6b4dfec52dc7>;
+            cim:SvTapStep.position    "15"^^xsd:float .
+    
+    <urn:uuid:cd57d7ac-ed25-43f8-8607-b57b3b7ba926>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:e718f6c3-1859-4858-951d-ceff95c2fb1d>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:cf2b37f5-400d-4166-ba7a-57fb3c6bfd44>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:62a4d7b2-acca-4726-8d47-a85afbcf0642>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:c7fa30a7-d0ee-4341-be80-196d64d2158c>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:1619fc53-f06a-44c1-9f44-d3720fc3d92e>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:92872a44-e192-4299-94b7-5ce649894ec4>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:469cab52-b961-4910-bf44-4109580732b6>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:4a433c62-0a56-4867-944d-8ddbf722e783>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:7056bbcf-1ad4-4bc9-beec-ac9f247b01d9>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:05eba599-8459-40ee-840d-2bf54f069b89>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:184b6377-ff16-48a0-8cb3-620a10c58e56>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:8752673a-5e71-43f8-b6e5-3eac61405185>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:8ac543ac-abfb-4f9b-9381-72709bd8188e>;
+            cim:SvPowerFlow.p         "0"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:7375fb01-397f-484e-a821-8e809834a57c>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:335c1895-a4a3-46d1-b13c-687bc4cec343>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:0318a384-27a1-4dd7-a1b2-299a30aaa759>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:4dd46d53-9579-47d4-951a-cdddac52dd0d>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:a154a517-4ecf-4be0-8aeb-bd8d40503da2>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:af1d683b-e581-4b1a-8e80-2b854283f636>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:cc1198cc-eca6-42ed-bd44-35e1c16c0e8a>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:fa2d9b9b-2b79-4cf6-a7cc-a2dbb8730383>;
+            cim:SvPowerFlow.p         "0"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:ca86fbf9-777e-4d20-ad4d-8c60d1e5b5a7>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:85f20ec0-c6d5-4006-8b49-031de3899693>;
+            cim:SvPowerFlow.p         "0"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:a4f58322-106a-4acd-a370-f457b152447f>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:8b5e73bc-bc88-49d9-be57-26f606221816>;
+            cim:SvVoltage.angle            "-6.634090"^^xsd:float;
+            cim:SvVoltage.v                "413.215265"^^xsd:float .
+    
+    <urn:uuid:14a93df5-2c42-46d2-b0e0-15ae5118cbbf>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:a43ca411-d1c5-4177-91c7-5d244c1cf8ea>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:8a71ee08-f147-4a97-8710-1dc98bddc9df>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:53caabd1-d997-43ff-9871-dd2b370498b9>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:4b917203-e9b3-42c8-b058-af888000dd58>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:d259a2ef-04ff-4790-ac13-b4c48f8e92c2>;
+            cim:SvPowerFlow.p         "0"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:1ea019cf-3706-4e68-b602-865966b53a9a>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:e908154a-63fa-4a41-a86b-440b2c26cd93>;
+            cim:SvTapStep.position    "-2"^^xsd:float .
+    
+    <urn:uuid:12b842c5-32b2-4598-bb28-85841d6fc794>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:094cd7e3-fc76-4fbc-a1d3-7ed5e23ce70a>;
+            cim:SvTapStep.position    "17"^^xsd:float .
+    
+    <urn:uuid:e0b651dc-3e56-4a31-9018-741607b554db>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
+            cim:SvVoltage.angle            "-8.267930"^^xsd:float;
+            cim:SvVoltage.v                "226.033049"^^xsd:float .
+    
+    <urn:uuid:8406f2b9-33fe-44bc-8d1a-2f516d49dd96>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d>;
+            cim:SvVoltage.angle            "-6.320160"^^xsd:float;
+            cim:SvVoltage.v                "21.987000"^^xsd:float .
+    
+    <urn:uuid:8ba202e0-a343-4bdb-a6c1-e4f031366549>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:3a1494c9-4752-4264-a5fc-4997b4aa2009>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:b4d336f1-b2f6-4f1b-a499-03b6d9eae89d>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:1ebb3954-be11-4825-9dd6-4357f9715a08>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:09112a9d-5c94-44b7-b955-82f1a90d47a9>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a>;
+            cim:SvVoltage.angle            "-8.632430"^^xsd:float;
+            cim:SvVoltage.v                "115.500000"^^xsd:float .
+    
+    <urn:uuid:4e75b2b8-4c13-4159-af35-87345f481531>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:b6bb3424-88af-4934-a46c-ef220f778cbb>;
+            cim:SvPowerFlow.p         "200.000000"^^xsd:float;
+            cim:SvPowerFlow.q         "50.000000"^^xsd:float .
+    
+    <urn:uuid:fea158bc-8a39-4984-9eb1-a00a272d573f>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:2be66ddb-e536-47c9-8881-830e46a97a4f>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:cf169afd-b8bb-490b-af16-1bfbdc3d5ec2>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:ad0c849a-0299-443b-a1a2-fc44ab0409ad>;
             cim:SvPowerFlow.p         "-5"^^xsd:float;
             cim:SvPowerFlow.q         "-2"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_f37da347-f794-4210-a540-d40ac27ca1f2>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_ff13a516-6228-43f1-8513-e21ebcbe6a0d>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1d15233c-9fbe-46f8-81f4-a4106de5270a>
+    <urn:uuid:407becef-9d38-4276-a243-e298ac0bfc66>
             rdf:type                       cim:SvVoltage;
-            cim:SvVoltage.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_bec23818-76a9-4e47-aecd-76f8ad3f1199>;
-            cim:SvVoltage.angle            "12.534110"^^xsd:float;
-            cim:SvVoltage.v                "124.334501"^^xsd:float .
+            cim:SvVoltage.TopologicalNode  <urn:uuid:34777fdd-896d-4653-bcac-e065743e3741>;
+            cim:SvVoltage.angle            "-6.212020"^^xsd:float;
+            cim:SvVoltage.v                "10.795720"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_8b4ad9c1-0e87-486e-bc1e-f11de0a1859f>
-            rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_8add0faf-5960-4882-a293-a5f79aef82c3>;
-            cim:SvPowerFlow.p         "-43.627121"^^xsd:float;
-            cim:SvPowerFlow.q         "78.432952"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ab8a7efd-155e-43eb-8c5f-e9741775a1c4>
+    <urn:uuid:1e2f0e68-1b48-4c9a-a40c-9ed48238c63b>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_ba8cca63-a7fb-4067-93f1-f475d960c559>;
+                    <urn:uuid:abb15d78-cccb-4d2a-8e8d-a4b45a5a35a8>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_c0d14f69-97ab-4d54-a40c-f5b19b99a7fa>
+    <urn:uuid:3d54001a-1e34-416c-b7af-da1510158a65>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:7f830c46-a1e0-466c-bad5-1b7523147805>;
+            cim:SvVoltage.angle            "-6.149480"^^xsd:float;
+            cim:SvVoltage.v                "226.006478"^^xsd:float .
+    
+    <urn:uuid:3f16a305-1e5c-4ef4-b028-9e38026bbff2>
             rdf:type                  cim:SvPowerFlow;
-            cim:SvPowerFlow.Terminal  <http://fullgrid.eu/CGMES/3.0#_23854dcf-2b82-459e-8eb4-0d114fc828c0>;
+            cim:SvPowerFlow.Terminal  <urn:uuid:49aa21f8-8463-4b00-b93d-960ae7dd2811>;
+            cim:SvPowerFlow.p         "0"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:798acf75-6e64-492a-bcf0-b240d79361d4>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:968715b5-f03c-4202-8d66-0304be724ddf>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:c9ead4ab-47ac-465d-9714-1c0a2a2b2a48>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:d39f53ad-fd81-4496-b688-7fbf3ca8379f>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:b9c4f2d6-8b25-40af-a27d-15ecc69bb7a9>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:5614f030-c1c8-435c-8d5b-580721dce0a0>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:6a5a437e-12f7-454a-903f-2b1b8bfd86d5>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:36c16739-2e6d-4634-a3ce-23862d705a6d>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:d6355568-b5ef-474b-a807-62549bf0b506>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:4dd46d53-9579-47d4-951a-cdddac52dd0d>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:45952096-b6bb-4909-a1a8-652c313c8107>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:c859beb5-62f0-43c0-a269-b41d4f9a5c37>;
+            cim:SvVoltage.angle            "-4.880770"^^xsd:float;
+            cim:SvVoltage.v                "126.387329"^^xsd:float .
+    
+    <urn:uuid:da0d37c5-4926-4732-a33c-696e15f8f373>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:09ad7fd9-f141-4939-8faa-c6c71e920200>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:a6839f25-d3b0-460e-8e70-99f6ec2bb0b3>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:a7565e09-33eb-4dfc-8837-6a19f877ec29>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:bac01efb-0455-43b0-aee4-34d805a8b249>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:bc4a546e-839a-45e1-9008-509fdedec38a>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:edf520ae-3462-459c-838b-8d8e9a1241ba>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:4f2fea1d-b4c1-40ea-b3eb-958b7b1d7576>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:9c0c199c-34fa-4466-8945-83d8d8a39c5b>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:acbfd6be-2fc9-4ea3-b74a-caaa16a31018>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:18def49e-5904-4438-84f3-a0251ce8e69d>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:aac86575-36d8-455d-abe8-34edb60b6e04>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:842439fc-d06e-47aa-acc5-72729a6a618f>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:7251f462-c9a8-4f25-9a5d-f1941000e482>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:f07e8233-31c7-4b99-8392-315b12652e28>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:230dfc70-363f-43d7-8307-613a5b21c555>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:d36d8a06-f4ac-401d-b51e-d7d689d4ca29>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:68972669-2a90-462c-9f58-dd44fdd5c841>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:cb60b2b4-4aa5-430c-b999-7d1f6745f067>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:0544c491-290e-4887-a677-c6cf51c7c62e>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:21c77cbe-5ac6-4ecc-b2c7-a8ac6687a59d>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:09cc4e0a-336f-43ee-b29a-43049904cea9>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:3a213bbf-8aa1-4651-bfbd-1034177c8717>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:c591a9ca-ff19-47b9-8389-7713c79f1169>;
+            cim:SvVoltage.angle            "-12.196600"^^xsd:float;
+            cim:SvVoltage.v                "126.332508"^^xsd:float .
+    
+    <urn:uuid:27eb6d6e-83e4-4580-977d-086e3189e884>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:ba0e78a4-f7d5-464c-9517-9f33f4e68c64>;
+            cim:SvTapStep.position    "10"^^xsd:float .
+    
+    <urn:uuid:679bc2de-6ad2-4e6c-8ec4-1facf9bf5f16>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:8e842efc-1fd1-41b2-90e5-ba043659c601>;
+            cim:SvVoltage.angle            "-10.499000"^^xsd:float;
+            cim:SvVoltage.v                "124.427328"^^xsd:float .
+    
+    <urn:uuid:2d777295-6069-4249-b2ea-b1ac0d8f72e6>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:1c0d415d-7e56-4fad-a127-f131cf53b9cb>;
+            cim:SvPowerFlow.p         "0e+000"^^xsd:float;
+            cim:SvPowerFlow.q         "-42.070633"^^xsd:float .
+    
+    <urn:uuid:10e4eeef-6b0f-4c80-aa2c-ec394a8fa6cb>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:69fb097a-8366-4f62-8cac-095c41649501>;
+            cim:SvPowerFlow.p         "-75"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:961e88b2-abfc-44bc-8324-cc4a91486fab>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:a43ca411-d1c5-4177-91c7-5d244c1cf8ea>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:4fd9f69b-3354-4f0e-b735-ba2e81ee58a9>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:3d2f09f5-f2d2-4810-92ed-1b26e066a1d6>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:45255acf-b7be-4650-bc50-82dbc1eb14c1>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:125e8e92-2c08-46c4-a157-817f265a2082>;
+            cim:SvPowerFlow.p         "0"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:61e78678-099e-4f69-a9d7-d95f7176e3dd>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:d64195f6-4d3d-4052-b91d-6b197995efd4>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:fffebe6a-ec97-4694-992d-ec72b5dfa6fb>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:be12d211-8d63-401a-a9c5-bafc8bd9baeb>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:dab7e098-ed95-4f2b-8bed-3ae20b919e98>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:c32d3466-e3f9-496e-83ee-f1ba90914509>;
+            cim:SvPowerFlow.p         "-83.922866"^^xsd:float;
+            cim:SvPowerFlow.q         "147.271512"^^xsd:float .
+    
+    <urn:uuid:86c0093f-d3b8-48d3-83cf-074b8a6024cf>
+            rdf:type  cim:SvShuntCompensatorSections;
+            cim:SvShuntCompensatorSections.ShuntCompensator
+                    <urn:uuid:469cab52-b961-4910-bf44-4109580732b6>;
+            cim:SvShuntCompensatorSections.sections
+                    "1"^^xsd:float .
+    
+    <urn:uuid:5b097fd1-8006-47ab-a95b-285a0cf021cd>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:184b6377-ff16-48a0-8cb3-620a10c58e56>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:f86c95d8-a5d4-49ef-97ae-21186626b415>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:c3e9d784-06eb-487a-98bc-468eba79ee5f>;
+            cim:SvPowerFlow.p         "-5"^^xsd:float;
+            cim:SvPowerFlow.q         "-2"^^xsd:float .
+    
+    <urn:uuid:b4fd28e5-de4e-474a-8366-2f10c43952dd>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:d3435b9a-1077-49ac-ab24-969734b70fd5>;
+            cim:SvPowerFlow.p         "1.000000"^^xsd:float;
+            cim:SvPowerFlow.q         "0e+000"^^xsd:float .
+    
+    <urn:uuid:69042df2-ef84-4fa0-8dc9-b1f26941d864>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:7874083b-e588-416d-b125-863c2681f6a3>;
+            cim:SvVoltage.angle            "-8.734640"^^xsd:float;
+            cim:SvVoltage.v                "413.589732"^^xsd:float .
+    
+    <urn:uuid:7cdbd14c-3a08-44dd-b413-dbf81d998d3e>
+            rdf:type                     cim:VsConverter;
+            cim:ACDCConverter.idc        "962.342430"^^xsd:float;
+            cim:ACDCConverter.poleLossP  "3.333385"^^xsd:float;
+            cim:ACDCConverter.uc         "124.334501"^^xsd:float;
+            cim:ACDCConverter.udc        "150.000000"^^xsd:float;
+            cim:IdentifiedObject.mRID    "7cdbd14c-3a08-44dd-b413-dbf81d998d3e";
+            cim:VsConverter.delta        "0"^^xsd:float;
+            cim:VsConverter.uv           "124.334501"^^xsd:float .
+    
+    <urn:uuid:8af5a7e3-38cb-4714-ad36-20e1625c196d>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:9ec9e1bb-295b-4347-8ddc-d384119681f8>;
+            cim:SvStatus.inService  false .
+    
+    <urn:uuid:475378eb-7263-4972-9b08-0066c32869bc>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:8b8f89f1-b226-4e40-9414-7517f1868fe7>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:6c337a4f-f5b4-4c76-9f57-8982007adf98>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:77069353-beef-482f-9c3b-682d2d8759e5>;
+            cim:SvPowerFlow.p         "-5"^^xsd:float;
+            cim:SvPowerFlow.q         "-2"^^xsd:float .
+    
+    <urn:uuid:7f9d4959-7d01-421c-8680-e9c3a7e20dc2>
+            rdf:type                   cim:TopologicalIsland;
+            cim:IdentifiedObject.mRID  "7f9d4959-7d01-421c-8680-e9c3a7e20dc2";
+            cim:IdentifiedObject.name  "TOP_NET_1";
+            cim:TopologicalIsland.AngleRefTopologicalNode
+                    <urn:uuid:34777fdd-896d-4653-bcac-e065743e3741>;
+            cim:TopologicalIsland.TopologicalNodes
+                    <urn:uuid:34777fdd-896d-4653-bcac-e065743e3741> , <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> , <urn:uuid:7874083b-e588-416d-b125-863c2681f6a3> , <urn:uuid:bd9d594b-e909-4890-9225-27b54a7c272a> , <urn:uuid:05675d2d-bb4c-4165-808f-0c7671a790cd> , <urn:uuid:c591a9ca-ff19-47b9-8389-7713c79f1169> , <urn:uuid:58889b22-7bd5-4e54-8602-2e115bfa2ed7> , <urn:uuid:67a35a3d-35a0-4bbe-a48a-f28228a67469> , <urn:uuid:4e3f37e9-3453-4533-aa69-ca23a5a8642b> , <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d> , <urn:uuid:8b5e73bc-bc88-49d9-be57-26f606221816> , <urn:uuid:3e67aaae-e737-48e8-bd0a-3a83abe8acb6> , <urn:uuid:a6c9e04c-9659-4516-bde6-5e31ba66cd38> , <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> , <urn:uuid:bec23818-76a9-4e47-aecd-76f8ad3f1199> , <urn:uuid:1fdbd284-1504-4db8-a8c2-ee935f36879e> , <urn:uuid:866f8f54-565d-4fbb-9c4f-780298f80752> , <urn:uuid:17c1fd73-ab8f-4984-aab3-a0e80f6cddbc> , <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> , <urn:uuid:9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a> , <urn:uuid:7f830c46-a1e0-466c-bad5-1b7523147805> , <urn:uuid:8e842efc-1fd1-41b2-90e5-ba043659c601> , <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> , <urn:uuid:d282a4f2-fc06-4e2b-94d8-d5472ba7db8b> , <urn:uuid:c859beb5-62f0-43c0-a269-b41d4f9a5c37> .
+    
+    <urn:uuid:6e98ce95-7986-47d1-81c6-5ce74ffb1ca1>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:d4f41742-192f-4b1a-8735-e0cf000a478e>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:f4c30d8c-fe10-45a6-b7c4-f2b41b120aa5>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:79419546-a3bd-4964-a49a-6d39b1c9cdc5>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:0f6efdf0-d28c-4792-891d-eaaa66980c81>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:620f7d77-6a26-47d4-933e-1e2a5881befb>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:5f0626ad-4de2-4836-bbdc-8bd6b1747bdd>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:05b42ccb-5843-40d7-9b68-5cd6b0a8be2e>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:df18c28e-144e-474d-b671-e86cca56ce1b>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:707aeec2-cd18-4c05-9e90-b5cf171f0d81>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:a680e726-541c-4833-b15f-ddd68cb3624a>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>;
+            cim:SvVoltage.angle            "-8.632430"^^xsd:float;
+            cim:SvVoltage.v                "115.500000"^^xsd:float .
+    
+    <urn:uuid:53574326-127b-423a-9a53-4ef9c8dc1ad7>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:8f549574-513c-412d-969d-ab882ce25e4c>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:a1f1a119-b9b2-470f-8c13-3082c51e7932>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:c3504bc4-212c-4b8d-99b9-3042d3551f00>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:16bdd41c-b9e6-4ccd-8725-19b7235ac2d9>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:578a730a-b763-4a3e-baae-9d0d0dd03524>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:8f69c78d-fada-49cd-936a-a0050ad56966>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>;
+            cim:SvVoltage.angle            "-8.734640"^^xsd:float;
+            cim:SvVoltage.v                "225.658343"^^xsd:float .
+    
+    <urn:uuid:b07f000d-6bdf-48e5-b5af-2f5fdc282b24>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:1f9a05f8-46a9-49eb-9011-4fee70c7d81f>;
+            cim:SvTapStep.position    "7"^^xsd:float .
+    
+    <urn:uuid:004baa5e-eb99-489a-8fc0-ccc63657cf7c>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:d11c0694-da10-4635-8afb-ebd4f0682f70>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:70d39349-7f6d-4ad3-8a45-c1a978ac36dc>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
+            cim:SvVoltage.angle            "-6.665390"^^xsd:float;
+            cim:SvVoltage.v                "413.589732"^^xsd:float .
+    
+    <urn:uuid:e678af94-d193-4c14-88cc-25fe328eec51>
+            rdf:type                  cim:SvTapStep;
+            cim:SvTapStep.TapChanger  <urn:uuid:455f5f96-f641-40ea-9f26-448194a66fff>;
+            cim:SvTapStep.position    "6"^^xsd:float .
+    
+    <urn:uuid:34e0c388-bcdc-4df3-b92e-444cc9cef750>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:5331ff9a-14e7-4c10-9b85-0f5cc1dddab4>;
+            cim:SvPowerFlow.p         "-90.000000"^^xsd:float;
+            cim:SvPowerFlow.q         "103.893000"^^xsd:float .
+    
+    <urn:uuid:b2719dd0-54d5-4950-91c7-8caf1636f31f>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:1ffdd306-f4cb-4779-bd95-562a23d140d5>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:7d02a469-16c6-43a2-93d2-58f91c33e1d7>
+            rdf:type  cim:SvShuntCompensatorSections;
+            cim:SvShuntCompensatorSections.ShuntCompensator
+                    <urn:uuid:0062fda9-1883-48b8-975b-47828a371ccd>;
+            cim:SvShuntCompensatorSections.sections
+                    "1"^^xsd:float .
+    
+    <urn:uuid:f74bcf5f-fa54-4b7b-a89d-d369aab0d826>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:ee2a2f31-0edd-4c72-82f0-ab084130622f>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:52680105-690f-4a3e-9ecb-27333d5b53e7>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:d282a4f2-fc06-4e2b-94d8-d5472ba7db8b>;
+            cim:SvVoltage.angle            "-6.216820"^^xsd:float;
+            cim:SvVoltage.v                "225.471858"^^xsd:float .
+    
+    <urn:uuid:a6bb4fdc-fcff-403e-9c74-2bd937295ec0>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:8eb05bae-8d2f-44dd-b206-b3477b84d9ec>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:fc8c7bab-8717-488e-9bd5-b24aed692676>
+            rdf:type                     cim:CsConverter;
+            cim:ACDCConverter.idc        "500.000000"^^xsd:float;
+            cim:ACDCConverter.poleLossP  "0.311637"^^xsd:float;
+            cim:ACDCConverter.uc         "126.387329"^^xsd:float;
+            cim:ACDCConverter.udc        "150.000000"^^xsd:float;
+            cim:CsConverter.alpha        "17.8"^^xsd:float;
+            cim:CsConverter.gamma        "18.7"^^xsd:float;
+            cim:IdentifiedObject.mRID    "fc8c7bab-8717-488e-9bd5-b24aed692676" .
+    
+    <urn:uuid:a0d57684-ccc7-48b6-b8f2-e314075a9295>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:02b779e0-0262-47ca-aeee-434bc91f79d9>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:1a0d9ab5-9fb7-4534-a8a9-d4cee11974a9>
+            rdf:type  cim:SvShuntCompensatorSections;
+            cim:SvShuntCompensatorSections.ShuntCompensator
+                    <urn:uuid:68972669-2a90-462c-9f58-dd44fdd5c841>;
+            cim:SvShuntCompensatorSections.sections
+                    "1"^^xsd:float .
+    
+    <urn:uuid:d4539369-9c9c-45c7-bf98-3ac36258d785>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:d9233706-3e52-481d-aa08-444ef6cf8c2b>;
+            cim:SvPowerFlow.p         "-118.000000"^^xsd:float;
+            cim:SvPowerFlow.q         "-68.351957"^^xsd:float .
+    
+    <urn:uuid:18a60fa4-4f56-4b11-b755-fd9199fcf5b2>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:5acea568-6d34-4843-a49f-0f845a51ead8>;
+            cim:SvPowerFlow.p         "0e+000"^^xsd:float;
+            cim:SvPowerFlow.q         "-126.787790"^^xsd:float .
+    
+    <urn:uuid:df7ffa2b-d89f-44e7-933e-52ee397ccd1c>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:d4f41742-192f-4b1a-8735-e0cf000a478e>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:50829c63-8a9f-4d6d-b9ba-4a42ca1be7b0>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:7d07103c-8a17-4af5-8f23-5283e1964300>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:ceb3e9c8-cf8e-417e-80ea-2769bcd25e83>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:97fe7f71-1a56-4d3b-97fe-1085d6d972f5>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:dfda0c34-797e-42fe-ae4e-2c62c0032db5>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:0d76d781-5117-4e1c-af35-ca8849474b39>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:d52adbf8-44d6-4310-8548-0f58bcfadf41>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:92a44d18-5efc-449b-b2a5-beb906791d10>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:c0d14f69-97ab-4d54-a40c-f5b19b99a7fa>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:23854dcf-2b82-459e-8eb4-0d114fc828c0>;
             cim:SvPowerFlow.p         "0e+000"^^xsd:float;
             cim:SvPowerFlow.q         "-330.750000"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_53574326-127b-423a-9a53-4ef9c8dc1ad7>
+    <urn:uuid:e7945937-522a-461b-90a7-1ff9bee62cd5>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_8f549574-513c-412d-969d-ab882ce25e4c>;
+                    <urn:uuid:31995ea6-ee32-4cec-a4e0-9322c22a58e6>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_2eaf1075-29f7-4eb6-8e01-5a5800b35dde>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_35600e6d-42d9-4450-91ac-9d39aceb9a5a>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7ff93aac-5680-4145-85c8-fc4ab7b274ed>
-            rdf:type                cim:SvStatus;
-            cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_61503fe7-c9e4-410f-a16e-f354a5bace22>;
-            cim:SvStatus.inService  true .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5c5488d5-744e-42f3-ac9a-316f44614505>
+    <urn:uuid:48062ed5-d02f-402f-aba3-b2876aae760f>
             rdf:type             cim:SvSwitch;
-            cim:SvSwitch.Switch  <http://fullgrid.eu/CGMES/3.0#_0d76d781-5117-4e1c-af35-ca8849474b39>;
+            cim:SvSwitch.Switch  <urn:uuid:ff13a516-6228-43f1-8513-e21ebcbe6a0d>;
             cim:SvSwitch.open    false .
     
-    <http://fullgrid.eu/CGMES/3.0#_798acf75-6e64-492a-bcf0-b240d79361d4>
+    <urn:uuid:cf8cdf2b-c09b-4601-a3b2-b6715cd3fe46>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_968715b5-f03c-4202-8d66-0304be724ddf>;
+                    <urn:uuid:0544c491-290e-4887-a677-c6cf51c7c62e>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_addcc600-0179-4e14-9075-52168dea699b>
+    <urn:uuid:1ba008b3-591d-4a7e-80fa-acd6dc729019>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_76f4cbaf-b956-48b8-9e07-c17641982167>;
+                    <urn:uuid:e0d6595a-36ec-4fed-a585-54804ff02b91>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_a0d57684-ccc7-48b6-b8f2-e314075a9295>
+    <urn:uuid:d735ecad-e033-4fb2-a28e-4129eb5faac7>
             rdf:type                cim:SvStatus;
             cim:SvStatus.ConductingEquipment
-                    <http://fullgrid.eu/CGMES/3.0#_02b779e0-0262-47ca-aeee-434bc91f79d9>;
+                    <urn:uuid:7eec4043-7805-4d8f-9ba3-d63bce88d9be>;
             cim:SvStatus.inService  true .
     
-    <http://fullgrid.eu/CGMES/3.0#_b07f000d-6bdf-48e5-b5af-2f5fdc282b24>
+    <urn:uuid:e0d6595a-36ec-4fed-a585-54804ff02b91>
+            rdf:type                     cim:CsConverter;
+            cim:ACDCConverter.idc        "500.000000"^^xsd:float;
+            cim:ACDCConverter.poleLossP  "0.311636"^^xsd:float;
+            cim:ACDCConverter.uc         "126.332508"^^xsd:float;
+            cim:ACDCConverter.udc        "151.250000"^^xsd:float;
+            cim:CsConverter.alpha        "17.6"^^xsd:float;
+            cim:CsConverter.gamma        "18.9"^^xsd:float;
+            cim:IdentifiedObject.mRID    "e0d6595a-36ec-4fed-a585-54804ff02b91" .
+    
+    <urn:uuid:1d2ed28d-7c9c-483d-ba67-68125afef371>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:fbd2fea4-2d71-4e31-8399-25ebd6c9c205>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:850c09bf-19b0-417a-b678-3d09749fcb4d>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:0b0fc078-f889-46d2-bb63-35ee6c65bc0f>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:269a8933-0e8b-4b18-8cc5-4b3e9fd6e1cc>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:11265a88-de02-470f-bc4b-da2196ce9302>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:25ad3814-1d3a-4154-88ad-94adf87c113b>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:2939d1e5-abf0-4494-bc07-6d6b88de49a4>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:addcc600-0179-4e14-9075-52168dea699b>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:76f4cbaf-b956-48b8-9e07-c17641982167>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:0de35156-b5e9-4658-8e58-1151acc46b12>
             rdf:type                  cim:SvTapStep;
-            cim:SvTapStep.TapChanger  <http://fullgrid.eu/CGMES/3.0#_1f9a05f8-46a9-49eb-9011-4fee70c7d81f>;
-            cim:SvTapStep.position    "7"^^xsd:float .
+            cim:SvTapStep.TapChanger  <urn:uuid:696bd5b2-a911-4172-9b04-65ed440d4d94>;
+            cim:SvTapStep.position    "21"^^xsd:float .
+    
+    <urn:uuid:d6d03ff0-8fbb-420c-9f02-695a7d8f5f2b>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:578a730a-b763-4a3e-baae-9d0d0dd03524>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:01dd39c0-47e4-4c66-8585-14d31c181f96>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:07c65f92-fd67-4967-be59-735ff275e40e>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:642e8848-145b-4e36-81bb-3894b1844af0>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:230dfc70-363f-43d7-8307-613a5b21c555>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:2e6c56ec-9ab1-45e6-b6df-6a321957ab37>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:2b6d5c08-b083-4b05-aec6-2f2c18ff32cb>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:e2f2b403-c8de-4bf5-b9f0-d9500348cc7d>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:b3936a6c-cdab-44d8-93d8-2f2013805d05>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:4404ba3b-8d64-4a0a-bd3e-8e1b50d0d549>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:840e2c69-6ffd-45e6-8d60-bdedc73acfef>;
+            cim:SvPowerFlow.p         "-75"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:2eaf1075-29f7-4eb6-8e01-5a5800b35dde>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:35600e6d-42d9-4450-91ac-9d39aceb9a5a>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:6fd99327-5ecf-4191-ab97-50e59a138394>
+            rdf:type             cim:SvSwitch;
+            cim:SvSwitch.Switch  <urn:uuid:3beceba6-2ea4-4c7d-802b-b117f638dda3>;
+            cim:SvSwitch.open    false .
+    
+    <urn:uuid:5a37c4e2-8f64-4263-8443-848a2becbf30>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:b594eb01-62a7-4d95-8e36-64eb4167d74c>;
+            cim:SvPowerFlow.p         "1.184602"^^xsd:float;
+            cim:SvPowerFlow.q         "-59.230078"^^xsd:float .
+    
+    <urn:uuid:e221fae1-46ea-46f4-96c3-3398e8d0670a>
+            rdf:type                  cim:SvPowerFlow;
+            cim:SvPowerFlow.Terminal  <urn:uuid:d3101b41-2d49-43ee-95b7-d60c445a55cc>;
+            cim:SvPowerFlow.p         "0"^^xsd:float;
+            cim:SvPowerFlow.q         "0"^^xsd:float .
+    
+    <urn:uuid:fdbdcaf0-b31c-4cd1-b5fd-53a955ee2406>
+            rdf:type                       cim:SvVoltage;
+            cim:SvVoltage.TopologicalNode  <urn:uuid:3e67aaae-e737-48e8-bd0a-3a83abe8acb6>;
+            cim:SvVoltage.angle            "5.724049"^^xsd:float;
+            cim:SvVoltage.v                "225.808184"^^xsd:float .
+    
+    <urn:uuid:6211ffef-6ca2-4b5d-9714-98e2bb66267f>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:53caabd1-d997-43ff-9871-dd2b370498b9>;
+            cim:SvStatus.inService  true .
+    
+    <urn:uuid:054b8e6d-7552-42c9-8599-d2ac48123da4>
+            rdf:type                cim:SvStatus;
+            cim:SvStatus.ConductingEquipment
+                    <urn:uuid:450dc36a-3fea-40ec-be02-524dfe307d26>;
+            cim:SvStatus.inService  true .
 }

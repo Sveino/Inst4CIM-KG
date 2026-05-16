@@ -1,16 +1,21 @@
-PREFIX cim:      <http://iec.ch/TC57/CIM100#>
-PREFIX dcat:     <http://www.w3.org/ns/dcat#>
-PREFIX dcat-cim: <https://cim4.eu/ns/dcat-cim#>
-PREFIX dct:      <http://purl.org/dc/terms/>
-PREFIX dm:       <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
-PREFIX eu:       <http://iec.ch/TC57/CIM100-European#>
-PREFIX eumd:     <https://cim4.eu/ns/Metadata-European#>
-PREFIX json-ld:  <https://www.w3.org/ns/json-ld#>
-PREFIX md:       <http://iec.ch/TC57/61970-552/ModelDescription/1#>
-PREFIX nc:       <https://cim4.eu/ns/nc#>
-PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfg:     <http://www.w3.org/2004/03/trix/rdfg-1/>
-PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dct:     <http://purl.org/dc/terms/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX entsoe2: <http://entsoe.eu/CIM/SchemaExtension/3/2#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+PREFIX eumd:    <https://cim4.eu/ns/Metadata-European#>
+PREFIX icim:    <http://iec.ch/TC57/2013/CIM-schema-cim16-info#>
+PREFIX json-ld: <https://www.w3.org/ns/json-ld#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX pti:     <http://www.pti-us.com/PTI_CIM-schema-cim16#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfg:    <http://www.w3.org/2004/03/trix/rdfg-1/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 <urn:uuid:6209a5c3-4664-44c0-81f7-e56bb95b401b> {
     <urn:uuid:6209a5c3-4664-44c0-81f7-e56bb95b401b>
@@ -32,535 +37,135 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
             dcat:version             "1";
             json-ld:base             "http://fullgrid.eu/CGMES/3.0#" .
     
-    <http://fullgrid.eu/CGMES/3.0#_4159ba79-72c7-4f5c-a6e2-0451b9ae3e7e>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "4159ba79-72c7-4f5c-a6e2-0451b9ae3e7e";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_a6c9e04c-9659-4516-bde6-5e31ba66cd38> .
+    <urn:uuid:a906ab69-b9c1-41b3-9a12-f4b3a85f72e8>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:c591a9ca-ff19-47b9-8389-7713c79f1169>;
+            cim:IdentifiedObject.mRID  "a906ab69-b9c1-41b3-9a12-f4b3a85f72e8" .
     
-    <http://fullgrid.eu/CGMES/3.0#_9bf7da84-3812-4188-95f5-53805ffde524>
+    <urn:uuid:2f3dcf10-5f8d-468a-baef-31bc1d8ef5d6>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6>;
+            cim:IdentifiedObject.mRID     "2f3dcf10-5f8d-468a-baef-31bc1d8ef5d6" .
+    
+    <urn:uuid:e1b13b57-0529-49c0-97fd-209d7093608a>
             rdf:type                   cim:DCTerminal;
             cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb>;
-            cim:IdentifiedObject.mRID  "9bf7da84-3812-4188-95f5-53805ffde524" .
+                    <urn:uuid:b7a85241-4141-4241-b08b-df7d3bd0c06f>;
+            cim:IdentifiedObject.mRID  "e1b13b57-0529-49c0-97fd-209d7093608a" .
     
-    <http://fullgrid.eu/CGMES/3.0#_7874083b-e588-416d-b125-863c2681f6a3>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BBRUS_21; this is UCTE code";
-            cim:IdentifiedObject.mRID      "7874083b-e588-416d-b125-863c2681f6a3";
-            cim:IdentifiedObject.name      "BE-Busbar_12";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_302f26f0-0fa6-4140-a489-717dbb2ffb07>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_c11624ec-1172-4d8a-9e26-6b924f573115>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000877";
-            eu:IdentifiedObject.shortName  "BE-B_12" .
+    <urn:uuid:0f671737-5b7a-4c5a-ab99-8c102f193064>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>;
+            cim:IdentifiedObject.mRID  "0f671737-5b7a-4c5a-ab99-8c102f193064" .
     
-    <http://fullgrid.eu/CGMES/3.0#_687df623-5d6c-4f1b-8a3f-cef1121e6913>
+    <urn:uuid:bea678e0-7b4d-4185-993d-5e34b2a113e9>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:4e3f37e9-3453-4533-aa69-ca23a5a8642b>;
+            cim:IdentifiedObject.mRID  "bea678e0-7b4d-4185-993d-5e34b2a113e9" .
+    
+    <urn:uuid:687df623-5d6c-4f1b-8a3f-cef1121e6913>
             rdf:type                      cim:Terminal;
             cim:IdentifiedObject.mRID     "687df623-5d6c-4f1b-8a3f-cef1121e6913";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_8b5e73bc-bc88-49d9-be57-26f606221816> .
+            cim:Terminal.TopologicalNode  <urn:uuid:8b5e73bc-bc88-49d9-be57-26f606221816> .
     
-    <http://fullgrid.eu/CGMES/3.0#_3baaf355-f5c1-433c-9760-e05436f3c56b>
+    <urn:uuid:9bf7da84-3812-4188-95f5-53805ffde524>
             rdf:type                   cim:DCTerminal;
             cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d444a448-d542-4929-a369-0bf360079f5b>;
-            cim:IdentifiedObject.mRID  "3baaf355-f5c1-433c-9760-e05436f3c56b" .
+                    <urn:uuid:1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb>;
+            cim:IdentifiedObject.mRID  "9bf7da84-3812-4188-95f5-53805ffde524" .
     
-    <http://fullgrid.eu/CGMES/3.0#_62e05955-9dd9-41c2-9753-75f04838d258>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_4e5ff0f1-42f8-4ed8-baca-0bc5e25abed5>;
+    <urn:uuid:34777fdd-896d-4653-bcac-e065743e3741>
+            rdf:type                       cim:TopologicalNode;
             cim:IdentifiedObject.description
-                    "DC_Ground2";
-            cim:IdentifiedObject.mRID      "62e05955-9dd9-41c2-9753-75f04838d258";
-            cim:IdentifiedObject.name      "DC_Ground2";
+                    "BGENT_71; This is the old UCTE code from UCTE DEF";
+            cim:IdentifiedObject.mRID      "34777fdd-896d-4653-bcac-e065743e3741";
+            cim:IdentifiedObject.name      "BE-Busbar_4";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:77d50efe-b1a1-40d5-b65f-0c2b2a810ecf>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:0204058a-8b7e-4a89-82e9-0960280b47ef>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
             eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000521";
-            eu:IdentifiedObject.shortName  "DC_Ground2" .
+                    "00X-BE-BE-000879";
+            eu:IdentifiedObject.shortName  "BE-B_4" .
     
-    <http://fullgrid.eu/CGMES/3.0#_b8f5b2e0-3522-4465-8ce7-e238a863c46c>
+    <urn:uuid:57f8af45-64f0-4db8-9d31-5f9621f384c3>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:d444a448-d542-4929-a369-0bf360079f5b>;
+            cim:IdentifiedObject.mRID     "57f8af45-64f0-4db8-9d31-5f9621f384c3" .
+    
+    <urn:uuid:b6bb3424-88af-4934-a46c-ef220f778cbb>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "b8f5b2e0-3522-4465-8ce7-e238a863c46c";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d282a4f2-fc06-4e2b-94d8-d5472ba7db8b> .
+            cim:IdentifiedObject.mRID     "b6bb3424-88af-4934-a46c-ef220f778cbb";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
     
-    <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>
+    <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>
             rdf:type                       cim:TopologicalNode;
             cim:IdentifiedObject.description
                     "BBRUS_21; this is UCTE code";
             cim:IdentifiedObject.mRID      "6710b466-00d6-4556-b436-985eb08f7dd0";
             cim:IdentifiedObject.name      "BE-Busbar_2";
             cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_48e843d1-1794-4349-9383-bc7113b41cce>;
+                    <urn:uuid:48e843d1-1794-4349-9383-bc7113b41cce>;
             cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_088cc5b3-3e56-4f27-a947-3d47fca8411b>;
+                    <urn:uuid:088cc5b3-3e56-4f27-a947-3d47fca8411b>;
             cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
             eu:IdentifiedObject.energyIdentCodeEic
                     "00X-BE-BE-000878";
             eu:IdentifiedObject.shortName  "BE-B_2" .
     
-    <http://fullgrid.eu/CGMES/3.0#_0a99a983-5858-4f6c-a9fd-df5fcee2b80b>
+    <urn:uuid:0a99a983-5858-4f6c-a9fd-df5fcee2b80b>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>;
+                    <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>;
             cim:IdentifiedObject.mRID  "0a99a983-5858-4f6c-a9fd-df5fcee2b80b" .
     
-    <http://fullgrid.eu/CGMES/3.0#_e77ed075-af58-45a2-8eb7-18619927f281>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "e77ed075-af58-45a2-8eb7-18619927f281";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_97226393-e1b3-46e0-a7c3-9e97f3b6cc5b>
+    <urn:uuid:e655fcb2-ef0c-402c-a219-4e6e593c20f1>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d282a4f2-fc06-4e2b-94d8-d5472ba7db8b>;
-            cim:IdentifiedObject.mRID  "97226393-e1b3-46e0-a7c3-9e97f3b6cc5b" .
+                    <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
+            cim:IdentifiedObject.mRID  "e655fcb2-ef0c-402c-a219-4e6e593c20f1" .
     
-    <http://fullgrid.eu/CGMES/3.0#_1798cbd9-2f4b-4c2c-8273-89bd5d85c2f6>
+    <urn:uuid:37a16d83-6e29-4d0d-b8e9-bb90b89c49da>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "1798cbd9-2f4b-4c2c-8273-89bd5d85c2f6";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
+            cim:IdentifiedObject.mRID     "37a16d83-6e29-4d0d-b8e9-bb90b89c49da";
+            cim:Terminal.TopologicalNode  <urn:uuid:1fdbd284-1504-4db8-a8c2-ee935f36879e> .
     
-    <http://fullgrid.eu/CGMES/3.0#_06c74a2d-4f1c-40de-935f-e1b7b7fe4cba>
+    <urn:uuid:0dc9f108-e9be-46ce-a3e6-480b092ef022>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "06c74a2d-4f1c-40de-935f-e1b7b7fe4cba";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_8e842efc-1fd1-41b2-90e5-ba043659c601> .
+            cim:IdentifiedObject.mRID     "0dc9f108-e9be-46ce-a3e6-480b092ef022";
+            cim:Terminal.TopologicalNode  <urn:uuid:7874083b-e588-416d-b125-863c2681f6a3> .
     
-    <http://fullgrid.eu/CGMES/3.0#_5cb80971-4471-4593-9462-84d6ec8fe185>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
-            cim:IdentifiedObject.mRID  "5cb80971-4471-4593-9462-84d6ec8fe185" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b99f6c0d-ad5c-4676-859f-b8ce00d084d6>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>;
-            cim:IdentifiedObject.mRID  "b99f6c0d-ad5c-4676-859f-b8ce00d084d6" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8ac543ac-abfb-4f9b-9381-72709bd8188e>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "8ac543ac-abfb-4f9b-9381-72709bd8188e";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_97cc87be-cffe-4d92-8788-417f7e2a5b93>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "97cc87be-cffe-4d92-8788-417f7e2a5b93";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_2c8ee2b2-260e-4c33-b9e1-e10787860a20>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "2c8ee2b2-260e-4c33-b9e1-e10787860a20";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_58539a9c-b33c-42d9-b4ce-20111fc7eec1>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "58539a9c-b33c-42d9-b4ce-20111fc7eec1";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_437ce796-5b3f-45ff-a3dd-4653b19bc1e4>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>;
-            cim:IdentifiedObject.mRID     "437ce796-5b3f-45ff-a3dd-4653b19bc1e4" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_930595c9-d686-47cb-8afe-e55225cc50e6>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
-            cim:IdentifiedObject.mRID  "930595c9-d686-47cb-8afe-e55225cc50e6" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_876b0e1a-3cfa-4931-88b4-3e1439d04af9>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_866f8f54-565d-4fbb-9c4f-780298f80752>;
-            cim:IdentifiedObject.mRID  "876b0e1a-3cfa-4931-88b4-3e1439d04af9" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_56c26ce6-779a-47c9-a2d0-ddc7c2551ae5>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_bd9d594b-e909-4890-9225-27b54a7c272a>;
-            cim:IdentifiedObject.mRID  "56c26ce6-779a-47c9-a2d0-ddc7c2551ae5" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d84be2ac-c639-49b2-b9f7-207a02ecfd03>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "d84be2ac-c639-49b2-b9f7-207a02ecfd03";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_7f830c46-a1e0-466c-bad5-1b7523147805> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a8dd8cef-cd85-4f55-8015-ea212e461656>
+    <urn:uuid:a8dd8cef-cd85-4f55-8015-ea212e461656>
             rdf:type                      cim:Terminal;
             cim:IdentifiedObject.mRID     "a8dd8cef-cd85-4f55-8015-ea212e461656";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
     
-    <http://fullgrid.eu/CGMES/3.0#_fde26acf-bab2-45e7-8726-3142a35455aa>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d4fc45b2-7090-4d26-b620-e7a319aca9b5>;
-            cim:IdentifiedObject.mRID  "fde26acf-bab2-45e7-8726-3142a35455aa" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_34b1404e-6aad-472d-87c7-6b0e05d2098c>
+    <urn:uuid:d3101b41-2d49-43ee-95b7-d60c445a55cc>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "34b1404e-6aad-472d-87c7-6b0e05d2098c";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_05675d2d-bb4c-4165-808f-0c7671a790cd> .
+            cim:IdentifiedObject.mRID     "d3101b41-2d49-43ee-95b7-d60c445a55cc";
+            cim:Terminal.TopologicalNode  <urn:uuid:58889b22-7bd5-4e54-8602-2e115bfa2ed7> .
     
-    <http://fullgrid.eu/CGMES/3.0#_ee9fd077-8248-4bf4-a8d5-0844a5539a14>
+    <urn:uuid:5ae0dbff-af2b-4772-a820-ab3a1900bc6f>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_bec23818-76a9-4e47-aecd-76f8ad3f1199>;
-            cim:IdentifiedObject.mRID  "ee9fd077-8248-4bf4-a8d5-0844a5539a14" .
+                    <urn:uuid:1fdbd284-1504-4db8-a8c2-ee935f36879e>;
+            cim:IdentifiedObject.mRID  "5ae0dbff-af2b-4772-a820-ab3a1900bc6f" .
     
-    <http://fullgrid.eu/CGMES/3.0#_4e3f37e9-3453-4533-aa69-ca23a5a8642b>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BBRUS_21; this is UCTE code";
-            cim:IdentifiedObject.mRID      "4e3f37e9-3453-4533-aa69-ca23a5a8642b";
-            cim:IdentifiedObject.name      "BE-Busbar_8";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_48e843d1-1794-4349-9383-bc7113b41cce>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_088cc5b3-3e56-4f27-a947-3d47fca8411b>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000883";
-            eu:IdentifiedObject.shortName  "BE-B_8" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_42e15ef0-928f-455b-accd-06e7cb0d0391>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_3e67aaae-e737-48e8-bd0a-3a83abe8acb6>;
-            cim:IdentifiedObject.mRID  "42e15ef0-928f-455b-accd-06e7cb0d0391" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_27531589-b71f-4972-90e7-86167a4b9602>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "27531589-b71f-4972-90e7-86167a4b9602";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_2deccb06-c8b3-4cb2-815f-9c0460a7804d>
+    <urn:uuid:2deccb06-c8b3-4cb2-815f-9c0460a7804d>
             rdf:type                      cim:Terminal;
             cim:IdentifiedObject.mRID     "2deccb06-c8b3-4cb2-815f-9c0460a7804d";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
     
-    <http://fullgrid.eu/CGMES/3.0#_d444a448-d542-4929-a369-0bf360079f5b>
+    <urn:uuid:0e8a2acc-6550-4ab7-8a61-975dea4b0ea5>
             rdf:type                       cim:DCTopologicalNode;
             cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
-            cim:IdentifiedObject.description
-                    "HVDC1_6";
-            cim:IdentifiedObject.mRID      "d444a448-d542-4929-a369-0bf360079f5b";
-            cim:IdentifiedObject.name      "HVDC1_6";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000527";
-            eu:IdentifiedObject.shortName  "HVDC1_6" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8e842efc-1fd1-41b2-90e5-ba043659c601>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BE_Busbar_HVDC2";
-            cim:IdentifiedObject.mRID      "8e842efc-1fd1-41b2-90e5-ba043659c601";
-            cim:IdentifiedObject.name      "BE_Busbar_HVDC2";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_f8953606-111b-41a2-b762-53ce411300a6>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_a416525c-aeb1-4f70-b1bf-ba526bd4f573>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000890";
-            eu:IdentifiedObject.shortName  "Busbar_HVDC2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_578f0373-5866-4a4f-ac13-c5a1a95820ae>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "578f0373-5866-4a4f-ac13-c5a1a95820ae";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_c859beb5-62f0-43c0-a269-b41d4f9a5c37> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e3feb6f4-0db7-4468-b49e-6ea9d6f83d1a>
-            rdf:type                   cim:ACDCConverterDCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_b7a85241-4141-4241-b08b-df7d3bd0c06f>;
-            cim:IdentifiedObject.mRID  "e3feb6f4-0db7-4468-b49e-6ea9d6f83d1a" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e8f391bc-4299-47cc-a9d8-f2f048bee440>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "e8f391bc-4299-47cc-a9d8-f2f048bee440";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_3e67aaae-e737-48e8-bd0a-3a83abe8acb6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d282a4f2-fc06-4e2b-94d8-d5472ba7db8b>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "RG CE; 220 kV; OHL";
-            cim:IdentifiedObject.mRID      "d282a4f2-fc06-4e2b-94d8-d5472ba7db8b";
-            cim:IdentifiedObject.name      "TN_Border_ST24";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_2e8ab1fb-6be9-4c85-8540-776c82514e93>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_644d62b8-56f9-4e31-a09d-e2fef25f4a92>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "10T-AT-DE-00017X";
-            eu:IdentifiedObject.shortName  "XZE_ST24" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c859beb5-62f0-43c0-a269-b41d4f9a5c37>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "N1230816360";
-            cim:IdentifiedObject.mRID      "c859beb5-62f0-43c0-a269-b41d4f9a5c37";
-            cim:IdentifiedObject.name      "N1230816360";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_4beb49fd-c341-4ae3-a6b6-bcbc3ca35aed>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_db4aafe8-a450-4a4d-bd82-9bf570b12d0d>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000888";
-            eu:IdentifiedObject.shortName  "N1230816360" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1c0d415d-7e56-4fad-a127-f131cf53b9cb>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "1c0d415d-7e56-4fad-a127-f131cf53b9cb";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_a6c9e04c-9659-4516-bde6-5e31ba66cd38> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d2489a52-7225-49de-9fe0-22f1af25476d>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
-            cim:IdentifiedObject.mRID  "d2489a52-7225-49de-9fe0-22f1af25476d" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_08d5cb60-f1e7-452a-8023-3b7292cc23ce>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "08d5cb60-f1e7-452a-8023-3b7292cc23ce";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_8b5e73bc-bc88-49d9-be57-26f606221816> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_82597a1a-4990-4232-9b1a-f5cec51fddb2>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "82597a1a-4990-4232-9b1a-f5cec51fddb2";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b2d0dab2-7918-469a-bea3-20aacee128b1>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d4fc45b2-7090-4d26-b620-e7a319aca9b5>;
-            cim:IdentifiedObject.mRID  "b2d0dab2-7918-469a-bea3-20aacee128b1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_38e57012-ac9b-4999-9921-1dfafcb73e3b>
-            rdf:type                   cim:ACDCConverterDCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb>;
-            cim:IdentifiedObject.mRID  "38e57012-ac9b-4999-9921-1dfafcb73e3b" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8b5e73bc-bc88-49d9-be57-26f606221816>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "RG CE; 400 kV; OHL (2)";
-            cim:IdentifiedObject.mRID      "8b5e73bc-bc88-49d9-be57-26f606221816";
-            cim:IdentifiedObject.name      "TN_Border_MA11";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_86a47af4-94b8-4887-aabb-a5a791e7efb8>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_7474dd87-438b-40e5-82ae-7f873bd69438>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "10T-AT-SI-00001T";
-            eu:IdentifiedObject.shortName  "XKA_MA11" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_54c60386-8d0b-4c67-8bac-aa59bd70edae>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "54c60386-8d0b-4c67-8bac-aa59bd70edae";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_09c73520-69d4-45ef-a4db-0624af71fe02>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "09c73520-69d4-45ef-a4db-0624af71fe02";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_58889b22-7bd5-4e54-8602-2e115bfa2ed7> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7f45eb82-d863-4941-b88e-273f9b31e3ac>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "7f45eb82-d863-4941-b88e-273f9b31e3ac";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_57409aea-48bd-4459-aa86-3a066b9137b1>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>;
-            cim:IdentifiedObject.mRID  "57409aea-48bd-4459-aa86-3a066b9137b1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_98718b6d-a18c-4a66-958c-45d312a3274e>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "98718b6d-a18c-4a66-958c-45d312a3274e";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_866f8f54-565d-4fbb-9c4f-780298f80752> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_bc40de8c-e3cc-40aa-af5a-ff135ea68372>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
-            cim:IdentifiedObject.mRID  "bc40de8c-e3cc-40aa-af5a-ff135ea68372" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5f967934-b637-4643-901c-8f9a47e324f7>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "5f967934-b637-4643-901c-8f9a47e324f7";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_dafa1358-665c-4751-bcd3-7cda376a6ae0>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "dafa1358-665c-4751-bcd3-7cda376a6ae0";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_17c1fd73-ab8f-4984-aab3-a0e80f6cddbc>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BBRUS151; BGENT_51";
-            cim:IdentifiedObject.mRID      "17c1fd73-ab8f-4984-aab3-a0e80f6cddbc";
-            cim:IdentifiedObject.name      "BE-Busbar_9";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_7a51803b-5b5c-4416-a9ae-b669b87dd531>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_7d3bf85e-0d00-459f-bca3-6727caeb80db>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000884";
-            eu:IdentifiedObject.shortName  "BE-B_9" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_161b1f6c-7aef-4965-9d9c-6ea8d3d70f31>
-            rdf:type                   cim:ACDCConverterDCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_fd8c8a4f-2f26-4912-b11f-5d52accad641>;
-            cim:IdentifiedObject.mRID  "161b1f6c-7aef-4965-9d9c-6ea8d3d70f31" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1f281a59-6fd9-43b5-a726-524fdb702854>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "1f281a59-6fd9-43b5-a726-524fdb702854";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_bd9d594b-e909-4890-9225-27b54a7c272a> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7182b03c-2864-4f5b-8287-6f5bee6721a3>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "7182b03c-2864-4f5b-8287-6f5bee6721a3";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4e3f37e9-3453-4533-aa69-ca23a5a8642b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b594eb01-62a7-4d95-8e36-64eb4167d74c>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "b594eb01-62a7-4d95-8e36-64eb4167d74c";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_57f8af45-64f0-4db8-9d31-5f9621f384c3>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d444a448-d542-4929-a369-0bf360079f5b>;
-            cim:IdentifiedObject.mRID     "57f8af45-64f0-4db8-9d31-5f9621f384c3" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6e942772-b225-4879-936d-4ee33471d459>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "6e942772-b225-4879-936d-4ee33471d459";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e98c20a2-dd4e-4991-9fb4-83740f8bd21d>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
-            cim:IdentifiedObject.mRID     "e98c20a2-dd4e-4991-9fb4-83740f8bd21d" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_19d85411-f52b-4d38-b4b5-2693ee7ee283>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>;
-            cim:IdentifiedObject.mRID  "19d85411-f52b-4d38-b4b5-2693ee7ee283" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_037bb39f-be77-4b83-8638-9c8dff4eb966>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>;
-            cim:IdentifiedObject.mRID  "037bb39f-be77-4b83-8638-9c8dff4eb966" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_3878043d-c093-43e6-9524-6d17580a3260>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "3878043d-c093-43e6-9524-6d17580a3260";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_bec23818-76a9-4e47-aecd-76f8ad3f1199> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_58889b22-7bd5-4e54-8602-2e115bfa2ed7>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BBRUS151; BGENT_51";
-            cim:IdentifiedObject.mRID      "58889b22-7bd5-4e54-8602-2e115bfa2ed7";
-            cim:IdentifiedObject.name      "BE-Busbar_7";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_7a51803b-5b5c-4416-a9ae-b669b87dd531>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_7d3bf85e-0d00-459f-bca3-6727caeb80db>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000882";
-            eu:IdentifiedObject.shortName  "BE-B_6" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_12c81581-5bb7-4e28-9318-74f36bcdc9fb>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "12c81581-5bb7-4e28-9318-74f36bcdc9fb";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9be289e1-b82c-45ee-8939-459f032f6baf>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "9be289e1-b82c-45ee-8939-459f032f6baf";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6d2f3f51-3a6c-4a38-af83-9cf46f957e3d>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_34d01770-11e9-46c7-b8da-20855cfcffeb>;
-            cim:IdentifiedObject.mRID  "6d2f3f51-3a6c-4a38-af83-9cf46f957e3d" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_23854dcf-2b82-459e-8eb4-0d114fc828c0>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "23854dcf-2b82-459e-8eb4-0d114fc828c0";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_1fdbd284-1504-4db8-a8c2-ee935f36879e> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_80b3660a-6dd4-40d0-80be-7df2dc3b7db8>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "80b3660a-6dd4-40d0-80be-7df2dc3b7db8";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a6c9e04c-9659-4516-bde6-5e31ba66cd38>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "10T-AT-DE-00017X";
-            cim:IdentifiedObject.mRID      "a6c9e04c-9659-4516-bde6-5e31ba66cd38";
-            cim:IdentifiedObject.name      "BE_PCC2";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_48e843d1-1794-4349-9383-bc7113b41cce>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_567ef6df-586f-4c1e-a29c-a0c1745664df>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "10T-AT-DE-00017X";
-            eu:IdentifiedObject.shortName  "BE_PCC2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_6fb0e7d3-8125-46b1-9cd3-1c66c1ee513a>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "6fb0e7d3-8125-46b1-9cd3-1c66c1ee513a";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_eea35583-7870-4212-8db2-2b4372f68e8f>;
-            cim:IdentifiedObject.description
-                    "HVDC2_1";
-            cim:IdentifiedObject.mRID      "5b11fb75-b075-4c01-8a5c-ecfc6cc6e616";
-            cim:IdentifiedObject.name      "HVDC2_1";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000529";
-            eu:IdentifiedObject.shortName  "HVDC2_1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e151673a-9d7b-40dd-980b-e59ad9645907>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
-            cim:IdentifiedObject.mRID  "e151673a-9d7b-40dd-980b-e59ad9645907" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0e8a2acc-6550-4ab7-8a61-975dea4b0ea5>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_e6c462ca-42a8-4ba5-b89b-bc6f4130b95d>;
+                    <urn:uuid:e6c462ca-42a8-4ba5-b89b-bc6f4130b95d>;
             cim:IdentifiedObject.description
                     "BE_DC1";
             cim:IdentifiedObject.mRID      "0e8a2acc-6550-4ab7-8a61-975dea4b0ea5";
@@ -569,336 +174,118 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
                     "00X-BE-BE-000518";
             eu:IdentifiedObject.shortName  "BE_DC1" .
     
-    <http://fullgrid.eu/CGMES/3.0#_baeaf7ca-dde1-418e-9b16-46d6d5f52b25>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_67a35a3d-35a0-4bbe-a48a-f28228a67469>;
-            cim:IdentifiedObject.mRID  "baeaf7ca-dde1-418e-9b16-46d6d5f52b25" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e84ba2ff-8bac-4d71-9765-61c7633df57a>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "e84ba2ff-8bac-4d71-9765-61c7633df57a";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_17c1fd73-ab8f-4984-aab3-a0e80f6cddbc> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_659ac0ba-1b4b-4c08-a2f5-b3946091f293>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "659ac0ba-1b4b-4c08-a2f5-b3946091f293";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_c591a9ca-ff19-47b9-8389-7713c79f1169> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ff3d16a7-77d9-4f86-945a-b1b8fee995fb>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "ff3d16a7-77d9-4f86-945a-b1b8fee995fb";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e655fcb2-ef0c-402c-a219-4e6e593c20f1>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
-            cim:IdentifiedObject.mRID  "e655fcb2-ef0c-402c-a219-4e6e593c20f1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_849d1e5e-e6be-44db-8c04-98bccae89af2>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>;
-            cim:IdentifiedObject.mRID  "849d1e5e-e6be-44db-8c04-98bccae89af2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a>
+    <urn:uuid:7874083b-e588-416d-b125-863c2681f6a3>
             rdf:type                       cim:TopologicalNode;
             cim:IdentifiedObject.description
-                    "BBRUS151; BGENT_51";
-            cim:IdentifiedObject.mRID      "9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a";
-            cim:IdentifiedObject.name      "BE-Busbar_11";
+                    "BBRUS_21; this is UCTE code";
+            cim:IdentifiedObject.mRID      "7874083b-e588-416d-b125-863c2681f6a3";
+            cim:IdentifiedObject.name      "BE-Busbar_12";
             cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_7a51803b-5b5c-4416-a9ae-b669b87dd531>;
+                    <urn:uuid:302f26f0-0fa6-4140-a489-717dbb2ffb07>;
             cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_7d3bf85e-0d00-459f-bca3-6727caeb80db>;
+                    <urn:uuid:c11624ec-1172-4d8a-9e26-6b924f573115>;
             cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
             eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000876";
-            eu:IdentifiedObject.shortName  "BE-B_11" .
+                    "00X-BE-BE-000877";
+            eu:IdentifiedObject.shortName  "BE-B_12" .
     
-    <http://fullgrid.eu/CGMES/3.0#_125e8e92-2c08-46c4-a157-817f265a2082>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "125e8e92-2c08-46c4-a157-817f265a2082";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_dfdc986a-93b6-454c-b9d8-6ab4aadb0139>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "dfdc986a-93b6-454c-b9d8-6ab4aadb0139";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_7f830c46-a1e0-466c-bad5-1b7523147805> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_aaf1cff3-362d-4daa-b9f7-2c9236695198>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "aaf1cff3-362d-4daa-b9f7-2c9236695198";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0b49b82b-ea9a-4b28-8efa-d9ae99317d6c>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "0b49b82b-ea9a-4b28-8efa-d9ae99317d6c";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_05675d2d-bb4c-4165-808f-0c7671a790cd> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_cde8db64-6196-4941-81e6-df90b5c87180>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "cde8db64-6196-4941-81e6-df90b5c87180";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_efc034b8-2e9e-45e8-a693-ae080c0171b6>
+    <urn:uuid:c9d59e6b-7f84-431e-a521-2af97ba77125>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>;
-            cim:IdentifiedObject.mRID  "efc034b8-2e9e-45e8-a693-ae080c0171b6" .
+                    <urn:uuid:34777fdd-896d-4653-bcac-e065743e3741>;
+            cim:IdentifiedObject.mRID  "c9d59e6b-7f84-431e-a521-2af97ba77125" .
     
-    <http://fullgrid.eu/CGMES/3.0#_d9233706-3e52-481d-aa08-444ef6cf8c2b>
+    <urn:uuid:a0101413-5457-41e0-9630-6d98ea6a8bf3>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:c859beb5-62f0-43c0-a269-b41d4f9a5c37>;
+            cim:IdentifiedObject.mRID  "a0101413-5457-41e0-9630-6d98ea6a8bf3" .
+    
+    <urn:uuid:164ba4ef-12a8-4422-ad31-84cab195bce1>
+            rdf:type                   cim:ACDCConverterDCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:0e8a2acc-6550-4ab7-8a61-975dea4b0ea5>;
+            cim:IdentifiedObject.mRID  "164ba4ef-12a8-4422-ad31-84cab195bce1" .
+    
+    <urn:uuid:0cab8253-91fd-4bfb-92b5-ed814a6c9b6a>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "d9233706-3e52-481d-aa08-444ef6cf8c2b";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+            cim:IdentifiedObject.mRID     "0cab8253-91fd-4bfb-92b5-ed814a6c9b6a";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
     
-    <http://fullgrid.eu/CGMES/3.0#_9072b316-0b11-4ded-a59b-5b1e5d78567a>
+    <urn:uuid:8add0faf-5960-4882-a293-a5f79aef82c3>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "8add0faf-5960-4882-a293-a5f79aef82c3";
+            cim:Terminal.TopologicalNode  <urn:uuid:bd9d594b-e909-4890-9225-27b54a7c272a> .
+    
+    <urn:uuid:96633a4f-906a-4c5f-851e-f38dcb46ac7a>
             rdf:type                   cim:DCTerminal;
             cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
-            cim:IdentifiedObject.mRID  "9072b316-0b11-4ded-a59b-5b1e5d78567a" .
+                    <urn:uuid:155a50ec-13d8-4104-879f-e998411be2ea>;
+            cim:IdentifiedObject.mRID  "96633a4f-906a-4c5f-851e-f38dcb46ac7a" .
     
-    <http://fullgrid.eu/CGMES/3.0#_bd9d594b-e909-4890-9225-27b54a7c272a>
+    <urn:uuid:79041560-a1d6-4700-a235-7161f661a00a>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:1fdbd284-1504-4db8-a8c2-ee935f36879e>;
+            cim:IdentifiedObject.mRID  "79041560-a1d6-4700-a235-7161f661a00a" .
+    
+    <urn:uuid:e52b1dd6-e7a2-4c80-95f4-9dc78ea013d1>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:155a50ec-13d8-4104-879f-e998411be2ea>;
+            cim:IdentifiedObject.mRID  "e52b1dd6-e7a2-4c80-95f4-9dc78ea013d1" .
+    
+    <urn:uuid:90cef915-b3de-43f7-860f-3ba67465fb40>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:34d01770-11e9-46c7-b8da-20855cfcffeb>;
+            cim:IdentifiedObject.mRID     "90cef915-b3de-43f7-860f-3ba67465fb40" .
+    
+    <urn:uuid:1eb0ff0f-da46-48de-afac-443fb5dde198>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "1eb0ff0f-da46-48de-afac-443fb5dde198";
+            cim:Terminal.TopologicalNode  <urn:uuid:c591a9ca-ff19-47b9-8389-7713c79f1169> .
+    
+    <urn:uuid:bd9d594b-e909-4890-9225-27b54a7c272a>
             rdf:type                       cim:TopologicalNode;
             cim:IdentifiedObject.description
                     "RG CE; 400 kV; OHL (2)";
             cim:IdentifiedObject.mRID      "bd9d594b-e909-4890-9225-27b54a7c272a";
             cim:IdentifiedObject.name      "TN_Border_AL11";
             cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_86a47af4-94b8-4887-aabb-a5a791e7efb8>;
+                    <urn:uuid:86a47af4-94b8-4887-aabb-a5a791e7efb8>;
             cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_39581b86-8427-46bc-95de-f67009da09be>;
+                    <urn:uuid:39581b86-8427-46bc-95de-f67009da09be>;
             eu:IdentifiedObject.energyIdentCodeEic
                     "10T-ES-PT-10004U";
             eu:IdentifiedObject.shortName  "XCA_AL11" .
     
-    <http://fullgrid.eu/CGMES/3.0#_da666ea8-7bf5-4a22-84c5-d5d21f692314>
+    <urn:uuid:62e05955-9dd9-41c2-9753-75f04838d258>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:4e5ff0f1-42f8-4ed8-baca-0bc5e25abed5>;
+            cim:IdentifiedObject.description
+                    "DC_Ground2";
+            cim:IdentifiedObject.mRID      "62e05955-9dd9-41c2-9753-75f04838d258";
+            cim:IdentifiedObject.name      "DC_Ground2";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000521";
+            eu:IdentifiedObject.shortName  "DC_Ground2" .
+    
+    <urn:uuid:87a7036b-8a12-4916-b16c-6a80a381c2b4>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "da666ea8-7bf5-4a22-84c5-d5d21f692314";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+            cim:IdentifiedObject.mRID     "87a7036b-8a12-4916-b16c-6a80a381c2b4";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
     
-    <http://fullgrid.eu/CGMES/3.0#_8d77cc45-66ee-4786-bae7-80d17c20cb95>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_a6c9e04c-9659-4516-bde6-5e31ba66cd38>;
-            cim:IdentifiedObject.mRID  "8d77cc45-66ee-4786-bae7-80d17c20cb95" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BBRUS151; BGENT_51";
-            cim:IdentifiedObject.mRID      "d82b939b-41aa-47ff-87e4-be803991ad29";
-            cim:IdentifiedObject.name      "BE-Busbar_6";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_7a51803b-5b5c-4416-a9ae-b669b87dd531>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_7d3bf85e-0d00-459f-bca3-6727caeb80db>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000881";
-            eu:IdentifiedObject.shortName  "BE-B_6" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8f236cf1-aee0-4528-bf73-68d92cc13ef2>
+    <urn:uuid:e77ed075-af58-45a2-8eb7-18619927f281>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "8f236cf1-aee0-4528-bf73-68d92cc13ef2";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
+            cim:IdentifiedObject.mRID     "e77ed075-af58-45a2-8eb7-18619927f281";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
     
-    <http://fullgrid.eu/CGMES/3.0#_133a4f91-0480-444a-b15a-a5e1a1180e8d>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
-            cim:IdentifiedObject.mRID  "133a4f91-0480-444a-b15a-a5e1a1180e8d" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a3d9ac34-1e35-45aa-ad48-7c688258fafd>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_62e05955-9dd9-41c2-9753-75f04838d258>;
-            cim:IdentifiedObject.mRID  "a3d9ac34-1e35-45aa-ad48-7c688258fafd" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_19efee65-a452-4166-a77e-c1faf80fcc01>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "19efee65-a452-4166-a77e-c1faf80fcc01";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_67a35a3d-35a0-4bbe-a48a-f28228a67469> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0f671737-5b7a-4c5a-ab99-8c102f193064>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>;
-            cim:IdentifiedObject.mRID  "0f671737-5b7a-4c5a-ab99-8c102f193064" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_f2afe0fa-05f2-4341-9ec7-c7b903686551>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
-            cim:IdentifiedObject.mRID  "f2afe0fa-05f2-4341-9ec7-c7b903686551" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0c729e41-a3aa-4eb6-81fa-ccd5bcb659a9>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "0c729e41-a3aa-4eb6-81fa-ccd5bcb659a9";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_147ffaf7-18ac-46a4-b11a-ec2c6b2874e2>
-            rdf:type                   cim:ACDCConverterDCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_34d01770-11e9-46c7-b8da-20855cfcffeb>;
-            cim:IdentifiedObject.mRID  "147ffaf7-18ac-46a4-b11a-ec2c6b2874e2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_34d01770-11e9-46c7-b8da-20855cfcffeb>
+    <urn:uuid:fd8c8a4f-2f26-4912-b11f-5d52accad641>
             rdf:type                       cim:DCTopologicalNode;
             cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_e6c462ca-42a8-4ba5-b89b-bc6f4130b95d>;
-            cim:IdentifiedObject.description
-                    "DC_Ground1";
-            cim:IdentifiedObject.mRID      "34d01770-11e9-46c7-b8da-20855cfcffeb";
-            cim:IdentifiedObject.name      "DC_Ground1";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000520";
-            eu:IdentifiedObject.shortName  "DC_Ground1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
-            cim:IdentifiedObject.description
-                    "HVDC1_3";
-            cim:IdentifiedObject.mRID      "c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6";
-            cim:IdentifiedObject.name      "HVDC1_3";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000524";
-            eu:IdentifiedObject.shortName  "HVDC1_3" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_feb9a3f7-803a-4a9b-8140-967e399d6a0f>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
-            cim:IdentifiedObject.mRID  "feb9a3f7-803a-4a9b-8140-967e399d6a0f" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fc5daa58-55cb-47f5-ac39-4e1ab12e0282>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_0e8a2acc-6550-4ab7-8a61-975dea4b0ea5>;
-            cim:IdentifiedObject.mRID     "fc5daa58-55cb-47f5-ac39-4e1ab12e0282" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a0101413-5457-41e0-9630-6d98ea6a8bf3>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_c859beb5-62f0-43c0-a269-b41d4f9a5c37>;
-            cim:IdentifiedObject.mRID  "a0101413-5457-41e0-9630-6d98ea6a8bf3" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0fb2b82a-b699-45eb-8a93-46d4e0b9d7c8>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a>;
-            cim:IdentifiedObject.mRID  "0fb2b82a-b699-45eb-8a93-46d4e0b9d7c8" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e6d0a011-742f-4ffd-98a3-27c9e62a2342>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_fd8c8a4f-2f26-4912-b11f-5d52accad641>;
-            cim:IdentifiedObject.mRID     "e6d0a011-742f-4ffd-98a3-27c9e62a2342" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d4fc45b2-7090-4d26-b620-e7a319aca9b5>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
-            cim:IdentifiedObject.description
-                    "HVDC1_5";
-            cim:IdentifiedObject.mRID      "d4fc45b2-7090-4d26-b620-e7a319aca9b5";
-            cim:IdentifiedObject.name      "HVDC1_5";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000526";
-            eu:IdentifiedObject.shortName  "HVDC1_5" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4ed1d67b-3d76-47a7-9785-2ad6afaf4692>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d444a448-d542-4929-a369-0bf360079f5b>;
-            cim:IdentifiedObject.mRID  "4ed1d67b-3d76-47a7-9785-2ad6afaf4692" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_2e18bb26-ab9d-41a8-9a1e-71aa3c98d425>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_4e5ff0f1-42f8-4ed8-baca-0bc5e25abed5>;
-            cim:IdentifiedObject.description
-                    "BE_DC2";
-            cim:IdentifiedObject.mRID      "2e18bb26-ab9d-41a8-9a1e-71aa3c98d425";
-            cim:IdentifiedObject.name      "BE_DC2";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000519";
-            eu:IdentifiedObject.shortName  "BE_DC2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_72e3acb0-9f6c-496b-b809-4fb66c773b55>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "72e3acb0-9f6c-496b-b809-4fb66c773b55";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_77d5bdef-c991-42df-ac4f-ce50efe43a1c>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_62e05955-9dd9-41c2-9753-75f04838d258>;
-            cim:IdentifiedObject.mRID     "77d5bdef-c991-42df-ac4f-ce50efe43a1c" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d28d9755-daef-408a-b849-76ac918c7329>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_155a50ec-13d8-4104-879f-e998411be2ea>;
-            cim:IdentifiedObject.mRID     "d28d9755-daef-408a-b849-76ac918c7329" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c2795549-c17e-4131-8575-581918c58e8c>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_8e842efc-1fd1-41b2-90e5-ba043659c601>;
-            cim:IdentifiedObject.mRID  "c2795549-c17e-4131-8575-581918c58e8c" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_994f164c-430a-4188-86c1-0a05cec9a038>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_58889b22-7bd5-4e54-8602-2e115bfa2ed7>;
-            cim:IdentifiedObject.mRID  "994f164c-430a-4188-86c1-0a05cec9a038" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7fe13068-5ecc-4d5a-b423-9eed457c2d83>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_7874083b-e588-416d-b125-863c2681f6a3>;
-            cim:IdentifiedObject.mRID  "7fe13068-5ecc-4d5a-b423-9eed457c2d83" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1fdbd284-1504-4db8-a8c2-ee935f36879e>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BBRUS151; BGENT_51";
-            cim:IdentifiedObject.mRID      "1fdbd284-1504-4db8-a8c2-ee935f36879e";
-            cim:IdentifiedObject.name      "BE-Busbar_10";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_7a51803b-5b5c-4416-a9ae-b669b87dd531>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_7d3bf85e-0d00-459f-bca3-6727caeb80db>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000875";
-            eu:IdentifiedObject.shortName  "BE-B_10" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
-            cim:IdentifiedObject.description
-                    "HVDC1_1";
-            cim:IdentifiedObject.mRID      "1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb";
-            cim:IdentifiedObject.name      "HVDC1_1";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000522";
-            eu:IdentifiedObject.shortName  "HVDC1_1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a906ab69-b9c1-41b3-9a12-f4b3a85f72e8>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_c591a9ca-ff19-47b9-8389-7713c79f1169>;
-            cim:IdentifiedObject.mRID  "a906ab69-b9c1-41b3-9a12-f4b3a85f72e8" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fd8c8a4f-2f26-4912-b11f-5d52accad641>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
+                    <urn:uuid:b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
             cim:IdentifiedObject.description
                     "HVDC1_Ground";
             cim:IdentifiedObject.mRID      "fd8c8a4f-2f26-4912-b11f-5d52accad641";
@@ -907,630 +294,252 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
                     "00X-BE-BE-000528";
             eu:IdentifiedObject.shortName  "HVDC1_Ground" .
     
-    <http://fullgrid.eu/CGMES/3.0#_025515c7-3a78-4107-ac53-501375104606>
+    <urn:uuid:97cc87be-cffe-4d92-8788-417f7e2a5b93>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "025515c7-3a78-4107-ac53-501375104606";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_a6c9e04c-9659-4516-bde6-5e31ba66cd38> .
+            cim:IdentifiedObject.mRID     "97cc87be-cffe-4d92-8788-417f7e2a5b93";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
     
-    <http://fullgrid.eu/CGMES/3.0#_7eefb27f-c416-4f84-9ef2-54b9c4d600dc>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb>;
-            cim:IdentifiedObject.mRID     "7eefb27f-c416-4f84-9ef2-54b9c4d600dc" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_f7553918-5286-47f3-a1dc-b4384ce8f2c0>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_8b5e73bc-bc88-49d9-be57-26f606221816>;
-            cim:IdentifiedObject.mRID  "f7553918-5286-47f3-a1dc-b4384ce8f2c0" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_df276256-6f23-4ec4-8f8a-774bc1b4d407>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "df276256-6f23-4ec4-8f8a-774bc1b4d407";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_384f8540-9466-4223-8dd4-afc916d0b2de>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>;
-            cim:IdentifiedObject.mRID  "384f8540-9466-4223-8dd4-afc916d0b2de" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7b9a6932-fb0a-4070-bf83-49866b2ed339>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "7b9a6932-fb0a-4070-bf83-49866b2ed339";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BE_TR_BUS2";
-            cim:IdentifiedObject.mRID      "4bee3ced-e8f9-42ac-acbc-d762adb5308b";
-            cim:IdentifiedObject.name      "BE_TR_BUS2";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_302f26f0-0fa6-4140-a489-717dbb2ffb07>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_c11624ec-1172-4d8a-9e26-6b924f573115>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000886";
-            eu:IdentifiedObject.shortName  "BE_TR_BUS2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0dc9f108-e9be-46ce-a3e6-480b092ef022>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "0dc9f108-e9be-46ce-a3e6-480b092ef022";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_7874083b-e588-416d-b125-863c2681f6a3> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5cb37c65-a942-4845-bf27-fba46cca9ed5>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
-            cim:IdentifiedObject.mRID  "5cb37c65-a942-4845-bf27-fba46cca9ed5" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_a60f78b7-11d6-43c7-857d-dbb917f6e0d0>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "a60f78b7-11d6-43c7-857d-dbb917f6e0d0";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_bea678e0-7b4d-4185-993d-5e34b2a113e9>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4e3f37e9-3453-4533-aa69-ca23a5a8642b>;
-            cim:IdentifiedObject.mRID  "bea678e0-7b4d-4185-993d-5e34b2a113e9" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5acea568-6d34-4843-a49f-0f845a51ead8>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "5acea568-6d34-4843-a49f-0f845a51ead8";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_05675d2d-bb4c-4165-808f-0c7671a790cd> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7f830c46-a1e0-466c-bad5-1b7523147805>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "RG CE; 220 kV; OHL";
-            cim:IdentifiedObject.mRID      "7f830c46-a1e0-466c-bad5-1b7523147805";
-            cim:IdentifiedObject.name      "TN_Border_ST23";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_2e8ab1fb-6be9-4c85-8540-776c82514e93>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_f7d17f33-1673-437e-ba69-6c4a6110fd0f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "10T-AT-DE-00016Z";
-            eu:IdentifiedObject.shortName  "XZE_ST23" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ab189ae0-a556-4670-b1b8-552560a36e42>
+    <urn:uuid:9d3b821b-e098-4c15-a451-fe880d8132ea>
             rdf:type                   cim:DCTerminal;
             cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_2e18bb26-ab9d-41a8-9a1e-71aa3c98d425>;
-            cim:IdentifiedObject.mRID  "ab189ae0-a556-4670-b1b8-552560a36e42" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_0a4c0246-5ce8-4a18-8450-bfa5f2dfc36d>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "0a4c0246-5ce8-4a18-8450-bfa5f2dfc36d";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ad2cf75e-896e-4b4e-b31f-8da2c25dd597>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "ad2cf75e-896e-4b4e-b31f-8da2c25dd597";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d57e4856-e833-4957-9ec8-386ef7d7de69>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_fd8c8a4f-2f26-4912-b11f-5d52accad641>;
-            cim:IdentifiedObject.mRID  "d57e4856-e833-4957-9ec8-386ef7d7de69" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BE_TR_BUS4";
-            cim:IdentifiedObject.mRID      "eaa3e478-b1a8-4ff7-b385-83bfe5a934f6";
-            cim:IdentifiedObject.name      "BE_TR_BUS4";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_48e843d1-1794-4349-9383-bc7113b41cce>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_fc17ffb1-a69f-4d00-b956-3c1b89cfe195>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000887";
-            eu:IdentifiedObject.shortName  "BE_TR_BUS4" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ff52e713-2bd1-46b0-a1cc-c02adfc2d49f>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "ff52e713-2bd1-46b0-a1cc-c02adfc2d49f";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4e3f37e9-3453-4533-aa69-ca23a5a8642b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8ffdf52f-e0f8-46c1-afc2-3343393c4888>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "8ffdf52f-e0f8-46c1-afc2-3343393c4888";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ab584b99-9e29-4139-8b44-d348148497b2>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
-            cim:IdentifiedObject.mRID  "ab584b99-9e29-4139-8b44-d348148497b2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_27ebbaea-e522-44e7-8d1d-c15f8a2eaa25>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "27ebbaea-e522-44e7-8d1d-c15f8a2eaa25";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e1b13b57-0529-49c0-97fd-209d7093608a>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_b7a85241-4141-4241-b08b-df7d3bd0c06f>;
-            cim:IdentifiedObject.mRID  "e1b13b57-0529-49c0-97fd-209d7093608a" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_bec23818-76a9-4e47-aecd-76f8ad3f1199>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BE_Busbar_HVDC1";
-            cim:IdentifiedObject.mRID      "bec23818-76a9-4e47-aecd-76f8ad3f1199";
-            cim:IdentifiedObject.name      "BE_Busbar_HVDC1";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_f8953606-111b-41a2-b762-53ce411300a6>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_81a4266e-2f34-4236-a619-11e8e7c9554e>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000889";
-            eu:IdentifiedObject.shortName  "Busbar_HVDC1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_99c5d0ee-e030-4023-aa67-c27c4b5ff3fc>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "99c5d0ee-e030-4023-aa67-c27c4b5ff3fc";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_60922706-95b3-4701-a808-200fd054f4db>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
-            cim:IdentifiedObject.mRID  "60922706-95b3-4701-a808-200fd054f4db" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d1f919a1-11e3-4e2d-b07f-4238275a71f3>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_17c1fd73-ab8f-4984-aab3-a0e80f6cddbc>;
-            cim:IdentifiedObject.mRID  "d1f919a1-11e3-4e2d-b07f-4238275a71f3" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BGENT_72; this is old code";
-            cim:IdentifiedObject.mRID      "49ec0066-52af-4e6f-8da4-3198fe9acb5d";
-            cim:IdentifiedObject.name      "BE-Busbar_5";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_1b40f68a-25d3-404c-abf3-e2d00713ed39>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_daf22b0b-df31-4a21-9698-0f7cbbae5c64>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000880";
-            eu:IdentifiedObject.shortName  "BE-B_5" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ae7c4142-8e9a-46c5-a68d-ae5d969e5c1a>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
-            cim:IdentifiedObject.mRID  "ae7c4142-8e9a-46c5-a68d-ae5d969e5c1a" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ce8698bf-251b-4488-9712-ef00202026a8>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "ce8698bf-251b-4488-9712-ef00202026a8";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_58889b22-7bd5-4e54-8602-2e115bfa2ed7> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_fba07dcf-75e0-406f-a2f8-c39bb2286375>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "fba07dcf-75e0-406f-a2f8-c39bb2286375";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8add0faf-5960-4882-a293-a5f79aef82c3>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "8add0faf-5960-4882-a293-a5f79aef82c3";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_bd9d594b-e909-4890-9225-27b54a7c272a> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_92843ea6-287e-4704-9a1e-b7d78e89a05b>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "92843ea6-287e-4704-9a1e-b7d78e89a05b";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_c859beb5-62f0-43c0-a269-b41d4f9a5c37> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_3e67aaae-e737-48e8-bd0a-3a83abe8acb6>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "10T-AT-DE-00017X";
-            cim:IdentifiedObject.mRID      "3e67aaae-e737-48e8-bd0a-3a83abe8acb6";
-            cim:IdentifiedObject.name      "BE_PCC1";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_48e843d1-1794-4349-9383-bc7113b41cce>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_c4ed5154-8385-4f72-94c0-480e9a9e87cc>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "10T-AT-DE-00017X";
-            eu:IdentifiedObject.shortName  "BE_PCC1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_7cd843a6-816b-40ae-b465-e1e450c7ce64>
-            rdf:type                   cim:ACDCConverterDCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_62e05955-9dd9-41c2-9753-75f04838d258>;
-            cim:IdentifiedObject.mRID  "7cd843a6-816b-40ae-b465-e1e450c7ce64" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c591a9ca-ff19-47b9-8389-7713c79f1169>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BE_HVDC_BUS2";
-            cim:IdentifiedObject.mRID      "c591a9ca-ff19-47b9-8389-7713c79f1169";
-            cim:IdentifiedObject.name      "BE_HVDC_BUS2";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_4beb49fd-c341-4ae3-a6b6-bcbc3ca35aed>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_95cd3864-8ade-4bf7-9b6b-9a1a2a5df27e>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000885";
-            eu:IdentifiedObject.shortName  "BE_HVDC_BUS2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_37a16d83-6e29-4d0d-b8e9-bb90b89c49da>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "37a16d83-6e29-4d0d-b8e9-bb90b89c49da";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_1fdbd284-1504-4db8-a8c2-ee935f36879e> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_866f8f54-565d-4fbb-9c4f-780298f80752>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "RG CE; 400 kV; OHL";
-            cim:IdentifiedObject.mRID      "866f8f54-565d-4fbb-9c4f-780298f80752";
-            cim:IdentifiedObject.name      "TN_Border_GY11";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_86a47af4-94b8-4887-aabb-a5a791e7efb8>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_bf4eae86-b657-4459-957b-4ae7586b9a63>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "10T-AT-HU-00002U";
-            eu:IdentifiedObject.shortName  "XWI_GY11" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
-            cim:IdentifiedObject.description
-                    "HVDC1_2";
-            cim:IdentifiedObject.mRID      "4b1a0c1a-85a4-4a85-9e20-db775ae9dcce";
-            cim:IdentifiedObject.name      "HVDC1_2";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000523";
-            eu:IdentifiedObject.shortName  "HVDC1_2" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_16fb020d-850b-44b1-bd8c-47785995aaed>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "16fb020d-850b-44b1-bd8c-47785995aaed";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5ae0dbff-af2b-4772-a820-ab3a1900bc6f>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_1fdbd284-1504-4db8-a8c2-ee935f36879e>;
-            cim:IdentifiedObject.mRID  "5ae0dbff-af2b-4772-a820-ab3a1900bc6f" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ba63bc14-e688-4573-bd62-341bb2e21818>
-            rdf:type                   cim:ACDCConverterDCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>;
-            cim:IdentifiedObject.mRID  "ba63bc14-e688-4573-bd62-341bb2e21818" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b6bb3424-88af-4934-a46c-ef220f778cbb>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "b6bb3424-88af-4934-a46c-ef220f778cbb";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b41eee9a-af69-4a72-9aa8-c2c2982b9e6f>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "b41eee9a-af69-4a72-9aa8-c2c2982b9e6f";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_155a50ec-13d8-4104-879f-e998411be2ea>
-            rdf:type                       cim:DCTopologicalNode;
-            cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
-            cim:IdentifiedObject.description
-                    "HVDC1_4";
-            cim:IdentifiedObject.mRID      "155a50ec-13d8-4104-879f-e998411be2ea";
-            cim:IdentifiedObject.name      "HVDC1_4";
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000525";
-            eu:IdentifiedObject.shortName  "HVDC1_4" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_e52b1dd6-e7a2-4c80-95f4-9dc78ea013d1>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_155a50ec-13d8-4104-879f-e998411be2ea>;
-            cim:IdentifiedObject.mRID  "e52b1dd6-e7a2-4c80-95f4-9dc78ea013d1" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_582efea1-35f4-49d2-a2d0-0561ea2dd546>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "582efea1-35f4-49d2-a2d0-0561ea2dd546";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9d3b821b-e098-4c15-a451-fe880d8132ea>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6>;
+                    <urn:uuid:c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6>;
             cim:IdentifiedObject.mRID  "9d3b821b-e098-4c15-a451-fe880d8132ea" .
     
-    <http://fullgrid.eu/CGMES/3.0#_05675d2d-bb4c-4165-808f-0c7671a790cd>
+    <urn:uuid:05675d2d-bb4c-4165-808f-0c7671a790cd>
             rdf:type                       cim:TopologicalNode;
             cim:IdentifiedObject.description
                     "10T-AT-DE-00017X";
             cim:IdentifiedObject.mRID      "05675d2d-bb4c-4165-808f-0c7671a790cd";
             cim:IdentifiedObject.name      "BE_PCC1";
             cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_48e843d1-1794-4349-9383-bc7113b41cce>;
+                    <urn:uuid:48e843d1-1794-4349-9383-bc7113b41cce>;
             cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_93e88f07-3a50-4dd2-b723-bd26f3ca46f6>;
+                    <urn:uuid:93e88f07-3a50-4dd2-b723-bd26f3ca46f6>;
             cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
             eu:IdentifiedObject.energyIdentCodeEic
                     "10T-AT-DE-00017X";
             eu:IdentifiedObject.shortName  "BE_PCC1" .
     
-    <http://fullgrid.eu/CGMES/3.0#_918484e1-e9d6-41ec-88c6-4d3a8cec53cd>
+    <urn:uuid:7f45eb82-d863-4941-b88e-273f9b31e3ac>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "918484e1-e9d6-41ec-88c6-4d3a8cec53cd";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+            cim:IdentifiedObject.mRID     "7f45eb82-d863-4941-b88e-273f9b31e3ac";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
     
-    <http://fullgrid.eu/CGMES/3.0#_1eb0ff0f-da46-48de-afac-443fb5dde198>
+    <urn:uuid:27531589-b71f-4972-90e7-86167a4b9602>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "1eb0ff0f-da46-48de-afac-443fb5dde198";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_c591a9ca-ff19-47b9-8389-7713c79f1169> .
+            cim:IdentifiedObject.mRID     "27531589-b71f-4972-90e7-86167a4b9602";
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
     
-    <http://fullgrid.eu/CGMES/3.0#_78ad3b07-15b8-40aa-b4d6-ceeb8abbd988>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>;
-            cim:IdentifiedObject.mRID  "78ad3b07-15b8-40aa-b4d6-ceeb8abbd988" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d1bd4ca1-5868-4513-909e-c9157477036c>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "d1bd4ca1-5868-4513-909e-c9157477036c";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d282a4f2-fc06-4e2b-94d8-d5472ba7db8b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c3aa9ba4-1bbf-4c07-85f0-979c47f95590>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "c3aa9ba4-1bbf-4c07-85f0-979c47f95590";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_8c1565e9-3ef8-4549-bf2b-1ebb100a2e84>
+    <urn:uuid:f7553918-5286-47f3-a1dc-b4384ce8f2c0>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d>;
-            cim:IdentifiedObject.mRID  "8c1565e9-3ef8-4549-bf2b-1ebb100a2e84" .
+                    <urn:uuid:8b5e73bc-bc88-49d9-be57-26f606221816>;
+            cim:IdentifiedObject.mRID  "f7553918-5286-47f3-a1dc-b4384ce8f2c0" .
     
-    <http://fullgrid.eu/CGMES/3.0#_37e90dfb-9d6c-4233-a4fd-6f4c2c909ecd>
+    <urn:uuid:92843ea6-287e-4704-9a1e-b7d78e89a05b>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "37e90dfb-9d6c-4233-a4fd-6f4c2c909ecd";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
+            cim:IdentifiedObject.mRID     "92843ea6-287e-4704-9a1e-b7d78e89a05b";
+            cim:Terminal.TopologicalNode  <urn:uuid:c859beb5-62f0-43c0-a269-b41d4f9a5c37> .
     
-    <http://fullgrid.eu/CGMES/3.0#_f7f6140a-34b2-4e4d-ad50-094ed6af7871>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "f7f6140a-34b2-4e4d-ad50-094ed6af7871";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_610ee89a-c562-4b47-9401-bda854b4c527>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
-            cim:IdentifiedObject.mRID  "610ee89a-c562-4b47-9401-bda854b4c527" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_51db23af-0ffa-4d23-bc57-6cc727548ca8>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
-            cim:IdentifiedObject.mRID  "51db23af-0ffa-4d23-bc57-6cc727548ca8" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b694653e-31fd-45a1-a9e0-9f2edd706286>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "b694653e-31fd-45a1-a9e0-9f2edd706286";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_45632379-b134-4567-89d8-d078f7024572>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "45632379-b134-4567-89d8-d078f7024572";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_34777fdd-896d-4653-bcac-e065743e3741> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_df495554-db4f-4213-8c44-0a79b89f6d3c>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6>;
-            cim:IdentifiedObject.mRID  "df495554-db4f-4213-8c44-0a79b89f6d3c" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c9d619f4-d71d-4c2a-9eb1-497fa5f98132>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "c9d619f4-d71d-4c2a-9eb1-497fa5f98132";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_b615eb40-31fc-4935-9b55-f9033450fbe7>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "b615eb40-31fc-4935-9b55-f9033450fbe7";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_efd8cd3b-6165-4e29-9a1f-3880b5929482>
+    <urn:uuid:42e15ef0-928f-455b-accd-06e7cb0d0391>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0>;
-            cim:IdentifiedObject.mRID  "efd8cd3b-6165-4e29-9a1f-3880b5929482" .
+                    <urn:uuid:3e67aaae-e737-48e8-bd0a-3a83abe8acb6>;
+            cim:IdentifiedObject.mRID  "42e15ef0-928f-455b-accd-06e7cb0d0391" .
     
-    <http://fullgrid.eu/CGMES/3.0#_b3659b6d-c8c4-48c2-a722-b317c3d1c36b>
+    <urn:uuid:7bcb938b-6851-4539-b5fc-5102b019b9f6>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "b3659b6d-c8c4-48c2-a722-b317c3d1c36b";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_17c1fd73-ab8f-4984-aab3-a0e80f6cddbc> .
+            cim:IdentifiedObject.mRID     "7bcb938b-6851-4539-b5fc-5102b019b9f6";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
     
-    <http://fullgrid.eu/CGMES/3.0#_d3435b9a-1077-49ac-ab24-969734b70fd5>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "d3435b9a-1077-49ac-ab24-969734b70fd5";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_c9d59e6b-7f84-431e-a521-2af97ba77125>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_34777fdd-896d-4653-bcac-e065743e3741>;
-            cim:IdentifiedObject.mRID  "c9d59e6b-7f84-431e-a521-2af97ba77125" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_303f7acf-f00d-454a-ae9d-48e2c5dee000>
-            rdf:type                   cim:ACDCConverterDCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_2e18bb26-ab9d-41a8-9a1e-71aa3c98d425>;
-            cim:IdentifiedObject.mRID  "303f7acf-f00d-454a-ae9d-48e2c5dee000" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_d259a2ef-04ff-4790-ac13-b4c48f8e92c2>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "d259a2ef-04ff-4790-ac13-b4c48f8e92c2";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_85f20ec0-c6d5-4006-8b49-031de3899693>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "85f20ec0-c6d5-4006-8b49-031de3899693";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_2bc64e4a-6acb-4ca2-86c3-5891c2e159f0>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "2bc64e4a-6acb-4ca2-86c3-5891c2e159f0";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_7874083b-e588-416d-b125-863c2681f6a3> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_4a362149-e88c-4573-a8d4-0d80ec7cd98f>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>;
-            cim:IdentifiedObject.mRID  "4a362149-e88c-4573-a8d4-0d80ec7cd98f" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5331ff9a-14e7-4c10-9b85-0f5cc1dddab4>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "5331ff9a-14e7-4c10-9b85-0f5cc1dddab4";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_34777fdd-896d-4653-bcac-e065743e3741> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_67a35a3d-35a0-4bbe-a48a-f28228a67469>
+    <urn:uuid:c591a9ca-ff19-47b9-8389-7713c79f1169>
             rdf:type                       cim:TopologicalNode;
             cim:IdentifiedObject.description
-                    "10T-AT-DE-00017X";
-            cim:IdentifiedObject.mRID      "67a35a3d-35a0-4bbe-a48a-f28228a67469";
-            cim:IdentifiedObject.name      "BE_PCC2";
+                    "BE_HVDC_BUS2";
+            cim:IdentifiedObject.mRID      "c591a9ca-ff19-47b9-8389-7713c79f1169";
+            cim:IdentifiedObject.name      "BE_HVDC_BUS2";
             cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_48e843d1-1794-4349-9383-bc7113b41cce>;
+                    <urn:uuid:4beb49fd-c341-4ae3-a6b6-bcbc3ca35aed>;
             cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_dc56c19a-9978-4c79-8020-68185afa0c80>;
+                    <urn:uuid:95cd3864-8ade-4bf7-9b6b-9a1a2a5df27e>;
             cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
             eu:IdentifiedObject.energyIdentCodeEic
-                    "10T-AT-DE-00017X";
-            eu:IdentifiedObject.shortName  "BE_PCC2" .
+                    "00X-BE-BE-000885";
+            eu:IdentifiedObject.shortName  "BE_HVDC_BUS2" .
     
-    <http://fullgrid.eu/CGMES/3.0#_fa2d9b9b-2b79-4cf6-a7cc-a2dbb8730383>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "fa2d9b9b-2b79-4cf6-a7cc-a2dbb8730383";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_5ece2949-f82e-419c-83a4-cddcf0be3216>
+    <urn:uuid:5ece2949-f82e-419c-83a4-cddcf0be3216>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>;
+                    <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>;
             cim:IdentifiedObject.mRID  "5ece2949-f82e-419c-83a4-cddcf0be3216" .
     
-    <http://fullgrid.eu/CGMES/3.0#_34777fdd-896d-4653-bcac-e065743e3741>
-            rdf:type                       cim:TopologicalNode;
-            cim:IdentifiedObject.description
-                    "BGENT_71; This is the old UCTE code from UCTE DEF";
-            cim:IdentifiedObject.mRID      "34777fdd-896d-4653-bcac-e065743e3741";
-            cim:IdentifiedObject.name      "BE-Busbar_4";
-            cim:TopologicalNode.BaseVoltage
-                    <http://fullgrid.eu/CGMES/3.0#_77d50efe-b1a1-40d5-b65f-0c2b2a810ecf>;
-            cim:TopologicalNode.ConnectivityNodeContainer
-                    <http://fullgrid.eu/CGMES/3.0#_0204058a-8b7e-4a89-82e9-0960280b47ef>;
-            cim:TopologicalNode.ReportingGroup
-                    <http://fullgrid.eu/CGMES/3.0#_3dff9dc2-cb67-476d-801f-e81da0975d6f>;
-            eu:IdentifiedObject.energyIdentCodeEic
-                    "00X-BE-BE-000879";
-            eu:IdentifiedObject.shortName  "BE-B_4" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_9e34a4c3-251b-4372-b961-031cf1dcd75c>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_b7a85241-4141-4241-b08b-df7d3bd0c06f>;
-            cim:IdentifiedObject.mRID     "9e34a4c3-251b-4372-b961-031cf1dcd75c" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_96633a4f-906a-4c5f-851e-f38dcb46ac7a>
-            rdf:type                   cim:DCTerminal;
-            cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_155a50ec-13d8-4104-879f-e998411be2ea>;
-            cim:IdentifiedObject.mRID  "96633a4f-906a-4c5f-851e-f38dcb46ac7a" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_69fb097a-8366-4f62-8cac-095c41649501>
+    <urn:uuid:34b1404e-6aad-472d-87c7-6b0e05d2098c>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "69fb097a-8366-4f62-8cac-095c41649501";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+            cim:IdentifiedObject.mRID     "34b1404e-6aad-472d-87c7-6b0e05d2098c";
+            cim:Terminal.TopologicalNode  <urn:uuid:05675d2d-bb4c-4165-808f-0c7671a790cd> .
     
-    <http://fullgrid.eu/CGMES/3.0#_5d88525f-7b2a-421d-90c1-f93007ecfbd6>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_d4fc45b2-7090-4d26-b620-e7a319aca9b5>;
-            cim:IdentifiedObject.mRID     "5d88525f-7b2a-421d-90c1-f93007ecfbd6" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_16aacbf6-ce19-446e-950a-6be6e23cbc50>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "16aacbf6-ce19-446e-950a-6be6e23cbc50";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_67a35a3d-35a0-4bbe-a48a-f28228a67469> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_87a7036b-8a12-4916-b16c-6a80a381c2b4>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "87a7036b-8a12-4916-b16c-6a80a381c2b4";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_164ba4ef-12a8-4422-ad31-84cab195bce1>
+    <urn:uuid:161b1f6c-7aef-4965-9d9c-6ea8d3d70f31>
             rdf:type                   cim:ACDCConverterDCTerminal;
             cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_0e8a2acc-6550-4ab7-8a61-975dea4b0ea5>;
-            cim:IdentifiedObject.mRID  "164ba4ef-12a8-4422-ad31-84cab195bce1" .
+                    <urn:uuid:fd8c8a4f-2f26-4912-b11f-5d52accad641>;
+            cim:IdentifiedObject.mRID  "161b1f6c-7aef-4965-9d9c-6ea8d3d70f31" .
     
-    <http://fullgrid.eu/CGMES/3.0#_2f3dcf10-5f8d-468a-baef-31bc1d8ef5d6>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6>;
-            cim:IdentifiedObject.mRID     "2f3dcf10-5f8d-468a-baef-31bc1d8ef5d6" .
+    <urn:uuid:3baaf355-f5c1-433c-9760-e05436f3c56b>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:d444a448-d542-4929-a369-0bf360079f5b>;
+            cim:IdentifiedObject.mRID  "3baaf355-f5c1-433c-9760-e05436f3c56b" .
     
-    <http://fullgrid.eu/CGMES/3.0#_2980a786-db33-46bd-9ee8-38dabcf63533>
+    <urn:uuid:c2795549-c17e-4131-8575-581918c58e8c>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_d82b939b-41aa-47ff-87e4-be803991ad29>;
-            cim:IdentifiedObject.mRID  "2980a786-db33-46bd-9ee8-38dabcf63533" .
+                    <urn:uuid:8e842efc-1fd1-41b2-90e5-ba043659c601>;
+            cim:IdentifiedObject.mRID  "c2795549-c17e-4131-8575-581918c58e8c" .
     
-    <http://fullgrid.eu/CGMES/3.0#_c32d3466-e3f9-496e-83ee-f1ba90914509>
+    <urn:uuid:58889b22-7bd5-4e54-8602-2e115bfa2ed7>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BBRUS151; BGENT_51";
+            cim:IdentifiedObject.mRID      "58889b22-7bd5-4e54-8602-2e115bfa2ed7";
+            cim:IdentifiedObject.name      "BE-Busbar_7";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:7a51803b-5b5c-4416-a9ae-b669b87dd531>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:7d3bf85e-0d00-459f-bca3-6727caeb80db>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000882";
+            eu:IdentifiedObject.shortName  "BE-B_6" .
+    
+    <urn:uuid:54c60386-8d0b-4c67-8bac-aa59bd70edae>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "c32d3466-e3f9-496e-83ee-f1ba90914509";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_866f8f54-565d-4fbb-9c4f-780298f80752> .
+            cim:IdentifiedObject.mRID     "54c60386-8d0b-4c67-8bac-aa59bd70edae";
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
     
-    <http://fullgrid.eu/CGMES/3.0#_6b8d843e-5770-404a-a606-e1f2f5a1b610>
+    <urn:uuid:78ad3b07-15b8-40aa-b4d6-ceeb8abbd988>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>;
+            cim:IdentifiedObject.mRID  "78ad3b07-15b8-40aa-b4d6-ceeb8abbd988" .
+    
+    <urn:uuid:fde26acf-bab2-45e7-8726-3142a35455aa>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:d4fc45b2-7090-4d26-b620-e7a319aca9b5>;
+            cim:IdentifiedObject.mRID  "fde26acf-bab2-45e7-8726-3142a35455aa" .
+    
+    <urn:uuid:ce8698bf-251b-4488-9712-ef00202026a8>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "6b8d843e-5770-404a-a606-e1f2f5a1b610";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_3e67aaae-e737-48e8-bd0a-3a83abe8acb6> .
+            cim:IdentifiedObject.mRID     "ce8698bf-251b-4488-9712-ef00202026a8";
+            cim:Terminal.TopologicalNode  <urn:uuid:58889b22-7bd5-4e54-8602-2e115bfa2ed7> .
     
-    <http://fullgrid.eu/CGMES/3.0#_4dd077d5-c166-4699-baeb-2220f706002b>
+    <urn:uuid:49aa21f8-8463-4b00-b93d-960ae7dd2811>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "4dd077d5-c166-4699-baeb-2220f706002b";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_bec23818-76a9-4e47-aecd-76f8ad3f1199> .
+            cim:IdentifiedObject.mRID     "49aa21f8-8463-4b00-b93d-960ae7dd2811";
+            cim:Terminal.TopologicalNode  <urn:uuid:58889b22-7bd5-4e54-8602-2e115bfa2ed7> .
     
-    <http://fullgrid.eu/CGMES/3.0#_11f04fbd-68fa-40f4-90c8-895443fc13b8>
+    <urn:uuid:f2afe0fa-05f2-4341-9ec7-c7b903686551>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
+            cim:IdentifiedObject.mRID  "f2afe0fa-05f2-4341-9ec7-c7b903686551" .
+    
+    <urn:uuid:147ffaf7-18ac-46a4-b11a-ec2c6b2874e2>
+            rdf:type                   cim:ACDCConverterDCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:34d01770-11e9-46c7-b8da-20855cfcffeb>;
+            cim:IdentifiedObject.mRID  "147ffaf7-18ac-46a4-b11a-ec2c6b2874e2" .
+    
+    <urn:uuid:6e942772-b225-4879-936d-4ee33471d459>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "11f04fbd-68fa-40f4-90c8-895443fc13b8";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_8e842efc-1fd1-41b2-90e5-ba043659c601> .
+            cim:IdentifiedObject.mRID     "6e942772-b225-4879-936d-4ee33471d459";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
     
-    <http://fullgrid.eu/CGMES/3.0#_0ecdd1da-2e90-4480-aa7d-c8a06c92d368>
+    <urn:uuid:efd8cd3b-6165-4e29-9a1f-3880b5929482>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>;
+            cim:IdentifiedObject.mRID  "efd8cd3b-6165-4e29-9a1f-3880b5929482" .
+    
+    <urn:uuid:ae7c4142-8e9a-46c5-a68d-ae5d969e5c1a>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
+            cim:IdentifiedObject.mRID  "ae7c4142-8e9a-46c5-a68d-ae5d969e5c1a" .
+    
+    <urn:uuid:384f8540-9466-4223-8dd4-afc916d0b2de>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>;
+            cim:IdentifiedObject.mRID  "384f8540-9466-4223-8dd4-afc916d0b2de" .
+    
+    <urn:uuid:19efee65-a452-4166-a77e-c1faf80fcc01>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "0ecdd1da-2e90-4480-aa7d-c8a06c92d368";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
+            cim:IdentifiedObject.mRID     "19efee65-a452-4166-a77e-c1faf80fcc01";
+            cim:Terminal.TopologicalNode  <urn:uuid:67a35a3d-35a0-4bbe-a48a-f28228a67469> .
     
-    <http://fullgrid.eu/CGMES/3.0#_b7a85241-4141-4241-b08b-df7d3bd0c06f>
+    <urn:uuid:d84be2ac-c639-49b2-b9f7-207a02ecfd03>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "d84be2ac-c639-49b2-b9f7-207a02ecfd03";
+            cim:Terminal.TopologicalNode  <urn:uuid:7f830c46-a1e0-466c-bad5-1b7523147805> .
+    
+    <urn:uuid:d259a2ef-04ff-4790-ac13-b4c48f8e92c2>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "d259a2ef-04ff-4790-ac13-b4c48f8e92c2";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:4ed1d67b-3d76-47a7-9785-2ad6afaf4692>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:d444a448-d542-4929-a369-0bf360079f5b>;
+            cim:IdentifiedObject.mRID  "4ed1d67b-3d76-47a7-9785-2ad6afaf4692" .
+    
+    <urn:uuid:d9233706-3e52-481d-aa08-444ef6cf8c2b>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "d9233706-3e52-481d-aa08-444ef6cf8c2b";
+            cim:Terminal.TopologicalNode  <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+    
+    <urn:uuid:ba63bc14-e688-4573-bd62-341bb2e21818>
+            rdf:type                   cim:ACDCConverterDCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>;
+            cim:IdentifiedObject.mRID  "ba63bc14-e688-4573-bd62-341bb2e21818" .
+    
+    <urn:uuid:cde8db64-6196-4941-81e6-df90b5c87180>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "cde8db64-6196-4941-81e6-df90b5c87180";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:2e18bb26-ab9d-41a8-9a1e-71aa3c98d425>
             rdf:type                       cim:DCTopologicalNode;
             cim:DCTopologicalNode.DCEquipmentContainer
-                    <http://fullgrid.eu/CGMES/3.0#_eea35583-7870-4212-8db2-2b4372f68e8f>;
+                    <urn:uuid:4e5ff0f1-42f8-4ed8-baca-0bc5e25abed5>;
+            cim:IdentifiedObject.description
+                    "BE_DC2";
+            cim:IdentifiedObject.mRID      "2e18bb26-ab9d-41a8-9a1e-71aa3c98d425";
+            cim:IdentifiedObject.name      "BE_DC2";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000519";
+            eu:IdentifiedObject.shortName  "BE_DC2" .
+    
+    <urn:uuid:b3659b6d-c8c4-48c2-a722-b317c3d1c36b>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "b3659b6d-c8c4-48c2-a722-b317c3d1c36b";
+            cim:Terminal.TopologicalNode  <urn:uuid:17c1fd73-ab8f-4984-aab3-a0e80f6cddbc> .
+    
+    <urn:uuid:0fb2b82a-b699-45eb-8a93-46d4e0b9d7c8>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a>;
+            cim:IdentifiedObject.mRID  "0fb2b82a-b699-45eb-8a93-46d4e0b9d7c8" .
+    
+    <urn:uuid:b7a85241-4141-4241-b08b-df7d3bd0c06f>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:eea35583-7870-4212-8db2-2b4372f68e8f>;
             cim:IdentifiedObject.description
                     "HVDC2_Ground";
             cim:IdentifiedObject.mRID      "b7a85241-4141-4241-b08b-df7d3bd0c06f";
@@ -1539,83 +548,1079 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
                     "00X-BE-BE-000530";
             eu:IdentifiedObject.shortName  "HVDC2_Ground" .
     
-    <http://fullgrid.eu/CGMES/3.0#_3a30332a-986d-4998-ace3-9644bf8dcbfe>
+    <urn:uuid:67a35a3d-35a0-4bbe-a48a-f28228a67469>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "10T-AT-DE-00017X";
+            cim:IdentifiedObject.mRID      "67a35a3d-35a0-4bbe-a48a-f28228a67469";
+            cim:IdentifiedObject.name      "BE_PCC2";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:48e843d1-1794-4349-9383-bc7113b41cce>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:dc56c19a-9978-4c79-8020-68185afa0c80>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "10T-AT-DE-00017X";
+            eu:IdentifiedObject.shortName  "BE_PCC2" .
+    
+    <urn:uuid:4e3f37e9-3453-4533-aa69-ca23a5a8642b>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BBRUS_21; this is UCTE code";
+            cim:IdentifiedObject.mRID      "4e3f37e9-3453-4533-aa69-ca23a5a8642b";
+            cim:IdentifiedObject.name      "BE-Busbar_8";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:48e843d1-1794-4349-9383-bc7113b41cce>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:088cc5b3-3e56-4f27-a947-3d47fca8411b>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000883";
+            eu:IdentifiedObject.shortName  "BE-B_8" .
+    
+    <urn:uuid:5cb80971-4471-4593-9462-84d6ec8fe185>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_7f830c46-a1e0-466c-bad5-1b7523147805>;
-            cim:IdentifiedObject.mRID  "3a30332a-986d-4998-ace3-9644bf8dcbfe" .
+                    <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
+            cim:IdentifiedObject.mRID  "5cb80971-4471-4593-9462-84d6ec8fe185" .
     
-    <http://fullgrid.eu/CGMES/3.0#_d3101b41-2d49-43ee-95b7-d60c445a55cc>
+    <urn:uuid:dafa1358-665c-4751-bcd3-7cda376a6ae0>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "d3101b41-2d49-43ee-95b7-d60c445a55cc";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_58889b22-7bd5-4e54-8602-2e115bfa2ed7> .
+            cim:IdentifiedObject.mRID     "dafa1358-665c-4751-bcd3-7cda376a6ae0";
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
     
-    <http://fullgrid.eu/CGMES/3.0#_d04a76b2-d483-41f4-bfcb-481b879d4c8b>
+    <urn:uuid:125e8e92-2c08-46c4-a157-817f265a2082>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "d04a76b2-d483-41f4-bfcb-481b879d4c8b";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+            cim:IdentifiedObject.mRID     "125e8e92-2c08-46c4-a157-817f265a2082";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
     
-    <http://fullgrid.eu/CGMES/3.0#_0cab8253-91fd-4bfb-92b5-ed814a6c9b6a>
+    <urn:uuid:6fb0e7d3-8125-46b1-9cd3-1c66c1ee513a>
             rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "0cab8253-91fd-4bfb-92b5-ed814a6c9b6a";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_6710b466-00d6-4556-b436-985eb08f7dd0> .
+            cim:IdentifiedObject.mRID     "6fb0e7d3-8125-46b1-9cd3-1c66c1ee513a";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
     
-    <http://fullgrid.eu/CGMES/3.0#_517422d7-067a-4154-af5c-c6945326f563>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "517422d7-067a-4154-af5c-c6945326f563";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_34777fdd-896d-4653-bcac-e065743e3741> .
+    <urn:uuid:7fe13068-5ecc-4d5a-b423-9eed457c2d83>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:7874083b-e588-416d-b125-863c2681f6a3>;
+            cim:IdentifiedObject.mRID  "7fe13068-5ecc-4d5a-b423-9eed457c2d83" .
     
-    <http://fullgrid.eu/CGMES/3.0#_49aa21f8-8463-4b00-b93d-960ae7dd2811>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "49aa21f8-8463-4b00-b93d-960ae7dd2811";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_58889b22-7bd5-4e54-8602-2e115bfa2ed7> .
+    <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BGENT_72; this is old code";
+            cim:IdentifiedObject.mRID      "49ec0066-52af-4e6f-8da4-3198fe9acb5d";
+            cim:IdentifiedObject.name      "BE-Busbar_5";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:1b40f68a-25d3-404c-abf3-e2d00713ed39>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:daf22b0b-df31-4a21-9698-0f7cbbae5c64>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000880";
+            eu:IdentifiedObject.shortName  "BE-B_5" .
     
-    <http://fullgrid.eu/CGMES/3.0#_178f1d1c-1ad2-4e72-815f-47af95869edf>
+    <urn:uuid:437ce796-5b3f-45ff-a3dd-4653b19bc1e4>
             rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_2e18bb26-ab9d-41a8-9a1e-71aa3c98d425>;
-            cim:IdentifiedObject.mRID     "178f1d1c-1ad2-4e72-815f-47af95869edf" .
+            cim:DCNode.DCTopologicalNode  <urn:uuid:5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>;
+            cim:IdentifiedObject.mRID     "437ce796-5b3f-45ff-a3dd-4653b19bc1e4" .
     
-    <http://fullgrid.eu/CGMES/3.0#_79041560-a1d6-4700-a235-7161f661a00a>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_1fdbd284-1504-4db8-a8c2-ee935f36879e>;
-            cim:IdentifiedObject.mRID  "79041560-a1d6-4700-a235-7161f661a00a" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_de3eef82-d6ea-418e-99ba-d74914b15b9a>
-            rdf:type                   cim:ConnectivityNode;
-            cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_05675d2d-bb4c-4165-808f-0c7671a790cd>;
-            cim:IdentifiedObject.mRID  "de3eef82-d6ea-418e-99ba-d74914b15b9a" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_ac800544-8184-44f2-8bf6-992eebc5c21d>
+    <urn:uuid:df495554-db4f-4213-8c44-0a79b89f6d3c>
             rdf:type                   cim:DCTerminal;
             cim:DCBaseTerminal.DCTopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_0e8a2acc-6550-4ab7-8a61-975dea4b0ea5>;
-            cim:IdentifiedObject.mRID  "ac800544-8184-44f2-8bf6-992eebc5c21d" .
+                    <urn:uuid:c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6>;
+            cim:IdentifiedObject.mRID  "df495554-db4f-4213-8c44-0a79b89f6d3c" .
     
-    <http://fullgrid.eu/CGMES/3.0#_90cef915-b3de-43f7-860f-3ba67465fb40>
-            rdf:type                      cim:DCNode;
-            cim:DCNode.DCTopologicalNode  <http://fullgrid.eu/CGMES/3.0#_34d01770-11e9-46c7-b8da-20855cfcffeb>;
-            cim:IdentifiedObject.mRID     "90cef915-b3de-43f7-860f-3ba67465fb40" .
+    <urn:uuid:8b5e73bc-bc88-49d9-be57-26f606221816>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "RG CE; 400 kV; OHL (2)";
+            cim:IdentifiedObject.mRID      "8b5e73bc-bc88-49d9-be57-26f606221816";
+            cim:IdentifiedObject.name      "TN_Border_MA11";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:86a47af4-94b8-4887-aabb-a5a791e7efb8>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:7474dd87-438b-40e5-82ae-7f873bd69438>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "10T-AT-SI-00001T";
+            eu:IdentifiedObject.shortName  "XKA_MA11" .
     
-    <http://fullgrid.eu/CGMES/3.0#_7bcb938b-6851-4539-b5fc-5102b019b9f6>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "7bcb938b-6851-4539-b5fc-5102b019b9f6";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_840e2c69-6ffd-45e6-8d60-bdedc73acfef>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "840e2c69-6ffd-45e6-8d60-bdedc73acfef";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_64f68467-97cd-4d00-af35-5ed6b4999a42>
-            rdf:type                      cim:Terminal;
-            cim:IdentifiedObject.mRID     "64f68467-97cd-4d00-af35-5ed6b4999a42";
-            cim:Terminal.TopologicalNode  <http://fullgrid.eu/CGMES/3.0#_4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
-    
-    <http://fullgrid.eu/CGMES/3.0#_38912491-185e-4869-8e8d-61dc9cc0a7f6>
+    <urn:uuid:57409aea-48bd-4459-aa86-3a066b9137b1>
             rdf:type                   cim:ConnectivityNode;
             cim:ConnectivityNode.TopologicalNode
-                    <http://fullgrid.eu/CGMES/3.0#_49ec0066-52af-4e6f-8da4-3198fe9acb5d>;
+                    <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>;
+            cim:IdentifiedObject.mRID  "57409aea-48bd-4459-aa86-3a066b9137b1" .
+    
+    <urn:uuid:efc034b8-2e9e-45e8-a693-ae080c0171b6>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>;
+            cim:IdentifiedObject.mRID  "efc034b8-2e9e-45e8-a693-ae080c0171b6" .
+    
+    <urn:uuid:56c26ce6-779a-47c9-a2d0-ddc7c2551ae5>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:bd9d594b-e909-4890-9225-27b54a7c272a>;
+            cim:IdentifiedObject.mRID  "56c26ce6-779a-47c9-a2d0-ddc7c2551ae5" .
+    
+    <urn:uuid:e84ba2ff-8bac-4d71-9765-61c7633df57a>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "e84ba2ff-8bac-4d71-9765-61c7633df57a";
+            cim:Terminal.TopologicalNode  <urn:uuid:17c1fd73-ab8f-4984-aab3-a0e80f6cddbc> .
+    
+    <urn:uuid:e8f391bc-4299-47cc-a9d8-f2f048bee440>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "e8f391bc-4299-47cc-a9d8-f2f048bee440";
+            cim:Terminal.TopologicalNode  <urn:uuid:3e67aaae-e737-48e8-bd0a-3a83abe8acb6> .
+    
+    <urn:uuid:155a50ec-13d8-4104-879f-e998411be2ea>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
+            cim:IdentifiedObject.description
+                    "HVDC1_4";
+            cim:IdentifiedObject.mRID      "155a50ec-13d8-4104-879f-e998411be2ea";
+            cim:IdentifiedObject.name      "HVDC1_4";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000525";
+            eu:IdentifiedObject.shortName  "HVDC1_4" .
+    
+    <urn:uuid:0b49b82b-ea9a-4b28-8efa-d9ae99317d6c>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "0b49b82b-ea9a-4b28-8efa-d9ae99317d6c";
+            cim:Terminal.TopologicalNode  <urn:uuid:05675d2d-bb4c-4165-808f-0c7671a790cd> .
+    
+    <urn:uuid:8f236cf1-aee0-4528-bf73-68d92cc13ef2>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "8f236cf1-aee0-4528-bf73-68d92cc13ef2";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
+    
+    <urn:uuid:e6d0a011-742f-4ffd-98a3-27c9e62a2342>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:fd8c8a4f-2f26-4912-b11f-5d52accad641>;
+            cim:IdentifiedObject.mRID     "e6d0a011-742f-4ffd-98a3-27c9e62a2342" .
+    
+    <urn:uuid:037bb39f-be77-4b83-8638-9c8dff4eb966>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>;
+            cim:IdentifiedObject.mRID  "037bb39f-be77-4b83-8638-9c8dff4eb966" .
+    
+    <urn:uuid:e3feb6f4-0db7-4468-b49e-6ea9d6f83d1a>
+            rdf:type                   cim:ACDCConverterDCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:b7a85241-4141-4241-b08b-df7d3bd0c06f>;
+            cim:IdentifiedObject.mRID  "e3feb6f4-0db7-4468-b49e-6ea9d6f83d1a" .
+    
+    <urn:uuid:1798cbd9-2f4b-4c2c-8273-89bd5d85c2f6>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "1798cbd9-2f4b-4c2c-8273-89bd5d85c2f6";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:6d2f3f51-3a6c-4a38-af83-9cf46f957e3d>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:34d01770-11e9-46c7-b8da-20855cfcffeb>;
+            cim:IdentifiedObject.mRID  "6d2f3f51-3a6c-4a38-af83-9cf46f957e3d" .
+    
+    <urn:uuid:97226393-e1b3-46e0-a7c3-9e97f3b6cc5b>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:d282a4f2-fc06-4e2b-94d8-d5472ba7db8b>;
+            cim:IdentifiedObject.mRID  "97226393-e1b3-46e0-a7c3-9e97f3b6cc5b" .
+    
+    <urn:uuid:b99f6c0d-ad5c-4676-859f-b8ce00d084d6>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>;
+            cim:IdentifiedObject.mRID  "b99f6c0d-ad5c-4676-859f-b8ce00d084d6" .
+    
+    <urn:uuid:3e67aaae-e737-48e8-bd0a-3a83abe8acb6>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "10T-AT-DE-00017X";
+            cim:IdentifiedObject.mRID      "3e67aaae-e737-48e8-bd0a-3a83abe8acb6";
+            cim:IdentifiedObject.name      "BE_PCC1";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:48e843d1-1794-4349-9383-bc7113b41cce>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:c4ed5154-8385-4f72-94c0-480e9a9e87cc>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "10T-AT-DE-00017X";
+            eu:IdentifiedObject.shortName  "BE_PCC1" .
+    
+    <urn:uuid:d444a448-d542-4929-a369-0bf360079f5b>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
+            cim:IdentifiedObject.description
+                    "HVDC1_6";
+            cim:IdentifiedObject.mRID      "d444a448-d542-4929-a369-0bf360079f5b";
+            cim:IdentifiedObject.name      "HVDC1_6";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000527";
+            eu:IdentifiedObject.shortName  "HVDC1_6" .
+    
+    <urn:uuid:de3eef82-d6ea-418e-99ba-d74914b15b9a>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:05675d2d-bb4c-4165-808f-0c7671a790cd>;
+            cim:IdentifiedObject.mRID  "de3eef82-d6ea-418e-99ba-d74914b15b9a" .
+    
+    <urn:uuid:2bc64e4a-6acb-4ca2-86c3-5891c2e159f0>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "2bc64e4a-6acb-4ca2-86c3-5891c2e159f0";
+            cim:Terminal.TopologicalNode  <urn:uuid:7874083b-e588-416d-b125-863c2681f6a3> .
+    
+    <urn:uuid:517422d7-067a-4154-af5c-c6945326f563>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "517422d7-067a-4154-af5c-c6945326f563";
+            cim:Terminal.TopologicalNode  <urn:uuid:34777fdd-896d-4653-bcac-e065743e3741> .
+    
+    <urn:uuid:0ecdd1da-2e90-4480-aa7d-c8a06c92d368>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "0ecdd1da-2e90-4480-aa7d-c8a06c92d368";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:5d88525f-7b2a-421d-90c1-f93007ecfbd6>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:d4fc45b2-7090-4d26-b620-e7a319aca9b5>;
+            cim:IdentifiedObject.mRID     "5d88525f-7b2a-421d-90c1-f93007ecfbd6" .
+    
+    <urn:uuid:69fb097a-8366-4f62-8cac-095c41649501>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "69fb097a-8366-4f62-8cac-095c41649501";
+            cim:Terminal.TopologicalNode  <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+    
+    <urn:uuid:876b0e1a-3cfa-4931-88b4-3e1439d04af9>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:866f8f54-565d-4fbb-9c4f-780298f80752>;
+            cim:IdentifiedObject.mRID  "876b0e1a-3cfa-4931-88b4-3e1439d04af9" .
+    
+    <urn:uuid:c32d3466-e3f9-496e-83ee-f1ba90914509>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "c32d3466-e3f9-496e-83ee-f1ba90914509";
+            cim:Terminal.TopologicalNode  <urn:uuid:866f8f54-565d-4fbb-9c4f-780298f80752> .
+    
+    <urn:uuid:b594eb01-62a7-4d95-8e36-64eb4167d74c>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "b594eb01-62a7-4d95-8e36-64eb4167d74c";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+    
+    <urn:uuid:a6c9e04c-9659-4516-bde6-5e31ba66cd38>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "10T-AT-DE-00017X";
+            cim:IdentifiedObject.mRID      "a6c9e04c-9659-4516-bde6-5e31ba66cd38";
+            cim:IdentifiedObject.name      "BE_PCC2";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:48e843d1-1794-4349-9383-bc7113b41cce>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:567ef6df-586f-4c1e-a29c-a0c1745664df>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "10T-AT-DE-00017X";
+            eu:IdentifiedObject.shortName  "BE_PCC2" .
+    
+    <urn:uuid:27ebbaea-e522-44e7-8d1d-c15f8a2eaa25>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "27ebbaea-e522-44e7-8d1d-c15f8a2eaa25";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+    
+    <urn:uuid:8c1565e9-3ef8-4549-bf2b-1ebb100a2e84>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d>;
+            cim:IdentifiedObject.mRID  "8c1565e9-3ef8-4549-bf2b-1ebb100a2e84" .
+    
+    <urn:uuid:578f0373-5866-4a4f-ac13-c5a1a95820ae>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "578f0373-5866-4a4f-ac13-c5a1a95820ae";
+            cim:Terminal.TopologicalNode  <urn:uuid:c859beb5-62f0-43c0-a269-b41d4f9a5c37> .
+    
+    <urn:uuid:df276256-6f23-4ec4-8f8a-774bc1b4d407>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "df276256-6f23-4ec4-8f8a-774bc1b4d407";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BE_TR_BUS2";
+            cim:IdentifiedObject.mRID      "4bee3ced-e8f9-42ac-acbc-d762adb5308b";
+            cim:IdentifiedObject.name      "BE_TR_BUS2";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:302f26f0-0fa6-4140-a489-717dbb2ffb07>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:c11624ec-1172-4d8a-9e26-6b924f573115>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000886";
+            eu:IdentifiedObject.shortName  "BE_TR_BUS2" .
+    
+    <urn:uuid:ee9fd077-8248-4bf4-a8d5-0844a5539a14>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:bec23818-76a9-4e47-aecd-76f8ad3f1199>;
+            cim:IdentifiedObject.mRID  "ee9fd077-8248-4bf4-a8d5-0844a5539a14" .
+    
+    <urn:uuid:1f281a59-6fd9-43b5-a726-524fdb702854>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "1f281a59-6fd9-43b5-a726-524fdb702854";
+            cim:Terminal.TopologicalNode  <urn:uuid:bd9d594b-e909-4890-9225-27b54a7c272a> .
+    
+    <urn:uuid:7eefb27f-c416-4f84-9ef2-54b9c4d600dc>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb>;
+            cim:IdentifiedObject.mRID     "7eefb27f-c416-4f84-9ef2-54b9c4d600dc" .
+    
+    <urn:uuid:dfdc986a-93b6-454c-b9d8-6ab4aadb0139>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "dfdc986a-93b6-454c-b9d8-6ab4aadb0139";
+            cim:Terminal.TopologicalNode  <urn:uuid:7f830c46-a1e0-466c-bad5-1b7523147805> .
+    
+    <urn:uuid:9be289e1-b82c-45ee-8939-459f032f6baf>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "9be289e1-b82c-45ee-8939-459f032f6baf";
+            cim:Terminal.TopologicalNode  <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+    
+    <urn:uuid:0a4c0246-5ce8-4a18-8450-bfa5f2dfc36d>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "0a4c0246-5ce8-4a18-8450-bfa5f2dfc36d";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:d04a76b2-d483-41f4-bfcb-481b879d4c8b>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "d04a76b2-d483-41f4-bfcb-481b879d4c8b";
+            cim:Terminal.TopologicalNode  <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+    
+    <urn:uuid:12c81581-5bb7-4e28-9318-74f36bcdc9fb>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "12c81581-5bb7-4e28-9318-74f36bcdc9fb";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+    
+    <urn:uuid:2980a786-db33-46bd-9ee8-38dabcf63533>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>;
+            cim:IdentifiedObject.mRID  "2980a786-db33-46bd-9ee8-38dabcf63533" .
+    
+    <urn:uuid:d57e4856-e833-4957-9ec8-386ef7d7de69>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:fd8c8a4f-2f26-4912-b11f-5d52accad641>;
+            cim:IdentifiedObject.mRID  "d57e4856-e833-4957-9ec8-386ef7d7de69" .
+    
+    <urn:uuid:09c73520-69d4-45ef-a4db-0624af71fe02>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "09c73520-69d4-45ef-a4db-0624af71fe02";
+            cim:Terminal.TopologicalNode  <urn:uuid:58889b22-7bd5-4e54-8602-2e115bfa2ed7> .
+    
+    <urn:uuid:08d5cb60-f1e7-452a-8023-3b7292cc23ce>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "08d5cb60-f1e7-452a-8023-3b7292cc23ce";
+            cim:Terminal.TopologicalNode  <urn:uuid:8b5e73bc-bc88-49d9-be57-26f606221816> .
+    
+    <urn:uuid:610ee89a-c562-4b47-9401-bda854b4c527>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
+            cim:IdentifiedObject.mRID  "610ee89a-c562-4b47-9401-bda854b4c527" .
+    
+    <urn:uuid:82597a1a-4990-4232-9b1a-f5cec51fddb2>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "82597a1a-4990-4232-9b1a-f5cec51fddb2";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:99c5d0ee-e030-4023-aa67-c27c4b5ff3fc>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "99c5d0ee-e030-4023-aa67-c27c4b5ff3fc";
+            cim:Terminal.TopologicalNode  <urn:uuid:9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a> .
+    
+    <urn:uuid:840e2c69-6ffd-45e6-8d60-bdedc73acfef>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "840e2c69-6ffd-45e6-8d60-bdedc73acfef";
+            cim:Terminal.TopologicalNode  <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+    
+    <urn:uuid:bec23818-76a9-4e47-aecd-76f8ad3f1199>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BE_Busbar_HVDC1";
+            cim:IdentifiedObject.mRID      "bec23818-76a9-4e47-aecd-76f8ad3f1199";
+            cim:IdentifiedObject.name      "BE_Busbar_HVDC1";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:f8953606-111b-41a2-b762-53ce411300a6>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:81a4266e-2f34-4236-a619-11e8e7c9554e>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000889";
+            eu:IdentifiedObject.shortName  "Busbar_HVDC1" .
+    
+    <urn:uuid:1fdbd284-1504-4db8-a8c2-ee935f36879e>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BBRUS151; BGENT_51";
+            cim:IdentifiedObject.mRID      "1fdbd284-1504-4db8-a8c2-ee935f36879e";
+            cim:IdentifiedObject.name      "BE-Busbar_10";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:7a51803b-5b5c-4416-a9ae-b669b87dd531>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:7d3bf85e-0d00-459f-bca3-6727caeb80db>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000875";
+            eu:IdentifiedObject.shortName  "BE-B_10" .
+    
+    <urn:uuid:b694653e-31fd-45a1-a9e0-9f2edd706286>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "b694653e-31fd-45a1-a9e0-9f2edd706286";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
+    
+    <urn:uuid:994f164c-430a-4188-86c1-0a05cec9a038>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:58889b22-7bd5-4e54-8602-2e115bfa2ed7>;
+            cim:IdentifiedObject.mRID  "994f164c-430a-4188-86c1-0a05cec9a038" .
+    
+    <urn:uuid:133a4f91-0480-444a-b15a-a5e1a1180e8d>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
+            cim:IdentifiedObject.mRID  "133a4f91-0480-444a-b15a-a5e1a1180e8d" .
+    
+    <urn:uuid:11f04fbd-68fa-40f4-90c8-895443fc13b8>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "11f04fbd-68fa-40f4-90c8-895443fc13b8";
+            cim:Terminal.TopologicalNode  <urn:uuid:8e842efc-1fd1-41b2-90e5-ba043659c601> .
+    
+    <urn:uuid:b8f5b2e0-3522-4465-8ce7-e238a863c46c>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "b8f5b2e0-3522-4465-8ce7-e238a863c46c";
+            cim:Terminal.TopologicalNode  <urn:uuid:d282a4f2-fc06-4e2b-94d8-d5472ba7db8b> .
+    
+    <urn:uuid:866f8f54-565d-4fbb-9c4f-780298f80752>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "RG CE; 400 kV; OHL";
+            cim:IdentifiedObject.mRID      "866f8f54-565d-4fbb-9c4f-780298f80752";
+            cim:IdentifiedObject.name      "TN_Border_GY11";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:86a47af4-94b8-4887-aabb-a5a791e7efb8>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:bf4eae86-b657-4459-957b-4ae7586b9a63>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "10T-AT-HU-00002U";
+            eu:IdentifiedObject.shortName  "XWI_GY11" .
+    
+    <urn:uuid:ab584b99-9e29-4139-8b44-d348148497b2>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
+            cim:IdentifiedObject.mRID  "ab584b99-9e29-4139-8b44-d348148497b2" .
+    
+    <urn:uuid:9072b316-0b11-4ded-a59b-5b1e5d78567a>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
+            cim:IdentifiedObject.mRID  "9072b316-0b11-4ded-a59b-5b1e5d78567a" .
+    
+    <urn:uuid:ad2cf75e-896e-4b4e-b31f-8da2c25dd597>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "ad2cf75e-896e-4b4e-b31f-8da2c25dd597";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:930595c9-d686-47cb-8afe-e55225cc50e6>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
+            cim:IdentifiedObject.mRID  "930595c9-d686-47cb-8afe-e55225cc50e6" .
+    
+    <urn:uuid:582efea1-35f4-49d2-a2d0-0561ea2dd546>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "582efea1-35f4-49d2-a2d0-0561ea2dd546";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:16aacbf6-ce19-446e-950a-6be6e23cbc50>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "16aacbf6-ce19-446e-950a-6be6e23cbc50";
+            cim:Terminal.TopologicalNode  <urn:uuid:67a35a3d-35a0-4bbe-a48a-f28228a67469> .
+    
+    <urn:uuid:4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
+            cim:IdentifiedObject.description
+                    "HVDC1_2";
+            cim:IdentifiedObject.mRID      "4b1a0c1a-85a4-4a85-9e20-db775ae9dcce";
+            cim:IdentifiedObject.name      "HVDC1_2";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000523";
+            eu:IdentifiedObject.shortName  "HVDC1_2" .
+    
+    <urn:uuid:17c1fd73-ab8f-4984-aab3-a0e80f6cddbc>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BBRUS151; BGENT_51";
+            cim:IdentifiedObject.mRID      "17c1fd73-ab8f-4984-aab3-a0e80f6cddbc";
+            cim:IdentifiedObject.name      "BE-Busbar_9";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:7a51803b-5b5c-4416-a9ae-b669b87dd531>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:7d3bf85e-0d00-459f-bca3-6727caeb80db>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000884";
+            eu:IdentifiedObject.shortName  "BE-B_9" .
+    
+    <urn:uuid:1c0d415d-7e56-4fad-a127-f131cf53b9cb>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "1c0d415d-7e56-4fad-a127-f131cf53b9cb";
+            cim:Terminal.TopologicalNode  <urn:uuid:a6c9e04c-9659-4516-bde6-5e31ba66cd38> .
+    
+    <urn:uuid:c9d619f4-d71d-4c2a-9eb1-497fa5f98132>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "c9d619f4-d71d-4c2a-9eb1-497fa5f98132";
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
+    
+    <urn:uuid:c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
+            cim:IdentifiedObject.description
+                    "HVDC1_3";
+            cim:IdentifiedObject.mRID      "c73c1c1d-e7c5-4cbf-a9b0-9b0688a064a6";
+            cim:IdentifiedObject.name      "HVDC1_3";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000524";
+            eu:IdentifiedObject.shortName  "HVDC1_3" .
+    
+    <urn:uuid:64f68467-97cd-4d00-af35-5ed6b4999a42>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "64f68467-97cd-4d00-af35-5ed6b4999a42";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+    
+    <urn:uuid:7182b03c-2864-4f5b-8287-6f5bee6721a3>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "7182b03c-2864-4f5b-8287-6f5bee6721a3";
+            cim:Terminal.TopologicalNode  <urn:uuid:4e3f37e9-3453-4533-aa69-ca23a5a8642b> .
+    
+    <urn:uuid:77d5bdef-c991-42df-ac4f-ce50efe43a1c>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:62e05955-9dd9-41c2-9753-75f04838d258>;
+            cim:IdentifiedObject.mRID     "77d5bdef-c991-42df-ac4f-ce50efe43a1c" .
+    
+    <urn:uuid:a60f78b7-11d6-43c7-857d-dbb917f6e0d0>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "a60f78b7-11d6-43c7-857d-dbb917f6e0d0";
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
+    
+    <urn:uuid:4159ba79-72c7-4f5c-a6e2-0451b9ae3e7e>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "4159ba79-72c7-4f5c-a6e2-0451b9ae3e7e";
+            cim:Terminal.TopologicalNode  <urn:uuid:a6c9e04c-9659-4516-bde6-5e31ba66cd38> .
+    
+    <urn:uuid:0c729e41-a3aa-4eb6-81fa-ccd5bcb659a9>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "0c729e41-a3aa-4eb6-81fa-ccd5bcb659a9";
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
+    
+    <urn:uuid:72e3acb0-9f6c-496b-b809-4fb66c773b55>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "72e3acb0-9f6c-496b-b809-4fb66c773b55";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+    
+    <urn:uuid:baeaf7ca-dde1-418e-9b16-46d6d5f52b25>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:67a35a3d-35a0-4bbe-a48a-f28228a67469>;
+            cim:IdentifiedObject.mRID  "baeaf7ca-dde1-418e-9b16-46d6d5f52b25" .
+    
+    <urn:uuid:9e34a4c3-251b-4372-b961-031cf1dcd75c>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:b7a85241-4141-4241-b08b-df7d3bd0c06f>;
+            cim:IdentifiedObject.mRID     "9e34a4c3-251b-4372-b961-031cf1dcd75c" .
+    
+    <urn:uuid:c3aa9ba4-1bbf-4c07-85f0-979c47f95590>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "c3aa9ba4-1bbf-4c07-85f0-979c47f95590";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:60922706-95b3-4701-a808-200fd054f4db>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
+            cim:IdentifiedObject.mRID  "60922706-95b3-4701-a808-200fd054f4db" .
+    
+    <urn:uuid:e151673a-9d7b-40dd-980b-e59ad9645907>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
+            cim:IdentifiedObject.mRID  "e151673a-9d7b-40dd-980b-e59ad9645907" .
+    
+    <urn:uuid:85f20ec0-c6d5-4006-8b49-031de3899693>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "85f20ec0-c6d5-4006-8b49-031de3899693";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:d3435b9a-1077-49ac-ab24-969734b70fd5>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "d3435b9a-1077-49ac-ab24-969734b70fd5";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:37e90dfb-9d6c-4233-a4fd-6f4c2c909ecd>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "37e90dfb-9d6c-4233-a4fd-6f4c2c909ecd";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:d4fc45b2-7090-4d26-b620-e7a319aca9b5>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
+            cim:IdentifiedObject.description
+                    "HVDC1_5";
+            cim:IdentifiedObject.mRID      "d4fc45b2-7090-4d26-b620-e7a319aca9b5";
+            cim:IdentifiedObject.name      "HVDC1_5";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000526";
+            eu:IdentifiedObject.shortName  "HVDC1_5" .
+    
+    <urn:uuid:3a30332a-986d-4998-ace3-9644bf8dcbfe>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:7f830c46-a1e0-466c-bad5-1b7523147805>;
+            cim:IdentifiedObject.mRID  "3a30332a-986d-4998-ace3-9644bf8dcbfe" .
+    
+    <urn:uuid:da666ea8-7bf5-4a22-84c5-d5d21f692314>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "da666ea8-7bf5-4a22-84c5-d5d21f692314";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+    
+    <urn:uuid:178f1d1c-1ad2-4e72-815f-47af95869edf>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:2e18bb26-ab9d-41a8-9a1e-71aa3c98d425>;
+            cim:IdentifiedObject.mRID     "178f1d1c-1ad2-4e72-815f-47af95869edf" .
+    
+    <urn:uuid:2c8ee2b2-260e-4c33-b9e1-e10787860a20>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "2c8ee2b2-260e-4c33-b9e1-e10787860a20";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:ff52e713-2bd1-46b0-a1cc-c02adfc2d49f>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "ff52e713-2bd1-46b0-a1cc-c02adfc2d49f";
+            cim:Terminal.TopologicalNode  <urn:uuid:4e3f37e9-3453-4533-aa69-ca23a5a8642b> .
+    
+    <urn:uuid:38e57012-ac9b-4999-9921-1dfafcb73e3b>
+            rdf:type                   cim:ACDCConverterDCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb>;
+            cim:IdentifiedObject.mRID  "38e57012-ac9b-4999-9921-1dfafcb73e3b" .
+    
+    <urn:uuid:fc5daa58-55cb-47f5-ac39-4e1ab12e0282>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:0e8a2acc-6550-4ab7-8a61-975dea4b0ea5>;
+            cim:IdentifiedObject.mRID     "fc5daa58-55cb-47f5-ac39-4e1ab12e0282" .
+    
+    <urn:uuid:025515c7-3a78-4107-ac53-501375104606>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "025515c7-3a78-4107-ac53-501375104606";
+            cim:Terminal.TopologicalNode  <urn:uuid:a6c9e04c-9659-4516-bde6-5e31ba66cd38> .
+    
+    <urn:uuid:b41eee9a-af69-4a72-9aa8-c2c2982b9e6f>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "b41eee9a-af69-4a72-9aa8-c2c2982b9e6f";
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
+    
+    <urn:uuid:06c74a2d-4f1c-40de-935f-e1b7b7fe4cba>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "06c74a2d-4f1c-40de-935f-e1b7b7fe4cba";
+            cim:Terminal.TopologicalNode  <urn:uuid:8e842efc-1fd1-41b2-90e5-ba043659c601> .
+    
+    <urn:uuid:5f967934-b637-4643-901c-8f9a47e324f7>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "5f967934-b637-4643-901c-8f9a47e324f7";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:8ffdf52f-e0f8-46c1-afc2-3343393c4888>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "8ffdf52f-e0f8-46c1-afc2-3343393c4888";
+            cim:Terminal.TopologicalNode  <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29> .
+    
+    <urn:uuid:fa2d9b9b-2b79-4cf6-a7cc-a2dbb8730383>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "fa2d9b9b-2b79-4cf6-a7cc-a2dbb8730383";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:6b8d843e-5770-404a-a606-e1f2f5a1b610>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "6b8d843e-5770-404a-a606-e1f2f5a1b610";
+            cim:Terminal.TopologicalNode  <urn:uuid:3e67aaae-e737-48e8-bd0a-3a83abe8acb6> .
+    
+    <urn:uuid:b2d0dab2-7918-469a-bea3-20aacee128b1>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:d4fc45b2-7090-4d26-b620-e7a319aca9b5>;
+            cim:IdentifiedObject.mRID  "b2d0dab2-7918-469a-bea3-20aacee128b1" .
+    
+    <urn:uuid:34d01770-11e9-46c7-b8da-20855cfcffeb>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:e6c462ca-42a8-4ba5-b89b-bc6f4130b95d>;
+            cim:IdentifiedObject.description
+                    "DC_Ground1";
+            cim:IdentifiedObject.mRID      "34d01770-11e9-46c7-b8da-20855cfcffeb";
+            cim:IdentifiedObject.name      "DC_Ground1";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000520";
+            eu:IdentifiedObject.shortName  "DC_Ground1" .
+    
+    <urn:uuid:b615eb40-31fc-4935-9b55-f9033450fbe7>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "b615eb40-31fc-4935-9b55-f9033450fbe7";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:5331ff9a-14e7-4c10-9b85-0f5cc1dddab4>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "5331ff9a-14e7-4c10-9b85-0f5cc1dddab4";
+            cim:Terminal.TopologicalNode  <urn:uuid:34777fdd-896d-4653-bcac-e065743e3741> .
+    
+    <urn:uuid:d2489a52-7225-49de-9fe0-22f1af25476d>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
+            cim:IdentifiedObject.mRID  "d2489a52-7225-49de-9fe0-22f1af25476d" .
+    
+    <urn:uuid:58539a9c-b33c-42d9-b4ce-20111fc7eec1>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "58539a9c-b33c-42d9-b4ce-20111fc7eec1";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+    
+    <urn:uuid:ff3d16a7-77d9-4f86-945a-b1b8fee995fb>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "ff3d16a7-77d9-4f86-945a-b1b8fee995fb";
+            cim:Terminal.TopologicalNode  <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+    
+    <urn:uuid:23854dcf-2b82-459e-8eb4-0d114fc828c0>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "23854dcf-2b82-459e-8eb4-0d114fc828c0";
+            cim:Terminal.TopologicalNode  <urn:uuid:1fdbd284-1504-4db8-a8c2-ee935f36879e> .
+    
+    <urn:uuid:51db23af-0ffa-4d23-bc57-6cc727548ca8>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
+            cim:IdentifiedObject.mRID  "51db23af-0ffa-4d23-bc57-6cc727548ca8" .
+    
+    <urn:uuid:659ac0ba-1b4b-4c08-a2f5-b3946091f293>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "659ac0ba-1b4b-4c08-a2f5-b3946091f293";
+            cim:Terminal.TopologicalNode  <urn:uuid:c591a9ca-ff19-47b9-8389-7713c79f1169> .
+    
+    <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BBRUS151; BGENT_51";
+            cim:IdentifiedObject.mRID      "d82b939b-41aa-47ff-87e4-be803991ad29";
+            cim:IdentifiedObject.name      "BE-Busbar_6";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:7a51803b-5b5c-4416-a9ae-b669b87dd531>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:7d3bf85e-0d00-459f-bca3-6727caeb80db>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000881";
+            eu:IdentifiedObject.shortName  "BE-B_6" .
+    
+    <urn:uuid:1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:b4f836bc-8b81-45d8-a94e-ad40d11ab3ea>;
+            cim:IdentifiedObject.description
+                    "HVDC1_1";
+            cim:IdentifiedObject.mRID      "1c2e9c9b-9b85-4dac-aeb8-9c59f22463cb";
+            cim:IdentifiedObject.name      "HVDC1_1";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000522";
+            eu:IdentifiedObject.shortName  "HVDC1_1" .
+    
+    <urn:uuid:5acea568-6d34-4843-a49f-0f845a51ead8>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "5acea568-6d34-4843-a49f-0f845a51ead8";
+            cim:Terminal.TopologicalNode  <urn:uuid:05675d2d-bb4c-4165-808f-0c7671a790cd> .
+    
+    <urn:uuid:4a362149-e88c-4573-a8d4-0d80ec7cd98f>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:d82b939b-41aa-47ff-87e4-be803991ad29>;
+            cim:IdentifiedObject.mRID  "4a362149-e88c-4573-a8d4-0d80ec7cd98f" .
+    
+    <urn:uuid:bc40de8c-e3cc-40aa-af5a-ff135ea68372>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b>;
+            cim:IdentifiedObject.mRID  "bc40de8c-e3cc-40aa-af5a-ff135ea68372" .
+    
+    <urn:uuid:16fb020d-850b-44b1-bd8c-47785995aaed>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "16fb020d-850b-44b1-bd8c-47785995aaed";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
+    
+    <urn:uuid:5cb37c65-a942-4845-bf27-fba46cca9ed5>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>;
+            cim:IdentifiedObject.mRID  "5cb37c65-a942-4845-bf27-fba46cca9ed5" .
+    
+    <urn:uuid:9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BBRUS151; BGENT_51";
+            cim:IdentifiedObject.mRID      "9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a";
+            cim:IdentifiedObject.name      "BE-Busbar_11";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:7a51803b-5b5c-4416-a9ae-b669b87dd531>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:7d3bf85e-0d00-459f-bca3-6727caeb80db>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000876";
+            eu:IdentifiedObject.shortName  "BE-B_11" .
+    
+    <urn:uuid:7f830c46-a1e0-466c-bad5-1b7523147805>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "RG CE; 220 kV; OHL";
+            cim:IdentifiedObject.mRID      "7f830c46-a1e0-466c-bad5-1b7523147805";
+            cim:IdentifiedObject.name      "TN_Border_ST23";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:2e8ab1fb-6be9-4c85-8540-776c82514e93>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:f7d17f33-1673-437e-ba69-6c4a6110fd0f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "10T-AT-DE-00016Z";
+            eu:IdentifiedObject.shortName  "XZE_ST23" .
+    
+    <urn:uuid:8e842efc-1fd1-41b2-90e5-ba043659c601>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BE_Busbar_HVDC2";
+            cim:IdentifiedObject.mRID      "8e842efc-1fd1-41b2-90e5-ba043659c601";
+            cim:IdentifiedObject.name      "BE_Busbar_HVDC2";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:f8953606-111b-41a2-b762-53ce411300a6>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:a416525c-aeb1-4f70-b1bf-ba526bd4f573>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000890";
+            eu:IdentifiedObject.shortName  "Busbar_HVDC2" .
+    
+    <urn:uuid:8d77cc45-66ee-4786-bae7-80d17c20cb95>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:a6c9e04c-9659-4516-bde6-5e31ba66cd38>;
+            cim:IdentifiedObject.mRID  "8d77cc45-66ee-4786-bae7-80d17c20cb95" .
+    
+    <urn:uuid:e98c20a2-dd4e-4991-9fb4-83740f8bd21d>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
+            cim:IdentifiedObject.mRID     "e98c20a2-dd4e-4991-9fb4-83740f8bd21d" .
+    
+    <urn:uuid:fba07dcf-75e0-406f-a2f8-c39bb2286375>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "fba07dcf-75e0-406f-a2f8-c39bb2286375";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
+    
+    <urn:uuid:3878043d-c093-43e6-9524-6d17580a3260>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "3878043d-c093-43e6-9524-6d17580a3260";
+            cim:Terminal.TopologicalNode  <urn:uuid:bec23818-76a9-4e47-aecd-76f8ad3f1199> .
+    
+    <urn:uuid:45632379-b134-4567-89d8-d078f7024572>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "45632379-b134-4567-89d8-d078f7024572";
+            cim:Terminal.TopologicalNode  <urn:uuid:34777fdd-896d-4653-bcac-e065743e3741> .
+    
+    <urn:uuid:19d85411-f52b-4d38-b4b5-2693ee7ee283>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>;
+            cim:IdentifiedObject.mRID  "19d85411-f52b-4d38-b4b5-2693ee7ee283" .
+    
+    <urn:uuid:5b11fb75-b075-4c01-8a5c-ecfc6cc6e616>
+            rdf:type                       cim:DCTopologicalNode;
+            cim:DCTopologicalNode.DCEquipmentContainer
+                    <urn:uuid:eea35583-7870-4212-8db2-2b4372f68e8f>;
+            cim:IdentifiedObject.description
+                    "HVDC2_1";
+            cim:IdentifiedObject.mRID      "5b11fb75-b075-4c01-8a5c-ecfc6cc6e616";
+            cim:IdentifiedObject.name      "HVDC2_1";
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000529";
+            eu:IdentifiedObject.shortName  "HVDC2_1" .
+    
+    <urn:uuid:849d1e5e-e6be-44db-8c04-98bccae89af2>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0>;
+            cim:IdentifiedObject.mRID  "849d1e5e-e6be-44db-8c04-98bccae89af2" .
+    
+    <urn:uuid:a3d9ac34-1e35-45aa-ad48-7c688258fafd>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:62e05955-9dd9-41c2-9753-75f04838d258>;
+            cim:IdentifiedObject.mRID  "a3d9ac34-1e35-45aa-ad48-7c688258fafd" .
+    
+    <urn:uuid:ab189ae0-a556-4670-b1b8-552560a36e42>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:2e18bb26-ab9d-41a8-9a1e-71aa3c98d425>;
+            cim:IdentifiedObject.mRID  "ab189ae0-a556-4670-b1b8-552560a36e42" .
+    
+    <urn:uuid:feb9a3f7-803a-4a9b-8140-967e399d6a0f>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:4b1a0c1a-85a4-4a85-9e20-db775ae9dcce>;
+            cim:IdentifiedObject.mRID  "feb9a3f7-803a-4a9b-8140-967e399d6a0f" .
+    
+    <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "BE_TR_BUS4";
+            cim:IdentifiedObject.mRID      "eaa3e478-b1a8-4ff7-b385-83bfe5a934f6";
+            cim:IdentifiedObject.name      "BE_TR_BUS4";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:48e843d1-1794-4349-9383-bc7113b41cce>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:fc17ffb1-a69f-4d00-b956-3c1b89cfe195>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000887";
+            eu:IdentifiedObject.shortName  "BE_TR_BUS4" .
+    
+    <urn:uuid:98718b6d-a18c-4a66-958c-45d312a3274e>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "98718b6d-a18c-4a66-958c-45d312a3274e";
+            cim:Terminal.TopologicalNode  <urn:uuid:866f8f54-565d-4fbb-9c4f-780298f80752> .
+    
+    <urn:uuid:d282a4f2-fc06-4e2b-94d8-d5472ba7db8b>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "RG CE; 220 kV; OHL";
+            cim:IdentifiedObject.mRID      "d282a4f2-fc06-4e2b-94d8-d5472ba7db8b";
+            cim:IdentifiedObject.name      "TN_Border_ST24";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:2e8ab1fb-6be9-4c85-8540-776c82514e93>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:644d62b8-56f9-4e31-a09d-e2fef25f4a92>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "10T-AT-DE-00017X";
+            eu:IdentifiedObject.shortName  "XZE_ST24" .
+    
+    <urn:uuid:80b3660a-6dd4-40d0-80be-7df2dc3b7db8>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "80b3660a-6dd4-40d0-80be-7df2dc3b7db8";
+            cim:Terminal.TopologicalNode  <urn:uuid:9eadcaa7-ab1e-4ff7-a3ce-b2713eec1a7a> .
+    
+    <urn:uuid:f7f6140a-34b2-4e4d-ad50-094ed6af7871>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "f7f6140a-34b2-4e4d-ad50-094ed6af7871";
+            cim:Terminal.TopologicalNode  <urn:uuid:4bee3ced-e8f9-42ac-acbc-d762adb5308b> .
+    
+    <urn:uuid:c859beb5-62f0-43c0-a269-b41d4f9a5c37>
+            rdf:type                       cim:TopologicalNode;
+            cim:IdentifiedObject.description
+                    "N1230816360";
+            cim:IdentifiedObject.mRID      "c859beb5-62f0-43c0-a269-b41d4f9a5c37";
+            cim:IdentifiedObject.name      "N1230816360";
+            cim:TopologicalNode.BaseVoltage
+                    <urn:uuid:4beb49fd-c341-4ae3-a6b6-bcbc3ca35aed>;
+            cim:TopologicalNode.ConnectivityNodeContainer
+                    <urn:uuid:db4aafe8-a450-4a4d-bd82-9bf570b12d0d>;
+            cim:TopologicalNode.ReportingGroup
+                    <urn:uuid:3dff9dc2-cb67-476d-801f-e81da0975d6f>;
+            eu:IdentifiedObject.energyIdentCodeEic
+                    "00X-BE-BE-000888";
+            eu:IdentifiedObject.shortName  "N1230816360" .
+    
+    <urn:uuid:918484e1-e9d6-41ec-88c6-4d3a8cec53cd>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "918484e1-e9d6-41ec-88c6-4d3a8cec53cd";
+            cim:Terminal.TopologicalNode  <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d> .
+    
+    <urn:uuid:d1bd4ca1-5868-4513-909e-c9157477036c>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "d1bd4ca1-5868-4513-909e-c9157477036c";
+            cim:Terminal.TopologicalNode  <urn:uuid:d282a4f2-fc06-4e2b-94d8-d5472ba7db8b> .
+    
+    <urn:uuid:d28d9755-daef-408a-b849-76ac918c7329>
+            rdf:type                      cim:DCNode;
+            cim:DCNode.DCTopologicalNode  <urn:uuid:155a50ec-13d8-4104-879f-e998411be2ea>;
+            cim:IdentifiedObject.mRID     "d28d9755-daef-408a-b849-76ac918c7329" .
+    
+    <urn:uuid:38912491-185e-4869-8e8d-61dc9cc0a7f6>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:49ec0066-52af-4e6f-8da4-3198fe9acb5d>;
             cim:IdentifiedObject.mRID  "38912491-185e-4869-8e8d-61dc9cc0a7f6" .
+    
+    <urn:uuid:303f7acf-f00d-454a-ae9d-48e2c5dee000>
+            rdf:type                   cim:ACDCConverterDCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:2e18bb26-ab9d-41a8-9a1e-71aa3c98d425>;
+            cim:IdentifiedObject.mRID  "303f7acf-f00d-454a-ae9d-48e2c5dee000" .
+    
+    <urn:uuid:ac800544-8184-44f2-8bf6-992eebc5c21d>
+            rdf:type                   cim:DCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:0e8a2acc-6550-4ab7-8a61-975dea4b0ea5>;
+            cim:IdentifiedObject.mRID  "ac800544-8184-44f2-8bf6-992eebc5c21d" .
+    
+    <urn:uuid:8ac543ac-abfb-4f9b-9381-72709bd8188e>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "8ac543ac-abfb-4f9b-9381-72709bd8188e";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:aaf1cff3-362d-4daa-b9f7-2c9236695198>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "aaf1cff3-362d-4daa-b9f7-2c9236695198";
+            cim:Terminal.TopologicalNode  <urn:uuid:eaa3e478-b1a8-4ff7-b385-83bfe5a934f6> .
+    
+    <urn:uuid:d1f919a1-11e3-4e2d-b07f-4238275a71f3>
+            rdf:type                   cim:ConnectivityNode;
+            cim:ConnectivityNode.TopologicalNode
+                    <urn:uuid:17c1fd73-ab8f-4984-aab3-a0e80f6cddbc>;
+            cim:IdentifiedObject.mRID  "d1f919a1-11e3-4e2d-b07f-4238275a71f3" .
+    
+    <urn:uuid:7b9a6932-fb0a-4070-bf83-49866b2ed339>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "7b9a6932-fb0a-4070-bf83-49866b2ed339";
+            cim:Terminal.TopologicalNode  <urn:uuid:6710b466-00d6-4556-b436-985eb08f7dd0> .
+    
+    <urn:uuid:7cd843a6-816b-40ae-b465-e1e450c7ce64>
+            rdf:type                   cim:ACDCConverterDCTerminal;
+            cim:DCBaseTerminal.DCTopologicalNode
+                    <urn:uuid:62e05955-9dd9-41c2-9753-75f04838d258>;
+            cim:IdentifiedObject.mRID  "7cd843a6-816b-40ae-b465-e1e450c7ce64" .
+    
+    <urn:uuid:4dd077d5-c166-4699-baeb-2220f706002b>
+            rdf:type                      cim:Terminal;
+            cim:IdentifiedObject.mRID     "4dd077d5-c166-4699-baeb-2220f706002b";
+            cim:Terminal.TopologicalNode  <urn:uuid:bec23818-76a9-4e47-aecd-76f8ad3f1199> .
 }

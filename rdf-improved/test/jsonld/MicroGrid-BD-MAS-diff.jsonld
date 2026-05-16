@@ -1,20 +1,50 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-new.jsonld",
   "@graph": [
     {
       "@graph": [
         {
+          "@id": "_:b0",
+          "@type": "dcat:Distribution",
+          "dct:issued": "2021-11-19T23:16:27Z"
+        },
+        {
+          "@id": "_:b1",
+          "@type": "dct:PeriodOfTime",
+          "http://www.w3.org/ns/dcat#startDate": {
+            "@type": "xsd:dateTime",
+            "@value": "2021-03-25T15:30:00Z"
+          }
+        },
+        {
           "@id": "urn:uuid:52014a99-7471-4361-9cad-4353f08a0efa",
-          "@type": "dm:DifferenceModel",
-          "dm:forwardDifferences": "urn:uuid:7cb79ce3-abbc-4611-b9d1-e381438349f9",
-          "dm:reverseDifferences": "urn:uuid:955e49a7-1c7b-4261-ba50-73b6de3264d9",
-          "md:Model.Supersedes": "urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7",
-          "md:Model.created": "2021-11-19T23:16:27Z",
-          "md:Model.description": "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.",
-          "md:Model.modelingAuthoritySet": "http://entsoe.eu/boundary",
-          "md:Model.profile": "http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/3.0",
-          "md:Model.scenarioTime": "2021-03-25T15:30:00Z",
-          "md:Model.version": "006"
+          "@type": [
+            "http://www.w3.org/2004/03/trix/rdfg-1/Graph",
+            "https://cim4.eu/ns/dcatcim#DifferenceSet"
+          ],
+          "dct:conformsTo": "http://iec.ch/TC57/ns/CIM/EquipmentBoundary-EU/3.0",
+          "dct:description": "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.",
+          "dct:identifier": "52014a99-7471-4361-9cad-4353f08a0efa",
+          "http://purl.org/dc/terms/issued": {
+            "@type": "xsd:date",
+            "@value": "2021-11-19"
+          },
+          "dct:temporal": {
+            "@id": "_:b1"
+          },
+          "dcat:distribution": {
+            "@id": "_:b0"
+          },
+          "dcat:isVersionOf": "http://entsoe.eu/boundary",
+          "dcat:previousVersion": "urn:uuid:536f9bf1-3f8f-a546-87e3-7af2272f29b7",
+          "dcat:version": "006",
+          "https://cim4.eu/ns/dcatcim#forwardDifferenceSet": {
+            "@id": "urn:uuid:d5e2e0bb-d740-49cd-8206-e85d6cba16c6"
+          },
+          "https://cim4.eu/ns/dcatcim#reverseDifferenceSet": {
+            "@id": "urn:uuid:eaaddf0d-76f4-4657-8df9-aa526a64050c"
+          },
+          "https://www.w3.org/ns/json-ld#base": "http://entsoe.eu/boundary#"
         }
       ],
       "@id": "urn:uuid:52014a99-7471-4361-9cad-4353f08a0efa"
@@ -22,12 +52,21 @@
     {
       "@graph": [
         {
-          "@id": "http://entsoe.eu/boundary#_af1d901f-98de-574f-abc3-6c3025e7a686",
+          "@id": "urn:uuid:d5e2e0bb-d740-49cd-8206-e85d6cba16c6",
+          "@type": [
+            "dcat:Resource",
+            "http://www.w3.org/2004/03/trix/rdfg-1/Graph"
+          ],
+          "dct:identifier": "d5e2e0bb-d740-49cd-8206-e85d6cba16c6",
+          "dct:title": "Forward Difference Set of 52014a99-7471-4361-9cad-4353f08a0efa"
+        },
+        {
+          "@id": "urn:uuid:af1d901f-98de-574f-abc3-6c3025e7a686",
           "@type": "eu:BoundaryPoint",
           "cim:IdentifiedObject.description": "HVDC-AC; 220 kV; OHL",
           "cim:IdentifiedObject.mRID": "af1d901f-98de-574f-abc3-6c3025e7a686",
           "cim:IdentifiedObject.name": "Border_HVDC-AC",
-          "eu:BoundaryPoint.ConnectivityNode": "http://entsoe.eu/boundary#_1c4a9e9c-ef00-42c9-9845-f64f9ca1e57a",
+          "eu:BoundaryPoint.ConnectivityNode": "urn:uuid:1c4a9e9c-ef00-42c9-9845-f64f9ca1e57a",
           "eu:BoundaryPoint.fromEndIsoCode": "NL",
           "eu:BoundaryPoint.fromEndName": "HVDC/NL",
           "eu:BoundaryPoint.fromEndNameTso": "NL",
@@ -40,9 +79,9 @@
           "eu:IdentifiedObject.shortName": "HVDC-AC-1"
         },
         {
-          "@id": "http://entsoe.eu/boundary#_1c4a9e9c-ef00-42c9-9845-f64f9ca1e57a",
+          "@id": "urn:uuid:1c4a9e9c-ef00-42c9-9845-f64f9ca1e57a",
           "@type": "cim:ConnectivityNode",
-          "cim:ConnectivityNode.ConnectivityNodeContainer": "http://entsoe.eu/boundary#_2e08aa26-2719-4b3e-a0eb-a9bd0ddbcae2",
+          "cim:ConnectivityNode.ConnectivityNodeContainer": "urn:uuid:2e08aa26-2719-4b3e-a0eb-a9bd0ddbcae2",
           "cim:IdentifiedObject.description": "HVDC-AC; 220 kV; OHL",
           "cim:IdentifiedObject.mRID": "1c4a9e9c-ef00-42c9-9845-f64f9ca1e57a",
           "cim:IdentifiedObject.name": "Border_HVDC-AC",
@@ -50,7 +89,21 @@
           "eu:IdentifiedObject.shortName": "HVDC-AC-1"
         }
       ],
-      "@id": "urn:uuid:7cb79ce3-abbc-4611-b9d1-e381438349f9"
+      "@id": "urn:uuid:d5e2e0bb-d740-49cd-8206-e85d6cba16c6"
+    },
+    {
+      "@graph": [
+        {
+          "@id": "urn:uuid:eaaddf0d-76f4-4657-8df9-aa526a64050c",
+          "@type": [
+            "dcat:Resource",
+            "http://www.w3.org/2004/03/trix/rdfg-1/Graph"
+          ],
+          "dct:identifier": "eaaddf0d-76f4-4657-8df9-aa526a64050c",
+          "dct:title": "Reverse Difference Set of 52014a99-7471-4361-9cad-4353f08a0efa"
+        }
+      ],
+      "@id": "urn:uuid:eaaddf0d-76f4-4657-8df9-aa526a64050c"
     }
   ]
 }

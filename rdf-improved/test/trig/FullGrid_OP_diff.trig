@@ -1,63 +1,68 @@
-PREFIX cim:      <http://iec.ch/TC57/CIM100#>
-PREFIX dcat:     <http://www.w3.org/ns/dcat#>
-PREFIX dcat-cim: <https://cim4.eu/ns/dcat-cim#>
-PREFIX dct:      <http://purl.org/dc/terms/>
-PREFIX dm:       <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
-PREFIX eu:       <http://iec.ch/TC57/CIM100-European#>
-PREFIX eumd:     <https://cim4.eu/ns/Metadata-European#>
-PREFIX json-ld:  <https://www.w3.org/ns/json-ld#>
-PREFIX md:       <http://iec.ch/TC57/61970-552/ModelDescription/1#>
-PREFIX nc:       <https://cim4.eu/ns/nc#>
-PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfg:     <http://www.w3.org/2004/03/trix/rdfg-1/>
-PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dct:     <http://purl.org/dc/terms/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX entsoe2: <http://entsoe.eu/CIM/SchemaExtension/3/2#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+PREFIX eumd:    <https://cim4.eu/ns/Metadata-European#>
+PREFIX icim:    <http://iec.ch/TC57/2013/CIM-schema-cim16-info#>
+PREFIX json-ld: <https://www.w3.org/ns/json-ld#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX pti:     <http://www.pti-us.com/PTI_CIM-schema-cim16#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfg:    <http://www.w3.org/2004/03/trix/rdfg-1/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
-<urn:uuid:40e2a434-c65e-46e1-8415-e3611334ad6b> {
-    <http://fullgrid.eu/CGMES/3.0#_fc908c16-468f-4a64-ba74-6f57175e0005>
-            cim:AnalogLimit.value  "100"^^xsd:float .
-    
-    <http://fullgrid.eu/CGMES/3.0#_87478acb-cd1f-40a6-b4a7-59ec99f8b063>
-            cim:IdentifiedObject.description
-                    "SET_PNT_1 test" .
-    
-    <urn:uuid:40e2a434-c65e-46e1-8415-e3611334ad6b>
-            rdf:type        rdfg:Graph , dcat:Resource;
-            dct:identifier  "40e2a434-c65e-46e1-8415-e3611334ad6b";
-            dct:title       "Forward Difference Set of 05edbf91-231f-4386-97c0-d4cb498d0afc" .
-}
-
-<urn:uuid:016fda95-a50a-47bb-839d-d1686df9fe55> {
-    <http://fullgrid.eu/CGMES/3.0#_fc908c16-468f-4a64-ba74-6f57175e0005>
+<urn:uuid:0fe9dc98-b00a-4c1d-8b03-b1c1d107a0f1> {
+    <urn:uuid:fc908c16-468f-4a64-ba74-6f57175e0005>
             cim:AnalogLimit.value  "99"^^xsd:float .
     
-    <http://fullgrid.eu/CGMES/3.0#_87478acb-cd1f-40a6-b4a7-59ec99f8b063>
+    <urn:uuid:0fe9dc98-b00a-4c1d-8b03-b1c1d107a0f1>
+            rdf:type        rdfg:Graph , dcat:Resource;
+            dct:identifier  "0fe9dc98-b00a-4c1d-8b03-b1c1d107a0f1";
+            dct:title       "Reverse Difference Set of 05edbf91-231f-4386-97c0-d4cb498d0afc" .
+    
+    <urn:uuid:87478acb-cd1f-40a6-b4a7-59ec99f8b063>
             cim:IdentifiedObject.description
                     "SET_PNT_1" .
-    
-    <urn:uuid:016fda95-a50a-47bb-839d-d1686df9fe55>
-            rdf:type        rdfg:Graph , dcat:Resource;
-            dct:identifier  "016fda95-a50a-47bb-839d-d1686df9fe55";
-            dct:title       "Reverse Difference Set of 05edbf91-231f-4386-97c0-d4cb498d0afc" .
 }
 
 <urn:uuid:05edbf91-231f-4386-97c0-d4cb498d0afc> {
     <urn:uuid:05edbf91-231f-4386-97c0-d4cb498d0afc>
-            rdf:type                       rdfg:Graph , dcat-cim:DifferenceSet;
-            dct:conformsTo                 <http://iec.ch/TC57/ns/CIM/Operation-EU/3.0>;
-            dct:description                "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
-            dct:identifier                 "05edbf91-231f-4386-97c0-d4cb498d0afc";
-            dct:issued                     "2021-11-19"^^xsd:date;
-            dct:requires                   <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3>;
-            dct:temporal                   [ rdf:type        dct:PeriodOfTime;
-                                             dcat:startDate  "2021-02-09T19:30:00Z"^^xsd:dateTime
-                                           ];
-            dcat:distribution              [ rdf:type    dcat:Distribution;
-                                             dct:issued  "2021-11-19T23:16:27Z"^^xsd:dateTime
-                                           ];
-            dcat:isVersionOf               <http://fullgrid.eu/CGMES/3.0>;
-            dcat:previousVersion           <urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7>;
-            dcat:version                   "001";
-            dcat-cim:forwardDifferenceSet  <urn:uuid:40e2a434-c65e-46e1-8415-e3611334ad6b>;
-            dcat-cim:reverseDifferenceSet  <urn:uuid:016fda95-a50a-47bb-839d-d1686df9fe55>;
-            json-ld:base                   "http://fullgrid.eu/CGMES/3.0#" .
+            rdf:type                      dcatcim:DifferenceSet , rdfg:Graph;
+            dct:conformsTo                <http://iec.ch/TC57/ns/CIM/Operation-EU/3.0>;
+            dct:description               "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
+            dct:identifier                "05edbf91-231f-4386-97c0-d4cb498d0afc";
+            dct:issued                    "2021-11-19"^^xsd:date;
+            dct:requires                  <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3>;
+            dct:temporal                  [ rdf:type        dct:PeriodOfTime;
+                                            dcat:startDate  "2021-02-09T19:30:00Z"^^xsd:dateTime
+                                          ];
+            dcat:distribution             [ rdf:type    dcat:Distribution;
+                                            dct:issued  "2021-11-19T23:16:27Z"^^xsd:dateTime
+                                          ];
+            dcat:isVersionOf              <http://fullgrid.eu/CGMES/3.0>;
+            dcat:previousVersion          <urn:uuid:52a409c9-72d8-4b5f-bf72-9a22ec9353f7>;
+            dcat:version                  "001";
+            dcatcim:forwardDifferenceSet  <urn:uuid:d726bc09-d621-412b-be69-01ba187da9d5>;
+            dcatcim:reverseDifferenceSet  <urn:uuid:0fe9dc98-b00a-4c1d-8b03-b1c1d107a0f1>;
+            json-ld:base                  "http://fullgrid.eu/CGMES/3.0#" .
+}
+
+<urn:uuid:d726bc09-d621-412b-be69-01ba187da9d5> {
+    <urn:uuid:fc908c16-468f-4a64-ba74-6f57175e0005>
+            cim:AnalogLimit.value  "100"^^xsd:float .
+    
+    <urn:uuid:d726bc09-d621-412b-be69-01ba187da9d5>
+            rdf:type        rdfg:Graph , dcat:Resource;
+            dct:identifier  "d726bc09-d621-412b-be69-01ba187da9d5";
+            dct:title       "Forward Difference Set of 05edbf91-231f-4386-97c0-d4cb498d0afc" .
+    
+    <urn:uuid:87478acb-cd1f-40a6-b4a7-59ec99f8b063>
+            cim:IdentifiedObject.description
+                    "SET_PNT_1 test" .
 }

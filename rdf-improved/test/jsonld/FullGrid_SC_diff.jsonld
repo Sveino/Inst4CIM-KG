@@ -1,50 +1,98 @@
 {
-  "@context": "https://rawgit2.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-old.jsonld",
+  "@context": "https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-new.jsonld",
   "@graph": [
     {
       "@graph": [
         {
-          "@id": "http://fullgrid.eu/CGMES/3.0#_09cc4e0a-336f-43ee-b29a-43049904cea9",
+          "@id": "urn:uuid:921bff90-5e47-4f39-913a-97c9f2b507eb",
+          "@type": [
+            "dcat:Resource",
+            "http://www.w3.org/2004/03/trix/rdfg-1/Graph"
+          ],
+          "dct:identifier": "921bff90-5e47-4f39-913a-97c9f2b507eb",
+          "dct:title": "Forward Difference Set of 39d8d8fd-325d-4e29-9659-d7a1cca0615d"
+        },
+        {
+          "@id": "urn:uuid:09cc4e0a-336f-43ee-b29a-43049904cea9",
           "cim:EarthFaultCompensator.r": "10"
         },
         {
-          "@id": "http://fullgrid.eu/CGMES/3.0#_62a4d7b2-acca-4726-8d47-a85afbcf0642",
+          "@id": "urn:uuid:62a4d7b2-acca-4726-8d47-a85afbcf0642",
           "cim:SynchronousMachine.earthing": "false"
         }
       ],
-      "@id": "urn:uuid:2842a0b5-97f6-4528-8e11-be5f2aa42775"
+      "@id": "urn:uuid:921bff90-5e47-4f39-913a-97c9f2b507eb"
     },
     {
       "@graph": [
         {
-          "@id": "urn:uuid:39d8d8fd-325d-4e29-9659-d7a1cca0615d",
-          "@type": "dm:DifferenceModel",
-          "dm:forwardDifferences": "urn:uuid:2842a0b5-97f6-4528-8e11-be5f2aa42775",
-          "dm:reverseDifferences": "urn:uuid:a4aa7563-84dc-4b52-b747-701b66d5f9c5",
-          "md:Model.DependentOn": "urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3",
-          "md:Model.Supersedes": "urn:uuid:dd907125-7088-43fd-830d-5b0df36f4c71",
-          "md:Model.created": "2021-11-19T23:16:27Z",
-          "md:Model.description": "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.",
-          "md:Model.modelingAuthoritySet": "http://fullgrid.eu/CGMES/3.0",
-          "md:Model.profile": "http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0",
-          "md:Model.scenarioTime": "2021-02-09T19:30:00Z",
-          "md:Model.version": "001"
-        }
-      ],
-      "@id": "urn:uuid:39d8d8fd-325d-4e29-9659-d7a1cca0615d"
-    },
-    {
-      "@graph": [
+          "@id": "urn:uuid:bca5bb47-ce0d-4c87-bf08-57388021a719",
+          "@type": [
+            "dcat:Resource",
+            "http://www.w3.org/2004/03/trix/rdfg-1/Graph"
+          ],
+          "dct:identifier": "bca5bb47-ce0d-4c87-bf08-57388021a719",
+          "dct:title": "Reverse Difference Set of 39d8d8fd-325d-4e29-9659-d7a1cca0615d"
+        },
         {
-          "@id": "http://fullgrid.eu/CGMES/3.0#_09cc4e0a-336f-43ee-b29a-43049904cea9",
+          "@id": "urn:uuid:09cc4e0a-336f-43ee-b29a-43049904cea9",
           "cim:EarthFaultCompensator.r": "9.99"
         },
         {
-          "@id": "http://fullgrid.eu/CGMES/3.0#_62a4d7b2-acca-4726-8d47-a85afbcf0642",
+          "@id": "urn:uuid:62a4d7b2-acca-4726-8d47-a85afbcf0642",
           "cim:SynchronousMachine.earthing": "true"
         }
       ],
-      "@id": "urn:uuid:a4aa7563-84dc-4b52-b747-701b66d5f9c5"
+      "@id": "urn:uuid:bca5bb47-ce0d-4c87-bf08-57388021a719"
+    },
+    {
+      "@graph": [
+        {
+          "@id": "_:b0",
+          "@type": "dcat:Distribution",
+          "dct:issued": "2021-11-19T23:16:27Z"
+        },
+        {
+          "@id": "_:b1",
+          "@type": "dct:PeriodOfTime",
+          "http://www.w3.org/ns/dcat#startDate": {
+            "@type": "xsd:dateTime",
+            "@value": "2021-02-09T19:30:00Z"
+          }
+        },
+        {
+          "@id": "urn:uuid:39d8d8fd-325d-4e29-9659-d7a1cca0615d",
+          "@type": [
+            "http://www.w3.org/2004/03/trix/rdfg-1/Graph",
+            "https://cim4.eu/ns/dcatcim#DifferenceSet"
+          ],
+          "dct:conformsTo": "http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0",
+          "dct:description": "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.",
+          "dct:identifier": "39d8d8fd-325d-4e29-9659-d7a1cca0615d",
+          "http://purl.org/dc/terms/issued": {
+            "@type": "xsd:date",
+            "@value": "2021-11-19"
+          },
+          "dct:requires": "urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3",
+          "dct:temporal": {
+            "@id": "_:b1"
+          },
+          "dcat:distribution": {
+            "@id": "_:b0"
+          },
+          "dcat:isVersionOf": "http://fullgrid.eu/CGMES/3.0",
+          "dcat:previousVersion": "urn:uuid:dd907125-7088-43fd-830d-5b0df36f4c71",
+          "dcat:version": "001",
+          "https://cim4.eu/ns/dcatcim#forwardDifferenceSet": {
+            "@id": "urn:uuid:921bff90-5e47-4f39-913a-97c9f2b507eb"
+          },
+          "https://cim4.eu/ns/dcatcim#reverseDifferenceSet": {
+            "@id": "urn:uuid:bca5bb47-ce0d-4c87-bf08-57388021a719"
+          },
+          "https://www.w3.org/ns/json-ld#base": "http://fullgrid.eu/CGMES/3.0#"
+        }
+      ],
+      "@id": "urn:uuid:39d8d8fd-325d-4e29-9659-d7a1cca0615d"
     }
   ]
 }

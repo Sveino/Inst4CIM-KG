@@ -1,63 +1,68 @@
-PREFIX cim:      <http://iec.ch/TC57/CIM100#>
-PREFIX dcat:     <http://www.w3.org/ns/dcat#>
-PREFIX dcat-cim: <https://cim4.eu/ns/dcat-cim#>
-PREFIX dct:      <http://purl.org/dc/terms/>
-PREFIX dm:       <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
-PREFIX eu:       <http://iec.ch/TC57/CIM100-European#>
-PREFIX eumd:     <https://cim4.eu/ns/Metadata-European#>
-PREFIX json-ld:  <https://www.w3.org/ns/json-ld#>
-PREFIX md:       <http://iec.ch/TC57/61970-552/ModelDescription/1#>
-PREFIX nc:       <https://cim4.eu/ns/nc#>
-PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfg:     <http://www.w3.org/2004/03/trix/rdfg-1/>
-PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX cim:     <https://cim.ucaiug.io/ns#>
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcatcim: <https://cim4.eu/ns/dcatcim#>
+PREFIX dct:     <http://purl.org/dc/terms/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dm:      <http://iec.ch/TC57/61970-552/DifferenceModel/1#>
+PREFIX entsoe2: <http://entsoe.eu/CIM/SchemaExtension/3/2#>
+PREFIX eu:      <https://cim.ucaiug.io/ns/eu#>
+PREFIX eumd:    <https://cim4.eu/ns/Metadata-European#>
+PREFIX icim:    <http://iec.ch/TC57/2013/CIM-schema-cim16-info#>
+PREFIX json-ld: <https://www.w3.org/ns/json-ld#>
+PREFIX md:      <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX nc:      <https://cim4.eu/ns/nc#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX pti:     <http://www.pti-us.com/PTI_CIM-schema-cim16#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfg:    <http://www.w3.org/2004/03/trix/rdfg-1/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
-<urn:uuid:5d8d2e4c-b0dd-4034-a891-ab53358baafe> {
-    <http://fullgrid.eu/CGMES/3.0#_62a4d7b2-acca-4726-8d47-a85afbcf0642>
-            cim:SynchronousMachine.earthing
-                    false .
-    
-    <urn:uuid:5d8d2e4c-b0dd-4034-a891-ab53358baafe>
-            rdf:type        rdfg:Graph , dcat:Resource;
-            dct:identifier  "5d8d2e4c-b0dd-4034-a891-ab53358baafe";
-            dct:title       "Forward Difference Set of 39d8d8fd-325d-4e29-9659-d7a1cca0615d" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_09cc4e0a-336f-43ee-b29a-43049904cea9>
-            cim:EarthFaultCompensator.r  "10"^^xsd:float .
-}
-
-<urn:uuid:e74713ee-2bf7-481e-b69a-c67c72816ef6> {
-    <urn:uuid:e74713ee-2bf7-481e-b69a-c67c72816ef6>
-            rdf:type        rdfg:Graph , dcat:Resource;
-            dct:identifier  "e74713ee-2bf7-481e-b69a-c67c72816ef6";
-            dct:title       "Reverse Difference Set of 39d8d8fd-325d-4e29-9659-d7a1cca0615d" .
-    
-    <http://fullgrid.eu/CGMES/3.0#_62a4d7b2-acca-4726-8d47-a85afbcf0642>
+<urn:uuid:bca5bb47-ce0d-4c87-bf08-57388021a719> {
+    <urn:uuid:62a4d7b2-acca-4726-8d47-a85afbcf0642>
             cim:SynchronousMachine.earthing
                     true .
     
-    <http://fullgrid.eu/CGMES/3.0#_09cc4e0a-336f-43ee-b29a-43049904cea9>
+    <urn:uuid:09cc4e0a-336f-43ee-b29a-43049904cea9>
             cim:EarthFaultCompensator.r  "9.99"^^xsd:float .
+    
+    <urn:uuid:bca5bb47-ce0d-4c87-bf08-57388021a719>
+            rdf:type        rdfg:Graph , dcat:Resource;
+            dct:identifier  "bca5bb47-ce0d-4c87-bf08-57388021a719";
+            dct:title       "Reverse Difference Set of 39d8d8fd-325d-4e29-9659-d7a1cca0615d" .
+}
+
+<urn:uuid:921bff90-5e47-4f39-913a-97c9f2b507eb> {
+    <urn:uuid:62a4d7b2-acca-4726-8d47-a85afbcf0642>
+            cim:SynchronousMachine.earthing
+                    false .
+    
+    <urn:uuid:09cc4e0a-336f-43ee-b29a-43049904cea9>
+            cim:EarthFaultCompensator.r  "10"^^xsd:float .
+    
+    <urn:uuid:921bff90-5e47-4f39-913a-97c9f2b507eb>
+            rdf:type        rdfg:Graph , dcat:Resource;
+            dct:identifier  "921bff90-5e47-4f39-913a-97c9f2b507eb";
+            dct:title       "Forward Difference Set of 39d8d8fd-325d-4e29-9659-d7a1cca0615d" .
 }
 
 <urn:uuid:39d8d8fd-325d-4e29-9659-d7a1cca0615d> {
     <urn:uuid:39d8d8fd-325d-4e29-9659-d7a1cca0615d>
-            rdf:type                       rdfg:Graph , dcat-cim:DifferenceSet;
-            dct:conformsTo                 <http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0>;
-            dct:description                "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
-            dct:identifier                 "39d8d8fd-325d-4e29-9659-d7a1cca0615d";
-            dct:issued                     "2021-11-19"^^xsd:date;
-            dct:requires                   <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3>;
-            dct:temporal                   [ rdf:type        dct:PeriodOfTime;
-                                             dcat:startDate  "2021-02-09T19:30:00Z"^^xsd:dateTime
-                                           ];
-            dcat:distribution              [ rdf:type    dcat:Distribution;
-                                             dct:issued  "2021-11-19T23:16:27Z"^^xsd:dateTime
-                                           ];
-            dcat:isVersionOf               <http://fullgrid.eu/CGMES/3.0>;
-            dcat:previousVersion           <urn:uuid:dd907125-7088-43fd-830d-5b0df36f4c71>;
-            dcat:version                   "001";
-            dcat-cim:forwardDifferenceSet  <urn:uuid:5d8d2e4c-b0dd-4034-a891-ab53358baafe>;
-            dcat-cim:reverseDifferenceSet  <urn:uuid:e74713ee-2bf7-481e-b69a-c67c72816ef6>;
-            json-ld:base                   "http://fullgrid.eu/CGMES/3.0#" .
+            rdf:type                      dcatcim:DifferenceSet , rdfg:Graph;
+            dct:conformsTo                <http://iec.ch/TC57/ns/CIM/ShortCircuit-EU/3.0>;
+            dct:description               "CGMES Conformity Assessment Test Configuration. The Test Configuration is owned by ENTSO-E and is provided by ENTSO-E “as it is”. To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.";
+            dct:identifier                "39d8d8fd-325d-4e29-9659-d7a1cca0615d";
+            dct:issued                    "2021-11-19"^^xsd:date;
+            dct:requires                  <urn:uuid:0cd6ada4-b6dc-4a36-a98c-877a39168cd3>;
+            dct:temporal                  [ rdf:type        dct:PeriodOfTime;
+                                            dcat:startDate  "2021-02-09T19:30:00Z"^^xsd:dateTime
+                                          ];
+            dcat:distribution             [ rdf:type    dcat:Distribution;
+                                            dct:issued  "2021-11-19T23:16:27Z"^^xsd:dateTime
+                                          ];
+            dcat:isVersionOf              <http://fullgrid.eu/CGMES/3.0>;
+            dcat:previousVersion          <urn:uuid:dd907125-7088-43fd-830d-5b0df36f4c71>;
+            dcat:version                  "001";
+            dcatcim:forwardDifferenceSet  <urn:uuid:921bff90-5e47-4f39-913a-97c9f2b507eb>;
+            dcatcim:reverseDifferenceSet  <urn:uuid:bca5bb47-ce0d-4c87-bf08-57388021a719>;
+            json-ld:base                  "http://fullgrid.eu/CGMES/3.0#" .
 }
