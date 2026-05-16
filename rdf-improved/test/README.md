@@ -111,5 +111,23 @@ https://raw.githack.com/Sveino/Inst4CIM-KG/develop/rdf-improved/cim-context-new.
 It declares the datatypes of all literal props (except `xsd:string` which is default) and `@type: @id` for object props.
 
 The files are made from `trig` using standard RDF tools (`riot -formatted jsonld` then `jsonld compact`):
+List of full models (consist of one named graph):
 
+- 20210323T1730Z_1D_BE_SSH_1.jsonld
+- 20210323T1730Z_1D_BE_SV_1.jsonld
+- 20210323T1730Z_1D_BE_TP_1.jsonld
+- FullGrid_OP.jsonld
+- FullGrid_SSH.jsonld
+- FullGrid_SV.jsonld
+- FullGrid_TP.jsonld
+- svedala_full.jsonld
 
+List of differential models: consist of a base graph, plus graphs `backwardDifferences` (triples to delete) and `forwardDifferences` (triples to insert):
+
+- FullGrid_OP_diff.jsonld
+- FullGrid_SC_diff.jsonld
+- MicroGrid-Assembled-DL_diff.jsonld
+- MicroGrid-BD-MAS-diff.jsonld
+- MicroGrid-BE-MAS-DY_diff.jsonld
+- MicroGrid-NL-MAS-EQ_diff.jsonld
+- MicroGrid-NL-MAS-GL_diff.jsonld
