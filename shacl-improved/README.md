@@ -1112,6 +1112,8 @@ Furthermore, this is not executed for millions of resources in the EIC file, but
 - `?vat` (emitted as `$value`)
 - the constant property URL `tr:vatNumber` (emitted as `?path`)
 
+Another example is the blog [Improving ERA SHACL Shapes and Data Flows](https://graphwise.ai/blog/improving-era-shacl-shapes-and-data-flows/#use-complex-sparqltarget-but-simple-sparqlconstraint).
+
 ### Centralize Prefix Definitions
 
 Many (all?) SHACL files include namespace declarations like this:
